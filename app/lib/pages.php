@@ -145,8 +145,13 @@ function page_save(PDO $db, array $page, int $userId): int
     $row = array_replace($current ?? [], $page);
 
     $slug = trim((string) ($row['slug'] ?? ''));
-    if (!slug_valid($slug)) {
+    $kind = ($row['kind'] ?? '') === 'post' ? 'post' : 'page';
+    // The blog index is the one page allowed to take the reserved word "blog"; posts live at /blog/{slug} with a single segment.
+    if (!slug_valid($slug) && !($kind === 'page' && $slug === 'blog')) {
         throw new InvalidArgumentException("The slug \"$slug\" is not allowed. Use lowercase letters, numbers and hyphens, with at most two slashes, and not a reserved first word such as admin or blog.");
+    }
+    if ($kind === 'post' && str_contains($slug, '/')) {
+        throw new InvalidArgumentException("A blog post's web address can't contain a slash.");
     }
     $taken = $db->prepare('SELECT 1 FROM pages WHERE slug = ? AND id <> ?');
     $taken->execute([$slug, $id ?? 0]);
@@ -154,7 +159,7 @@ function page_save(PDO $db, array $page, int $userId): int
         throw new InvalidArgumentException("The slug \"$slug\" is already used by another page.");
     }
 
-    $values = ['slug' => $slug, 'kind' => ($row['kind'] ?? '') === 'post' ? 'post' : 'page'];
+    $values = ['slug' => $slug, 'kind' => $kind];
     foreach (PAGE_TEXT_LIMITS as $col => $max) {
         $values[$col] = trim((string) ($row[$col] ?? ''));
         if (mb_strlen($values[$col]) > $max) {

@@ -180,3 +180,15 @@ function test_template_roundtrip(): void
     eq($p['sections'], page_find($db, $src)['sections']);
     pages_expect_invalid(fn() => page_from_template($db, 9999, 'x', 'X', 1), 'not found');
 }
+
+function test_blog_index_slug_and_post_slugs(): void
+{
+    $db = test_db();
+    $id = page_save($db, pages_test_page(['kind' => 'page', 'slug' => 'blog']), 1);
+    eq(page_find($db, $id)['slug'], 'blog');
+    page_save($db, pages_test_page(['id' => $id, 'slug' => 'blog', 'title' => 'Blog']), 1); // re-save works
+    pages_expect_invalid(fn() => page_save($db, pages_test_page(['kind' => 'page', 'slug' => 'blog/x']), 1), 'not allowed');
+    pages_expect_invalid(fn() => page_save($db, pages_test_page(['kind' => 'post', 'slug' => 'blog']), 1), 'not allowed');
+    pages_expect_invalid(fn() => page_save($db, pages_test_page(['kind' => 'post', 'slug' => 'news/launch']), 1), "can't contain a slash");
+    ok(page_save($db, pages_test_page(['kind' => 'post', 'slug' => 'launch']), 1) > 0);
+}
