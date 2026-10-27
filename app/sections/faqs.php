@@ -1,9 +1,13 @@
-<?php /** @var array $f, $page, $settings; @var int $s */ ?>
-<section class="sec sec--faqs">
-<?php if (!empty($f["heading"])): ?><h2><?= heading_html($f["heading"]) ?></h2><?php endif; ?>
-<ul>
-<?php foreach ($f['items'] ?? [] as $i): ?>
-<li><h3><?= e($i['question'] ?? '') ?></h3> <p><?= e($i['answer'] ?? '') ?></p></li>
-<?php endforeach; ?>
-</ul>
+<section class="sec sec--faqs faq">
+  <div class="wrap faq__grid">
+    <?= sec_head($f['heading'] ?? '') ?>
+    <div class="qa">
+<?php foreach ($f['items'] ?? [] as $q): ?>
+      <details class="qa__item">
+        <summary><span><?= e($q['question'] ?? '') ?></span><span class="qa__icon" aria-hidden="true"></span></summary>
+        <div class="qa__a"><p><?= nl2br(e($q['answer'] ?? '')) ?></p></div>
+      </details>
+<?php endforeach ?>
+    </div>
+  </div>
 </section>

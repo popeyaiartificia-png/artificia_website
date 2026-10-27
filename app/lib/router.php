@@ -68,7 +68,11 @@ function dispatch(string $method, string $path): void
         send_404($db);
         return;
     }
-    // The /_design route (design task) goes here.
+    // The section library, for designing locally; Task 5 also opens it to logged-in admins.
+    if ($path === '/_design' && $c['env'] === 'local') {
+        send_html(render_design_gallery($db, settings($db)));
+        return;
+    }
     if (preg_match('#^/blog/([^/]+)/?$#', $path, $m)) {
         $post = page_find_published($db, $m[1]);
         if ($post && $post['kind'] === 'post') {

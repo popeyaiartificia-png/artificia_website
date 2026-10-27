@@ -1,0 +1,452 @@
+{
+  "page": {
+    "h1": "Learn AI in a room in Vadodara. *From people who build it.*",
+    "title": "Section library",
+    "meta_title": "Section library | Artificia AI"
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "eyebrow": "AI training and automation, Vadodara",
+        "variant": "split",
+        "drawing": "documents",
+        "doors": [
+          {
+            "label": "Learn AI",
+            "note": "30 or 60-day masterclass",
+            "link": "/ai-masterclass"
+          },
+          {
+            "label": "Train my team",
+            "note": "Custom corporate programs",
+            "link": "/corporate-ai-training"
+          },
+          {
+            "label": "Build a system",
+            "note": "GoHighLevel, websites, RAG",
+            "link": "/services"
+          }
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Learn it, train a team, or have it built",
+        "intro": "Three ways to work with Artificia. The same people teach the classes and build the systems.",
+        "columns": "3",
+        "cards": [
+          {
+            "icon": "graduation-cap",
+            "title": "AI Masterclass",
+            "text": "Offline in Vadodara, one hour a day. A 30-day Foundation track or the 60-day Full program. No coding needed.",
+            "link": "/ai-masterclass"
+          },
+          {
+            "icon": "users-three",
+            "title": "Corporate AI training",
+            "text": "A program built around your documents and departments, on-site or over Microsoft Teams. It starts with a free 2-hour pilot.",
+            "link": "/corporate-ai-training"
+          },
+          {
+            "icon": "flow-arrow",
+            "title": "AI systems for businesses",
+            "text": "GoHighLevel setup, websites, content and marketing, and AI that answers from your own documents.",
+            "link": "/services"
+          }
+        ]
+      }
+    },
+    {
+      "type": "case_study",
+      "fields": {
+        "heading": "Orkay Tiles runs its leads on a system *we built*",
+        "client": "Orkay Tiles International",
+        "summary": "We set up and run Orkay's GoHighLevel accounts, and we built their website.",
+        "challenge": "<p>Enquiries arrive from ads, the website and phone calls, in more than one language. Each one has to reach the right person quickly and never be forgotten.</p>",
+        "built": [
+          {
+            "title": "Leads come in",
+            "text": "Meta and website enquiries land in GoHighLevel with the ad they came from."
+          },
+          {
+            "title": "Routed by language",
+            "text": "Each lead goes to a team member who speaks their language."
+          },
+          {
+            "title": "Followed up",
+            "text": "Unanswered leads are followed up and reassigned automatically."
+          },
+          {
+            "title": "Reported daily",
+            "text": "A daily report shows the team what came in and what moved."
+          }
+        ],
+        "link_label": "Read the case study",
+        "link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "What AI-enabled teams *typically* see",
+        "note": "Typical outcomes for AI-enabled teams.",
+        "items": [
+          {
+            "value": "92%",
+            "label": "faster lead handling"
+          },
+          {
+            "value": "10–20 hrs",
+            "label": "saved per employee each week"
+          },
+          {
+            "value": "65%",
+            "label": "less repetitive work"
+          },
+          {
+            "value": "500%",
+            "label": "boost in customer response"
+          },
+          {
+            "value": "4×",
+            "label": "faster reporting"
+          }
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How the masterclass works",
+        "intro": "Live classes in Vadodara, one hour a day, with something working at the end of each week.",
+        "steps": [
+          {
+            "title": "Pick your track",
+            "text": "Start with the 30-day Foundation, or take the 60-day Full program for agents, RAG, voice agents and deployment."
+          },
+          {
+            "title": "Learn in person, one hour a day",
+            "text": "Each class has a recap, a concept with a live demo, and hands-on time on your own laptop."
+          },
+          {
+            "title": "Build as you go",
+            "text": "You make working things from the first week: prompts, documents, presentations, a website, automations."
+          },
+          {
+            "title": "Show what you built",
+            "text": "Day 30 is Demo Day. Full-program students present an advanced project on day 60."
+          }
+        ]
+      }
+    },
+    {
+      "type": "curriculum",
+      "fields": {
+        "heading": "Sixty days, *one line*",
+        "intro": "The Foundation covers days 1 to 30. The Full program keeps going to day 60.",
+        "modules": [
+          {
+            "track": "foundation",
+            "day_range": "1–3",
+            "title": "The AI landscape and prompting",
+            "topics": "Where AI came from, setting up your models, prompt frameworks and advanced prompting.",
+            "tools": "ChatGPT, Claude, Gemini, DeepSeek"
+          },
+          {
+            "track": "foundation",
+            "day_range": "4–7",
+            "title": "AI for everyday office work",
+            "topics": "Copilot in Word, Excel and PowerPoint, research tools, AI ethics and NotebookLM.",
+            "tools": "Copilot, Perplexity, NotebookLM"
+          },
+          {
+            "track": "foundation",
+            "day_range": "8–17",
+            "title": "Assistants, images, video, voice and data",
+            "topics": "Custom GPTs, Gemini in Workspace, Claude Projects, presentations, image and video generation, voice, avatars and data analysis.",
+            "tools": "Gamma, Runway, ElevenLabs, HeyGen, Canva"
+          },
+          {
+            "track": "foundation",
+            "day_range": "18–25",
+            "title": "Websites and your first app",
+            "topics": "Prompt-to-website, design, Google AI Studio, Git basics, and building and shipping an app.",
+            "tools": "Bolt.new, Lovable, Framer, Antigravity"
+          },
+          {
+            "track": "foundation",
+            "day_range": "26–30",
+            "title": "Capstone and Demo Day",
+            "topics": "Plan, build, test and present a project of your own.",
+            "tools": "Your chosen stack"
+          },
+          {
+            "track": "full",
+            "day_range": "31–39",
+            "title": "Agents, voice agents and n8n",
+            "topics": "How agents think, voice agents you can call, backends, Google Sheets as a database, APIs, webhooks and bots.",
+            "tools": "n8n, Vapi, Supabase, WhatsApp API"
+          },
+          {
+            "track": "full",
+            "day_range": "40–49",
+            "title": "MCP, RAG and multi-agent systems",
+            "topics": "Claude Cowork, MCP servers, AI skills, RAG agents, multi-agent workflows and selling agents as a service.",
+            "tools": "Claude, MCP, Pinecone, CrewAI"
+          },
+          {
+            "track": "full",
+            "day_range": "50–56",
+            "title": "Claude Code and local models",
+            "topics": "Claude Code, running local and open-source models, Hugging Face and Codex.",
+            "tools": "Claude Code, Ollama, Hugging Face"
+          },
+          {
+            "track": "full",
+            "day_range": "57–60",
+            "title": "Advanced capstone and graduation",
+            "topics": "Design, build, deploy and present an advanced AI project.",
+            "tools": "Vercel, GitHub, Supabase"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "Tools you will use",
+        "intro": "Each one is taught hands-on, on the day shown.",
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "note": "Day 1"
+          },
+          {
+            "name": "Claude",
+            "note": "Day 1"
+          },
+          {
+            "name": "Gemini",
+            "note": "Day 1"
+          },
+          {
+            "name": "Copilot",
+            "note": "Day 4"
+          },
+          {
+            "name": "Perplexity",
+            "note": "Day 5"
+          },
+          {
+            "name": "NotebookLM",
+            "note": "Day 7"
+          },
+          {
+            "name": "ElevenLabs",
+            "note": "Day 14"
+          },
+          {
+            "name": "Canva",
+            "note": "Day 16"
+          },
+          {
+            "name": "Lovable",
+            "note": "Day 18"
+          },
+          {
+            "name": "n8n",
+            "note": "Day 36"
+          },
+          {
+            "name": "Pinecone",
+            "note": "Day 45"
+          },
+          {
+            "name": "Claude Code",
+            "note": "Day 50"
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "In their *own words*",
+        "items": [
+          {
+            "name": "Hatim Sorangwala",
+            "role": "Artificia AI student",
+            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
+            "photo": "hatim-sorangwala.jpg"
+          },
+          {
+            "name": "Alphonsa N. P",
+            "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital",
+            "quote": "The AI training is highly practical and directly applicable to modern healthcare operations.",
+            "photo": "alphonsa-n-p.jpg"
+          },
+          {
+            "name": "Khushi Dodiya",
+            "role": "Artificia AI student",
+            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview"
+          },
+          {
+            "name": "Haritha Nair",
+            "role": "AI design student, Vadodara",
+            "quote": "The live sessions and practical projects helped me quickly build real creative skills.",
+            "photo": "haritha-nair.jpg"
+          },
+          {
+            "name": "Dev Chokshi",
+            "role": "Artificia AI student",
+            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
+            "photo": "dev-chokshi.jpg"
+          },
+          {
+            "name": "Nilesh Chaudasama",
+            "role": "Working professional, Vadodara",
+            "quote": "The training was practical, structured, and easy to apply in daily professional tasks.",
+            "photo": "nilesh-chaudasama.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Where AI saves a business time",
+        "intro": "Three jobs we automate most often, before and after.",
+        "items": [
+          {
+            "title": "Answering enquiries",
+            "before": "New leads wait hours for someone to call back.",
+            "after": "An AI assistant replies on WhatsApp in minutes and books the call."
+          },
+          {
+            "title": "Monthly reports",
+            "before": "Someone copies figures between spreadsheets by hand.",
+            "after": "The report builds itself from your sheets and arrives by email."
+          },
+          {
+            "title": "Finding the right document",
+            "before": "Staff dig through folders and old emails for the latest SOP.",
+            "after": "Ask in plain words and get the answer with the source page."
+          }
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "Taught by Hardik Aseri",
+        "body": "<p>Hardik teaches every Vadodara batch himself and builds the AI systems Artificia runs for clients. Classes are direct and practical: the tools and workflows that work today, shown live, then done by you.</p>",
+        "image": "hardik-aseri.jpg",
+        "image_side": "right",
+        "cta_label": "About Artificia",
+        "cta_link": "/about"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "Why we teach *in person*",
+        "body": "<p>AI tools change every month. What lasts is the habit of trying them on real work with someone beside you who has done it before.</p><ul><li>One hour a day keeps it steady next to college or a job.</li><li>You work on your own laptop, so everything you build stays with you.</li><li>Questions get answered in the room, not in a comment thread.</li></ul><p>The <a href=\"/ai-masterclass\">masterclass page</a> has the full plan.</p>"
+      }
+    },
+    {
+      "type": "people",
+      "fields": {
+        "heading": "The people you will learn from",
+        "items": [
+          {
+            "name": "Hardik Aseri",
+            "role": "Instructor",
+            "bio": "Teaches the masterclass and leads Artificia's automation projects.",
+            "photo": "hardik-aseri.jpg",
+            "linkedin": "https://www.linkedin.com/"
+          },
+          {
+            "name": "Vijay Linju Raghavan",
+            "role": "Artificia AI",
+            "bio": "Role and bio to be confirmed with Hardik.",
+            "photo": "vijay-linju-raghavan.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions before you join",
+        "items": [
+          {
+            "question": "Do I need to know coding?",
+            "answer": "No. The Foundation track needs no coding at all. The Full program introduces a little, step by step, when you build agents and deploy projects."
+          },
+          {
+            "question": "Where and when are classes held?",
+            "answer": "In person in Vadodara, one hour a day. Message us on WhatsApp for the current timings."
+          },
+          {
+            "question": "What is the difference between the 30-day and 60-day programs?",
+            "answer": "The 30-day Foundation covers everyday AI tools, content, websites and a capstone. The 60-day Full program adds agents, voice agents, n8n, MCP, RAG, Claude Code and local models."
+          },
+          {
+            "question": "Can my company get training on its own tools?",
+            "answer": "Yes. Corporate programs are built around your documents and departments, on-site or over Microsoft Teams. They start with a free 2-hour pilot."
+          }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "fields": {
+        "heading": "Training a team? Start with a *free 2-hour pilot*.",
+        "text": "We run one session on your own work, so you can judge the program before you commit.",
+        "button_label": "Ask for the pilot",
+        "button_link": "/corporate-ai-training#enquire"
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask about the *masterclass*",
+        "intro": "Leave your details and we will reply on WhatsApp with timings and next steps.",
+        "form_type": "masterclass",
+        "side_points": [
+          {
+            "text": "No coding needed"
+          },
+          {
+            "text": "One hour a day, in person in Vadodara"
+          },
+          {
+            "text": "A 30-day or a 60-day track"
+          }
+        ]
+      }
+    },
+    {
+      "type": "blog_list",
+      "fields": {
+        "heading": "Notes from the work",
+        "count": "3"
+      }
+    },
+    {
+      "type": "map_contact",
+      "fields": {
+        "heading": "Visit or call",
+        "show_map": "yes"
+      }
+    }
+  ],
+  "settings": {
+    "whatsapp_number": "919104488859",
+    "org_phone": "+91 91044 88859",
+    "org_email": "info@artificiaai.com",
+    "org_address": "Vadodara, Gujarat"
+  }
+}

@@ -27,6 +27,54 @@ function link_href(string $url): string
     return preg_match('#^(/|\#|https?://|mailto:|tel:)#i', $url) ? e($url) : '#';
 }
 
+/** Inline Phosphor icon by name; '' for an unknown name. */
+function icon(string $name, string $class = 'icon'): string
+{
+    static $set;
+    $set ??= require VIEWS_DIR . '/icons.php';
+    if (!isset($set[$name])) {
+        return '';
+    }
+    return '<svg class="' . e($class) . '" viewBox="0 0 256 256" aria-hidden="true" focusable="false">' . $set[$name] . '</svg>';
+}
+
+/** The completion tick that sits on the margin rule beside a section heading. */
+function tick(): string
+{
+    return '<svg class="tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+}
+
+/** One of the lime sketches in app/views/drawings; '' for none or an unknown name. */
+function drawing(string $name): string
+{
+    $file = VIEWS_DIR . '/drawings/' . basename($name) . '.php';
+    if ($name === '' || $name === 'none' || !is_file($file)) {
+        return '';
+    }
+    ob_start();
+    include $file;
+    return (string) ob_get_clean();
+}
+
+/** Section heading: an h2 with its margin tick. */
+function sec_head(string $heading, string $class = 'h2'): string
+{
+    if (trim($heading) === '') {
+        return '';
+    }
+    return '<div class="sec__head">' . tick() . '<h2 class="' . e($class) . '">' . heading_html($heading) . '</h2></div>';
+}
+
+/** An image field (a media id) as a responsive <img>; '' when empty or unknown. */
+function image(mixed $id, string $sizes, bool $eager = false, string $class = ''): string
+{
+    if (!is_numeric($id) || (int) $id <= 0) {
+        return '';
+    }
+    $tag = img_tag(db(), (int) $id, $sizes, $eager);
+    return $class !== '' && $tag !== '' ? '<img class="' . e($class) . '" ' . substr($tag, 5) : $tag;
+}
+
 function render_view(string $name, array $vars): string
 {
     extract($vars, EXTR_SKIP);
@@ -68,7 +116,8 @@ function render_layout(array $vars): string
 {
     $settings = $vars['settings'];
     return render_view('layout', $vars + [
-        'robots' => '', 'ogImage' => null, 'ogType' => 'website', 'jsonld' => [],
+        'robots' => '', 'ogImage' => null, 'ogType' => 'website', 'jsonld' => [], 'hasForm' => false,
+        'current' => request_path(),
         'ga4' => tracking_id($settings, 'ga4_id'), 'pixel' => tracking_id($settings, 'meta_pixel_id'),
         'gsc' => $settings['gsc_verification'] ?? '',
     ]);
@@ -95,7 +144,47 @@ function render_page(array $page, array $settings): string
         'ogImage' => $ogImage ? $base . $ogImage : null,
         'ogType' => $page['kind'] === 'post' ? 'article' : 'website',
         'jsonld' => schema_graph($page, $settings, $base),
+        'hasForm' => in_array('lead_form', array_column($sections, 'type'), true),
     ]);
+}
+
+/** /_design: every section type rendered from content/design-samples.json, in order. */
+function render_design_gallery(PDO $db, array $settings): string
+{
+    $root = dirname(__DIR__, 2);
+    $data = json_decode((string) file_get_contents($root . '/content/design-samples.json'), true, flags: JSON_THROW_ON_ERROR);
+    $settings += $data['settings'] ?? [];
+    $sections = design_sample_images($db, $data['sections'], $root . '/content/seed/media', $root . '/public/uploads');
+    $page = $data['page'] + ['sections' => $sections, 'kind' => 'page'];
+    $body = render_view('design-gallery', ['sections' => $sections, 'page' => $page, 'settings' => $settings]);
+    return render_layout([
+        'settings' => $settings, 'body' => $body, 'title' => $page['meta_title'] ?? 'Section library',
+        'description' => '', 'canonical' => '', 'robots' => 'noindex', 'hasForm' => true,
+    ]);
+}
+
+/** Sample image fields name files in content/seed/media; swap each for a media id (stored once, reused after). */
+function design_sample_images(PDO $db, array $sections, string $mediaDir, string $uploadsDir): array
+{
+    $registry = section_registry();
+    $swap = function (array $fields, array $defs) use (&$swap, $db, $mediaDir, $uploadsDir): array {
+        foreach ($defs as $key => $def) {
+            if (!isset($fields[$key])) {
+                continue;
+            }
+            if ($def['type'] === 'image' && is_string($fields[$key]) && is_file($mediaDir . '/' . basename($fields[$key]))) {
+                $alt = ucwords(str_replace('-', ' ', pathinfo($fields[$key], PATHINFO_FILENAME)));
+                $fields[$key] = media_from_file($db, $mediaDir . '/' . basename($fields[$key]), $alt, $uploadsDir);
+            } elseif ($def['type'] === 'list' && is_array($fields[$key])) {
+                $fields[$key] = array_map(fn($item) => is_array($item) ? $swap($item, $def['fields']) : $item, $fields[$key]);
+            }
+        }
+        return $fields;
+    };
+    foreach ($sections as &$section) {
+        $section['fields'] = $swap($section['fields'] ?? [], $registry[$section['type']]['fields'] ?? []);
+    }
+    return $sections;
 }
 
 function render_404(array $settings): string

@@ -1,10 +1,21 @@
-<?php /** @var array $f, $page, $settings; @var int $s */ ?>
-<section class="sec sec--stats">
-<?php if (!empty($f["heading"])): ?><h2><?= heading_html($f["heading"]) ?></h2><?php endif; ?>
-<ul>
-<?php foreach ($f['items'] ?? [] as $i): ?>
-<li><strong><?= e($i['value'] ?? '') ?></strong> <?= e($i['label'] ?? '') ?></li>
-<?php endforeach; ?>
-</ul>
-<p><?= e($f['note'] ?? 'Typical outcomes for AI-enabled teams.') ?></p>
+<?php $note = trim($f['note'] ?? '') !== '' ? $f['note'] : 'Typical outcomes for AI-enabled teams.'; ?>
+<section class="sec sec--stats stats" data-section="stats">
+  <div class="wrap">
+    <?= sec_head($f['heading'] ?? '') ?>
+    <p class="stats__note"><?= e($note) ?></p>
+    <dl class="dims">
+<?php foreach ($f['items'] ?? [] as $it):
+    $v = (string) ($it['value'] ?? '');
+    preg_match('/^([\d.,]+(?:\s?[–-]\s?[\d.,]+)?\s?[%×x+]?)\s*(.*)$/u', $v, $m);
+    $big = rtrim($m[1] ?? $v);
+    $small = $m[2] ?? '';
+?>
+      <div class="dim">
+        <dt class="dim__label"><?= e($it['label'] ?? '') ?></dt>
+        <dd class="dim__val"><span class="vh"><?= e($v) ?></span><span class="dim__num" aria-hidden="true" data-count><?= e($big) ?></span><?php if ($small !== ''): ?><small aria-hidden="true"><?= e($small) ?></small><?php endif ?></dd>
+        <dd class="dim__line" aria-hidden="true"></dd>
+      </div>
+<?php endforeach ?>
+    </dl>
+  </div>
 </section>

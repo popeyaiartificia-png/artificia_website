@@ -17,8 +17,8 @@ function test_single_h1_with_hero(): void
         ['type' => 'rich_text', 'fields' => ['heading' => 'Why', 'body' => '<p>Because</p>']],
     ]]), []);
     eq(substr_count($html, '<h1'), 1);
-    ok(str_contains($html, '<h1>Learn <em>AI</em> properly</h1>'), 'hero renders the page h1');
-    ok(str_contains($html, '<h2>Why</h2>'));
+    ok((bool) preg_match('#<h1[^>]*>Learn <em>AI</em> properly</h1>#', $html), 'hero renders the page h1');
+    ok((bool) preg_match('#<h2[^>]*>Why</h2>#', $html));
 }
 
 function test_single_h1_without_hero(): void
@@ -28,7 +28,7 @@ function test_single_h1_without_hero(): void
         ['type' => 'cta', 'fields' => ['heading' => 'Join', 'button_label' => 'Go', 'button_link' => '/x']],
     ]]), []);
     eq(substr_count($html, '<h1'), 1);
-    ok(str_contains($html, '<h1>About us</h1>'), 'falls back to the title');
+    ok((bool) preg_match('#<h1[^>]*>About us</h1>#', $html), 'falls back to the title');
     ok(strpos($html, '<h1') < strpos($html, '<h2'), 'h1 comes first');
 }
 
