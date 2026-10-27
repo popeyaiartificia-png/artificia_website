@@ -192,7 +192,7 @@ a:hover { color: var(--lime); }
 
 /* ---------- Binding: header and footer ---------- */
 .bind { background: var(--c0); color: var(--ink); }
-.top { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #000; }
+.top { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--c1); }
 .top__in { display: flex; align-items: center; gap: 1.5rem; height: var(--bar); }
 /* The Artificia logo file, used as supplied (Brand Bible: top-left, at least 120px wide, never redrawn). */
 .brand { display: block; flex: none; padding-block: 4px; }
