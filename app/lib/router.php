@@ -81,7 +81,7 @@ function dispatch(string $method, string $path): void
 
     $slug = trim($path, '/');
     if ($slug === 'home') {
-        redirect('/', 301);
+        redirect(redirect_location('/', (string) ($_SERVER['QUERY_STRING'] ?? '')), 301);
     }
     $page = page_find_published($db, $slug === '' ? 'home' : $slug);
     if ($page && $page['kind'] === 'page') {
@@ -90,7 +90,7 @@ function dispatch(string $method, string $path): void
     }
     $hit = redirect_match($db, $path);
     if ($hit) {
-        redirect($hit['to'], $hit['code']);
+        redirect(redirect_location($hit['to'], (string) ($_SERVER['QUERY_STRING'] ?? '')), $hit['code']);
     }
     send_404($db);
 }

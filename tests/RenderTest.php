@@ -106,3 +106,13 @@ function test_staging_guard_credentials(): void
     ok(!staging_authorized([], $auth));
     ok(!staging_authorized(['PHP_AUTH_USER' => '', 'PHP_AUTH_PW' => ''], ['user' => '', 'pass' => '']), 'empty config never opens the site');
 }
+
+function test_single_h1_with_late_hero(): void
+{
+    $cta = ['type' => 'cta', 'fields' => ['heading' => 'Join']];
+    $hero = ['type' => 'hero', 'fields' => []];
+    foreach ([[$cta, $hero], [$hero, $hero]] as $sections) {
+        $html = render_page(render_test_page(['sections' => $sections]), []);
+        eq(substr_count($html, '<h1'), 1);
+    }
+}

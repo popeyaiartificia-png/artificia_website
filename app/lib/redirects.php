@@ -16,3 +16,13 @@ function redirect_match(PDO $db, string $path): ?array
     }
     return ['to' => $row['to_path'], 'code' => in_array((int) $row['code'], [301, 302, 307, 308], true) ? (int) $row['code'] : 301];
 }
+
+/** Redirect target with the request's query string carried over (ad click ids, utm_*), unless the target has its own. */
+function redirect_location(string $to, string $query): string
+{
+    if ($query === '' || str_contains($to, '?')) {
+        return $to;
+    }
+    [$url, $hash] = explode('#', $to, 2) + [1 => null];
+    return $url . '?' . $query . ($hash !== null ? '#' . $hash : '');
+}

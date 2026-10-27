@@ -44,3 +44,12 @@ function test_redirect_refuses_unsafe_targets(): void
     eq(redirect_match($db, '/abs'), ['to' => 'https://example.com/ok', 'code' => 301]);
     eq(redirect_match($db, '/weird'), ['to' => '/ok', 'code' => 301]); // non-redirect codes fall back to 301
 }
+
+function test_redirect_keeps_query(): void
+{
+    eq(redirect_location('/new', 'gclid=abc&utm_source=g'), '/new?gclid=abc&utm_source=g');
+    eq(redirect_location('/new', ''), '/new');
+    eq(redirect_location('/new?x=1', 'gclid=abc'), '/new?x=1');
+    eq(redirect_location('/new#top', 'a=1'), '/new?a=1#top');
+    eq(redirect_location('https://example.com/p', 'a=1'), 'https://example.com/p?a=1');
+}
