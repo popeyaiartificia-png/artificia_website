@@ -16,7 +16,7 @@ $sig = function (array $it, bool $photo): string {
     <ul class="wits wits--video" tabindex="0" aria-label="Video testimonials">
 <?php foreach ($videos as $it): $name = ($it['name'] ?? '') !== '' ? $it['name'] : 'a student'; ?>
       <li class="wit">
-        <button class="vid<?= empty($it['photo']) ? ' vid--blank' : '' ?>" type="button" data-src="<?= e($it['src']) ?>" data-title="Video from <?= e($name) ?>" aria-label="Play the video from <?= e($name) ?>">
+        <button class="vid<?= empty($it['photo']) ? ' vid--blank' : '' ?>" type="button" data-src="<?= e($it['src']) ?>" data-title="Video from <?= e($name) ?>" aria-label="Play video from <?= e($name) ?>">
           <?= !empty($it['photo']) ? image($it['photo'], '(min-width: 900px) 360px, 84vw') : '<span class="vid__name" aria-hidden="true">' . e($name) . '</span>' ?>
           <span class="vid__play"><?= icon('play') ?>Play video</span>
         </button>

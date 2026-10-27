@@ -80,7 +80,7 @@ $nav = [
 <?= $body ?>
 </main>
 <footer class="bind foot">
-  <div class="wrap">
+  <div class="wrap foot__panel">
     <div class="foot__grid">
       <div class="foot__brand">
         <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI" loading="lazy"></a>
