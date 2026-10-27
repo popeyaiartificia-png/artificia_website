@@ -1,0 +1,86 @@
+[
+  {
+    "from_path": "/index.html",
+    "to_path": "/",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/about.html",
+    "to_path": "/about",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/team.html",
+    "to_path": "/about",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/contact.html",
+    "to_path": "/contact",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/registration.html",
+    "to_path": "/contact",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/trainingcourses.html",
+    "to_path": "/ai-masterclass",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/projects.html",
+    "to_path": "/case-studies/orkay-tiles",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/faqs.html",
+    "to_path": "/ai-masterclass#faq",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/hiring.html",
+    "to_path": "/",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/services.html",
+    "to_path": "/services",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/privacypolicy.html",
+    "to_path": "/privacy",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/Termsandcondition.html",
+    "to_path": "/terms",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
+    "from_path": "/landing-page/",
+    "to_path": "/ai-masterclass",
+    "match_type": "prefix",
+    "code": 301
+  },
+  {
+    "from_path": "/co-orporate/",
+    "to_path": "/corporate-ai-training",
+    "match_type": "prefix",
+    "code": 301
+  }
+]
