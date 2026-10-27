@@ -64,6 +64,7 @@ function section_registry(): array
             'cards' => $list('Cards', [
                 'icon' => $select('Icon', $icons),
                 'drawing' => $select('Drawing (replaces the icon)', ['none', 'documents', 'masterclass', 'corporate', 'services']),
+                'image' => $image('Photo (replaces the icon and drawing)'),
                 'title' => $text('Title', true),
                 'text' => $area('Text', true),
                 'link' => $text('Link'),
@@ -128,6 +129,7 @@ function section_registry(): array
             'heading' => $text('Heading', true),
             'client' => $text('Client', true),
             'summary' => $area('Summary', true),
+            'image' => $image('Screenshot or photo of the work'),
             'challenge' => $rich('Challenge'),
             'built' => $list('What we built', [
                 'title' => $text('Title', true),

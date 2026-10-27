@@ -62,6 +62,48 @@
       }
     },
     {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Training built for *your* industry",
+        "intro": "Each corporate program starts from the documents and work of one industry.",
+        "columns": "3",
+        "cards": [
+          {
+            "image": "industry-manufacturing.jpg",
+            "title": "Manufacturing",
+            "text": "Quotations, dispatch updates and quality reports, with less copying between sheets.",
+            "link": "/corporate-ai-training/manufacturing"
+          },
+          {
+            "image": "industry-healthcare.jpg",
+            "title": "Healthcare",
+            "text": "Patient communication, rosters and hospital administration, handled with care for privacy.",
+            "link": "/corporate-ai-training/healthcare"
+          },
+          {
+            "image": "industry-pharmaceutical.jpg",
+            "title": "Pharmaceutical",
+            "text": "SOPs, documentation and reports that teams can search in plain words."
+          },
+          {
+            "image": "industry-chemical.jpg",
+            "title": "Chemical",
+            "text": "Safety documents, supplier emails and plant reports in one place."
+          },
+          {
+            "image": "industry-import-export.jpg",
+            "title": "Import and export",
+            "text": "Enquiries in many languages, quotations and shipment follow-ups."
+          },
+          {
+            "image": "industry-finance.jpg",
+            "title": "Finance",
+            "text": "Reconciliation, reporting and client questions answered from your own files."
+          }
+        ]
+      }
+    },
+    {
       "type": "case_study",
       "fields": {
         "heading": "Orkay Tiles runs its leads on a system *we built*",
@@ -87,7 +129,8 @@
           }
         ],
         "link_label": "Read the case study",
-        "link": "/case-studies/orkay-tiles"
+        "link": "/case-studies/orkay-tiles",
+        "image": "orkay-website.jpg"
       }
     },
     {
@@ -298,8 +341,7 @@
           {
             "name": "Haritha Nair",
             "role": "AI design student, Vadodara",
-            "quote": "The live sessions and practical projects helped me quickly build real creative skills.",
-            "photo": "haritha-nair.jpg"
+            "quote": "The live sessions and practical projects helped me quickly build real creative skills."
           },
           {
             "name": "Dev Chokshi",
@@ -310,8 +352,7 @@
           {
             "name": "Nilesh Chaudasama",
             "role": "Working professional, Vadodara",
-            "quote": "The training was practical, structured, and easy to apply in daily professional tasks.",
-            "photo": "nilesh-chaudasama.jpg"
+            "quote": "The training was practical, structured, and easy to apply in daily professional tasks."
           }
         ]
       }
@@ -443,6 +484,18 @@
       "fields": {
         "heading": "Visit or call",
         "show_map": "yes"
+      }
+    },
+    {
+      "type": "hero",
+      "fields": {
+        "variant": "split",
+        "subheading": "Offline in Vadodara, one hour a day. A 30-day Foundation or the 60-day Full program.",
+        "image": "classroom-instructor.jpg",
+        "primary_cta_label": "Ask about the masterclass",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "See the 60 days",
+        "secondary_cta_link": "#curriculum"
       }
     }
   ],

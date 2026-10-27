@@ -296,6 +296,8 @@ a:hover { color: var(--lime); }
 .hero__sub { margin-top: 1.25rem; }
 .hero__media { align-self: center; }
 .hero__media .draw { max-width: 560px; margin-inline: auto; }
+.hero__media .frame img { aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 1024px) { .hero--split .hero__media .frame img { aspect-ratio: 4 / 5; } }
 @media (min-width: 1024px) { .hero--split .hero__media .draw { max-width: none; } .hero__foot { grid-column: 1; margin-top: 2rem; } }
 .frame { padding: 10px; background: var(--c2); border: 1px solid var(--c5); box-shadow: 0 14px 40px rgba(0, 0, 0, .35); }
 .frame img { width: 100%; }
@@ -359,6 +361,11 @@ a:hover { color: var(--lime); }
 /* ---------- Ruled index (card grid) ---------- */
 .index { display: grid; margin-top: 2.5rem; border-top: 1.5px solid var(--ink); list-style: none; padding: 0; }
 .index__draw { max-width: 400px; margin-bottom: 1.25rem; }
+/* Photo cards: a mounted print over the title, still ruled rather than boxed. */
+.index__photo { margin: 0 0 1.1rem; padding: 6px; background: var(--c2); border: 1px solid var(--c5); }
+.index__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.index--photo .index__item { padding-top: 1.75rem; }
+.index--photo .index__go { top: auto; bottom: 1.9rem; }
 .index--drawn .index__item { padding: 2rem 0 2.25rem; }
 @media (min-width: 900px) {
   .index--drawn .index__item { display: grid; grid-template-columns: minmax(280px, 5fr) 7fr; column-gap: 4rem; align-items: center; padding: 2.75rem 0; }
@@ -382,20 +389,20 @@ a:hover { color: var(--lime); }
   .index:not(.index--drawn) .index__item:nth-child(odd) { padding-left: 0; border-left: 0; }
 }
 @media (min-width: 720px) and (max-width: 1023px) { .index:not(.index--drawn) .index__item:last-child:nth-child(odd) { grid-column: 1 / -1; } }
-@media (min-width: 1024px) { .index--2 .index__item:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (min-width: 1024px) { .index:not(.index--drawn).index--2 .index__item:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 @media (min-width: 1024px) {
-  .index--3 { grid-template-columns: repeat(3, 1fr); }
-  .index--4 { grid-template-columns: repeat(4, 1fr); }
-  .index--3 .index__item, .index--4 .index__item { padding-left: 2rem; border-left: 1px solid var(--c5); grid-column: auto; }
-  .index--3 .index__item:nth-child(3n+1), .index--4 .index__item:nth-child(4n+1) { padding-left: 0; border-left: 0; }
+  .index:not(.index--drawn).index--3 { grid-template-columns: repeat(3, 1fr); }
+  .index:not(.index--drawn).index--4 { grid-template-columns: repeat(4, 1fr); }
+  .index:not(.index--drawn).index--3 .index__item, .index:not(.index--drawn).index--4 .index__item { padding-left: 2rem; border-left: 1px solid var(--c5); grid-column: auto; }
+  .index:not(.index--drawn).index--3 .index__item:nth-child(3n+1), .index:not(.index--drawn).index--4 .index__item:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   /* No empty cells: the last row stretches to fill the ruling. */
-  .index--3 .index__item:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
-  .index--3 .index__item:last-child:nth-child(3n+2) { grid-column: span 2; }
-  .index--4 .index__item:last-child:nth-child(4n+1) { grid-column: 1 / -1; }
-  .index--4 .index__item:last-child:nth-child(4n+2) { grid-column: span 3; }
-  .index--4 .index__item:last-child:nth-child(4n+3) { grid-column: span 2; }
-  .index--3 > .index__item:nth-child(n+4), .index--4 > .index__item:nth-child(n+5) { border-top: 1px solid var(--c5); }
-  .index--2 > .index__item:nth-child(n+3) { border-top: 1px solid var(--c5); }
+  .index:not(.index--drawn).index--3 .index__item:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+  .index:not(.index--drawn).index--3 .index__item:last-child:nth-child(3n+2) { grid-column: span 2; }
+  .index:not(.index--drawn).index--4 .index__item:last-child:nth-child(4n+1) { grid-column: 1 / -1; }
+  .index:not(.index--drawn).index--4 .index__item:last-child:nth-child(4n+2) { grid-column: span 3; }
+  .index:not(.index--drawn).index--4 .index__item:last-child:nth-child(4n+3) { grid-column: span 2; }
+  .index:not(.index--drawn).index--3 > .index__item:nth-child(n+4), .index:not(.index--drawn).index--4 > .index__item:nth-child(n+5) { border-top: 1px solid var(--c5); }
+  .index:not(.index--drawn).index--2 > .index__item:nth-child(n+3) { border-top: 1px solid var(--c5); }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
   .index:not(.index--drawn) > .index__item:nth-child(n+3) { border-top: 1px solid var(--c5); }
@@ -559,6 +566,8 @@ a:hover { color: var(--lime); }
 .cs__results dd { font-size: 2rem; font-weight: 820; font-stretch: 112%; line-height: 1; }
 .cs__results dt { margin-top: .35rem; color: var(--c6); font-size: .875rem; }
 .cs__logo { max-width: 160px; margin-bottom: 1.5rem; }
+.cs__work { display: grid; gap: 2.5rem; }
+.cs__shot img { width: 100%; }
 .flow { position: relative; list-style: none; padding: 0; display: grid; gap: 2.5rem; }
 .flow__node { position: relative; padding: 1rem 1.1rem 1.1rem; border: 1.5px solid var(--ink); border-radius: var(--r); background: var(--c3); }
 .flow__node:nth-child(even) { margin-left: clamp(1.5rem, 6vw, 4.5rem); }
