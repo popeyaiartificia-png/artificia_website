@@ -1,16 +1,24 @@
 # artificiaai.com
 
-Source for https://artificiaai.com (hosted on Hostinger).
+Plain PHP 8 + MySQL site for https://artificiaai.com (Hostinger shared hosting). No framework, no Composer.
 
-## What is in this commit
+- Spec: `docs/superpowers/specs/2026-10-27-artificiaai-site-design.md`
+- Plan: `docs/superpowers/plans/`
+- `legacy/` is the old static site (reference only), plus mirrors of the two ad funnels,
+  `legacy/landing-page/` and `legacy/co-orporate/`. Tag `legacy-live-2025-09-17` is the original backup.
 
-A backup of the live site as it was served on 27 Oct 2026 (files last changed on the server 17 Sep 2025),
-copied file-for-file over HTTPS. Tag: `legacy-live-2025-09-17`.
+## Layout
 
-Not in this backup yet, because the web server never hands them out over HTTPS:
+`public/` is the only web-served folder. `app/` is the code, `db/migrations/` the schema,
+`bin/` the dev scripts, `tests/` the tests. Migrations run on boot.
 
-- `contact-form.php` and `registration-form.php` (the form handlers)
-- `.htaccess` and any other hidden or server-only files
+## Local development
 
-Pull those from Hostinger (File Manager or the Hostinger plugin) before this repo is ever deployed,
-or the forms will stop working.
+1. `brew services start mariadb`, then create the `artificia` and `artificia_test` databases and a user
+   that can use both (the test runner drops and recreates `artificia_test`).
+2. Create `~/.config/artificia/config.php` (outside the repo, never committed). It returns an array with
+   `env` (`local`, `staging` or `production`), `base_url`, `db` (`dsn`, `user`, `pass`), `app_secret`
+   (64 hex characters), `staging_auth` (`user`, `pass`), `setup_token` and `mail_from`.
+3. `bin/serve` starts http://127.0.0.1:8000. `php tests/run.php` runs the tests.
+
+On the server the config path is `$ARTIFICIA_CONFIG`, or `artificia-config.php` three folders above `app/`.

@@ -1,0 +1,8 @@
+.DS_Store
+/.superpowers/
+/public/uploads/*
+/storage/*
+!/public/uploads/.gitkeep
+!/storage/.gitkeep
+artificia-config.php
+config.php

@@ -1,0 +1,3 @@
+#!/bin/sh
+cd "$(dirname "$0")/.." || exit 1
+ARTIFICIA_CONFIG=${ARTIFICIA_CONFIG:-$HOME/.config/artificia/config.php} exec php -S 127.0.0.1:8000 -t public public/index.php

@@ -1,0 +1,6 @@
+# Repo root as deployed (public_html/live): only public/ is web-served.
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(app|bin|content|db|docs|legacy|storage|tests)(/|$) - [F,L]
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^(?!public/)(.*)$ public/$1 [L]

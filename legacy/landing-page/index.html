@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your AI Potential | Artificia AI Masterclass</title>
+    <meta name="description"
+        content="Master Generative AI, Automation & Agents in Vadodara's Premium Offline Program. Elevate your career and productivity.">
+
+    <!-- Open Graph (Facebook / WhatsApp / LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Unlock Your AI Potential | Artificia AI Masterclass">
+    <meta property="og:description" content="Master Generative AI, Automation & AI Agents in Vadodara's most practical offline program. Join 100+ professionals already ahead.">
+    <meta property="og:image" content="https://artificiaai.com/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://artificiaai.com/landing-page/">
+    <meta property="og:site_name" content="Artificia AI">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Unlock Your AI Potential | Artificia AI Masterclass">
+    <meta name="twitter:description" content="Master Generative AI, Automation & AI Agents in Vadodara's most practical offline program.">
+    <meta name="twitter:image" content="https://artificiaai.com/og-cover.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpg.jpeg">
+    <link rel="apple-touch-icon" href="images/favicon.jpg.jpeg">
+
+    <!-- Meta (Facebook) Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '908862172011061');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=908862172011061&ev=PageView&noscript=1" alt=""></noscript>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Course",
+                "name": "Artificia AI Masterclass — Generative AI, Automation & Agents",
+                "description": "Master Generative AI, Automation & Agents in Vadodara's Premium Offline Program. 12-week hands-on training covering ChatGPT, prompt engineering, n8n automation, AI agents, and real-world projects.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Artificia AI",
+                    "url": "https://artificiaai.com"
+                },
+                "courseMode": "Blended",
+                "educationalLevel": "Beginner to Advanced",
+                "inLanguage": "en",
+                "teaches": ["Generative AI", "Prompt Engineering", "n8n Automation", "AI Agents", "ChatGPT", "Midjourney"],
+                "timeRequired": "P12W",
+                "offers": {
+                    "@type": "Offer",
+                    "category": "AI Training",
+                    "availability": "https://schema.org/LimitedAvailability"
+                }
+            },
+            {
+                "@type": "LocalBusiness",
+                "name": "Artificia AI",
+                "description": "Vadodara's leading AI training institute offering practical, hands-on programs in Generative AI and automation.",
+                "url": "https://artificiaai.com",
+                "logo": "https://artificiaai.com/images/logo.png",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Vadodara",
+                    "addressRegion": "Gujarat",
+                    "addressCountry": "IN"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 22.3072,
+                    "longitude": 73.1812
+                },
+                "sameAs": ["https://www.linkedin.com/in/hardik-aseri/"]
+            }
+        ]
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <!-- Neural Network Canvas (global 3D background) -->
+    <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+
+    <!-- ============================================================
+         TOP ANNOUNCEMENT MARQUEE
+         ============================================================ -->
+    <div class="top-marquee-bar">
+        <div class="top-marquee-track">
+            <span class="tm-item">🏆 LOWEST PRICES IN VADODARA</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">⚡ ONLY 15 SEATS LEFT</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">🎓 Learn AI Tools That Get You Hired</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">📍 Vadodara's #1 AI Training Program</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">🏆 LOWEST PRICES IN VADODARA</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">⚡ ONLY 15 SEATS LEFT</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">🎓 Learn AI Tools That Get You Hired</span>
+            <span class="tm-sep">•</span>
+            <span class="tm-item">📍 Vadodara's #1 AI Training Program</span>
+            <span class="tm-sep">•</span>
+        </div>
+    </div>
+
+    <!-- Ambient Background Effects -->
+    <div class="ambient-glow glow-primary"></div>
+    <div class="ambient-glow glow-secondary"></div>
+
+    <!-- Sticky Header -->
+    <header class="glass-header">
+        <div class="container header-container">
+            <img src="images/logo.png" alt="Artificia AI" class="logo">
+            <div class="header-right">
+                <span class="live-badge"><span class="dot blink"></span> LIVE IN VADODARA</span>
+                <a href="#corporate" class="btn-outline-sm hide-mobile" style="margin-right:8px;">Team Training</a>
+                <a href="#booking" class="btn-outline-sm hide-mobile">Claim Your Seat</a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile nav drawer -->
+        <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+            <a href="#why-ai" class="mobile-nav-link" onclick="closeMobileNav()">Why AI</a>
+            <a href="#results" class="mobile-nav-link" onclick="closeMobileNav()">Results</a>
+            <a href="#program" class="mobile-nav-link" onclick="closeMobileNav()">Program</a>
+            <a href="#corporate" class="mobile-nav-link" onclick="closeMobileNav()">Team Training</a>
+            <a href="#booking" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileNav()">Claim Your Seat</a>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+         HERO SECTION — AI Robot Image with CSS 3D Effects
+         ============================================================ -->
+    <section class="hero-section hero-full hero-has-form" id="heroSection">
+
+        <!-- Animated Concentric Circles Background -->
+        <div class="hero-circles-bg">
+            <div class="circle-ring ring-1"></div>
+            <div class="circle-ring ring-2"></div>
+            <div class="circle-ring ring-3"></div>
+            <div class="circle-ring ring-4"></div>
+            <div class="circle-ring ring-5"></div>
+            <div class="circle-ring ring-6"></div>
+        </div>
+
+        <!-- Cover Hero Image + Three.js 3D Canvas -->
+        <div class="hero-robot-img-wrapper" id="heroRobotWrapper">
+            <!-- Artificia Cover Image (full-bleed) -->
+            <img src="images/cover-hero.jpg" alt="Artificia AI — AI Talent, Trained and Delivered" class="cover-hero-img" id="eduRobot">
+            <!-- Three.js 3D interactive canvas overlay -->
+            <canvas id="heroCanvas3D" class="hero-3d-canvas" aria-hidden="true"></canvas>
+            <!-- Neon scan line effect -->
+            <div class="hero-scan-line"></div>
+            <!-- Neon glow overlay -->
+            <div class="hero-neon-glow"></div>
+        </div>
+
+        <!-- Bottom gradient so text is readable -->
+        <div class="hero-robot-gradient"></div>
+
+        <!-- Floating particles -->
+        <div class="hero-particles">
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+            <div class="particle p4"></div>
+            <div class="particle p5"></div>
+            <div class="particle p6"></div>
+            <div class="particle p7"></div>
+            <div class="particle p8"></div>
+        </div>
+
+        <!-- Content pinned to bottom — Mixverse style -->
+        <div class="hero-bottom-stage hero-with-form">
+
+            <!-- LEFT: CTA Block -->
+            <div class="hero-cta-block">
+                <h1 class="hero-main-title">Master AI Before <span class="gradient-text">It Masters Your Future.</span></h1>
+                <div class="hero-strip">
+                    <span>100 AI Tools</span><span class="hs-sep">·</span>
+                    <span>60 Days Intensive</span><span class="hs-sep">·</span>
+                    <span>50+ Projects</span><span class="hs-sep">·</span>
+                    <span class="hs-urgent">⚡ 15 Seats Left</span>
+                </div>
+                <a href="#booking" class="btn-primary btn-large pulse-effect">
+                    SECURE YOUR SPOT NOW <i class="fas fa-arrow-right"></i>
+                </a>
+                <span class="hero-badge" style="margin-top:1rem;">⚡ VADODARA'S #1 OFFLINE AI PROGRAM · NO CODING REQUIRED</span>
+            </div>
+
+            <!-- RIGHT: Lead Capture Form -->
+            <div class="hero-form-wrapper glass-card" id="booking">
+                <form id="leadForm">
+                    <h3 class="hero-form-title">Reserve Your Seat</h3>
+
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="name" required placeholder="Arjun Patel">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">WhatsApp Number <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fab fa-whatsapp input-icon"></i>
+                            <input type="tel" id="phone" required placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" required placeholder="arjun@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">I am a...</label>
+                        <select id="interest">
+                            <option value="Professional">Working Professional / Manager</option>
+                            <option value="Founder" selected>Business Owner / Founder</option>
+                            <option value="Student">Student / Recent Graduate</option>
+                            <option value="Freelancer">Freelancer / Creator</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-submit w-100" id="submitBtn">
+                        SUBMIT <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <p class="privacy-text"><i class="fas fa-lock"></i> Your information is 100% secure.</p>
+                </form>
+
+                <div id="successState" class="success-state hidden">
+                    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Application Received!</h3>
+                    <p>Awesome! Our team will reach out to you on WhatsApp shortly.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PROBLEM / AGITATION SECTION
+         ============================================================ -->
+    <section class="story-section" id="why-ai">
+        <div class="container story-container">
+            <h2 class="section-title text-center reveal">Why AI Is Essential <span class="gradient-text">Right
+                    Now</span></h2>
+
+            <div class="story-grid">
+                <div class="story-card reveal glass-card">
+                    <div class="story-icon">
+                        <div class="hex-badge"><i class="fas fa-microchip"></i></div>
+                    </div>
+                    <h3>The AI Revolution Is Here</h3>
+                    <p>When ChatGPT was released, the world changed overnight. Those who leverage AI save 20+ hours a
+                        week. Those who don't are working harder, not smarter. The gap between AI-powered professionals
+                        and everyone else is widening every single day.</p>
+                </div>
+
+                <div class="story-card reveal glass-card" style="transition-delay: 0.1s;">
+                    <div class="story-icon">
+                        <div class="hex-badge"><i class="fas fa-arrow-trend-down"></i></div>
+                    </div>
+                    <h3>AI Isn't Replacing Jobs...</h3>
+                    <p>But someone using AI <strong>will</strong> replace you. Across every industry — marketing,
+                        finance, operations, design — the professionals getting promoted and the businesses scaling
+                        fastest are entirely AI-driven. The question isn't "if" but "when".</p>
+                </div>
+
+                <div class="story-card reveal glass-card" style="transition-delay: 0.2s;">
+                    <div class="story-icon">
+                        <div class="hex-badge"><i class="fas fa-shield-halved"></i></div>
+                    </div>
+                    <h3>You Become Irreplaceable</h3>
+                    <p>We designed this intensive 60-day program to democratize AI education. Not theory. Not fluff.
+                        Real tools, real projects, real automation skills that make you the most valuable person in any
+                        room. Turn AI into your unfair advantage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         INDIAN LEADERS AI QUOTES — India AI Impact Summit 2026
+         ============================================================ -->
+    <section class="leaders-section">
+        <div class="container">
+            <div class="leaders-duo">
+
+                <!-- MODI -->
+                <div class="duo-card reveal">
+                    <div class="duo-photo"
+                        style="background-image: url('https://www.pmindia.gov.in/wp-content/uploads/2025/12/01.jpg'); background-position: center top;">
+                    </div>
+                    <div class="duo-gradient"></div>
+                    <div class="duo-content">
+                        <span class="duo-tag">🇮🇳 Prime Minister of India</span>
+                        <div class="duo-quote-mark">"</div>
+                        <p class="duo-quote">Every Indian must learn Artificial Intelligence. Those who master AI today
+                            will be the leaders, innovators, and job creators of tomorrow. AI literacy is not a choice —
+                            it is a necessity for the future of our nation.</p>
+                        <div class="duo-byline">
+                            <div class="duo-name">Narendra Modi</div>
+                            <div class="duo-role">Prime Minister of India · India AI Impact Summit, 2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAM ALTMAN -->
+                <div class="duo-card reveal" style="transition-delay: 0.15s;">
+                    <div class="duo-photo"
+                        style="background-image: url('https://informationage-production.s3.amazonaws.com/uploads/2023/07/Sam_Altman_CropEdit_James_Tamim.jpg'); background-position: center 15%;">
+                    </div>
+                    <div class="duo-gradient"></div>
+                    <div class="duo-content">
+                        <span class="duo-tag">🤖 CEO, OpenAI · Creator of ChatGPT</span>
+                        <div class="duo-quote-mark">"</div>
+                        <p class="duo-quote">AI is going to be the most transformative technology in human history.
+                            Learning to work with it is the new literacy — it will separate those who lead
+                            from those who are left behind.</p>
+                        <div class="duo-byline">
+                            <div class="duo-name">Sam Altman</div>
+                            <div class="duo-role">CEO, OpenAI · Creator of ChatGPT</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="leaders-cta reveal text-center mt-5">
+                <p class="leaders-takeaway">💡 The world's most powerful people agree: <strong>AI is the skill that
+                        separates the future's winners from everyone else. Start now.</strong></p>
+                <a href="#results" class="btn-primary mt-4">SEE WHAT YOU'LL ACHIEVE <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHY WE'RE DIFFERENT — Competitive Differentiator
+         ============================================================ -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Not Just Another <span class="gradient-text">AI Workshop</span>
+            </h2>
+            <p class="text-center subtitle mb-5 reveal">Most AI courses give you a 3-hour overview. We give you a 60-day
+                transformation.</p>
+
+            <div class="comparison-table-wrapper reveal">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="comp-other">Typical AI Workshops</th>
+                            <th class="comp-us">Artificia AI Masterclass</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-clock"></i> Duration</td>
+                            <td class="comp-other">2–3 hours online webinar</td>
+                            <td class="comp-us"><strong>60 days</strong> intensive, hands-on</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-map-marker-alt"></i> Format</td>
+                            <td class="comp-other">Pre-recorded / Zoom</td>
+                            <td class="comp-us"><strong>100% Offline</strong>, in-person in Vadodara</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-tools"></i> AI Tools Covered</td>
+                            <td class="comp-other">25+ (overview only)</td>
+                            <td class="comp-us"><strong>100 tools</strong> — deep, practical mastery</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-cogs"></i> Automation (n8n)</td>
+                            <td class="comp-other">❌ Not covered</td>
+                            <td class="comp-us">✅ <strong>6 weeks</strong> of n8n workflow building</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-robot"></i> AI Agents</td>
+                            <td class="comp-other">❌ Not covered</td>
+                            <td class="comp-us">✅ Build autonomous agents with LangChain</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-project-diagram"></i> Real Projects</td>
+                            <td class="comp-other">0 — theory only</td>
+                            <td class="comp-us"><strong>50+ projects</strong> with portfolio</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-image"></i> Image/Video/Audio AI</td>
+                            <td class="comp-other">Brief mention</td>
+                            <td class="comp-us">✅ Midjourney, DALL-E, RunwayML, ElevenLabs</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-file-alt"></i> Prompt Engineering</td>
+                            <td class="comp-other">Basic "magic formula"</td>
+                            <td class="comp-us"><strong>2 full weeks</strong> — 6 strategies, STAR/RACE, CoT</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-user-tie"></i> Mentorship</td>
+                            <td class="comp-other">None — mass webinar</td>
+                            <td class="comp-us">✅ <strong>1-on-1</strong> doubt clearing, batch of 20</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-briefcase"></i> Placement Support</td>
+                            <td class="comp-other">❌ Not included</td>
+                            <td class="comp-us">✅ Internship + job placement assistance</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-certificate"></i> Certification</td>
+                            <td class="comp-other">Generic completion cert</td>
+                            <td class="comp-us">✅ <strong>Portfolio + capstone</strong> presentation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-5 reveal">
+                <p class="comparison-callout">💡 <strong>Don't settle for a 3-hour overview.</strong> Invest 60 days and
+                    become genuinely AI-fluent.</p>
+                <a href="#program" class="btn-primary mt-4">EXPLORE THE FULL PROGRAM <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT YOU'LL BE ABLE TO DO — Practical Results
+         ============================================================ -->
+    <section class="results-section" id="results">
+        <div class="container">
+            <h2 class="section-title text-center reveal">After 60 Days, <span class="gradient-text">You'll Be Able
+                    To...</span></h2>
+            <p class="text-center subtitle mb-5 reveal">These aren't vague promises — these are real, actionable skills
+                you'll walk away with.</p>
+
+            <div class="results-grid">
+                <div class="result-card reveal glass-card">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-envelope-open-text"></i></div></div>
+                    <h4>Auto-Reply to 100+ emails daily</h4>
+                    <p>Set up AI email workflows in n8n that read, categorize, and draft personalized replies — saving
+                        3+ hours every day.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.05s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-paintbrush"></i></div></div>
+                    <h4>Generate brand visuals in seconds</h4>
+                    <p>Create social media graphics, product mockups, and ad creatives using Midjourney, DALL-E, and
+                        Leonardo AI — no design skills needed.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.1s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-robot"></i></div></div>
+                    <h4>Build AI chatbots for your business</h4>
+                    <p>Create intelligent customer support bots and lead qualification agents that work 24/7 using AI
+                        agents and n8n.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.15s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-chart-bar"></i></div></div>
+                    <h4>Analyze data without coding</h4>
+                    <p>Use ChatGPT and Claude to analyze spreadsheets, create reports, summarize quarterly data, and
+                        generate insights instantly.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.2s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-clapperboard"></i></div></div>
+                    <h4>Create videos from text prompts</h4>
+                    <p>Generate marketing videos, explainers, and social reels with RunwayML Gen-3 and Kling AI — no
+                        shooting or editing required.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.25s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-arrows-spin"></i></div></div>
+                    <h4>Automate your entire lead funnel</h4>
+                    <p>Build end-to-end pipelines: Form → Google Sheets → AI enrichment → WhatsApp follow-up → CRM — all
+                        running on autopilot via n8n.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.3s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-pen-nib"></i></div></div>
+                    <h4>Write 30 blog posts in 1 hour</h4>
+                    <p>Master prompt chaining to generate SEO-optimized content at scale — blogs, newsletters, social
+                        captions, ad copy, and more.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.35s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-microphone"></i></div></div>
+                    <h4>Clone your voice for content</h4>
+                    <p>Use ElevenLabs to create AI voiceovers in your own voice for YouTube videos, podcasts, and
+                        courses — in any language.</p>
+                </div>
+
+                <div class="result-card reveal glass-card" style="transition-delay: 0.4s;">
+                    <div class="result-emoji"><div class="hex-badge"><i class="fas fa-briefcase"></i></div></div>
+                    <h4>Land a high-paying AI role</h4>
+                    <p>Walk into interviews with a portfolio of 50+ real projects, practical automation experience, and
+                        skills that 99% of candidates don't have.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         CAREER OUTCOMES — Transformation Numbers
+         ============================================================ -->
+    <section class="outcomes-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">The AI Skills <span class="gradient-text">That Pay For
+                    Themselves</span></h2>
+
+            <div class="outcomes-grid">
+                <div class="outcome-card reveal">
+                    <div class="outcome-number">₹5-15 LPA</div>
+                    <div class="outcome-label">AI roles average salary in India (freshers)</div>
+                </div>
+                <div class="outcome-card reveal" style="transition-delay: 0.1s;">
+                    <div class="outcome-number">300%</div>
+                    <div class="outcome-label">Higher demand for AI skills vs 2024</div>
+                </div>
+                <div class="outcome-card reveal" style="transition-delay: 0.2s;">
+                    <div class="outcome-number">₹1-3L/mo</div>
+                    <div class="outcome-label">Freelance AI automation income potential</div>
+                </div>
+                <div class="outcome-card reveal" style="transition-delay: 0.3s;">
+                    <div class="outcome-number">20+ hrs</div>
+                    <div class="outcome-label">Saved per week through AI automation</div>
+                </div>
+            </div>
+
+            <div class="outcome-roles reveal mt-5">
+                <h3 class="text-center">Roles You'll Be Qualified For</h3>
+                <div class="roles-ticker">
+                    <span class="role-chip">AI Prompt Engineer</span>
+                    <span class="role-chip">AI Automation Specialist</span>
+                    <span class="role-chip">n8n Workflow Developer</span>
+                    <span class="role-chip">AI Content Strategist</span>
+                    <span class="role-chip">AI Operations Manager</span>
+                    <span class="role-chip highlight">AI Agency Founder</span>
+                    <span class="role-chip">Digital Marketing (AI)</span>
+                    <span class="role-chip">AI Product Manager</span>
+                    <span class="role-chip">AI Consultant</span>
+                    <span class="role-chip highlight">Freelance AI Expert</span>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 reveal">
+                <a href="#tools" class="btn-primary btn-large pulse-effect">SEE THE 100+ AI TOOLS <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         TARGET AUDIENCE SECTION
+         ============================================================ -->
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">It Doesn't Matter Who You Are...<br><span
+                    class="gradient-text">AI Transforms How You Work</span></h2>
+
+            <div class="audience-cards">
+                <div class="audience-card reveal">
+                    <div class="aud-img-wrapper">
+                        <img src="images/pro.png" alt="Professionals" class="aud-img" loading="lazy">
+                        <div class="aud-overlay"></div>
+                    </div>
+                    <div class="aud-content">
+                        <h3>For Professionals & Managers</h3>
+                        <ul class="aud-benefits">
+                            <li><i class="fas fa-check-circle"></i> Automate boring reports, emails, and data entry</li>
+                            <li><i class="fas fa-check-circle"></i> Build dashboards and summaries in seconds</li>
+                            <li><i class="fas fa-check-circle"></i> Use AI for meeting prep, presentations, and analysis
+                            </li>
+                            <li><i class="fas fa-check-circle"></i> Position yourself for rapid promotions and raises
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="audience-card reveal" style="transition-delay: 0.1s;">
+                    <div class="aud-img-wrapper">
+                        <img src="images/founder_marketer.png" alt="Founders" class="aud-img" loading="lazy">
+                        <div class="aud-overlay"></div>
+                    </div>
+                    <div class="aud-content">
+                        <h3>For Founders & Marketers</h3>
+                        <ul class="aud-benefits">
+                            <li><i class="fas fa-check-circle"></i> Replace an entire team with AI agents</li>
+                            <li><i class="fas fa-check-circle"></i> Scale social campaigns and build funnels</li>
+                            <li><i class="fas fa-check-circle"></i> Automate lead capture, outreach, and follow-ups</li>
+                            <li><i class="fas fa-check-circle"></i> Build n8n workflows that run your business 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="audience-card reveal" style="transition-delay: 0.2s;">
+                    <div class="aud-img-wrapper">
+                        <img src="images/student.png" alt="Students" class="aud-img" loading="lazy">
+                        <div class="aud-overlay"></div>
+                    </div>
+                    <div class="aud-content">
+                        <h3>For Students & Creators</h3>
+                        <ul class="aud-benefits">
+                            <li><i class="fas fa-check-circle"></i> Graduate with the most in-demand skill of 2026</li>
+                            <li><i class="fas fa-check-circle"></i> Master Prompt Engineering and AI design</li>
+                            <li><i class="fas fa-check-circle"></i> Create a portfolio that stands out to employers</li>
+                            <li><i class="fas fa-check-circle"></i> Start freelancing with high-ticket AI services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 reveal">
+                <a href="#booking" class="btn-primary">YES, RESERVE MY SEAT NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         HOVER-EXPAND GALLERY — Course Phase Showcase
+         ============================================================ -->
+    <section class="expand-section" id="program">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Explore Your <span class="gradient-text">Learning
+                    Journey</span></h2>
+            <p class="text-center subtitle mb-5 reveal">Hover or tap each phase to discover what you'll master</p>
+
+            <div class="expand-gallery" id="expandGallery">
+                <div class="expand-panel active" data-index="0">
+                    <img src="images/phase-1.jpg" alt="AI Fundamentals"
+                        class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 1</span>
+                        <h3>AI Foundations</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 1 • WEEKS 1–2</span>
+                        <h3>AI Foundations</h3>
+                        <p>What is AI, its history, types (GenAI, NLP, Vision, ML), how LLMs work, tokens, parameters,
+                            RAG. Deep-dive into ChatGPT, Claude, Gemini, Perplexity, and DeepSeek.</p>
+                        <div class="expand-tools">
+                            <span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Perplexity</span><span>DeepSeek</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> AI Basics Quiz + Tool Comparison
+                            Report</div>
+                    </div>
+                </div>
+
+                <div class="expand-panel" data-index="1">
+                    <img src="images/phase-2.jpg" alt="Prompt Engineering" class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 2</span>
+                        <h3>Prompt Engineering</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 2 • WEEKS 3–4</span>
+                        <h3>Prompt Engineering Mastery</h3>
+                        <p>6 Advanced prompt strategies, STAR/RACE frameworks, Chain-of-Thought reasoning, System
+                            prompts, Few-shot learning, Role prompting, and Prompt chaining for multi-step workflows.
+                        </p>
+                        <div class="expand-tools">
+                            <span>ChatGPT</span><span>Claude</span><span>All Text AI</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> Prompt Portfolio (30+ Production
+                            Prompts)</div>
+                    </div>
+                </div>
+
+                <div class="expand-panel" data-index="2">
+                    <img src="images/phase-3.jpg" alt="Visual & Media AI" class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 3</span>
+                        <h3>Visual & Media AI</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 3 • WEEKS 5–6</span>
+                        <h3>Visual & Media AI Creation</h3>
+                        <p>Master image generation with DALL-E, Midjourney v6, and Leonardo AI. Create AI videos with
+                            RunwayML Gen-3 & Kling. Clone voices with ElevenLabs. Generate music with Suno AI.</p>
+                        <div class="expand-tools">
+                            <span>DALL-E</span><span>Midjourney</span><span>Leonardo</span><span>RunwayML</span><span>ElevenLabs</span><span>Suno</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> Image Portfolio + Full Multimedia
+                            Project</div>
+                    </div>
+                </div>
+
+                <div class="expand-panel" data-index="3">
+                    <img src="images/phase-4.jpg" alt="n8n Basics" class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 4</span>
+                        <h3>n8n Automation</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 4 • WEEKS 7–8</span>
+                        <h3>n8n Workflow Automation</h3>
+                        <p>Install n8n, master the visual interface. Build workflows with triggers, HTTP requests, data
+                            nodes, Google integrations, expressions, error handling, and conditional logic
+                            (IF/Switch/Merge).</p>
+                        <div class="expand-tools">
+                            <span>n8n</span><span>Google
+                                Sheets</span><span>Gmail</span><span>Slack</span><span>Notion</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> 8 Complete Workflows (Basic →
+                            Intermediate)</div>
+                    </div>
+                </div>
+
+                <div class="expand-panel" data-index="4">
+                    <img src="images/phase-5.jpg" alt="Advanced AI + n8n" class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 5</span>
+                        <h3>AI Agents & n8n</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 5 • WEEKS 9–10</span>
+                        <h3>Advanced AI + n8n Integration</h3>
+                        <p>Connect OpenAI and Claude directly into n8n. Build AI agents, LangChain integrations,
+                            document processing pipelines, AI content generators, production webhooks, scheduling, and
+                            database integrations.</p>
+                        <div class="expand-tools">
+                            <span>n8n</span><span>OpenAI</span><span>Claude</span><span>Airtable</span><span>LangChain</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> AI-Powered Workflow Portfolio +
+                            Production Automation</div>
+                    </div>
+                </div>
+
+                <div class="expand-panel" data-index="5">
+                    <img src="images/phase-6.jpg" alt="Real-World Projects" class="expand-img" loading="lazy">
+                    <div class="expand-overlay"></div>
+                    <div class="expand-label">
+                        <span class="expand-phase-badge">PHASE 6</span>
+                        <h3>Capstone Projects</h3>
+                    </div>
+                    <div class="expand-detail">
+                        <span class="expand-phase-badge">PHASE 6 • WEEKS 11–12</span>
+                        <h3>Real-World Projects & Capstone</h3>
+                        <p>Build end-to-end business automations: lead capture systems, content pipelines, data
+                            processing workflows. Present your complete capstone project combining AI + automation for a
+                            real-world scenario.</p>
+                        <div class="expand-tools">
+                            <span>All Tools</span><span>n8n</span><span>Google Sheets</span><span>Gmail</span>
+                        </div>
+                        <div class="expand-deliverable"><i class="fas fa-trophy"></i> Final Portfolio + Live Demo
+                            Presentation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         TOOLS TICKER
+         ============================================================ -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Master <span class="gradient-text">100 AI Tools</span></h2>
+            <p class="text-center mb-4 reveal">Write, Design, Code, Analyze, and Automate — all in 60 days.</p>
+
+            <!-- Marquee 1 — AI Models -->
+            <div class="marquee-track-wrapper mt-4">
+                <div class="marquee-track">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-robot"></i> ChatGPT o3</div>
+                    <div class="tool-pill"><i class="fas fa-brain"></i> Claude 4 Sonnet</div>
+                    <div class="tool-pill"><i class="fas fa-gem"></i> Gemini 2.5 Pro</div>
+                    <div class="tool-pill"><i class="fas fa-search"></i> Perplexity AI</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Grok 3</div>
+                    <div class="tool-pill"><i class="fas fa-code"></i> DeepSeek V3</div>
+                    <div class="tool-pill"><i class="fas fa-fire"></i> Meta AI Llama</div>
+                    <div class="tool-pill"><i class="fas fa-wind"></i> Mistral AI</div>
+                    <div class="tool-pill"><i class="fas fa-star"></i> GPT-4.5</div>
+                    <div class="tool-pill"><i class="fas fa-circle-nodes"></i> Copilot 365</div>
+                </div>
+                <div class="marquee-track" aria-hidden="true">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-robot"></i> ChatGPT o3</div>
+                    <div class="tool-pill"><i class="fas fa-brain"></i> Claude 4 Sonnet</div>
+                    <div class="tool-pill"><i class="fas fa-gem"></i> Gemini 2.5 Pro</div>
+                    <div class="tool-pill"><i class="fas fa-search"></i> Perplexity AI</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Grok 3</div>
+                    <div class="tool-pill"><i class="fas fa-code"></i> DeepSeek V3</div>
+                    <div class="tool-pill"><i class="fas fa-fire"></i> Meta AI Llama</div>
+                    <div class="tool-pill"><i class="fas fa-wind"></i> Mistral AI</div>
+                    <div class="tool-pill"><i class="fas fa-star"></i> GPT-4.5</div>
+                    <div class="tool-pill"><i class="fas fa-circle-nodes"></i> Copilot 365</div>
+                </div>
+            </div>
+
+            <!-- Marquee 2 — Image / Video / Audio (Reverse) -->
+            <div class="marquee-track-wrapper mt-3">
+                <div class="marquee-track reverse">
+                    <div class="tool-pill"><i class="fas fa-image"></i> Midjourney v7</div>
+                    <div class="tool-pill"><i class="fas fa-wand-magic-sparkles"></i> Flux AI</div>
+                    <div class="tool-pill"><i class="fas fa-paint-brush"></i> Ideogram 3.0</div>
+                    <div class="tool-pill"><i class="fas fa-magic"></i> Leonardo AI</div>
+                    <div class="tool-pill"><i class="fas fa-video"></i> RunwayML Gen-3</div>
+                    <div class="tool-pill"><i class="fas fa-film"></i> Kling AI v2</div>
+                    <div class="tool-pill"><i class="fas fa-clapperboard"></i> Luma Dream Machine</div>
+                    <div class="tool-pill"><i class="fas fa-photo-film"></i> Pika 2.0</div>
+                    <div class="tool-pill"><i class="fas fa-microphone-lines"></i> ElevenLabs</div>
+                    <div class="tool-pill"><i class="fas fa-music"></i> Suno AI v4</div>
+                </div>
+                <div class="marquee-track reverse" aria-hidden="true">
+                    <div class="tool-pill"><i class="fas fa-image"></i> Midjourney v7</div>
+                    <div class="tool-pill"><i class="fas fa-wand-magic-sparkles"></i> Flux AI</div>
+                    <div class="tool-pill"><i class="fas fa-paint-brush"></i> Ideogram 3.0</div>
+                    <div class="tool-pill"><i class="fas fa-magic"></i> Leonardo AI</div>
+                    <div class="tool-pill"><i class="fas fa-video"></i> RunwayML Gen-3</div>
+                    <div class="tool-pill"><i class="fas fa-film"></i> Kling AI v2</div>
+                    <div class="tool-pill"><i class="fas fa-clapperboard"></i> Luma Dream Machine</div>
+                    <div class="tool-pill"><i class="fas fa-photo-film"></i> Pika 2.0</div>
+                    <div class="tool-pill"><i class="fas fa-microphone-lines"></i> ElevenLabs</div>
+                    <div class="tool-pill"><i class="fas fa-music"></i> Suno AI v4</div>
+                </div>
+            </div>
+
+            <!-- Marquee 3 — Code & Build Tools -->
+            <div class="marquee-track-wrapper mt-3">
+                <div class="marquee-track">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-terminal"></i> Cursor AI</div>
+                    <div class="tool-pill"><i class="fas fa-heart"></i> Lovable</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Bolt.new</div>
+                    <div class="tool-pill"><i class="fab fa-github"></i> GitHub Copilot</div>
+                    <div class="tool-pill"><i class="fas fa-feather"></i> Windsurf</div>
+                    <div class="tool-pill"><i class="fas fa-laptop-code"></i> Replit AI</div>
+                    <div class="tool-pill"><i class="fas fa-cube"></i> v0 by Vercel</div>
+                    <div class="tool-pill"><i class="fas fa-code-branch"></i> Codeium</div>
+                    <div class="tool-pill"><i class="fas fa-brain"></i> Devin AI</div>
+                    <div class="tool-pill"><i class="fas fa-wand-sparkles"></i> Dify.ai</div>
+                </div>
+                <div class="marquee-track" aria-hidden="true">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-terminal"></i> Cursor AI</div>
+                    <div class="tool-pill"><i class="fas fa-heart"></i> Lovable</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Bolt.new</div>
+                    <div class="tool-pill"><i class="fab fa-github"></i> GitHub Copilot</div>
+                    <div class="tool-pill"><i class="fas fa-feather"></i> Windsurf</div>
+                    <div class="tool-pill"><i class="fas fa-laptop-code"></i> Replit AI</div>
+                    <div class="tool-pill"><i class="fas fa-cube"></i> v0 by Vercel</div>
+                    <div class="tool-pill"><i class="fas fa-code-branch"></i> Codeium</div>
+                    <div class="tool-pill"><i class="fas fa-brain"></i> Devin AI</div>
+                    <div class="tool-pill"><i class="fas fa-wand-sparkles"></i> Dify.ai</div>
+                </div>
+            </div>
+
+            <!-- Marquee 4 — Productivity & Automation (Reverse) -->
+            <div class="marquee-track-wrapper mt-3">
+                <div class="marquee-track reverse">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-project-diagram"></i> n8n Workflows</div>
+                    <div class="tool-pill"><i class="fas fa-infinity"></i> Make.com</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Zapier</div>
+                    <div class="tool-pill"><i class="fas fa-person-chalkboard"></i> HeyGen</div>
+                    <div class="tool-pill"><i class="fas fa-scissors"></i> Descript</div>
+                    <div class="tool-pill"><i class="fas fa-palette"></i> Canva AI</div>
+                    <div class="tool-pill"><i class="fas fa-book"></i> Notion AI</div>
+                    <div class="tool-pill"><i class="fas fa-database"></i> Airtable</div>
+                    <div class="tool-pill"><i class="fas fa-presentation-screen"></i> Gamma AI</div>
+                    <div class="tool-pill"><i class="fas fa-chart-line"></i> Relevance AI</div>
+                </div>
+                <div class="marquee-track reverse" aria-hidden="true">
+                    <div class="tool-pill highlight-pill"><i class="fas fa-project-diagram"></i> n8n Workflows</div>
+                    <div class="tool-pill"><i class="fas fa-infinity"></i> Make.com</div>
+                    <div class="tool-pill"><i class="fas fa-bolt"></i> Zapier</div>
+                    <div class="tool-pill"><i class="fas fa-person-chalkboard"></i> HeyGen</div>
+                    <div class="tool-pill"><i class="fas fa-scissors"></i> Descript</div>
+                    <div class="tool-pill"><i class="fas fa-palette"></i> Canva AI</div>
+                    <div class="tool-pill"><i class="fas fa-book"></i> Notion AI</div>
+                    <div class="tool-pill"><i class="fas fa-database"></i> Airtable</div>
+                    <div class="tool-pill"><i class="fas fa-presentation-screen"></i> Gamma AI</div>
+                    <div class="tool-pill"><i class="fas fa-chart-line"></i> Relevance AI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT YOU GET — Value Section (replaces pricing)
+         ============================================================ -->
+    <section class="value-summary-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">
+                Everything You Get <span class="gradient-text">In This Program</span>
+            </h2>
+
+            <div class="value-grid">
+                <div class="value-item reveal glass-card">
+                    <div class="value-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>60 Days Live Offline Training</h4>
+                    <p>In-person, hands-on sessions in Vadodara. No Zoom fatigue — real interaction, real learning.</p>
+                </div>
+                <div class="value-item reveal glass-card" style="transition-delay: 0.05s;">
+                    <div class="value-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h4>50+ Real-World Projects</h4>
+                    <p>Build actual AI workflows, content pipelines, and lead systems — not just theory.</p>
+                </div>
+                <div class="value-item reveal glass-card" style="transition-delay: 0.1s;">
+                    <div class="value-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Premium Prompt Library</h4>
+                    <p>Walk away with 30+ production-ready prompt templates for any industry or use case.</p>
+                </div>
+                <div class="value-item reveal glass-card" style="transition-delay: 0.15s;">
+                    <div class="value-icon"><i class="fas fa-video"></i></div>
+                    <h4>Lifetime Recording Access</h4>
+                    <p>Missed a day? Revisit any session anytime with full HD recordings.</p>
+                </div>
+                <div class="value-item reveal glass-card" style="transition-delay: 0.2s;">
+                    <div class="value-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Elite n8n Automation Training</h4>
+                    <p>The highest-demand skill. Visual workflow automation without writing a single line of code.</p>
+                </div>
+                <div class="value-item reveal glass-card" style="transition-delay: 0.25s;">
+                    <div class="value-icon"><i class="fas fa-briefcase"></i></div>
+                    <h4>Placement & Internship Assistance</h4>
+                    <p>We help you land opportunities — whether that's a job, freelance gig, or starting your own AI
+                        agency.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 reveal">
+                <a href="#booking" class="btn-primary btn-large pulse-effect">CLAIM YOUR SEAT NOW <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         INSTRUCTOR SECTION
+         ============================================================ -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-card reveal glass-card">
+                <div class="founder-img-wrapper">
+                    <img src="images/hardik.jpg.jpeg" alt="Hardik Aseri - AI Expert & Trainer" class="founder-img" loading="lazy">
+                    <div class="founder-img-label">Hardik Aseri</div>
+                </div>
+                <div class="founder-content">
+                    <span class="founder-label">YOUR INSTRUCTOR</span>
+                    <h3>Hardik Aseri — AI Expert &amp; Trainer</h3>
+                    <p>Hardik Aseri is one of Vadodara's leading AI trainers with hands-on experience in teaching practical AI skills. Having trained working professionals, business owners, and college graduates — Hardik brings real-world expertise to every session. His teaching style is direct, practical, and results-driven: no fluff, no theory overload — just the tools and workflows that actually work in today's AI-driven world.</p>
+                    <div class="founder-signature">
+                        <strong>Hardik Aseri</strong>
+                        <span>AI Expert &amp; Trainer · Artificia AI</span>
+                        <span>Vadodara, Gujarat</span>
+                    </div>
+                    <div class="founder-credentials">
+                        <span class="cred-badge"><i class="fas fa-brain"></i> AI Expert &amp; Trainer</span>
+                        <span class="cred-badge"><i class="fas fa-map-marker-alt"></i> Vadodara, Gujarat</span>
+                        <a href="https://www.linkedin.com/in/hardik-aseri/" target="_blank" class="cred-badge cred-badge-linkedin"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         UPSKILL YOUR TEAM — B2B Corporate Training Section
+         ============================================================ -->
+    <section class="upskill-section" id="corporate">
+        <div class="container">
+
+            <div class="upskill-header reveal text-center">
+                <span class="upskill-eyebrow">FOR ORGANIZATIONS & BUSINESSES</span>
+                <h2 class="section-title">Upskill Your Team. <span class="gradient-text">Upscale Your Business.</span></h2>
+                <p class="subtitle">Empower your team with Artificia to master AI, unlock productivity, and drive continuous innovation that fuels sustainable business growth.</p>
+            </div>
+
+            <!-- 2-col layout: image left, why-learn right -->
+            <div class="upskill-split reveal">
+                <div class="upskill-img-col">
+                    <div class="upskill-img-wrapper">
+                        <img src="images/why-train-artificia.jpg" alt="AI Corporate Training — Artificia" class="upskill-main-img" loading="lazy">
+                        <div class="upskill-img-badge">
+                            <i class="fas fa-building"></i>
+                            <span>Corporate AI Training</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upskill-why-col">
+                    <h3 class="upskill-why-title">Why Train With Artificia?</h3>
+
+                    <div class="upskill-why-list">
+                        <div class="upskill-why-item">
+                            <div class="upskill-why-icon"><i class="fas fa-layer-group"></i></div>
+                            <div>
+                                <h4>AI-First Transformation for Every Role</h4>
+                                <p>Future-proof your teams by equipping Engineering, Marketing, Leadership, and Operations with cutting-edge AI capabilities built for real-world impact.</p>
+                            </div>
+                        </div>
+
+                        <div class="upskill-why-item">
+                            <div class="upskill-why-icon"><i class="fas fa-sliders"></i></div>
+                            <div>
+                                <h4>Customization That Fits Your Organization</h4>
+                                <p>Tailored AI training aligned with your business goals — combining live, practical, and hybrid learning experiences designed for your exact needs.</p>
+                            </div>
+                        </div>
+
+                        <div class="upskill-why-item">
+                            <div class="upskill-why-icon"><i class="fas fa-medal"></i></div>
+                            <div>
+                                <h4>Train with the Top 1% AI Practitioners</h4>
+                                <p>Your team learns directly from industry experts who bring actionable insights, real use cases, and measurable results to every session.</p>
+                            </div>
+                        </div>
+
+                        <div class="upskill-why-item">
+                            <div class="upskill-why-icon"><i class="fas fa-handshake"></i></div>
+                            <div>
+                                <h4>Your Trusted AI Learning & Development Partner</h4>
+                                <p>Artificia acts as an extension of your organization — supporting your L&D initiatives or functioning as a complete AI training and transformation partner.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="upskill-stats reveal">
+                <div class="upskill-stat">
+                    <div class="upskill-stat-num">100+</div>
+                    <div class="upskill-stat-label">Professionals Trained</div>
+                </div>
+                <div class="upskill-stat-divider"></div>
+                <div class="upskill-stat">
+                    <div class="upskill-stat-num">4</div>
+                    <div class="upskill-stat-label">Team Roles Covered</div>
+                </div>
+                <div class="upskill-stat-divider"></div>
+                <div class="upskill-stat">
+                    <div class="upskill-stat-num">Live</div>
+                    <div class="upskill-stat-label">Hands-On Sessions</div>
+                </div>
+                <div class="upskill-stat-divider"></div>
+                <div class="upskill-stat">
+                    <div class="upskill-stat-num">Custom</div>
+                    <div class="upskill-stat-label">Programs for Your Team</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         BRANDS / CLIENTS SECTION
+         ============================================================ -->
+    <section class="brands-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Brands We've <span class="gradient-text">Worked With</span></h2>
+            <p class="text-center subtitle mb-5 reveal">Trusted by forward-thinking organizations across industries.</p>
+            <!-- Infinite scrolling marquee — duplicated for seamless loop -->
+            <div class="brands-marquee-wrapper">
+                <div class="brands-marquee-track">
+                    <!-- Original set -->
+                    <div class="brand-item"><img src="images/brands/1.png" alt="Brand 1" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/2.png" alt="Brand 2" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/3.png" alt="Brand 3" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/4.png" alt="Brand 4" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/5.png" alt="Brand 5" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/6.png" alt="Brand 6" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/7.png" alt="Brand 7" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/8.png" alt="Brand 8" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/9.png" alt="Brand 9" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/10.png" alt="Brand 10" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/11.png" alt="Brand 11" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/12.png" alt="Brand 12" loading="lazy"></div>
+                    <div class="brand-item"><img src="images/brands/13.png" alt="Brand 13" loading="lazy"></div>
+                    <!-- Duplicate for seamless infinite loop -->
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/1.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/2.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/3.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/4.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/5.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/6.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/7.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/8.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/9.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/10.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/11.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/12.png" alt="" loading="lazy"></div>
+                    <div class="brand-item" aria-hidden="true"><img src="images/brands/13.png" alt="" loading="lazy"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         VIDEO SECTION
+         ============================================================ -->
+    <section class="video-section">
+        <div class="video-section-header container">
+            <h2 class="section-title text-center reveal">See <span class="gradient-text">Artificia in Action</span></h2>
+            <p class="text-center subtitle mb-5 reveal">Watch how we're transforming careers with practical AI skills in Vadodara.</p>
+        </div>
+        <div class="video-fullwidth-wrapper">
+            <div class="main-video-embed-wrapper">
+                <iframe src="https://drive.google.com/file/d/1LPgdg7DcWrF0Tpn8fwBr0F89HNVd4Y6p/preview" class="main-video-embed" id="mainVideoFrame" allowfullscreen allow="autoplay"></iframe>
+                <a class="video-mute-toggle" href="https://drive.google.com/file/d/1LPgdg7DcWrF0Tpn8fwBr0F89HNVd4Y6p/view" target="_blank" title="Open video with audio">
+                    <i class="fas fa-volume-mute"></i>
+                    <span>Open with Audio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS SECTION
+         ============================================================ -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">What Our <span class="gradient-text">Students Say</span></h2>
+            <p class="text-center subtitle mb-5 reveal">Real results from real people in Vadodara — just like you.</p>
+
+            <!-- Video Testimonials -->
+            <div class="video-testimonials-grid reveal">
+                <div class="video-testimonial-card glass-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/preview" allowfullscreen allow="autoplay"></iframe>
+                    </div>
+                    <div class="video-testimonial-info">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <strong>Hatim Sorangwala</strong>
+                        <span>Artificia AI Student</span>
+                    </div>
+                </div>
+                <div class="video-testimonial-card glass-card" style="transition-delay:0.1s;">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2/preview" allowfullscreen allow="autoplay"></iframe>
+                    </div>
+                    <div class="video-testimonial-info">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <strong>Khushi Dodiya</strong>
+                        <span>Artificia AI Student</span>
+                    </div>
+                </div>
+                <div class="video-testimonial-card glass-card" style="transition-delay:0.2s;">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/preview" allowfullscreen allow="autoplay"></iframe>
+                    </div>
+                    <div class="video-testimonial-info">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <strong>Dev Chokshi</strong>
+                        <span>Artificia AI Student</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal glass-card" style="transition-delay: 0.4s;">
+                    <div class="testimonial-photo-wrapper">
+                        <img src="images/testimonials/Alphonse Ns.jpg" alt="Alphonsa N. P" class="testimonial-photo" loading="lazy">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations. It helped me understand how AI can improve nursing workflows, patient communication, and hospital administration. I strongly recommend Artificia to healthcare professionals who want to stay ahead in the future of healthcare."</p>
+                        <div class="testimonial-author">
+                            <strong>Alphonsa N. P</strong>
+                            <span>Chief Nursing Administrator, Aadicura Super Speciality Hospital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal glass-card" style="transition-delay: 0.5s;">
+                    <div class="testimonial-photo-wrapper">
+                        <img src="images/testimonials/Haritha nair.jpg" alt="Haritha Nair" class="testimonial-photo" loading="lazy">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills. Today I feel confident using AI tools for design, branding, and freelance work."</p>
+                        <div class="testimonial-author">
+                            <strong>Haritha Nair</strong>
+                            <span>AI Design Student, Vadodara</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal glass-card" style="transition-delay: 0.6s;">
+                    <div class="testimonial-photo-wrapper">
+                        <img src="images/testimonials/Nilesh Chudasma.jpg" alt="Nilesh Chaudasama" class="testimonial-photo" loading="lazy">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks. It has significantly improved my productivity and career growth."</p>
+                        <div class="testimonial-author">
+                            <strong>Nilesh Chaudasama</strong>
+                            <span>Working Professional, Vadodara</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-proof-bar reveal">
+                <div class="sp-item"><i class="fas fa-star"></i><span>4.9/5 Average Rating</span></div>
+                <div class="sp-divider"></div>
+                <div class="sp-item"><i class="fas fa-users"></i><span>100+ Students Trained</span></div>
+                <div class="sp-divider"></div>
+                <div class="sp-item"><i class="fas fa-map-marker-alt"></i><span>Vadodara's #1 AI Program</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ SECTION
+         ============================================================ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Frequently Asked <span class="gradient-text">Questions</span>
+            </h2>
+            <p class="text-center subtitle mb-5 reveal">Everything you need to know before enrolling.</p>
+
+            <div class="faq-accordion reveal" id="faqAccordion">
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="1">
+                        <span>Do I need coding or a technical background to learn AI at Artificia?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Our programs are specifically designed for beginners and non-technical learners. You do
+                            not need programming knowledge to start. We teach practical AI tools like ChatGPT, Gemini,
+                            Canva AI, and automation platforms through guided exercises. By the end of the program, even
+                            beginners can build AI assistants, automate tasks, and create real projects confidently.</p>
+                        <p class="faq-highlight">Most of our students start with zero experience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="2">
+                        <span>How can learning AI actually help me earn or grow my career?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>AI is becoming a core skill across almost every profession. In our program you learn how to
+                            use AI for faster job search &amp; resume optimization, freelancing opportunities, business
+                            productivity and automation, content creation, design and marketing, and building portfolio
+                            projects. Many learners use these skills to get better jobs, start freelancing, or increase
+                            productivity in their current work.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="3">
+                        <span>What exactly will I learn during the program?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The program is highly practical and tool-based. You will learn to use AI tools like ChatGPT,
+                            Gemini, Claude, Canva AI and others; build your own AI assistants and chatbots; create AI
+                            images, videos, presentations and marketing content; automate workflows and repetitive
+                            tasks; analyze data and generate insights using AI; and build portfolio projects
+                            demonstrating real AI applications. These skills are structured across a progressive
+                            learning journey from AI basics to real-world projects.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="4">
+                        <span>How are the classes conducted?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All classes are conducted <strong>live with expert mentors</strong>, not pre-recorded videos.
+                            You will learn through live offline classes in Vadodara, practical demonstrations, hands-on
+                            assignments, real-world projects, and interactive Q&amp;A sessions. This ensures that you
+                            receive guidance, feedback, and mentorship throughout the program.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="5">
+                        <span>How long is the program and how much time do I need daily?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer a 30-Day AI Accelerator and a 60-Day AI ELITE program. Daily learning is about 1.5–2
+                            hours with flexible schedules designed for both students and working professionals. This
+                            makes it easy to learn even if you are studying, working, or running a business.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="6">
+                        <span>Will I receive a certificate after completing the course?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. After completing the program you receive an Artificia AI completion certificate along
+                            with a portfolio of real AI projects you created during training. Your project portfolio
+                            becomes a powerful asset when applying for jobs, freelancing opportunities, or promotions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="7">
+                        <span>How does this course help job seekers or fresh graduates?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For job seekers, AI skills create a strong competitive advantage. During the program we help
+                            you build an AI-powered resume and portfolio, optimize your LinkedIn and professional
+                            profiles, create projects that demonstrate AI skills, and learn tools used in modern
+                            workplaces. These capabilities help graduates stand out during interviews and job
+                            applications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="8">
+                        <span>Can school students join and benefit from AI learning?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. In fact, students who start early gain a strong advantage for the future. Young learners
+                            can understand how AI works, build creative AI projects, learn AI storytelling, design and
+                            coding basics, and strengthen their school portfolio for competitions and future careers.
+                            Learning AI early helps students stay ahead in a technology-driven world.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="9">
+                        <span>I am a working professional. How can AI help me?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Professionals use AI mainly for productivity and career growth. By learning AI you can
+                            automate repetitive office tasks, generate reports and presentations faster, improve
+                            decision-making with AI insights, and increase efficiency and leadership value. Many
+                            professionals use AI to save 20+ hours of work every week and become more valuable in their
+                            organizations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="10">
+                        <span>Is the training practical or theoretical?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The training is <strong>primarily practical</strong>. Every module includes real applications
+                            such as AI content generation, workflow automation, visual design and video creation, AI
+                            assistants and chatbots, and portfolio projects. This ensures that you leave with skills you
+                            can apply immediately — not just theory you forget in a week.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="11">
+                        <span>What makes Artificia different from other AI courses?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most online courses rely on recorded videos and theory. Artificia focuses on live mentor-led
+                            learning, hands-on AI tools used in real businesses, real project portfolios, career and
+                            productivity applications, and continuous guidance and mentorship. Our goal is not just to
+                            teach AI but to help you <strong>use AI confidently in real work situations</strong> — from
+                            day one.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq="12">
+                        <span>How do I get started and join the program?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Getting started is simple: (1) Fill out the application form below, (2) Our admissions
+                            counsellor contacts you on WhatsApp to discuss your goals, (3) Choose the program — 30-Day
+                            or 60-Day, (4) Confirm enrollment and start learning. <strong>Seats are limited in each
+                                batch</strong> to maintain personalized mentoring, so early enrollment is recommended.
+                        </p>
+                        <a href="#booking" class="btn-primary mt-3" style="display:inline-flex;">APPLY NOW <i
+                                class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- ============================================================
+         MAP LOCATION
+         ============================================================ -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title text-center">Find Us <span class="gradient-text">Here</span></h2>
+            <p class="subtitle text-center" style="margin-bottom:2rem;">Artificia Intellec Pvt Ltd — Office No. 11, 2nd Floor, Darshanam Arise, Gotri-Sevasi Rd, opposite Osia Mall, Vadodara 391101</p>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5!2d73.1229129!3d22.3182687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc958c4e6d093%3A0x12983c75e92cfedf!2sArtificia%20Intellec%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1"
+                    width="100%" height="400" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Artificia Intellec Pvt Ltd location on Google Maps"></iframe>
+            </div>
+            <div class="text-center" style="margin-top:1.5rem;">
+                <a href="https://www.google.com/maps/dir//Artificia+Intellec+Pvt+Ltd,+Office+No.+11,+Second+Floor,+Darshanam+Arise,+Gotri+-+Sevasi+Rd,+opposite+Osia+Mall,+Sevasi,+Vadodara,+Gujarat+391101" target="_blank" rel="noopener" class="cta-button" style="display:inline-block; padding:14px 36px;">
+                    <i class="fas fa-directions"></i> Get Directions →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <img src="images/logo.png" alt="Artificia AI logo" style="height: 30px; margin-bottom: 20px; opacity: 0.5;" loading="lazy">
+            <p>Empowering the Future with AI • Vadodara, Gujarat</p>
+            <p class="copyright">&copy; 2026 Artificia AI. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="https://artificiaai.com">Main Website</a>
+                <a href="https://artificiaai.com/privacypolicy.html" target="_blank" rel="noopener">Privacy Policy</a>
+                <a href="https://artificiaai.com/Termsandcondition.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         STICKY CTA BAR (fixed bottom)
+         ============================================================ -->
+    <div class="sticky-cta-bar" id="stickyCta">
+        <div class="sticky-cta-inner">
+            <div class="sticky-cta-text">
+                <span class="sticky-badge">🔥 LIMITED SEATS</span>
+                <span class="sticky-price">Only 15 Seats Available</span>
+            </div>
+            <a href="#booking" class="btn-sticky-cta">SECURE MY SEAT <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         60-SECOND POP-UP FORM MODAL
+         ============================================================ -->
+    <div class="popup-overlay" id="popupOverlay" aria-modal="true" role="dialog" aria-labelledby="popupTitle" aria-hidden="true">
+        <div class="popup-modal glass-card">
+            <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+
+            <!-- Urgency header -->
+            <div class="popup-header">
+                <span class="popup-badge">⚡ ONLY 15 SEATS LEFT</span>
+                <h2 id="popupTitle">Wait — Before You Go!</h2>
+                <p>Secure your spot in Vadodara's #1 AI Masterclass. Free consultation on WhatsApp.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="popupLeadForm">
+                <div class="form-group">
+                    <div class="input-icon-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="popupName" required placeholder="Your Full Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon-wrapper">
+                        <i class="fab fa-whatsapp input-icon"></i>
+                        <input type="tel" id="popupPhone" required placeholder="WhatsApp Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon-wrapper">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="popupEmail" required placeholder="Email Address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon-wrapper">
+                        <i class="fas fa-briefcase input-icon"></i>
+                        <select id="popupInterest" required>
+                            <option value="" disabled selected>Your Current Designation</option>
+                            <option value="Student">Student</option>
+                            <option value="Working Professional">Working Professional</option>
+                            <option value="Business Owner">Business Owner</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Job Seeker">Job Seeker</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary w-100 pulse-effect" id="popupSubmitBtn">
+                    CLAIM MY FREE SPOT <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="privacy-text"><i class="fas fa-lock"></i> 100% secure. No spam ever.</p>
+            </form>
+
+            <div id="popupSuccess" class="success-state hidden">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>You're In!</h3>
+                <p>Our team will reach out on WhatsApp shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js — deferred to bottom so it doesn't block first paint -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Hamburger mobile nav
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            hamburgerBtn.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.setAttribute('aria-hidden', 'true');
+        }
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            hamburgerBtn.classList.toggle('active', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+            mobileNav.setAttribute('aria-hidden', String(!isOpen));
+        });
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.glass-header')) closeMobileNav();
+        });
+    </script>
+</body>
+
+</html>
