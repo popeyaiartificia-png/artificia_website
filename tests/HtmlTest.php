@@ -75,3 +75,31 @@ function test_sanitize_invalid_utf8(): void
     ok(mb_check_encoding($out, 'UTF-8'), 'output is valid UTF-8');
     ok(str_starts_with($out, '<p>caf') && str_ends_with($out, ' ok</p>'), $out);
 }
+
+function test_sanitize_maps_bold_italic(): void
+{
+    eq(sanitize_html('<p><b>a</b> <i>b</i></p>'), '<p><strong>a</strong> <em>b</em></p>');
+    eq(sanitize_html('<p><i><b>a</b></i></p>'), '<p><em><strong>a</strong></em></p>');
+    eq(sanitize_html('<p><em><i>a</i></em></p>'), '<p><em>a</em></p>');
+}
+
+function test_sanitize_google_docs_wrapper(): void
+{
+    $in = '<b style="font-weight:normal;" id="docs-internal-guid-1"><p dir="ltr"><span style="font-weight:700">Hi</span> there</p><p><b>bold</b></p></b>';
+    eq(sanitize_html($in), '<p>Hi there</p><p><strong>bold</strong></p>');
+    eq(sanitize_html('<b style="font-weight: 400">x</b>'), 'x');
+    eq(sanitize_html('<b style="font-weight:bold">x</b>'), '<strong>x</strong>');
+}
+
+function test_sanitize_blocks_become_paragraphs(): void
+{
+    eq(sanitize_html('<div>one</div><div>two <b>x</b></div>'), '<p>one</p><p>two <strong>x</strong></p>');
+    eq(sanitize_html('<div>intro<p>para</p>outro</div>'), '<p>intro</p><p>para</p><p>outro</p>');
+    eq(sanitize_html('<div><div>deep</div></div>'), '<p>deep</p>');
+    eq(sanitize_html('<div> <br> </div><div>  </div><p>a</p>'), '<p>a</p>');
+    eq(sanitize_html('<h1>T</h1><h4>S</h4><blockquote>q</blockquote><pre>c</pre>'), '<h2>T</h2><p>S</p><p>q</p><p>c</p>');
+    eq(sanitize_html('<table><tr><td>a</td><td>b</td></tr></table>'), '<p>a</p><p>b</p>');
+    eq(sanitize_html('<span><div>x</div></span>'), '<p>x</p>');
+    eq(sanitize_html('<ul><li><div>a</div></li></ul>'), '<ul><li><p>a</p></li></ul>');
+    eq(sanitize_html('top <div>x</div> tail'), 'top <p>x</p> tail');
+}
