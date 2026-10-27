@@ -1,4 +1,4 @@
-<section class="sec sec--faqs faq">
+<section class="sec sec--faqs faq" id="faq">
   <div class="wrap faq__grid">
     <?= sec_head($f['heading'] ?? '') ?>
     <div class="qa">
