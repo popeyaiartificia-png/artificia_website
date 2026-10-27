@@ -1,4 +1,4 @@
-/* Artificia AI: black ground, liquid glass in front, lime as the marker */
+/* Artificia AI: black ground, liquid glass in front, square edges, lime as the marker */
 
 /* Roboto per the Artificia Brand Bible; the Flex cut's width axis gives the notebook its wide caps. */
 @font-face {
@@ -36,9 +36,10 @@
 
   --font: "Roboto Flex", Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
   --ease: cubic-bezier(.16, 1, .3, 1);
-  --r: 14px;        /* inputs, small controls */
-  --r-lg: 26px;     /* glass panels */
-  --r-pill: 999px;  /* buttons */
+  /* Square, sharp edges everywhere (Hardik, 27 Oct): every corner on the site is 0. */
+  --r: 0;
+  --r-lg: 0;
+  --r-pill: 0;
 
   --gut: 10px;      /* edge-to-edge panels keep this much air */
   --pl: 44px;       /* content inset: leaves room for the heading tick */
@@ -47,8 +48,8 @@
   --sp: clamp(4rem, 2.75rem + 5.5vw, 8.5rem);
   --bar: 60px;
 }
-@media (min-width: 720px) { :root { --pl: 64px; --pr: 32px; --gut: 16px; --r-lg: 30px; } }
-@media (min-width: 1024px) { :root { --pl: clamp(80px, 6vw, 120px); --pr: clamp(40px, 4vw, 88px); --gut: 20px; --bar: 66px; --r-lg: 34px; } }
+@media (min-width: 720px) { :root { --pl: 64px; --pr: 32px; --gut: 16px; } }
+@media (min-width: 1024px) { :root { --pl: clamp(80px, 6vw, 120px); --pr: clamp(40px, 4vw, 88px); --gut: 20px; --bar: 66px; } }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -204,7 +205,7 @@ a:hover { color: var(--lime); }
 
 /* ---------- Header and footer: floating glass ---------- */
 .bind { color: var(--ink); }
-.top { position: fixed; top: var(--gut); left: var(--gut); right: var(--gut); z-index: 30; border-radius: calc(var(--r-lg) - 6px); }
+.top { position: fixed; top: var(--gut); left: var(--gut); right: var(--gut); z-index: 30; border-radius: var(--r-lg); }
 .top .wrap { max-width: none; padding-inline: clamp(14px, 1.6vw, 30px); }
 .top__in { display: flex; align-items: center; gap: 1.5rem; height: var(--bar); }
 /* The Artificia logo file, used as supplied (Brand Bible: top-left, at least 120px wide, never redrawn). */
@@ -278,7 +279,7 @@ a:hover { color: var(--lime); }
 .wa-float {
   position: fixed; right: 16px; bottom: 16px; z-index: 40;
   display: grid; place-items: center; width: 56px; height: 56px;
-  border-radius: 20px; background: var(--lime); color: var(--lime-ink);
+  border-radius: var(--r); background: var(--lime); color: var(--lime-ink);
   box-shadow: 0 12px 30px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .45);
   transition: transform .2s var(--ease), background-color .2s var(--ease);
 }
@@ -323,7 +324,7 @@ a:hover { color: var(--lime); }
 @media (min-width: 1024px) { .hero--split .hero__media .frame img { aspect-ratio: 4 / 5; } }
 @media (min-width: 1024px) { .hero--split .hero__media .draw { max-width: none; } .hero__foot { grid-column: 1; margin-top: 2rem; } }
 .frame { padding: 8px; }
-.frame img { width: 100%; border-radius: calc(var(--r-lg) - 8px); }
+.frame img { width: 100%; border-radius: var(--r-lg); }
 .doors { list-style: none; padding: 0; margin-top: 1.75rem; border-bottom: 1px solid rgba(242, 243, 238, .28); }
 .door {
   display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem;
@@ -394,7 +395,7 @@ a:hover { color: var(--lime); }
 .index__item:has(a:focus-visible) { outline: 2px solid var(--lime); outline-offset: 3px; }
 .index__item a:focus-visible { outline: none; }
 /* Photo cards: the picture fills the top of the pane. */
-.index__photo { margin: -.75rem -.75rem 1.25rem; overflow: hidden; border-radius: calc(var(--r-lg) - 10px); }
+.index__photo { margin: -.75rem -.75rem 1.25rem; overflow: hidden; border-radius: var(--r-lg); }
 .index__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .8s var(--ease); }
 .index__item:has(a:hover) .index__photo img { transform: scale(1.04); }
 .index--photo .index__go { top: auto; bottom: 1.6rem; }
@@ -551,7 +552,7 @@ a:hover { color: var(--lime); }
 .wit__role { color: var(--c6); font-size: .875rem; line-height: 1.35; }
 .vid {
   position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0;
-  border: 0; border-radius: calc(var(--r-lg) - 10px); background: var(--c2);
+  border: 0; border-radius: var(--r-lg); background: var(--c2);
   cursor: pointer; overflow: hidden; color: var(--ink);
 }
 .vid img { width: 100%; height: 100%; object-fit: cover; opacity: .82; transition: opacity .3s, transform .6s var(--ease); }
@@ -665,10 +666,12 @@ select.input {
 .check input {
   appearance: none; display: grid; place-items: center; flex: none;
   width: 20px; height: 20px; margin: .12em 0 0;
-  border: 1.5px solid var(--c6); border-radius: 6px; background: rgba(255, 255, 255, .05); cursor: pointer;
+  border: 1.5px solid var(--c6); border-radius: var(--r); background: rgba(255, 255, 255, .05); cursor: pointer;
 }
-.check input:checked { background: var(--lime); border-color: var(--lime); }
-.check input:checked::after { content: ""; width: 10px; height: 5px; margin-top: -2px; border-left: 2px solid var(--lime-ink); border-bottom: 2px solid var(--lime-ink); transform: rotate(-45deg); }
+.check input:checked {
+  border-color: var(--lime);
+  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%2308080d' stroke-width='2.2' stroke-linecap='square'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
 .check input:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 .check--consent { color: var(--c7); font-size: .875rem; }
 .check--consent a { color: var(--ink); }
@@ -747,7 +750,7 @@ select.input {
 }
 .top, .frame, .gallery-nav, .index__item, .case, .steps__track, .parts, .track, .dim, .wit,
 .flow__node, .qa, .plate, .person, .contact__list, .map, .posts, .foot__panel { background: var(--glass); }
-.flow__node { border-radius: calc(var(--r-lg) - 10px); }
+.flow__node { border-radius: var(--r-lg); }
 /* The liquid sheen: a light wedge across the upper-left of every pane, under its content. */
 .frame, .gallery-nav, .index__item, .case, .steps__track, .parts, .track, .dim, .wit,
 .flow__node, .qa, .plate, .person, .contact__list, .map, .posts, .foot__panel, .hero__grid, .cta__in { position: relative; isolation: isolate; }
