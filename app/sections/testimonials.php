@@ -1,7 +1,7 @@
 <?php
 // Videos and written quotes are laid out as two rows so cards of one kind line up.
 // Only Drive and YouTube links become players; anything else is treated as a written quote.
-$items = array_map(fn($it) => $it + ['src' => video_embed_src((string) ($it['video_url'] ?? ''))], $f['items'] ?? []);
+$items = array_map(fn($it) => ['src' => video_embed_src((string) ($it['video_url'] ?? ''))] + $it, $f['items'] ?? []);
 $videos = array_values(array_filter($items, fn($it) => $it['src'] !== ''));
 $quotes = array_values(array_filter($items, fn($it) => $it['src'] === ''));
 $sig = function (array $it, bool $photo): string {

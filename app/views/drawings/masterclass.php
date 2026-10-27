@@ -10,8 +10,8 @@
   <rect class="ln" pathLength="1" x="375" y="145" width="10" height="10"/>
   <path class="ld" d="M124 146v-36M246 146v-36M380 140v-30"/>
   <text x="124" y="86" text-anchor="middle">DAY 18</text><text class="nt" x="124" y="102" text-anchor="middle">your first website</text>
-  <text x="246" y="86" text-anchor="middle">DAY 38</text><text class="nt" x="246" y="102" text-anchor="middle">agents in n8n</text>
-  <text x="380" y="86" text-anchor="end">DAY 60</text><text class="nt" x="380" y="102" text-anchor="end">demo, graduation</text>
+  <text x="246" y="86" text-anchor="middle">DAY 38</text><text class="nt" x="246" y="102" text-anchor="middle">n8n agents</text>
+  <text x="380" y="86" text-anchor="end">DAY 60</text><text class="nt" x="380" y="102" text-anchor="end">graduation</text>
   <path class="ld" d="M20 160v40M200 160v40M288 154v76"/>
   <text x="20" y="222">DAY 1</text><text class="nt" x="20" y="238">intro to AI</text>
   <text x="200" y="222" text-anchor="middle">DAY 30</text><text class="nt" x="200" y="238" text-anchor="middle">Demo Day</text>

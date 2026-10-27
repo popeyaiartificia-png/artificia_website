@@ -485,14 +485,14 @@ a:hover { color: var(--lime); }
 .dim__val small { margin-left: -.35em; font-size: .38em; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--c7); }
 /* Dimension rule: extension tick, line and arrowhead either side of the value. */
 .dim__rule { position: relative; flex: 1; min-width: 1.75rem; height: 2px; background: var(--lime); }
-.dim__rule:first-child { transform-origin: right; }
-.dim__rule:last-child { transform-origin: left; }
+.dim__rule--l { transform-origin: right; }
+.dim__rule--r { transform-origin: left; }
 .dim__rule::before { content: ""; position: absolute; top: -10px; width: 2px; height: 22px; background: var(--lime); }
-.dim__rule:first-child::before { left: 0; }
-.dim__rule:last-child::before { right: 0; }
+.dim__rule--l::before { left: 0; }
+.dim__rule--r::before { right: 0; }
 .dim__rule::after { content: ""; position: absolute; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--lime); }
-.dim__rule:first-child::after { left: 3px; border-left: 2px solid var(--lime); transform: rotate(-45deg); }
-.dim__rule:last-child::after { right: 3px; border-right: 2px solid var(--lime); transform: rotate(45deg); }
+.dim__rule--l::after { left: 3px; border-left: 2px solid var(--lime); transform: rotate(-45deg); }
+.dim__rule--r::after { right: 3px; border-right: 2px solid var(--lime); transform: rotate(45deg); }
 .dim__label { order: 2; color: var(--c7); font-size: 1rem; line-height: 1.35; text-align: center; }
 @media (min-width: 640px) and (max-width: 1023px) {
   .dims { grid-template-columns: repeat(2, 1fr); }
