@@ -1,75 +1,230 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-10-27T00:00:00Z",
-  "title": "Design System: Artificia AI, The Build Notebook",
+  "title": "Design System: Artificia AI, Lime Light on Black Glass",
   "extensions": {
     "colorMeta": {
-      "lime": { "role": "primary", "displayName": "Marker Lime", "canonical": "#AED534", "tonalRamp": ["#1d2308","#38440f","#56652a","#7a9120","#AED534","#c3e651","#d8f08a","#ecf8c8"] },
-      "page": { "role": "neutral", "displayName": "Page", "canonical": "#2A2E2E", "tonalRamp": ["#08080d","#121416","#1b1e1f","#2A2E2E","#343939","#4b5252","#9ba2a1","#c8cdca"] }
+      "lime": {
+        "role": "primary",
+        "displayName": "Marker Lime",
+        "canonical": "#AED534",
+        "tonalRamp": [
+          "#1d2308",
+          "#38440f",
+          "#56652a",
+          "#7a9120",
+          "#AED534",
+          "#c3e651",
+          "#d8f08a",
+          "#ecf8c8"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "Black",
+        "canonical": "#030304",
+        "tonalRamp": [
+          "#030304",
+          "#0a0b0d",
+          "#111316",
+          "#191b1e",
+          "#24272b",
+          "#3b3f44",
+          "#9ba2a1",
+          "#c8cdca"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display / h1", "purpose": "Home heading; wide uppercase, second clause lime." },
-      "headline": { "displayName": "Headline / h2", "purpose": "Section headings; emphasis is a lime underline." },
-      "label": { "displayName": "Entry label", "purpose": "Metadata under titles; never above a heading." }
+      "display": {
+        "displayName": "Display / h1",
+        "purpose": "Home heading; wide uppercase, second clause lime."
+      },
+      "headline": {
+        "displayName": "Headline / h2",
+        "purpose": "Section headings; emphasis is a lime underline."
+      },
+      "label": {
+        "displayName": "Entry label",
+        "purpose": "Metadata under titles; never above a heading."
+      }
     },
     "shadows": [
-      { "name": "frame", "value": "0 14px 40px rgba(0,0,0,.35)", "purpose": "Image frames." },
-      { "name": "plate", "value": "0 18px 50px rgba(0,0,0,.35)", "purpose": "Lead form plate." },
-      { "name": "float", "value": "0 10px 28px rgba(0,0,0,.5)", "purpose": "Floating WhatsApp button." }
+      {
+        "name": "glass-stack",
+        "value": "inset 0 1px 0 rgba(255,255,255,.24), inset 0 -1px 0 rgba(255,255,255,.03), 0 30px 80px -40px rgba(0,0,0,.9)",
+        "purpose": "Every glass pane: bright top edge, faint bottom edge, deep soft drop."
+      },
+      {
+        "name": "float",
+        "value": "0 12px 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.45)",
+        "purpose": "Floating WhatsApp button."
+      },
+      {
+        "name": "glass-blur",
+        "value": "blur(22px) saturate(165%)",
+        "purpose": "Backdrop filter for header, hero pane, form plate and CTA only."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "CSS transitions and GSAP out-ease." },
-      { "name": "stroke-draw", "value": "0.5-0.8s power2.inOut, stagger .06-.09", "purpose": "Drawings and rules write themselves in once." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "CSS transitions and GSAP out-ease."
+      },
+      {
+        "name": "stroke-draw",
+        "value": "0.5-0.8s power2.inOut, stagger .06-.09",
+        "purpose": "Drawings and rules write themselves in once."
+      },
+      {
+        "name": "light-drift",
+        "value": "40s and 56s ease-in-out infinite alternate",
+        "purpose": "The two lime light fields behind the glass; still under reduced motion."
+      }
     ],
     "breakpoints": [
-      { "name": "nav", "value": "1024px" }, { "name": "wide", "value": "900px" },
-      { "name": "mid", "value": "720px" }, { "name": "stats", "value": "640px" }, { "name": "narrow", "value": "480px" }
+      {
+        "name": "nav",
+        "value": "1024px"
+      },
+      {
+        "name": "wide",
+        "value": "900px"
+      },
+      {
+        "name": "mid",
+        "value": "720px"
+      },
+      {
+        "name": "stats",
+        "value": "640px"
+      },
+      {
+        "name": "narrow",
+        "value": "480px"
+      }
     ]
   },
   "components": [
     {
-      "name": "Primary Button", "kind": "button", "refersTo": "button-primary",
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
       "description": "The only filled lime control.",
-      "html": "<button class=\"ds-btn-primary\">Book a call</button>",
-      "css": ".ds-btn-primary{min-height:52px;padding:0 1.35rem;border:1.5px solid #AED534;border-radius:2px;background:#AED534;color:#08080d;font:760 .875rem/1 'Roboto Flex',Roboto,sans-serif;font-stretch:112%;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background-color .2s}.ds-btn-primary:hover{background:#c3e651;border-color:#c3e651}.ds-btn-primary:focus-visible{outline:2px solid #AED534;outline-offset:3px}"
+      "html": "<button class=\"ds-btn-primary\">Enquire</button>",
+      "css": ".ds-btn-primary{min-height:52px;padding:0 1.35rem;border:1px solid #AED534;border-radius:0;background:#AED534;color:#08080d;font:760 .875rem/1 'Roboto Flex',Roboto,sans-serif;font-stretch:112%;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background-color .2s}.ds-btn-primary:hover{background:#c3e651;border-color:#c3e651}.ds-btn-primary:focus-visible{outline:2px solid #AED534;outline-offset:3px}"
     },
     {
-      "name": "Ghost Button", "kind": "button", "refersTo": "button-ghost",
-      "description": "Secondary action, ink outline.",
-      "html": "<button class=\"ds-btn-ghost\">Learn more</button>",
-      "css": ".ds-btn-ghost{min-height:52px;padding:0 1.35rem;border:1.5px solid #F2F3EE;border-radius:2px;background:transparent;color:#F2F3EE;font:760 .875rem/1 'Roboto Flex',Roboto,sans-serif;font-stretch:112%;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:color .2s,border-color .2s}.ds-btn-ghost:hover{border-color:#AED534;color:#AED534}.ds-btn-ghost:focus-visible{outline:2px solid #AED534;outline-offset:3px}"
+      "name": "Glass Button",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Default secondary action, translucent, square.",
+      "html": "<button class=\"ds-btn-glass\">Learn more</button>",
+      "css": ".ds-btn-glass{min-height:52px;padding:0 1.35rem;border:1px solid rgba(255,255,255,.24);border-radius:0;background:rgba(255,255,255,.06);color:#F2F3EE;font:760 .875rem/1 'Roboto Flex',Roboto,sans-serif;font-stretch:112%;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:color .2s,border-color .2s}.ds-btn-glass:hover{border-color:#AED534;color:#AED534}.ds-btn-glass:focus-visible{outline:2px solid #AED534;outline-offset:3px}"
     },
     {
-      "name": "Input", "kind": "input", "refersTo": "input",
-      "description": "Mat field on the Binding plate.",
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Translucent field on the form plate.",
       "html": "<input class=\"ds-input\" placeholder=\"Your name\">",
-      "css": ".ds-input{width:100%;min-height:50px;padding:0 .9rem;border:1.5px solid #4b5252;border-radius:2px;background:#1b1e1f;color:#F2F3EE;font:1rem 'Roboto Flex',Roboto,sans-serif}.ds-input::placeholder{color:#9ba2a1}.ds-input:hover{border-color:#9ba2a1}.ds-input:focus{outline:none;border-color:#AED534;box-shadow:0 0 0 1px #AED534}"
+      "css": ".ds-input{width:100%;min-height:50px;padding:0 .9rem;border:1px solid rgba(255,255,255,.16);border-radius:0;background:rgba(255,255,255,.05);color:#F2F3EE;font:1rem 'Roboto Flex',Roboto,sans-serif}.ds-input::placeholder{color:#9ba2a1}.ds-input:hover{border-color:rgba(255,255,255,.32)}.ds-input:focus{outline:none;border-color:#AED534;box-shadow:0 0 0 1px #AED534}"
     },
     {
-      "name": "Door", "kind": "custom",
-      "description": "Hero chooser row between ink rules.",
-      "html": "<a class=\"ds-door\" href=\"#\"><span class=\"ds-door-l\">Masterclass</span><span class=\"ds-door-n\">For individuals</span></a>",
-      "css": ".ds-door{display:block;padding:.7rem 0;border-top:1.5px solid #F2F3EE;color:#F2F3EE;text-decoration:none;min-height:68px}.ds-door-l{font:760 1.6rem/1.1 'Roboto Flex',Roboto,sans-serif;font-stretch:110%;background:linear-gradient(#AED534,#AED534) 0 100%/0 2px no-repeat;transition:background-size .45s}.ds-door:hover{color:#AED534}.ds-door:hover .ds-door-l{background-size:100% 2px}.ds-door-n{display:block;margin-top:.2rem;color:#9ba2a1;font:600 .8125rem 'Roboto Flex',Roboto,sans-serif;letter-spacing:.05em;text-transform:uppercase}"
+      "name": "Glass Pane",
+      "kind": "card",
+      "refersTo": "glass-pane",
+      "description": "Shared container: translucent gradient, bright top edge, sheen.",
+      "html": "<div class=\"ds-pane\"><h3>Title</h3><p>Body copy sits inside the pane.</p></div>",
+      "css": ".ds-pane{position:relative;isolation:isolate;padding:1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:0;background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 55%,rgba(255,255,255,.045));color:#F2F3EE;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(255,255,255,.03),0 30px 80px -40px rgba(0,0,0,.9);font-family:'Roboto Flex',Roboto,sans-serif}.ds-pane::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.02) 22%,transparent 40%)}.ds-pane h3{margin:0;font:720 1.25rem/1.25 'Roboto Flex',Roboto,sans-serif}.ds-pane p{margin:.5rem 0 0;color:#c8cdca}"
     },
     {
-      "name": "Entry Line", "kind": "custom",
+      "name": "Door",
+      "kind": "custom",
+      "description": "Hero chooser row between hairlines.",
+      "html": "<a class=\"ds-door\" href=\"#\"><span class=\"ds-door-l\">Learn AI</span><span class=\"ds-door-n\">For individuals</span></a>",
+      "css": ".ds-door{display:block;padding:.7rem 0;border-top:1px solid rgba(242,243,238,.28);color:#F2F3EE;text-decoration:none;min-height:68px}.ds-door-l{font:760 1.6rem/1.1 'Roboto Flex',Roboto,sans-serif;font-stretch:110%;background:linear-gradient(#AED534,#AED534) 0 100%/0 2px no-repeat;transition:background-size .45s}.ds-door:hover{color:#AED534}.ds-door:hover .ds-door-l{background-size:100% 2px}.ds-door-n{display:block;margin-top:.2rem;color:#9ba2a1;font:600 .8125rem 'Roboto Flex',Roboto,sans-serif;letter-spacing:.05em;text-transform:uppercase}"
+    },
+    {
+      "name": "Entry Line",
+      "kind": "custom",
       "description": "Metadata strip under a title.",
       "html": "<div class=\"ds-entry\"><span>6 hrs</span><span>Beginner</span></div>",
-      "css": ".ds-entry{display:flex;gap:.3rem .85rem;color:#9ba2a1;font:650 .75rem/1.35 'Roboto Flex',Roboto,sans-serif;font-stretch:85%;letter-spacing:.09em;text-transform:uppercase}.ds-entry span+span{padding-left:.85rem;border-left:1px solid #4b5252}"
+      "css": ".ds-entry{display:flex;gap:.3rem .85rem;color:#9ba2a1;font:650 .75rem/1.35 'Roboto Flex',Roboto,sans-serif;font-stretch:85%;letter-spacing:.09em;text-transform:uppercase}.ds-entry span+span{padding-left:.85rem;border-left:1px solid #3b3f44}"
     }
   ],
   "narrative": {
-    "northStar": "The Build Notebook",
-    "overview": "Charcoal graph paper on an 18px ruling, a dim lime margin rule, black binding bars, and a single lime pen that draws, ticks and underlines. Flat, ruled and annotated rather than carded; wide heavy uppercase Roboto Flex headings over plain reading text; notebook entries with metadata under the title.",
-    "keyCharacteristics": ["One charcoal ramp plus ink; lime is the only chroma.", "Wide uppercase display type, 2px corners, ruled lists instead of cards.", "Lime single-stroke drawings that take the form of the question they answer.", "Motion is drawing, run once, absent under reduced motion."],
-    "rules": [
-      { "name": "The Marker Rule", "body": "Lime marks; it never fills surfaces, backs panels or colours body text.", "section": "colors" },
-      { "name": "The Ramp Rule", "body": "Any grey is a ramp step.", "section": "colors" },
-      { "name": "The Warn Rule", "body": "Warn appears only on invalid fields and form status errors.", "section": "colors" },
-      { "name": "The Under Rule", "body": "Entry and metadata lines sit under their title, never above; no eyebrow or kicker above any heading.", "section": "typography" },
-      { "name": "The Ruled Not Raised Rule", "body": "Hierarchy is made with rules and ink, not shadows.", "section": "elevation" }
+    "northStar": "Lime Light on Black Glass",
+    "overview": "A near-black page lit by two slow lime fields, with liquid-glass panes in front (translucent gradient, bright top edge, diagonal sheen) and a single lime pen that draws sketches, ticks headings and underlines emphasis. Wide heavy uppercase Roboto Flex headings over plain reading text; entries carry their metadata under the title. Full width up to 1720px, square corners everywhere; no graph grid, no margin rule.",
+    "keyCharacteristics": [
+      "One black ramp plus ink; lime is the only chroma, used as marker and as ambient light.",
+      "Translucent, square-cornered glass panes with a lit top edge; buttons, inputs and photos are square too.",
+      "Wide uppercase display type; lime single-stroke drawings that take the form of the question they answer.",
+      "Motion is drawing, run once; nothing animates under reduced motion."
     ],
-    "dos": ["Do put the real logo image top-left on Binding; use Roboto Flex throughout.", "Do use lime only as marker.", "Do make every grey a ramp step.", "Do draw a diagram in the form of the question it answers.", "Do put entry and metadata lines under titles.", "Do keep videos and the map behind a click.", "Do keep the stats caveat with any stats."],
-    "donts": ["Don't put an eyebrow or kicker above any heading.", "Don't use a radius above 2px, boxed shadowed cards, hard offset shadows, glyph icons or another display face.", "Don't use lime for body text or panel fills.", "Don't animate under prefers-reduced-motion.", "Don't use Warn outside form errors."]
+    "rules": [
+      {
+        "name": "The Marker Rule",
+        "body": "Lime marks: strokes, ticks, underlines, the primary action, focus. It never fills a panel or colours body text. The one exception is light, not paint: the body light fields and the soft lime glows behind the hero sketch and the CTA are ambient and sit behind glass.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ramp Rule",
+        "body": "Any solid grey is a ramp step. Translucent white is the glass material, not a grey.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warn Rule",
+        "body": "Warn appears only on invalid fields and form status errors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Under Rule",
+        "body": "Entry and metadata lines sit under their title, never above; no eyebrow or kicker above any heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Wide Caps Rule",
+        "body": "Uppercase is for headings, buttons and labels; reading text stays sentence case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Frosting Rule",
+        "body": "Blur is for panes that content passes behind. A static card gets the gradient, edge and sheen, never a backdrop filter.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Solid Fallback Rule",
+        "body": "Under prefers-reduced-transparency every pane, the nav overlay and the play chip become solid Black 2 (#111316) with no blur.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Rule",
+        "body": "No rounded corners anywhere. New components use the radius tokens (all 0) or none, never a literal radius.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep every corner square (radius tokens are 0).",
+      "Do put the real logo image top-left in the floating glass bar; use Roboto Flex throughout.",
+      "Do use lime only as marker.",
+      "Do keep solid greys on the ramp; build panes from the glass tokens.",
+      "Do blur only panes that content scrolls behind (header, hero, form plate, CTA).",
+      "Do provide the solid Black 2 fallback for any new pane under prefers-reduced-transparency.",
+      "Do draw a diagram in the form of the question it answers.",
+      "Do put entry and metadata lines under titles.",
+      "Do keep videos and the map behind a click.",
+      "Do keep the stats caveat with any stats."
+    ],
+    "donts": [
+      "Don't put an eyebrow or kicker above any heading.",
+      "Don't round any corner: no radius, no pills.",
+      "Don't use hard offset shadows, glyph icons or another display face.",
+      "Don't use lime for body text or panel fills; its only non-marker use is ambient light behind glass.",
+      "Don't animate under prefers-reduced-motion.",
+      "Don't use Warn outside form errors.",
+      "Don't reintroduce the graph-paper grid or the margin rule."
+    ]
   }
 }

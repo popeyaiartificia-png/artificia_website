@@ -1,20 +1,19 @@
 ---
-name: Artificia AI, The Build Notebook
-description: A charcoal graph-paper notebook in which a lime pen records how Artificia builds AI for a business.
+name: Artificia AI, Lime Light on Black Glass
+description: A near-black page lit by two slow lime fields, with liquid-glass panes in front and a lime pen that draws, ticks and underlines.
 colors:
-  binding: "#08080d"
-  charcoal-1: "#121416"
-  mat: "#1b1e1f"
-  page: "#2A2E2E"
-  grid-ruling: "#343939"
-  rule: "#4b5252"
+  black: "#030304"
+  black-1: "#0a0b0d"
+  black-2: "#111316"
+  black-3: "#191b1e"
+  hairline: "#24272b"
+  rule: "#3b3f44"
   secondary-text: "#9ba2a1"
   lede-text: "#c8cdca"
   ink: "#F2F3EE"
   lime: "#AED534"
   lime-hi: "#c3e651"
   lime-ink: "#08080d"
-  margin-rule: "#56652a"
   warn: "#ff9a85"
 typography:
   display:
@@ -46,162 +45,178 @@ typography:
     lineHeight: 1.35
     letterSpacing: "0.09em"
 rounded:
-  base: "2px"
+  none: "0"
 spacing:
-  grid: "18px"
+  gutter: "10px"
+  gutter-tablet: "16px"
+  gutter-desktop: "20px"
   section: "clamp(4rem, 2.75rem + 5.5vw, 8.5rem)"
-  inset-left: "104px"
-  inset-right: "48px"
+  max-width: "1720px"
+  inset-left: "44px"
+  inset-right: "16px"
 components:
   button-primary:
     backgroundColor: "{colors.lime}"
     textColor: "{colors.lime-ink}"
-    rounded: "{rounded.base}"
+    rounded: "{rounded.none}"
     height: "52px"
     padding: "0 21.6px"
   button-primary-hover:
     backgroundColor: "{colors.lime-hi}"
-  button-ghost:
-    backgroundColor: "transparent"
+  button-glass:
+    backgroundColor: "rgba(255,255,255,.06)"
     textColor: "{colors.ink}"
-    rounded: "{rounded.base}"
+    rounded: "{rounded.none}"
     height: "52px"
   input:
-    backgroundColor: "{colors.mat}"
+    backgroundColor: "rgba(255,255,255,.05)"
     textColor: "{colors.ink}"
-    rounded: "{rounded.base}"
+    rounded: "{rounded.none}"
     height: "50px"
-  form-plate:
-    backgroundColor: "{colors.binding}"
-    rounded: "{rounded.base}"
+  glass-pane:
+    rounded: "{rounded.none}"
 ---
 
-# Design System: Artificia AI, The Build Notebook
+# Design System: Artificia AI, Lime Light on Black Glass
 
 ## Overview
 
-**Creative North Star: "The Build Notebook"**
+**Creative North Star: "Lime Light on Black Glass"**
 
-The site is the working notebook of a team that builds AI: charcoal graph paper on an 18px ruling, a thin lime margin rule down the left, and a single lime pen that draws, ticks and underlines. Black "binding" bars (nav, footer, CTA band, form plate) hold the pages together. Everything is flat, ruled and annotated rather than carded and shadowed.
+The page is near-black (#030304). Behind it two soft lime light fields drift slowly (40s and 56s, alternate), and in front of them sit liquid-glass panes: a translucent white gradient, a bright top edge, a diagonal sheen. Over that, a single lime pen still draws sketches, ticks headings and underlines emphasis. The graph-paper grid and the margin rule of the earlier charcoal notebook are gone; the sketch, the tick and the entry-line habits of that notebook remain.
 
-Type is wide, heavy, uppercase Roboto Flex for headings and plain Roboto Flex for reading. Structure comes from rules (1.5px ink for the opening rule of a list, 1px grey for dividers), not boxes. Information is presented as notebook entries: a title, then a metadata line under it.
+Type is wide, heavy, uppercase Roboto Flex for headings and plain Roboto Flex for reading. Content is organised as entries: a title, then a metadata line under it. Structure now comes from panes and 1px glass hairlines instead of ruled lines.
 
-Where the build departs from intent: three soft ambient shadows exist (see Elevation). The build is recorded as shipped.
+The build is recorded as shipped, including where it bends its own rules (see Colors and Do's and Don'ts).
 
 **Key Characteristics:**
-- One charcoal ramp plus ink; lime is the only chroma.
-- Wide uppercase display type, 2px corners, ruled lists instead of cards.
-- Lime single-stroke drawings that take the form of the question they answer.
-- Motion is drawing: strokes, rules and ticks write themselves in once.
+- One black ramp plus ink; lime is the only chroma, used as marker and as ambient light.
+- Translucent, square-cornered glass panes with a lit top edge; buttons, inputs and photos are square too.
+- Wide uppercase display type; lime single-stroke drawings that take the form of the question they answer.
+- Motion is drawing: strokes, ticks and rails write themselves in once; nothing animates under reduced motion.
 
 ## Colors
 
-Near-black charcoal paper, off-white ink, one lime pen. The brand lime #AED534 on charcoal is a PRODUCT.md commitment.
+Near-black ground, off-white ink, one lime. The brand lime #AED534 is a PRODUCT.md commitment.
 
 ### Primary
-- **Marker Lime** (#AED534): the pen. Sketch strokes, completion ticks, list ticks, the h2 emphasis underline, the h1's second clause, the primary action, focus rings, selection, the caret.
+- **Marker Lime** (#AED534): sketch strokes, heading ticks, list ticks, the h2 emphasis underline, the h1's second clause, the primary action, focus rings, selection, caret, step rail, hover colour of links and titles.
 - **Marker Lime, Under the Cursor** (#c3e651): hover of the primary action only.
-- **Lime Ink** (#08080d): text on lime fills.
+- **Lime Ink** (#08080d): text on lime fills. Off the ramp (see Named Rules).
 
-### Neutral (one ramp, every grey is a step)
-- **Binding** (#08080d): nav, footer, CTA band, form plate.
-- **Charcoal 1** (#121416): gallery nav only.
-- **Mat** (#1b1e1f): inputs, image frames, map and video mats.
-- **Page** (#2A2E2E): the sheet.
-- **Grid Ruling** (#343939): the 18px graph lines, dividers on binding.
-- **Rule** (#4b5252): section borders, list dividers, input borders.
-- **Secondary Text** (#9ba2a1): metadata, notes, placeholders (5.2:1 on the page).
-- **Lede Text** (#c8cdca): ledes and supporting copy.
-- **Ink** (#F2F3EE): headings, body, ruled-list opening rules.
-- **Margin Rule** (#56652a): the dim lime line down the sheet's left edge.
+### Neutral (one black ramp, --c0 to --c7)
+- **Black** (#030304, --c0): the page, scrollbar track.
+- **Black 1** (#0a0b0d, --c1): step number fill, blank video poster.
+- **Black 2** (#111316, --c2): solid fallback for every pane under reduced transparency; video mat.
+- **Black 3** (#191b1e, --c3): defined, held in reserve.
+- **Hairline** (#24272b, --c4): defined, held in reserve.
+- **Rule** (#3b3f44, --c5): entry-line dividers, ruler ticks, step rail, scrollbar thumb.
+- **Secondary Text** (#9ba2a1, --c6): metadata, notes, placeholders, footer heads.
+- **Lede Text** (#c8cdca, --c7): ledes, supporting copy, dashed sketch guides.
+- **Ink** (#F2F3EE): headings, body.
 - **Warn** (#ff9a85): form errors only.
 
+### Glass (translucent white over the ground, not ramp steps)
+- Pane fill: `linear-gradient(160deg, rgba(255,255,255,.09), .025 at 55%, .045)`.
+- Line `rgba(255,255,255,.12)`; bright top edge `rgba(255,255,255,.24)`.
+- Floating header tint `rgba(20,22,25,.62)` to `rgba(10,11,13,.5)`; mobile menu `rgba(8,9,11,.82)`.
+
 ### Named Rules
-**The Marker Rule.** Lime marks; it never fills surfaces, backs panels or colours body text. Its jobs are the list above and nothing else.
-**The Ramp Rule.** Any grey is a ramp step. A new grey is a new ramp step, added once, or it is not used.
+**The Marker Rule.** Lime marks: strokes, ticks, underlines, the primary action, focus. It never fills a panel or colours body text. The one exception is light, not paint: the two body light fields and the soft lime glows pooled behind the hero sketch and the call to action (alpha .14-.22) are ambient and sit behind glass.
+**The Ramp Rule.** Any solid grey is a ramp step. Translucent white is the glass material, not a grey. A new solid grey is a new ramp step, added once.
 **The Warn Rule.** Warn appears only on invalid fields and form status errors.
 
 ## Typography
 
-**Display, Body and Label Font:** Roboto Flex (self-hosted variable woff2, weight 100-1000, width 25-151%), falling back to Roboto then system sans. Roboto per the Brand Bible; the width axis supplies the wide caps.
+**Display, Body and Label Font:** Roboto Flex (self-hosted variable woff2, weight 100-1000, width 25-151%), falling back to Roboto then system sans. The width axis supplies the wide caps.
 
-**Character:** A single family. Contrast comes from width (stretch 85% for labels, 100% for text, 110-125% for display) and weight (400 text, 650-820 headings).
+**Character:** A single family. Contrast comes from width (85% labels, 100% text, 110-125% display) and weight (400 text, 650-820 headings).
 
 ### Hierarchy
-- **Display / h1** (820, stretch 125%, clamp 2.15-5.5rem, 1.02, uppercase, max 15ch): home heading. Page variant 2-4.5rem, 18ch; split hero 2.75-4.4rem. The second clause is lime via em.
-- **Headline / h2** (790, stretch 118%, clamp 1.7-3.4rem, 1.04, uppercase, max 20ch): section headings. The emphasised word (written *word* in content) gets a lime underline, 0.1em thick, not colour.
-- **Title / h3** (720, 1.25rem, 1.25): item titles; in drawn indexes 790 uppercase stretch 112%.
+- **Display / h1** (820, stretch 125%, clamp 2.15-5.5rem, 1.02, uppercase, max 15ch): home heading; page variant 2-4.5rem, 18ch; split hero 2.75-4.4rem. The second clause is lime via em.
+- **Headline / h2** (790, stretch 118%, clamp 1.7-3.4rem, 1.04, uppercase, max 24ch; 18ch in the CTA at 2-4.25rem): section headings. The emphasised word gets a lime underline (0.1em), not colour.
+- **Title / h3** (720, 1.25rem, 1.25): item titles; in drawn cards 790 uppercase stretch 112%.
 - **Body** (400, 1.0625rem, 1.6): prose capped at 66ch; ledes 1.0625-1.25rem in Lede Text, 58ch.
-- **Label / entry** (650, 0.75rem, stretch 85%, tracking 0.09em, uppercase, tabular numerals): the entry line (module length, case metadata, post date), foot headings, ruler labels, contact terms.
+- **Label / entry** (650, 0.75rem, stretch 85%, tracking 0.09em, uppercase, tabular numerals): the entry line, footer heads, ruler labels, contact terms, hero foot.
 - **Buttons** (760, 0.875rem, stretch 112%, tracking 0.05em, uppercase).
 
 ### Named Rules
-**The Under Rule.** Entry and metadata lines sit under their title, never above it. No eyebrow or kicker above any heading. The hero's `eyebrow` field renders as the page foot beneath the door chooser.
+**The Under Rule.** Entry and metadata lines sit under their title, never above. No eyebrow or kicker above any heading. The hero's `eyebrow` field renders as the foot line (.hero__foot) beneath the door chooser.
 **The Wide Caps Rule.** Uppercase is for headings, buttons and labels; reading text stays sentence case.
 
 ## Layout
 
-A notebook sheet: content column max 1280px, inset 44px left on mobile, 72px at 720px, 104px at 1024px (right 16/32/48px), leaving room for the margin rule drawn 18px left of content. The graph ruling is 18px on `.sheet`. Sections have a vertical rhythm of clamp(4rem, 2.75rem + 5.5vw, 8.5rem) and are divided by a 1px Rule line. Sticky bar 64px (72px at 1024px).
+Full width. `.wrap` is capped at 1720px; panes run edge to edge inside a gutter of 10px (16px from 720px, 20px from 1024px). Content inside a pane is inset 44px left on mobile, 64px at 720px and clamp(80px, 6vw, 120px) at 1024px (right 16px, 32px, clamp(40px, 4vw, 88px)); the left inset leaves room for the heading tick, which sits 29px left of the heading. Sections have vertical rhythm clamp(4rem, 2.75rem + 5.5vw, 8.5rem). There is no grid ruling and no margin rule.
 
-Breakpoints in use: 480, 640, 720, 900, 1024. Lists are ruled and columnar (2, 3 or 4 up at 1024px) with the last row stretching so no cell is ever empty. Split layouts use 5/7 or 5/6 column ratios, with the heading sticky on desktop (FAQ, steps, case study). Hero on mobile reorders to heading, sub, drawing, doors, foot.
-
-Each section's heading carries a completion tick sitting on the margin rule.
+The header floats (fixed, gutter from top and sides, 60px high, 66px from 1024px). The hero is one pane at least `100svh - bar - 3 gutters` high. Breakpoints in use: 480, 640, 720, 900, 1024. Card and stat grids are 2, 3 or 4 up with the last row stretching so no cell is empty. Split layouts use 5/7, 5/6 or 4/8 ratios with a sticky heading on desktop (FAQ, steps, case study). The hero on mobile reorders to heading, sub, drawing, doors, foot. Under 1024px the nav becomes a full-screen glass overlay.
 
 ## Elevation & Depth
 
-Flat by default; depth is paper over binding (Page on Binding) and ruled edges. Three soft ambient drop shadows exist in the build and are the only ones: image frames (0 14px 40px rgba(0,0,0,.35)), the form plate (0 18px 50px rgba(0,0,0,.35)) and the floating WhatsApp button (0 10px 28px rgba(0,0,0,.5)). Hard offset shadows are not part of this world.
+Depth is glass over light over black. Every pane carries the same stack: `inset 0 1px 0 rgba(255,255,255,.24)` (bright top edge), `inset 0 -1px 0 rgba(255,255,255,.03)` and the drop `0 30px 80px -40px rgba(0,0,0,.9)`, plus a diagonal sheen from a `::before` (118deg white wedge .09 to transparent at 40%, and a soft corner highlight). The floating WhatsApp button is lime with `0 12px 30px rgba(0,0,0,.55)` and a `.45` white top edge.
+
+Backdrop blur (`blur(22px) saturate(165%)`) is applied only where content scrolls behind a pane: the floating header, the hero pane, the form plate and the CTA. The mobile menu and the video play chip also blur (22px and 12px). All other panes rely on tint alone, which keeps phones cheap.
 
 ### Named Rules
-**The Ruled Not Raised Rule.** Hierarchy is made with rules and ink, not shadows. A new shadow needs the same justification as those three: a surface that physically lies over the page.
+**The Frosting Rule.** Blur is for panes that content passes behind. A static card gets the gradient, edge and sheen, never a backdrop filter.
+**The Solid Fallback Rule.** Under `prefers-reduced-transparency: reduce` every pane, the nav overlay and the play chip become solid Black 2 (#111316) with no blur.
 
 ## Shapes
 
-Corners are 2px everywhere (--r), including buttons, inputs, checkboxes, frames, step numbers and video mats; there is no pill or large radius. Borders are 1px (dividers, frames), 1.5px (buttons, inputs, flow nodes, ink opening rules) or 2px (focus, step rail, lime strokes at 2.25px in drawings). Sketch boxes are drawn with single strokes, not filled shapes.
+Square and sharp. Every radius token is 0 (--r, --r-lg, --r-pill): glass panes, the floating header, buttons, inputs, checkboxes, photos, video mats, step numbers, avatars, the scrollbar thumb and the WhatsApp button all have square corners. Softness comes from the glass gradient and sheen, not from curves. Borders are 1px glass line on panes, 1px on buttons and inputs (rgba white .16-.24), 2px for focus, the lime step-number ring and the step rail; lime strokes are 2.25px in drawings. The checkbox tick is an SVG background.
+
+### Named Rules
+**The Square Rule.** No rounded corners anywhere. New components use the radius tokens (all 0) or none, never a literal radius.
 
 ## Components
 
 ### Buttons
-- **Shape:** 2px, 52px high (42px in the nav), uppercase wide label with a Phosphor regular arrow.
-- **Primary:** lime fill, Lime Ink text; the only filled lime control. Hover to lime-hi.
-- **Ghost:** 1.5px ink border, transparent; hover turns border and text lime, arrow nudges 3px.
+- **Shape:** square, 52px high (42px in the header), uppercase wide label with a Phosphor regular arrow.
+- **Primary (lime):** lime fill, Lime Ink text; the only filled lime control. Hover to lime-hi.
+- **Glass (default):** `rgba(255,255,255,.06)` fill, 1px `rgba(255,255,255,.24)` border; hover turns border and text lime, arrow nudges 3px. Active presses 1px.
 - **Disabled:** 55% opacity.
 
-### Door chooser (hero)
-Ruled rows with a 1.5px ink rule above and below the set: large uppercase label, small note beneath, lime arrow. Hover draws a lime underline across the label and moves the arrow 6px.
+### Glass pane
+The shared container for cards, steps track, parts list, curriculum tracks, stat cells, testimonials, FAQ list, form plate, people, contact list, map, post list, footer panel and image frames. 1px glass line, square corners, the shadow stack and sheen above, the glass gradient fill.
 
-### Ruled index (cards)
-Not cards: columns divided by 1px Rule lines under a 1.5px ink opening rule, with a lime icon or lime drawing, title, text, and a whole-item link with a small corner arrow. The drawn variant is two columns (drawing 5fr, text 7fr).
+### Door chooser (hero)
+Rows between 1px hairlines (`rgba(242,243,238,.28)`): large uppercase label, small note beneath, lime arrow. Hover draws a lime underline across the label and moves the arrow 6px.
+
+### Cards (index)
+Glass tiles in 2, 3 or 4 columns with a lime icon or lime drawing, title, text and a whole-tile link with a corner arrow. Hover lifts 3px, border turns lime at .5 alpha and the title turns lime. Photo cards put the print at the top of the pane. The drawn variant is one per row, drawing 5fr and text 7fr.
 
 ### Drawings
-Lime single-stroke SVG (2.25px, round caps), dashed Lede Text guide lines, Page-filled boxes, ink 13px labels and Secondary Text 11.5px notes. Each takes the form of its question: day line (masterclass), department map (corporate), lead flow (services), documents to agent (RAG). Drawing strokes write in on scroll.
+Lime single-stroke SVG (2.25px, round caps), dashed Lede Text guides, `rgba(0,0,0,.45)` box fills, ink 13px labels and Secondary Text 11.5px notes. Each takes the form of its question: day line (masterclass), department map (corporate), lead flow (services), documents to agent (RAG). Strokes write in on scroll.
 
 ### Stats (dimensions)
-Draftsman dimension lines: value centred between two lime rules with extension ticks and arrowheads, label beneath. The caveat "Typical outcomes for AI-enabled teams." stays with the stats.
+Glass cells: value centred between two lime dimension rules with extension ticks and arrowheads, label beneath. The caveat "Typical outcomes for AI-enabled teams." stays with the stats.
 
 ### Curriculum
-A ruler of ticks with a lime line in segments and a hover highlight band; tracks of modules whose entry line sits under the module title.
+A ruler of ticks with a lime line in segments and a hover highlight band (lime .22 fill, 1px lime edge); glass tracks of modules whose entry line sits under the module title.
 
 ### Steps, case study, testimonials
-Steps run on a vertical rail that fills lime on scroll with 32px square numbered boxes. Case study uses bordered flow nodes joined by lime arrows. Testimonials are witnessed entries: quote, then a 1.5px ink rule and signature; video thumbnails (4:5) load the iframe only on click.
+Steps run on a vertical rail inside a glass track that fills lime on scroll, with 32px square numbered markers. The case study uses glass flow nodes joined by lime arrows. Testimonials are glass entries: quote, then a hairline and signature; video thumbnails (4:5) load the iframe only on click.
 
 ### Inputs and form plate
-Mat fill, 1.5px Rule border, 2px corners, 50px high; hover border Secondary Text; focus lime border plus 1px lime ring; invalid border Warn. Checkboxes are 20px, lime when checked. The form sits on a Binding plate; on success it gives way to a "logline" confirmation.
+Fill `rgba(255,255,255,.05)`, 1px `rgba(255,255,255,.16)` border, square, 50px high; hover border .32; focus lime border plus 1px lime ring; invalid border Warn. Checkboxes 20px, lime when checked. The plate is a blurred glass pane; on success the form gives way to a "logline" confirmation.
 
-### Navigation and binding
-Sticky Binding bar with the real Artificia logo image (never a text wordmark; 34px high, 40px at 1024px, as supplied). Links 0.9375rem, active or hover shows a 2px lime underline. Under 1024px the nav becomes a full-screen Binding overlay with 1.5rem uppercase links; the toggle collapses to an icon under 480px. Footer is Binding with label-style column heads. A floating lime WhatsApp square sits bottom right and hides when the form is in view.
+### Navigation and footer
+Floating blurred glass bar with the real Artificia logo image (never a text wordmark; 32px high, 38px at 1024px). Links 0.9375rem, active or hover shows a 2px lime underline. The primary Enquire button sits on the right. Under 1024px the nav becomes a full-screen glass overlay with 1.5rem uppercase links and the toggle collapses to an icon under 480px. The footer is one glass panel with label-style column heads. A floating lime WhatsApp square hides when the form is in view.
 
 ### Map
 A line-drawn facade; the map iframe loads only on click.
 
 ### Motion
-GSAP 3.13 and ScrollTrigger, run once per element, only when the head script promised it. Grammar: strokes draw (dashoffset, 0.5-0.8s power2), rules scale in from their origin, lists lift 12-16px and fade with 0.06-0.08s stagger, stat values count up, the step rail fills with scroll. Easing token `cubic-bezier(.16, 1, .3, 1)` for CSS transitions (0.2-0.45s). Under prefers-reduced-motion nothing animates: pre-states exist only under `.motion`, and a global rule collapses transition and animation durations.
+GSAP 3.13 and ScrollTrigger, run once per element, only when the head script promised it (`.motion`, withdrawn if GSAP fails). Grammar: strokes draw (dashoffset, 0.5-0.8s power2), rules scale in, lists lift 12-16px and fade with 0.06-0.08s stagger, stat values count up, the step rail fills with scroll. CSS easing `cubic-bezier(.16, 1, .3, 1)` at 0.2-0.45s (photos 0.8s). The two light fields drift on CSS keyframes. Under prefers-reduced-motion no `.motion` class is set and a global rule collapses animation and transition durations to .01ms with one iteration, so the light fields stand still.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put the real logo image top-left on Binding; use Roboto Flex throughout.
+- **Do** keep every corner square (radius tokens are 0).
+- **Do** put the real logo image top-left in the floating glass bar; use Roboto Flex throughout.
 - **Do** use lime only as marker: strokes, ticks, h2 emphasis underline, the h1's second clause, the primary action, focus.
-- **Do** make every grey a ramp step (--c0 to --c7, ink).
+- **Do** keep solid greys on the ramp (--c0 to --c7, ink); build panes from the glass tokens (--glass, --glass-line, --glass-edge, --glass-shadow).
+- **Do** blur only panes that content scrolls behind (header, hero, form plate, CTA).
+- **Do** provide the solid Black 2 fallback for any new pane under prefers-reduced-transparency.
 - **Do** draw a diagram in the form of the question it answers.
 - **Do** put entry and metadata lines under titles.
 - **Do** keep videos and the map behind a click.
@@ -209,7 +224,9 @@ GSAP 3.13 and ScrollTrigger, run once per element, only when the head script pro
 
 ### Don't:
 - **Don't** put an eyebrow or kicker above any heading.
-- **Don't** use a radius above 2px, cards with boxed borders and shadows, hard offset shadows, glyph icons (use Phosphor regular via icon()) or any other display face.
-- **Don't** use lime for body text, panel fills or decoration without meaning.
+- **Don't** round any corner: no radius, no pills.
+- **Don't** use hard offset shadows, glyph icons (use Phosphor regular via icon()) or any other display face.
+- **Don't** use lime for body text or panel fills; its only non-marker use is the ambient light behind glass.
 - **Don't** animate under prefers-reduced-motion.
 - **Don't** use Warn outside form errors.
+- **Don't** reintroduce the graph-paper grid or the margin rule.
