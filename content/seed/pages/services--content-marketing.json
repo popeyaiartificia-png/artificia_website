@@ -30,7 +30,7 @@
       "fields": {
         "heading": "Before and after *AI content*",
         "items": [
-          {"title": "Social posts", "before": "Posting stops whenever the team gets busy.", "after": "A month of posts planned, written and designed in one go, then scheduled."},
+          {"title": "Social posts", "before": "Posting stops whenever the team gets busy.", "after": "Posts planned a month ahead, written and designed with AI, then scheduled."},
           {"title": "Product videos", "before": "Every video needs a shoot and weeks of editing.", "after": "Explainer and product videos made with AI video, voiceover and avatars."},
           {"title": "Other languages", "before": "Content exists only in English.", "after": "Videos and posts dubbed and localised into the languages your buyers speak."}
         ]
@@ -44,7 +44,7 @@
           {"title": "Research", "text": "We study your buyers, your competitors and the searches you want to win."},
           {"title": "Plan", "text": "A content calendar tied to your offers and campaigns."},
           {"title": "Make", "text": "Writing, design, video and voice, made with AI and checked by hand."},
-          {"title": "Measure", "text": "Leads from each campaign tracked in your CRM and reported monthly."}
+          {"title": "Measure", "text": "Leads from each campaign are tracked in your CRM, so you can see what worked."}
         ]
       }
     },
@@ -79,7 +79,7 @@
       "fields": {
         "heading": "Questions about *content*",
         "items": [
-          {"question": "Is AI content any good?", "answer": "Only when someone checks it. AI drafts fast, then our team edits for accuracy, tone and your brand before anything is published."},
+          {"question": "Is AI content any good?", "answer": "Only when someone checks it. AI writes the first draft, then we edit for accuracy, tone and your brand before anything is published."},
           {"question": "Do you do SEO?", "answer": "Yes. We structure content for Google and for AI search tools such as ChatGPT, so your pages get found and cited."},
           {"question": "Can you make videos without a shoot?", "answer": "Yes. We make explainer, product and social videos with AI voice and avatars. For some products, real photos still work better."},
           {"question": "Can you make content in Hindi or Gujarati?", "answer": "Yes. We dub and localise videos and posts into the languages your buyers speak."}

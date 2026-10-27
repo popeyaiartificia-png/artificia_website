@@ -37,9 +37,9 @@
         "intro": "Each department works on its own tasks in the same program.",
         "columns": "3",
         "cards": [
-          {"image": "ai-sales.jpg", "title": "Sales", "text": "Same-day replies, and quotes drafted while the enquiry is still warm."},
+          {"image": "ai-sales.jpg", "title": "Sales", "text": "Replies and quotes drafted from your rate card while the enquiry is still warm."},
           {"image": "ai-ops.jpg", "title": "Purchase and supply chain", "text": "RFQs drafted quickly, and vendor quotes compared side by side."},
-          {"image": "ai-documents.jpg", "title": "Quality", "text": "Reports and documentation drafted in minutes, in the same format every time."},
+          {"image": "ai-documents.jpg", "title": "Quality", "text": "Reports and documentation drafted from your templates, in the same format every time."},
           {"image": "ai-finance.jpg", "title": "Accounts", "text": "Invoice extraction, reconciliation support and MIS from your ledgers."},
           {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, screening and onboarding packs for new joiners."},
           {"image": "ai-executive.jpg", "title": "Leadership", "text": "The monthly picture, without asking three people to prepare it."}

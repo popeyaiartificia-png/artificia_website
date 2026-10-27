@@ -74,7 +74,7 @@
           {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
           {"title": "International export account", "text": "Importers and distributors abroad, worked by email."},
           {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
-          {"title": "Reported back to Meta", "text": "New leads are sent to Meta as lead events, so the ads learn which clicks became leads."}
+          {"title": "Reported back to Meta", "text": "New Facebook and Instagram leads in the India account go to Meta as lead events, so the ads learn which clicks became leads."}
         ],
         "link_label": "Read the full case study",
         "link": "/case-studies/orkay-tiles"
@@ -98,7 +98,7 @@
         "heading": "Related *services*",
         "columns": "3",
         "cards": [
-          {"image": "orkay-website.jpg", "title": "Website development", "text": "A site whose forms feed GoHighLevel directly.", "link": "/services/website-development"},
+          {"image": "ai-workflow.jpg", "title": "Website development", "text": "A site whose forms feed GoHighLevel directly.", "link": "/services/website-development"},
           {"image": "ai-marketing.jpg", "title": "Content and marketing", "text": "Campaigns that fill the pipeline you just built.", "link": "/services/content-marketing"},
           {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "Assistants that answer leads from your own documents.", "link": "/services/rag-custom-automation"}
         ]

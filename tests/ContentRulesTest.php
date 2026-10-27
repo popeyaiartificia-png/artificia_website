@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 const SEED_DIR = __DIR__ . '/../content/seed';
-const SEED_BANNED = ['\bbest\b', '#\s?1\b', '\bno\.?\s?1\b', 'lowest', 'seats? (left|available)', 'placement', 'internship',
-    'guarantee', '₹', '\bRs\.?\s', '\bINR\b', 'valued at', '\bLPA\b', 'Modi', 'Altman'];
+const SEED_BANNED = ['\bbest\b', '#\s?1\b', '\bno\.?\s?1\b', 'lowest', 'seats? (left|available)', '\bplacements?\b', 'internship',
+    'guarantee', '₹', '\bRs\.?\s', '\bINR\b', 'valued at', '\bLPA\b', '\bModi\b', 'Altman'];
 const SEED_APPROVED_NUMBERS = ['92%', '65%', '500%', '4×'];
 
 /** Every seed page, keyed by slug. */
@@ -66,7 +66,7 @@ function test_seed_numbers_are_approved(): void
     foreach (seed_json_files() as $name => $data) {
         $slug = is_array($data) ? (string) ($data['slug'] ?? '') : '';
         foreach (seed_strings($data) as $s) {
-            preg_match_all('/\d+\s?%|\d+\s?[x×]\b/iu', $s, $m);
+            preg_match_all('/\d+\s?%|\d+\s?(?:x\b|×)/iu', $s, $m); // "×" is not a word character, so it takes no \b
             foreach ($m[0] as $n) {
                 ok(in_array(str_replace([' ', 'x', 'X'], ['', '×', '×'], $n), SEED_APPROVED_NUMBERS, true), "$name: unapproved number \"$n\" in: $s");
             }
@@ -77,17 +77,18 @@ function test_seed_numbers_are_approved(): void
 
 function test_corporate_pages_state_no_fixed_duration(): void
 {
-    $checked = 0;
-    foreach (seed_pages() as $slug => $page) {
-        if (!str_starts_with($slug, 'corporate-ai-training')) {
-            continue;
-        }
-        $checked++;
-        foreach (seed_strings($page) as $s) {
-            ok(!preg_match('/60[- ]day|\d+\s+sessions/i', $s, $m), "$slug: fixed duration \"" . ($m[0] ?? '') . "\" in: $s");
+    $checked = array_filter(seed_pages(), fn($slug) => str_starts_with($slug, 'corporate-ai-training'), ARRAY_FILTER_USE_KEY);
+    foreach (json_decode((string) file_get_contents(SEED_DIR . '/templates.json'), true, 512, JSON_THROW_ON_ERROR) as $t) {
+        if ($t['name'] === 'Corporate by industry') {
+            $checked['template: ' . $t['name']] = $t;
         }
     }
-    eq($checked, 3, 'corporate training pages');
+    eq(count($checked), 4, 'three corporate training pages and their template');
+    foreach ($checked as $label => $data) {
+        foreach (seed_strings($data) as $s) {
+            ok(!preg_match('/60[- ]day|\d+\s+sessions/i', $s, $m), "$label: fixed duration \"" . ($m[0] ?? '') . "\" in: $s");
+        }
+    }
 }
 
 function test_seed_pages_pass_publish_rules(): void
@@ -150,6 +151,7 @@ function test_meta_lengths(): void
     $seen = [];
     foreach (seed_pages() as $slug => $page) {
         ok(mb_strlen($page['meta_title']) <= 60, "$slug meta_title is " . mb_strlen($page['meta_title']) . ' chars');
+        ok(str_ends_with($page['meta_title'], ' | Artificia AI'), "$slug meta_title ends with \" | Artificia AI\"");
         $d = mb_strlen($page['meta_description']);
         ok($d >= 70 && $d <= 160, "$slug meta_description is $d chars");
         foreach (['title', 'h1', 'meta_title', 'meta_description'] as $col) {

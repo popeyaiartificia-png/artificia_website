@@ -35,7 +35,7 @@
     {
       "type": "curriculum",
       "fields": {
-        "heading": "Sixty days, *one line*",
+        "heading": "What you learn, *day by day*",
         "intro": "The Foundation covers days 1 to 30. The Full program keeps going to day 60.",
         "modules": [
           {"track": "foundation", "day_range": "1–3", "title": "The AI landscape and prompting", "topics": "Where AI came from, setting up your models, prompt frameworks and advanced prompting.", "tools": "ChatGPT, Claude, Gemini, DeepSeek"},

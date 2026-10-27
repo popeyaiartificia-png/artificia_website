@@ -32,14 +32,26 @@ function seed_resolve_images(PDO $db, array $sections, string $mediaDir, string 
     return $sections;
 }
 
+/** A decoded JSON object or list; a missing, unreadable or malformed file throws a RuntimeException naming it. */
 function seed_json(string $path): array
 {
-    return json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+    $raw = is_file($path) ? @file_get_contents($path) : false;
+    if ($raw === false) {
+        throw new RuntimeException(basename($path) . ': the file is missing or could not be read.');
+    }
+    try {
+        $data = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
+    } catch (JsonException $e) {
+        throw new RuntimeException(basename($path) . ': ' . $e->getMessage() . '.');
+    }
+    return is_array($data) ? $data : throw new RuntimeException(basename($path) . ': expected a JSON object or list.');
 }
 
 /**
  * Imports content/seed: media, templates (by name), pages (by slug, published), redirects (by from_path)
  * and settings that are still empty. Refuses a site that already has pages unless $force.
+ * Every file is read and checked before anything is written. A page that fails its publish rules is saved
+ * as a draft, and the import then throws naming it.
  * @return array{pages:int, templates:int, redirects:int, media:int}
  */
 function seed_import(PDO $db, string $dir, string $uploadsDir, bool $force = false): array
@@ -49,6 +61,31 @@ function seed_import(PDO $db, string $dir, string $uploadsDir, bool $force = fal
     }
     $mediaDir = "$dir/media";
     $alts = is_file("$mediaDir/alt.json") ? seed_json("$mediaDir/alt.json") : [];
+    $templateRows = seed_json("$dir/templates.json");
+    foreach ($templateRows as $i => $t) {
+        if (!is_string($t['name'] ?? null) || !is_array($t['sections'] ?? null) || !is_array($t['unique_fields'] ?? null)) {
+            throw new RuntimeException('templates.json: template ' . ($i + 1) . ' needs a name, sections and unique_fields.');
+        }
+    }
+    $pageRows = [];
+    foreach (glob("$dir/pages/*.json") ?: [] as $file) {
+        $page = seed_json($file);
+        if (!is_string($page['slug'] ?? null) || !is_array($page['sections'] ?? [])) {
+            throw new RuntimeException(basename($file) . ': a page needs a slug and a list of sections.');
+        }
+        if (isset($page['template']) && !in_array($page['template'], array_column($templateRows, 'name'), true)) {
+            throw new RuntimeException(basename($file) . ": no template named \"{$page['template']}\".");
+        }
+        $pageRows[] = $page;
+    }
+    $redirectRows = seed_json("$dir/redirects.json");
+    foreach ($redirectRows as $i => $r) {
+        if (!is_string($r['from_path'] ?? null) || !is_string($r['to_path'] ?? null)) {
+            throw new RuntimeException('redirects.json: redirect ' . ($i + 1) . ' needs a from_path and a to_path.');
+        }
+    }
+    $settingRows = is_file("$dir/settings.json") ? seed_json("$dir/settings.json") : [];
+
     $images = array_filter(glob("$mediaDir/*") ?: [], fn($f) => preg_match('/\.(jpe?g|png|webp)$/i', $f) === 1);
     foreach ($images as $file) {
         seed_media($db, $file, $uploadsDir, $alts); // the whole set goes into the library, used or not
@@ -61,7 +98,7 @@ function seed_import(PDO $db, string $dir, string $uploadsDir, bool $force = fal
     };
 
     $templates = [];
-    foreach (seed_json("$dir/templates.json") as $t) {
+    foreach ($templateRows as $t) {
         $args = [page_json(sections_normalize($resolve($t['sections']))), page_json(array_values($t['unique_fields'])), $t['name']];
         $id = $idOf('SELECT id FROM templates WHERE name = ?', $t['name']);
         if ($id) {
@@ -73,29 +110,35 @@ function seed_import(PDO $db, string $dir, string $uploadsDir, bool $force = fal
         $templates[$t['name']] = $id;
     }
 
-    $pages = glob("$dir/pages/*.json") ?: [];
-    foreach ($pages as $file) {
-        $page = seed_json($file);
+    $drafts = [];
+    foreach ($pageRows as $page) {
         if (isset($page['template'])) {
-            $page['template_id'] = $templates[$page['template']] ?? throw new RuntimeException(basename($file) . ": no template named \"{$page['template']}\".");
+            $page['template_id'] = $templates[$page['template']];
         }
-        $page['sections'] = $resolve($page['sections'] ?? []);
-        $page['status'] = 'published';
-        $page['id'] = $idOf('SELECT id FROM pages WHERE slug = ?', (string) ($page['slug'] ?? ''));
+        $page['sections'] = sections_normalize($resolve($page['sections'] ?? []));
+        $errors = page_publish_errors($db, $page);
+        $page['status'] = $errors ? 'draft' : 'published';
+        if ($errors) {
+            $drafts[] = "{$page['slug']} ({$errors[0]})";
+        }
+        $page['id'] = $idOf('SELECT id FROM pages WHERE slug = ?', $page['slug']);
         page_save($db, $page, 0);
     }
 
-    $redirects = seed_json("$dir/redirects.json");
-    foreach ($redirects as $r) {
-        redirect_save($db, ['id' => $idOf('SELECT id FROM redirects WHERE from_path = ?', $r['from_path'])] + $r);
+    foreach ($redirectRows as $r) {
+        $from = '/' . ltrim(trim($r['from_path']), '/'); // as redirect_save stores it, so a re-run finds the row
+        redirect_save($db, ['id' => $idOf('SELECT id FROM redirects WHERE from_path = ?', $from)] + $r);
     }
 
     $current = settings($db);
-    foreach (is_file("$dir/settings.json") ? seed_json("$dir/settings.json") : [] as $key => $value) {
+    foreach ($settingRows as $key => $value) {
         if (trim($current[$key] ?? '') === '') {
-            setting_set($db, $key, (string) $value);
+            setting_set($db, (string) $key, (string) $value);
         }
     }
 
-    return ['pages' => count($pages), 'templates' => count($templates), 'redirects' => count($redirects), 'media' => count($images)];
+    if ($drafts) {
+        throw new RuntimeException('Imported, but these pages fail their publish rules and were saved as drafts: ' . implode('; ', $drafts));
+    }
+    return ['pages' => count($pageRows), 'templates' => count($templates), 'redirects' => count($redirectRows), 'media' => count($images)];
 }

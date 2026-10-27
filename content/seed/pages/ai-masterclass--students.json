@@ -25,7 +25,7 @@
         "intro": "Three everyday jobs, before and after the course.",
         "items": [
           {"title": "Assignments and research", "before": "Hours of searching, then a summary stitched together from open tabs.", "after": "Research with Perplexity and NotebookLM, with sources you can check."},
-          {"title": "Presentations", "before": "A night spent lining up slides by hand.", "after": "A first deck from Gamma in minutes, then your own edits."},
+          {"title": "Presentations", "before": "A night spent lining up slides by hand.", "after": "A first deck from Gamma, then your own edits."},
           {"title": "Showing your skills", "before": "A CV that lists software and not much else.", "after": "A portfolio page, a project video and a live website you built."}
         ]
       }

@@ -3,14 +3,14 @@
   "kind": "page",
   "title": "About Artificia",
   "h1": "We teach AI, and *we build with it*",
-  "meta_title": "About Artificia AI, Vadodara | Hardik Aseri and team",
+  "meta_title": "About us: Hardik Aseri and team | Artificia AI",
   "meta_description": "Artificia Intellec Pvt Ltd is an AI training and automation company in Vadodara, Gujarat. Meet trainer Hardik Aseri and founder Vijay Linju Raghavan.",
   "sections": [
     {
       "type": "hero",
       "fields": {
         "subheading": "Artificia AI is an AI training and automation company in Vadodara, Gujarat. The people who teach the classes also build the systems.",
-        "image": "hardik-aseri.jpg",
+        "image": "classroom-instructor.jpg",
         "variant": "split",
         "primary_cta_label": "Contact us",
         "primary_cta_link": "/contact",
@@ -41,7 +41,7 @@
         "heading": "What we *do*",
         "columns": "3",
         "cards": [
-          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Live in Vadodara, one hour a day, for 30 or 60 days.", "link": "/ai-masterclass"},
+          {"image": "learner-lime.jpg", "title": "AI Masterclass", "text": "Live in Vadodara, one hour a day, for 30 or 60 days.", "link": "/ai-masterclass"},
           {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "Custom programs, on-site or over Microsoft Teams.", "link": "/corporate-ai-training"},
           {"image": "business-owner-desk.jpg", "title": "Services", "text": "GoHighLevel, websites, content and RAG automation.", "link": "/services"}
         ]

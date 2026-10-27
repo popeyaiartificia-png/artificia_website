@@ -42,9 +42,9 @@
         "image": "orkay-website.jpg",
         "built": [
           {"title": "Two accounts", "text": "India dealer leads over WhatsApp, and export buyers by email."},
-          {"title": "Routed by language", "text": "Each lead goes to a rep who speaks the lead's language."},
+          {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
           {"title": "Called by AI", "text": "An AI voice agent calls new India leads in Hindi."},
-          {"title": "Never forgotten", "text": "Every lead gets a follow-up after 18 hours."}
+          {"title": "Followed up", "text": "India leads get an automatic follow-up 18 hours later."}
         ],
         "link_label": "Read the case study",
         "link": "/case-studies/orkay-tiles"

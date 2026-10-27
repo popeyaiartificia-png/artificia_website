@@ -61,7 +61,7 @@
       "fields": {
         "heading": "Three jobs AI can *take over*",
         "items": [
-          {"title": "Answering enquiries", "before": "New leads wait hours for someone to call back.", "after": "An AI assistant replies on WhatsApp in minutes and books the call."},
+          {"title": "Answering enquiries", "before": "New leads wait hours for someone to call back.", "after": "An AI assistant replies on WhatsApp and the rep gets the lead."},
           {"title": "Monthly reports", "before": "Someone copies figures between spreadsheets by hand.", "after": "The report builds itself from your sheets and arrives by email."},
           {"title": "Finding the right document", "before": "Staff dig through folders and old emails for the latest SOP.", "after": "Ask in plain words and get the answer with the source page."}
         ]
@@ -75,9 +75,9 @@
         "summary": "We set up and run Orkay's two GoHighLevel accounts, and we built orkaytiles.com.",
         "image": "orkay-website.jpg",
         "built": [
-          {"title": "Routed by language", "text": "Each lead goes to a rep who speaks the lead's language."},
+          {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
           {"title": "AI voice calls", "text": "New India leads get a call in Hindi from an AI voice agent."},
-          {"title": "Followed up and reported", "text": "Unanswered leads are followed up, and a daily report shows what moved."}
+          {"title": "Followed up and reported", "text": "India leads get an automatic follow-up 18 hours later, and a daily report shows what moved."}
         ],
         "link_label": "Read the case study",
         "link": "/case-studies/orkay-tiles"

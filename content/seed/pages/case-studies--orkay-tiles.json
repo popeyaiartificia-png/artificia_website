@@ -3,7 +3,7 @@
   "kind": "page",
   "title": "Orkay Tiles International case study",
   "h1": "How Orkay Tiles *runs its leads* on GoHighLevel",
-  "meta_title": "Orkay Tiles case study: GoHighLevel and AI | Artificia",
+  "meta_title": "Orkay Tiles case study: GoHighLevel and AI | Artificia AI",
   "meta_description": "How Artificia set up and runs Orkay Tiles International's two GoHighLevel accounts, with language routing, an AI voice agent and a new website.",
   "sections": [
     {
@@ -30,9 +30,9 @@
           {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
           {"title": "International export account", "text": "Importers, distributors and project buyers abroad, worked by email."},
           {"title": "Routed by language", "text": "Tamil, Telugu and Kannada form leads go to the rep who speaks that language."},
-          {"title": "Arya, the AI voice agent", "text": "Arya calls new India leads in Hindi, so every enquiry hears back fast."},
-          {"title": "Meta Conversions API", "text": "Each new Facebook and Instagram lead is reported back to Meta as a lead event."},
-          {"title": "Follow-up", "text": "Every lead gets a follow-up after 18 hours, so nobody is forgotten."},
+          {"title": "Arya, the AI voice agent", "text": "Arya calls new India leads in Hindi."},
+          {"title": "Meta Conversions API", "text": "Each new Facebook and Instagram lead in the India account is reported back to Meta as a lead event."},
+          {"title": "Follow-up", "text": "India leads get an automatic follow-up 18 hours later."},
           {"title": "Daily status report", "text": "Every morning the team gets a report of new leads, stage moves and conversations."},
           {"title": "The website", "text": "We built orkaytiles.com, with collection pages and an admin the team edits."}
         ]
@@ -42,7 +42,7 @@
       "type": "text_image",
       "fields": {
         "heading": "From ad click to *the right rep*",
-        "body": "<p>A dealer fills in a Meta form or messages on WhatsApp. GoHighLevel gives the lead an owner who speaks the dealer's language.</p><p>Then Arya, an AI voice agent, calls the dealer in Hindi.</p>",
+        "body": "<p>A dealer fills in a Meta form or messages on WhatsApp, and GoHighLevel gives the lead an owner.</p><p>Tamil, Telugu and Kannada form leads go to a rep who speaks that language.</p><p>Then Arya, an AI voice agent, calls the dealer in Hindi.</p>",
         "image": "ai-sales.jpg",
         "image_side": "right"
       }
@@ -51,7 +51,7 @@
       "type": "text_image",
       "fields": {
         "heading": "Automations that *run every day*",
-        "body": "<p>Leads nobody answers get a follow-up after 18 hours. Meta hears about every lead, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
+        "body": "<p>India leads get an automatic follow-up 18 hours later. Meta hears about every Facebook and Instagram lead in the India account, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
         "image": "ai-workflow.jpg",
         "image_side": "left"
       }

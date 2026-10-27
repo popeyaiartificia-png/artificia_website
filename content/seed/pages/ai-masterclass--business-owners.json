@@ -4,7 +4,7 @@
   "template": "Masterclass by audience",
   "title": "AI Masterclass for business owners",
   "h1": "AI training for *business owners* and founders",
-  "meta_title": "AI training for business owners in Vadodara | Artificia",
+  "meta_title": "AI training for business owners in Vadodara | Artificia AI",
   "meta_description": "Learn which work in your business AI can take on, and build the first automations yourself. Live in Vadodara, one hour a day, no coding needed.",
   "sections": [
     {
@@ -25,7 +25,7 @@
         "intro": "Three jobs owners often carry themselves, before and after the course.",
         "items": [
           {"title": "Answering enquiries", "before": "Leads wait hours for a reply while you are busy.", "after": "A WhatsApp bot built in n8n answers common questions and collects details."},
-          {"title": "Marketing content", "before": "Posts and creatives wait until someone finds the time.", "after": "Write, design and voice content with ChatGPT, Canva and ElevenLabs in one sitting."},
+          {"title": "Marketing content", "before": "Posts and creatives wait until someone finds the time.", "after": "Write, design and voice your own content with ChatGPT, Canva and ElevenLabs."},
           {"title": "Your website", "before": "Waiting weeks for someone else to change a page.", "after": "Build and edit a landing page yourself with Lovable or Bolt.new."}
         ]
       }

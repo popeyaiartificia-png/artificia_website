@@ -67,12 +67,12 @@
       "fields": {
         "heading": "We built *orkaytiles.com*",
         "client": "Orkay Tiles International",
-        "summary": "A new website for a tile manufacturer in Morbi, with an admin Orkay's team edits and enquiry forms that send leads to GoHighLevel.",
+        "summary": "A new website for a tile manufacturer in Morbi, with collection pages and an admin Orkay's team edits.",
         "built": [
           {"title": "Collection pages", "text": "Each tile collection has its own page, with sizes, finishes and photos."},
           {"title": "An editable admin", "text": "Orkay's team edits pages, products and SEO settings themselves."},
           {"title": "Old links kept", "text": "Addresses from the old site redirect to the new pages."},
-          {"title": "Enquiries to the CRM", "text": "B2B enquiry forms send leads into GoHighLevel."}
+          {"title": "Light on phones", "text": "Photos are served as small, responsive files, so pages load quickly on a phone."}
         ],
         "link_label": "Read the case study",
         "link": "/case-studies/orkay-tiles"
@@ -86,7 +86,7 @@
           {"question": "Can my team edit the site after launch?", "answer": "Yes. You get an admin where your team edits pages, images and SEO settings without a developer."},
           {"question": "Will we lose our Google traffic?", "answer": "We map your old addresses to the new pages and redirect them, so existing links and search results keep working."},
           {"question": "Can the site send leads to GoHighLevel?", "answer": "Yes. Forms can send each enquiry to GoHighLevel or another CRM, with the page and ad it came from."},
-          {"question": "Do you write the content too?", "answer": "We can. Our content team writes pages and posts, or we work from what you already have."}
+          {"question": "Do you write the content too?", "answer": "Yes. Content development and marketing is one of our services, so we can write the pages and posts, or work from what you already have."}
         ]
       }
     },
