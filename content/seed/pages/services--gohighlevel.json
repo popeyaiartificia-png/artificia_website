@@ -31,7 +31,7 @@
         "heading": "Before and after *GoHighLevel*",
         "items": [
           {"title": "New leads", "before": "Ad leads sit in a spreadsheet until someone notices them.", "after": "Each lead lands in a pipeline with its source and an owner."},
-          {"title": "Follow-up", "before": "Leads go cold when a rep forgets to call back.", "after": "Unanswered leads get an automatic follow-up, then move to another rep."},
+          {"title": "Follow-up", "before": "Leads go cold when a rep forgets to call back.", "after": "Unanswered leads get an automatic follow-up."},
           {"title": "Reporting", "before": "Managers ask each rep what happened yesterday.", "after": "A daily report shows what came in and what moved."}
         ]
       }
@@ -87,7 +87,7 @@
         "items": [
           {"question": "Do I need a GoHighLevel account already?", "answer": "No. We can set up a new account, or take over and tidy one you already have."},
           {"question": "Can GoHighLevel handle WhatsApp leads?", "answer": "Yes. Orkay's India account runs WhatsApp-first: leads arrive, get an owner and receive follow-ups inside GoHighLevel."},
-          {"question": "Can it call leads automatically?", "answer": "Yes. For Orkay we connected an AI voice agent that calls new leads in Hindi and books a callback on the rep's calendar."},
+          {"question": "Can it call leads automatically?", "answer": "Yes. For Orkay we connected an AI voice agent that calls new India leads in Hindi."},
           {"question": "Do you run the account after setup?", "answer": "Yes. We run Orkay's accounts day to day: fixing problems, adding workflows and checking the daily report."}
         ]
       }

@@ -30,9 +30,9 @@
           {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
           {"title": "International export account", "text": "Importers, distributors and project buyers abroad, worked by email."},
           {"title": "Routed by language", "text": "Tamil, Telugu and Kannada form leads go to the rep who speaks that language."},
-          {"title": "Arya, the AI voice agent", "text": "Arya calls new India leads in Hindi, then books a callback on the rep's calendar or transfers the call live."},
+          {"title": "Arya, the AI voice agent", "text": "Arya calls new India leads in Hindi, so every enquiry hears back fast."},
           {"title": "Meta Conversions API", "text": "Each new Facebook and Instagram lead is reported back to Meta as a lead event."},
-          {"title": "Follow-up and reassignment", "text": "Leads get timed follow-ups, and unanswered ones move to another rep."},
+          {"title": "Follow-up", "text": "Every lead gets a follow-up after 18 hours, so nobody is forgotten."},
           {"title": "Daily status report", "text": "Every morning the team gets a report of new leads, stage moves and conversations."},
           {"title": "The website", "text": "We built orkaytiles.com, with collection pages and an admin the team edits."}
         ]
@@ -42,7 +42,7 @@
       "type": "text_image",
       "fields": {
         "heading": "From ad click to *the right rep*",
-        "body": "<p>A dealer fills in a Meta form or messages on WhatsApp. GoHighLevel gives the lead an owner who speaks the dealer's language.</p><p>Within minutes, Arya calls in Hindi, then books a callback or transfers the call to that rep.</p>",
+        "body": "<p>A dealer fills in a Meta form or messages on WhatsApp. GoHighLevel gives the lead an owner who speaks the dealer's language.</p><p>Then Arya, an AI voice agent, calls the dealer in Hindi.</p>",
         "image": "ai-sales.jpg",
         "image_side": "right"
       }
@@ -51,7 +51,7 @@
       "type": "text_image",
       "fields": {
         "heading": "Automations that *run every day*",
-        "body": "<p>Leads nobody answers get a follow-up, then move to another rep. Meta hears about every lead, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
+        "body": "<p>Leads nobody answers get a follow-up after 18 hours. Meta hears about every lead, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
         "image": "ai-workflow.jpg",
         "image_side": "left"
       }

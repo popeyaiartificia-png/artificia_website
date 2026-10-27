@@ -76,7 +76,7 @@
         "image": "orkay-website.jpg",
         "built": [
           {"title": "Routed by language", "text": "Each lead goes to a rep who speaks the lead's language."},
-          {"title": "AI voice calls", "text": "New India leads get a call in Hindi that books a callback or transfers live."},
+          {"title": "AI voice calls", "text": "New India leads get a call in Hindi from an AI voice agent."},
           {"title": "Followed up and reported", "text": "Unanswered leads are followed up, and a daily report shows what moved."}
         ],
         "link_label": "Read the case study",
