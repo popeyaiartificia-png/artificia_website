@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Registration | Artificia</title>
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/favicon/com.png"  />
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/com.png"  />
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/com.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/com.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/favicon/com.png"  />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/com.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon/com.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/com.png" />
+    <link rel="manifest" href="./assets/images/favicon/com.png"  />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Latest compiled and minified CSS -->
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/js/bootstrap.min.js">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/mediaqueries.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <style>
+        .form-section {
+            background-image: linear-gradient(33deg, var(--e-global-color-very-dark-black) 0%, var(--e-global-color-very-dark-grayish-blue) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2e2e39;
+        }
+        .form-section h5 {
+            color: var(--e-global-color-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2e2e39;
+            padding-bottom: 10px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--e-global-color-text);
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .radio-group label:hover {
+            color: var(--e-global-color-accent);
+        }
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--e-global-color-bright-blue);
+            margin: 0;
+            vertical-align: middle;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--e-global-color-text);
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .checkbox-group label:hover {
+            color: var(--e-global-color-accent);
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--e-global-color-bright-blue);
+            margin: 0;
+            vertical-align: middle;
+        }
+        .form-section .row {
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            color: var(--e-global-color-white);
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .form-section .form-control {
+            background-color: #20202c;
+            border: 1px solid #2e2e39;
+            border-radius: 10px;
+            color: var(--e-global-color-text);
+            padding: 15px 20px;
+            font-size: 16px;
+            height: 56px;
+            transition: all 0.3s ease-in-out;
+        }
+        .form-section .form-control:focus {
+            background-color: #20202c;
+            border-color: var(--e-global-color-bright-blue);
+            color: var(--e-global-color-white);
+            box-shadow: 0 0 0 0.2rem rgba(51, 0, 251, 0.25);
+        }
+        .form-section .form-control::placeholder {
+            color: var(--e-global-color-text);
+        }
+        select.form-control {
+            cursor: pointer;
+            height: 56px;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+        .btn-outline-secondary {
+            background-color: var(--e-global-color-mostly-black);
+            border: 1px solid var(--e-global-color-bright-blue);
+            color: var(--e-global-color-white);
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-outline-secondary:hover {
+            background-color: var(--e-global-color-bright-blue);
+            color: var(--e-global-color-white);
+        }
+        select.form-control option {
+            background-color: var(--e-global-color-mostly-black);
+            color: var(--e-global-color-white);
+        }
+        input[type="date"].form-control {
+            color-scheme: dark;
+            position: relative;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 16px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 1;
+        }
+        input[type="file"].form-control {
+            padding: 10px;
+            border: 2px dashed var(--e-global-color-bright-blue);
+            background-color: #20202c;
+            color: var(--e-global-color-white);
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: var(--e-global-color-bright-blue);
+            color: var(--e-global-color-white);
+            border: none;
+            padding: 4px 15px;
+            border-radius: 8px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: var(--e-global-color-accent);
+        }
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--e-global-color-text);
+            font-weight: 400;
+            cursor: pointer;
+        }
+        .form-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--e-global-color-bright-blue);
+            margin: 0;
+            vertical-align: middle;
+        }
+        
+    </style>
+</head>
+
+<body>
+<div class="sub-banner-section-outer contact-banner-section-outer position-relative">
+    <!-- nav -->
+    <div id="navbar"></div>
+
+    <!-- SUB-BANNER SECTION -->
+    <section class="banner-section position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="banner-section-content">
+                        <h1 class="text-white" data-aos="fade-up">Register</h1>
+                        <p class="text-white" data-aos="fade-right">Artificia Registration Form</p>
+                        <div class="btn_wrapper" data-aos="fade-up">
+                            <span> Home </span><i class="fa-solid fa-angles-right" aria-hidden="true"></i><span class="sub_span">Register</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="banner_image position-relative">
+                        <figure class="banner_main_image mb-0 left_right_shape">
+                            <img src="./assets/images/all_images/register/register.jpg" alt="">
+                        </figure>
+                        <figure class="banner_image_bottom_shape mb-0 position-absolute top_bottom_shape">
+                            <img src="./assets/images/sub_banner_image_bottom_shape.png" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <figure class="banner_top_shape mb-0 position-absolute top_bottom_shape">
+        <img src="./assets/images/sub_banner_top_shape.png" alt="" class="img-fluid">
+    </figure>
+    <figure class="banner_background_shape mb-0 position-absolute left_right_shape">
+        <img src="./assets/images/sub_banner_background_shape.png" alt="">
+    </figure>
+</div>
+<!-- CONTACT INFO SECTION -->
+<section class="contact_info_section position-relative">
+     <!-- <figure class="contact_info_left_shape mb-0 position-absolute top_bottom_shape">
+            <img src="./assets/images/contact_info_left_shape.png" alt="" class="img-fluid">
+        </figure> -->
+    <div class="container">
+        
+        <div class="row">
+          
+                <div class="contact_info_form_content">
+                    <h4>Send us a Message</h4>
+                    <form id="registrationpage" method="POST" action="./registration-form.php" enctype="multipart/form-data">
+                        <!-- User Type Section -->
+                        <div class="form-section form-group">
+                            <h5>User Type</h5>
+                            <div class="radio-group">
+                                <label><input type="radio" name="usertype" value="student"> Student</label>
+                                <label><input type="radio" name="usertype" value="jobseeker"> Jobseeker</label>
+                                <label><input type="radio" name="usertype" value="employer"> Employer</label>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information Section -->
+                        <div class="form-section form-group">
+                            <h5>Personal Information</h5>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" name="fullname" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-lg-6 form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="col-lg-6 form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Gender</label>
+                                    <select name="gender" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 form-group">
+                                    <label>Address</label>
+                                    <input type="text" name="address" class="form-control" placeholder="Address">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Student/Jobseeker Section -->
+                        <div class="form-section form-group" id="student-section">
+                            <h5>Student/Jobseeker</h5>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Education Level</label>
+                                    <select name="education" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="High School">High School</option>
+                                        <option value="Bachelor's">Bachelor's</option>
+                                        <option value="Master's">Master's</option>
+                                        <option value="PhD">PhD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <label>Skills</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" name="skills[]" value="communication"> Communication</label>
+                                        <label><input type="checkbox" name="skills[]" value="teamwork"> Teamwork</label>
+                                        <label><input type="checkbox" name="skills[]" value="problem-solving"> Problem Solving</label>
+                                        <label><input type="checkbox" name="skills[]" value="leadership"> Leadership</label>
+                                        <label><input type="checkbox" name="skills[]" value="time-management"> Time Management</label>
+                                        <label><input type="checkbox" name="skills[]" value="adaptability"> Adaptability</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <label>Upload Resume (PDF, DOC, DOCX)</label>
+                                    <input type="file" name="resume" class="form-control" id="resume-upload" accept=".pdf,.doc,.docx">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employer Section -->
+                        <div class="form-section form-group" id="employer-section">
+                            <h5>Employer</h5>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" name="company_name" class="form-control" placeholder="Company Name">
+                                </div>
+                                <div class="col-lg-6 form-group">
+                                    <label>Company Industry</label>
+                                    <select name="industry" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="Technology">Technology</option>
+                                        <option value="Healthcare">Healthcare</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 form-group">
+                                    <label>Company Size</label>
+                                    <select name="company_size" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="1-10">1-10</option>
+                                        <option value="11-50">11-50</option>
+                                        <option value="51-200">51-200</option>
+                                        <option value="200+">200+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Privacy -->
+                        <div class="form-group">
+                            <label><input type="checkbox" name="terms" required> I agree to the terms and privacy policy</label>
+                        </div>
+
+                        <div class="btn_wrapper">
+                            <button type="submit" name="get_started" class="default-btn">Submit Now<i class="fa-solid fa-angle-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            
+        </div>
+       
+    </div>
+</section>
+
+<!-- COMBO SECTION -->
+<section class="combo_section contact_combo_section">
+    <!-- CLIENT LOGO'S SECTION -->
+    <div class="client_logos_section">
+         <section class="statistics_section_h position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="aboutus_content" data-aos="fade-up">
+            <h2 class="text-center">Partners in Ai Innovation   </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-1 col-md-1 col-sm-6 col-12 d-md-block d-none"></div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <figure class="logo_image1 mb-0">
+              <img src="./assets/images/tools/ChatGpt.png" alt class="img-fluid hover-effect" />
+            </figure>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <figure class="logo_image2 mb-0">
+              <img src="./assets/images/tools/github.png" alt class="img-fluid hover-effect" />
+            </figure>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <figure class="logo_image3 mb-0">
+              <img src="./assets/images/tools/Google_Gemini.png" alt class="img-fluid hover-effect" />
+            </figure>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <figure class="logo_image4 mb-0">
+              <img src="./assets/images/tools/images.png" alt class="img-fluid hover-effect" />
+            </figure>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <figure class="logo_image5 mb-0">
+              <img src="./assets/images/tools/leonardo.png" alt class="img-fluid hover-effect" />
+            </figure>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-6 col-12 d-md-block d-none"></div>
+        </div>
+      </div>
+    </div>
+    <!-- GET STARTED SECTION -->
+    <div class="get_started_section">
+        <div class="container">
+            <div class="get_started_box">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-12 order-md-1 order-2">
+                        <div class="get_started_box_image">
+                            <figure class="mb-0 left_right_shape">
+                                <img src="./assets/images/get_started_image.png" alt="" class="img-fluid">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-12 order-md-2 order-1">
+                        <div class="get_started_box_content" data-aos="fade-right">
+                            <h6>GEt Started</h6>
+                            <h2>Train. Hire. Transform. The Ai Way</h2>
+                            <div class="btn_wrapper">
+                                <a class="text-decoration-none default-btn-two btn-size-18 hover-effect" href="./contact.html">Contact Us<i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <figure class="get_started_shape mb-0 left_right_shape">
+                <img src="./assets/images/get_started_shape.png" alt="" class="img-fluid">
+            </figure>
+        </div>
+    </div>
+</section>
+<!-- FOOTER SECTION -->
+<div id="footer"></div>
+<!-- Latest compiled JavaScript -->
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/video-popup.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/js/owl.carousel.js"></script>
+<script src="assets/js/carousel.js"></script>
+<script src="assets/js/video-section.js"></script>
+<script src="assets/js/counter.js"></script>
+<script src="assets/js/animation.js"></script>
+
+<script>
+        fetch('components/navbar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar').innerHTML = data);
+</script>
+<script>
+        fetch('components/footer.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+</script>
+
+<script>
+// Show/hide sections based on user type
+document.addEventListener('DOMContentLoaded', function() {
+    const userTypeRadios = document.querySelectorAll('input[name="usertype"]');
+    const studentSection = document.getElementById('student-section');
+    const employerSection = document.getElementById('employer-section');
+    
+    // Initially hide both sections
+    studentSection.style.display = 'none';
+    employerSection.style.display = 'none';
+    
+    userTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'student' || this.value === 'jobseeker') {
+                studentSection.style.display = 'block';
+                employerSection.style.display = 'none';
+            } else if (this.value === 'employer') {
+                studentSection.style.display = 'none';
+                employerSection.style.display = 'block';
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
