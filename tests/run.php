@@ -38,6 +38,15 @@ function test_db(bool $migrate = true): PDO
     return $pdo;
 }
 
+/** Fresh temp folder, removed when the run ends. */
+function temp_dir(): string
+{
+    $dir = sys_get_temp_dir() . '/artificia-' . bin2hex(random_bytes(4));
+    mkdir($dir);
+    register_shutdown_function(fn() => exec('rm -rf ' . escapeshellarg($dir)));
+    return $dir;
+}
+
 $files = array_slice($argv, 1) ?: glob(__DIR__ . '/*Test.php');
 $passed = $failed = 0;
 foreach ($files as $file) {

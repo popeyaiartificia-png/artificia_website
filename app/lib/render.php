@@ -173,37 +173,14 @@ function render_design_gallery(PDO $db, array $settings): string
     $root = dirname(__DIR__, 2);
     $data = json_decode((string) file_get_contents($root . '/content/design-samples.json'), true, flags: JSON_THROW_ON_ERROR);
     $settings += $data['settings'] ?? [];
-    $sections = design_sample_images($db, $data['sections'], $root . '/content/seed/media', $root . '/public/uploads');
+    $media = $root . '/content/seed/media';
+    $sections = seed_resolve_images($db, $data['sections'], $media, $root . '/public/uploads', seed_json("$media/alt.json"));
     $page = $data['page'] + ['sections' => $sections, 'kind' => 'page'];
     $body = render_view('design-gallery', ['sections' => $sections, 'page' => $page, 'settings' => $settings]);
     return render_layout([
         'settings' => $settings, 'body' => $body, 'title' => $page['meta_title'] ?? 'Section library',
         'description' => '', 'canonical' => '', 'robots' => 'noindex', 'hasForm' => true,
     ]);
-}
-
-/** Sample image fields name files in content/seed/media; swap each for a media id (stored once, reused after). */
-function design_sample_images(PDO $db, array $sections, string $mediaDir, string $uploadsDir): array
-{
-    $registry = section_registry();
-    $swap = function (array $fields, array $defs) use (&$swap, $db, $mediaDir, $uploadsDir): array {
-        foreach ($defs as $key => $def) {
-            if (!isset($fields[$key])) {
-                continue;
-            }
-            if ($def['type'] === 'image' && is_string($fields[$key]) && is_file($mediaDir . '/' . basename($fields[$key]))) {
-                $alt = ucwords(str_replace('-', ' ', pathinfo($fields[$key], PATHINFO_FILENAME)));
-                $fields[$key] = media_from_file($db, $mediaDir . '/' . basename($fields[$key]), $alt, $uploadsDir);
-            } elseif ($def['type'] === 'list' && is_array($fields[$key])) {
-                $fields[$key] = array_map(fn($item) => is_array($item) ? $swap($item, $def['fields']) : $item, $fields[$key]);
-            }
-        }
-        return $fields;
-    };
-    foreach ($sections as &$section) {
-        $section['fields'] = $swap($section['fields'] ?? [], $registry[$section['type']]['fields'] ?? []);
-    }
-    return $sections;
 }
 
 function render_404(array $settings): string
