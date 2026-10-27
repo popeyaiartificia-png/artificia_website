@@ -11,6 +11,4 @@ if (PHP_SAPI === 'cli-server') {
 
 require __DIR__ . '/../app/bootstrap.php';
 
-// Placeholder until the router lands.
-header('Content-Type: text/plain; charset=utf-8');
-echo "artificiaai.com: foundation only\n";
+dispatch($_SERVER['REQUEST_METHOD'], request_path());

@@ -18,6 +18,11 @@ require __DIR__ . '/lib/db.php';
 require __DIR__ . '/lib/settings.php';
 require __DIR__ . '/lib/html.php';
 require __DIR__ . '/lib/media.php';
+require __DIR__ . '/lib/pages.php';
+require __DIR__ . '/lib/render.php';
+require __DIR__ . '/lib/seo.php';
+require __DIR__ . '/lib/redirects.php';
+require __DIR__ . '/lib/router.php';
 require __DIR__ . '/sections/registry.php';
 
 // Migrate on boot, under a lock so two simultaneous first requests can't race.
