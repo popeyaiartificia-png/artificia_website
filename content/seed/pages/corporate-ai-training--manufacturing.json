@@ -1,0 +1,102 @@
+{
+  "slug": "corporate-ai-training/manufacturing",
+  "kind": "page",
+  "template": "Corporate by industry",
+  "title": "Corporate AI training for manufacturing",
+  "h1": "AI training for *manufacturing* teams",
+  "meta_title": "AI training for manufacturing companies | Artificia AI",
+  "meta_description": "Corporate AI training for manufacturing companies in Gujarat. Tenders, quotations, quality reports and MIS, built from your own documents. Free 2-hour pilot.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Tenders, quotations, quality reports and dispatch updates take hours of copying. We train your teams to hand that work to AI, using your own documents.",
+        "image": "industry-manufacturing.jpg",
+        "primary_cta_label": "Ask for the free pilot",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "Corporate AI training",
+        "secondary_cta_link": "/corporate-ai-training"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Where a factory *loses hours*",
+        "intro": "Three jobs, before and after training.",
+        "items": [
+          {"title": "Tenders and RFPs", "before": "Requirements read by hand, and each response rebuilt from old files.", "after": "Requirements become a checklist, and a first response is drafted from past submissions."},
+          {"title": "Quotations", "before": "Each quote typed line by line from the rate card.", "after": "The scope becomes an itemised quote from your rate card and templates."},
+          {"title": "Monthly MIS", "before": "The same report takes someone most of a day, every month.", "after": "The report is assembled from your sheets, ready for a manager to check."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Teams that *join* the program",
+        "intro": "Each department works on its own tasks in the same program.",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-sales.jpg", "title": "Sales", "text": "Same-day replies, and quotes drafted while the enquiry is still warm."},
+          {"image": "ai-ops.jpg", "title": "Purchase and supply chain", "text": "RFQs drafted quickly, and vendor quotes compared side by side."},
+          {"image": "ai-documents.jpg", "title": "Quality", "text": "Reports and documentation drafted in minutes, in the same format every time."},
+          {"image": "ai-finance.jpg", "title": "Accounts", "text": "Invoice extraction, reconciliation support and MIS from your ledgers."},
+          {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, screening and onboarding packs for new joiners."},
+          {"image": "ai-executive.jpg", "title": "Leadership", "text": "The monthly picture, without asking three people to prepare it."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How a plant program *starts*",
+        "intro": "Length and format are set by your needs and your shifts.",
+        "steps": [
+          {"title": "Find where work waits", "text": "We meet department heads and trace where work waits or gets re-typed."},
+          {"title": "Use your own files", "text": "Exercises use your quotations, rate cards, reports and tender documents."},
+          {"title": "Build in every session", "text": "Each session ends with a working prompt, workflow or tool your team keeps."},
+          {"title": "Agree the data rules", "text": "Before training starts, we agree in writing what may never be uploaded."}
+        ]
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "What AI-enabled teams *typically* see",
+        "note": "Typical outcomes for AI-enabled teams.",
+        "items": [
+          {"value": "92%", "label": "faster lead handling"},
+          {"value": "10–20 hrs", "label": "saved per employee each week"},
+          {"value": "65%", "label": "less repetitive work"},
+          {"value": "500%", "label": "boost in customer response"},
+          {"value": "4×", "label": "faster reporting"}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions from *manufacturers*",
+        "items": [
+          {"question": "Can you train shift staff without stopping production?", "answer": "Yes. Sessions are scheduled around your shifts, on-site or online, so production keeps running."},
+          {"question": "Our files include drawings and costings. Are they safe?", "answer": "Your drawings, costings and customer data stay yours. We agree upload rules in writing, use approved tools only, and train staff to check AI output."},
+          {"question": "Do you cover tenders and quotations?", "answer": "Yes. Teams learn to turn tenders into checklists, draft responses from past submissions, and build quotes from their own rate cards."},
+          {"question": "Does it work with Tally or our ERP?", "answer": "Training covers working with the reports and sheets your systems export. Connecting AI directly to an ERP is a build project our services team handles."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask for a *free pilot*",
+        "intro": "Tell us about your plant and teams. We will set up a 2-hour session on AI and prompting.",
+        "form_type": "corporate",
+        "side_points": [
+          {"text": "Scheduled around your shifts"},
+          {"text": "On-site, or online over Microsoft Teams"},
+          {"text": "No commitment after the pilot"}
+        ]
+      }
+    }
+  ]
+}

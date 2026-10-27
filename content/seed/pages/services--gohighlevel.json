@@ -1,0 +1,121 @@
+{
+  "slug": "services/gohighlevel",
+  "kind": "page",
+  "template": "Service or use case",
+  "title": "GoHighLevel setup and deployment",
+  "h1": "GoHighLevel setup that *keeps leads moving*",
+  "meta_title": "GoHighLevel setup and deployment | Artificia AI",
+  "meta_description": "We set up and run GoHighLevel for businesses: pipelines, WhatsApp and email follow-ups, lead routing and AI calls. See how we run it for Orkay Tiles.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "We set up GoHighLevel around how you sell: pipelines, WhatsApp and email follow-ups, lead routing and reports. Then we keep it running.",
+        "image": "ai-sales.jpg",
+        "primary_cta_label": "Book the free flow audit",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "All services",
+        "secondary_cta_link": "/services"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "What we *set up*",
+        "body": "<p>GoHighLevel is a CRM with pipelines, WhatsApp, email, forms, calendars and automations in one place.</p><p>We set it up around how your team sells, connect your ads and website, and run it with you after launch.</p><p>Orkay Tiles runs two accounts this way. <a href=\"/case-studies/orkay-tiles\">Read the Orkay case study</a>.</p>"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Before and after *GoHighLevel*",
+        "items": [
+          {"title": "New leads", "before": "Ad leads sit in a spreadsheet until someone notices them.", "after": "Each lead lands in a pipeline with its source and an owner."},
+          {"title": "Follow-up", "before": "Leads go cold when a rep forgets to call back.", "after": "Unanswered leads get an automatic follow-up, then move to another rep."},
+          {"title": "Reporting", "before": "Managers ask each rep what happened yesterday.", "after": "A daily report shows what came in and what moved."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How the *setup* runs",
+        "steps": [
+          {"title": "Map how you sell", "text": "We map your lead sources, stages, team, and the messages each lead should get."},
+          {"title": "Build the account", "text": "Pipelines, fields, tags, forms, calendars and workflows, set up and tested."},
+          {"title": "Connect your sources", "text": "Meta ads, website forms and WhatsApp feed straight into the account."},
+          {"title": "Run and improve", "text": "We watch the account, fix what breaks and add workflows as you grow."}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "What the setup *connects*",
+        "tools": [
+          {"name": "GoHighLevel", "note": "CRM and workflows"},
+          {"name": "WhatsApp", "note": "Conversations"},
+          {"name": "Meta lead ads", "note": "Lead source"},
+          {"name": "Meta Conversions API", "note": "Lead events for ads"},
+          {"name": "n8n", "note": "Custom automations"},
+          {"name": "ElevenLabs", "note": "AI voice calls"},
+          {"name": "Google Sheets", "note": "Imports and reports"}
+        ]
+      }
+    },
+    {
+      "type": "case_study",
+      "fields": {
+        "heading": "Two GoHighLevel accounts for *Orkay Tiles*",
+        "client": "Orkay Tiles International",
+        "summary": "We set up and run Orkay's two GoHighLevel accounts: one for dealers in India, one for export buyers.",
+        "image": "orkay-website.jpg",
+        "built": [
+          {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
+          {"title": "International export account", "text": "Importers and distributors abroad, worked by email."},
+          {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
+          {"title": "Reported back to Meta", "text": "New leads are sent to Meta as lead events, so the ads learn which clicks became leads."}
+        ],
+        "link_label": "Read the full case study",
+        "link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions about *GoHighLevel*",
+        "items": [
+          {"question": "Do I need a GoHighLevel account already?", "answer": "No. We can set up a new account, or take over and tidy one you already have."},
+          {"question": "Can GoHighLevel handle WhatsApp leads?", "answer": "Yes. Orkay's India account runs WhatsApp-first: leads arrive, get an owner and receive follow-ups inside GoHighLevel."},
+          {"question": "Can it call leads automatically?", "answer": "Yes. For Orkay we connected an AI voice agent that calls new leads in Hindi and books a callback on the rep's calendar."},
+          {"question": "Do you run the account after setup?", "answer": "Yes. We run Orkay's accounts day to day: fixing problems, adding workflows and checking the daily report."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Related *services*",
+        "columns": "3",
+        "cards": [
+          {"image": "orkay-website.jpg", "title": "Website development", "text": "A site whose forms feed GoHighLevel directly.", "link": "/services/website-development"},
+          {"image": "ai-marketing.jpg", "title": "Content and marketing", "text": "Campaigns that fill the pipeline you just built.", "link": "/services/content-marketing"},
+          {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "Assistants that answer leads from your own documents.", "link": "/services/rag-custom-automation"}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Book the free *flow audit*",
+        "intro": "Tell us how leads reach you today. We will trace the process with you in 15 minutes.",
+        "form_type": "services",
+        "side_points": [
+          {"text": "15 minutes, free"},
+          {"text": "A one-page summary you keep"},
+          {"text": "No obligation to work with us"}
+        ]
+      }
+    }
+  ]
+}

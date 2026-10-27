@@ -1,0 +1,16 @@
+{
+  "slug": "privacy",
+  "kind": "page",
+  "title": "Privacy policy",
+  "h1": "Privacy policy",
+  "meta_title": "Privacy policy | Artificia AI",
+  "meta_description": "How Artificia Intellec Pvt Ltd collects, uses, keeps and deletes your personal data, in line with India's Digital Personal Data Protection Act, 2023.",
+  "sections": [
+    {
+      "type": "rich_text",
+      "fields": {
+        "body": "<p>Artificia Intellec Pvt Ltd (\"Artificia\", \"we\") runs artificiaai.com. This policy explains what personal data we collect, why we collect it, and the choices you have.</p><p>We handle personal data in line with India's Digital Personal Data Protection Act, 2023 (the DPDP Act).</p><h2>What we collect</h2><p>When you send a form, we collect what you type: your name, phone or WhatsApp number and email, and details such as your company, city or message.</p><p>With it we record the page you were on, the link or ad that brought you, the time, your IP address and your browser type.</p><h2>Why we collect it</h2><p>We use your details to reply to your enquiry and to talk with you about the course, training or service you asked about.</p><p>We use the page and ad details to learn which of our pages and ads work.</p><h2>Your consent</h2><p>Every form asks for your consent before you send it. You can withdraw consent at any time by emailing <a href=\"mailto:info@artificiaai.com\">info@artificiaai.com</a>.</p><h2>How we contact you</h2><p>We reply by WhatsApp, phone or email, using the details you gave us. We do not sell or rent your personal data.</p><h2>Who else handles it</h2><ul><li>Our hosting provider stores this website and its database.</li><li>Our team receives each enquiry by email and in the tools we use to manage enquiries.</li><li>If a Facebook or Instagram ad brought you here, we tell Meta an enquiry arrived, so it can measure the ad. We scramble (hash) your email and phone first.</li></ul><h2>Cookies and analytics</h2><p>We use Google Analytics 4 to count visits, and the Meta pixel to measure our ads. Both use cookies. You can block or delete cookies in your browser settings.</p><h2>How long we keep it</h2><p>We keep enquiry details only for as long as we need them to answer you and follow up. After that, we delete them.</p><h2>Your rights</h2><p>You can ask to see, correct or delete your personal data, or withdraw your consent. Email <a href=\"mailto:info@artificiaai.com\">info@artificiaai.com</a> and tell us what you would like us to do.</p><p>If you are not satisfied with our reply, you can complain to the Data Protection Board of India.</p><h2>Contact</h2><p>Artificia Intellec Pvt Ltd, Office No. 11, 2nd Floor, Darshanam Arise, Gotri-Sevasi Road, opposite Osia Mall, Vadodara, Gujarat 391101.</p><p>Email <a href=\"mailto:info@artificiaai.com\">info@artificiaai.com</a>, phone <a href=\"tel:+919104488859\">+91 91044 88859</a>.</p><p>Last updated 27 October 2026.</p>"
+      }
+    }
+  ]
+}

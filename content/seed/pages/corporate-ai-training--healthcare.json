@@ -1,0 +1,111 @@
+{
+  "slug": "corporate-ai-training/healthcare",
+  "kind": "page",
+  "template": "Corporate by industry",
+  "title": "Corporate AI training for healthcare",
+  "h1": "AI training for *healthcare* teams",
+  "meta_title": "AI training for hospitals and healthcare teams | Artificia",
+  "meta_description": "Corporate AI training for hospitals and healthcare teams in Gujarat: patient communication, nursing workflows and admin, with clear rules on patient data.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Nursing workflows, patient communication and hospital administration all run on documents. We train your staff to use AI on that work, with clear rules on patient data.",
+        "image": "industry-healthcare.jpg",
+        "primary_cta_label": "Ask for the free pilot",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "Corporate AI training",
+        "secondary_cta_link": "/corporate-ai-training"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Where AI helps a *hospital*",
+        "intro": "Three jobs, before and after training.",
+        "items": [
+          {"title": "Patient communication", "before": "Staff type the same instructions and replies again and again.", "after": "Clear first drafts of patient messages, for staff to check and send."},
+          {"title": "Policies and SOPs", "before": "Staff hunt through folders for the latest procedure.", "after": "Ask in plain words and get the answer with the page it came from."},
+          {"title": "Administration reports", "before": "Monthly reports built by hand from several registers.", "after": "Reports assembled from your sheets, ready for the administrator to check."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Teams that *join* the program",
+        "intro": "Clinical and non-clinical teams train together, each on its own tasks.",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-support.jpg", "title": "Front desk and patient support", "text": "Replies to common patient questions, drafted from your own information."},
+          {"image": "ai-documents.jpg", "title": "Nursing administration", "text": "Checklists, handover notes and SOPs that are quick to find."},
+          {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, screening and onboarding for new staff."},
+          {"image": "ai-finance.jpg", "title": "Billing and accounts", "text": "Invoice extraction, reconciliation support and monthly reports."},
+          {"image": "ai-marketing.jpg", "title": "Marketing", "text": "Social posts, brochures and patient information sheets made in-house."},
+          {"image": "ai-executive.jpg", "title": "Management", "text": "A monthly picture of the hospital without chasing three departments."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How a hospital program *runs*",
+        "intro": "Length and format are set around your departments and shifts.",
+        "steps": [
+          {"title": "Meet the department heads", "text": "We map where staff time goes in nursing, front desk, billing and administration."},
+          {"title": "Set the patient-data rules", "text": "Before training, we agree in writing what may never be uploaded and which tools are approved."},
+          {"title": "Train on real tasks", "text": "Staff practise on your own forms, SOPs and report formats, with patient details removed."},
+          {"title": "Check before it goes out", "text": "Staff learn to verify AI output before it reaches a patient or a report."}
+        ]
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "What AI-enabled teams *typically* see",
+        "note": "Typical outcomes for AI-enabled teams.",
+        "items": [
+          {"value": "92%", "label": "faster lead handling"},
+          {"value": "10–20 hrs", "label": "saved per employee each week"},
+          {"value": "65%", "label": "less repetitive work"},
+          {"value": "500%", "label": "boost in customer response"},
+          {"value": "4×", "label": "faster reporting"}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions from *hospitals*",
+        "items": [
+          {"question": "Is patient data uploaded to AI tools?", "answer": "Not without agreed rules. We set a written upload rule with you, use approved tools only, and train on files with patient details removed."},
+          {"question": "Can staff attend around their shifts?", "answer": "Yes. Sessions are scheduled around shifts, on-site at the hospital or online over Microsoft Teams."},
+          {"question": "Which teams should join?", "answer": "Nursing administration, front desk, billing, HR and management. Each works on exercises for its own role in the same program."},
+          {"question": "Does AI replace clinical judgement?", "answer": "No. AI drafts and finds information. Staff check every output, and decisions stay with people."}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "From hospital *administration*",
+        "items": [
+          {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "It helped me understand how AI can improve nursing workflows, patient communication, and hospital administration."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask for a *free pilot*",
+        "intro": "Tell us about your hospital and teams. We will set up a 2-hour session on AI and prompting.",
+        "form_type": "corporate",
+        "side_points": [
+          {"text": "Clear rules on patient data"},
+          {"text": "Scheduled around shifts"},
+          {"text": "No commitment after the pilot"}
+        ]
+      }
+    }
+  ]
+}

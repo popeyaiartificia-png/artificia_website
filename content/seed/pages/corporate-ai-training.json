@@ -1,0 +1,139 @@
+{
+  "slug": "corporate-ai-training",
+  "kind": "page",
+  "title": "Corporate AI training",
+  "h1": "Corporate AI training, *built around your work*",
+  "meta_title": "Corporate AI training in Vadodara, Gujarat | Artificia",
+  "meta_description": "Corporate AI training in Vadodara and Gujarat, built around your documents and departments. On-site or over Microsoft Teams. Start with a free 2-hour pilot.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "eyebrow": "Corporate AI training in Vadodara and Gujarat",
+        "subheading": "Custom training for your teams, on-site or online over Microsoft Teams. Built from your own documents, and every session ends in something that works.",
+        "image": "corporate-session.jpg",
+        "variant": "split",
+        "primary_cta_label": "Ask for the free pilot",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "See a client system",
+        "secondary_cta_link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How a program *comes together*",
+        "intro": "Length and format are set by your needs, not by a fixed syllabus.",
+        "steps": [
+          {"title": "Discovery", "text": "We meet leadership and department heads, and map the work that takes the most time."},
+          {"title": "A curriculum from your documents", "text": "Exercises are rebuilt around your own files, reports and systems, not textbook examples."},
+          {"title": "Sessions that end in a deliverable", "text": "Each session ends with something working: a tested prompt, an automated workflow or an internal tool."},
+          {"title": "Support after", "text": "Refreshers and follow-up help keep the new habits going as the tools change."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Training for every *department*",
+        "intro": "Departments can train together, each working on exercises for its own role.",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-sales.jpg", "title": "Sales", "text": "Proposals, follow-ups and call summaries drafted in your company's voice."},
+          {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, CV screening and onboarding packs."},
+          {"image": "ai-ops.jpg", "title": "Operations", "text": "Status reports, and updates that move between systems without re-typing."},
+          {"image": "ai-finance.jpg", "title": "Accounts", "text": "Invoice and expense extraction, reconciliation support and monthly MIS."},
+          {"image": "ai-marketing.jpg", "title": "Marketing", "text": "Campaign copy, decks and social content made in-house."},
+          {"image": "ai-support.jpg", "title": "Customer support", "text": "Answers to common questions, drafted from your own documents."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Programs shaped by your *industry*",
+        "intro": "The tools change by industry. The training method does not.",
+        "columns": "3",
+        "cards": [
+          {"image": "industry-manufacturing.jpg", "title": "Manufacturing", "text": "Quotations, tenders, quality reports and MIS, with less copying between sheets.", "link": "/corporate-ai-training/manufacturing"},
+          {"image": "industry-healthcare.jpg", "title": "Healthcare", "text": "Patient communication, nursing workflows and hospital administration, with care for privacy.", "link": "/corporate-ai-training/healthcare"},
+          {"image": "industry-pharmaceutical.jpg", "title": "Pharmaceutical", "text": "SOPs, documentation and reports that teams can search in plain words."},
+          {"image": "industry-chemical.jpg", "title": "Chemical", "text": "Safety documents, supplier emails and plant reports in one place."},
+          {"image": "industry-import-export.jpg", "title": "Import and export", "text": "Enquiries in many languages, quotations and shipment follow-ups."},
+          {"image": "industry-finance.jpg", "title": "Finance", "text": "Reconciliation, reporting and client questions answered from your own files."}
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "Start with a *free pilot*",
+        "body": "<p>Before you commit, we run one 2-hour session for a group of your staff on the AI landscape and prompting.</p><p>It runs on-site at your office, or online over Microsoft Teams. There is no commitment.</p>",
+        "image": "ai-executive.jpg",
+        "image_side": "left",
+        "cta_label": "Ask for the pilot",
+        "cta_link": "#enquire"
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "What AI-enabled teams *typically* see",
+        "note": "Typical outcomes for AI-enabled teams.",
+        "items": [
+          {"value": "92%", "label": "faster lead handling"},
+          {"value": "10–20 hrs", "label": "saved per employee each week"},
+          {"value": "65%", "label": "less repetitive work"},
+          {"value": "500%", "label": "boost in customer response"},
+          {"value": "4×", "label": "faster reporting"}
+        ]
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "Trained in *real sessions*",
+        "note": "Artificia's own count across its corporate training sessions.",
+        "items": [
+          {"value": "100+", "label": "professionals trained through corporate training sessions"}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "In her *own words*",
+        "items": [
+          {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions from HR and *leadership*",
+        "items": [
+          {"question": "How long is a program?", "answer": "As long as your goals need. Length and format are set after discovery, around your departments and your team's schedule."},
+          {"question": "Can the training run online?", "answer": "Yes. Sessions run on-site at your office, or online over Microsoft Teams and similar tools. A mix of both also works."},
+          {"question": "Who should attend?", "answer": "Anyone who works with documents, data or customers. Departments can attend together while each works on exercises for its own role."},
+          {"question": "What does each session deliver?", "answer": "Something your team keeps using: a tested prompt, a working automation or an internal tool, built on your own work."},
+          {"question": "Is our company data safe?", "answer": "We agree in writing what may never be uploaded and which tools are approved. Staff are trained to check AI output before it reaches a customer."},
+          {"question": "How does the free pilot work?", "answer": "We run one 2-hour session for a group of your staff on the AI landscape and prompting, on-site or online. There is no commitment."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask for the *free pilot*",
+        "intro": "Tell us about your team and we will set up a 2-hour session.",
+        "form_type": "corporate",
+        "side_points": [
+          {"text": "Built around your documents and departments"},
+          {"text": "On-site, or online over Microsoft Teams"},
+          {"text": "No commitment after the pilot"}
+        ]
+      }
+    }
+  ]
+}

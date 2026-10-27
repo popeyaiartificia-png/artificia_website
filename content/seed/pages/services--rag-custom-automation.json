@@ -1,0 +1,114 @@
+{
+  "slug": "services/rag-custom-automation",
+  "kind": "page",
+  "template": "Service or use case",
+  "title": "RAG and custom automation",
+  "h1": "AI that answers from *your own documents*",
+  "meta_title": "RAG and custom AI automation | Artificia AI",
+  "meta_description": "RAG assistants that answer from your company's own documents and show the source, plus custom AI automation for documents, reports and workflows.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "We build AI assistants that answer from your SOPs, manuals and records, and show the page each answer came from.",
+        "image": "ai-documents.jpg",
+        "primary_cta_label": "Book the free flow audit",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "All services",
+        "secondary_cta_link": "/services"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "What *RAG* means",
+        "body": "<p>RAG stands for retrieval-augmented generation. The AI first finds the right passages in your documents, then writes its answer from them.</p><p>So it answers from your material and shows its source.</p><p>Around it we build custom automations: documents read and sorted, reports assembled, and workflows that run on their own.</p>"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Before and after *RAG*",
+        "items": [
+          {"title": "Policy questions", "before": "Staff ask HR the same questions every week.", "after": "An assistant answers from the policy, with the page it came from."},
+          {"title": "Invoices and POs", "before": "Someone types each invoice into the accounts system.", "after": "Invoices are read, checked and turned into entries for review."},
+          {"title": "Product knowledge", "before": "Only senior staff know which product fits which job.", "after": "Any sales rep asks the assistant and gets the answer from your catalogue."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How an assistant gets *built*",
+        "steps": [
+          {"title": "Choose the documents", "text": "We agree which documents the assistant may use, and who may ask it what."},
+          {"title": "Prepare and index", "text": "Documents are cleaned, split into passages and stored for search."},
+          {"title": "Build and test", "text": "We test it on real questions your team asks, and fix wrong answers."},
+          {"title": "Run and update", "text": "New documents are added as they change, and usage is monitored."}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "What it runs *on*",
+        "tools": [
+          {"name": "Pinecone", "note": "Vector search"},
+          {"name": "Gemini embeddings", "note": "Indexing"},
+          {"name": "Claude", "note": "Answers"},
+          {"name": "Supabase", "note": "Database and storage"},
+          {"name": "n8n", "note": "Workflows"},
+          {"name": "Google Drive", "note": "Document source"}
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "An assistant your team can *ask*",
+        "body": "<p>Ask in plain words, in the tools you already use: a web page, WhatsApp or your team's workspace.</p><p>Each answer cites the document and page, so staff can check it before acting.</p>",
+        "image": "ai-support.jpg",
+        "image_side": "left",
+        "cta_label": "Book the free flow audit",
+        "cta_link": "#enquire"
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions about *RAG*",
+        "items": [
+          {"question": "Where are our documents kept?", "answer": "We agree with you which documents go in, where they are stored and who can ask questions, before we build anything."},
+          {"question": "What if the assistant does not know?", "answer": "It should say so. We set it to answer only from your documents, and to say when it cannot find the answer."},
+          {"question": "Which documents work?", "answer": "PDFs, Word files, spreadsheets, SOPs, manuals, contracts and forms. Scanned pages are read with OCR first."},
+          {"question": "Can it answer on WhatsApp?", "answer": "Yes. The same assistant can answer on a web page, inside your team's tools, or on WhatsApp."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Related *services*",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-sales.jpg", "title": "GoHighLevel setup", "text": "Put the assistant in front of your leads.", "link": "/services/gohighlevel"},
+          {"image": "orkay-website.jpg", "title": "Website development", "text": "A site with an assistant that knows your products.", "link": "/services/website-development"},
+          {"image": "ai-marketing.jpg", "title": "Content and marketing", "text": "Content written from the same documents.", "link": "/services/content-marketing"}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Book the free *flow audit*",
+        "intro": "Tell us which documents your team searches most. We will talk it through in 15 minutes.",
+        "form_type": "services",
+        "side_points": [
+          {"text": "15 minutes, free"},
+          {"text": "A one-page summary you keep"},
+          {"text": "No obligation to work with us"}
+        ]
+      }
+    }
+  ]
+}

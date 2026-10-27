@@ -1,0 +1,119 @@
+{
+  "slug": "services/website-development",
+  "kind": "page",
+  "template": "Service or use case",
+  "title": "Website development",
+  "h1": "Websites that *turn visits into enquiries*",
+  "meta_title": "Website development in Vadodara | Artificia AI",
+  "meta_description": "Fast websites your team can edit, with forms that send every enquiry to your CRM. We built orkaytiles.com. Start with a free 15-minute flow audit.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "We build fast websites your team can edit, with forms that send every enquiry straight to your CRM.",
+        "image": "orkay-website.jpg",
+        "primary_cta_label": "Book the free flow audit",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "All services",
+        "secondary_cta_link": "/services"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "What you *get*",
+        "body": "<p>A website should bring in enquiries, not just look good. We build sites that load fast, are set up for search, and hand every lead to your sales team.</p><p>You also get an admin your team can edit without a developer.</p>"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Before and after a *new site*",
+        "items": [
+          {"title": "Enquiries", "before": "The contact form emails one inbox, and leads get lost.", "after": "Every enquiry lands in your CRM with the page it came from."},
+          {"title": "Updates", "before": "Each small change waits for a developer.", "after": "Your team edits pages, products and posts in a simple admin."},
+          {"title": "Moving from an old site", "before": "Old pages vanish, and their Google traffic goes with them.", "after": "Old addresses redirect to the new pages, so links keep working."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How a site gets *built*",
+        "steps": [
+          {"title": "Plan the pages", "text": "We agree the pages, what each one should rank for, and where enquiries go."},
+          {"title": "Design and build", "text": "Fast pages built for phones first, with your real products and photos."},
+          {"title": "Connect the forms", "text": "Forms send leads to GoHighLevel or your CRM, with the source attached."},
+          {"title": "Launch and hand over", "text": "Old URLs redirected, search set up, and your team shown the admin."}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "What we *build with*",
+        "tools": [
+          {"name": "Next.js", "note": "Fast React sites"},
+          {"name": "PHP and MySQL", "note": "Simple hosting"},
+          {"name": "GoHighLevel", "note": "Where leads go"},
+          {"name": "Google Search Console", "note": "Search setup"},
+          {"name": "Google Analytics 4", "note": "Traffic"},
+          {"name": "Meta pixel", "note": "Ad tracking"}
+        ]
+      }
+    },
+    {
+      "type": "case_study",
+      "fields": {
+        "heading": "We built *orkaytiles.com*",
+        "client": "Orkay Tiles International",
+        "summary": "A new website for a tile manufacturer in Morbi, with an admin Orkay's team edits and enquiry forms that send leads to GoHighLevel.",
+        "built": [
+          {"title": "Collection pages", "text": "Each tile collection has its own page, with sizes, finishes and photos."},
+          {"title": "An editable admin", "text": "Orkay's team edits pages, products and SEO settings themselves."},
+          {"title": "Old links kept", "text": "Addresses from the old site redirect to the new pages."},
+          {"title": "Enquiries to the CRM", "text": "B2B enquiry forms send leads into GoHighLevel."}
+        ],
+        "link_label": "Read the case study",
+        "link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions about *websites*",
+        "items": [
+          {"question": "Can my team edit the site after launch?", "answer": "Yes. You get an admin where your team edits pages, images and SEO settings without a developer."},
+          {"question": "Will we lose our Google traffic?", "answer": "We map your old addresses to the new pages and redirect them, so existing links and search results keep working."},
+          {"question": "Can the site send leads to GoHighLevel?", "answer": "Yes. Forms can send each enquiry to GoHighLevel or another CRM, with the page and ad it came from."},
+          {"question": "Do you write the content too?", "answer": "We can. Our content team writes pages and posts, or we work from what you already have."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Related *services*",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-sales.jpg", "title": "GoHighLevel setup", "text": "Somewhere for your website's leads to go next.", "link": "/services/gohighlevel"},
+          {"image": "ai-marketing.jpg", "title": "Content and marketing", "text": "Pages, posts and campaigns that bring visitors in.", "link": "/services/content-marketing"},
+          {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "A site assistant that answers from your own documents.", "link": "/services/rag-custom-automation"}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Book the free *flow audit*",
+        "intro": "Tell us about your current site and where its enquiries go. We will talk it through in 15 minutes.",
+        "form_type": "services",
+        "side_points": [
+          {"text": "15 minutes, free"},
+          {"text": "A one-page summary you keep"},
+          {"text": "No obligation to work with us"}
+        ]
+      }
+    }
+  ]
+}

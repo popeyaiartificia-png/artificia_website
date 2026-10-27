@@ -1,0 +1,17 @@
+{
+  "slug": "blog",
+  "kind": "page",
+  "title": "Blog",
+  "h1": "Notes on *AI at work*",
+  "meta_title": "Blog | Artificia AI",
+  "meta_description": "Notes from Artificia AI in Vadodara on AI tools, automation and training: what we teach, what we build and what we learn on the way.",
+  "sections": [
+    {
+      "type": "blog_list",
+      "fields": {
+        "heading": "Latest posts",
+        "count": "6"
+      }
+    }
+  ]
+}

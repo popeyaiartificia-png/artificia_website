@@ -1,0 +1,97 @@
+{
+  "slug": "ai-masterclass/working-professionals",
+  "kind": "page",
+  "template": "Masterclass by audience",
+  "title": "AI Masterclass for working professionals",
+  "h1": "AI training for *working professionals* in Vadodara",
+  "meta_title": "AI training for working professionals | Artificia AI",
+  "meta_description": "Use AI for reports, emails, slides and data at work. A live AI course in Vadodara, one hour a day, built for busy professionals. No coding needed.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Spend less of your week on reports, emails and slides. Learn the AI tools for office work in one hour a day, in Vadodara.",
+        "image": "audience-professional.jpg",
+        "primary_cta_label": "Ask about the masterclass",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "See the full masterclass",
+        "secondary_cta_link": "/ai-masterclass"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "What changes at *work*",
+        "intro": "Three jobs most office roles share, before and after the course.",
+        "items": [
+          {"title": "Weekly reports", "before": "Copying figures between sheets and writing the same summary again.", "after": "Upload the data, get charts and a first summary, then check and send."},
+          {"title": "Emails and documents", "before": "Every email and document starts from a blank page.", "after": "Copilot drafts in Word and Excel; you check and finish."},
+          {"title": "Meeting prep", "before": "Reading long documents the night before a meeting.", "after": "NotebookLM summarises them and answers your questions with sources."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How it fits around a *job*",
+        "intro": "One live hour a day, on the kind of work you already do.",
+        "steps": [
+          {"title": "Choose your track", "text": "The 30-day Foundation covers office AI. The 60-day Full program adds automation and agents."},
+          {"title": "Learn in person", "text": "Live classes in Vadodara, with a demo and hands-on practice in every session."},
+          {"title": "Practise on real tasks", "text": "Examples come from real work: reports, emails, proposals, reviews and briefs."},
+          {"title": "Keep a prompt library", "text": "Build master prompts for the tasks you repeat, and keep them for every week after."}
+        ]
+      }
+    },
+    {
+      "type": "curriculum",
+      "fields": {
+        "heading": "What a professional *learns*",
+        "intro": "The office-work days first, then automation if you take the Full program.",
+        "modules": [
+          {"track": "foundation", "day_range": "1–3", "title": "Prompts that give usable answers", "topics": "Explain the problem, not just the task, and build prompts you can reuse.", "tools": "ChatGPT, Claude, Gemini"},
+          {"track": "foundation", "day_range": "4–7", "title": "Copilot, research and NotebookLM", "topics": "Copilot in Word, Excel and PowerPoint, research with sources, and AI ethics.", "tools": "Copilot, Perplexity, NotebookLM"},
+          {"track": "foundation", "day_range": "8–11", "title": "Assistants and presentations", "topics": "Custom GPTs, Gemini in Google Workspace, Claude Projects and AI slide decks.", "tools": "ChatGPT, Gemini, Claude, Gamma"},
+          {"track": "foundation", "day_range": "16–17", "title": "Canva and data analysis", "topics": "Canva designs, then cleaning data, building charts and writing formulas with AI.", "tools": "Canva, ChatGPT, Google Sheets, Excel"},
+          {"track": "full", "day_range": "36–39", "title": "Automating your work with n8n", "topics": "Workflows, APIs and webhooks, AI agents and bots that run tasks for you.", "tools": "n8n, Google Sheets"}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "From people who *work*",
+        "items": [
+          {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
+          {"name": "Nilesh Chaudasama", "role": "Working professional, Vadodara", "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."},
+          {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions professionals *ask*",
+        "items": [
+          {"question": "Can I attend around office hours?", "answer": "Classes run one hour a day. Message us on WhatsApp for the current batch timings and pick the one that suits your day."},
+          {"question": "Is it useful if I mostly use Excel and email?", "answer": "Yes. The early days cover Copilot in Word, Excel and PowerPoint, research tools and data analysis, which is most office work."},
+          {"question": "Can I use AI on my company's data?", "answer": "With care. Day 6 covers AI ethics: hallucination, bias and what not to do. Always follow your company's own rules first."},
+          {"question": "Can my company train the whole team?", "answer": "Yes. We also run custom corporate programs, on-site or over Microsoft Teams. They start with a free 2-hour pilot."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask about the *masterclass*",
+        "intro": "Leave your details and we will send batch timings that work around your job.",
+        "form_type": "masterclass",
+        "side_points": [
+          {"text": "No coding needed"},
+          {"text": "One hour a day, in person in Vadodara"},
+          {"text": "Built on everyday office work"}
+        ]
+      }
+    }
+  ]
+}

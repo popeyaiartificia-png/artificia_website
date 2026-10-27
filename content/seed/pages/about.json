@@ -1,0 +1,67 @@
+{
+  "slug": "about",
+  "kind": "page",
+  "title": "About Artificia",
+  "h1": "We teach AI, and *we build with it*",
+  "meta_title": "About Artificia AI, Vadodara | Hardik Aseri and team",
+  "meta_description": "Artificia Intellec Pvt Ltd is an AI training and automation company in Vadodara, Gujarat. Meet trainer Hardik Aseri and founder Vijay Linju Raghavan.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Artificia AI is an AI training and automation company in Vadodara, Gujarat. The people who teach the classes also build the systems.",
+        "image": "hardik-aseri.jpg",
+        "variant": "split",
+        "primary_cta_label": "Contact us",
+        "primary_cta_link": "/contact",
+        "secondary_cta_label": "See the masterclass",
+        "secondary_cta_link": "/ai-masterclass"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "Who *we are*",
+        "body": "<p>Artificia Intellec Pvt Ltd is an AI company based in Vadodara. We train people to use AI on real work, and we help companies put it into their own operations.</p><p>Three lines of work, one team:</p><ul><li>A live <a href=\"/ai-masterclass\">AI Masterclass</a> for individuals, in Vadodara.</li><li><a href=\"/corporate-ai-training\">Corporate AI training</a> built around each client's documents.</li><li><a href=\"/services\">AI systems</a> for businesses: GoHighLevel, websites, content and RAG.</li></ul>"
+      }
+    },
+    {
+      "type": "people",
+      "fields": {
+        "heading": "The *people*",
+        "items": [
+          {"name": "Hardik Aseri", "role": "AI trainer", "bio": "Teaches the AI Masterclass and leads Artificia's automation projects. He has trained working professionals, business owners and college graduates.", "photo": "hardik-aseri.jpg", "linkedin": "https://www.linkedin.com/in/hardik-aseri/"},
+          {"name": "Vijay Linju Raghavan", "role": "Founder", "bio": "Brings a background in film and photography, an economics degree from MSU Baroda, and experience founding tech and e-commerce ventures.", "photo": "vijay-linju-raghavan.jpg"}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "What we *do*",
+        "columns": "3",
+        "cards": [
+          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Live in Vadodara, one hour a day, for 30 or 60 days.", "link": "/ai-masterclass"},
+          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "Custom programs, on-site or over Microsoft Teams.", "link": "/corporate-ai-training"},
+          {"image": "business-owner-desk.jpg", "title": "Services", "text": "GoHighLevel, websites, content and RAG automation.", "link": "/services"}
+        ]
+      }
+    },
+    {
+      "type": "map_contact",
+      "fields": {
+        "heading": "Visit *us*",
+        "show_map": "yes"
+      }
+    },
+    {
+      "type": "cta",
+      "fields": {
+        "heading": "Not sure where to *start*?",
+        "text": "Tell us what you want to do with AI. We will point you to the right course, program or service.",
+        "button_label": "Contact Artificia",
+        "button_link": "/contact"
+      }
+    }
+  ]
+}

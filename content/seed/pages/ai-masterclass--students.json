@@ -1,0 +1,98 @@
+{
+  "slug": "ai-masterclass/students",
+  "kind": "page",
+  "template": "Masterclass by audience",
+  "title": "AI Masterclass for students",
+  "h1": "An AI course for *students* in Vadodara",
+  "meta_title": "AI course for students in Vadodara | Artificia AI",
+  "meta_description": "Learn AI tools hands-on in Vadodara while you study. One hour a day, no coding needed, and a portfolio of real projects by Demo Day.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Learn the AI tools people use at work today, one hour a day alongside college. Leave with projects you can show.",
+        "image": "audience-student.jpg",
+        "primary_cta_label": "Ask about the masterclass",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "See the full masterclass",
+        "secondary_cta_link": "/ai-masterclass"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "What changes for a *student*",
+        "intro": "Three everyday jobs, before and after the course.",
+        "items": [
+          {"title": "Assignments and research", "before": "Hours of searching, then a summary stitched together from open tabs.", "after": "Research with Perplexity and NotebookLM, with sources you can check."},
+          {"title": "Presentations", "before": "A night spent lining up slides by hand.", "after": "A first deck from Gamma in minutes, then your own edits."},
+          {"title": "Showing your skills", "before": "A CV that lists software and not much else.", "after": "A portfolio page, a project video and a live website you built."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How it fits around *college*",
+        "intro": "One live hour a day in Vadodara, with a task to finish after each class.",
+        "steps": [
+          {"title": "Choose a track", "text": "The 30-day Foundation, or the 60-day Full program if you want to build agents too."},
+          {"title": "One hour a day", "text": "Each class has a live demo and hands-on time, so you practise while it is fresh."},
+          {"title": "Build your portfolio", "text": "Day 29 is for your portfolio page, a short video walkthrough and a LinkedIn post."},
+          {"title": "Present on Demo Day", "text": "On day 30 you present your capstone and get feedback from mentors and classmates."}
+        ]
+      }
+    },
+    {
+      "type": "curriculum",
+      "fields": {
+        "heading": "What a student *learns*",
+        "intro": "Most of it is the 30-day Foundation. The Full program adds agents and code.",
+        "modules": [
+          {"track": "foundation", "day_range": "1–7", "title": "Prompting and research", "topics": "How to explain a task to AI, research with sources, and AI ethics.", "tools": "ChatGPT, Claude, Perplexity, NotebookLM"},
+          {"track": "foundation", "day_range": "8–17", "title": "Creative AI", "topics": "Presentations, images, video, voice, avatars and Canva designs.", "tools": "Gamma, Canva, ElevenLabs, HeyGen"},
+          {"track": "foundation", "day_range": "18–25", "title": "Your own website and app", "topics": "Build a portfolio site, learn Git basics and ship a first app.", "tools": "Lovable, Bolt.new, GitHub, Antigravity"},
+          {"track": "foundation", "day_range": "26–30", "title": "Capstone and Demo Day", "topics": "Plan, build and present a project of your own.", "tools": "Your chosen stack"},
+          {"track": "full", "day_range": "31–60", "title": "Agents, RAG and Claude Code", "topics": "Voice agents, n8n automation, RAG, Claude Code and an advanced capstone.", "tools": "n8n, Pinecone, Claude Code"}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "Students on the *course*",
+        "items": [
+          {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
+          {"name": "Khushi Dodiya", "role": "Artificia AI student", "video_url": "https://drive.google.com/file/d/1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2/view"},
+          {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
+          {"name": "Haritha Nair", "role": "AI design student, Vadodara", "quote": "The live sessions and practical projects helped me quickly build real creative skills. Today I feel confident using AI tools for design, branding, and freelance work."}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions students *ask*",
+        "items": [
+          {"question": "Can I join while I am in college?", "answer": "Yes. Classes run one hour a day, so they fit around college. Message us on WhatsApp for the current batch timings."},
+          {"question": "Can school students join?", "answer": "Yes. Younger learners can build creative AI projects too. Message us on WhatsApp first and we will suggest the right track."},
+          {"question": "Will this help me find work or freelance?", "answer": "You leave with real work to show: a website, a capstone and a portfolio page. Day 30 covers career and freelancing paths. We do not promise a job."},
+          {"question": "Which tools will I use?", "answer": "ChatGPT, Claude, Gemini, Perplexity, NotebookLM, Gamma, Canva, ElevenLabs, Lovable and more. Each one is taught hands-on in class."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask about the *masterclass*",
+        "intro": "Leave your details and we will send batch timings on WhatsApp.",
+        "form_type": "masterclass",
+        "side_points": [
+          {"text": "No coding needed"},
+          {"text": "One hour a day, next to college"},
+          {"text": "A portfolio by Demo Day"}
+        ]
+      }
+    }
+  ]
+}

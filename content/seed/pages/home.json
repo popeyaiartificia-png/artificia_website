@@ -1,0 +1,127 @@
+{
+  "slug": "home",
+  "kind": "page",
+  "title": "Home",
+  "h1": "Learn AI in a room in Vadodara. *From people who build it.*",
+  "meta_title": "AI training institute in Vadodara | Artificia AI",
+  "meta_description": "Artificia AI is an AI training institute in Vadodara: a live AI course, corporate AI training for teams, and AI systems built for businesses.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "eyebrow": "AI training institute in Vadodara",
+        "subheading": "Live AI classes for people, custom training for teams, and AI systems for businesses. One team teaches and builds.",
+        "variant": "split",
+        "drawing": "documents",
+        "doors": [
+          {"label": "Learn AI", "note": "30 or 60-day masterclass", "link": "/ai-masterclass"},
+          {"label": "Train my team", "note": "Custom corporate programs", "link": "/corporate-ai-training"},
+          {"label": "Build a system", "note": "GoHighLevel, websites, RAG", "link": "/services"}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Three ways to *work with us*",
+        "intro": "Learn it, train a team, or have it built. The same people teach the classes and build the systems.",
+        "columns": "3",
+        "cards": [
+          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Offline in Vadodara, one hour a day. A 30-day Foundation or the 60-day Full program. No coding needed.", "link": "/ai-masterclass"},
+          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "A program built around your documents and departments, on-site or over Microsoft Teams. It starts with a free 2-hour pilot.", "link": "/corporate-ai-training"},
+          {"image": "business-owner-desk.jpg", "title": "AI systems for businesses", "text": "GoHighLevel setup, websites, content and marketing, and AI that answers from your own documents.", "link": "/services"}
+        ]
+      }
+    },
+    {
+      "type": "case_study",
+      "fields": {
+        "heading": "Orkay Tiles runs on a system *we built*",
+        "client": "Orkay Tiles International",
+        "summary": "We set up and run Orkay's two GoHighLevel accounts, and we built their website.",
+        "image": "orkay-website.jpg",
+        "built": [
+          {"title": "Two accounts", "text": "India dealer leads over WhatsApp, and export buyers by email."},
+          {"title": "Routed by language", "text": "Each lead goes to a rep who speaks the lead's language."},
+          {"title": "Called by AI", "text": "An AI voice agent calls new India leads in Hindi and books a callback."},
+          {"title": "Never forgotten", "text": "Unanswered leads get a follow-up, then move to another rep."}
+        ],
+        "link_label": "Read the case study",
+        "link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "stats",
+      "fields": {
+        "heading": "What AI-enabled teams *typically* see",
+        "note": "Typical outcomes for AI-enabled teams.",
+        "items": [
+          {"value": "92%", "label": "faster lead handling"},
+          {"value": "10–20 hrs", "label": "saved per employee each week"},
+          {"value": "65%", "label": "less repetitive work"},
+          {"value": "500%", "label": "boost in customer response"},
+          {"value": "4×", "label": "faster reporting"}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "In their *own words*",
+        "items": [
+          {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
+          {"name": "Khushi Dodiya", "role": "Artificia AI student", "video_url": "https://drive.google.com/file/d/1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2/view"},
+          {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
+          {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."},
+          {"name": "Haritha Nair", "role": "AI design student, Vadodara", "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."},
+          {"name": "Nilesh Chaudasama", "role": "Working professional, Vadodara", "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."}
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "Taught by Hardik Aseri",
+        "body": "<p>Hardik Aseri teaches the masterclass and leads Artificia's automation projects.</p><p>His classes are direct and practical: the tools and workflows that work today, shown live, then done by you.</p>",
+        "image": "hardik-aseri.jpg",
+        "image_side": "right",
+        "cta_label": "About Artificia",
+        "cta_link": "/about"
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Common *questions*",
+        "items": [
+          {"question": "What does Artificia do?", "answer": "We teach AI and we build with it: a live masterclass for individuals, custom training for company teams, and AI systems for businesses."},
+          {"question": "Where are you based?", "answer": "In Vadodara, Gujarat, on Gotri-Sevasi Road, opposite Osia Mall. The masterclass is taught in person in Vadodara."},
+          {"question": "Do I need to know coding to learn AI?", "answer": "No. The masterclass is designed for beginners and non-technical learners. You learn by using the tools, step by step."},
+          {"question": "Can you train our whole team?", "answer": "Yes. Corporate programs are built around your documents and departments, on-site or online over Microsoft Teams. The first step is a free 2-hour pilot."},
+          {"question": "What is a flow audit?", "answer": "A free 15-minute call. We trace one process from enquiry to delivery, mark where time is lost, and show what to automate first."}
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "fields": {
+        "heading": "Training a team? Try a *free pilot*.",
+        "text": "One 2-hour session on AI and prompting for your staff, with no commitment. Judge the training before you decide.",
+        "button_label": "Ask for the pilot",
+        "button_link": "/corporate-ai-training#enquire"
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Send us a *message*",
+        "intro": "Tell us what you need and we will reply on WhatsApp.",
+        "form_type": "contact",
+        "side_points": [
+          {"text": "Masterclass, corporate training or services"},
+          {"text": "Based in Vadodara, Gujarat"}
+        ]
+      }
+    }
+  ]
+}

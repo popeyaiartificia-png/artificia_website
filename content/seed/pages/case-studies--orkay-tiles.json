@@ -1,0 +1,69 @@
+{
+  "slug": "case-studies/orkay-tiles",
+  "kind": "page",
+  "title": "Orkay Tiles International case study",
+  "h1": "How Orkay Tiles *runs its leads* on GoHighLevel",
+  "meta_title": "Orkay Tiles case study: GoHighLevel and AI | Artificia",
+  "meta_description": "How Artificia set up and runs Orkay Tiles International's two GoHighLevel accounts, with language routing, an AI voice agent and a new website.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "eyebrow": "Case study, shared with Orkay's permission",
+        "subheading": "Orkay Tiles International is a tile manufacturer in Morbi, Gujarat. We set up and run its two GoHighLevel accounts, and we built its website.",
+        "image": "orkay-website.jpg",
+        "variant": "split",
+        "primary_cta_label": "Book a free flow audit",
+        "primary_cta_link": "/services#enquire",
+        "secondary_cta_label": "Our GoHighLevel service",
+        "secondary_cta_link": "/services/gohighlevel"
+      }
+    },
+    {
+      "type": "case_study",
+      "fields": {
+        "heading": "What we *built*",
+        "client": "Orkay Tiles International",
+        "summary": "Two GoHighLevel accounts, an AI voice agent, the automations around them, and a new website.",
+        "challenge": "<p>Orkay sells to tile dealers across India over WhatsApp, and to importers abroad by email. Leads arrive from ads and forms, in many languages.</p><p>Each one has to reach the right rep quickly and never be forgotten.</p>",
+        "built": [
+          {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
+          {"title": "International export account", "text": "Importers, distributors and project buyers abroad, worked by email."},
+          {"title": "Routed by language", "text": "Tamil, Telugu and Kannada form leads go to the rep who speaks that language."},
+          {"title": "Arya, the AI voice agent", "text": "Arya calls new India leads in Hindi, then books a callback on the rep's calendar or transfers the call live."},
+          {"title": "Meta Conversions API", "text": "Each new Facebook and Instagram lead is reported back to Meta as a lead event."},
+          {"title": "Follow-up and reassignment", "text": "Leads get timed follow-ups, and unanswered ones move to another rep."},
+          {"title": "Daily status report", "text": "Every morning the team gets a report of new leads, stage moves and conversations."},
+          {"title": "The website", "text": "We built orkaytiles.com, with collection pages and an admin the team edits."}
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "From ad click to *the right rep*",
+        "body": "<p>A dealer fills in a Meta form or messages on WhatsApp. GoHighLevel gives the lead an owner who speaks the dealer's language.</p><p>Within minutes, Arya calls in Hindi, then books a callback or transfers the call to that rep.</p>",
+        "image": "ai-sales.jpg",
+        "image_side": "right"
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "Automations that *run every day*",
+        "body": "<p>Leads nobody answers get a follow-up, then move to another rep. Meta hears about every lead, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
+        "image": "ai-workflow.jpg",
+        "image_side": "left"
+      }
+    },
+    {
+      "type": "cta",
+      "fields": {
+        "heading": "Want a system *like this*?",
+        "text": "Start with a free 15-minute flow audit. We trace how your leads move today and show where they get stuck.",
+        "button_label": "Book the free flow audit",
+        "button_link": "/services#enquire"
+      }
+    }
+  ]
+}

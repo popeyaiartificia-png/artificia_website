@@ -1,0 +1,115 @@
+{
+  "slug": "services/content-marketing",
+  "kind": "page",
+  "template": "Service or use case",
+  "title": "Content development and marketing",
+  "h1": "Content and marketing, *made with AI*",
+  "meta_title": "AI content development and marketing | Artificia AI",
+  "meta_description": "Posts, videos, voiceovers and campaigns made with AI tools, in your brand's voice, and tied to your leads. Start with a free 15-minute flow audit.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Posts, videos, voiceovers and campaigns made with AI, in your brand's voice, and connected to the leads they bring in.",
+        "image": "ai-marketing.jpg",
+        "primary_cta_label": "Book the free flow audit",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "All services",
+        "secondary_cta_link": "/services"
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "Content that *connects to sales*",
+        "body": "<p>We plan, write, design and voice content with AI tools, then check every piece by hand before it goes out.</p><p>Campaigns link to your CRM, so you can see which posts and ads brought in leads.</p>"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "Before and after *AI content*",
+        "items": [
+          {"title": "Social posts", "before": "Posting stops whenever the team gets busy.", "after": "A month of posts planned, written and designed in one go, then scheduled."},
+          {"title": "Product videos", "before": "Every video needs a shoot and weeks of editing.", "after": "Explainer and product videos made with AI video, voiceover and avatars."},
+          {"title": "Other languages", "before": "Content exists only in English.", "after": "Videos and posts dubbed and localised into the languages your buyers speak."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How content gets *made*",
+        "steps": [
+          {"title": "Research", "text": "We study your buyers, your competitors and the searches you want to win."},
+          {"title": "Plan", "text": "A content calendar tied to your offers and campaigns."},
+          {"title": "Make", "text": "Writing, design, video and voice, made with AI and checked by hand."},
+          {"title": "Measure", "text": "Leads from each campaign tracked in your CRM and reported monthly."}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "What we *make it with*",
+        "tools": [
+          {"name": "ChatGPT", "note": "Writing"},
+          {"name": "Claude", "note": "Long-form drafts"},
+          {"name": "Canva", "note": "Design"},
+          {"name": "Gamma", "note": "Decks"},
+          {"name": "Runway", "note": "Video"},
+          {"name": "HeyGen", "note": "Avatar video"},
+          {"name": "ElevenLabs", "note": "Voiceover and dubbing"}
+        ]
+      }
+    },
+    {
+      "type": "text_image",
+      "fields": {
+        "heading": "From post to *lead to sale*",
+        "body": "<p>Content is one step in a chain: research, content, campaign, lead, CRM, follow-up and report.</p><p>We can build the whole chain, so marketing and sales see the same numbers.</p>",
+        "image": "ai-workflow.jpg",
+        "image_side": "left",
+        "cta_label": "See GoHighLevel setup",
+        "cta_link": "/services/gohighlevel"
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions about *content*",
+        "items": [
+          {"question": "Is AI content any good?", "answer": "Only when someone checks it. AI drafts fast, then our team edits for accuracy, tone and your brand before anything is published."},
+          {"question": "Do you do SEO?", "answer": "Yes. We structure content for Google and for AI search tools such as ChatGPT, so your pages get found and cited."},
+          {"question": "Can you make videos without a shoot?", "answer": "Yes. We make explainer, product and social videos with AI voice and avatars. For some products, real photos still work better."},
+          {"question": "Can you make content in Hindi or Gujarati?", "answer": "Yes. We dub and localise videos and posts into the languages your buyers speak."}
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Related *services*",
+        "columns": "3",
+        "cards": [
+          {"image": "ai-sales.jpg", "title": "GoHighLevel setup", "text": "Catch and follow up every lead your content brings in.", "link": "/services/gohighlevel"},
+          {"image": "orkay-website.jpg", "title": "Website development", "text": "A fast home for your content, set up for search.", "link": "/services/website-development"},
+          {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "Turn your documents into answers your buyers can use.", "link": "/services/rag-custom-automation"}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Book the free *flow audit*",
+        "intro": "Tell us what you post today and where your leads come from. We will talk it through in 15 minutes.",
+        "form_type": "services",
+        "side_points": [
+          {"text": "15 minutes, free"},
+          {"text": "A one-page summary you keep"},
+          {"text": "No obligation to work with us"}
+        ]
+      }
+    }
+  ]
+}

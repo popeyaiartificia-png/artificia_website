@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Masterclass by audience",
+    "unique_fields": ["0.subheading", "1.heading", "1.items", "5.items"],
+    "sections": [
+      {
+        "type": "hero",
+        "fields": {
+          "subheading": "Write one or two sentences on why the masterclass fits this audience.",
+          "image": "classroom-instructor.jpg",
+          "primary_cta_label": "Ask about the masterclass",
+          "primary_cta_link": "#enquire",
+          "secondary_cta_label": "See the full masterclass",
+          "secondary_cta_link": "/ai-masterclass"
+        }
+      },
+      {
+        "type": "use_cases",
+        "fields": {
+          "heading": "What changes for this audience",
+          "intro": "Three everyday jobs, before and after the course.",
+          "items": [
+            {"title": "A job this audience does", "before": "How it is done today.", "after": "How it is done with AI."}
+          ]
+        }
+      },
+      {
+        "type": "process_steps",
+        "fields": {
+          "heading": "How the masterclass works",
+          "intro": "Live classes in Vadodara, one hour a day.",
+          "steps": [
+            {"title": "Pick your track", "text": "The 30-day Foundation, or the 60-day Full program with agents, RAG and voice agents."},
+            {"title": "Learn in person", "text": "Each class has a short opener, the core idea, a live demo and hands-on practice."},
+            {"title": "Build as you go", "text": "Each day ends with a task that adds to your portfolio."},
+            {"title": "Show what you built", "text": "Day 30 is Demo Day. Full-program students present an advanced project on day 60."}
+          ]
+        }
+      },
+      {
+        "type": "curriculum",
+        "fields": {
+          "heading": "The course, in five blocks",
+          "intro": "Pick the blocks that matter most to this audience.",
+          "modules": [
+            {"track": "foundation", "day_range": "1–7", "title": "Prompting and everyday AI", "topics": "Prompt frameworks, Copilot, research tools and NotebookLM.", "tools": "ChatGPT, Claude, Copilot, NotebookLM"},
+            {"track": "foundation", "day_range": "8–17", "title": "Content, media and data", "topics": "Presentations, images, video, voice and data analysis.", "tools": "Gamma, Canva, ElevenLabs"},
+            {"track": "foundation", "day_range": "18–30", "title": "Websites, apps and Demo Day", "topics": "Build a website and an app, then present a capstone.", "tools": "Lovable, Bolt.new, Antigravity"},
+            {"track": "full", "day_range": "31–49", "title": "Agents, automation and RAG", "topics": "Voice agents, n8n, MCP and RAG agents.", "tools": "n8n, Vapi, Pinecone"},
+            {"track": "full", "day_range": "50–60", "title": "Claude Code and graduation", "topics": "Claude Code, local models and an advanced capstone.", "tools": "Claude Code, Ollama, Vercel"}
+          ]
+        }
+      },
+      {
+        "type": "testimonials",
+        "fields": {
+          "heading": "What students *say*",
+          "items": [
+            {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
+            {"name": "Khushi Dodiya", "role": "Artificia AI student", "video_url": "https://drive.google.com/file/d/1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2/view"},
+            {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"}
+          ]
+        }
+      },
+      {
+        "type": "faqs",
+        "fields": {
+          "heading": "Questions before you *join*",
+          "items": [
+            {"question": "A question this audience asks", "answer": "A short answer written for this audience."}
+          ]
+        }
+      },
+      {
+        "type": "lead_form",
+        "fields": {
+          "heading": "Ask about the *masterclass*",
+          "intro": "Leave your details and we will reply on WhatsApp with timings and next steps.",
+          "form_type": "masterclass",
+          "side_points": [
+            {"text": "No coding needed"},
+            {"text": "One hour a day, in person in Vadodara"},
+            {"text": "A 30-day or a 60-day track"}
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Corporate by industry",
+    "unique_fields": ["0.subheading", "1.heading", "1.items", "5.items"],
+    "sections": [
+      {
+        "type": "hero",
+        "fields": {
+          "subheading": "Write one or two sentences on the work this industry's teams do, and how training helps.",
+          "image": "corporate-session.jpg",
+          "primary_cta_label": "Ask for the free pilot",
+          "primary_cta_link": "#enquire",
+          "secondary_cta_label": "Corporate AI training",
+          "secondary_cta_link": "/corporate-ai-training"
+        }
+      },
+      {
+        "type": "use_cases",
+        "fields": {
+          "heading": "Where this industry loses hours",
+          "intro": "Three jobs, before and after training.",
+          "items": [
+            {"title": "A job these teams do", "before": "How it is done today.", "after": "How it is done with AI."}
+          ]
+        }
+      },
+      {
+        "type": "card_grid",
+        "fields": {
+          "heading": "Teams that *join* the program",
+          "intro": "Departments train together, each on exercises for its own role.",
+          "columns": "3",
+          "cards": [
+            {"image": "ai-sales.jpg", "title": "Sales", "text": "Proposals, follow-ups and call summaries in your company's voice."},
+            {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, CV screening and onboarding packs."},
+            {"image": "ai-finance.jpg", "title": "Accounts", "text": "Invoice extraction, reconciliation support and monthly MIS."}
+          ]
+        }
+      },
+      {
+        "type": "process_steps",
+        "fields": {
+          "heading": "How a program *starts*",
+          "intro": "Length and format are set by your needs.",
+          "steps": [
+            {"title": "Discovery", "text": "We meet department heads and map the work that takes the most time."},
+            {"title": "Your documents", "text": "Exercises are rebuilt around your own files, reports and systems."},
+            {"title": "A deliverable each session", "text": "Each session ends with a working prompt, workflow or tool."},
+            {"title": "Support after", "text": "Refreshers and follow-up help keep the new habits going."}
+          ]
+        }
+      },
+      {
+        "type": "stats",
+        "fields": {
+          "heading": "What AI-enabled teams *typically* see",
+          "note": "Typical outcomes for AI-enabled teams.",
+          "items": [
+            {"value": "92%", "label": "faster lead handling"},
+            {"value": "10–20 hrs", "label": "saved per employee each week"},
+            {"value": "65%", "label": "less repetitive work"},
+            {"value": "500%", "label": "boost in customer response"},
+            {"value": "4×", "label": "faster reporting"}
+          ]
+        }
+      },
+      {
+        "type": "faqs",
+        "fields": {
+          "heading": "Questions from *this industry*",
+          "items": [
+            {"question": "A question these teams ask", "answer": "A short answer written for this industry."}
+          ]
+        }
+      },
+      {
+        "type": "lead_form",
+        "fields": {
+          "heading": "Ask for a *free pilot*",
+          "intro": "Tell us about your teams and we will set up a 2-hour session on AI and prompting.",
+          "form_type": "corporate",
+          "side_points": [
+            {"text": "Built around your documents and departments"},
+            {"text": "On-site, or online over Microsoft Teams"},
+            {"text": "No commitment after the pilot"}
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Service or use case",
+    "unique_fields": ["0.subheading", "1.body", "2.items", "6.items"],
+    "sections": [
+      {
+        "type": "hero",
+        "fields": {
+          "subheading": "Write one or two sentences on what this service does for a business.",
+          "image": "business-owner-desk.jpg",
+          "primary_cta_label": "Book the free flow audit",
+          "primary_cta_link": "#enquire",
+          "secondary_cta_label": "All services",
+          "secondary_cta_link": "/services"
+        }
+      },
+      {
+        "type": "rich_text",
+        "fields": {
+          "heading": "What we *build*",
+          "body": "<p>Explain what this service is and who it is for, in two or three short paragraphs.</p>"
+        }
+      },
+      {
+        "type": "use_cases",
+        "fields": {
+          "heading": "Before and *after*",
+          "items": [
+            {"title": "A job this service takes over", "before": "How it is done today.", "after": "How it is done after."}
+          ]
+        }
+      },
+      {
+        "type": "process_steps",
+        "fields": {
+          "heading": "How a build *works*",
+          "steps": [
+            {"title": "Audit", "text": "A free 15-minute call to trace one process and find where time is lost."},
+            {"title": "Plan", "text": "We agree what to build first and how you will know it works."},
+            {"title": "Build", "text": "We build it, test it with your team and put it into daily use."},
+            {"title": "Run", "text": "We monitor it, fix what breaks and add workflows as you grow."}
+          ]
+        }
+      },
+      {
+        "type": "tools",
+        "fields": {
+          "heading": "Tools we *use*",
+          "tools": [
+            {"name": "A tool", "note": "What it does here"}
+          ]
+        }
+      },
+      {
+        "type": "text_image",
+        "fields": {
+          "heading": "How it looks *in practice*",
+          "body": "<p>Show the work: a client system, or how the service runs day to day.</p>",
+          "image": "ai-workflow.jpg",
+          "image_side": "left"
+        }
+      },
+      {
+        "type": "faqs",
+        "fields": {
+          "heading": "Questions about *this service*",
+          "items": [
+            {"question": "A question buyers of this service ask", "answer": "A short answer written for this service."}
+          ]
+        }
+      },
+      {
+        "type": "card_grid",
+        "fields": {
+          "heading": "Related *services*",
+          "columns": "3",
+          "cards": [
+            {"image": "ai-sales.jpg", "title": "GoHighLevel setup", "text": "Pipelines, WhatsApp and follow-ups, set up and run.", "link": "/services/gohighlevel"},
+            {"image": "orkay-website.jpg", "title": "Website development", "text": "Fast websites that send every enquiry to your CRM.", "link": "/services/website-development"},
+            {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "AI that answers from your own documents.", "link": "/services/rag-custom-automation"}
+          ]
+        }
+      },
+      {
+        "type": "lead_form",
+        "fields": {
+          "heading": "Book the free *flow audit*",
+          "intro": "Tell us about one process that takes too long. We will trace it with you in 15 minutes.",
+          "form_type": "services",
+          "side_points": [
+            {"text": "15 minutes, free"},
+            {"text": "A one-page summary you keep"},
+            {"text": "No obligation to work with us"}
+          ]
+        }
+      }
+    ]
+  }
+]

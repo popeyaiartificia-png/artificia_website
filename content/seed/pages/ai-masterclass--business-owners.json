@@ -1,0 +1,97 @@
+{
+  "slug": "ai-masterclass/business-owners",
+  "kind": "page",
+  "template": "Masterclass by audience",
+  "title": "AI Masterclass for business owners",
+  "h1": "AI training for *business owners* and founders",
+  "meta_title": "AI training for business owners in Vadodara | Artificia",
+  "meta_description": "Learn which work in your business AI can take on, and build the first automations yourself. Live in Vadodara, one hour a day, no coding needed.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "subheading": "Find out what AI can take off your desk, then build the first automations yourself. Live in Vadodara, one hour a day.",
+        "image": "audience-founder.jpg",
+        "primary_cta_label": "Ask about the masterclass",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "See the full masterclass",
+        "secondary_cta_link": "/ai-masterclass"
+      }
+    },
+    {
+      "type": "use_cases",
+      "fields": {
+        "heading": "What changes in your *business*",
+        "intro": "Three jobs owners often carry themselves, before and after the course.",
+        "items": [
+          {"title": "Answering enquiries", "before": "Leads wait hours for a reply while you are busy.", "after": "A WhatsApp bot built in n8n answers common questions and collects details."},
+          {"title": "Marketing content", "before": "Posts and creatives wait until someone finds the time.", "after": "Write, design and voice content with ChatGPT, Canva and ElevenLabs in one sitting."},
+          {"title": "Your website", "before": "Waiting weeks for someone else to change a page.", "after": "Build and edit a landing page yourself with Lovable or Bolt.new."}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "How owners use the *course*",
+        "intro": "Learn the tools first, then the automations that run without you.",
+        "steps": [
+          {"title": "Start with the Foundation", "text": "Thirty days on the everyday tools: prompting, content, data and a website."},
+          {"title": "Go on to automation", "text": "The Full program adds n8n workflows, AI agents, voice agents and RAG over your own documents."},
+          {"title": "Use real business tasks", "text": "Examples come from real work: enquiries, quotations, reports and follow-ups."},
+          {"title": "Know what to hand over", "text": "By the end you can build simple automations and judge what a bigger system should do."}
+        ]
+      }
+    },
+    {
+      "type": "curriculum",
+      "fields": {
+        "heading": "What an owner *learns*",
+        "intro": "The parts of the 60 days that matter most when you run the business.",
+        "modules": [
+          {"track": "foundation", "day_range": "8–17", "title": "Content, slides and data", "topics": "Sales decks, images, video, voiceovers and reading your numbers with AI.", "tools": "Gamma, Canva, ElevenLabs, ChatGPT"},
+          {"track": "foundation", "day_range": "18–25", "title": "Websites and simple apps", "topics": "Landing pages, design and a first internal tool, built by you.", "tools": "Lovable, Bolt.new, Antigravity"},
+          {"track": "full", "day_range": "31–35", "title": "Agents and voice agents", "topics": "How agents work, voice agents that answer calls, and simple backends.", "tools": "Vapi, ElevenLabs, Supabase"},
+          {"track": "full", "day_range": "36–39", "title": "n8n automation and WhatsApp bots", "topics": "Workflows, webhooks, lead generation agents and WhatsApp bots.", "tools": "n8n, WhatsApp Business API"},
+          {"track": "full", "day_range": "45–49", "title": "RAG and agents as a service", "topics": "AI that answers from your documents, and packaging agents for clients.", "tools": "Pinecone, CrewAI, Vercel"}
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "fields": {
+        "heading": "Learners on the *masterclass*",
+        "items": [
+          {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
+          {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
+          {"name": "Nilesh Chaudasama", "role": "Working professional, Vadodara", "quote": "The training was practical, structured, and easy to apply in daily professional tasks."}
+        ]
+      }
+    },
+    {
+      "type": "faqs",
+      "fields": {
+        "heading": "Questions owners *ask*",
+        "items": [
+          {"question": "I run a business. Do I have time for this?", "answer": "Classes are one hour a day. Message us on WhatsApp for batch timings that work around your business."},
+          {"question": "Should I learn it or have it built?", "answer": "Learn it if you want to run and change your own tools. If you want a finished system instead, Artificia's services team builds it for you."},
+          {"question": "Will I learn to automate WhatsApp?", "answer": "Yes, in the 60-day Full program. Days 36 to 39 cover n8n, webhooks, AI lead generation, and WhatsApp and Telegram bots."},
+          {"question": "Can my staff join too?", "answer": "Yes. They can join a batch, or we can run a custom program for your team. Corporate training starts with a free 2-hour pilot."}
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Ask about the *masterclass*",
+        "intro": "Tell us about your business and we will suggest a track on WhatsApp.",
+        "form_type": "masterclass",
+        "side_points": [
+          {"text": "No coding needed"},
+          {"text": "One hour a day, in person in Vadodara"},
+          {"text": "Automation in the 60-day track"}
+        ]
+      }
+    }
+  ]
+}
