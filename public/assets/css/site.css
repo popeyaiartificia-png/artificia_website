@@ -366,6 +366,12 @@ a:hover { color: var(--lime); }
 .index__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .index--photo .index__item { padding-top: 1.75rem; }
 .index--photo .index__go { top: auto; bottom: 1.9rem; }
+/* Photo cards sit in equal columns with a gap, so every print is the same size. */
+@media (min-width: 720px) {
+  .index.index:not(.index--drawn).index--photo { column-gap: 2rem; }
+  .index.index:not(.index--drawn).index--photo .index__item { padding-left: 0; padding-right: 0; border-left: 0; }
+  .index.index:not(.index--drawn).index--photo .index__go { right: 0; }
+}
 .index--drawn .index__item { padding: 2rem 0 2.25rem; }
 @media (min-width: 900px) {
   .index--drawn .index__item { display: grid; grid-template-columns: minmax(280px, 5fr) 7fr; column-gap: 4rem; align-items: center; padding: 2.75rem 0; }
