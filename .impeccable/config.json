@@ -17,6 +17,33 @@
         ],
         "createdAt": "2026-10-27T11:11:16.162Z",
         "reason": "Throwaway direction-round sketch, not shipped; excluded from git"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-10-27T11:27:07.556Z",
+        "reason": "Throwaway direction-round sketch with stand-in fonts, not shipped; excluded from git"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/pick.html"
+        ],
+        "createdAt": "2026-10-27T11:27:07.572Z",
+        "reason": "Throwaway direction-round sketch with stand-in fonts, not shipped; excluded from git"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-10-27T11:27:07.588Z",
+        "reason": "Throwaway direction-round sketch with stand-in fonts, not shipped; excluded from git"
       }
     ]
   }
