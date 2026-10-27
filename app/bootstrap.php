@@ -20,7 +20,9 @@ require __DIR__ . '/lib/settings.php';
 // Migrate on boot, under a lock so two simultaneous first requests can't race.
 if (count(applied_migrations(db())) !== count(glob(MIGRATIONS_DIR . '/*.sql'))) {
     $db = db();
-    $db->query("SELECT GET_LOCK('artificia_migrate', 10)")->fetchColumn();
+    if ($db->query("SELECT GET_LOCK('artificia_migrate', 10)")->fetchColumn() !== 1) {
+        throw new RuntimeException('Could not get the migration lock');
+    }
     try {
         migrate($db, MIGRATIONS_DIR); // re-reads applied files, so the loser of the race does nothing
     } finally {

@@ -14,3 +14,10 @@ function test_settings_roundtrip(): void
     setting_set($db, 'ga4_id', 'G-X');
     eq(settings($db)['ga4_id'], 'G-X');
 }
+
+function test_migration_reruns_after_partial_failure(): void
+{
+    $db = test_db();
+    $db->exec('DELETE FROM schema_migrations'); // as if the run died before recording itself
+    eq(migrate($db, MIGRATIONS_DIR), ['001_init.sql']);
+}
