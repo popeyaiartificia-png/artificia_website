@@ -3,6 +3,7 @@
 /public/uploads/*
 /storage/*
 !/public/uploads/.gitkeep
+!/public/uploads/.htaccess
 !/storage/.gitkeep
 artificia-config.php
 config.php
