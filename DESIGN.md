@@ -200,7 +200,7 @@ Steps run on a vertical rail inside a glass track that fills lime on scroll, wit
 Fill `rgba(255,255,255,.05)`, 1px `rgba(255,255,255,.16)` border, square, 50px high; hover border .32; focus lime border plus 1px lime ring; invalid border Warn. Checkboxes 20px, lime when checked. The plate is a blurred glass pane; on success the form gives way to a "logline" confirmation.
 
 ### Navigation and footer
-Floating blurred glass bar with the real Artificia logo image (never a text wordmark; 32px high, 38px at 1024px). Links 0.9375rem, active or hover shows a 2px lime underline. The primary Enquire button sits on the right. Under 1024px the nav becomes a full-screen glass overlay with 1.5rem uppercase links and the toggle collapses to an icon under 480px. The footer is one glass panel with label-style column heads. A floating lime WhatsApp square hides when the form is in view.
+Floating blurred glass bar with the real Artificia logo image (never a text wordmark; 32px high, 38px at 1024px). Links 0.9375rem, active or hover shows a 2px lime underline. The primary Enquire button sits on the right. Under 1024px the nav becomes a full-screen glass overlay with 1.5rem uppercase links and the toggle collapses to an icon under 480px. The footer is one glass panel with label-style column heads. A floating lime WhatsApp square stays hidden while the hero is in view, so it never covers the chooser rows.
 
 ### Map
 A line-drawn facade; the map iframe loads only on click.
