@@ -1,5 +1,4 @@
-<svg class="draw" viewBox="0 0 400 296" role="img" aria-labelledby="dr-services">
-  <title id="dr-services">Sketch: a new lead goes into GoHighLevel, gets an AI reply, is followed up, and lands in a daily report.</title>
+<svg class="draw" viewBox="0 0 400 296" role="img" aria-label="Sketch: a new lead goes into GoHighLevel, gets an AI reply, is followed up, and lands in a daily report.">
   <rect class="bx" x="20" y="26" width="120" height="44"/><rect class="ln" pathLength="1" x="20" y="26" width="120" height="44"/>
   <text x="34" y="53">NEW LEAD</text>
   <text class="nt" x="20" y="88">Meta, Google, website</text>

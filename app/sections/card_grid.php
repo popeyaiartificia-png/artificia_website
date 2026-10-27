@@ -1,14 +1,22 @@
-<?php $cols = in_array($f['columns'] ?? '', ['2', '3', '4'], true) ? $f['columns'] : '3'; ?>
+<?php
+$cols = in_array($f['columns'] ?? '', ['2', '3', '4'], true) ? $f['columns'] : '3';
+$drawn = array_filter($f['cards'] ?? [], fn($c) => drawing((string) ($c['drawing'] ?? '')) !== '') !== [];
+?>
 <section class="sec sec--card_grid cards">
   <div class="wrap">
     <?= sec_head($f['heading'] ?? '') ?>
 <?php if (!empty($f['intro'])): ?>
     <p class="lede"><?= e($f['intro']) ?></p>
 <?php endif ?>
-    <ul class="index index--<?= $cols ?>" data-reveal="list">
+    <ul class="index <?= $drawn ? 'index--drawn' : 'index--' . $cols ?>" data-reveal="list">
 <?php foreach ($f['cards'] ?? [] as $c): ?>
       <li class="index__item">
-        <?= icon($c['icon'] ?? '', 'icon index__icon') ?>
+<?php $sketch = drawing((string) ($c['drawing'] ?? '')); ?>
+<?php if ($sketch !== ''): ?>
+        <div class="index__draw"><?= $sketch ?></div>
+<?php else: ?>
+        <?= icon((string) ($c['icon'] ?? ''), 'icon index__icon') ?>
+<?php endif ?>
 <?php if (!empty($c['link'])): ?>
         <h3 class="h3"><a href="<?= link_href($c['link'] ?? '') ?>"><?= e($c['title'] ?? '') ?></a></h3>
         <?= icon('arrow-up-right', 'icon index__go') ?>

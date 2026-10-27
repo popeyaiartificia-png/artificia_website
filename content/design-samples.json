@@ -41,19 +41,22 @@
             "icon": "graduation-cap",
             "title": "AI Masterclass",
             "text": "Offline in Vadodara, one hour a day. A 30-day Foundation track or the 60-day Full program. No coding needed.",
-            "link": "/ai-masterclass"
+            "link": "/ai-masterclass",
+            "drawing": "masterclass"
           },
           {
             "icon": "users-three",
             "title": "Corporate AI training",
             "text": "A program built around your documents and departments, on-site or over Microsoft Teams. It starts with a free 2-hour pilot.",
-            "link": "/corporate-ai-training"
+            "link": "/corporate-ai-training",
+            "drawing": "corporate"
           },
           {
             "icon": "flow-arrow",
             "title": "AI systems for businesses",
             "text": "GoHighLevel setup, websites, content and marketing, and AI that answers from your own documents.",
-            "link": "/services"
+            "link": "/services",
+            "drawing": "services"
           }
         ]
       }

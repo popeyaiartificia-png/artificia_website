@@ -1,5 +1,5 @@
 <?php /** @var string $title, $description, $canonical, $robots, $ogType, $body, $ga4, $pixel, $gsc, $current; @var ?string $ogImage; @var array $jsonld, $settings; @var bool $hasForm */
-$wa = preg_replace('/\D/', '', ($settings['whatsapp_number'] ?? '') ?: '919104488859');
+$wa = whatsapp_url($settings);
 $nav = [
     '/ai-masterclass' => 'Masterclass',
     '/corporate-ai-training' => 'Corporate training',
@@ -119,6 +119,6 @@ $nav = [
     </div>
   </div>
 </footer>
-<a class="wa-float" href="https://wa.me/<?= e($wa) ?>" aria-label="Chat with us on WhatsApp"><?= icon('whatsapp-logo') ?></a>
+<a class="wa-float" href="<?= e($wa) ?>" aria-label="Chat with us on WhatsApp"><?= icon('whatsapp-logo') ?></a>
 </body>
 </html>

@@ -12,8 +12,7 @@
 ?>
       <div class="dim">
         <dt class="dim__label"><?= e($it['label'] ?? '') ?></dt>
-        <dd class="dim__val"><span class="vh"><?= e($v) ?></span><span class="dim__num" aria-hidden="true" data-count><?= e($big) ?></span><?php if ($small !== ''): ?><small aria-hidden="true"><?= e($small) ?></small><?php endif ?></dd>
-        <dd class="dim__line" aria-hidden="true"></dd>
+        <dd class="dim__val"><span class="vh"><?= e($v) ?></span><span class="dim__rule" aria-hidden="true"></span><span class="dim__num" aria-hidden="true" data-count><?= e($big) ?></span><?php if ($small !== ''): ?><small aria-hidden="true"><?= e($small) ?></small><?php endif ?><span class="dim__rule" aria-hidden="true"></span></dd>
       </div>
 <?php endforeach ?>
     </dl>

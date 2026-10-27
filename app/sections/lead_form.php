@@ -3,7 +3,7 @@ $type = in_array($f['form_type'] ?? '', ['masterclass', 'corporate', 'services',
 $id = 'lf' . $s;
 $buttons = ['masterclass' => 'Send my enquiry', 'corporate' => 'Ask for the free pilot', 'services' => 'Book the free flow audit', 'contact' => 'Send message'];
 $label = trim($f['button_label'] ?? '') !== '' ? $f['button_label'] : $buttons[$type];
-$wa = preg_replace('/\D/', '', $settings['whatsapp_number'] ?? '919104488859');
+$wa = whatsapp_url($settings);
 $field = function (string $name, string $text, string $type = 'text', bool $req = true, string $auto = '') use ($id): string {
     $fid = $id . '-' . $name;
     $attrs = ' id="' . $fid . '" name="' . $name . '" type="' . $type . '"' . ($req ? ' required' : '') . ($auto ? ' autocomplete="' . $auto . '"' : '');
@@ -38,7 +38,7 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
 <?php endforeach ?>
       </ul>
 <?php endif ?>
-      <p class="lead__wa">Prefer WhatsApp? <a href="https://wa.me/<?= e($wa) ?>">Message us directly</a></p>
+      <p class="lead__wa">Prefer WhatsApp? <a href="<?= e($wa) ?>">Message us directly</a></p>
     </div>
     <form class="lead-form plate" data-form-type="<?= $type ?>" method="post" action="/lead" novalidate>
       <input type="hidden" name="form_type" value="<?= $type ?>">

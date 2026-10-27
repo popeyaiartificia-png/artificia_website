@@ -1,19 +1,18 @@
 <?php
 $variant = ($f['variant'] ?? 'split') === 'centered' ? 'centered' : 'split';
+$h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
-$media = drawing($f['drawing'] ?? '');
+$sketch = drawing((string) ($f['drawing'] ?? ''));
+$media = $sketch;
 if ($media === '' && !empty($f['image'])) {
     $media = '<div class="frame">' . image($f['image'], '(min-width: 1024px) 560px, 100vw', true) . '</div>';
 }
 ?>
-<section class="sec sec--hero hero hero--<?= $variant ?>" data-section="hero">
+<section class="sec sec--hero hero hero--<?= $variant ?><?= $sketch !== '' ? ' hero--drawn' : '' ?>" data-section="hero">
   <div class="wrap hero__grid">
-<?php if (!empty($f['eyebrow'])): ?>
-    <p class="hero__tag"><?= e($f['eyebrow']) ?></p>
-<?php endif ?>
     <div class="hero__copy">
 <?php $tag = $s === 0 ? 'h1' : 'h2'; // the page h1 belongs to a hero only when it opens the page ?>
-      <div class="sec__head"><?= tick() ?><<?= $tag ?> class="h1"><?= heading_html($page['h1'] ?? '') ?></<?= $tag ?>></div>
+      <div class="sec__head"><?= tick() ?><<?= $tag ?> class="h1"><?= heading_html($h1) ?></<?= $tag ?>></div>
 <?php if (!empty($f['subheading'])): ?>
       <p class="lede hero__sub"><?= e($f['subheading']) ?></p>
 <?php endif ?>
@@ -36,6 +35,9 @@ if ($media === '' && !empty($f['image'])) {
     </div>
 <?php if ($media !== ''): ?>
     <div class="hero__media"><?= $media ?></div>
+<?php endif ?>
+<?php if (!empty($f['eyebrow'])): ?>
+    <p class="hero__foot"><?= e($f['eyebrow']) ?></p>
 <?php endif ?>
   </div>
 </section>

@@ -2,7 +2,7 @@
 $addr = trim($settings['org_address'] ?? '');
 $phone = trim($settings['org_phone'] ?? '');
 $email = trim($settings['org_email'] ?? '');
-$wa = preg_replace('/\D/', '', $settings['whatsapp_number'] ?? '');
+$wa = whatsapp_url($settings);
 $gbp = trim($settings['gbp_url'] ?? '');
 $showMap = ($f['show_map'] ?? 'yes') !== 'no' && $addr !== '';
 ?>
@@ -17,9 +17,7 @@ $showMap = ($f['show_map'] ?? 'yes') !== 'no' && $addr !== '';
 <?php if ($phone !== ''): ?>
         <div><dt>Phone</dt><dd><a href="tel:<?= e(preg_replace('/[^\d+]/', '', $phone)) ?>"><?= e($phone) ?></a></dd></div>
 <?php endif ?>
-<?php if ($wa !== ''): ?>
-        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/<?= e($wa) ?>">Message us</a></dd></div>
-<?php endif ?>
+        <div><dt>WhatsApp</dt><dd><a href="<?= e($wa) ?>">Message us</a></dd></div>
 <?php if ($email !== ''): ?>
         <div><dt>Email</dt><dd><a href="mailto:<?= e($email) ?>"><?= e($email) ?></a></dd></div>
 <?php endif ?>

@@ -50,7 +50,7 @@ function test_every_list_has_subfields(): void
     }
     eq($lists, [
         'hero.doors' => ['label', 'note', 'link'],
-        'card_grid.cards' => ['icon', 'title', 'text', 'link'],
+        'card_grid.cards' => ['icon', 'drawing', 'title', 'text', 'link'],
         'use_cases.items' => ['title', 'before', 'after'],
         'process_steps.steps' => ['title', 'text'],
         'tools.tools' => ['name', 'logo', 'note'],

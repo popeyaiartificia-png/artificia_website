@@ -65,6 +65,25 @@ function sec_head(string $heading, string $class = 'h2'): string
     return '<div class="sec__head">' . tick() . '<h2 class="' . e($class) . '">' . heading_html($heading) . '</h2></div>';
 }
 
+/** A testimonial video URL as an embeddable https src (Google Drive or YouTube); '' for anything else. */
+function video_embed_src(string $url): string
+{
+    if (preg_match('#^https://drive\.google\.com/file/d/([\w-]+)#', $url, $m)) {
+        return 'https://drive.google.com/file/d/' . $m[1] . '/preview';
+    }
+    if (preg_match('#^https://(?:www\.)?(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([\w-]{6,})#', $url, $m)) {
+        return 'https://www.youtube-nocookie.com/embed/' . $m[1];
+    }
+    return '';
+}
+
+/** wa.me link for the site's WhatsApp number (settings, else the business default). */
+function whatsapp_url(array $settings): string
+{
+    $digits = preg_replace('/\D/', '', (string) ($settings['whatsapp_number'] ?? ''));
+    return 'https://wa.me/' . ($digits !== '' ? $digits : '919104488859');
+}
+
 /** An image field (a media id) as a responsive <img>; '' when empty or unknown. */
 function image(mixed $id, string $sizes, bool $eager = false, string $class = ''): string
 {

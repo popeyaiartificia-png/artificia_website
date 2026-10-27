@@ -63,6 +63,7 @@ function section_registry(): array
             'columns' => $select('Columns', ['2', '3', '4']),
             'cards' => $list('Cards', [
                 'icon' => $select('Icon', $icons),
+                'drawing' => $select('Drawing (replaces the icon)', ['none', 'documents', 'masterclass', 'corporate', 'services']),
                 'title' => $text('Title', true),
                 'text' => $area('Text', true),
                 'link' => $text('Link'),

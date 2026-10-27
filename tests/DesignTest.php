@@ -50,3 +50,35 @@ function test_every_drawing_option_exists(): void
         ok($name === 'none' || drawing($name) !== '', "drawing $name");
     }
 }
+
+function test_only_allowlisted_videos_become_players(): void
+{
+    $html = render_section_in(['type' => 'testimonials', 'fields' => ['heading' => 'Words', 'items' => [
+        ['name' => 'A', 'role' => 'r', 'video_url' => 'javascript:alert(1)'],
+        ['name' => 'B', 'role' => 'r', 'video_url' => 'data:text/html,<script>1</script>'],
+        ['name' => 'C', 'role' => 'r', 'video_url' => 'https://drive.google.com/file/d/abc_123/view?usp=sharing'],
+    ]]], 0, [], []);
+    ok(!str_contains($html, 'javascript:') && !str_contains($html, 'data:text'), 'unsafe video URLs never reach the page');
+    eq(substr_count($html, 'data-src='), 1, 'only the Drive link becomes a player');
+    ok(str_contains($html, 'data-src="https://drive.google.com/file/d/abc_123/preview"'), 'Drive links play their preview');
+    eq(video_embed_src('https://youtu.be/dQw4w9WgXcQ'), 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ');
+    eq(video_embed_src('https://evil.example/drive.google.com/file/d/x'), '');
+}
+
+function test_hero_h1_falls_back_to_title(): void
+{
+    $html = render_section_in(['type' => 'hero', 'fields' => []], 0, ['h1' => '', 'title' => 'About Artificia'], []);
+    ok((bool) preg_match('#<h1[^>]*>About Artificia</h1>#', $html));
+}
+
+function test_cta_without_button_renders_no_link(): void
+{
+    $html = render_section_in(['type' => 'cta', 'fields' => ['heading' => 'Hi']], 0, [], []);
+    ok(!str_contains($html, '<a '), 'no empty button');
+}
+
+function test_whatsapp_url_falls_back_to_the_business_number(): void
+{
+    eq(whatsapp_url([]), 'https://wa.me/919104488859');
+    eq(whatsapp_url(['whatsapp_number' => '+91 98765 43210']), 'https://wa.me/919876543210');
+}

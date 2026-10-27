@@ -1,5 +1,4 @@
-<svg class="draw" viewBox="0 0 400 296" role="img" aria-labelledby="dr-corporate">
-  <title id="dr-corporate">Sketch: one program built around your company's documents, with a session for each team.</title>
+<svg class="draw" viewBox="0 0 400 296" role="img" aria-label="Sketch: one program built around your company's documents, with a session for each team.">
   <path class="ln" pathLength="1" d="M120 66l56 64M280 66l-56 64M140 230l40-56M260 230l-40-56"/>
   <rect class="bx" x="20" y="26" width="110" height="40"/><rect class="ln" pathLength="1" x="20" y="26" width="110" height="40"/>
   <text x="34" y="51">SALES</text>

@@ -22,9 +22,11 @@
   d.addEventListener('click', function (e) {
     var b = e.target.closest('.vid[data-src], .map__facade[data-src]');
     if (!b) return;
+    var src = b.getAttribute('data-src') || '';
+    if (src.indexOf('https://') !== 0) return; // the server allowlists hosts; never load anything else
     var f = d.createElement('iframe');
-    f.src = b.getAttribute('data-src');
-    f.title = b.getAttribute('aria-label') || 'Map';
+    f.src = src;
+    f.title = b.getAttribute('data-title') || 'Map';
     f.allow = 'autoplay; fullscreen';
     f.setAttribute('allowfullscreen', '');
     if (b.classList.contains('vid')) {
@@ -35,7 +37,15 @@
     } else {
       b.replaceWith(f);
     }
+    f.setAttribute('tabindex', '-1');
+    f.focus();
   });
+
+  // The WhatsApp button waits until the hero (and its chooser) has scrolled away.
+  var fab = d.querySelector('.wa-float'), hero = d.querySelector('.hero');
+  if (fab && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { fab.classList.toggle('is-away', es[0].isIntersecting); }).observe(hero);
+  }
 
   // Curriculum: pointing at a module marks its days on the ruler.
   d.querySelectorAll('.curr').forEach(function (sec) {
@@ -71,6 +81,12 @@
     if (doors.length) tl.to(doors, { opacity: 1, y: 0, duration: 0.7, ease: out, stagger: 0.08 }, 0.2);
   });
 
+  // Sketches further down the page draw themselves when they arrive.
+  d.querySelectorAll('.sec:not(.hero) .draw').forEach(function (svg) {
+    var lines = svg.querySelectorAll('.ln');
+    if (lines.length) gsap.fromTo(lines, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut', stagger: 0.06, scrollTrigger: once(svg, 'top 80%') });
+  });
+
   // Each heading's margin tick is written as the section arrives.
   d.querySelectorAll('.sec__head .tick path').forEach(function (p) {
     gsap.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1 },
@@ -86,9 +102,9 @@
 
   // Outcomes: each dimension line is measured out, then its number counts up.
   d.querySelectorAll('.dim').forEach(function (dim, i) {
-    var line = dim.querySelector('.dim__line'), num = dim.querySelector('[data-count]');
-    var tl = gsap.timeline({ scrollTrigger: once(dim, 'top 88%'), delay: (i % 5) * 0.08 });
-    if (line) tl.fromTo(line, { '--k': 0 }, { '--k': 1, duration: 0.8, ease: out });
+    var rules = dim.querySelectorAll('.dim__rule'), num = dim.querySelector('[data-count]');
+    var tl = gsap.timeline({ scrollTrigger: once(dim, 'top 88%'), delay: (i % 3) * 0.08 });
+    if (rules.length) tl.fromTo(rules, { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: out });
     if (num) {
       var text = num.textContent, nums = text.match(/\d+/g) || [], o = { t: 0 };
       var paint = function () {
@@ -128,8 +144,4 @@
     });
   });
 
-  // Before and after: the arrow is drawn between them.
-  d.querySelectorAll('.case__arrow .ln').forEach(function (p) {
-    gsap.fromTo(p, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut', scrollTrigger: once(p.closest('.case')) });
-  });
 })();

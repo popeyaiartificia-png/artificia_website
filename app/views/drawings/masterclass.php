@@ -1,5 +1,4 @@
-<svg class="draw" viewBox="0 0 400 296" role="img" aria-labelledby="dr-masterclass">
-  <title id="dr-masterclass">Sketch: the 60-day line. Foundation runs days 1 to 30, the Full program continues to day 60.</title>
+<svg class="draw" viewBox="0 0 400 296" role="img" aria-label="Sketch: the 60-day line. Foundation runs days 1 to 30, the Full program continues to day 60.">
   <text x="20" y="34">FOUNDATION</text>
   <text x="380" y="34" text-anchor="end">FULL PROGRAM</text>
   <path class="ld" d="M20 48v-6h176v6M204 48v-6h176v6"/>
