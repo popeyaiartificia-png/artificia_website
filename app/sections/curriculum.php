@@ -5,7 +5,7 @@ foreach ($f['modules'] ?? [] as $m) {
     $byTrack[($m['track'] ?? '') === 'full' ? 'full' : 'foundation'][] = $m;
 }
 ?>
-<section class="sec sec--curriculum curr" data-section="curriculum">
+<section class="sec sec--curriculum curr" id="curriculum" data-section="curriculum">
   <div class="wrap">
     <?= sec_head($f['heading'] ?? '') ?>
 <?php if (!empty($f['intro'])): ?>
