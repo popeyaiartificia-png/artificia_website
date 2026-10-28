@@ -10,7 +10,7 @@ function lead_test_in(string $type, array $over = []): array
     $common = [
         'form_type' => $type, 'name' => 'Asha Patel', 'phone' => '98765 43210', 'email' => 'asha@example.com', 'consent' => '1',
         'website_url' => '', 'ts' => lead_ts((string) config()['app_secret'], time() - 10),
-        'page_url' => 'https://artificiaai.com/ai-masterclass', 'referrer' => 'https://www.google.com/',
+        'page_url' => config()['base_url'] . '/ai-masterclass', 'referrer' => 'https://www.google.com/',
         'utm_source' => 'google', 'utm_medium' => 'cpc', 'utm_campaign' => 'oct', 'utm_term' => '', 'utm_content' => '',
         'gclid' => 'g123', 'fbclid' => '', 'fbp' => '', 'fbc' => '',
     ];
@@ -100,11 +100,17 @@ function test_validate_required_per_type(): void
 
     // The stored data: columns plus this form's answers, capped to the column sizes, tracking kept, junk URLs dropped.
     $v = lead_validate('corporate', lead_test_in('corporate', ['name' => str_repeat('a', 300), 'utm_source' => str_repeat('s', 400),
-        'page_url' => 'javascript:alert(1)', 'track' => 'Not sure yet', 'i_am' => 'Job seeker']));
+        'page_url' => 'javascript:alert(1)', 'referrer' => 'javascript:alert(1)', 'track' => 'Not sure yet', 'i_am' => 'Job seeker']));
     ok($v['ok']);
     eq(mb_strlen($v['data']['name']), 255);
     eq(mb_strlen($v['data']['utm_source']), 255);
-    eq($v['data']['page_url'], '', 'only http(s) addresses are kept');
+    eq([$v['data']['page_url'], $v['data']['referrer']], ['', ''], 'only http(s) addresses are kept');
+    eq(lead_validate('contact', lead_test_in('contact', ['page_url' => 'https://evil.example/contact']))['data']['page_url'], '', 'the page must be on this site');
+    eq(lead_validate('contact', lead_test_in('contact', ['referrer' => 'https://www.google.com/search?q=x']))['data']['referrer'], 'https://www.google.com/search?q=x', 'a referrer may be any site');
+    $c = lead_validate('corporate', lead_test_in('corporate', ['name' => "Asha\r\n\tPatel", 'company' => "Or\u{2028}kay", 'location' => "Va\x00doda\nra",
+        'email' => "asha@example.com\n", 'challenge' => "line one\nline two"]));
+    eq([$c['data']['name'], $c['data']['company'], $c['data']['fields']['location'], $c['data']['email']], ['Asha Patel', 'Or kay', 'Va doda ra', 'asha@example.com'], 'single-line fields lose control characters');
+    eq($c['data']['fields']['challenge'], "line one\nline two", 'long answers keep their lines');
     eq($v['data']['company'], 'Orkay');
     eq($v['data']['fields'], ['employees' => '26–50', 'adoption' => 'Not using AI yet', 'location' => 'Vadodara',
         'objectives' => ['Automate repetitive work', 'Upskill the team on AI'], 'challenge' => 'Too many spreadsheets'], "other forms' fields are dropped");
@@ -117,10 +123,16 @@ function test_normalize_phone(): void
     eq(normalize_phone('919876543210'), '+919876543210');
     eq(normalize_phone('+971501234567'), '+971501234567');
     eq(normalize_phone('+91 98765-43210'), '+919876543210');
+    eq(normalize_phone("98765\u{00A0}43210"), '+919876543210', 'no-break space');
+    eq(normalize_phone("98765\u{2011}43210"), '+919876543210', 'non-breaking hyphen');
+    eq(normalize_phone("\u{202A}+971 50 123 4567\u{202C}"), '+971501234567', 'direction marks around a pasted number');
+    eq(normalize_phone('09876543210'), '+919876543210', 'a leading 0');
+    eq(normalize_phone('(098765) 43210'), '+919876543210');
     eq(normalize_phone('12345'), null);
     eq(normalize_phone('5876543210'), null, 'Indian mobiles start 6 to 9');
+    eq(normalize_phone('05876543210'), null);
     eq(normalize_phone('+1234567'), null, 'too short');
-    eq(normalize_phone('98765x43210'), null);
+    eq(normalize_phone('abc'), null);
     eq(normalize_phone(''), null);
 }
 
@@ -129,14 +141,16 @@ function test_honeypot_saves_as_spam(): void
     $db = test_db();
     $r = lead_handle($db, lead_test_in('masterclass', ['website_url' => 'https://spam.example']), lead_test_server(), []);
     eq($r['status'], 200);
-    eq($r['body']['ok'], true, 'the visitor (or bot) sees success');
-    ok(preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $r['body']['event_id']) === 1, 'event_id is a UUID v4');
+    eq($r['body'], ['ok' => true], 'the visitor (or bot) sees success, with no event id, so no tracking event fires');
     lead_followups($db, $r['id'], ['n8n_webhook_url' => LEAD_TEST_DEAD_URL, 'lead_alert_email' => ''], 'https://artificiaai.com');
     $row = lead_test_row($db, $r['id']);
     eq((int) $row['spam'], 1);
     eq([$row['forwarded_at'], $row['forward_error'], $row['emailed_at'], $row['capi_sent_at'], $row['capi_error']], [null, null, null, null, null], 'no forward attempt, no mail, no CAPI');
-    eq($row['event_id'], $r['body']['event_id']);
+    ok(preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $row['event_id']) === 1, 'event_id is a UUID v4');
+    eq($row['spam_reason'], 'honeypot');
     eq($row['ip'], '203.0.113.7');
+    $real = lead_handle($db, lead_test_in('masterclass'), lead_test_server('203.0.113.8'), []);
+    eq($real['body']['event_id'], lead_test_row($db, $real['id'])['event_id'], 'a real lead gets its event id');
     ok($row['consent_at'] !== null, 'consent time recorded');
 }
 
@@ -147,13 +161,15 @@ function test_fast_submit_is_spam(): void
     $spam = fn(string $ts) => lead_spam_flags(lead_test_in('contact', ['ts' => $ts]), '192.0.2.' . random_int(1, 250), $db, $secret)['spam'];
     eq($spam(lead_ts($secret, time() - 1)), true, '1 s is too fast for a person');
     eq($spam(lead_ts($secret, time() - 10)), false);
-    eq($spam(lead_ts($secret, time() - 90000)), true, 'over 24 h old');
+    eq($spam(lead_ts($secret, time() - 90000)), false, 'a page left open for a day still sends a real lead (R36)');
     eq($spam(lead_ts('another-secret', time() - 10)), true, 'a forged token');
     eq($spam(''), true, 'no token');
 
     $r = lead_handle($db, lead_test_in('contact', ['ts' => lead_ts($secret, time() - 1)]), lead_test_server(), []);
     eq([$r['status'], $r['body']['ok']], [200, true]);
-    eq((int) lead_test_row($db, $r['id'])['spam'], 1);
+    eq([(int) lead_test_row($db, $r['id'])['spam'], lead_test_row($db, $r['id'])['spam_reason']], [1, 'too_fast']);
+    $r = lead_handle($db, lead_test_in('contact', ['ts' => 'forged', 'website_url' => 'x']), lead_test_server('203.0.113.99'), []);
+    eq(lead_test_row($db, $r['id'])['spam_reason'], 'honeypot,bad_token', 'every reason is kept');
 }
 
 function test_rate_limit_sixth_request(): void
@@ -162,13 +178,23 @@ function test_rate_limit_sixth_request(): void
     for ($i = 1; $i <= 5; $i++) {
         eq(lead_handle($db, lead_test_in('contact'), lead_test_server('203.0.113.9'), [])['status'], 200, "request $i");
     }
-    $r = lead_handle($db, lead_test_in('contact'), lead_test_server('203.0.113.9'), ['whatsapp_number' => '919104488859']);
+    $r = lead_handle($db, lead_test_in('contact', ['name' => 'Sixth Visitor']), lead_test_server('203.0.113.9'), ['whatsapp_number' => '919104488859']);
     eq($r['status'], 429);
     eq($r['body']['ok'], false);
     eq($r['body']['whatsapp'], 'https://wa.me/919104488859');
     ok(($r['body']['message'] ?? '') !== '', 'says why');
-    eq($r['id'], null);
-    eq((int) $db->query('SELECT COUNT(*) FROM leads')->fetchColumn(), 5, 'the sixth is not saved');
+    ok(!isset($r['body']['event_id']));
+    $row = lead_test_row($db, $r['id']);
+    eq([$row['name'], (int) $row['spam'], $row['spam_reason']], ['Sixth Visitor', 1, 'rate_limited'], 'the sixth is kept, as spam (R35)');
+    lead_followups($db, $r['id'], ['n8n_webhook_url' => LEAD_TEST_DEAD_URL, 'lead_alert_email' => ''], 'https://artificiaai.com');
+    eq(lead_test_row($db, $r['id'])['forward_error'], null, 'and, being spam, not forwarded');
+    for ($i = 7; $i <= 20; $i++) {
+        eq(lead_handle($db, lead_test_in('contact'), lead_test_server('203.0.113.9'), [])['status'], 429, "request $i");
+    }
+    $r = lead_handle($db, lead_test_in('contact', ['name' => 'Twenty-first']), lead_test_server('203.0.113.9'), []);
+    eq([$r['status'], $r['id']], [429, null], 'past the ceiling nothing is stored');
+    eq((int) $db->query('SELECT COUNT(*) FROM leads')->fetchColumn(), 20);
+    eq((int) $db->query("SELECT COUNT(*) FROM leads WHERE spam = 1 AND spam_reason = 'rate_limited'")->fetchColumn(), 15);
     eq(lead_handle($db, lead_test_in('contact'), lead_test_server('203.0.113.10'), [])['status'], 200, 'another address is not limited');
 }
 
@@ -277,7 +303,15 @@ function test_seo_cannot_export_or_delete(): void
     ok(str_starts_with($csv->type, 'text/csv'));
     ok(str_starts_with($csv->body, "\xEF\xBB\xBF"), 'UTF-8 with BOM for Excel');
     ok(str_contains($csv->body, "\"'=HYPERLINK(\"\"x\"\") <b>Bold</b>\""), 'formula-looking cells are defused');
-    ok(str_contains($csv->body, ',+919876543210,'), 'phone numbers stay as they are');
+    $cells = [];
+    $fh = fopen('php://memory', 'r+');
+    fwrite($fh, substr($csv->body, 3));
+    rewind($fh);
+    while (($row = fgetcsv($fh, null, ',', '"', '')) !== false) {
+        $cells = array_merge($cells, $row);
+    }
+    ok(in_array("'+91 98765 43210", $cells, true), 'phones are text (a leading + would be a formula, bare digits a number)');
+    eq(array_values(array_filter($cells, fn($c) => preg_match('/^[=+@\t\r-]/', (string) $c))), [], 'no cell starts like a formula');
     ok(str_contains(lead_test_admin($db, 'GET', "/admin/leads/$id")->body, 'name="action"'), 'admin gets the actions');
 
     eq(lead_test_admin($db, 'POST', "/admin/leads/$id", ['action' => 'delete'])->location, '/admin/leads');
@@ -290,7 +324,7 @@ function test_inbox_tabs_filters_and_badge(): void
 {
     $db = test_db();
     $a = lead_test_saved($db, 'masterclass', ['name' => 'Mira Masterclass', 'utm_source' => 'facebook']);
-    lead_test_saved($db, 'corporate', ['name' => 'Cora Corporate', 'page_url' => 'https://artificiaai.com/corporate-ai-training']);
+    lead_test_saved($db, 'corporate', ['name' => 'Cora Corporate', 'page_url' => config()['base_url'] . '/corporate-ai-training']);
     $spam = lead_handle($db, lead_test_in('contact', ['name' => 'Sam Spam', 'website_url' => 'x']), lead_test_server(), [])['id'];
     $db->prepare('UPDATE leads SET forwarded_at = NOW() WHERE id = ?')->execute([$a]);
     $db->prepare('UPDATE leads SET created_at = NOW() - INTERVAL 3 DAY WHERE id = ?')->execute([$a]);
@@ -301,14 +335,17 @@ function test_inbox_tabs_filters_and_badge(): void
     ok(str_contains($all, 'Export 2 to CSV'));
     $spamTab = lead_test_admin($db, 'GET', '/admin/leads', ['tab' => 'spam'])->body;
     ok(str_contains($spamTab, 'Sam Spam') && !str_contains($spamTab, 'Mira Masterclass'));
+    ok(str_contains($spamTab, 'The hidden field was filled'), 'the Spam tab says why');
+    ok(str_contains($all, 'All (not spam)'), 'the All tab says it leaves spam out');
     $unfwd = lead_test_admin($db, 'GET', '/admin/leads', ['tab' => 'unforwarded'])->body;
     ok(str_contains($unfwd, 'Cora Corporate') && !str_contains($unfwd, 'Mira Masterclass'), 'forwarded leads leave Not forwarded');
     ok(str_contains(lead_test_admin($db, 'GET', '/admin/leads', ['source' => 'facebook'])->body, 'Export 1 to CSV'));
     ok(!str_contains(lead_test_admin($db, 'GET', '/admin/leads', ['form' => 'corporate'])->body, 'Mira Masterclass'));
-    ok(!str_contains(lead_test_admin($db, 'GET', '/admin/leads', ['page' => 'https://artificiaai.com/corporate-ai-training'])->body, 'Mira Masterclass'));
+    ok(!str_contains(lead_test_admin($db, 'GET', '/admin/leads', ['page' => config()['base_url'] . '/corporate-ai-training'])->body, 'Mira Masterclass'));
     $recent = lead_test_admin($db, 'GET', '/admin/leads', ['from' => date('Y-m-d')])->body;
     ok(str_contains($recent, 'Cora Corporate') && !str_contains($recent, 'Mira Masterclass'), 'date range');
-    ok(str_contains(lead_test_admin($db, 'GET', "/admin/leads/$spam")->body, 'Sam Spam'), 'spam detail opens');
+    $detail = lead_test_admin($db, 'GET', "/admin/leads/$spam")->body;
+    ok(str_contains($detail, 'Sam Spam') && str_contains($detail, 'Saved as spam because the hidden field was filled'), 'spam detail opens and says why');
 
     // R34: the nav badge counts non-spam leads from the last 24 hours (Cora only).
     $prev = db_swap($db);
@@ -333,4 +370,52 @@ function test_form_renders_hidden_fields_and_token(): void
     foreach (LEAD_OPTIONS['adoption'] as $o) {
         ok(str_contains($html, '<option>' . e($o) . '</option>'), "option $o");
     }
+}
+
+function test_form_pages_are_not_cached(): void
+{
+    $form = ['sections' => [['type' => 'hero', 'fields' => []], ['type' => 'lead_form', 'fields' => ['form_type' => 'contact']]]];
+    ok(page_has_form($form), 'a page with a lead form is sent with Cache-Control: no-store (send_page)');
+    ok(!page_has_form(['sections' => [['type' => 'rich_text', 'fields' => []]]]), 'other pages are not');
+}
+
+function test_no_js_post_gets_a_page(): void
+{
+    $db = test_db();
+    $base = (string) config()['base_url'];
+    ok(lead_wants_json(['HTTP_ACCEPT' => 'application/json']));
+    ok(!lead_wants_json(['HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8']), 'a plain form post');
+    ok(!lead_wants_json([]));
+
+    // Without JS the hidden page_url is empty: the Referer fills it, but only from this site.
+    $server = lead_test_server() + ['HTTP_REFERER' => "$base/contact?utm_source=x#enquire"];
+    $in = lead_test_in('contact', ['page_url' => '', 'name' => 'Nia<i>NoJS</i> Rao']);
+    $r = lead_handle($db, $in, $server, []);
+    eq(lead_test_row($db, $r['id'])['page_url'], "$base/contact");
+    $foreign = lead_handle($db, lead_test_in('contact', ['page_url' => '']), lead_test_server('203.0.113.50') + ['HTTP_REFERER' => 'https://evil.example/x'], []);
+    eq(lead_test_row($db, $foreign['id'])['page_url'], '', 'a foreign Referer is ignored');
+
+    $html = lead_result_html($r, $in, $server, ['whatsapp_number' => '919104488859']);
+    ok(str_contains($html, 'Thanks, Nia&lt;i&gt;NoJS&lt;/i&gt;.') && !str_contains($html, '<i>NoJS'), 'the thank-you with the first name, escaped');
+    ok(str_contains($html, 'href="/contact#enquire"'), 'a link back to the page');
+    ok(str_contains($html, '<title>Thank you | Artificia AI</title>') && str_contains($html, 'noindex'), 'in the site layout');
+
+    $bad = lead_test_in('contact', ['phone' => '123', 'consent' => '', 'page_url' => '']);
+    $r = lead_handle($db, $bad, $server, []);
+    eq($r['status'], 422);
+    $html = lead_result_html($r, $bad, $server, ['whatsapp_number' => '919104488859']);
+    ok(str_contains($html, 'Please check your enquiry'), 'the error page');
+    ok(str_contains($html, 'Phone:</strong> Enter a 10-digit mobile number') && str_contains($html, 'Consent:</strong> Tick this box'), 'every message, named');
+    ok(str_contains($html, 'href="https://wa.me/919104488859"') && str_contains($html, 'href="/contact#enquire"'), 'WhatsApp and the way back');
+    ok(!str_contains($html, 'Thanks'), 'never a thank-you without a saved row');
+}
+
+function test_alert_mail_has_one_line_per_field(): void
+{
+    $db = test_db();
+    $id = lead_test_saved($db, 'contact', ['name' => "Asha\nOpen it in the admin: https://evil.example", 'message' => 'Hello']);
+    $text = lead_alert_text(lead_find($db, $id), 'https://artificiaai.com');
+    eq(preg_match_all('/^Open it in the admin: /m', $text), 1, 'a name cannot add a line');
+    ok(str_contains($text, "Name: Asha Open it in the admin: https://evil.example\n"));
+    ok(!str_contains(lead_alert_subject(lead_find($db, $id)), "\n"));
 }

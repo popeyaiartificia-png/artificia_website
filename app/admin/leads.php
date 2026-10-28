@@ -5,7 +5,7 @@ declare(strict_types=1);
 // Both roles read; only an admin exports, deletes or retries.
 
 const LEADS_PER_PAGE = 50;
-const LEADS_TABS = ['' => 'All', 'unforwarded' => 'Not forwarded', 'spam' => 'Spam'];
+const LEADS_TABS = ['' => 'All (not spam)', 'unforwarded' => 'Not forwarded', 'spam' => 'Spam'];
 
 /** Non-spam leads from the last 24 hours: the Leads nav badge (ruling R34). */
 function leads_recent_count(PDO $db): int
@@ -79,7 +79,7 @@ function admin_leads(PDO $db, string $method): HttpResponse
     $total = (int) $st->fetchColumn();
     $pages = max(1, (int) ceil($total / LEADS_PER_PAGE));
     $p = min($pages, max(1, (int) admin_get_str('p')));
-    $st = $db->prepare("SELECT id, created_at, name, phone, email, form_type, page_url, utm_source, utm_medium, spam, forwarded_at, forward_error
+    $st = $db->prepare("SELECT id, created_at, name, phone, email, form_type, page_url, utm_source, utm_medium, spam, spam_reason, forwarded_at, forward_error
         FROM leads WHERE $where ORDER BY created_at DESC, id DESC LIMIT " . LEADS_PER_PAGE . ' OFFSET ' . (($p - 1) * LEADS_PER_PAGE));
     $st->execute($args);
     $rows = $st->fetchAll();
@@ -95,11 +95,20 @@ function admin_leads(PDO $db, string $method): HttpResponse
         'v' => $v, 'counts' => $counts, 'options' => $options, 'isAdmin' => admin_role_allows($user, 'admin')], $user));
 }
 
-/** A spreadsheet cell: anything that starts like a formula gets a leading apostrophe (a +digits phone number is left alone). */
+/**
+ * A spreadsheet cell: anything that starts like a formula (= + - @ tab CR) gets a leading apostrophe, so it stays text.
+ * That includes every phone number: Excel reads a leading + as a formula, and bare digits as a number (9.19877E+11).
+ */
 function lead_csv_cell(mixed $v): string
 {
     $s = (string) $v;
-    return preg_match('/^[=@\t\r-]|^\+(?!\d+$)/', $s) ? "'" . $s : $s;
+    return preg_match('/^[=+@\t\r-]/', $s) ? "'" . $s : $s;
+}
+
+/** +919876543210 as "+91 98765 43210"; other numbers as stored. */
+function lead_phone_display(string $phone): string
+{
+    return preg_match('/^\+91([0-9]{5})([0-9]{5})$/', $phone, $m) ? "+91 $m[1] $m[2]" : $phone;
 }
 
 function admin_leads_export(PDO $db, string $method): HttpResponse
@@ -119,7 +128,7 @@ function admin_leads_export(PDO $db, string $method): HttpResponse
         foreach (json_decode((string) $r['fields'], true) ?: [] as $k => $val) {
             $details[] = (LEAD_LABELS[$k] ?? $k) . ': ' . lead_field_text($val);
         }
-        fputcsv($out, array_map('lead_csv_cell', [$r['id'], $r['created_at'], $r['form_type'], $r['name'], $r['phone'], $r['email'], $r['company'],
+        fputcsv($out, array_map('lead_csv_cell', [$r['id'], $r['created_at'], $r['form_type'], $r['name'], lead_phone_display($r['phone']), $r['email'], $r['company'],
             implode("\n", $details), $r['page_url'], $r['referrer'], $r['utm_source'], $r['utm_medium'], $r['utm_campaign'], $r['utm_term'],
             $r['utm_content'], $r['gclid'], $r['fbclid'], $r['spam'] ? 'yes' : 'no', $r['forwarded_at'], $r['forward_error'], $r['emailed_at'], $r['event_id']]), ',', '"', '');
     }

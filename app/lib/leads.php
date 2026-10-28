@@ -38,25 +38,51 @@ const LEAD_TRACKING = [
 ];
 
 const LEAD_COLUMNS = ['form_type', 'name', 'email', 'phone', 'company', 'page_url', 'referrer', 'utm_source', 'utm_medium', 'utm_campaign',
-    'utm_term', 'utm_content', 'gclid', 'fbclid', 'fbp', 'fbc', 'ip', 'user_agent', 'consent_at', 'spam'];
+    'utm_term', 'utm_content', 'gclid', 'fbclid', 'fbp', 'fbc', 'ip', 'user_agent', 'consent_at', 'spam', 'spam_reason'];
 
-/** 10 digits starting 6-9, or 91 + 10 digits, become +91…; + and 8-15 digits stays; anything else is null. */
+/** Why a lead was saved as spam: the codes stored in spam_reason, and what they mean. */
+const LEAD_SPAM_REASONS = [
+    'honeypot' => 'the hidden field was filled',
+    'bad_token' => 'the form token was missing or forged',
+    'too_fast' => 'it was sent under 3 seconds after the page loaded',
+    'rate_limited' => 'more than 5 enquiries came from one address in 10 minutes',
+];
+const LEAD_RATE_LIMIT = 5; // per IP in 10 minutes; past it, submissions are saved as spam and answered 429
+const LEAD_RATE_CEILING = 20; // per IP in 10 minutes; past it, nothing more is stored
+
+/**
+ * Every non-digit goes (spaces, no-break spaces, hyphens of any kind, direction marks); a leading + is kept.
+ * 10 digits starting 6-9 (or with a leading 0, or 91 in front) become +91…; + and 8-15 digits stays; anything else is null.
+ */
 function normalize_phone(string $raw): ?string
 {
-    $s = preg_replace('/[\s().-]+/', '', trim($raw));
-    if (preg_match('/^[6-9]\d{9}$/', $s)) {
-        return '+91' . $s;
+    $s = (string) preg_replace('/[^0-9+]+/u', '', $raw);
+    $plus = str_starts_with($s, '+');
+    $d = str_replace('+', '', $s);
+    if ($plus) {
+        return preg_match('/^[0-9]{8,15}$/', $d) ? '+' . $d : null;
     }
-    if (preg_match('/^91\d{10}$/', $s)) {
-        return '+' . $s;
-    }
-    return preg_match('/^\+\d{8,15}$/', $s) ? $s : null;
+    return preg_match('/^(?:0|91)?([6-9][0-9]{9})$/', $d, $m) ? '+91' . $m[1] : null;
 }
 
-/** A posted string, valid UTF-8, trimmed and cut to $max characters; anything else (arrays) is ''. */
-function lead_str(mixed $v, int $max): string
+/** A posted string, valid UTF-8, trimmed and cut to $max characters; anything else (arrays) is ''. Unless $multiline, control characters and line breaks become single spaces. */
+function lead_str(mixed $v, int $max, bool $multiline = false): string
 {
-    return is_string($v) ? mb_substr(trim(mb_scrub($v, 'UTF-8')), 0, $max, 'UTF-8') : '';
+    if (!is_string($v)) {
+        return '';
+    }
+    $v = mb_scrub($v, 'UTF-8');
+    if (!$multiline) {
+        $v = (string) preg_replace('/[\p{Cc}\p{Zl}\p{Zp}]+/u', ' ', $v);
+    }
+    return mb_substr(trim($v), 0, $max, 'UTF-8');
+}
+
+/** $url if it is an http(s) address on this site's own host (with or without www.), else ''. */
+function lead_own_url(string $url): string
+{
+    $host = fn(string $u) => (string) preg_replace('/^www\./', '', strtolower((string) parse_url($u, PHP_URL_HOST)));
+    return preg_match('#^https?://#i', $url) && $host($url) !== '' && $host($url) === $host((string) config()['base_url']) ? $url : '';
 }
 
 /**
@@ -85,7 +111,8 @@ function lead_validate(string $type, array $in): array
             $errors[$key] = 'Fill this in as text.';
             continue;
         }
-        $v = lead_str($in[$key] ?? '', in_array($key, ['message', 'challenge'], true) ? 5000 : 255);
+        $long = in_array($key, ['message', 'challenge'], true);
+        $v = lead_str($in[$key] ?? '', $long ? 5000 : 255, $long);
         if ($v === '') {
             if ($required) {
                 $errors[$key] = isset(LEAD_OPTIONS[$key]) ? 'Choose one.' : 'Fill this in.';
@@ -110,10 +137,10 @@ function lead_validate(string $type, array $in): array
     foreach (LEAD_TRACKING as $key => $max) {
         $data[$key] = lead_str($in[$key] ?? '', $max);
     }
-    foreach (['page_url', 'referrer'] as $key) { // shown as links in the admin, so only web addresses
-        if (!preg_match('#^https?://#i', $data[$key])) {
-            $data[$key] = '';
-        }
+    // Both are shown as links in the admin, so only web addresses; the page must be one of this site's own.
+    $data['page_url'] = lead_own_url($data['page_url']);
+    if (!preg_match('#^https?://#i', $data['referrer'])) {
+        $data['referrer'] = '';
     }
     return ['ok' => !$errors, 'errors' => $errors, 'data' => $data];
 }
@@ -135,26 +162,46 @@ function lead_ts_age(string $ts, string $secret): ?int
 }
 
 /**
- * spam: the honeypot is filled, or the token is missing, forged, under 3 s or over 24 h old.
- * rate_limited: this is more than the 5th submission from $ip in 10 minutes (every call counts one).
- * @return array{spam:bool, rate_limited:bool}
+ * spam: the honeypot is filled, the token is missing, forged or under 3 s old, or the submission is rate limited.
+ * rate_limited: more than LEAD_RATE_LIMIT submissions from $ip in 10 minutes (every call counts one).
+ * ceiling: more than LEAD_RATE_CEILING; nothing more from $ip is stored. reason: the spam codes, comma-separated ('' if none).
+ * A token's age has no upper limit: a page left open for days still sends a real lead (ruling R36).
+ * @return array{spam:bool, rate_limited:bool, ceiling:bool, reason:string}
  */
 function lead_spam_flags(array $in, string $ip, PDO $db, string $secret): array
 {
     $age = lead_ts_age(is_string($in['ts'] ?? null) ? $in['ts'] : '', $secret);
     $honeypot = $in['website_url'] ?? '';
-    $spam = !is_string($honeypot) || trim($honeypot) !== '' || $age === null || $age < 3 || $age > 86400;
+    $reasons = [];
+    if (!is_string($honeypot) || trim($honeypot) !== '') {
+        $reasons[] = 'honeypot';
+    }
+    if ($age === null) {
+        $reasons[] = 'bad_token';
+    } elseif ($age < 3) {
+        $reasons[] = 'too_fast';
+    }
+    $count = 0;
     try {
         $db->exec('DELETE FROM lead_rate WHERE created_at < NOW() - INTERVAL 1 DAY');
         $db->prepare('INSERT INTO lead_rate (ip) VALUES (?)')->execute([$ip]);
         $st = $db->prepare('SELECT COUNT(*) FROM lead_rate WHERE ip = ? AND created_at > NOW() - INTERVAL 10 MINUTE');
         $st->execute([$ip]);
-        $limited = (int) $st->fetchColumn() > 5;
+        $count = (int) $st->fetchColumn();
     } catch (PDOException $e) {
         error_log('Lead rate limit skipped: ' . $e->getMessage()); // a broken limiter must not cost a lead
-        $limited = false;
     }
-    return ['spam' => $spam, 'rate_limited' => $limited];
+    if ($count > LEAD_RATE_LIMIT) {
+        $reasons[] = 'rate_limited';
+    }
+    return ['spam' => (bool) $reasons, 'rate_limited' => $count > LEAD_RATE_LIMIT, 'ceiling' => $count > LEAD_RATE_CEILING, 'reason' => implode(',', $reasons)];
+}
+
+/** spam_reason codes as words, for the admin. */
+function lead_spam_reason_text(?string $codes): string
+{
+    $words = array_map(fn($c) => LEAD_SPAM_REASONS[$c] ?? $c, array_filter(explode(',', (string) $codes)));
+    return $words ? implode('; ', $words) : 'the reason was not recorded';
 }
 
 /** Inserts the lead (keys from LEAD_COLUMNS plus `fields`) with a fresh UUID v4 event_id. @return array{id:int, event_id:string} */
@@ -184,8 +231,9 @@ function lead_find(PDO $db, int $id): ?array
 }
 
 /**
- * POST /lead without the output: validate (422), rate limit (429), save (500 if it fails), then 200 with the event id,
- * spam included. id is the saved lead (follow-ups run for it), or null.
+ * POST /lead without the output: validate (422), save (500 if it fails), then answer. Over the rate limit the submission
+ * is saved as spam and answered 429; past the ceiling nothing is stored (429). Otherwise 200 ok:true, with the event id
+ * only for a real lead (spam gets the same thank-you, but no tracking event). id is the saved lead, or null.
  * @return array{status:int, body:array, id:?int}
  */
 function lead_handle(PDO $db, array $in, array $server, array $settings): array
@@ -195,32 +243,64 @@ function lead_handle(PDO $db, array $in, array $server, array $settings): array
     if (!$v['ok']) {
         return ['status' => 422, 'body' => ['ok' => false, 'errors' => $v['errors']], 'id' => null];
     }
+    if ($v['data']['page_url'] === '') { // no JS: the form's own page, from the browser's Referer
+        $v['data']['page_url'] = lead_own_url(strtok(lead_str($server['HTTP_REFERER'] ?? '', 1000), '?#') ?: '');
+    }
     $ip = substr((string) ($server['REMOTE_ADDR'] ?? ''), 0, 45);
     $flags = lead_spam_flags($in, $ip, $db, (string) config()['app_secret']);
-    if ($flags['rate_limited']) {
-        return ['status' => 429, 'body' => ['ok' => false, 'message' => 'Too many enquiries from this connection in the last few minutes. Please message us on WhatsApp instead.', 'whatsapp' => $wa], 'id' => null];
+    $limited = ['status' => 429, 'body' => ['ok' => false, 'message' => 'Too many enquiries from this connection in the last few minutes. Please message us on WhatsApp instead.', 'whatsapp' => $wa], 'id' => null];
+    if ($flags['ceiling']) {
+        return $limited;
     }
     try {
         $saved = lead_save($db, $v['data'] + [
             'ip' => $ip, 'user_agent' => lead_str($server['HTTP_USER_AGENT'] ?? '', 500),
-            'consent_at' => date('Y-m-d H:i:s'), 'spam' => (int) $flags['spam'],
+            'consent_at' => date('Y-m-d H:i:s'), 'spam' => (int) $flags['spam'], 'spam_reason' => $flags['reason'] !== '' ? $flags['reason'] : null,
         ]);
     } catch (Throwable $e) {
         error_log('Lead not saved: ' . $e->getMessage());
         return ['status' => 500, 'body' => ['ok' => false, 'message' => 'Your enquiry could not be saved just now. Please send it to us on WhatsApp instead.', 'whatsapp' => $wa], 'id' => null];
     }
-    return ['status' => 200, 'body' => ['ok' => true, 'event_id' => $saved['event_id']], 'id' => $saved['id']];
+    if ($flags['rate_limited']) {
+        return ['id' => $saved['id']] + $limited;
+    }
+    return ['status' => 200, 'body' => ['ok' => true] + ($flags['spam'] ? [] : ['event_id' => $saved['event_id']]), 'id' => $saved['id']];
 }
 
-/** The router's POST /lead: answers the visitor first, then runs the follow-ups after the connection is released. */
+/** A fetch from site.js asks for JSON; a plain form post (no JavaScript) gets a page. */
+function lead_wants_json(array $server): bool
+{
+    return str_contains(strtolower((string) ($server['HTTP_ACCEPT'] ?? '')), 'application/json');
+}
+
+/** The no-JavaScript answer to POST /lead, in the site layout: the thank-you, or what went wrong with the WhatsApp link, and a way back. */
+function lead_result_html(array $r, array $in, array $server, array $settings): string
+{
+    $page = lead_own_url(lead_str($in['page_url'] ?? '', 1000)) ?: lead_own_url(lead_str($server['HTTP_REFERER'] ?? '', 1000));
+    $back = ($page !== '' ? (parse_url($page, PHP_URL_PATH) ?: '/') : '/') . '#enquire';
+    $first = explode(' ', lead_str($in['name'] ?? '', 255))[0];
+    $state = $r['body']['ok'] ? 'ok' : (isset($r['body']['errors']) ? 'errors' : 'failed');
+    $body = render_view('lead-result', ['state' => $state, 'first' => $first, 'back' => $back, 'wa' => whatsapp_url($settings),
+        'errors' => $r['body']['errors'] ?? [], 'message' => $r['body']['message'] ?? '']);
+    $titles = ['ok' => 'Thank you', 'errors' => 'Please check your enquiry', 'failed' => 'Your enquiry was not sent'];
+    return render_layout(['settings' => $settings, 'body' => $body, 'title' => $titles[$state] . ' | Artificia AI', 'description' => '',
+        'canonical' => '', 'robots' => 'noindex']);
+}
+
+/** The router's POST /lead: answers the visitor first (JSON for site.js, a page without JavaScript), then runs the follow-ups after the connection is released. */
 function lead_endpoint(PDO $db): void
 {
     $settings = settings($db);
     $r = lead_handle($db, $_POST, $_SERVER, $settings);
     http_response_code($r['status']);
-    header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store');
-    echo json_encode($r['body'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if (lead_wants_json($_SERVER)) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($r['body'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    } else {
+        header('Content-Type: text/html; charset=utf-8');
+        echo lead_result_html($r, $_POST, $_SERVER, $settings);
+    }
     if ($r['id'] === null) {
         return;
     }
@@ -241,13 +321,14 @@ function lead_followups(PDO $db, int $id, array $settings, string $baseUrl): voi
         return;
     }
     $steps = [
-        'capi' => function () use ($db, $lead, $settings) {
+        'capi' => function () use ($db, $lead, $settings, $baseUrl) {
             $pixel = tracking_id($settings, 'meta_pixel_id');
             $token = (string) ($settings['meta_capi_token'] ?? '');
             if ($pixel === '' || $token === '') {
                 return;
             }
-            $body = meta_capi_payload($lead, $lead['page_url'], (string) ($settings['meta_test_event_code'] ?? '')) + ['access_token' => $token];
+            $source = $lead['page_url'] !== '' ? $lead['page_url'] : rtrim($baseUrl, '/') . '/'; // event_source_url is never empty
+            $body = meta_capi_payload($lead, $source, (string) ($settings['meta_test_event_code'] ?? '')) + ['access_token' => $token];
             $r = lead_post_json("https://graph.facebook.com/v23.0/$pixel/events", $body);
             $db->prepare($r['ok'] ? 'UPDATE leads SET capi_sent_at = NOW(), capi_error = NULL WHERE id = ?' : 'UPDATE leads SET capi_error = ? WHERE id = ?')
                ->execute($r['ok'] ? [$lead['id']] : [$r['error'], $lead['id']]);

@@ -60,7 +60,7 @@ foreach ($options['page'] as $url) {
       <td data-label="Form"><?= e(ucfirst($r['form_type'])) ?></td>
       <td data-label="Page"><?= $r['page_url'] !== '' ? '<code>' . e(lead_page_path($r['page_url'])) . '</code>' : '<span class="muted">Not known</span>' ?></td>
       <td data-label="Source"><?= $r['utm_source'] !== '' ? e($r['utm_source']) . ($r['utm_medium'] !== '' ? '<span class="cell-sub">' . e($r['utm_medium']) . '</span>' : '') : '<span class="muted">Direct</span>' ?></td>
-      <td data-label="Forwarded"><span class="pill <?= $pill ?>"<?= $r['forward_error'] !== null ? ' title="' . e($r['forward_error']) . '"' : '' ?>><?= e($state) ?></span></td>
+      <td data-label="Forwarded"><span class="pill <?= $pill ?>"<?= $r['forward_error'] !== null ? ' title="' . e($r['forward_error']) . '"' : '' ?>><?= e($state) ?></span><?php if ($r['spam']): ?><span class="cell-sub"><?= e(ucfirst(lead_spam_reason_text($r['spam_reason']))) ?></span><?php endif ?></td>
     </tr>
 <?php endforeach ?>
   </tbody>

@@ -168,6 +168,12 @@ function render_page_body(array $page, array $settings): string
     return $body;
 }
 
+/** Whether a page carries a lead form (and with it a fresh form token, so it must never be served from a cache). */
+function page_has_form(array $page): bool
+{
+    return in_array('lead_form', array_column($page['sections'], 'type'), true);
+}
+
 function render_page(array $page, array $settings): string
 {
     $base = config()['base_url'];
@@ -184,7 +190,7 @@ function render_page(array $page, array $settings): string
         'ogImage' => $ogImage ? $base . $ogImage : null,
         'ogType' => $page['kind'] === 'post' ? 'article' : 'website',
         'jsonld' => schema_graph($page, $settings, $base),
-        'hasForm' => in_array('lead_form', array_column($sections, 'type'), true),
+        'hasForm' => page_has_form($page),
     ]);
 }
 

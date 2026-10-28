@@ -32,7 +32,7 @@ foreach ($lead['fields'] as $k => $v) {
     'Received ' . admin_date($lead['created_at']) . ($lead['page_url'] !== '' ? ' on ' . lead_page_path($lead['page_url']) : '') . '.', $actions) ?>
 
 <?php if ($lead['spam']): ?>
-<p class="notice">Saved as spam: the hidden field was filled, or the form was sent too fast or after a day open. Spam is never emailed or forwarded on its own. If a real person sent it, an admin can use Forward anyway.</p>
+<p class="notice">Saved as spam because <?= e(lead_spam_reason_text($lead['spam_reason'])) ?>. Spam is never emailed or forwarded on its own. If a real person sent it, an admin can use Forward anyway.</p>
 <?php endif ?>
 
 <div class="cols">
@@ -82,7 +82,7 @@ foreach ($lead['fields'] as $k => $v) {
         'Event ID' => '<code>' . e($lead['event_id']) . '</code>',
         'Received' => $when($lead['created_at']),
         'Consent given' => $lead['consent_at'] ? $when($lead['consent_at']) : $dash,
-        'Spam' => $lead['spam'] ? 'Yes' : 'No',
+        'Spam' => $lead['spam'] ? 'Yes: ' . e(lead_spam_reason_text($lead['spam_reason'])) : 'No',
         'IP address' => $text($lead['ip']),
         'Browser' => $text($lead['user_agent']),
     ]) ?>

@@ -47,7 +47,7 @@
     new IntersectionObserver(function (es) { fab.classList.toggle('is-away', es[0].isIntersecting); }).observe(hero);
   }
 
-  // Attribution: the first visit's utm_*, gclid and fbclid are kept in the atk cookie for 30 days.
+  // Attribution: the first visit's utm_*, gclid, fbclid and outside referrer are kept in the atk cookie for 30 days.
   var ATK = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
   var cookie = function (name) {
     var m = d.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
@@ -58,6 +58,7 @@
   if (!cookie('atk')) {
     var qs = new URLSearchParams(location.search), first = {}, seen = false;
     ATK.forEach(function (k) { var v = qs.get(k); if (v) { first[k] = v.slice(0, 255); seen = true; } });
+    try { if (d.referrer && new URL(d.referrer).host !== location.host) { first.referrer = d.referrer.slice(0, 500); seen = true; } } catch (e) {}
     if (seen) {
       atk = first; // used even if the browser refuses the cookie
       d.cookie = 'atk=' + encodeURIComponent(JSON.stringify(first)) + '; max-age=2592000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
@@ -89,12 +90,14 @@
       log.hidden = false;
       form.classList.add('is-done');
       log.focus();
+      if (!res.event_id) return; // spam gets the thank-you but no tracking event
       if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_type: type });
       if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_category: type }, { eventID: res.event_id });
     };
     var fail = function (res) {
       btn.disabled = false;
       form.classList.remove('is-busy');
+      var wa = typeof res.whatsapp === 'string' && res.whatsapp.indexOf('https://wa.me/') === 0 ? res.whatsapp : form.getAttribute('data-wa');
       if (res.errors) {
         var firstBad = null, other = [];
         Object.keys(res.errors).forEach(function (k) {
@@ -104,11 +107,10 @@
           el.setAttribute('aria-invalid', 'true');
           firstBad = firstBad || el;
         });
-        status(other.length ? other.join(' ') : 'Please check the highlighted fields.', true);
+        status(other.length ? other.join(' ') : 'Please check the highlighted fields.', true, wa);
         if (firstBad) firstBad.focus();
         return;
       }
-      var wa = typeof res.whatsapp === 'string' && res.whatsapp.indexOf('https://wa.me/') === 0 ? res.whatsapp : form.getAttribute('data-wa');
       status(res.message || 'Your enquiry could not be sent just now. Please send it to us on WhatsApp instead.', true, wa);
     };
     form.addEventListener('submit', function (e) {
@@ -116,7 +118,7 @@
       if (form.classList.contains('is-busy')) return;
       ATK.forEach(function (k) { set(k, atk[k]); });
       set('page_url', location.origin + location.pathname);
-      set('referrer', d.referrer);
+      set('referrer', atk.referrer || d.referrer);
       set('fbp', cookie('_fbp'));
       set('fbc', cookie('_fbc'));
       form.querySelectorAll('.field__err').forEach(function (p) { p.textContent = ''; });

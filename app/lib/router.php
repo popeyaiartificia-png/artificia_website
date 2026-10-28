@@ -39,6 +39,9 @@ function send_html(string $html, int $code = 200): void
 
 function send_page(PDO $db, array $page): void
 {
+    if (page_has_form($page)) {
+        header('Cache-Control: no-store');
+    }
     send_html(render_page($page, settings($db)));
 }
 
