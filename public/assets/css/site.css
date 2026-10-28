@@ -565,6 +565,11 @@ a:hover { color: var(--lime); }
 .wit__sig { display: flex; align-items: center; gap: .85rem; padding: .9rem .5rem 0; border-top: 1px solid var(--glass-line); }
 .wits--quote .wit__sig { padding-inline: 0; }
 .wit__photo { width: 48px; height: 48px; object-fit: cover; border-radius: var(--r-pill); }
+.wit__initials {
+  display: grid; place-items: center; flex: none;
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(174, 213, 52, .55); color: var(--lime);
+  font-weight: 780; font-stretch: 110%; font-size: .9375rem; letter-spacing: .04em;
+}
 .wit__name { font-weight: 780; font-stretch: 110%; text-transform: uppercase; letter-spacing: .02em; font-size: .9375rem; }
 .wit__role { color: var(--c6); font-size: .875rem; line-height: 1.35; }
 .vid {

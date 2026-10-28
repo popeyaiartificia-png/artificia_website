@@ -69,7 +69,7 @@
       "fields": {
         "heading": "We built *orkaytiles.com*",
         "client": "Orkay Tiles International",
-        "summary": "A new website for a tile manufacturer in Morbi, with collection pages and an admin Orkay's team edits.",
+        "summary": "A new website for our client, a tile manufacturer in Morbi, deployed on AWS, with collection pages and an admin Orkay's team edits.",
         "built": [
           {"title": "Collection pages", "text": "Each tile collection has its own page, with sizes, finishes and photos."},
           {"title": "An editable admin", "text": "Orkay's team edits pages, products and SEO settings themselves."},

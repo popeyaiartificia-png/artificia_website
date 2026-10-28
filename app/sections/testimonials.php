@@ -4,8 +4,14 @@
 $items = array_map(fn($it) => ['src' => video_embed_src((string) ($it['video_url'] ?? ''))] + $it, $f['items'] ?? []);
 $videos = array_values(array_filter($items, fn($it) => $it['src'] !== ''));
 $quotes = array_values(array_filter($items, fn($it) => $it['src'] === ''));
+// A written quote without a photo gets the person's initials in the photo's place.
 $sig = function (array $it, bool $photo): string {
-    return '<div class="wit__sig">' . ($photo && !empty($it['photo']) ? image($it['photo'], '48px', false, 'wit__photo') : '')
+    $words = preg_split('/\s+/', trim((string) ($it['name'] ?? '')), -1, PREG_SPLIT_NO_EMPTY);
+    $initials = $words ? mb_strtoupper(mb_substr($words[0], 0, 1) . (count($words) > 1 ? mb_substr(end($words), 0, 1) : '')) : '';
+    $face = !$photo ? '' : (!empty($it['photo'])
+        ? image($it['photo'], '48px', false, 'wit__photo')
+        : '<span class="wit__photo wit__initials" aria-hidden="true">' . e($initials) . '</span>');
+    return '<div class="wit__sig">' . $face
         . '<div><p class="wit__name">' . e($it['name'] ?? '') . '</p><p class="wit__role">' . e($it['role'] ?? '') . '</p></div></div>';
 };
 ?>

@@ -21,9 +21,13 @@
       }
     },
     {
-      "type": "rich_text",
+      "type": "text_image",
       "fields": {
         "heading": "An AI training institute that *also builds*",
+        "image": "learner-lime.jpg",
+        "image_side": "right",
+        "cta_label": "About Artificia",
+        "cta_link": "/about",
         "body": "<p>Artificia AI (Artificia Intellec Pvt Ltd) is an AI training institute in Vadodara, Gujarat. We teach people and company teams to use AI in their daily work, and we build AI systems for businesses that would rather have the work done for them.</p><p>Every masterclass is live and in person in Vadodara, one hour a day. You learn a tool, watch it used on a real task, then do it yourself in the room. No coding is needed to start, and every week adds something to your portfolio.</p><p>The same team sets up and runs client systems: lead pipelines in GoHighLevel, WhatsApp follow-ups, AI voice calls, websites, and assistants that answer from a company's own documents. Custom builds run on AWS or Google Cloud. What we teach comes from what we build.</p>"
       }
     },
@@ -77,15 +81,15 @@
     {
       "type": "case_study",
       "fields": {
-        "heading": "Orkay Tiles runs on a system *we built*",
+        "heading": "Our client Orkay Tiles runs on *what we built*",
         "client": "Orkay Tiles International",
-        "summary": "We set up and run Orkay's two GoHighLevel accounts, and we built their website.",
+        "summary": "Orkay Tiles International is our client. We set up and run their GoHighLevel, built their website and deployed it on AWS, and created n8n workflows that handle their daily lead data.",
         "image": "orkay-website.jpg",
         "built": [
-          {"title": "Two accounts", "text": "India dealer leads over WhatsApp, and export buyers by email."},
-          {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
-          {"title": "Called by AI", "text": "An AI voice agent calls new India leads in Hindi."},
-          {"title": "Followed up", "text": "India leads get an automatic follow-up 18 hours later."}
+          {"title": "GoHighLevel, set up and run", "text": "Two accounts: India dealer leads over WhatsApp and export buyers by email, each lead routed to the right rep."},
+          {"title": "A website on AWS", "text": "We built orkaytiles.com and deployed it on AWS, with an admin Orkay's team edits."},
+          {"title": "n8n for the daily data", "text": "Several n8n workflows move, check and follow up on each day's leads, so none sit unanswered."},
+          {"title": "Called by AI", "text": "An AI voice agent calls new India leads in Hindi."}
         ],
         "link_label": "Read the case study",
         "link": "/case-studies/orkay-tiles"
@@ -124,7 +128,6 @@
         "heading": "In their *own words*",
         "items": [
           {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
-          {"name": "Khushi Dodiya", "role": "Artificia AI student", "video_url": "https://drive.google.com/file/d/1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2/view"},
           {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
           {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."},
           {"name": "Haritha Nair", "role": "AI design student, Vadodara", "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."},

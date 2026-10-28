@@ -87,7 +87,7 @@
       "fields": {
         "heading": "A system we built and *still run*",
         "client": "Orkay Tiles International",
-        "summary": "We set up and run Orkay's two GoHighLevel accounts, and we built orkaytiles.com.",
+        "summary": "Orkay Tiles International is our client. We set up and run their GoHighLevel, deployed their website on AWS, and built the n8n workflows that handle their daily lead data.",
         "image": "orkay-website.jpg",
         "built": [
           {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},

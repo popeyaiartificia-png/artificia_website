@@ -10,7 +10,7 @@
       "type": "hero",
       "fields": {
         "eyebrow": "Case study, shared with Orkay's permission",
-        "subheading": "Orkay Tiles International is a tile manufacturer in Morbi, Gujarat. We set up and run its two GoHighLevel accounts, and we built its website.",
+        "subheading": "Orkay Tiles International, a tile manufacturer in Morbi, Gujarat, is our client. We set up and run its two GoHighLevel accounts, built its website and deployed it on AWS, and created the n8n workflows that handle its daily lead data.",
         "image": "orkay-website.jpg",
         "variant": "split",
         "primary_cta_label": "Book a free flow audit",
@@ -24,7 +24,7 @@
       "fields": {
         "heading": "What we *built*",
         "client": "Orkay Tiles International",
-        "summary": "Two GoHighLevel accounts, an AI voice agent, the automations around them, and a new website.",
+        "summary": "Two GoHighLevel accounts, an AI voice agent, n8n workflows for the daily lead data, and a new website on AWS.",
         "challenge": "<p>Orkay sells to tile dealers across India over WhatsApp, and to importers abroad by email. Leads arrive from ads and forms, in many languages.</p><p>Each one has to reach the right rep quickly and never be forgotten.</p>",
         "built": [
           {"title": "India dealer account", "text": "Dealer and distributor leads, handled WhatsApp-first in Hindi and regional languages."},
@@ -34,7 +34,8 @@
           {"title": "Meta Conversions API", "text": "Each new Facebook and Instagram lead in the India account is reported back to Meta as a lead event."},
           {"title": "Follow-up", "text": "India leads get an automatic follow-up 18 hours later."},
           {"title": "Daily status report", "text": "Every morning the team gets a report of new leads, stage moves and conversations."},
-          {"title": "The website", "text": "We built orkaytiles.com, with collection pages and an admin the team edits."}
+          {"title": "n8n workflows", "text": "Workflows in n8n handle each day's lead data: they book calls from the voice agent and follow up on leads nobody has answered."},
+          {"title": "The website, on AWS", "text": "We built orkaytiles.com, with collection pages and an admin the team edits, and deployed it on AWS."}
         ]
       }
     },
@@ -51,7 +52,7 @@
       "type": "text_image",
       "fields": {
         "heading": "Automations that *run every day*",
-        "body": "<p>India leads get an automatic follow-up 18 hours later. Meta hears about every Facebook and Instagram lead in the India account, so the ads learn which clicks became enquiries.</p><p>Each morning, a report shows the team what came in and what moved.</p>",
+        "body": "<p>Our n8n workflows handle the daily lead data: they book calls from the voice agent, and India leads get an automatic follow-up 18 hours later.</p><p>Meta hears about every Facebook and Instagram lead in the India account, so the ads learn which clicks became enquiries. Each morning, a report shows the team what came in and what moved.</p>",
         "image": "ai-workflow.jpg",
         "image_side": "left"
       }

@@ -197,7 +197,7 @@ Glass cells: value centred between two lime dimension rules with extension ticks
 A ruler of ticks with a lime line in segments and a hover highlight band (lime .22 fill, 1px lime edge); glass tracks of modules whose entry line sits under the module title.
 
 ### Steps, case study, testimonials
-Steps run on a vertical rail inside a glass track that fills lime on scroll, with 32px square numbered markers. The case study uses glass flow nodes joined by lime arrows. Testimonials are glass entries: quote, then a hairline and signature; video thumbnails (4:5) load the iframe only on click.
+Steps run on a vertical rail inside a glass track that fills lime on scroll, with 32px square numbered markers. The case study uses glass flow nodes joined by lime arrows. Testimonials are glass entries: quote, then a hairline and signature; video thumbnails (4:5) load the iframe only on click. A written quote without a photo shows the person's initials in a 48px square with a lime edge, never a stand-in photo.
 
 ### Inputs and form plate
 Fill `rgba(255,255,255,.05)`, 1px `rgba(255,255,255,.16)` border, square, 50px high; hover border .32; focus lime border plus 1px lime ring; invalid border Warn. Checkboxes 20px, lime when checked. The plate is a blurred glass pane; on success the form gives way to a "logline" confirmation.
