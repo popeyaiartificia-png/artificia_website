@@ -10,14 +10,21 @@
       "type": "hero",
       "fields": {
         "eyebrow": "AI training institute in Vadodara",
-        "subheading": "Live AI classes for people, custom training for teams, and AI systems for businesses. One team teaches and builds.",
-        "variant": "split",
-        "drawing": "documents",
+        "subheading": "Live AI classes for people, custom training for company teams, and AI systems built for businesses. One team teaches the classes and builds the systems, so what you learn is what works today.",
+        "variant": "cover",
+        "image": "artificia-hero.jpg",
         "doors": [
           {"label": "Learn AI", "note": "30 or 60-day masterclass", "link": "/ai-masterclass"},
           {"label": "Train my team", "note": "Custom corporate programs", "link": "/corporate-ai-training"},
           {"label": "Build a system", "note": "GoHighLevel, websites, RAG", "link": "/services"}
         ]
+      }
+    },
+    {
+      "type": "rich_text",
+      "fields": {
+        "heading": "An AI training institute that *also builds*",
+        "body": "<p>Artificia AI (Artificia Intellec Pvt Ltd) is an AI training institute in Vadodara, Gujarat. We teach people and company teams to use AI in their daily work, and we build AI systems for businesses that would rather have the work done for them.</p><p>Every masterclass is live and in person in Vadodara, one hour a day. You learn a tool, watch it used on a real task, then do it yourself in the room. No coding is needed to start, and every week adds something to your portfolio.</p><p>The same team sets up and runs client systems: lead pipelines in GoHighLevel, WhatsApp follow-ups, AI voice calls, websites, and assistants that answer from a company's own documents. What we teach comes from what we build.</p>"
       }
     },
     {
@@ -27,9 +34,43 @@
         "intro": "Learn it, train a team, or have it built. The same people teach the classes and build the systems.",
         "columns": "3",
         "cards": [
-          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Offline in Vadodara, one hour a day. A 30-day Foundation or the 60-day Full program. No coding needed.", "link": "/ai-masterclass"},
-          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "A program built around your documents and departments, on-site or over Microsoft Teams. It starts with a free 2-hour pilot.", "link": "/corporate-ai-training"},
-          {"image": "business-owner-desk.jpg", "title": "AI systems for businesses", "text": "GoHighLevel setup, websites, content and marketing, and AI that answers from your own documents.", "link": "/services"}
+          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Offline and live in Vadodara, one hour a day. The 30-day Foundation covers prompting, office tools, slides, images, video, voice and your first website. The 60-day Full program adds agents, n8n, MCP, RAG and Claude Code. No coding needed.", "link": "/ai-masterclass"},
+          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "A program built around your company's documents, departments and daily tasks, on-site or over Microsoft Teams. Length and format are set by your needs, and each session ends with something your team can use. It starts with a free 2-hour pilot.", "link": "/corporate-ai-training"},
+          {"image": "business-owner-desk.jpg", "title": "AI systems for businesses", "text": "GoHighLevel setup, websites, content and marketing, and RAG automation that answers from your own documents. A free 15-minute flow audit finds the process to fix first; then we plan it, build it and run it.", "link": "/services"}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "The tools you will *learn*",
+        "intro": "Each one is taught hands-on in the masterclass, on the day shown. Days 31 to 60 belong to the Full program.",
+        "tools": [
+          {"name": "ChatGPT", "brand": "chatgpt", "note": "Day 1"},
+          {"name": "Claude", "brand": "claude", "note": "Day 1"},
+          {"name": "Gemini", "brand": "gemini", "note": "Day 1"},
+          {"name": "Copilot", "brand": "copilot", "note": "Day 4"},
+          {"name": "NotebookLM", "brand": "notebooklm", "note": "Day 7"},
+          {"name": "Gamma", "brand": "gamma", "note": "Day 11"},
+          {"name": "ElevenLabs", "brand": "elevenlabs", "note": "Day 14"},
+          {"name": "HeyGen", "brand": "heygen", "note": "Day 15"},
+          {"name": "Canva", "brand": "canva", "note": "Day 16"},
+          {"name": "Lovable", "brand": "lovable", "note": "Day 18"},
+          {"name": "n8n", "brand": "n8n", "note": "Day 36"},
+          {"name": "Claude Code", "brand": "claude-code", "note": "Day 50"}
+        ]
+      }
+    },
+    {
+      "type": "process_steps",
+      "fields": {
+        "heading": "Sixty days, *in four stretches*",
+        "intro": "The 30-day Foundation is the first three. The 60-day Full program adds the fourth.",
+        "steps": [
+          {"title": "Days 1–10: prompting and everyday AI", "text": "Prompt frameworks, ChatGPT, Claude and Gemini in depth, Copilot in Word, Excel and PowerPoint, research tools and NotebookLM."},
+          {"title": "Days 11–25: content, websites and a first app", "text": "AI presentations, images, video, voice and avatars, Canva AI and data analysis, then prompt-to-website and building and shipping an app."},
+          {"title": "Days 26–30: capstone and Demo Day", "text": "Plan, build, test and present a project of your own, with a portfolio page and a map of your next steps."},
+          {"title": "Days 31–60: agents, automation and RAG", "text": "Voice agents, n8n automations and WhatsApp bots, MCP, RAG and multi-agent systems, then Claude Code and local models."}
         ]
       }
     },
@@ -48,6 +89,19 @@
         ],
         "link_label": "Read the case study",
         "link": "/case-studies/orkay-tiles"
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "heading": "Who the masterclass *is for*",
+        "intro": "Students, working professionals, founders and freelancers sit in the same room. Each page shows how the course fits your week.",
+        "columns": "3",
+        "cards": [
+          {"image": "audience-student.jpg", "title": "Students", "text": "Build a portfolio of real AI projects while you study: slides, images, video, a website and, on the Full program, agents and automations.", "link": "/ai-masterclass/students"},
+          {"image": "audience-professional.jpg", "title": "Working professionals", "text": "Spend fewer hours on reports, emails, spreadsheets and slides. Learn the tools that fit the work you already do.", "link": "/ai-masterclass/working-professionals"},
+          {"image": "audience-founder.jpg", "title": "Business owners and founders", "text": "See what AI can take off your desk, then build the first automations yourself, or have our team build them for you.", "link": "/ai-masterclass/business-owners"}
+        ]
       }
     },
     {
@@ -79,25 +133,17 @@
       }
     },
     {
-      "type": "text_image",
-      "fields": {
-        "heading": "Taught by Hardik Aseri",
-        "body": "<p>Hardik Aseri teaches the masterclass and leads Artificia's automation projects.</p><p>His classes are direct and practical: the tools and workflows that work today, shown live, then done by you.</p>",
-        "image": "hardik-aseri.jpg",
-        "image_side": "right",
-        "cta_label": "About Artificia",
-        "cta_link": "/about"
-      }
-    },
-    {
       "type": "faqs",
       "fields": {
         "heading": "Common *questions*",
         "items": [
           {"question": "What does Artificia do?", "answer": "We teach AI and we build with it: a live masterclass for individuals, custom training for company teams, and AI systems for businesses."},
-          {"question": "Where are you based?", "answer": "In Vadodara, Gujarat, on Gotri-Sevasi Road, opposite Osia Mall. The masterclass is taught in person in Vadodara."},
+          {"question": "Where are you based?", "answer": "In Vadodara, Gujarat. Our office is on Gotri-Sevasi Road, opposite Osia Mall, and the masterclass is taught in person in Vadodara."},
           {"question": "Do I need to know coding to learn AI?", "answer": "No. The masterclass is designed for beginners and non-technical learners. You learn by using the tools, step by step."},
+          {"question": "How long is the masterclass?", "answer": "One hour a day, on one of two tracks: the 30-day Foundation, or the 60-day Full program, which adds agents, automation, RAG and Claude Code."},
+          {"question": "Are classes live or recorded?", "answer": "Live and in person. Each class has a short opener, the core idea, a live demo and hands-on practice, with your questions answered in the room."},
           {"question": "Can you train our whole team?", "answer": "Yes. Corporate programs are built around your documents and departments, on-site or online over Microsoft Teams. The first step is a free 2-hour pilot."},
+          {"question": "Which industries do you train?", "answer": "Programs are built from your own documents and work, so they fit any sector. The corporate training page shows how they work for manufacturing, healthcare, pharmaceutical, chemical, import-export and finance teams."},
           {"question": "What is a flow audit?", "answer": "A free 15-minute call. We trace one process from enquiry to delivery, mark where time is lost, and show what to automate first."}
         ]
       }
@@ -119,7 +165,8 @@
         "form_type": "contact",
         "side_points": [
           {"text": "Masterclass, corporate training or services"},
-          {"text": "Based in Vadodara, Gujarat"}
+          {"text": "Based in Vadodara, Gujarat"},
+          {"text": "We reply on WhatsApp"}
         ]
       }
     }

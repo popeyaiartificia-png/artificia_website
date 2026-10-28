@@ -353,6 +353,23 @@ a:hover { color: var(--lime); }
   .hero--split .hero__media { padding-left: 3.5rem; border-left: 1px solid var(--glass-line); align-self: stretch; display: grid; align-items: center; }
   .hero--centered .hero__media { max-width: 880px; margin-inline: auto; width: 100%; }
 }
+/* Cover: the photo fills the pane behind the copy. On phones it is a band over the copy; on laptops a scrim from the left keeps the copy on dark ground. */
+.hero--cover .hero__grid { overflow: hidden; align-content: end; padding-top: calc(min(78vw, 520px) - 3rem); }
+.hero--cover .hero__media {
+  position: absolute; inset: 0 0 auto; height: min(78vw, 520px); z-index: -2; place-self: stretch;
+  -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent); mask-image: linear-gradient(180deg, #000 50%, transparent);
+}
+.hero--cover .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 75% 40%; }
+@media (min-width: 1024px) {
+  .hero--cover .hero__grid { align-content: center; padding-top: clamp(1.5rem, 1rem + 3vw, 4.5rem); }
+  .hero--cover .hero__copy, .hero--cover .hero__foot { max-width: 44rem; }
+  .hero--cover .h1 { font-size: clamp(2.75rem, 1.1rem + 2.75vw, 4.4rem); max-width: 17ch; }
+  .hero--cover .hero__media { inset: 0; height: auto; -webkit-mask-image: none; mask-image: none; }
+  .hero--cover .hero__media img { object-position: 70% 50%; }
+  .hero--cover .hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 3, 4, .94), rgba(3, 3, 4, .8) 36%, rgba(3, 3, 4, .15) 64%, transparent 80%); }
+}
+.motion .hero--cover .hero__media img { animation: cover-in 1.6s var(--ease) both; }
+@keyframes cover-in { from { opacity: 0; transform: scale(1.05); } }
 
 /* ---------- Page header (pages without a hero) ---------- */
 .pagehead { padding-block: clamp(2rem, 1rem + 4vw, 5rem) clamp(1rem, .5rem + 2vw, 2.5rem); }
@@ -462,8 +479,8 @@ a:hover { color: var(--lime); }
 
 /* ---------- Tools: a parts list ---------- */
 .parts { display: grid; gap: .1rem 3rem; margin-top: 2.5rem; list-style: none; padding: 1.25rem 1.75rem; }
-.part { display: flex; align-items: baseline; gap: .65rem; padding: .55rem 0; }
-.part img { width: 22px; height: 22px; object-fit: contain; align-self: center; }
+.part { display: flex; align-items: baseline; gap: .75rem; padding: .7rem 0; }
+.part img, .part .brand { flex: none; width: 26px; height: 26px; object-fit: contain; align-self: center; fill: currentColor; }
 .part__name { font-weight: 680; }
 .part__lead { flex: 1; min-width: 1.5rem; border-bottom: 1.5px dotted rgba(255, 255, 255, .2); transform: translateY(-.25em); }
 .part__note { color: var(--c6); font-size: .875rem; text-align: right; }

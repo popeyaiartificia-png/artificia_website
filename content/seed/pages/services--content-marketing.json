@@ -53,13 +53,13 @@
       "fields": {
         "heading": "What we *make it with*",
         "tools": [
-          {"name": "ChatGPT", "note": "Writing"},
-          {"name": "Claude", "note": "Long-form drafts"},
-          {"name": "Canva", "note": "Design"},
-          {"name": "Gamma", "note": "Decks"},
-          {"name": "Runway", "note": "Video"},
-          {"name": "HeyGen", "note": "Avatar video"},
-          {"name": "ElevenLabs", "note": "Voiceover and dubbing"}
+          {"name": "ChatGPT", "brand": "chatgpt", "note": "Writing"},
+          {"name": "Claude", "brand": "claude", "note": "Long-form drafts"},
+          {"name": "Canva", "brand": "canva", "note": "Design"},
+          {"name": "Gamma", "brand": "gamma", "note": "Decks"},
+          {"name": "Runway", "brand": "runway", "note": "Video"},
+          {"name": "HeyGen", "brand": "heygen", "note": "Avatar video"},
+          {"name": "ElevenLabs", "brand": "elevenlabs", "note": "Voiceover and dubbing"}
         ]
       }
     },

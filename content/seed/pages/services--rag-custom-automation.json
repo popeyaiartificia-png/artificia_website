@@ -53,12 +53,12 @@
       "fields": {
         "heading": "What it runs *on*",
         "tools": [
-          {"name": "Pinecone", "note": "Vector search"},
-          {"name": "Gemini embeddings", "note": "Indexing"},
-          {"name": "Claude", "note": "Answers"},
-          {"name": "Supabase", "note": "Database and storage"},
-          {"name": "n8n", "note": "Workflows"},
-          {"name": "Google Drive", "note": "Document source"}
+          {"name": "Pinecone", "brand": "pinecone", "note": "Vector search"},
+          {"name": "Gemini embeddings", "brand": "gemini", "note": "Indexing"},
+          {"name": "Claude", "brand": "claude", "note": "Answers"},
+          {"name": "Supabase", "brand": "supabase", "note": "Database and storage"},
+          {"name": "n8n", "brand": "n8n", "note": "Workflows"},
+          {"name": "Google Drive", "brand": "google-drive", "note": "Document source"}
         ]
       }
     },

@@ -267,50 +267,62 @@
         "tools": [
           {
             "name": "ChatGPT",
+            "brand": "chatgpt",
             "note": "Day 1"
           },
           {
             "name": "Claude",
+            "brand": "claude",
             "note": "Day 1"
           },
           {
             "name": "Gemini",
+            "brand": "gemini",
             "note": "Day 1"
           },
           {
             "name": "Copilot",
+            "brand": "copilot",
             "note": "Day 4"
           },
           {
             "name": "Perplexity",
+            "brand": "perplexity",
             "note": "Day 5"
           },
           {
             "name": "NotebookLM",
+            "brand": "notebooklm",
             "note": "Day 7"
           },
           {
             "name": "ElevenLabs",
+            "brand": "elevenlabs",
             "note": "Day 14"
           },
           {
             "name": "Canva",
+            "brand": "canva",
             "note": "Day 16"
           },
           {
             "name": "Lovable",
+            "brand": "lovable",
             "note": "Day 18"
           },
           {
             "name": "n8n",
+            "brand": "n8n",
             "note": "Day 36"
           },
           {
             "name": "Pinecone",
+            "brand": "pinecone",
             "note": "Day 45"
           },
           {
             "name": "Claude Code",
+            "brand": "claude-code",
             "note": "Day 50"
           }
         ]

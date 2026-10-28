@@ -44,6 +44,16 @@ function test_every_icon_option_exists(): void
     }
 }
 
+function test_every_tool_logo_option_exists(): void
+{
+    foreach (section_registry()['tools']['fields']['tools']['fields']['brand']['options'] as $key) {
+        ok(str_starts_with(brand($key), '<svg class="brand" viewBox="'), "logo $key");
+    }
+    eq(brand('no-such-tool'), '');
+    $html = render_section_in(['type' => 'tools', 'fields' => ['heading' => 'Tools', 'tools' => [['name' => 'n8n', 'brand' => 'n8n']]]], 0, [], []);
+    ok(str_contains($html, '<svg class="brand"'), 'a tool shows its built-in logo');
+}
+
 function test_every_drawing_option_exists(): void
 {
     foreach (section_registry()['hero']['fields']['drawing']['options'] as $name) {

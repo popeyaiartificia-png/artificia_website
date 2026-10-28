@@ -38,6 +38,18 @@ function icon(string $name, string $class = 'icon'): string
     return '<svg class="' . e($class) . '" viewBox="0 0 256 256" aria-hidden="true" focusable="false">' . $set[$name] . '</svg>';
 }
 
+/** A tool's logo mark from app/views/brands.php by key; '' for an unknown key. */
+function brand(string $key, string $class = 'brand'): string
+{
+    static $set;
+    $set ??= require VIEWS_DIR . '/brands.php';
+    if (!isset($set[$key])) {
+        return '';
+    }
+    [$box, $body] = $set[$key];
+    return '<svg class="' . e($class) . '" viewBox="' . $box . '" aria-hidden="true" focusable="false">' . $body . '</svg>';
+}
+
 /** The completion tick that sits on the margin rule beside a section heading. */
 function tick(): string
 {

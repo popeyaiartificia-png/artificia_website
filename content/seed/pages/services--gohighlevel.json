@@ -53,13 +53,13 @@
       "fields": {
         "heading": "What the setup *connects*",
         "tools": [
-          {"name": "GoHighLevel", "note": "CRM and workflows"},
-          {"name": "WhatsApp", "note": "Conversations"},
-          {"name": "Meta lead ads", "note": "Lead source"},
-          {"name": "Meta Conversions API", "note": "Lead events for ads"},
-          {"name": "n8n", "note": "Custom automations"},
-          {"name": "ElevenLabs", "note": "AI voice calls"},
-          {"name": "Google Sheets", "note": "Imports and reports"}
+          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "CRM and workflows"},
+          {"name": "WhatsApp", "brand": "whatsapp", "note": "Conversations"},
+          {"name": "Meta lead ads", "brand": "meta", "note": "Lead source"},
+          {"name": "Meta Conversions API", "brand": "meta", "note": "Lead events for ads"},
+          {"name": "n8n", "brand": "n8n", "note": "Custom automations"},
+          {"name": "ElevenLabs", "brand": "elevenlabs", "note": "AI voice calls"},
+          {"name": "Google Sheets", "brand": "google-sheets", "note": "Imports and reports"}
         ]
       }
     },

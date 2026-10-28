@@ -37,7 +37,7 @@ function section_registry(): array
             'secondary_cta_label' => $text('Secondary button label'),
             'secondary_cta_link' => $text('Secondary button link'),
             'image' => $image('Image'),
-            'variant' => $select('Layout', ['split', 'centered']),
+            'variant' => $select('Layout', ['split', 'centered', 'cover']),
             'doors' => $list('Doors (chooser rows)', [
                 'label' => $text('Label', true),
                 'note' => $text('Note'),
@@ -92,7 +92,8 @@ function section_registry(): array
             'intro' => $area('Intro'),
             'tools' => $list('Tools', [
                 'name' => $text('Name', true),
-                'logo' => $image('Logo'),
+                'brand' => $select('Logo (built in)', array_keys(require __DIR__ . '/../views/brands.php')),
+                'logo' => $image('Logo upload (replaces the built-in one)'),
                 'note' => $text('Note'),
             ], true),
         ]],

@@ -133,6 +133,19 @@ function seed_image_count(array $sections): int
     return $n;
 }
 
+/** A logo key the registry does not know is dropped silently on import, so the seed must only use known ones. */
+function test_seed_tool_logos_are_known(): void
+{
+    $keys = section_registry()['tools']['fields']['tools']['fields']['brand']['options'];
+    foreach (seed_pages() as $slug => $page) {
+        foreach ($page['sections'] as $s) {
+            foreach ($s['type'] === 'tools' ? $s['fields']['tools'] : [] as $t) {
+                ok(in_array($t['brand'] ?? '', $keys, true), "$slug: tool {$t['name']} has no known logo");
+            }
+        }
+    }
+}
+
 function test_every_page_has_three_images(): void
 {
     $textOnly = ['blog', 'privacy', 'terms']; // the blog index lists posts; the legal pages are text

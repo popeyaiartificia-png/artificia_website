@@ -53,7 +53,7 @@ function test_every_list_has_subfields(): void
         'card_grid.cards' => ['icon', 'drawing', 'image', 'title', 'text', 'link'],
         'use_cases.items' => ['title', 'before', 'after'],
         'process_steps.steps' => ['title', 'text'],
-        'tools.tools' => ['name', 'logo', 'note'],
+        'tools.tools' => ['name', 'brand', 'logo', 'note'],
         'curriculum.modules' => ['track', 'day_range', 'title', 'topics', 'tools'],
         'stats.items' => ['value', 'label'],
         'testimonials.items' => ['name', 'role', 'quote', 'photo', 'video_url'],
@@ -104,7 +104,7 @@ function test_required_flags(): void
 function test_select_options(): void
 {
     $r = section_registry();
-    eq($r['hero']['fields']['variant']['options'], ['split', 'centered']);
+    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover']);
     eq($r['text_image']['fields']['image_side']['options'], ['left', 'right']);
     eq($r['card_grid']['fields']['columns']['options'], ['2', '3', '4']);
     eq($r['curriculum']['fields']['modules']['fields']['track']['options'], ['foundation', 'full']);

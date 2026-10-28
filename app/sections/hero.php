@@ -1,11 +1,14 @@
 <?php
-$variant = ($f['variant'] ?? 'split') === 'centered' ? 'centered' : 'split';
+$variant = in_array($f['variant'] ?? '', ['centered', 'cover'], true) ? $f['variant'] : 'split';
 $h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
 $sketch = drawing((string) ($f['drawing'] ?? ''));
 $media = $sketch;
 if ($media === '' && !empty($f['image'])) {
-    $media = '<div class="frame">' . image($f['image'], '(min-width: 1024px) 560px, 100vw', true) . '</div>';
+    // A cover image fills the whole pane behind the copy; the other layouts frame it beside the copy.
+    $media = $variant === 'cover'
+        ? image($f['image'], '100vw', true)
+        : '<div class="frame">' . image($f['image'], '(min-width: 1024px) 560px, 100vw', true) . '</div>';
 }
 ?>
 <section class="sec sec--hero hero hero--<?= $variant ?><?= $sketch !== '' ? ' hero--drawn' : '' ?>" data-section="hero">

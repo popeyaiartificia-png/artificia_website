@@ -6,7 +6,7 @@
 <?php endif ?>
     <ul class="parts" data-reveal="list">
 <?php foreach ($f['tools'] ?? [] as $t): ?>
-      <li class="part"><?= !empty($t['logo']) ? image($t['logo'], '22px') : '' ?><span class="part__name"><?= e($t['name'] ?? '') ?></span><?php if (!empty($t['note'])): ?><span class="part__lead" aria-hidden="true"></span><span class="part__note"><?= e($t['note']) ?></span><?php endif ?></li>
+      <li class="part"><?= !empty($t['logo']) ? image($t['logo'], '28px') : brand((string) ($t['brand'] ?? '')) ?><span class="part__name"><?= e($t['name'] ?? '') ?></span><?php if (!empty($t['note'])): ?><span class="part__lead" aria-hidden="true"></span><span class="part__note"><?= e($t['note']) ?></span><?php endif ?></li>
 <?php endforeach ?>
     </ul>
   </div>

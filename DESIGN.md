@@ -148,7 +148,7 @@ Near-black ground, off-white ink, one lime. The brand lime #AED534 is a PRODUCT.
 
 Full width. `.wrap` is capped at 1720px; panes run edge to edge inside a gutter of 10px (16px from 720px, 20px from 1024px). Content inside a pane is inset 44px left on mobile, 64px at 720px and clamp(80px, 6vw, 120px) at 1024px (right 16px, 32px, clamp(40px, 4vw, 88px)); the left inset leaves room for the heading tick, which sits 29px left of the heading. Sections have vertical rhythm clamp(4rem, 2.75rem + 5.5vw, 8.5rem). There is no grid ruling and no margin rule.
 
-The header floats (fixed, gutter from top and sides, 60px high, 66px from 1024px). The hero is one pane at least `100svh - bar - 3 gutters` high. Breakpoints in use: 480, 640, 720, 900, 1024. Card and stat grids are 2, 3 or 4 up with the last row stretching so no cell is empty. Split layouts use 5/7, 5/6 or 4/8 ratios with a sticky heading on desktop (FAQ, steps, case study). The hero on mobile reorders to heading, sub, drawing, doors, foot. Under 1024px the nav becomes a full-screen glass overlay.
+The header floats (fixed, gutter from top and sides, 60px high, 66px from 1024px). The hero is one pane at least `100svh - bar - 3 gutters` high. Breakpoints in use: 480, 640, 720, 900, 1024. Card and stat grids are 2, 3 or 4 up with the last row stretching so no cell is empty. Split layouts use 5/7, 5/6 or 4/8 ratios with a sticky heading on desktop (FAQ, steps, case study). The hero on mobile reorders to heading, sub, drawing, doors, foot. The cover hero (home) fills the pane with its photo: on laptops a scrim from the left (.94 to transparent at 80%) keeps the copy on dark ground; under 1024px the photo is a band across the top (min(78vw, 520px)) masked to fade into the pane, with the copy beneath. Under 1024px the nav becomes a full-screen glass overlay.
 
 ## Elevation & Depth
 
@@ -177,6 +177,9 @@ Square and sharp. Every radius token is 0 (--r, --r-lg, --r-pill): glass panes, 
 
 ### Glass pane
 The shared container for cards, steps track, parts list, curriculum tracks, stat cells, testimonials, FAQ list, form plate, people, contact list, map, post list, footer panel and image frames. 1px glass line, square corners, the shadow stack and sheen above, the glass gradient fill.
+
+### Tool logos
+The tools section is a glass parts list: each row has the tool's official mark at 26px, its name, a dotted leader and a note. Marks are single-colour, drawn in the text colour from `app/views/brands.php` (Simple Icons, Lobe Icons, or the brand's own site), never in brand colours, so lime stays the only accent. An uploaded logo replaces the built-in mark.
 
 ### Door chooser (hero)
 Rows between 1px hairlines (`rgba(242,243,238,.28)`): large uppercase label, small note beneath, lime arrow. Hover draws a lime underline across the label and moves the arrow 6px.

@@ -53,12 +53,12 @@
       "fields": {
         "heading": "What we *build with*",
         "tools": [
-          {"name": "Next.js", "note": "Fast React sites"},
-          {"name": "PHP and MySQL", "note": "Simple hosting"},
-          {"name": "GoHighLevel", "note": "Where leads go"},
-          {"name": "Google Search Console", "note": "Search setup"},
-          {"name": "Google Analytics 4", "note": "Traffic"},
-          {"name": "Meta pixel", "note": "Ad tracking"}
+          {"name": "Next.js", "brand": "nextjs", "note": "Fast React sites"},
+          {"name": "PHP and MySQL", "brand": "php", "note": "Simple hosting"},
+          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "Where leads go"},
+          {"name": "Google Search Console", "brand": "google-search-console", "note": "Search setup"},
+          {"name": "Google Analytics 4", "brand": "google-analytics", "note": "Traffic"},
+          {"name": "Meta pixel", "brand": "meta", "note": "Ad tracking"}
         ]
       }
     },
