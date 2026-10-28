@@ -6,6 +6,7 @@ const ADMIN_VIEWS_DIR = __DIR__ . '/views';
 require __DIR__ . '/shell.php';
 require __DIR__ . '/media.php';
 require __DIR__ . '/pages.php';
+require __DIR__ . '/redirects.php';
 
 /**
  * "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php).
@@ -47,6 +48,8 @@ function admin_routes(): array
         'GET /admin/preview/{id}' => 'admin_preview',
         'GET /admin/section-form' => 'admin_section_form',
         'GET /admin/templates' => 'admin_templates',
+        'GET /admin/redirects' => 'admin_redirects',
+        'POST /admin/redirects' => 'admin_redirects',
     ];
 }
 

@@ -159,6 +159,7 @@ a.stat:hover .stat__icon { color: var(--lime); }
 .table .num { text-align: right; font-variant-numeric: tabular-nums; }
 .table .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .table .actions form { margin: 0; }
+.table td:nth-child(-n+2) { min-width: 200px; } /* redirects: address inputs */
 .table .actions .inline { display: flex; gap: 6px; }
 .table .actions input[type=password] { width: 170px; min-height: 32px; padding: 4px 8px; font-size: 12px; }
 @media (max-width: 760px) {

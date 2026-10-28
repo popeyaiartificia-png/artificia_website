@@ -168,3 +168,95 @@ function test_seed_map_complete(): void
     $types = $db->query("SELECT from_path FROM redirects WHERE match_type = 'prefix' ORDER BY from_path")->fetchAll(PDO::FETCH_COLUMN);
     eq($types, ['/co-orporate/', '/landing-page/']);
 }
+
+// ---------- Admin redirects page ----------
+
+function redirect_admin_login(PDO $db): void
+{
+    $_SESSION = ['uid' => user_create($db, 'seo@example.com', 'correct horse 1', 'seo'), 'csrf' => 'tok'];
+    $_POST = [];
+}
+
+function redirect_admin_post(PDO $db, array $post): HttpResponse
+{
+    $_POST = ['_csrf' => 'tok'] + $post;
+    return admin_handle($db, 'POST', '/admin/redirects');
+}
+
+function redirect_admin_count(PDO $db): int
+{
+    return (int) $db->query('SELECT COUNT(*) FROM redirects')->fetchColumn();
+}
+
+function test_admin_redirects_lists_adds_edits_and_deletes(): void
+{
+    $db = test_db();
+    redirect_admin_login($db); // an SEO user: the SEO editor fixes redirects
+    $_POST = [];
+    redirect_save($db, redirect_test_row('/old', '/new'));
+    $page = admin_handle($db, 'GET', '/admin/redirects');
+    eq($page->status, 200);
+    ok(str_contains($page->body, 'value="/old"') && str_contains($page->body, 'value="/new"'), 'row shown');
+    ok(str_contains($page->body, 'href="/admin/redirects"'), 'nav links to it now');
+
+    $r = redirect_admin_post($db, ['action' => 'save', 'from_path' => 'gone', 'to_path' => '/home', 'match_type' => 'exact', 'code' => '302']);
+    eq([$r->status, $r->location], [302, '/admin/redirects']);
+    eq(redirect_match($db, '/gone'), ['to' => '/home', 'code' => 302]);
+
+    $id = (int) $db->query("SELECT id FROM redirects WHERE from_path = '/old'")->fetchColumn();
+    redirect_admin_post($db, ['action' => 'save', 'id' => (string) $id, 'from_path' => '/old', 'to_path' => '/newer', 'match_type' => 'prefix', 'code' => '301']);
+    eq($db->query("SELECT to_path, match_type FROM redirects WHERE id = $id")->fetch(PDO::FETCH_NUM), ['/newer', 'prefix']);
+    eq(redirect_admin_count($db), 2, 'edited in place, not duplicated');
+
+    $r = redirect_admin_post($db, ['action' => 'delete', 'id' => (string) $id]);
+    eq([$r->status, $r->location], [302, '/admin/redirects']);
+    eq(redirect_admin_count($db), 1);
+    eq(redirect_admin_post($db, ['action' => 'delete', 'id' => (string) $id])->status, 302, 'deleting it twice is harmless');
+    $_SESSION = $_POST = [];
+}
+
+function test_admin_redirect_loop_shows_error_and_saves_nothing(): void
+{
+    $db = test_db();
+    redirect_admin_login($db);
+    redirect_save($db, redirect_test_row('/a', '/b'));
+    $db->exec("INSERT INTO pages (kind, slug, title, status, sections) VALUES ('page', 'about', 'About', 'published', '[]')");
+
+    $r = redirect_admin_post($db, ['action' => 'save', 'from_path' => '/b', 'to_path' => '/a', 'match_type' => 'exact', 'code' => '301']);
+    eq($r->status, 422);
+    ok(str_contains($r->body, 'redirect loop'), 'the library message is shown');
+    ok(str_contains($r->body, 'value="/b"') && str_contains($r->body, 'role="alert"'), 'the typed values stay in the add row');
+    ok(str_contains($r->body, 'toast--error'), 'and an error toast');
+    eq(redirect_admin_count($db), 1, 'nothing saved');
+
+    $id = (int) $db->query("SELECT id FROM redirects WHERE from_path = '/a'")->fetchColumn();
+    $r = redirect_admin_post($db, ['action' => 'save', 'id' => (string) $id, 'from_path' => '/about', 'to_path' => '/x', 'match_type' => 'exact', 'code' => '301']);
+    eq($r->status, 422);
+    ok(str_contains($r->body, 'A page already lives at /about'), 'shown on the row being edited');
+    eq($db->query("SELECT from_path FROM redirects WHERE id = $id")->fetchColumn(), '/a', 'the row is unchanged');
+
+    $r = redirect_admin_post($db, ['action' => 'save', 'from_path' => '/z', 'to_path' => '/z', 'match_type' => 'exact', 'code' => '301']);
+    ok($r->status === 422 && str_contains($r->body, 'to itself'));
+    $_SESSION = $_POST = [];
+}
+
+function test_admin_redirect_delete_requires_csrf(): void
+{
+    $db = test_db();
+    redirect_admin_login($db);
+    $id = redirect_save($db, redirect_test_row('/a', '/b'));
+    $_POST = ['action' => 'delete', 'id' => (string) $id]; // no token
+    eq(admin_handle($db, 'POST', '/admin/redirects')->status, 403);
+    $_POST = ['_csrf' => 'wrong', 'action' => 'delete', 'id' => (string) $id];
+    eq(admin_handle($db, 'POST', '/admin/redirects')->status, 403);
+    eq(redirect_admin_count($db), 1, 'still there');
+    $_SESSION = $_POST = [];
+}
+
+function test_admin_redirects_requires_login(): void
+{
+    $db = test_db();
+    $_SESSION = $_POST = [];
+    $r = admin_handle($db, 'GET', '/admin/redirects');
+    eq([$r->status, $r->location], [302, '/admin/login']);
+}
