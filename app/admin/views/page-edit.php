@@ -157,7 +157,21 @@ $slugHint = $fixed ? "The router serves this page at $path, so its address can't
 <?php endif ?>
       </dl>
     </section>
-<?php // Task 7c: this page's "SEO checks" card goes here, below Publishing. ?>
+<?php $issues = seo_page_issues($db, settings($db), (int) $page['id']);
+$failed = array_fill_keys(array_column($issues, 'check'), true); ?>
+    <section class="card score">
+      <h2>SEO checks <span class="pill <?= $issues ? 'pill--warn' : 'pill--published' ?>"><?= count(SEO_CHECK_NAMES) - count($failed) ?> of <?= count(SEO_CHECK_NAMES) ?></span></h2>
+      <p class="hint">Checked against the saved version; it updates when you save.</p>
+      <ul class="score__list">
+<?php foreach (SEO_CHECK_NAMES as $key => $label): ?>
+        <li><span class="pill <?= isset($failed[$key]) ? 'pill--warn' : 'pill--published' ?>"><?= isset($failed[$key]) ? 'Fix' : 'Pass' ?></span> <?= e($label) ?>
+<?php foreach ($issues as $i): if ($i['check'] === $key): ?>
+          <p class="score__tip"><?= e($i['message']) ?></p>
+<?php endif; endforeach ?>
+        </li>
+<?php endforeach ?>
+      </ul>
+    </section>
   </aside>
 </div>
 <link rel="stylesheet" href="/assets/vendor/quill/quill.snow.css">

@@ -162,7 +162,10 @@ function admin_dashboard(PDO $db, string $method): HttpResponse
         'redirects' => $count('SELECT COUNT(*) FROM redirects'),
         'media' => $count('SELECT COUNT(*) FROM media'),
     ];
-    return new HttpResponse(200, admin_view('dashboard', ['title' => 'Dashboard', 'stats' => $stats], $user));
+    $seo = seo_checks($db, settings($db));
+    $noindex = array_map('intval', $db->query('SELECT id FROM pages WHERE noindex = 1')->fetchAll(PDO::FETCH_COLUMN));
+    $filter = is_string($_GET['check'] ?? null) && isset(SEO_CHECK_LABELS[$_GET['check']]) ? $_GET['check'] : '';
+    return new HttpResponse(200, admin_view('dashboard', ['title' => 'Dashboard', 'stats' => $stats, 'seo' => $seo, 'noindex' => $noindex, 'filter' => $filter], $user));
 }
 
 function admin_login(PDO $db, string $method): HttpResponse

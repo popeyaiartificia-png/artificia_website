@@ -13,6 +13,9 @@ function config(): array
     return $config;
 }
 
+// The app's clock comes from config, not the host's php.ini; set before any DB connection (db_connect copies the offset).
+date_default_timezone_set(config()['timezone'] ?? 'Asia/Kolkata');
+
 require __DIR__ . '/lib/http.php';
 require __DIR__ . '/lib/db.php';
 require __DIR__ . '/lib/settings.php';
@@ -21,6 +24,7 @@ require __DIR__ . '/lib/media.php';
 require __DIR__ . '/lib/pages.php';
 require __DIR__ . '/lib/render.php';
 require __DIR__ . '/lib/seo.php';
+require __DIR__ . '/lib/seo_checks.php';
 require __DIR__ . '/lib/redirects.php';
 require __DIR__ . '/lib/seed.php';
 require __DIR__ . '/lib/mail.php';

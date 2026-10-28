@@ -3,12 +3,16 @@ declare(strict_types=1);
 
 function db(): PDO
 {
-    static $pdo = null;
-    if ($pdo === null) {
-        $c = config()['db'];
-        $pdo = db_connect($c['dsn'], $c['user'], $c['pass']);
-    }
-    return $pdo;
+    $GLOBALS['artificia_db'] ??= db_connect(config()['db']['dsn'], config()['db']['user'], config()['db']['pass']);
+    return $GLOBALS['artificia_db'];
+}
+
+/** Makes db() return $pdo (null: reconnect on next use) and hands back the previous connection, so code that renders pages can read from a given database. */
+function db_swap(?PDO $pdo): ?PDO
+{
+    $prev = $GLOBALS['artificia_db'] ?? null;
+    $GLOBALS['artificia_db'] = $pdo;
+    return $prev;
 }
 
 function db_connect(string $dsn, string $user, string $pass): PDO

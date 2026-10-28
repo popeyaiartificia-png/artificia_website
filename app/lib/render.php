@@ -154,9 +154,9 @@ function render_layout(array $vars): string
     ]);
 }
 
-function render_page(array $page, array $settings): string
+/** What render_page puts inside the layout: the page header (when no hero opens the page) and every section. */
+function render_page_body(array $page, array $settings): string
 {
-    $base = config()['base_url'];
     $sections = $page['sections'];
     $body = '';
     if (($sections[0]['type'] ?? '') !== 'hero') {
@@ -165,6 +165,14 @@ function render_page(array $page, array $settings): string
     foreach ($sections as $i => $section) {
         $body .= render_section_in($section, $i, $page, $settings);
     }
+    return $body;
+}
+
+function render_page(array $page, array $settings): string
+{
+    $base = config()['base_url'];
+    $sections = $page['sections'];
+    $body = render_page_body($page, $settings);
     $ogImage = $page['og_image_id'] ? media_url(db(), (int) $page['og_image_id'], 1600) : null;
     return render_layout([
         'settings' => $settings,
