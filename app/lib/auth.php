@@ -8,7 +8,7 @@ const PASSWORD_MIN = 10;
 /** A response an admin handler returns; also thrown by auth_require to stop a request. */
 final class HttpResponse extends Exception
 {
-    public function __construct(public int $status = 200, public string $body = '', public ?string $location = null)
+    public function __construct(public int $status = 200, public string $body = '', public ?string $location = null, public string $type = 'text/html; charset=utf-8')
     {
         parent::__construct('');
     }

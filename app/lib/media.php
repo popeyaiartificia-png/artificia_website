@@ -12,8 +12,8 @@ function media_widths(int $srcWidth): array
     return array_values(array_filter(MEDIA_WIDTHS, fn(int $w) => $w <= $srcWidth)) ?: [$srcWidth];
 }
 
-/** Validates, resizes to WebP renditions under $uploadsDir/YYYY/MM/ and returns the new media id. */
-function media_store(PDO $db, string $tmpPath, string $originalName, string $alt, string $uploadsDir, ?string $source = null): int
+/** Trimmed alt text, or an InvalidArgumentException with a user-facing message. */
+function media_clean_alt(string $alt): string
 {
     $alt = trim($alt);
     if ($alt === '') {
@@ -22,6 +22,13 @@ function media_store(PDO $db, string $tmpPath, string $originalName, string $alt
     if (mb_strlen($alt) > 500) {
         throw new InvalidArgumentException('The image description is too long - keep it under 500 characters.');
     }
+    return $alt;
+}
+
+/** Validates, resizes to WebP renditions under $uploadsDir/YYYY/MM/ and returns the new media id. */
+function media_store(PDO $db, string $tmpPath, string $originalName, string $alt, string $uploadsDir, ?string $source = null): int
+{
+    $alt = media_clean_alt($alt);
     if (!is_file($tmpPath) || filesize($tmpPath) > MEDIA_MAX_BYTES) {
         throw new InvalidArgumentException('That image is too big - please upload a file under 15 MB.');
     }

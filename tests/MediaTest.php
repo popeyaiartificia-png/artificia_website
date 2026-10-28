@@ -259,3 +259,136 @@ function test_media_from_file_is_idempotent(): void
         media_test_cleanup($dir);
     }
 }
+
+// ---------- Admin media page and picker feed ----------
+
+/** Logs in a throwaway user in $_SESSION with a CSRF token; returns the user id. */
+function media_admin_login(PDO $db, string $role = 'seo'): int
+{
+    $uid = user_create($db, "$role@example.com", 'correct horse 1', $role);
+    $_SESSION = ['uid' => $uid, 'csrf' => 'tok'];
+    $_POST = $_FILES = [];
+    return $uid;
+}
+
+function test_media_json_lists_newest_first_with_thumbs(): void
+{
+    $db = test_db();
+    $dir = media_test_dir();
+    try {
+        media_admin_login($db);
+        $a = media_store($db, media_fixture($dir, 2000, 1000), 'a.jpg', 'First', $dir);
+        $b = media_store($db, media_fixture($dir, 300, 200), 'b.jpg', 'Second "small"', $dir);
+        $r = admin_handle($db, 'GET', '/admin/media.json');
+        eq($r->status, 200);
+        ok(str_starts_with($r->type, 'application/json'), $r->type);
+        $list = json_decode($r->body, true);
+        eq(array_column($list, 'id'), [$b, $a], 'newest first');
+        eq(array_keys($list[0]), ['id', 'alt', 'thumb', 'url', 'width', 'height']);
+        eq($list[1]['thumb'], media_rendition_url(media_row($db, $a), 480));
+        eq($list[1]['url'], media_url($db, $a));
+        eq([$list[1]['width'], $list[1]['height']], [2000, 1000]);
+        eq($list[0]['thumb'], media_url($db, $b, 480), 'a small image uses its only rendition');
+        eq($list[0]['alt'], 'Second "small"');
+
+        $_SESSION = [];
+        eq(admin_handle($db, 'GET', '/admin/media.json')->status, 401, 'logged out gets 401, not a login page');
+    } finally {
+        $_SESSION = [];
+        media_test_cleanup($dir);
+    }
+}
+
+function test_alt_edit_requires_csrf_and_nonempty_alt(): void
+{
+    $db = test_db();
+    $dir = media_test_dir();
+    try {
+        media_admin_login($db);
+        $id = media_store($db, media_fixture($dir, 600, 400), 'a.jpg', 'Old alt', $dir);
+        $alt = fn() => $db->query("SELECT alt FROM media WHERE id = $id")->fetchColumn();
+
+        $_POST = ['action' => 'alt', 'id' => (string) $id, 'alt' => 'No token'];
+        eq(admin_handle($db, 'POST', '/admin/media')->status, 403, 'no CSRF token');
+        eq($alt(), 'Old alt');
+
+        foreach (['', '   '] as $blank) {
+            $_POST = ['_csrf' => 'tok', 'action' => 'alt', 'id' => (string) $id, 'alt' => $blank];
+            $r = admin_handle($db, 'POST', '/admin/media');
+            eq($r->status, 422);
+            ok(str_contains($r->body, 'description'), 'the message is shown');
+            eq($alt(), 'Old alt', 'blank alt is not saved');
+        }
+        $_POST = ['_csrf' => 'tok', 'action' => 'alt', 'id' => '99999', 'alt' => 'Ghost'];
+        eq(admin_handle($db, 'POST', '/admin/media')->status, 404, 'unknown image');
+
+        $_POST = ['_csrf' => 'tok', 'action' => 'alt', 'id' => (string) $id, 'alt' => '  New alt  '];
+        $r = admin_handle($db, 'POST', '/admin/media');
+        eq([$r->status, $r->location], [302, '/admin/media']);
+        eq($alt(), 'New alt');
+    } finally {
+        $_SESSION = $_POST = [];
+        media_test_cleanup($dir);
+    }
+}
+
+function test_media_page_requires_login(): void
+{
+    $db = test_db();
+    $_SESSION = $_POST = [];
+    foreach ([['GET', '/admin/media'], ['POST', '/admin/media']] as [$m, $p]) {
+        $_SESSION = ['csrf' => 'tok'];
+        $_POST = $m === 'POST' ? ['_csrf' => 'tok', 'action' => 'alt', 'id' => '1', 'alt' => 'x'] : [];
+        $r = admin_handle($db, $m, $p);
+        eq([$r->status, $r->location], [302, '/admin/login'], "$m $p");
+    }
+    $_SESSION = $_POST = [];
+}
+
+function test_media_upload_through_the_page(): void
+{
+    $db = test_db();
+    $dir = media_test_dir();
+    putenv("ARTIFICIA_UPLOADS=$dir");
+    try {
+        media_admin_login($db);
+        $src = media_fixture($dir, 1200, 800);
+        $post = ['_csrf' => 'tok', 'action' => 'upload', 'alt' => 'A kiln'];
+        $file = ['name' => 'kiln.jpg', 'tmp_name' => $src, 'error' => UPLOAD_ERR_OK, 'size' => filesize($src), 'type' => 'image/jpeg'];
+
+        $_POST = ['alt' => ''] + $post;
+        $_FILES = ['file' => $file];
+        $r = admin_handle($db, 'POST', '/admin/media');
+        eq($r->status, 422);
+        ok(str_contains($r->body, 'alt text'), 'blank alt message next to the form');
+
+        $_POST = $post;
+        $_FILES = [];
+        ok(str_contains(admin_handle($db, 'POST', '/admin/media')->body, 'Choose an image'), 'missing file');
+        $_FILES = ['file' => ['error' => UPLOAD_ERR_INI_SIZE] + $file];
+        ok(str_contains(admin_handle($db, 'POST', '/admin/media')->body, '15 MB'), 'server limit message');
+
+        $fake = "$dir/x.jpg";
+        file_put_contents($fake, '<?php echo 1;');
+        $_FILES = ['file' => ['tmp_name' => $fake, 'name' => 'x.jpg'] + $file];
+        $r = admin_handle($db, 'POST', '/admin/media');
+        eq($r->status, 422);
+        ok(str_contains($r->body, 'JPEG, PNG or WebP') && str_contains($r->body, 'A kiln'), 'fake image refused, alt kept');
+        eq((int) $db->query('SELECT COUNT(*) FROM media')->fetchColumn(), 0, 'nothing half-saved');
+
+        $_FILES = ['file' => $file];
+        $r = admin_handle($db, 'POST', '/admin/media');
+        eq([$r->status, $r->location], [302, '/admin/media']);
+        eq($db->query('SELECT alt FROM media')->fetchColumn(), 'A kiln');
+        $page = admin_handle($db, 'GET', '/admin/media');
+        ok(str_contains($page->body, '/uploads/') && str_contains($page->body, 'A kiln'), 'listed on the page');
+        ok(str_contains($page->body, 'href="/admin/media"'), 'Media is in the nav');
+        ok(!str_contains($page->body, 'No alt'), 'described images carry no warning pill');
+        $db->exec("INSERT INTO media (base_name, alt, width, height) VALUES ('2026/01/9', '', 100, 100)");
+        ok(str_contains(admin_handle($db, 'GET', '/admin/media')->body, 'pill--warn">No alt'), 'an image with no alt gets the amber pill');
+    } finally {
+        putenv('ARTIFICIA_UPLOADS');
+        $_SESSION = $_POST = $_FILES = [];
+        media_test_cleanup($dir);
+    }
+}

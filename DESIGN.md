@@ -223,6 +223,7 @@ The admin (`/admin`, `public/assets/css/admin.css`, `public/assets/js/admin.js`)
 - **Tables:** `.table` (muted 12px caps header, row hover tint, `.num` tabular), `.table--stack` stacks to cards under 760px.
 - **Pills:** `.pill--published` (lime outline), `--draft`, `--warn` (amber), `--error`, `--you`.
 - **Forms:** `.field` (label, input, hint, per-field `.err`), `.form-grid`, `.filters`, `.tabs`, `.editor` with a sticky 320px `.side`, `.savebar` sticky footer.
+- **Media:** `ul.media` grid (140px min columns, 4:3 thumbs, name and size under, amber "No alt" pill), `.dropzone` (dashed, lime on dragover), native `dialog.dlg` (620px; `.dlg--wide` 960px, backdrop .45). `MediaPicker.open()` in `assets/js/media.js` is the reusable image picker (reads `/admin/media.json`).
 - **Feedback:** toasts bottom-right (3 s ok, 6 s error, `role` status/alert) from `admin_redirect($to, $msg, $kind)` or `Admin.toast()`; `.notice`, `.empty`; `data-confirm` (click again, 4 s), `data-dirty-guard` (leave warning, Cmd/Ctrl+S, `data-dirty-note`), 3px lime progress bar, "Saving..." busy buttons.
 
 ## Do's and Don'ts

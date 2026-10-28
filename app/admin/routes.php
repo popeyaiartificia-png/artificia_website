@@ -4,6 +4,7 @@ declare(strict_types=1);
 const ADMIN_VIEWS_DIR = __DIR__ . '/views';
 
 require __DIR__ . '/shell.php';
+require __DIR__ . '/media.php';
 
 /** "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php). */
 function admin_routes(): array
@@ -24,6 +25,9 @@ function admin_routes(): array
         'POST /admin/settings/import' => 'admin_settings_import',
         'GET /admin/users' => 'admin_users',
         'POST /admin/users' => 'admin_users',
+        'GET /admin/media' => 'admin_media',
+        'POST /admin/media' => 'admin_media',
+        'GET /admin/media.json' => 'admin_media_json',
     ];
 }
 
@@ -35,6 +39,9 @@ function admin_handle(PDO $db, string $method, string $path): HttpResponse
         $handler = admin_routes()["$method $path"] ?? null;
         if (!$handler) {
             return new HttpResponse(404, admin_view('notfound', ['title' => 'Not found'], auth_user($db)));
+        }
+        if ($method === 'POST' && !$_POST && !$_FILES && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) { // PHP drops the whole body past post_max_size
+            return new HttpResponse(413, admin_view('notfound', ['title' => 'Upload too big', 'message' => 'That upload is too big. Go back and choose a file under 15 MB.'], auth_user($db)));
         }
         if ($method === 'POST' && !csrf_check($_POST['_csrf'] ?? null)) {
             return new HttpResponse(403, admin_view('notfound', ['title' => 'Session expired', 'message' => 'Your session expired. Go back, reload the page and try again.'], auth_user($db)));
@@ -55,7 +62,9 @@ function admin_dispatch(PDO $db, string $method, string $path): void
     if ($r->location !== null) {
         redirect($r->location);
     }
-    send_html($r->body, $r->status);
+    header('Content-Type: ' . $r->type);
+    http_response_code($r->status);
+    echo $r->body;
 }
 
 /** A view inside the admin layout. */
