@@ -484,7 +484,7 @@ a:hover { color: var(--lime); }
 .part__name { font-weight: 680; }
 .part__lead { flex: 1; min-width: 1.5rem; border-bottom: 1.5px dotted rgba(255, 255, 255, .2); transform: translateY(-.25em); }
 .part__note { color: var(--c6); font-size: .875rem; text-align: right; }
-@media (min-width: 720px) { .parts { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 720px) { .parts { grid-template-columns: repeat(2, 1fr); } .part__name { white-space: nowrap; } }
 @media (min-width: 1024px) { .parts { grid-template-columns: repeat(3, 1fr); } }
 
 /* ---------- Curriculum: one line that keeps going ---------- */

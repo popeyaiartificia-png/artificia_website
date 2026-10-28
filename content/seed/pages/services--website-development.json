@@ -58,7 +58,9 @@
           {"name": "GoHighLevel", "brand": "gohighlevel", "note": "Where leads go"},
           {"name": "Google Search Console", "brand": "google-search-console", "note": "Search setup"},
           {"name": "Google Analytics 4", "brand": "google-analytics", "note": "Traffic"},
-          {"name": "Meta pixel", "brand": "meta", "note": "Ad tracking"}
+          {"name": "Meta pixel", "brand": "meta", "note": "Ad tracking"},
+          {"name": "AWS", "brand": "aws", "note": "Hosting and storage"},
+          {"name": "Google Cloud", "brand": "google-cloud", "note": "Hosting and Google APIs"}
         ]
       }
     },
@@ -86,6 +88,7 @@
           {"question": "Can my team edit the site after launch?", "answer": "Yes. You get an admin where your team edits pages, images and SEO settings without a developer."},
           {"question": "Will we lose our Google traffic?", "answer": "We map your old addresses to the new pages and redirect them, so existing links and search results keep working."},
           {"question": "Can the site send leads to GoHighLevel?", "answer": "Yes. Forms can send each enquiry to GoHighLevel or another CRM, with the page and ad it came from."},
+          {"question": "Where will the site be hosted?", "answer": "Where it fits: simple PHP hosting for a small site, or AWS or Google Cloud for a larger one. We set up the hosting, domain and SSL, and the account stays in your name."},
           {"question": "Do you write the content too?", "answer": "Yes. Content development and marketing is one of our services, so we can write the pages and posts, or work from what you already have."}
         ]
       }

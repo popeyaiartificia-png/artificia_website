@@ -9,7 +9,7 @@
     {
       "type": "hero",
       "fields": {
-        "subheading": "We set up GoHighLevel, build websites, make content and build AI that answers from your own documents. It starts with a free 15-minute flow audit.",
+        "subheading": "We set up GoHighLevel, build websites, make content and build AI that answers from your own documents, hosted on AWS or Google Cloud. It starts with a free 15-minute flow audit.",
         "drawing": "services",
         "variant": "split",
         "primary_cta_label": "Book the free flow audit",
@@ -42,6 +42,21 @@
           {"icon": "file-text", "title": "Document and data processing", "text": "Invoices, POs, contracts and forms read, sorted and turned into reports."},
           {"icon": "chat-circle-text", "title": "Departmental AI assistants", "text": "Assistants for HR, sales or support that answer from your own material."},
           {"icon": "plugs-connected", "title": "AI agents", "text": "Agents that research, follow up and flag what needs attention today."}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "The platforms we *build on*",
+        "intro": "Custom systems run on AWS or Google Cloud, set up in accounts your company owns, and connect to the tools your team already uses.",
+        "tools": [
+          {"name": "AWS", "brand": "aws", "note": "Hosting, storage and databases"},
+          {"name": "Google Cloud", "brand": "google-cloud", "note": "Cloud Console, APIs and Vertex AI"},
+          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "CRM and workflows"},
+          {"name": "n8n", "brand": "n8n", "note": "Automations"},
+          {"name": "Supabase", "brand": "supabase", "note": "Database and login"},
+          {"name": "Pinecone", "brand": "pinecone", "note": "Vector search"}
         ]
       }
     },
@@ -101,7 +116,8 @@
         "heading": "Questions about *services*",
         "items": [
           {"question": "What happens in the free flow audit?", "answer": "A 15-minute call where we trace one process with you, mark where work waits or repeats, and send a one-page summary you keep."},
-          {"question": "Do you only work with GoHighLevel?", "answer": "No. We use GoHighLevel when it fits, and we also build with n8n, custom websites and AI models connected to the tools you already use."},
+          {"question": "Can you set up AWS or Google Cloud for us?", "answer": "Yes. We set up the services a system needs in the AWS console or the Google Cloud Console: hosting, storage, databases, API keys and AI models such as Gemini on Vertex AI. The accounts stay in your company's name."},
+          {"question": "Do you only work with GoHighLevel?", "answer": "No. We use GoHighLevel when it fits, and we also build with n8n, custom websites and AI models, hosted on AWS or Google Cloud and connected to the tools you already use."},
           {"question": "Who owns what you build?", "answer": "You do. Everything we build belongs to you and keeps running after the project ends."},
           {"question": "Can you work with our ERP or Tally?", "answer": "Yes. We can add an AI layer around systems like ERPNext, Tally or SAP: questions in plain words, automated MIS and alerts."},
           {"question": "Do you look after systems after launch?", "answer": "Yes. We monitor workflows and agents, fix what breaks, and add new workflows when you need them."}

@@ -25,8 +25,8 @@ The lime sketches in `app/views/drawings/` are drawn in code for this site; no r
 
 `app/views/brands.php` holds each tool's official mark as single-colour SVG path data:
 
-- [Simple Icons](https://simpleicons.org) 15.22.0 (CC0): ChatGPT (OpenAI), Claude, Gemini, Perplexity, NotebookLM, ElevenLabs, Canva, n8n, Supabase, WhatsApp, Meta, Google Sheets, Google Drive, Google Analytics, Google Search Console, Next.js, PHP.
-- [Lobe Icons](https://github.com/lobehub/lobe-icons) 1.101.0 (MIT): Copilot, Claude Code, Runway, Lovable, Antigravity.
+- [Simple Icons](https://simpleicons.org) 15.22.0 (CC0): ChatGPT (OpenAI), Claude, Gemini, Perplexity, NotebookLM, ElevenLabs, Canva, n8n, Supabase, WhatsApp, Meta, Google Sheets, Google Drive, Google Analytics, Google Search Console, Google Cloud, Next.js, PHP.
+- [Lobe Icons](https://github.com/lobehub/lobe-icons) 1.101.0 (MIT): Copilot, Claude Code, Runway, Lovable, Antigravity, AWS.
 - The brand's own website, 28 Oct 2026: Pinecone and Gamma (the mark from the header logo on pinecone.io and gamma.app), GoHighLevel (the three-arrow mark from gohighlevel.com's header logo), HeyGen (traced from heygen.com's logo image).
 
 The marks belong to their owners and are shown only to name the tools taught or used.

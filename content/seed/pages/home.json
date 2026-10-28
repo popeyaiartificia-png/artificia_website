@@ -24,7 +24,7 @@
       "type": "rich_text",
       "fields": {
         "heading": "An AI training institute that *also builds*",
-        "body": "<p>Artificia AI (Artificia Intellec Pvt Ltd) is an AI training institute in Vadodara, Gujarat. We teach people and company teams to use AI in their daily work, and we build AI systems for businesses that would rather have the work done for them.</p><p>Every masterclass is live and in person in Vadodara, one hour a day. You learn a tool, watch it used on a real task, then do it yourself in the room. No coding is needed to start, and every week adds something to your portfolio.</p><p>The same team sets up and runs client systems: lead pipelines in GoHighLevel, WhatsApp follow-ups, AI voice calls, websites, and assistants that answer from a company's own documents. What we teach comes from what we build.</p>"
+        "body": "<p>Artificia AI (Artificia Intellec Pvt Ltd) is an AI training institute in Vadodara, Gujarat. We teach people and company teams to use AI in their daily work, and we build AI systems for businesses that would rather have the work done for them.</p><p>Every masterclass is live and in person in Vadodara, one hour a day. You learn a tool, watch it used on a real task, then do it yourself in the room. No coding is needed to start, and every week adds something to your portfolio.</p><p>The same team sets up and runs client systems: lead pipelines in GoHighLevel, WhatsApp follow-ups, AI voice calls, websites, and assistants that answer from a company's own documents. Custom builds run on AWS or Google Cloud. What we teach comes from what we build.</p>"
       }
     },
     {
@@ -36,7 +36,7 @@
         "cards": [
           {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Offline and live in Vadodara, one hour a day. The 30-day Foundation covers prompting, office tools, slides, images, video, voice and your first website. The 60-day Full program adds agents, n8n, MCP, RAG and Claude Code. No coding needed.", "link": "/ai-masterclass"},
           {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "A program built around your company's documents, departments and daily tasks, on-site or over Microsoft Teams. Length and format are set by your needs, and each session ends with something your team can use. It starts with a free 2-hour pilot.", "link": "/corporate-ai-training"},
-          {"image": "business-owner-desk.jpg", "title": "AI systems for businesses", "text": "GoHighLevel setup, websites, content and marketing, and RAG automation that answers from your own documents. A free 15-minute flow audit finds the process to fix first; then we plan it, build it and run it.", "link": "/services"}
+          {"image": "business-owner-desk.jpg", "title": "AI systems for businesses", "text": "GoHighLevel setup, websites, content and marketing, and RAG automation that answers from your own documents, hosted on AWS or Google Cloud. A free 15-minute flow audit finds the process to fix first; then we plan it, build it and run it.", "link": "/services"}
         ]
       }
     },

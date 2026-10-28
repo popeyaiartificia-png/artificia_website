@@ -58,7 +58,9 @@
           {"name": "Claude", "brand": "claude", "note": "Answers"},
           {"name": "Supabase", "brand": "supabase", "note": "Database and storage"},
           {"name": "n8n", "brand": "n8n", "note": "Workflows"},
-          {"name": "Google Drive", "brand": "google-drive", "note": "Document source"}
+          {"name": "Google Drive", "brand": "google-drive", "note": "Document source"},
+          {"name": "Google Cloud", "brand": "google-cloud", "note": "Gemini on Vertex AI"},
+          {"name": "AWS", "brand": "aws", "note": "Storage and hosting"}
         ]
       }
     },
@@ -78,7 +80,7 @@
       "fields": {
         "heading": "Questions about *RAG*",
         "items": [
-          {"question": "Where are our documents kept?", "answer": "We agree with you which documents go in, where they are stored and who can ask questions, before we build anything."},
+          {"question": "Where are our documents kept?", "answer": "We agree with you which documents go in, where they are stored (your own AWS or Google Cloud account, if you prefer) and who can ask questions, before we build anything."},
           {"question": "What if the assistant does not know?", "answer": "It should say so. We set it to answer only from your documents, and to say when it cannot find the answer."},
           {"question": "Which documents work?", "answer": "PDFs, Word files, spreadsheets, SOPs, manuals, contracts and forms. Scanned pages are read with OCR first."},
           {"question": "Can it answer on WhatsApp?", "answer": "Yes. The same assistant can answer on a web page, inside your team's tools, or on WhatsApp."}
