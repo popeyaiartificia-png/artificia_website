@@ -30,10 +30,33 @@ function staging_guard(): void
     }
 }
 
+/** In production, base_url plus the request's path and query when the request came in on another host or scheme (www., staging., http); else null. */
+function canonical_redirect(array $c, array $server): ?string
+{
+    if ($c['env'] !== 'production') {
+        return null;
+    }
+    $base = parse_url($c['base_url']);
+    $ip = (string) ($server['REMOTE_ADDR'] ?? '');
+    // X-Forwarded-Proto only from a proxy on this machine or network: anyone else could send it.
+    $proxy = filter_var($ip, FILTER_VALIDATE_IP) && !filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+    $https = (!empty($server['HTTPS']) && strtolower((string) $server['HTTPS']) !== 'off') || (string) ($server['SERVER_PORT'] ?? '') === '443'
+        || ($proxy && strtolower((string) ($server['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https');
+    $host = strtolower($base['host'] . (isset($base['port']) ? ':' . $base['port'] : ''));
+    if (strtolower((string) ($server['HTTP_HOST'] ?? '')) === $host && ($https ? 'https' : 'http') === strtolower($base['scheme'])) {
+        return null;
+    }
+    $uri = (string) ($server['REQUEST_URI'] ?? '/');
+    return rtrim($c['base_url'], '/') . (str_starts_with($uri, '/') ? $uri : '/');
+}
+
 function send_html(string $html, int $code = 200): void
 {
     http_response_code($code);
     header('Content-Type: text/html; charset=utf-8');
+    header('X-Content-Type-Options: nosniff');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('X-Frame-Options: SAMEORIGIN');
     echo $html;
 }
 
@@ -52,8 +75,12 @@ function send_404(PDO $db): void
 
 function dispatch(string $method, string $path): void
 {
-    staging_guard();
     $c = config();
+    $canonical = canonical_redirect($c, $_SERVER);
+    if ($canonical !== null) {
+        redirect($canonical, 301);
+    }
+    staging_guard();
     $db = db();
 
     if ($path === '/sitemap.xml') {

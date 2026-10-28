@@ -9,7 +9,7 @@
 <?php foreach ($posts as $p): ?>
       <li class="post">
         <p class="entry"><time datetime="<?= e(substr($p['published_at'] ?? '', 0, 10)) ?>"><?= e(date('j M Y', strtotime($p['published_at'] ?? 'now'))) ?></time></p>
-        <div><h3 class="h3"><a href="/blog/<?= e($p['slug']) ?>"><?= e($p['title']) ?></a></h3><?php if (!empty($p['excerpt'])): ?><p><?= e($p['excerpt']) ?></p><?php endif ?></div>
+        <div><h3 class="h3"><a href="/blog/<?= e($p['slug']) ?>"><?= e(heading_plain($p['title'])) ?></a></h3><?php if (!empty($p['excerpt'])): ?><p><?= e($p['excerpt']) ?></p><?php endif ?></div>
       </li>
 <?php endforeach ?>
     </ol>

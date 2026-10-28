@@ -1,6 +1,11 @@
 Options -Indexes
+DirectoryIndex index.php
 RewriteEngine On
-RewriteRule (^|/)\. - [F,L]
+# Hand the Authorization header to PHP: under LiteSpeed/CGI it is dropped otherwise, and staging basic auth needs it.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Dot-paths are never served, except /.well-known/ (certificate renewal, HTTP-01).
+RewriteRule ^(?!\.well-known/)(.*/)?\. - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [L]

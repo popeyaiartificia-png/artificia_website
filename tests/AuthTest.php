@@ -87,6 +87,33 @@ function test_reset_token_single_use_and_expiry(): void
     eq(password_reset_apply($db, bin2hex(random_bytes(32)), 'yet another passphrase'), false, 'unknown token');
 }
 
+function test_reset_mail_at_most_once_per_5_minutes(): void
+{
+    $db = test_db();
+    $email = 'throttle-' . bin2hex(random_bytes(3)) . '@example.com';
+    auth_test_user($db, 'admin', $email);
+    $sent = fn() => substr_count((string) file_get_contents(dirname(__DIR__) . '/storage/mail.log'), "To: $email\n");
+    password_reset_request($db, $email);
+    $first = $db->query('SELECT token_hash FROM password_resets')->fetchColumn();
+    password_reset_request($db, strtoupper($email));
+    eq($sent(), 1, 'the second request inside 5 minutes sends nothing');
+    eq($db->query('SELECT token_hash FROM password_resets')->fetchColumn(), $first, 'and the first link still works');
+    $db->exec('UPDATE password_resets SET expires_at = expires_at - INTERVAL 6 MINUTE'); // as if sent 6 minutes ago
+    password_reset_request($db, $email);
+    eq($sent(), 2, 'after 5 minutes a new link goes out');
+    $_SESSION = [];
+    $_POST = ['_csrf' => csrf_token(), 'email' => $email];
+    try {
+        $throttled = admin_handle($db, 'POST', '/admin/forgot');
+        $db->exec('DELETE FROM password_resets');
+        $mailed = admin_handle($db, 'POST', '/admin/forgot');
+    } finally {
+        $_POST = $_SESSION = [];
+    }
+    eq($sent(), 3, 'only the unthrottled post mailed');
+    eq([$throttled->status, $throttled->body], [$mailed->status, $mailed->body], 'the visitor sees the same page either way');
+}
+
 function test_setup_only_when_no_users(): void
 {
     $db = test_db();
@@ -159,16 +186,32 @@ function test_tracking_id_rejects_trailing_newline(): void
     eq(tracking_id(['ga4_id' => 'G-ABC'], 'ga4_id'), 'G-ABC');
 }
 
+function test_seed_import_is_offered_only_while_there_are_no_pages(): void
+{
+    $db = test_db();
+    $admin = user_create($db, 'admin@example.com', AUTH_TEST_PW, 'admin');
+    $_SESSION = ['uid' => $admin];
+    $body = admin_handle($db, 'GET', '/admin/settings')->body;
+    ok(str_contains($body, 'Import seed content') && str_contains($body, 'action="/admin/settings/import"'), 'offered on an empty site');
+    $db->exec("INSERT INTO pages (slug, title, sections) VALUES ('x', 'X', '[]')");
+    $body = admin_handle($db, 'GET', '/admin/settings')->body;
+    ok(!str_contains($body, 'Import seed content') && !str_contains($body, '/admin/settings/import'), 'gone once a page exists');
+    ok(!str_contains($body, 'name="force"'), 'no force option in the web UI');
+    $_SESSION = [];
+}
+
 function test_seed_import_button_refuses_over_existing_pages(): void
 {
     $db = test_db();
     $admin = user_create($db, 'admin@example.com', AUTH_TEST_PW, 'admin');
     $_SESSION = ['uid' => $admin];
-    $_POST = ['_csrf' => csrf_token()];
+    $_POST = ['_csrf' => csrf_token(), 'force' => '1'];
     $db->exec("INSERT INTO pages (slug, title, sections) VALUES ('x', 'X', '[]')");
     $r = admin_handle($db, 'POST', '/admin/settings/import');
+    eq($r->status, 422);
     ok(str_contains($r->body, 'already has pages'), 'shows the refusal');
-    eq((int) $db->query('SELECT COUNT(*) FROM pages')->fetchColumn(), 1);
+    eq((int) $db->query('SELECT COUNT(*) FROM pages')->fetchColumn(), 1, 'a posted force=1 changes nothing');
+    eq((int) $db->query('SELECT COUNT(*) FROM templates')->fetchColumn(), 0, 'nothing imported');
     $_POST = [];
 }
 
@@ -208,7 +251,7 @@ function test_import_refusal_uses_web_wording(): void
     $_POST = ['_csrf' => csrf_token()];
     $db->exec("INSERT INTO pages (slug, title, sections) VALUES ('x', 'X', '[]')");
     $body = admin_handle($db, 'POST', '/admin/settings/import')->body;
-    ok(str_contains($body, 'Replace existing pages') && !str_contains($body, '--force'));
+    ok(str_contains($body, 'already has pages') && !str_contains($body, '--force') && !str_contains($body, 'Replace existing pages'), 'no way to force it from the web');
     $_POST = [];
 }
 

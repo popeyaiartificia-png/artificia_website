@@ -789,11 +789,13 @@ and fails on any of the following:
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^staging\.artificiaai\.com$ [NC]
   RewriteCond %{REQUEST_URI} !^/live/
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
   RewriteRule ^(.*)$ /live/$1 [L]
   ```
 
   The legacy site on artificiaai.com is unaffected, because the rule only matches the staging host.
-  This is the exact rule production will use, minus that host line.
+  This is the exact rule production will use, minus that host line. `/.well-known/` is left alone so
+  the host's certificate renewal (HTTP-01) finds its challenge files in `public_html/.well-known/`.
 - [ ] **Step 7: Set up the admin and content.**
   - Open `https://staging.artificiaai.com/admin/setup?token=…` and create Hardik's admin login.
   - Settings → Import seed content.
@@ -805,6 +807,9 @@ and fails on any of the following:
     (browser + server deduped).
   - The alert email arrives.
   - `/live/app/bootstrap.php`, `/live/legacy/` and `/live/.git/` all return 403.
+  - Upload an image in the admin media library, redeploy (Step 5 again), and confirm the image still
+    loads: uploads must survive a deploy.
+  - `/.well-known/acme-challenge/x` reaches the filesystem: it answers 404 (no such file), not 403.
   - Report to Hardik.
 
 ### Task 13: Switchover (after Hardik approves staging)

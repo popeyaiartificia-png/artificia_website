@@ -78,11 +78,11 @@ function lead_str(mixed $v, int $max, bool $multiline = false): string
     return mb_substr(trim($v), 0, $max, 'UTF-8');
 }
 
-/** $url if it is an http(s) address on this site's own host (with or without www.), else ''. */
+/** $url if it is an http(s) address on this site's own host (with or without www.), else ''. A backslash or "@" before the path is refused: browsers and parse_url disagree on such hosts. */
 function lead_own_url(string $url): string
 {
     $host = fn(string $u) => (string) preg_replace('/^www\./', '', strtolower((string) parse_url($u, PHP_URL_HOST)));
-    return preg_match('#^https?://#i', $url) && $host($url) !== '' && $host($url) === $host((string) config()['base_url']) ? $url : '';
+    return preg_match('#^https?://[^/?\#\\\\@]+(?:[/?\#]|$)#i', $url) && $host($url) !== '' && $host($url) === $host((string) config()['base_url']) ? $url : '';
 }
 
 /**
@@ -277,7 +277,7 @@ function lead_wants_json(array $server): bool
 function lead_result_html(array $r, array $in, array $server, array $settings): string
 {
     $page = lead_own_url(lead_str($in['page_url'] ?? '', 1000)) ?: lead_own_url(lead_str($server['HTTP_REFERER'] ?? '', 1000));
-    $back = ($page !== '' ? (parse_url($page, PHP_URL_PATH) ?: '/') : '/') . '#enquire';
+    $back = '/' . ltrim((string) parse_url($page, PHP_URL_PATH), '/') . '#enquire'; // one leading slash: "//host" would leave the site
     $first = explode(' ', lead_str($in['name'] ?? '', 255))[0];
     $state = $r['body']['ok'] ? 'ok' : (isset($r['body']['errors']) ? 'errors' : 'failed');
     $body = render_view('lead-result', ['state' => $state, 'first' => $first, 'back' => $back, 'wa' => whatsapp_url($settings),
@@ -324,7 +324,9 @@ function lead_followups(PDO $db, int $id, array $settings, string $baseUrl): voi
         'capi' => function () use ($db, $lead, $settings, $baseUrl) {
             $pixel = tracking_id($settings, 'meta_pixel_id');
             $token = (string) ($settings['meta_capi_token'] ?? '');
-            if ($pixel === '' || $token === '') {
+            // Sent from an admin preview or the /_design gallery: a test, not a visitor.
+            $preview = preg_match('#^/(admin|_design)(/|$)#', (string) parse_url($lead['page_url'], PHP_URL_PATH)) === 1;
+            if ($pixel === '' || $token === '' || $preview) {
                 return;
             }
             $source = $lead['page_url'] !== '' ? $lead['page_url'] : rtrim($baseUrl, '/') . '/'; // event_source_url is never empty

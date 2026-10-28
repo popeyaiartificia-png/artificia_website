@@ -34,6 +34,15 @@ function posts_recent(PDO $db, int $limit): array
     return $stmt->fetchAll();
 }
 
+/** Whether search engines are told to skip a page: its stored flag, except the blog index, which is hidden only while no post is published. */
+function page_noindex(PDO $db, array $page): bool
+{
+    if ($page['kind'] === 'page' && $page['slug'] === 'blog') {
+        return !posts_recent($db, 1);
+    }
+    return !empty($page['noindex']);
+}
+
 const SLUG_RESERVED = ['admin', 'blog', '_design', 'assets', 'uploads', 'lead', 'sitemap.xml', 'robots.txt', 'live', 'legacy'];
 const PAGE_TEXT_LIMITS = ['title' => 255, 'h1' => 255, 'meta_title' => 255, 'meta_description' => 500];
 

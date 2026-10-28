@@ -25,6 +25,18 @@ function test_redirect_longest_prefix_wins(): void
     eq(redirect_match($db, '/a/z')['to'], '/short');
 }
 
+function test_redirect_prefix_row_covers_its_bare_folder(): void
+{
+    $db = test_db();
+    redirect_test_add($db, '/landing-page/', '/ai-masterclass', 'prefix');
+    redirect_test_add($db, '/landing-page', '/elsewhere', 'exact', 302);
+    redirect_test_add($db, '/co-orporate/', '/corporate-ai-training', 'prefix');
+    eq(redirect_match($db, '/co-orporate'), ['to' => '/corporate-ai-training', 'code' => 301]);
+    eq(redirect_match($db, '/landing-page'), ['to' => '/elsewhere', 'code' => 302], 'an exact row still wins');
+    eq(redirect_match($db, '/co-orporatex'), null, 'only the folder itself');
+    eq(redirect_match($db, '/co-orporat'), null);
+}
+
 function test_redirect_prefix_treats_percent_literally(): void
 {
     $db = test_db();
@@ -158,6 +170,7 @@ function test_seed_map_complete(): void
         '/trainingcourses.html' => '/ai-masterclass', '/landing-page/' => '/ai-masterclass',
         '/landing-page/index.html' => '/ai-masterclass', '/landing-page/thanks/x.html' => '/ai-masterclass',
         '/co-orporate/' => '/corporate-ai-training', '/co-orporate/index.html' => '/corporate-ai-training',
+        '/landing-page' => '/ai-masterclass', '/co-orporate' => '/corporate-ai-training', // bare: the prefix rows cover them too
         '/projects.html' => '/case-studies/orkay-tiles', '/faqs.html' => '/ai-masterclass#faq',
         '/hiring.html' => '/', '/services.html' => '/services',
         '/privacypolicy.html' => '/privacy', '/Termsandcondition.html' => '/terms',

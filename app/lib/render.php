@@ -186,7 +186,7 @@ function render_page(array $page, array $settings): string
         'title' => heading_plain($page['meta_title'] ?: $page['title']),
         'description' => heading_plain($page['meta_description'] ?: strip_tags((string) $page['excerpt'])),
         'canonical' => $base . page_path($page),
-        'robots' => empty($page['noindex']) ? '' : 'noindex',
+        'robots' => page_noindex(db(), $page) ? 'noindex' : '',
         'ogImage' => $ogImage ? $base . $ogImage : null,
         'ogType' => $page['kind'] === 'post' ? 'article' : 'website',
         'jsonld' => schema_graph($page, $settings, $base),

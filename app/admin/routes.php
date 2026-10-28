@@ -324,7 +324,9 @@ function settings_save(PDO $db, array $in): array
 
 function admin_settings_render(PDO $db, array $user, int $status, array $values, array $errors, array $extra = []): HttpResponse
 {
-    return new HttpResponse($status, admin_view('settings', ['title' => 'Settings', 'values' => $values, 'errors' => $errors, 'groups' => settings_fields()] + $extra, $user));
+    $canImport = (int) $db->query('SELECT COUNT(*) FROM pages')->fetchColumn() === 0; // seeding is for an empty site only
+    return new HttpResponse($status, admin_view('settings', ['title' => 'Settings', 'values' => $values, 'errors' => $errors, 'groups' => settings_fields(),
+        'canImport' => $canImport] + $extra, $user));
 }
 
 function admin_settings(PDO $db, string $method): HttpResponse
@@ -354,11 +356,11 @@ function admin_settings_import(PDO $db, string $method): HttpResponse
     $user = auth_require('admin', $db);
     $root = dirname(__DIR__, 2);
     try {
-        $n = seed_import($db, "$root/content/seed", "$root/public/uploads", !empty($_POST['force']));
+        $n = seed_import($db, "$root/content/seed", "$root/public/uploads"); // never forced from the web: bin/seed.php --force is for the command line
         return admin_redirect('/admin/settings', "Imported {$n['pages']} pages, {$n['templates']} templates, {$n['redirects']} redirects and {$n['media']} images.");
     } catch (RuntimeException | InvalidArgumentException $e) {
         $stored = settings($db);
-        $msg = str_replace('Use --force to import over them.', 'Tick "Replace existing pages" to import over them.', $e->getMessage());
+        $msg = str_replace(' Use --force to import over them.', '', $e->getMessage());
         return admin_settings_render($db, $user, 422, $stored, [], ['importError' => $msg, 'stored' => $stored]);
     }
 }

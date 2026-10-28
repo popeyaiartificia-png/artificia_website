@@ -116,3 +116,50 @@ function test_single_h1_with_late_hero(): void
         eq(substr_count($html, '<h1'), 1);
     }
 }
+
+function test_production_sends_other_hosts_and_plain_http_to_base_url(): void
+{
+    $prod = ['env' => 'production', 'base_url' => 'https://artificiaai.com'];
+    $req = fn(array $over = []) => $over + ['HTTP_HOST' => 'artificiaai.com', 'HTTPS' => 'on', 'SERVER_PORT' => '443', 'REQUEST_URI' => '/ai-masterclass?gclid=g1&utm_source=x', 'REMOTE_ADDR' => '203.0.113.9'];
+    eq(canonical_redirect($prod, $req()), null, 'already canonical');
+    eq(canonical_redirect($prod, $req(['HTTP_HOST' => 'ArtificiaAI.com'])), null, 'host case does not matter');
+    eq(canonical_redirect($prod, $req(['HTTPS' => '', 'SERVER_PORT' => '443'])), null, 'port 443 counts as https');
+    $to = 'https://artificiaai.com/ai-masterclass?gclid=g1&utm_source=x';
+    eq(canonical_redirect($prod, $req(['HTTP_HOST' => 'www.artificiaai.com'])), $to, 'www keeps path and query');
+    eq(canonical_redirect($prod, $req(['HTTP_HOST' => 'staging.artificiaai.com'])), $to, 'the staging host after switchover');
+    eq(canonical_redirect($prod, $req(['HTTPS' => 'off', 'SERVER_PORT' => '80'])), $to, 'plain http');
+    eq(canonical_redirect($prod, $req(['HTTPS' => '', 'SERVER_PORT' => '80', 'HTTP_X_FORWARDED_PROTO' => 'https'])), $to, 'a forwarded-proto header from the internet is ignored');
+    eq(canonical_redirect($prod, $req(['HTTPS' => '', 'SERVER_PORT' => '80', 'HTTP_X_FORWARDED_PROTO' => 'https', 'REMOTE_ADDR' => '127.0.0.1'])), null, 'trusted from a local proxy');
+    eq(canonical_redirect($prod, $req(['HTTP_HOST' => 'www.artificiaai.com', 'REQUEST_URI' => '*'])), 'https://artificiaai.com/', 'a request target that is not a path');
+    foreach (['staging', 'local'] as $env) {
+        eq(canonical_redirect(['env' => $env, 'base_url' => 'https://staging.artificiaai.com'], $req(['HTTP_HOST' => '127.0.0.1:8000', 'HTTPS' => ''])), null, "$env is left alone");
+    }
+}
+
+function test_htaccess_dot_rule_spares_only_well_known(): void
+{
+    foreach (['.htaccess', 'public/.htaccess'] as $file) {
+        ok(preg_match('/^RewriteRule (\S*\\\\\.\S*) - \[F,L\]$/m', (string) file_get_contents(dirname(__DIR__) . "/$file"), $m) === 1, "$file has the dot rule");
+        $forbidden = fn(string $path) => preg_match('#' . $m[1] . '#', $path) === 1;
+        foreach (['.git/config', '.env', 'uploads/.htaccess', 'public/.git/HEAD', 'a/b/.hidden', '.well-knownx/y', 'x/.well-known/y'] as $p) {
+            ok($forbidden($p), "$file forbids $p");
+        }
+        foreach (['.well-known/acme-challenge/x', 'assets/css/site.css', 'well-known/x', 'index.php'] as $p) {
+            ok(!$forbidden($p), "$file allows $p");
+        }
+    }
+    ok(str_contains((string) file_get_contents(dirname(__DIR__) . '/public/.htaccess'), '[E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]'), 'basic auth reaches PHP under CGI');
+}
+
+function test_blog_list_titles_are_plain_text(): void
+{
+    $db = test_db();
+    $db->exec("INSERT INTO pages (kind, slug, title, sections, status) VALUES ('post', 'p1', 'Learn *AI* fast', '[]', 'published')");
+    $prev = db_swap($db);
+    try {
+        $html = render_page(render_test_page(['sections' => [['type' => 'blog_list', 'fields' => ['heading' => 'Notes']]]]), []);
+    } finally {
+        db_swap($prev);
+    }
+    ok(str_contains($html, '<a href="/blog/p1">Learn AI fast</a>') && !str_contains($html, '*AI*'), 'no literal asterisks');
+}

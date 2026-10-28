@@ -20,6 +20,11 @@ function auth_session_start(): void
     if (PHP_SAPI === 'cli' || session_status() !== PHP_SESSION_NONE) {
         return;
     }
+    // Our own folder: on shared hosting the common one is swept by the host's cleanup, which ignores our lifetime.
+    $dir = dirname(__DIR__, 2) . '/storage/sessions';
+    is_dir($dir) || @mkdir($dir, 0700, true); // a second request racing to create it is fine
+    session_save_path($dir);
+    ini_set('session.gc_probability', '1'); // hosts that clean by cron set this to 0; nothing else sweeps our folder
     ini_set('session.gc_maxlifetime', '43200'); // a working day of editing, not PHP's 24 idle minutes
     ini_set('session.use_strict_mode', '1');
     session_set_cookie_params([
@@ -140,12 +145,18 @@ function user_create(PDO $db, string $email, string $password, string $role): in
     return (int) $db->lastInsertId();
 }
 
-/** Mails a one-hour link if the email belongs to an active user; does nothing visible otherwise. */
+/** Mails a one-hour link if the email belongs to an active user, at most once per 5 minutes; does nothing visible otherwise. */
 function password_reset_request(PDO $db, string $email): void
 {
     $st = $db->prepare('SELECT id, email FROM users WHERE email = ? AND active = 1');
     $st->execute([strtolower(trim($email))]);
     if (!($u = $st->fetch())) {
+        return;
+    }
+    // A link lives one hour, so one that still has over 55 minutes left was sent in the last 5.
+    $recent = $db->prepare('SELECT 1 FROM password_resets WHERE user_id = ? AND expires_at > NOW() + INTERVAL 55 MINUTE');
+    $recent->execute([$u['id']]);
+    if ($recent->fetchColumn()) {
         return;
     }
     $token = bin2hex(random_bytes(32));

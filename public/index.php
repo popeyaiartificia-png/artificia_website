@@ -9,6 +9,7 @@ if (PHP_SAPI === 'cli-server') {
     }
 }
 
+header_remove('X-Powered-By'); // PHP adds it at startup; it only tells scanners the version
 require __DIR__ . '/../app/bootstrap.php';
 
 dispatch($_SERVER['REQUEST_METHOD'], request_path());

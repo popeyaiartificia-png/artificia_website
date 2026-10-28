@@ -111,3 +111,28 @@ function test_schema_article_for_posts(): void
     ok(str_starts_with($a['datePublished'], '2026-09-01T09:30:00'));
     eq($a['publisher']['name'], 'Artificia AI');
 }
+
+function test_blog_index_is_noindex_only_while_no_post_is_published(): void
+{
+    $db = test_db();
+    $ins = $db->prepare('INSERT INTO pages (kind, slug, title, sections, status, noindex) VALUES (?, ?, ?, ?, ?, ?)');
+    $ins->execute(['page', 'blog', 'Blog', '[]', 'published', 0]);
+    $ins->execute(['page', 'hidden-page', 'H', '[]', 'published', 1]);
+    $ins->execute(['page', 'shown-page', 'S', '[]', 'published', 0]);
+    $ins->execute(['post', 'draft-post', 'D', '[]', 'draft', 0]);
+    $robots = fn(string $slug) => str_contains(render_page(page_find_published($db, $slug), []), '<meta name="robots" content="noindex">');
+    $prev = db_swap($db);
+    try {
+        ok($robots('blog'), 'no published post: noindex, though the stored flag says index');
+        ok(!str_contains(sitemap_xml($db, SEO_BASE), '<loc>https://example.test/blog</loc>'), 'and left out of the sitemap');
+        $db->exec("UPDATE pages SET noindex = 1 WHERE slug = 'blog'");
+        $ins->execute(['post', 'first-post', 'P', '[]', 'published', 0]);
+        ok(!$robots('blog'), 'a published post: indexed, though the stored flag says noindex');
+        $xml = sitemap_xml($db, SEO_BASE);
+        ok(str_contains($xml, '<loc>https://example.test/blog</loc>') && str_contains($xml, '/blog/first-post'), 'and in the sitemap');
+        ok($robots('hidden-page') && !$robots('shown-page'), 'other pages keep their stored flag');
+        ok(!str_contains($xml, 'hidden-page') && str_contains($xml, 'shown-page'));
+    } finally {
+        db_swap($prev);
+    }
+}

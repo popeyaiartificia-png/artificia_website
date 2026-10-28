@@ -2,5 +2,6 @@
 Options -Indexes
 RewriteEngine On
 RewriteRule ^(app|bin|content|db|docs|legacy|storage|tests)(/|$) - [F,L]
-RewriteRule (^|/)\. - [F,L]
+# Dot-paths are never served, except /.well-known/ (certificate renewal, HTTP-01).
+RewriteRule ^(?!\.well-known/)(.*/)?\. - [F,L]
 RewriteRule ^(?!public/)(.*)$ public/$1 [L]

@@ -264,6 +264,20 @@ function test_forward_failure_keeps_lead(): void
     eq(lead_forward($db, lead_find($db, $id), ['n8n_webhook_url' => LEAD_TEST_DEAD_URL], 'https://artificiaai.com') !== null, true, 'a retry reports the error');
 }
 
+function test_previews_and_the_gallery_send_no_capi_event(): void
+{
+    $db = test_db();
+    $base = (string) config()['base_url'];
+    $settings = ['meta_pixel_id' => '123456789012345', 'meta_capi_token' => 'not-a-real-token', 'lead_alert_email' => ''];
+    foreach (['/_design', '/admin/pages/3/preview', '/admin'] as $path) {
+        $id = lead_test_saved($db, 'contact', ['page_url' => $base . $path]);
+        lead_followups($db, $id, $settings, $base);
+        $row = lead_test_row($db, $id);
+        eq([$row['capi_sent_at'], $row['capi_error']], [null, null], "$path: no Conversions API call");
+        eq($row['forward_error'], 'no webhook configured', "$path: the other follow-ups still run");
+    }
+}
+
 function test_no_webhook_marks_not_forwarded(): void
 {
     $db = test_db();
@@ -408,6 +422,28 @@ function test_no_js_post_gets_a_page(): void
     ok(str_contains($html, 'Phone:</strong> Enter a 10-digit mobile number') && str_contains($html, 'Consent:</strong> Tick this box'), 'every message, named');
     ok(str_contains($html, 'href="https://wa.me/919104488859"') && str_contains($html, 'href="/contact#enquire"'), 'WhatsApp and the way back');
     ok(!str_contains($html, 'Thanks'), 'never a thank-you without a saved row');
+}
+
+function test_own_url_rejects_tricks_in_the_authority(): void
+{
+    $base = (string) config()['base_url'];
+    $host = (string) parse_url($base, PHP_URL_HOST) . (parse_url($base, PHP_URL_PORT) ? ':' . parse_url($base, PHP_URL_PORT) : '');
+    eq(lead_own_url("$base/contact?x=1"), "$base/contact?x=1");
+    eq(lead_own_url("http://$host"), "http://$host", 'no path is fine');
+    foreach (["http://$host\\@evil.example/x", "http://$host\\.evil.example/", "http://$host@evil.example/", "http://user@$host/x",
+        "http://evil.example\\@$host/"] as $url) {
+        eq(lead_own_url($url), '', $url);
+    }
+    eq(lead_own_url("$base/a\\b@c"), "$base/a\\b@c", 'backslash and @ after the host are only path');
+}
+
+function test_no_js_back_link_stays_on_this_site(): void
+{
+    $base = (string) config()['base_url'];
+    $r = ['status' => 200, 'body' => ['ok' => true], 'id' => 1];
+    $html = lead_result_html($r, ['page_url' => "$base//evil.example/x"], [], []);
+    ok(str_contains($html, 'href="/evil.example/x#enquire"') && !str_contains($html, 'href="//evil.example'), 'never protocol-relative');
+    ok(str_contains(lead_result_html($r, ['page_url' => ''], [], []), 'href="/#enquire"'), 'home when the page is not known');
 }
 
 function test_alert_mail_has_one_line_per_field(): void
