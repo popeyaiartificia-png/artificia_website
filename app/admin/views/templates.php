@@ -1,5 +1,5 @@
 <?php /** @var array $rows */ ?>
-<?= admin_page_head('Content', 'Templates', (string) count($rows), 'Starting points for new pages. A page built from a template must rewrite the template\'s page-specific fields before it can be published, so no two pages say the same thing.', '<a class="btn btn--primary" href="/admin/pages/new">New page</a>') ?>
+<?= admin_page_head('Content', 'Templates', (string) count($rows), 'Starting points for new pages. A page made from a template can\'t be published until its marked page-specific fields differ from the template.', '<a class="btn btn--primary" href="/admin/pages/new">New page</a>') ?>
 
 <?php if (!$rows): ?>
 <div class="empty"><p>No templates yet. Open a finished page, go to its Settings tab and use Save as template.</p></div>

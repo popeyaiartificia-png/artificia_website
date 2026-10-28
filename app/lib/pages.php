@@ -211,7 +211,7 @@ function field_empty(mixed $v): bool
 function page_publish_errors(PDO $db, array $page): array
 {
     $errors = [];
-    foreach (['h1' => 'The page heading (h1)', 'meta_title' => 'The meta title', 'meta_description' => 'The meta description'] as $col => $label) {
+    foreach (['title' => 'The title', 'h1' => 'The page heading (h1)', 'meta_title' => 'The meta title', 'meta_description' => 'The meta description'] as $col => $label) {
         if (trim((string) ($page[$col] ?? '')) === '') {
             $errors[] = "$label is required.";
         }

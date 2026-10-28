@@ -144,15 +144,24 @@
     function rich(root) {
       if (!window.Quill) return; // the plain textarea still works
       root.querySelectorAll('textarea[data-richtext]').forEach(function (ta) {
-        if (ta._quill) return;
-        var box = doc.createElement('div'), label = doc.getElementById(ta.id + '-l');
+        if ('_quill' in ta) return; // mounted, or failed once
+        var wrap = doc.createElement('div'), box = doc.createElement('div'), label = doc.getElementById(ta.id + '-l'), q;
         box.innerHTML = ta.value; // sanitized on the server when it was saved
-        ta.parentNode.insertBefore(box, ta);
+        wrap.appendChild(box); // Quill puts its toolbar beside box, inside wrap, so a failure removes both
+        ta.parentNode.insertBefore(wrap, ta);
+        try {
+          q = new Quill(box, {
+            theme: 'snow', formats: ['header', 'bold', 'italic', 'link', 'list'],
+            modules: { toolbar: [[{ header: [2, 3, false] }], ['bold', 'italic', 'link'], [{ list: 'ordered' }, { list: 'bullet' }], ['clean']] }
+          });
+        } catch (err) { // keep the plain textarea and let the rest of the editor set up
+          wrap.remove();
+          ta._quill = null;
+          if (window.console) console.error(err);
+          return;
+        }
+        ta._quill = q;
         ta.hidden = true;
-        var q = ta._quill = new Quill(box, {
-          theme: 'snow', formats: ['header', 'bold', 'italic', 'link', 'list'],
-          modules: { toolbar: [[{ header: [2, 3, false] }], ['bold', 'italic', 'link'], [{ list: 'ordered' }, { list: 'bullet' }], ['clean']] }
-        });
         q.root.setAttribute('aria-labelledby', ta.id + '-l');
         q.root.setAttribute('role', 'textbox');
         q.root.setAttribute('aria-multiline', 'true');

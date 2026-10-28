@@ -13,11 +13,14 @@ function db(): PDO
 
 function db_connect(string $dsn, string $user, string $pass): PDO
 {
-    return new PDO($dsn, $user, $pass, [
+    $pdo = new PDO($dsn, $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
+    // The DB clock (NOW(), TIMESTAMP columns) reads in PHP's offset, so a stored time and date() agree.
+    $pdo->exec("SET time_zone = '" . date('P') . "'");
+    return $pdo;
 }
 
 /** @return string[] filenames already applied; empty before 001_init.sql has created the table */

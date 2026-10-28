@@ -26,10 +26,10 @@ function admin_edit_url(array $page): string
     return ($page['kind'] === 'post' ? '/admin/posts/' : '/admin/pages/') . $page['id'];
 }
 
-/** "28/10/26, 3:40 PM" from a DB timestamp; '' for none. */
+/** "28/10/26, 3:40 PM IST" from a DB timestamp, labelled with PHP's time zone; '' for none. */
 function admin_date(?string $ts): string
 {
-    return $ts ? date('d/m/y, g:i A', strtotime($ts)) : '';
+    return $ts ? date('d/m/y, g:i A T', strtotime($ts)) : '';
 }
 
 function admin_not_found(array $user): HttpResponse
@@ -187,6 +187,9 @@ function editor_page_from_post(array $page): array
     if ($page['kind'] === 'page' && in_array($page['slug'], EDITOR_FIXED_SLUGS, true)) {
         $in['slug'] = $page['slug'];
     }
+    if (positive_int($page['template_id'])) { // once linked, a template's unique-field rule can't be switched off from the form
+        $in['template_id'] = $page['template_id'];
+    }
     if ($page['kind'] === 'post') {
         $in['excerpt'] = admin_post_str('excerpt');
     }
@@ -287,6 +290,9 @@ function editor_handle(PDO $db, string $method, int $id, string $kind): HttpResp
     $publish = $action === 'publish' || ($action !== 'draft' && $wasLive);
     $problems = $publish ? page_publish_errors($db, $form) : [];
     $noun = $kind === 'post' ? 'post' : 'page';
+    if ($wasLive && !$publish && $kind === 'page' && in_array($page['slug'], EDITOR_FIXED_SLUGS, true)) {
+        return editor_render($db, $user, $page, $form, 422, ['This page lives at a fixed address (' . page_path($page) . ") and can't be unpublished. Use Update to save your changes."], null, true);
+    }
     $n = count($problems) === 1 ? '1 thing' : count($problems) . ' things';
     if ($problems && $wasLive) {
         return editor_render($db, $user, $page, $form, 422, $problems, "Not updated: fix $n first. The live $noun has not changed.", true);
@@ -313,6 +319,8 @@ function editor_handle(PDO $db, string $method, int $id, string $kind): HttpResp
         $from = page_path($page);
         $to = page_path($saved);
         try {
+            // A rename back (A to B, then B to A) leaves an A to B row that the page now hides; drop it so B to A isn't a loop.
+            $db->prepare("DELETE FROM redirects WHERE from_path = ? AND match_type = 'exact'")->execute([$to]);
             redirect_save($db, ['from_path' => $from, 'to_path' => $to, 'match_type' => 'exact', 'code' => 301]);
             $msg .= " $from now redirects to $to.";
         } catch (InvalidArgumentException $e) {
@@ -327,7 +335,9 @@ function admin_preview(PDO $db, string $method, int $id): HttpResponse
 {
     $user = auth_require('seo', $db);
     $page = page_find($db, $id);
-    return $page ? new HttpResponse(200, render_page($page, settings($db))) : admin_not_found($user);
+    // No GA4 or Meta Pixel: editors' previews must not count as visits.
+    $settings = array_diff_key(settings($db), array_flip(['ga4_id', 'meta_pixel_id']));
+    return $page ? new HttpResponse(200, render_page($page, $settings)) : admin_not_found($user);
 }
 
 /** A blank section card for admin.js "Add section". ?i= is the index its field names use. */

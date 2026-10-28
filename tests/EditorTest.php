@@ -139,12 +139,21 @@ function test_slug_change_on_published_page_creates_redirect(): void
     eq(redirect_match($db, '/old-name'), ['to' => '/new-name', 'code' => 301]);
     ok(str_contains($_SESSION['flash']['msg'], '/old-name'), 'the editor is told about the redirect');
 
-    // Renaming back would loop (/old-name -> /new-name -> /old-name): the page still saves and the editor sees why.
+    // Renaming back: the stale /old-name -> /new-name row (hidden by the page now) goes, and /new-name -> /old-name takes over.
     $r = editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['slug' => 'old-name', 'action' => 'publish']));
     eq($r->status, 302);
+    eq($_SESSION['flash']['kind'], 'ok', $_SESSION['flash']['msg']);
     eq(page_find($db, $id)['slug'], 'old-name');
+    eq(redirect_match($db, '/new-name'), ['to' => '/old-name', 'code' => 301]);
+    eq(redirect_match($db, '/old-name'), null, 'the stale row is gone');
+
+    // When redirect_save refuses (here: a row from the old address already exists), the page still saves and the editor sees why.
+    $db->exec("INSERT INTO redirects (from_path, to_path) VALUES ('/old-name', '/elsewhere')");
+    $r = editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['slug' => 'third-name', 'action' => 'publish']));
+    eq($r->status, 302);
+    eq(page_find($db, $id)['slug'], 'third-name');
     eq($_SESSION['flash']['kind'], 'error');
-    ok(str_contains($_SESSION['flash']['msg'], 'loop'), $_SESSION['flash']['msg']);
+    ok(str_contains($_SESSION['flash']['msg'], 'could not be redirected') && str_contains($_SESSION['flash']['msg'], 'already a redirect'), $_SESSION['flash']['msg']);
 
     // Drafts and posts: no redirect for a draft; a post's redirect uses /blog/.
     $draft = editor_page($db, ['slug' => 'draft-one']);
@@ -290,6 +299,86 @@ function test_every_seed_page_roundtrips_through_the_editor(): void
             [positive_int($page['og_image_id']), positive_int($page['template_id']), (int) $page['noindex']], "{$page['slug']}: ids and noindex");
     }
     eq((int) page_find_published($db, 'blog')['noindex'], 1, 'the seed blog index imports as noindex');
+    $_SESSION = [];
+}
+
+function test_dates_say_their_timezone_and_the_db_agrees(): void
+{
+    eq(admin_date('2026-10-28 15:16:00'), '28/10/26, 3:16 PM ' . date('T', strtotime('2026-10-28 15:16:00')));
+    $prev = date_default_timezone_get();
+    date_default_timezone_set('Asia/Kolkata');
+    try {
+        eq(admin_date('2026-10-28 15:16:00'), '28/10/26, 3:16 PM IST');
+        $db = test_db(); // connects after the change: its session follows PHP's offset
+        eq((int) $db->query('SELECT TIMESTAMPDIFF(MINUTE, UTC_TIMESTAMP(), NOW())')->fetchColumn(), 330);
+    } finally {
+        date_default_timezone_set($prev);
+    }
+    $db = test_db();
+    eq((int) $db->query('SELECT TIMESTAMPDIFF(MINUTE, UTC_TIMESTAMP(), NOW())')->fetchColumn(), intdiv((int) date('Z'), 60), 'DB clock = PHP clock');
+    $id = editor_page($db, ['status' => 'published']);
+    $p = page_find($db, $id);
+    ok(abs(strtotime($p['published_at']) - time()) < 120 && abs(strtotime($p['updated_at']) - time()) < 120, 'DB timestamps read back in PHP time');
+}
+
+function test_template_link_cannot_be_removed(): void
+{
+    $db = test_db();
+    editor_login($db);
+    $src = editor_page($db, ['slug' => 'source']);
+    $tid = template_from_page($db, $src, 'Service', ['0.heading']);
+    $id = page_from_template($db, $tid, 'from-template', 'From template', 1);
+    $html = editor_get($db, "/admin/pages/$id")->body;
+    ok(!str_contains($html, 'name="template_id"') && str_contains($html, 'Service'), 'shown read-only');
+    ok(str_contains(editor_get($db, "/admin/pages/$src")->body, 'name="template_id"'), 'a page without one can still pick one');
+    editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['template_id' => '']));
+    eq((int) page_find($db, $id)['template_id'], $tid, 'a posted change is ignored');
+    $r = editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['template_id' => '', 'action' => 'publish',
+        'sections' => [['type' => 'rich_text', 'heading' => 'Hi', 'body' => '<p>Body words</p>']]]));
+    eq($r->status, 422);
+    ok(str_contains($r->body, 'still the same as in the'), 'the unique-field rule still applies');
+    $_SESSION = [];
+}
+
+function test_preview_loads_no_tracking(): void
+{
+    $db = test_db();
+    editor_login($db);
+    setting_set($db, 'ga4_id', 'G-TEST123');
+    setting_set($db, 'meta_pixel_id', '1234567');
+    $id = editor_page($db);
+    ok(str_contains(render_page(page_find($db, $id), settings($db)), 'gtag'), 'the public page would load GA4');
+    $html = editor_get($db, "/admin/preview/$id")->body;
+    ok(!str_contains($html, 'gtag') && !str_contains($html, 'fbq') && !str_contains($html, 'G-TEST123'), 'no GA4 or Meta Pixel in preview');
+    $_SESSION = [];
+}
+
+function test_home_and_blog_cannot_be_unpublished(): void
+{
+    $db = test_db();
+    editor_login($db);
+    foreach (['home', 'blog'] as $slug) {
+        $id = editor_page($db, ['slug' => $slug, 'status' => 'published']);
+        ok(!str_contains(editor_get($db, "/admin/pages/$id")->body, 'value="draft"'), "$slug: no Unpublish button");
+        $r = editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['action' => 'draft']));
+        eq($r->status, 422, $slug);
+        ok(str_contains($r->body, "can&#039;t be unpublished"), $slug);
+        eq(page_find($db, $id)['status'], 'published', "$slug stays live");
+    }
+    $other = editor_page($db, ['slug' => 'other', 'status' => 'published']);
+    ok(str_contains(editor_get($db, "/admin/pages/$other")->body, 'value="draft"'), 'other live pages keep Unpublish');
+    $_SESSION = [];
+}
+
+function test_publish_needs_a_title(): void
+{
+    $db = test_db();
+    editor_login($db);
+    $id = editor_page($db);
+    $r = editor_post($db, "/admin/pages/$id", editor_form($db, $id, ['title' => '', 'action' => 'publish']));
+    eq($r->status, 422);
+    ok(str_contains($r->body, 'id="e-title"') && str_contains($r->body, 'The title is required.'), 'shown under the title field');
+    eq(page_find($db, $id)['status'], 'draft');
     $_SESSION = [];
 }
 

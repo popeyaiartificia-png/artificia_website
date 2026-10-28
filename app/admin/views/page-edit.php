@@ -96,6 +96,12 @@ $slugHint = $fixed ? "The router serves this page at $path, so its address can't
 <?php if ($post): ?>
         <?= admin_field('excerpt', 'Excerpt', (string) ($form['excerpt'] ?? ''), null, 'textarea', 'One or two sentences for the blog list. Also the description Google shows when the meta description is empty.', 'maxlength="1000"') ?>
         <?= editor_field($db, ['type' => 'image', 'label' => 'Cover image (also the social image)'], 'og_image_id', 'f-og_image_id', $form['og_image_id']) ?>
+<?php elseif ($tplId = positive_int($page['template_id'])): ?>
+        <div class="field">
+          <span class="label">Template</span>
+          <p>The &ldquo;<?= e(array_column($templates, 'name', 'id')[$tplId] ?? "#$tplId") ?>&rdquo; template</p>
+          <p class="hint">This page was built from it, so it can't be published until the template's page-specific fields are rewritten. The link stays.</p>
+        </div>
 <?php else: ?>
         <div class="field">
           <label for="f-template_id">Template</label>
@@ -134,7 +140,9 @@ $slugHint = $fixed ? "The router serves this page at $path, so its address can't
       <p class="pub__dirty" data-dirty-note data-for="page-form" hidden>Unsaved changes. Preview and Duplicate use the saved version, so save first.</p>
       <div class="pub__btns">
         <button class="btn btn--primary btn--block" type="submit" form="page-form" name="action" value="publish"><?= $live ? 'Update' : 'Publish' ?></button>
-<?php if ($live): ?>
+<?php if ($live && $fixed): ?>
+        <p class="hint">Always live: the site needs this page at <?= e($path) ?>.</p>
+<?php elseif ($live): ?>
         <button class="btn btn--block" type="submit" form="page-form" name="action" value="draft" data-confirm="Click again: the address will answer 404">Unpublish</button>
 <?php else: ?>
         <button class="btn btn--block" type="submit" form="page-form" name="action" value="draft">Save draft</button>
