@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 const ADMIN_VIEWS_DIR = __DIR__ . '/views';
 
-/** "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a link in views/layout.php. */
+require __DIR__ . '/shell.php';
+
+/** "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php). */
 function admin_routes(): array
 {
     return [
@@ -88,10 +90,11 @@ function admin_field(string $name, string $label, string $value = '', ?string $e
         . ($error ? '<p class="err" id="e-' . e($name) . '" role="alert">' . e($error) . '</p>' : '') . '</div>';
 }
 
-function admin_redirect(string $to, ?string $flash = null): HttpResponse
+/** $flash shows once, as a toast, on the next admin page. $kind is 'ok' (3 s) or 'error' (6 s). */
+function admin_redirect(string $to, ?string $flash = null, string $kind = 'ok'): HttpResponse
 {
     if ($flash !== null) {
-        $_SESSION['flash'] = $flash;
+        $_SESSION['flash'] = ['msg' => $flash, 'kind' => $kind === 'error' ? 'error' : 'ok'];
     }
     return new HttpResponse(302, '', $to);
 }
@@ -101,7 +104,18 @@ function admin_redirect(string $to, ?string $flash = null): HttpResponse
 function admin_dashboard(PDO $db, string $method): HttpResponse
 {
     $user = auth_require('seo', $db);
-    return new HttpResponse(200, admin_view('dashboard', ['title' => 'Dashboard'], $user));
+    $count = fn(string $sql): int => (int) $db->query($sql)->fetchColumn();
+    $stats = [
+        'pages' => $count("SELECT COUNT(*) FROM pages WHERE kind = 'page' AND status = 'published'"),
+        'page_drafts' => $count("SELECT COUNT(*) FROM pages WHERE kind = 'page' AND status = 'draft'"),
+        'posts' => $count("SELECT COUNT(*) FROM pages WHERE kind = 'post' AND status = 'published'"),
+        'post_drafts' => $count("SELECT COUNT(*) FROM pages WHERE kind = 'post' AND status = 'draft'"),
+        'leads_week' => $count('SELECT COUNT(*) FROM leads WHERE spam = 0 AND created_at >= NOW() - INTERVAL 7 DAY'),
+        'leads' => $count('SELECT COUNT(*) FROM leads WHERE spam = 0'),
+        'redirects' => $count('SELECT COUNT(*) FROM redirects'),
+        'media' => $count('SELECT COUNT(*) FROM media'),
+    ];
+    return new HttpResponse(200, admin_view('dashboard', ['title' => 'Dashboard', 'stats' => $stats], $user));
 }
 
 function admin_login(PDO $db, string $method): HttpResponse
@@ -181,7 +195,7 @@ function admin_setup(PDO $db, string $method): HttpResponse
 function settings_fields(): array
 {
     return [
-        'Tracking' => [
+        'Tracking codes' => [
             'ga4_id' => ['Google Analytics 4 measurement ID', 'track', 'Looks like G-XXXXXXXXXX.'],
             'gsc_verification' => ['Search Console verification code', 'track', 'Only the code, not the whole meta tag.'],
             'meta_pixel_id' => ['Meta Pixel ID', 'numeric', 'Digits only.'],

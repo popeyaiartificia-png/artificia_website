@@ -211,6 +211,20 @@ A line-drawn facade; the map iframe loads only on click.
 ### Motion
 GSAP 3.13 and ScrollTrigger, run once per element, only when the head script promised it (`.motion`, withdrawn if GSAP fails). Grammar: strokes draw (dashoffset, 0.5-0.8s power2), rules scale in, lists lift 12-16px and fade with 0.06-0.08s stagger, stat values count up, the step rail fills with scroll. CSS easing `cubic-bezier(.16, 1, .3, 1)` at 0.2-0.45s (photos 0.8s). The two light fields drift on CSS keyframes. Under prefers-reduced-motion no `.motion` class is set and a global rule collapses animation and transition durations to .01ms with one iteration, so the light fields stand still.
 
+## Admin
+
+The admin (`/admin`, `public/assets/css/admin.css`, `public/assets/js/admin.js`) copies Orkay's admin layout and interactions in this theme (ruling R30). It is the one place eyebrows above headings are allowed. Components are documented in the comment block at the top of admin.css.
+
+- **Tokens:** ground #030304, panel #0a0b0d, raised #111316, lines white at .12/.24/.42, ink #F2F3EE, muted #9ba2a1, lime #AED534 (primary fill with #030304 text, active nav, focus, progress, markers), warn #ff9a85 (errors, danger), amber #e6b34a (warnings), green #7fd18b (success only). Roboto Flex 14px, sentence case, radius 0, no shadows, no blur, dark only.
+- **Shell:** fixed 236px rail with the logo image and an "Admin" caption, grouped nav from `admin_nav()` (shell.php; a link shows only if its route exists and the role allows), top bar shortcuts from `admin_shortcuts()`, main column max 1280px; at 900px and under the rail is an off-canvas drawer.
+- **Page head:** `admin_page_head(eyebrow, title, count, description, actionHtml)`.
+- **Buttons:** `.btn`, `.btn--primary`, `.btn--ghost`, `.btn--sm`, `.btn--danger`, `.btn--block`.
+- **Cards and stat tiles:** `.card` (22x24 padding, h2 16px); `.stats > .stat` (34px tabular number, a link tile lights its border lime).
+- **Tables:** `.table` (muted 12px caps header, row hover tint, `.num` tabular), `.table--stack` stacks to cards under 760px.
+- **Pills:** `.pill--published` (lime outline), `--draft`, `--warn` (amber), `--error`, `--you`.
+- **Forms:** `.field` (label, input, hint, per-field `.err`), `.form-grid`, `.filters`, `.tabs`, `.editor` with a sticky 320px `.side`, `.savebar` sticky footer.
+- **Feedback:** toasts bottom-right (3 s ok, 6 s error, `role` status/alert) from `admin_redirect($to, $msg, $kind)` or `Admin.toast()`; `.notice`, `.empty`; `data-confirm` (click again, 4 s), `data-dirty-guard` (leave warning, Cmd/Ctrl+S, `data-dirty-note`), 3px lime progress bar, "Saving..." busy buttons.
+
 ## Do's and Don'ts
 
 ### Do:
