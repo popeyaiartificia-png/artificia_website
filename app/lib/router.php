@@ -67,9 +67,8 @@ function dispatch(string $method, string $path): void
         admin_dispatch($db, $method, $path);
         return;
     }
-    // Task 9 adds POST /lead; until then it is a plain 404.
     if ($method === 'POST' && $path === '/lead') {
-        send_404($db);
+        lead_endpoint($db);
         return;
     }
     // The section library: open locally, and to anyone logged in to the admin elsewhere.

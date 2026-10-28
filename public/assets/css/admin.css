@@ -15,6 +15,7 @@
  *   Filters    .filters (search + selects in a row; each control 40px)
  *   Tabs       .tabs > .tab[.is-active | aria-selected=true] (+ .tab__count)   .pager > a[aria-current]   .back (link above a head)
  *   Lists      td > a.cell-title + .cell-sub (path / "by" line under the main value)   .muted
+ *   Facts      dl.facts > dt + dd (label / value pairs inside a .card; the lead detail)   .filters__date (a labelled date box in .filters)
  *   Editor     .editor > .editor__main + aside.side (sticky, 320px; one column under 1100px)   .loc (public address bar)
  *              .sec-card[.has-error] > .sec-card__head (.sec-card__toggle .sec-card__num .sec-card__type .sec-card__sum, .sec-card__tools) + .sec-card__body
  *              fieldset.list-field > .list-item (.list-item__head)   .img-field (.img-field__row .img-field__thumb)   .add-section   .err-list
@@ -210,7 +211,7 @@ label, .label, legend { display: block; margin-bottom: 4px; font-size: 12px; fon
 fieldset { min-width: 0; }
 .hint { margin: 0 0 6px; font-size: 12px; color: var(--muted); }
 .field > label { align-self: flex-start; }
-input[type=text], input[type=email], input[type=password], input[type=search], input[type=url], select, textarea {
+input[type=text], input[type=email], input[type=password], input[type=search], input[type=url], input[type=date], select, textarea {
   display: block; width: 100%; min-height: 40px; padding: 8px 12px; background: var(--raised); color: var(--ink); border: 1px solid var(--line-mid); font: 400 14px/1.4 var(--font);
 }
 textarea { min-height: 120px; resize: vertical; }
@@ -243,6 +244,12 @@ a.tab { display: inline-block; }
 .pager a { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 8px; font-size: 12px; border: 1px solid var(--line-mid); text-decoration: none; font-variant-numeric: tabular-nums; }
 .pager a:hover { border-color: var(--lime); }
 .pager a[aria-current="page"] { background: var(--lime); border-color: var(--lime); color: var(--lime-ink); font-weight: 600; }
+.filters__date { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 12px; }
+.facts { display: grid; grid-template-columns: minmax(110px, max-content) minmax(0, 1fr); gap: 10px 18px; margin: 0; font-size: 13px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; overflow-wrap: anywhere; white-space: pre-line; }
+.facts .cell-sub { white-space: normal; }
+@media (max-width: 560px) { .facts { grid-template-columns: 1fr; gap: 2px; } .facts dd { margin-bottom: 10px; } }
 
 /* ---------- Page editor ---------- */
 .editor #f-title { min-height: 48px; font-size: 18px; }

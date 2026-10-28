@@ -17,7 +17,7 @@ function admin_nav(): array
         ['group' => 'Content', 'label' => 'Templates', 'path' => '/admin/templates', 'icon' => 'stack', 'role' => 'seo', 'badge' => null],
         ['group' => 'Content', 'label' => 'Media', 'path' => '/admin/media', 'icon' => 'image', 'role' => 'seo', 'badge' => null],
         ['group' => 'SEO', 'label' => 'Redirects', 'path' => '/admin/redirects', 'icon' => 'arrows-left-right', 'role' => 'seo', 'badge' => null],
-        ['group' => 'Leads', 'label' => 'Leads', 'path' => '/admin/leads', 'icon' => 'tray', 'role' => 'seo', 'badge' => null],
+        ['group' => 'Leads', 'label' => 'Leads', 'path' => '/admin/leads', 'icon' => 'tray', 'role' => 'seo', 'badge' => fn() => leads_recent_count(db())],
         ['group' => 'System', 'label' => 'Settings', 'path' => '/admin/settings', 'icon' => 'gear-six', 'role' => 'admin', 'badge' => null],
         ['group' => 'System', 'label' => 'Users', 'path' => '/admin/users', 'icon' => 'users-three', 'role' => 'admin', 'badge' => null],
     ];

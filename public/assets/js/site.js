@@ -47,6 +47,90 @@
     new IntersectionObserver(function (es) { fab.classList.toggle('is-away', es[0].isIntersecting); }).observe(hero);
   }
 
+  // Attribution: the first visit's utm_*, gclid and fbclid are kept in the atk cookie for 30 days.
+  var ATK = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+  var cookie = function (name) {
+    var m = d.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return ''; }
+  };
+  var atk = {};
+  try { atk = JSON.parse(cookie('atk') || '{}') || {}; } catch (e) { atk = {}; }
+  if (!cookie('atk')) {
+    var qs = new URLSearchParams(location.search), first = {}, seen = false;
+    ATK.forEach(function (k) { var v = qs.get(k); if (v) { first[k] = v.slice(0, 255); seen = true; } });
+    if (seen) {
+      atk = first; // used even if the browser refuses the cookie
+      d.cookie = 'atk=' + encodeURIComponent(JSON.stringify(first)) + '; max-age=2592000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
+    }
+  }
+
+  // Lead forms: sent with fetch; the thank-you shows only when the server says the lead is saved (ok:true).
+  d.querySelectorAll('form.lead-form').forEach(function (form) {
+    var btn = form.querySelector('button[type=submit]'), st = form.querySelector('.lead-form__status');
+    var log = form.querySelector('.logline'), type = form.getAttribute('data-form-type') || '';
+    var field = function (name) { var el = form.elements.namedItem(name); return el && el.length !== undefined && !el.tagName ? el[0] : el; };
+    var set = function (name, v) { var el = field(name); if (el) el.value = v || ''; };
+    var status = function (msg, isError, wa) {
+      st.textContent = msg;
+      st.classList.toggle('is-error', !!isError);
+      if (wa) {
+        var a = d.createElement('a');
+        a.href = wa;
+        a.textContent = 'Message us on WhatsApp';
+        st.appendChild(d.createTextNode(' '));
+        st.appendChild(a);
+      }
+    };
+    var done = function (res) {
+      var nameEl = field('name'), first = nameEl ? nameEl.value.trim().split(/\s+/)[0] : '';
+      log.querySelector('[data-thanks]').textContent = 'Thanks' + (first ? ', ' + first : '') + '. We’ll message you on WhatsApp soon.';
+      log.querySelector('.logline__time').textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      st.textContent = '';
+      log.hidden = false;
+      form.classList.add('is-done');
+      log.focus();
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_type: type });
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_category: type }, { eventID: res.event_id });
+    };
+    var fail = function (res) {
+      btn.disabled = false;
+      form.classList.remove('is-busy');
+      if (res.errors) {
+        var firstBad = null, other = [];
+        Object.keys(res.errors).forEach(function (k) {
+          var el = field(k) || field(k + '[]'), err = el && d.getElementById(el.id + '-err');
+          if (!err) { other.push(res.errors[k]); return; }
+          err.textContent = res.errors[k];
+          el.setAttribute('aria-invalid', 'true');
+          firstBad = firstBad || el;
+        });
+        status(other.length ? other.join(' ') : 'Please check the highlighted fields.', true);
+        if (firstBad) firstBad.focus();
+        return;
+      }
+      var wa = typeof res.whatsapp === 'string' && res.whatsapp.indexOf('https://wa.me/') === 0 ? res.whatsapp : form.getAttribute('data-wa');
+      status(res.message || 'Your enquiry could not be sent just now. Please send it to us on WhatsApp instead.', true, wa);
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.classList.contains('is-busy')) return;
+      ATK.forEach(function (k) { set(k, atk[k]); });
+      set('page_url', location.origin + location.pathname);
+      set('referrer', d.referrer);
+      set('fbp', cookie('_fbp'));
+      set('fbc', cookie('_fbc'));
+      form.querySelectorAll('.field__err').forEach(function (p) { p.textContent = ''; });
+      form.querySelectorAll('[aria-invalid]').forEach(function (el) { el.removeAttribute('aria-invalid'); });
+      btn.disabled = true;
+      form.classList.add('is-busy');
+      status('Sending…');
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) { if (res && res.ok === true) done(res); else fail(res || {}); })
+        .catch(function () { fail({}); });
+    });
+  });
+
   // Curriculum: pointing at a module marks its days on the ruler.
   d.querySelectorAll('.curr').forEach(function (sec) {
     var ruler = sec.querySelector('.ruler'), hl = sec.querySelector('.ruler__hl');

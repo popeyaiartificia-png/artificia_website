@@ -702,11 +702,17 @@ select.input {
 .lead-form__status:empty { display: none; }
 .lead-form__status.is-error { color: var(--warn); }
 .lead-form__status a { color: var(--ink); font-weight: 700; }
-/* Saved: the form gives way to a new notebook line. */
+/* Saved: the form gives way to a new notebook line, ruled, with the lime tick written at its start. */
 .logline { display: none; gap: .9rem; }
-.logline p { font-size: 1.25rem; font-weight: 650; line-height: 1.4; }
+.logline:focus { outline: none; }
+.logline__msg { display: flex; align-items: flex-start; gap: .75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--c5); font-size: 1.25rem; font-weight: 650; line-height: 1.4; }
+.logline__msg .tick { position: static; flex: none; width: 28px; height: 28px; margin-top: -.05em; }
 .lead-form.is-done > :not(.logline) { display: none; }
 .lead-form.is-done .logline { display: grid; }
+@media (prefers-reduced-motion: no-preference) {
+  .lead-form.is-done .logline__msg .tick path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: tick-write .5s var(--ease) .15s forwards; }
+}
+@keyframes tick-write { to { stroke-dashoffset: 0; } }
 @media (min-width: 640px) { .lead-form__row { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) { .lead__grid { grid-template-columns: 5fr 7fr; gap: 4.5rem; align-items: start; } }
 
