@@ -36,7 +36,7 @@
 
   --font: "Roboto Flex", Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
   --ease: cubic-bezier(.16, 1, .3, 1);
-  /* Square, sharp edges everywhere (Hardik, 27 Oct): every corner on the site is 0. */
+  /* Square, sharp edges everywhere (27 Oct): every corner on the site is 0. */
   --r: 0;
   --r-lg: 0;
   --r-pill: 0;

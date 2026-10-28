@@ -3,8 +3,8 @@
   "kind": "page",
   "title": "About Artificia",
   "h1": "We teach AI, and *we build with it*",
-  "meta_title": "About us: Hardik Aseri and team | Artificia AI",
-  "meta_description": "Artificia Intellec Pvt Ltd is an AI training and automation company in Vadodara, Gujarat. Meet trainer Hardik Aseri and founder Vijay Linju Raghavan.",
+  "meta_title": "About us: Vijay Linju Raghavan and team | Artificia AI",
+  "meta_description": "Artificia Intellec Pvt Ltd is an AI training and automation company in Vadodara, Gujarat. Founded by Vijay Linju Raghavan.",
   "sections": [
     {
       "type": "hero",
@@ -28,9 +28,8 @@
     {
       "type": "people",
       "fields": {
-        "heading": "The *people*",
+        "heading": "Our *founder*",
         "items": [
-          {"name": "Hardik Aseri", "role": "AI trainer", "bio": "Teaches the AI Masterclass and leads Artificia's automation projects. He has trained working professionals, business owners and college graduates.", "photo": "hardik-aseri.jpg", "linkedin": "https://www.linkedin.com/in/hardik-aseri/"},
           {"name": "Vijay Linju Raghavan", "role": "Founder", "bio": "Brings a background in film and photography, an economics degree from MSU Baroda, and experience founding tech and e-commerce ventures.", "photo": "vijay-linju-raghavan.jpg"}
         ]
       }

@@ -32,7 +32,7 @@ function test_design_helpers(): void
     eq(drawing('none'), '');
     eq(drawing('../registry'), '');
     ok(str_contains(drawing('documents'), 'role="img"'), 'drawings are labelled images');
-    eq(image('hardik-aseri.jpg', '100vw'), '', 'a filename is not a media id');
+    eq(image('vijay-linju-raghavan.jpg', '100vw'), '', 'a filename is not a media id');
     ok(str_contains(sec_head('Hello *there*'), '<h2 class="h2">Hello <em>there</em></h2>'));
 }
 

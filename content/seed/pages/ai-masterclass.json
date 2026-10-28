@@ -90,17 +90,6 @@
       }
     },
     {
-      "type": "text_image",
-      "fields": {
-        "heading": "Your instructor, *Hardik Aseri*",
-        "body": "<p>Hardik Aseri teaches the masterclass and leads Artificia's automation projects. He has trained working professionals, business owners and college graduates.</p><p>His classes are direct and practical: no theory overload, just the tools and workflows that work today.</p>",
-        "image": "hardik-aseri.jpg",
-        "image_side": "left",
-        "cta_label": "About Artificia",
-        "cta_link": "/about"
-      }
-    },
-    {
       "type": "testimonials",
       "fields": {
         "heading": "What students *say*",

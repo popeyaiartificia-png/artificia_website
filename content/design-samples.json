@@ -396,9 +396,9 @@
     {
       "type": "text_image",
       "fields": {
-        "heading": "Taught by Hardik Aseri",
-        "body": "<p>Hardik teaches every Vadodara batch himself and builds the AI systems Artificia runs for clients. Classes are direct and practical: the tools and workflows that work today, shown live, then done by you.</p>",
-        "image": "hardik-aseri.jpg",
+        "heading": "Taught in the room",
+        "body": "<p>Every Vadodara batch is taught live by the team that builds the AI systems Artificia runs for clients. Classes are direct and practical: the tools and workflows that work today, shown live, then done by you.</p>",
+        "image": "classroom-instructor.jpg",
         "image_side": "right",
         "cta_label": "About Artificia",
         "cta_link": "/about"
@@ -414,19 +414,12 @@
     {
       "type": "people",
       "fields": {
-        "heading": "The people you will learn from",
+        "heading": "Our founder",
         "items": [
           {
-            "name": "Hardik Aseri",
-            "role": "Instructor",
-            "bio": "Teaches the masterclass and leads Artificia's automation projects.",
-            "photo": "hardik-aseri.jpg",
-            "linkedin": "https://www.linkedin.com/"
-          },
-          {
             "name": "Vijay Linju Raghavan",
-            "role": "Artificia AI",
-            "bio": "Role and bio to be confirmed with Hardik.",
+            "role": "Founder",
+            "bio": "Brings a background in film and photography, an economics degree from MSU Baroda, and experience founding tech and e-commerce ventures.",
             "photo": "vijay-linju-raghavan.jpg"
           }
         ]
