@@ -74,7 +74,7 @@ function dispatch(string $method, string $path): void
     }
     // The section library: open locally, and to anyone logged in to the admin elsewhere.
     if ($path === '/_design') {
-        auth_session_start();
+        auth_session_resume();
         if ($c['env'] === 'local' || auth_user($db)) {
             header('Cache-Control: no-store');
             send_html(render_design_gallery($db, settings($db)));

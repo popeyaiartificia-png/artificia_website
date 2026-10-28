@@ -20,12 +20,22 @@ function auth_session_start(): void
     if (PHP_SAPI === 'cli' || session_status() !== PHP_SESSION_NONE) {
         return;
     }
+    ini_set('session.gc_maxlifetime', '43200'); // a working day of editing, not PHP's 24 idle minutes
+    ini_set('session.use_strict_mode', '1');
     session_set_cookie_params([
-        'path' => '/', 'httponly' => true, 'samesite' => 'Lax',
+        'lifetime' => 43200, 'path' => '/', 'httponly' => true, 'samesite' => 'Lax',
         'secure' => (config()['env'] ?? 'production') !== 'local',
     ]);
     session_name('artificia_admin');
     session_start();
+}
+
+/** Resumes a session only if the browser already has the admin cookie; anonymous visitors get none. */
+function auth_session_resume(): void
+{
+    if (isset($_COOKIE['artificia_admin'])) {
+        auth_session_start();
+    }
 }
 
 function csrf_token(): string
@@ -33,7 +43,7 @@ function csrf_token(): string
     return $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
 }
 
-function csrf_check(?string $token): bool
+function csrf_check(mixed $token): bool
 {
     return is_string($token) && $token !== '' && isset($_SESSION['csrf']) && hash_equals($_SESSION['csrf'], $token);
 }
@@ -81,9 +91,8 @@ function auth_login(PDO $db, string $email, string $password, string $ip): true|
     $st = $db->prepare('SELECT id, password_hash FROM users WHERE email = ? AND active = 1');
     $st->execute([$email]);
     $row = $st->fetch();
-    // Verify against a dummy hash for unknown emails, so timing doesn't reveal which emails exist.
-    static $dummy = null;
-    $hash = $row['password_hash'] ?? ($dummy ??= password_hash('timing', PASSWORD_DEFAULT));
+    // Unknown emails verify against a fixed default-cost hash, so timing doesn't reveal which emails exist.
+    $hash = $row['password_hash'] ?? '$2y$12$M3rCFAOZqW24HDsoiRCe3eV9yrgxAc6fjXd0e8qjzRiJ2HA07zCO6';
     if (!password_verify($password, $hash) || !$row) {
         $db->prepare('INSERT INTO login_attempts (email, ip) VALUES (?, ?)')->execute([$email, $ip]);
         return 'invalid';

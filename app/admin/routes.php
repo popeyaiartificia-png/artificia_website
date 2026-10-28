@@ -49,6 +49,7 @@ function admin_dispatch(PDO $db, string $method, string $path): void
     $r = admin_handle($db, $method, $path);
     header('X-Robots-Tag: noindex, nofollow');
     header('Cache-Control: no-store');
+    header('X-Frame-Options: DENY');
     if ($r->location !== null) {
         redirect($r->location);
     }
@@ -183,7 +184,7 @@ function settings_fields(): array
         'Tracking' => [
             'ga4_id' => ['Google Analytics 4 measurement ID', 'track', 'Looks like G-XXXXXXXXXX.'],
             'gsc_verification' => ['Search Console verification code', 'track', 'Only the code, not the whole meta tag.'],
-            'meta_pixel_id' => ['Meta Pixel ID', 'track', 'Digits only.'],
+            'meta_pixel_id' => ['Meta Pixel ID', 'numeric', 'Digits only.'],
             'meta_capi_token' => ['Meta Conversions API token', 'secret', ''],
             'meta_test_event_code' => ['Meta test event code', 'track', 'Only while testing in Events Manager; clear it afterwards.'],
         ],
@@ -228,7 +229,9 @@ function settings_save(PDO $db, array $in): array
                 }
                 $v = $digits;
             } elseif ($v !== '') {
-                if ($type === 'track' && !preg_match('/^[A-Za-z0-9_-]+\z/', $v)) {
+                if ($type === 'numeric' && !preg_match('/^\d+\z/', $v)) {
+                    $errors[$key] = 'Digits only.';
+                } elseif ($type === 'track' && !preg_match('/^[A-Za-z0-9_-]+\z/', $v)) {
                     $errors[$key] = 'Letters, digits, dash and underscore only.';
                 } elseif ($type === 'url' && !preg_match('#^https?://[^\s]+\z#i', $v)) {
                     $errors[$key] = 'Enter a full address starting with https://.';
@@ -257,18 +260,21 @@ function admin_settings(PDO $db, string $method): HttpResponse
     $user = auth_require('admin', $db);
     $values = settings($db);
     if ($method !== 'POST') {
-        return admin_settings_render($db, $user, 200, $values, []);
+        return admin_settings_render($db, $user, 200, $values, [], ['stored' => $values]);
     }
     $errors = settings_save($db, $_POST);
     if (!$errors) {
         return admin_redirect('/admin/settings', 'Settings saved.');
     }
-    foreach ($values as $k => $_) {
-        if (isset($_POST[$k])) {
-            $values[$k] = trim((string) $_POST[$k]);
+    $stored = $values;
+    foreach (settings_fields() as $group) {
+        foreach ($group as $k => [, $type]) {
+            if ($type !== 'secret' && isset($_POST[$k]) && is_string($_POST[$k])) {
+                $values[$k] = trim($_POST[$k]);
+            }
         }
     }
-    return admin_settings_render($db, $user, 422, $values, $errors);
+    return admin_settings_render($db, $user, 422, $values, $errors, ['stored' => $stored]);
 }
 
 function admin_settings_import(PDO $db, string $method): HttpResponse
@@ -279,7 +285,9 @@ function admin_settings_import(PDO $db, string $method): HttpResponse
         $n = seed_import($db, "$root/content/seed", "$root/public/uploads", !empty($_POST['force']));
         return admin_redirect('/admin/settings', "Imported {$n['pages']} pages, {$n['templates']} templates, {$n['redirects']} redirects and {$n['media']} images.");
     } catch (RuntimeException | InvalidArgumentException $e) {
-        return admin_settings_render($db, $user, 422, settings($db), [], ['importError' => $e->getMessage()]);
+        $stored = settings($db);
+        $msg = str_replace('Use --force to import over them.', 'Tick "Replace existing pages" to import over them.', $e->getMessage());
+        return admin_settings_render($db, $user, 422, $stored, [], ['importError' => $msg, 'stored' => $stored]);
     }
 }
 

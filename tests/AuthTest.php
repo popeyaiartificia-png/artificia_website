@@ -171,3 +171,56 @@ function test_seed_import_button_refuses_over_existing_pages(): void
     eq((int) $db->query('SELECT COUNT(*) FROM pages')->fetchColumn(), 1);
     $_POST = [];
 }
+
+function test_array_csrf_field_gets_the_normal_refusal(): void
+{
+    $db = test_db();
+    $admin = user_create($db, 'admin@example.com', AUTH_TEST_PW, 'admin');
+    $_SESSION = ['uid' => $admin];
+    csrf_token();
+    eq(csrf_check(['x']), false);
+    $_POST = ['_csrf' => ['x']];
+    eq(admin_handle($db, 'POST', '/admin/settings')->status, 403);
+    $_POST = [];
+}
+
+function test_settings_errors_keep_typed_values_and_saved_secret_state(): void
+{
+    $db = test_db();
+    $admin = user_create($db, 'admin@example.com', AUTH_TEST_PW, 'admin');
+    setting_set($db, 'n8n_webhook_token', 'sekret');
+    $_SESSION = ['uid' => $admin];
+    $_POST = ['_csrf' => csrf_token(), 'meta_pixel_id' => 'abc', 'org_phone' => '+91 99', 'ga4_id' => 'G-NEW1', 'n8n_webhook_token' => ''];
+    $r = admin_handle($db, 'POST', '/admin/settings');
+    eq($r->status, 422);
+    ok(str_contains($r->body, 'value="+91 99"') && str_contains($r->body, 'value="G-NEW1"'), 'typed values come back');
+    ok(str_contains($r->body, 'Saved. Leave blank') && str_contains($r->body, 'clear_n8n_webhook_token'), 'saved secret still shown as set');
+    ok(str_contains($r->body, 'id="e-meta_pixel_id"'), 'pixel id must be digits');
+    ok(!str_contains($r->body, 'sekret'));
+    $_POST = [];
+}
+
+function test_import_refusal_uses_web_wording(): void
+{
+    $db = test_db();
+    $admin = user_create($db, 'admin@example.com', AUTH_TEST_PW, 'admin');
+    $_SESSION = ['uid' => $admin];
+    $_POST = ['_csrf' => csrf_token()];
+    $db->exec("INSERT INTO pages (slug, title, sections) VALUES ('x', 'X', '[]')");
+    $body = admin_handle($db, 'POST', '/admin/settings/import')->body;
+    ok(str_contains($body, 'Replace existing pages') && !str_contains($body, '--force'));
+    $_POST = [];
+}
+
+function test_create_admin_refuses_mismatched_passwords(): void
+{
+    $p = proc_open([PHP_BINARY, dirname(__DIR__) . '/bin/create-admin.php', 'mismatch@example.com'],
+        [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes, null, ['ARTIFICIA_CONFIG' => getenv('ARTIFICIA_CONFIG')] + getenv());
+    fwrite($pipes[0], "first password 1\nsecond password 2\n");
+    fclose($pipes[0]);
+    $out = stream_get_contents($pipes[1]);
+    $err = stream_get_contents($pipes[2]);
+    eq(proc_close($p), 1);
+    ok(str_contains($err, 'do not match'), $err);
+    ok(!str_contains($out . $err, 'first password'), 'never prints the password');
+}

@@ -1,4 +1,4 @@
-<?php /** @var array $values, $errors, $groups; @var ?string $importError */ ?>
+<?php /** @var array $values, $errors, $groups, $stored; @var ?string $importError */ ?>
 <h1>Settings</h1>
 <form method="post" action="/admin/settings" novalidate>
   <?= csrf_field() ?>
@@ -7,7 +7,7 @@
     <legend><?= e($group) ?></legend>
 <?php foreach ($fields as $key => [$label, $type, $hint]):
     $secret = $type === 'secret';
-    $isSet = $secret && ($values[$key] ?? '') !== '';
+    $isSet = $secret && ($stored[$key] ?? '') !== '';
     echo admin_field($key, $label, $secret ? '' : (string) ($values[$key] ?? ''), $errors[$key] ?? null,
         $secret ? 'password' : ($type === 'textarea' ? 'textarea' : ($type === 'email' ? 'email' : 'text')),
         $secret ? ($isSet ? 'Saved. Leave blank to keep it.' : 'Not set.') : $hint,
