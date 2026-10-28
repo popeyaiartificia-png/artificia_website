@@ -46,7 +46,7 @@ function admin_media_json(PDO $db, string $method): HttpResponse
         'id' => (int) $r['id'], 'alt' => $r['alt'], 'thumb' => $r['thumb'], 'url' => $r['url'],
         'width' => (int) $r['width'], 'height' => (int) $r['height'],
     ], media_list($db));
-    return new HttpResponse(200, json_encode($list, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), null, 'application/json; charset=utf-8');
+    return new HttpResponse(200, json_encode($list, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_INVALID_UTF8_SUBSTITUTE), null, 'application/json; charset=utf-8');
 }
 
 function admin_media(PDO $db, string $method): HttpResponse

@@ -174,7 +174,9 @@ function page_save(PDO $db, array $page, int $userId): int
         'sections' => page_json(sections_normalize(is_array($row['sections'] ?? null) ? $row['sections'] : [])),
         'template_id' => positive_int($row['template_id'] ?? null),
         'status' => $status,
-        'published_at' => $row['published_at'] ?? ($status === 'published' ? date('Y-m-d H:i:s') : null),
+        'noindex' => empty($row['noindex']) ? 0 : 1,
+        // Only the stored value counts: a caller (or a form) can't backdate a page. The DB's clock, like updated_at's.
+        'published_at' => $current['published_at'] ?? ($status === 'published' ? $db->query('SELECT NOW()')->fetchColumn() : null),
         'updated_by' => $userId > 0 ? $userId : null,
     ];
 
@@ -287,7 +289,7 @@ function template_unique_errors(PDO $db, array $page, array $sections, array $re
 function page_duplicate(PDO $db, int $id, string $newSlug, int $userId): int
 {
     $page = page_find($db, $id) ?? throw new InvalidArgumentException('That page was not found.');
-    $copy = array_intersect_key($page, array_flip(['kind', 'title', 'h1', 'meta_title', 'meta_description', 'og_image_id', 'excerpt', 'sections', 'template_id']));
+    $copy = array_intersect_key($page, array_flip(['kind', 'title', 'h1', 'meta_title', 'meta_description', 'og_image_id', 'excerpt', 'sections', 'template_id', 'noindex']));
     return page_save($db, $copy + ['slug' => $newSlug, 'status' => 'draft'], $userId);
 }
 

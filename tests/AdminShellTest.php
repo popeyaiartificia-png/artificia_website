@@ -20,10 +20,12 @@ function test_nav_hides_links_without_routes_and_by_role(): void
     $nav = admin_handle($db, 'GET', '/admin')->body;
     ok(str_contains($nav, 'href="/admin/settings"') && str_contains($nav, 'href="/admin/users"'), 'admin sees both');
     ok(str_contains($nav, 'nav__group-title">System<'), 'System group drawn for admin');
-    foreach (['/admin/pages', '/admin/posts', '/admin/redirects', '/admin/leads'] as $later) {
+    foreach (['/admin/redirects', '/admin/leads'] as $later) {
         ok(!str_contains($nav, 'href="' . $later . '"'), "no link to $later until its route exists");
     }
-    ok(str_contains($nav, 'href="/admin/media"') && !str_contains($nav, 'href="/admin/pages"'), 'Content group shows only Media for now');
+    foreach (['/admin/pages', '/admin/posts', '/admin/templates', '/admin/media', '/admin/pages/new', '/admin/posts/new'] as $built) {
+        ok(str_contains($nav, 'href="' . $built . '"'), "$built is linked once its route exists");
+    }
     $_SESSION = [];
 }
 

@@ -36,3 +36,4 @@ The marks belong to their owners and are shown only to name the tools taught or 
 - Roboto Flex, Google Fonts, SIL Open Font License 1.1 (`public/assets/fonts/`).
 - Phosphor Icons, regular weight, MIT licence (`app/views/icons.php`).
 - GSAP 3.13.0 and ScrollTrigger, GreenSock standard "no charge" licence (`public/assets/vendor/`).
+- Quill 2.0.3 rich-text editor (admin page editor only): `dist/quill.js` and `dist/quill.snow.css` from the npm package `quill@2.0.3` (sha512 `xEYQBqfYx/sfb33VJiKnSJp8ehloavImQ2A6564GAbqG55PGw1dAWUn1MUbQB62t0azawUS2CZZhWCjO8gRvTw==`), unchanged, in `public/assets/vendor/quill/`. BSD 3-Clause licence (the package's own `LICENSE`, copied alongside), © Slab, Jason Chen and salesforce.com.

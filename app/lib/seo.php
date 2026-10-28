@@ -11,7 +11,7 @@ function robots_txt(string $env, string $baseUrl): string
 
 function sitemap_xml(PDO $db, string $baseUrl): string
 {
-    $rows = $db->query("SELECT slug, kind, updated_at FROM pages WHERE status = 'published' ORDER BY kind, slug")->fetchAll();
+    $rows = $db->query("SELECT slug, kind, updated_at FROM pages WHERE status = 'published' AND noindex = 0 ORDER BY kind, slug")->fetchAll();
     $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
     foreach ($rows as $r) {
         $xml .= '<url><loc>' . e($baseUrl . page_path($r)) . '</loc><lastmod>' . date('Y-m-d', strtotime($r['updated_at'])) . "</lastmod></url>\n";

@@ -5,8 +5,12 @@ const ADMIN_VIEWS_DIR = __DIR__ . '/views';
 
 require __DIR__ . '/shell.php';
 require __DIR__ . '/media.php';
+require __DIR__ . '/pages.php';
 
-/** "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php). */
+/**
+ * "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php).
+ * A "{id}" segment matches a positive integer, which the handler gets as a third argument (int $id).
+ */
 function admin_routes(): array
 {
     return [
@@ -28,7 +32,41 @@ function admin_routes(): array
         'GET /admin/media' => 'admin_media',
         'POST /admin/media' => 'admin_media',
         'GET /admin/media.json' => 'admin_media_json',
+        'GET /admin/pages' => 'admin_pages',
+        'GET /admin/posts' => 'admin_posts',
+        'GET /admin/pages/new' => 'admin_page_new',
+        'POST /admin/pages/new' => 'admin_page_new',
+        'GET /admin/posts/new' => 'admin_post_new',
+        'POST /admin/posts/new' => 'admin_post_new',
+        'GET /admin/pages/{id}' => 'admin_page_edit',
+        'POST /admin/pages/{id}' => 'admin_page_edit',
+        'GET /admin/posts/{id}' => 'admin_post_edit',
+        'POST /admin/posts/{id}' => 'admin_post_edit',
+        'POST /admin/pages/{id}/duplicate' => 'admin_page_duplicate',
+        'POST /admin/pages/{id}/template' => 'admin_page_template',
+        'GET /admin/preview/{id}' => 'admin_preview',
+        'GET /admin/section-form' => 'admin_section_form',
+        'GET /admin/templates' => 'admin_templates',
     ];
+}
+
+/** [handler, extra args] for a request, or null. Exact routes win; then "{id}" routes. */
+function admin_route(string $method, string $path): ?array
+{
+    $routes = admin_routes();
+    if (isset($routes["$method $path"])) {
+        return [$routes["$method $path"], []];
+    }
+    foreach ($routes as $key => $handler) {
+        if (!str_contains($key, '{id}')) {
+            continue;
+        }
+        $re = '#^' . str_replace('\{id\}', '([1-9][0-9]{0,9})', preg_quote($key, '#')) . '$#D';
+        if (preg_match($re, "$method $path", $m)) {
+            return [$handler, [(int) $m[1]]];
+        }
+    }
+    return null;
 }
 
 /** Runs the matching handler. Every POST is CSRF-checked here, before any handler sees it. */
@@ -36,7 +74,7 @@ function admin_handle(PDO $db, string $method, string $path): HttpResponse
 {
     $path = rtrim($path, '/') ?: '/';
     try {
-        $handler = admin_routes()["$method $path"] ?? null;
+        [$handler, $args] = admin_route($method, $path) ?? [null, []];
         if (!$handler) {
             return new HttpResponse(404, admin_view('notfound', ['title' => 'Not found'], auth_user($db)));
         }
@@ -46,7 +84,7 @@ function admin_handle(PDO $db, string $method, string $path): HttpResponse
         if ($method === 'POST' && !csrf_check($_POST['_csrf'] ?? null)) {
             return new HttpResponse(403, admin_view('notfound', ['title' => 'Session expired', 'message' => 'Your session expired. Go back, reload the page and try again.'], auth_user($db)));
         }
-        return $handler($db, $method);
+        return $handler($db, $method, ...$args);
     } catch (HttpResponse $r) {
         return $r;
     }

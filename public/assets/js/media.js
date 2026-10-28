@@ -12,9 +12,14 @@
   var doc = document;
 
   function el(tag, cls, text) { var n = doc.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  // A click on the backdrop targets the dialog itself, but so does one in the dialog's own padding: compare the position.
+  function onBackdrop(dlg, e) {
+    var r = dlg.getBoundingClientRect();
+    return e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom);
+  }
 
   /* ---- Picker ---- */
-  var dlg, pending;
+  var dlg, pending, seq = 0;
   function build() {
     dlg = el('dialog', 'dlg dlg--wide');
     dlg.setAttribute('aria-labelledby', 'picker-title');
@@ -28,7 +33,7 @@
     dlg.appendChild(h); dlg.appendChild(bar); dlg.appendChild(status); dlg.appendChild(grid); dlg.appendChild(close);
     doc.body.appendChild(dlg);
     close.addEventListener('click', function () { dlg.close(); });
-    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); }); // backdrop
+    dlg.addEventListener('click', function (e) { if (onBackdrop(dlg, e)) dlg.close(); });
     dlg.addEventListener('close', function () { var p = pending; pending = null; if (p) p(dlg._choice || null); dlg._choice = null; });
     search.addEventListener('input', function () {
       var q = search.value.trim().toLowerCase(), shown = 0;
@@ -39,12 +44,15 @@
   }
   function open(opts) {
     if (!dlg) build();
+    if (pending) { var p = pending; pending = null; p(null); } // a second open() cancels the first
+    var mine = ++seq;
     dlg._search.value = ''; dlg._choice = null; dlg._status.textContent = 'Loading…'; dlg._grid.textContent = '';
-    dlg.showModal();
+    if (!dlg.open) dlg.showModal();
     fetch('/admin/media.json', { headers: { Accept: 'application/json' } }).then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.json();
     }).then(function (list) {
+      if (mine !== seq) return; // a later open() owns the grid now
       dlg._status.textContent = list.length ? '' : 'No images yet. Upload one on the Media page first.';
       list.forEach(function (m) {
         var li = el('li', 'media__item'), b = el('button', 'media__open'), t = el('span', 'media__thumb'), img = el('img');
@@ -55,7 +63,7 @@
         b.addEventListener('click', function () { dlg._choice = m; dlg.close(); });
         li.appendChild(b); dlg._grid.appendChild(li);
       });
-    }).catch(function () { dlg._status.textContent = 'The images could not be loaded. Close this and try again.'; });
+    }).catch(function () { if (mine === seq) dlg._status.textContent = 'The images could not be loaded. Close this and try again.'; });
     return new Promise(function (resolve) { pending = resolve; });
   }
   window.MediaPicker = { open: open };
@@ -118,7 +126,7 @@
   }
   page.querySelectorAll('.media__open').forEach(function (b) { b.addEventListener('click', function () { show(b); }); });
   detail.querySelector('[data-close]').addEventListener('click', function () { detail.close(); });
-  detail.addEventListener('click', function (e) { if (e.target === detail) detail.close(); });
+  detail.addEventListener('click', function (e) { if (onBackdrop(detail, e)) detail.close(); });
 
   // After a rejected save the page is re-rendered: reopen the same image with the text that was typed.
   var again = page.getAttribute('data-reopen');

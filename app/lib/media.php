@@ -15,6 +15,9 @@ function media_widths(int $srcWidth): array
 /** Trimmed alt text, or an InvalidArgumentException with a user-facing message. */
 function media_clean_alt(string $alt): string
 {
+    if (!mb_check_encoding($alt, 'UTF-8')) {
+        throw new InvalidArgumentException('The description has characters that could not be read. Please type it again.');
+    }
     $alt = trim($alt);
     if ($alt === '') {
         throw new InvalidArgumentException('Please add a short description of the image (alt text) - it helps Google and screen-reader users.');
