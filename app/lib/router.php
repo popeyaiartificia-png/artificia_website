@@ -63,14 +63,24 @@ function dispatch(string $method, string $path): void
         echo robots_txt($c['env'], $c['base_url']);
         return;
     }
-    // Task 9 adds POST /lead and Task 5 adds /admin*; until then they are plain 404s.
-    if (($method === 'POST' && $path === '/lead') || $path === '/admin' || str_starts_with($path, '/admin/')) {
+    if ($path === '/admin' || str_starts_with($path, '/admin/')) {
+        admin_dispatch($db, $method, $path);
+        return;
+    }
+    // Task 9 adds POST /lead; until then it is a plain 404.
+    if ($method === 'POST' && $path === '/lead') {
         send_404($db);
         return;
     }
-    // The section library, for designing locally; Task 5 also opens it to logged-in admins.
-    if ($path === '/_design' && $c['env'] === 'local') {
-        send_html(render_design_gallery($db, settings($db)));
+    // The section library: open locally, and to anyone logged in to the admin elsewhere.
+    if ($path === '/_design') {
+        auth_session_start();
+        if ($c['env'] === 'local' || auth_user($db)) {
+            header('Cache-Control: no-store');
+            send_html(render_design_gallery($db, settings($db)));
+        } else {
+            send_404($db);
+        }
         return;
     }
     if (preg_match('#^/blog/([^/]+)/?$#', $path, $m)) {

@@ -23,6 +23,9 @@ require __DIR__ . '/lib/render.php';
 require __DIR__ . '/lib/seo.php';
 require __DIR__ . '/lib/redirects.php';
 require __DIR__ . '/lib/seed.php';
+require __DIR__ . '/lib/mail.php';
+require __DIR__ . '/lib/auth.php';
+require __DIR__ . '/admin/routes.php';
 require __DIR__ . '/lib/router.php';
 require __DIR__ . '/sections/registry.php';
 

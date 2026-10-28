@@ -140,7 +140,7 @@ function render_section(array $section): string
 /** Only a non-empty setting that looks like a tracking id is ever printed. */
 function tracking_id(array $settings, string $key): string
 {
-    return preg_match('/^[A-Za-z0-9_-]+$/', $settings[$key] ?? '') ? $settings[$key] : '';
+    return preg_match('/^[A-Za-z0-9_-]+\z/', $settings[$key] ?? '') ? $settings[$key] : '';
 }
 
 function render_layout(array $vars): string

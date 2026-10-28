@@ -1,0 +1,88 @@
+/* Artificia admin: the site's language, as a working tool. Black ground, square edges, lime only for the primary action, focus and small markers. No blur, no animation. */
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("../fonts/roboto-flex-var-latin.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-display: swap;
+}
+
+:root {
+  --c0: #030304; --c1: #0a0b0d; --c2: #111316; --c3: #191b1e; --c4: #24272b; --c5: #3b3f44;
+  --c6: #9ba2a1; --c7: #c8cdca; --ink: #F2F3EE;
+  --lime: #AED534; --lime-hi: #c3e651; --lime-ink: #08080d;
+  --warn: #ff9a85;
+  --font: "Roboto Flex", Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; border-radius: 0; }
+body { margin: 0; background: var(--c0); color: var(--ink); font: 400 15px/1.5 var(--font); }
+a { color: var(--ink); text-underline-offset: 3px; }
+a:hover { color: var(--lime-hi); }
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 16px; }
+h2, legend { font-size: 17px; font-weight: 600; margin: 0 0 12px; padding: 0; }
+p { margin: 0 0 12px; }
+
+:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* Top bar */
+.bar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; padding: 12px 24px; border-bottom: 1px solid var(--c4); background: var(--c1); }
+.brand img { display: block; height: 32px; width: auto; }
+.bar nav { margin-left: auto; }
+.bar ul { display: flex; flex-wrap: wrap; gap: 4px 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.bar a { text-decoration: none; padding: 6px 0; display: inline-block; border-bottom: 2px solid transparent; }
+.bar a[aria-current="page"] { border-bottom-color: var(--lime); }
+.bar form { margin: 0; }
+
+main { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+/* Panels */
+.card, fieldset.card { background: var(--c1); border: 1px solid var(--c4); padding: 20px; margin: 0 0 20px; min-width: 0; }
+.narrow { max-width: 420px; margin: 40px auto; }
+.aside { color: var(--c6); margin: 16px 0 0; }
+.links { padding-left: 18px; }
+.links li::marker { color: var(--lime); }
+
+/* Forms */
+.field { margin: 0 0 16px; }
+label { display: block; font-weight: 500; margin-bottom: 4px; }
+.hint { color: var(--c6); font-size: 13px; margin: 0 0 6px; }
+input[type=text], input[type=email], input[type=password], select, textarea {
+  display: block; width: 100%; background: var(--c2); color: var(--ink); border: 1px solid var(--c5);
+  padding: 9px 10px; font: inherit;
+}
+input:hover, select:hover, textarea:hover { border-color: var(--c6); }
+.has-error input, .has-error textarea { border-color: var(--warn); }
+.err { color: var(--warn); font-size: 14px; margin: 6px 0 0; }
+.err::before { content: "Error: "; font-weight: 600; }
+.flash { border: 1px solid var(--c5); border-left: 3px solid var(--lime); background: var(--c1); padding: 10px 14px; margin: 0 0 20px; }
+.check label { display: flex; gap: 8px; align-items: center; font-weight: 400; margin: 0; }
+.check input { width: 16px; height: 16px; accent-color: var(--lime); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Buttons: lime is the primary action only. */
+.btn { font: 600 15px var(--font); background: var(--lime); color: var(--lime-ink); border: 1px solid var(--lime); padding: 9px 18px; cursor: pointer; }
+.btn:hover { background: var(--lime-hi); border-color: var(--lime-hi); }
+.btn--quiet { background: transparent; color: var(--ink); border-color: var(--c5); font-weight: 500; padding: 6px 12px; }
+.btn--quiet:hover { background: var(--c3); border-color: var(--c6); }
+.link { background: none; border: 0; color: var(--ink); font: inherit; padding: 6px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.link:hover { color: var(--lime-hi); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 0 0 24px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--c4); vertical-align: middle; }
+th { color: var(--c6); font-weight: 500; font-size: 13px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.actions form { margin: 0; }
+.actions .inline { display: flex; gap: 6px; }
+.actions input[type=password] { width: 170px; padding: 5px 8px; }
+
+@media (max-width: 640px) {
+  .bar, main { padding-left: 16px; padding-right: 16px; }
+  .bar nav { margin-left: 0; }
+  table, tbody, tr, td { display: block; }
+  thead { display: none; }
+  tr { border-bottom: 1px solid var(--c4); padding: 8px 0; }
+  td { border: 0; padding: 4px 0; }
+}

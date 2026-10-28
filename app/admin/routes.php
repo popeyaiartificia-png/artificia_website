@@ -1,0 +1,322 @@
+<?php
+declare(strict_types=1);
+
+const ADMIN_VIEWS_DIR = __DIR__ . '/views';
+
+/** "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a link in views/layout.php. */
+function admin_routes(): array
+{
+    return [
+        'GET /admin' => 'admin_dashboard',
+        'GET /admin/login' => 'admin_login',
+        'POST /admin/login' => 'admin_login',
+        'POST /admin/logout' => 'admin_logout',
+        'GET /admin/forgot' => 'admin_forgot',
+        'POST /admin/forgot' => 'admin_forgot',
+        'GET /admin/reset' => 'admin_reset',
+        'POST /admin/reset' => 'admin_reset',
+        'GET /admin/setup' => 'admin_setup',
+        'POST /admin/setup' => 'admin_setup',
+        'GET /admin/settings' => 'admin_settings',
+        'POST /admin/settings' => 'admin_settings',
+        'POST /admin/settings/import' => 'admin_settings_import',
+        'GET /admin/users' => 'admin_users',
+        'POST /admin/users' => 'admin_users',
+    ];
+}
+
+/** Runs the matching handler. Every POST is CSRF-checked here, before any handler sees it. */
+function admin_handle(PDO $db, string $method, string $path): HttpResponse
+{
+    $path = rtrim($path, '/') ?: '/';
+    try {
+        $handler = admin_routes()["$method $path"] ?? null;
+        if (!$handler) {
+            return new HttpResponse(404, admin_view('notfound', ['title' => 'Not found'], auth_user($db)));
+        }
+        if ($method === 'POST' && !csrf_check($_POST['_csrf'] ?? null)) {
+            return new HttpResponse(403, admin_view('notfound', ['title' => 'Session expired', 'message' => 'Your session expired. Go back, reload the page and try again.'], auth_user($db)));
+        }
+        return $handler($db, $method);
+    } catch (HttpResponse $r) {
+        return $r;
+    }
+}
+
+function admin_dispatch(PDO $db, string $method, string $path): void
+{
+    auth_session_start();
+    $r = admin_handle($db, $method, $path);
+    header('X-Robots-Tag: noindex, nofollow');
+    header('Cache-Control: no-store');
+    if ($r->location !== null) {
+        redirect($r->location);
+    }
+    send_html($r->body, $r->status);
+}
+
+/** A view inside the admin layout. */
+function admin_view(string $name, array $vars, ?array $user = null): string
+{
+    $flash = $_SESSION['flash'] ?? null;
+    unset($_SESSION['flash']);
+    $render = function (string $file, array $vars): string {
+        extract($vars, EXTR_SKIP);
+        ob_start();
+        include ADMIN_VIEWS_DIR . "/$file.php";
+        return (string) ob_get_clean();
+    };
+    $vars += ['title' => '', 'error' => null, 'user' => $user];
+    $content = $render($name, $vars);
+    return $render('layout', ['content' => $content, 'title' => $vars['title'], 'user' => $user, 'flash' => $flash]);
+}
+
+/** One labelled input with its error beside it. */
+function admin_field(string $name, string $label, string $value = '', ?string $error = null, string $type = 'text', string $hint = '', string $attrs = ''): string
+{
+    $id = 'f-' . $name;
+    $describe = trim(($hint !== '' ? "h-$name " : '') . ($error ? "e-$name" : ''));
+    $input = $type === 'textarea'
+        ? '<textarea id="' . $id . '" name="' . e($name) . '" rows="3"'
+        : '<input id="' . $id . '" name="' . e($name) . '" type="' . e($type) . '" value="' . e($type === 'password' ? '' : $value) . '"';
+    $input .= ($describe ? ' aria-describedby="' . $describe . '"' : '') . ($error ? ' aria-invalid="true"' : '') . " $attrs";
+    $input .= $type === 'textarea' ? '>' . e($value) . '</textarea>' : '>';
+    return '<div class="field' . ($error ? ' has-error' : '') . '"><label for="' . $id . '">' . e($label) . '</label>'
+        . ($hint !== '' ? '<p class="hint" id="h-' . e($name) . '">' . e($hint) . '</p>' : '')
+        . $input
+        . ($error ? '<p class="err" id="e-' . e($name) . '" role="alert">' . e($error) . '</p>' : '') . '</div>';
+}
+
+function admin_redirect(string $to, ?string $flash = null): HttpResponse
+{
+    if ($flash !== null) {
+        $_SESSION['flash'] = $flash;
+    }
+    return new HttpResponse(302, '', $to);
+}
+
+// ---------- Pages ----------
+
+function admin_dashboard(PDO $db, string $method): HttpResponse
+{
+    $user = auth_require('seo', $db);
+    return new HttpResponse(200, admin_view('dashboard', ['title' => 'Dashboard'], $user));
+}
+
+function admin_login(PDO $db, string $method): HttpResponse
+{
+    if (auth_user($db)) {
+        return admin_redirect('/admin');
+    }
+    $error = null;
+    $email = '';
+    if ($method === 'POST') {
+        $email = trim((string) ($_POST['email'] ?? ''));
+        $result = auth_login($db, $email, (string) ($_POST['password'] ?? ''), (string) ($_SERVER['REMOTE_ADDR'] ?? ''));
+        if ($result === true) {
+            return admin_redirect('/admin');
+        }
+        $error = $result === 'locked' ? 'Too many failed attempts. Wait 15 minutes and try again.' : 'The email or password is not right.';
+    }
+    return new HttpResponse($error ? 422 : 200, admin_view('login', ['title' => 'Log in', 'error' => $error, 'email' => $email]));
+}
+
+function admin_logout(PDO $db, string $method): HttpResponse
+{
+    auth_logout();
+    return admin_redirect('/admin/login');
+}
+
+function admin_forgot(PDO $db, string $method): HttpResponse
+{
+    $sent = $method === 'POST';
+    if ($sent) {
+        password_reset_request($db, (string) ($_POST['email'] ?? '')); // same page whether or not the email exists
+    }
+    return new HttpResponse(200, admin_view('forgot', ['title' => 'Forgot password', 'sent' => $sent]));
+}
+
+function admin_reset(PDO $db, string $method): HttpResponse
+{
+    $token = (string) ($_POST['token'] ?? $_GET['token'] ?? '');
+    $error = null;
+    if ($method === 'POST') {
+        if (!hash_equals((string) ($_POST['password'] ?? ''), (string) ($_POST['password2'] ?? ''))) {
+            $error = 'The two passwords are not the same.';
+        } elseif (strlen((string) ($_POST['password'] ?? '')) < PASSWORD_MIN) {
+            $error = 'The password needs at least ' . PASSWORD_MIN . ' characters.';
+        } elseif (!password_reset_apply($db, $token, (string) $_POST['password'])) {
+            $error = 'This link has expired or was already used. Ask for a new one.';
+        } else {
+            return admin_redirect('/admin/login', 'Password changed. Log in with the new one.');
+        }
+    }
+    return new HttpResponse($error ? 422 : 200, admin_view('reset', ['title' => 'New password', 'token' => $token, 'error' => $error]));
+}
+
+function admin_setup(PDO $db, string $method): HttpResponse
+{
+    $token = (string) ($_POST['token'] ?? $_GET['token'] ?? '');
+    if (!setup_allowed($db, $token)) {
+        return new HttpResponse(404, admin_view('notfound', ['title' => 'Not found']));
+    }
+    $error = null;
+    $email = '';
+    if ($method === 'POST') {
+        $email = (string) ($_POST['email'] ?? '');
+        try {
+            user_create($db, $email, (string) ($_POST['password'] ?? ''), 'admin');
+            return admin_redirect('/admin/login', 'Admin created. Log in.');
+        } catch (InvalidArgumentException $e) {
+            $error = $e->getMessage();
+        }
+    }
+    return new HttpResponse($error ? 422 : 200, admin_view('setup', ['title' => 'First-run setup', 'token' => $token, 'error' => $error, 'email' => $email]));
+}
+
+// ---------- Settings ----------
+
+/** group => key => [label, type, hint]. Types: text, textarea, secret, track, url, email, digits. */
+function settings_fields(): array
+{
+    return [
+        'Tracking' => [
+            'ga4_id' => ['Google Analytics 4 measurement ID', 'track', 'Looks like G-XXXXXXXXXX.'],
+            'gsc_verification' => ['Search Console verification code', 'track', 'Only the code, not the whole meta tag.'],
+            'meta_pixel_id' => ['Meta Pixel ID', 'track', 'Digits only.'],
+            'meta_capi_token' => ['Meta Conversions API token', 'secret', ''],
+            'meta_test_event_code' => ['Meta test event code', 'track', 'Only while testing in Events Manager; clear it afterwards.'],
+        ],
+        'Lead routing' => [
+            'n8n_webhook_url' => ['n8n webhook URL', 'url', 'Every new lead is sent here.'],
+            'n8n_webhook_token' => ['n8n webhook token', 'secret', ''],
+            'lead_alert_email' => ['Lead alert email', 'email', 'New leads are mailed here.'],
+        ],
+        'Business details' => [
+            'gbp_url' => ['Google Business Profile URL', 'url', ''],
+            'whatsapp_number' => ['WhatsApp number', 'digits', 'With country code. Blank uses 919104488859.'],
+            'org_phone' => ['Phone', 'text', ''],
+            'org_email' => ['Public email', 'email', ''],
+            'org_address' => ['Address', 'textarea', 'Shown in the site footer.'],
+        ],
+    ];
+}
+
+/**
+ * Saves the submitted settings, trimmed. Keys missing from $in are left alone; a blank secret keeps its stored
+ * value unless "clear_<key>" is set. Nothing is saved if any field is invalid.
+ * @return array<string,string> error message per field
+ */
+function settings_save(PDO $db, array $in): array
+{
+    $errors = [];
+    $save = [];
+    foreach (settings_fields() as $group) {
+        foreach ($group as $key => [$label, $type]) {
+            if (!array_key_exists($key, $in)) {
+                continue;
+            }
+            $v = trim((string) $in[$key]);
+            if ($type === 'secret' && $v === '') {
+                if (empty($in["clear_$key"])) {
+                    continue;
+                }
+            } elseif ($type === 'digits') {
+                $digits = preg_replace('/\D/', '', $v);
+                if ($v !== '' && $digits === '') {
+                    $errors[$key] = 'Use digits, with the country code.';
+                }
+                $v = $digits;
+            } elseif ($v !== '') {
+                if ($type === 'track' && !preg_match('/^[A-Za-z0-9_-]+\z/', $v)) {
+                    $errors[$key] = 'Letters, digits, dash and underscore only.';
+                } elseif ($type === 'url' && !preg_match('#^https?://[^\s]+\z#i', $v)) {
+                    $errors[$key] = 'Enter a full address starting with https://.';
+                } elseif ($type === 'email' && !filter_var($v, FILTER_VALIDATE_EMAIL)) {
+                    $errors[$key] = 'Enter a valid email address.';
+                }
+            }
+            $save[$key] = $v;
+        }
+    }
+    if (!$errors) {
+        foreach ($save as $k => $v) {
+            setting_set($db, $k, $v);
+        }
+    }
+    return $errors;
+}
+
+function admin_settings_render(PDO $db, array $user, int $status, array $values, array $errors, array $extra = []): HttpResponse
+{
+    return new HttpResponse($status, admin_view('settings', ['title' => 'Settings', 'values' => $values, 'errors' => $errors, 'groups' => settings_fields()] + $extra, $user));
+}
+
+function admin_settings(PDO $db, string $method): HttpResponse
+{
+    $user = auth_require('admin', $db);
+    $values = settings($db);
+    if ($method !== 'POST') {
+        return admin_settings_render($db, $user, 200, $values, []);
+    }
+    $errors = settings_save($db, $_POST);
+    if (!$errors) {
+        return admin_redirect('/admin/settings', 'Settings saved.');
+    }
+    foreach ($values as $k => $_) {
+        if (isset($_POST[$k])) {
+            $values[$k] = trim((string) $_POST[$k]);
+        }
+    }
+    return admin_settings_render($db, $user, 422, $values, $errors);
+}
+
+function admin_settings_import(PDO $db, string $method): HttpResponse
+{
+    $user = auth_require('admin', $db);
+    $root = dirname(__DIR__, 2);
+    try {
+        $n = seed_import($db, "$root/content/seed", "$root/public/uploads", !empty($_POST['force']));
+        return admin_redirect('/admin/settings', "Imported {$n['pages']} pages, {$n['templates']} templates, {$n['redirects']} redirects and {$n['media']} images.");
+    } catch (RuntimeException | InvalidArgumentException $e) {
+        return admin_settings_render($db, $user, 422, settings($db), [], ['importError' => $e->getMessage()]);
+    }
+}
+
+// ---------- Users ----------
+
+function admin_users(PDO $db, string $method): HttpResponse
+{
+    $me = auth_require('admin', $db);
+    $error = null;
+    $form = ['email' => '', 'role' => 'seo'];
+    if ($method === 'POST') {
+        $action = (string) ($_POST['action'] ?? '');
+        $id = (int) ($_POST['id'] ?? 0);
+        try {
+            if ($action === 'create') {
+                $form = ['email' => (string) ($_POST['email'] ?? ''), 'role' => (string) ($_POST['role'] ?? '')];
+                user_create($db, $form['email'], (string) ($_POST['password'] ?? ''), $form['role']);
+                return admin_redirect('/admin/users', 'User added.');
+            }
+            if ($id === $me['id'] && $action !== 'password') {
+                throw new InvalidArgumentException('You cannot change your own access. Ask another admin.');
+            }
+            if ($action === 'toggle') {
+                $db->prepare('UPDATE users SET active = 1 - active WHERE id = ?')->execute([$id]);
+                return admin_redirect('/admin/users', 'User updated.');
+            }
+            if ($action === 'password') {
+                if (strlen((string) ($_POST['password'] ?? '')) < PASSWORD_MIN) {
+                    throw new InvalidArgumentException('The password needs at least ' . PASSWORD_MIN . ' characters.');
+                }
+                $db->prepare('UPDATE users SET password_hash = ? WHERE id = ?')->execute([password_hash((string) $_POST['password'], PASSWORD_DEFAULT), $id]);
+                return admin_redirect('/admin/users', 'Password changed.');
+            }
+        } catch (InvalidArgumentException $e) {
+            $error = $e->getMessage();
+        }
+    }
+    $users = $db->query('SELECT id, email, role, active, created_at FROM users ORDER BY id')->fetchAll();
+    return new HttpResponse($error ? 422 : 200, admin_view('users', ['title' => 'Users', 'users' => $users, 'error' => $error, 'form' => $form, 'me' => $me], $me));
+}
