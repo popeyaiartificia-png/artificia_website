@@ -3,7 +3,7 @@
   <text x="34" y="53">NEW LEAD</text>
   <text class="nt" x="20" y="88">Meta, Google, website</text>
   <path class="ln" pathLength="1" d="M146 48h76"/><path class="ln" pathLength="1" d="M214 41l9 7-9 7"/>
-  <rect class="bx" x="230" y="26" width="150" height="44"/><rect class="ln" pathLength="1" x="230" y="26" width="150" height="44"/>
+  <rect class="bx hi" x="230" y="26" width="150" height="44"/><rect class="ln" pathLength="1" x="230" y="26" width="150" height="44"/>
   <text x="244" y="53">GOHIGHLEVEL</text>
   <path class="ln" pathLength="1" d="M305 76v40"/><path class="ln" pathLength="1" d="M298 108l7 9 7-9"/>
   <rect class="bx" x="230" y="122" width="150" height="44"/><rect class="ln" pathLength="1" x="230" y="122" width="150" height="44"/>

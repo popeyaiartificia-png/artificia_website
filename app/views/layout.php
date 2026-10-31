@@ -42,12 +42,14 @@ $nav = [
 <?php if ($jsonld): ?>
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $jsonld], JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 <?php endif; ?>
-<?php // 'motion' is promised only without a reduced-motion preference, and withdrawn if GSAP never arrives. ?>
+<?php // Enable the intro on every page load; motion still respects the visitor's preference. ?>
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.__motion)d.classList.remove('motion')},2500)}})(document.documentElement)</script>
+<link rel="preload" href="/assets/img/artificia-logo.png" as="image">
+<link rel="preload" href="/assets/fonts/roboto-serif-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/roboto-flex-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
-<meta name="theme-color" content="#08080d">
+<meta name="theme-color" content="#15160F">
 <?php if ($ga4 !== ''): ?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $ga4 ?>"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','<?= $ga4 ?>');</script>
@@ -61,10 +63,11 @@ $nav = [
 <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader__mark"></span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bind top" data-top>
   <div class="wrap top__in">
-    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI home"></a>
+    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="492" height="138" alt="Artificia AI home"></a>
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul>
 <?php foreach ($nav as $href => $label): ?>
@@ -83,7 +86,7 @@ $nav = [
   <div class="wrap foot__panel">
     <div class="foot__grid">
       <div class="foot__brand">
-        <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI" loading="lazy"></a>
+        <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="492" height="138" alt="Artificia AI" loading="lazy"></a>
         <p>AI training and AI systems, built in Vadodara.</p>
 <?php if (!empty($settings['org_address'])): ?>
         <address><?= nl2br(e($settings['org_address'])) ?></address>

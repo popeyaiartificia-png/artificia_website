@@ -8,12 +8,12 @@
 <title>Something went wrong | Artificia AI</title>
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
-<meta name="theme-color" content="#08080d">
+<meta name="theme-color" content="#15160F">
 </head>
 <body>
 <header class="bind top">
   <div class="wrap top__in">
-    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI home"></a>
+    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="492" height="138" alt="Artificia AI home"></a>
   </div>
 </header>
 <main id="main" class="sheet">

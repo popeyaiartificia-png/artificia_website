@@ -37,13 +37,45 @@ function section_registry(): array
             'secondary_cta_label' => $text('Secondary button label'),
             'secondary_cta_link' => $text('Secondary button link'),
             'image' => $image('Image'),
-            'variant' => $select('Layout', ['split', 'centered', 'cover']),
+            'variant' => $select('Layout', ['split', 'centered', 'cover', 'stage']),
             'doors' => $list('Doors (chooser rows)', [
                 'label' => $text('Label', true),
                 'note' => $text('Note'),
                 'link' => $text('Link', true),
             ]),
-            'drawing' => $select('Drawing', ['none', 'documents', 'masterclass', 'corporate', 'services']),
+            'drawing' => $select('Drawing', ['none', 'predict', 'documents', 'masterclass', 'corporate', 'services']),
+        ]],
+        // One sentence set very large; `*words*` turn serif and neon.
+        'statement' => ['label' => 'Statement (large type)', 'fields' => [
+            'text' => $area('Statement', true),
+        ]],
+        'work_gallery' => ['label' => 'Work gallery (floating visuals)', 'fields' => [
+            'heading' => $text('Heading', true),
+            'thought' => $area('Short gallery statement'),
+            'review_text' => $area('Client review text (replaces the gallery statement)'),
+            'review_status' => section_field('select', 'Review status', false, ['options' => ['draft', 'approved'], 'default' => 'draft']),
+            'review_name' => $text('Reviewer name'),
+            'review_company' => $text('Reviewer company'),
+            'items' => $list('Visuals', [
+                'label' => $text('Caption', true),
+                'title' => $text('Short description', true),
+                'visual' => $select('Visual', ['website', 'mobile', 'ghl', 'conversations', 'workflow', 'support', 'knowledge', 'voice'], true),
+                'image' => $image('Image upload (replaces the built-in visual)'),
+                'link' => $text('Link'),
+            ], true),
+        ]],
+        // Two sides set against each other (landonorris.com's "On track / Off track"), a cut-out figure at each edge.
+        // In a title the `*emphasised*` word becomes the serif top line.
+        'versus' => ['label' => 'Two sides (before and after)', 'fields' => [
+            'sides' => $list('Sides (the first two are shown)', [
+                'title' => $text('Title', true),
+                'text' => $area('Text'),
+                'status_label' => $text('Static status label (replaces the link)'),
+                'link' => $text('Link'),
+                'link_label' => $text('Link label (read out by screen readers)'),
+                'figure' => $select('Figure (built in)', ['person', 'robot', 'none']),
+                'image' => $image('Figure upload, a cut-out (replaces the built-in one)'),
+            ], true),
         ]],
         'rich_text' => ['label' => 'Text block', 'fields' => [
             'heading' => $text('Heading'),
@@ -70,6 +102,18 @@ function section_registry(): array
                 'link' => $text('Link'),
             ], true),
         ]],
+        'solutions' => ['label' => 'Solutions gallery', 'fields' => [
+            'heading' => $text('Heading', true),
+            'intro' => $area('Intro'),
+            'link_label' => $text('All solutions link label'),
+            'link' => $text('All solutions link'),
+            'items' => $list('Solutions', [
+                'title' => $text('Title', true),
+                'text' => $area('Description', true),
+                'link' => $text('Service page link', true),
+                'visual' => $select('Illustration', ['workflow', 'agentic', 'software', 'marketing', 'knowledge', 'search', 'cloud']),
+            ], true),
+        ]],
         'use_cases' => ['label' => 'Use cases (before and after)', 'fields' => [
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
@@ -78,6 +122,21 @@ function section_registry(): array
                 'before' => $area('Before'),
                 'after' => $area('After'),
             ], true),
+        ]],
+        // Problems struck through with the neon marker, each with its outcome. The optional open line is left uncrossed for the visitor.
+        'crossoff' => ['label' => 'Crossed-off list (problem to outcome)', 'fields' => [
+            'heading' => $text('Heading', true),
+            'intro' => $area('Intro'),
+            'items' => $list('Problems', [
+                'title' => $text('Problem (crossed off)', true),
+                'outcome' => $text('Outcome', true),
+                'text' => $area('How it works'),
+            ], true),
+            'open_title' => $text('Open line (left uncrossed)'),
+            'open_outcome' => $text('Open line: short answer'),
+            'open_text' => $area('Open line: text'),
+            'cta_label' => $text('Button label'),
+            'cta_link' => $text('Button link'),
         ]],
         'process_steps' => ['label' => 'Process steps', 'fields' => [
             'heading' => $text('Heading', true),
@@ -90,6 +149,10 @@ function section_registry(): array
         'tools' => ['label' => 'Tools', 'fields' => [
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
+            'flow' => $list('Flow (one piece of work, step by step)', [
+                'title' => $text('Step', true),
+                'note' => $text('Note'),
+            ]),
             'tools' => $list('Tools', [
                 'name' => $text('Name', true),
                 'brand' => $select('Logo (built in)', array_keys(require __DIR__ . '/../views/brands.php')),

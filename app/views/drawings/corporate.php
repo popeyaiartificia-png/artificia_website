@@ -4,7 +4,7 @@
   <text x="34" y="51">SALES</text>
   <rect class="bx" x="270" y="26" width="110" height="40"/><rect class="ln" pathLength="1" x="270" y="26" width="110" height="40"/>
   <text x="284" y="51">HR</text>
-  <rect class="bx" x="112" y="124" width="176" height="52"/><rect class="ln" pathLength="1" x="112" y="124" width="176" height="52"/>
+  <rect class="bx hi" x="112" y="124" width="176" height="52"/><rect class="ln" pathLength="1" x="112" y="124" width="176" height="52"/>
   <text x="200" y="148" text-anchor="middle">YOUR DOCUMENTS</text>
   <text class="nt" x="200" y="165" text-anchor="middle">SOPs, reports, emails</text>
   <rect class="bx" x="20" y="230" width="138" height="40"/><rect class="ln" pathLength="1" x="20" y="230" width="138" height="40"/>

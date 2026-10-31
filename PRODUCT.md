@@ -31,21 +31,21 @@ Artificia teaches AI in person in Vadodara, one hour a day, and the same team bu
 
 - **AI Masterclass:** offline and live in Vadodara, 1 hour a day. A 30-day Foundation track and a 60-day Full program (Foundation plus agents, MCP, RAG, voice agents, deployment, Claude Code, local LLMs). No coding needed. Curriculum source: `Artificia_AI_60_Day_Curriculum.csv`.
 - **Corporate AI training:** custom length and format, on-site or online over Microsoft Teams and similar tools. Next step: a free 2-hour pilot session.
-- **Services:** GoHighLevel setup and deployment, website development, content development and marketing, RAG-based custom automation, then the AI automation catalogue. Next step: a free 15-minute flow audit.
+- **Services:** all six blueprint families confirmed available by the user on 30 Oct 2026: AI Automation, Agentic AI, Software & Apps, Marketing Automation, SEO/AEO/GEO, and Cloud & Private AI. Includes GoHighLevel, websites and RAG knowledge assistants. Next step: a free 15-minute flow audit. Availability confirmation does not establish client results or security certifications.
 - WhatsApp is the visitor's default contact channel (number 919104488859).
 
 ## Capabilities and Constraints
 
 - Four enquiry forms (masterclass, corporate, services, contact); a lead is never shown "thank you" unless it was saved.
-- Pages are built from a library of 17 designed section types that the SEO expert arranges; the design must hold up for any order of sections and any length of real copy.
+- Pages are built from a library of 20 designed section types that the SEO expert arranges; the design must hold up for any order of sections and any length of real copy.
 - Fast on a mid-range phone: server-rendered HTML, CSS + JS under 150 KB gzipped, hero image under 200 KB, Lighthouse mobile Performance 90+ and Accessibility 95+.
 - Motion is code-driven (GSAP, CSS, SVG); `prefers-reduced-motion` turns it off. No 3D or decorative WebGL.
 - Never on the site: prices or rupee values, batch dates, seat counters, countdowns, "best", "#1", "lowest", placement or internship promises, a fixed duration for corporate training.
 
 ## Brand Commitments
 
-- Name: **Artificia AI** (company Artificia Intellec Pvt Ltd). **Always the real logo, never a text wordmark** (Hardik, 27 Oct 2026). The only file is a 225×46 PNG (`ARTIFICIA STUDY MATERIAL/artificia-brand-docs/assets/logo.png`); use it as supplied, top-left, at least 120 px wide, never redrawn or recoloured. A vector or 2× version would be sharper on phones.
-- Brand Bible (`ARTIFICIA STUDY MATERIAL/CLAUDE.md`): Roboto is the web typeface.
+- Name: **Artificia AI** (company Artificia Intellec Pvt Ltd). **Always the real logo, never a text wordmark** (Hardik, 27 Oct 2026). The current lockup (tagline "AI-Driven, Future-Focused.", supplied 29 Oct 2026 as a 4884 px square on black, `public/logo.png`) is used as `public/assets/img/artificia-logo.png`: cropped and keyed to transparency at 492×138 (3× its 34–42 px display height), top-left, at least 120 px wide, never redrawn. Its figure is #AED534. A vector version would still be sharper.
+- Brand Bible (`ARTIFICIA STUDY MATERIAL/CLAUDE.md`): Roboto is the shared web typeface. User-requested exception, 30 Oct 2026: the large homepage statement uses Mona Sans plus a Bodoni Moda serif substitute to match the reference typography; exact Brier use requires a licensed font.
 - Brand anchors: lime `#AED534` on dark charcoal (`#2A2E2E` / `#08080d`) with white text (`MASTER_CORPORATE_TRAINING_SPEC.md` §10).
 - Voice: plain and factual; claims are sourced or not made.
 

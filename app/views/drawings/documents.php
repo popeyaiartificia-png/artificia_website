@@ -13,7 +13,7 @@
   <path class="ln" pathLength="1" d="M154 187l10 7-10 7"/>
   <path class="ln" pathLength="1" d="M318 124c0 30-44 52-74 66"/>
   <path class="ln" pathLength="1" d="M248 180l-6 12 13 1"/>
-  <circle class="bx" cx="204" cy="206" r="40"/>
+  <circle class="bx hi" cx="204" cy="206" r="40"/>
   <circle class="ln" pathLength="1" cx="204" cy="206" r="40"/>
   <text x="204" y="211" text-anchor="middle">AGENT</text>
   <path class="ld" d="M244 214l26 14h124"/>
