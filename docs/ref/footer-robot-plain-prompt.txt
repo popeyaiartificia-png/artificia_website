@@ -1,0 +1,12 @@
+Artificia AI footer robot: plain charcoal suit, 2 November 2026.
+Mode: built-in image_gen edit; transparent_background=true.
+Edit target: storage/footer-figure/robot-neon-generated.png.
+
+Final edit prompt:
+Use case: precise-object-edit / identity-preserve. Edit the supplied transparent robot cutout. Make exactly one change: remove ALL the lime/green contour lines, topographic graphics, pinstripes, decorative printing and pattern from the entire charcoal suit, including both lapels, shoulders, sleeves and chest. Replace those patterned areas with plain solid charcoal-black tailored fabric, retaining natural fine woven fabric texture, lapel seams, folds, pocket, natural shading and realistic 3D volume. The suit must have absolutely no visible design, stripes, embroidery or graphics. Preserve everything else exactly: the same robot face and eyes, silver metal head, mechanical black neck, straight front-facing pose, body size, framing, white shirt and collar, vivid neon-lime satin necktie with its current folds and highlights, soft reflected lime illumination and subtle edge rim light. Do not change the tie's color, knot, shape or fabric. Keep the current image dimensions and exact subject position/silhouette so the existing website cutout placement stays identical. Retain a genuine transparent alpha background, with clean cutout edges. No background, text, logos or added objects. Output one coherent transparent image.
+
+Integration:
+Source RGBA PNG: storage/footer-figure/robot-neon-plain-generated.png (1292x1218).
+Uniform resize by 1.04 and the previous framing transform onto a transparent 1220x1150 canvas; generated colors/materials/alpha preserved.
+Framed PNG: storage/footer-figure/robot-neon-plain-cutout.png.
+Responsive WebP: public/assets/img/footer/robot-neon-plain.webp and robot-neon-plain-640.webp.

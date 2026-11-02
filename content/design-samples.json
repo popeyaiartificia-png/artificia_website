@@ -41,7 +41,7 @@
       "fields": {
         "heading": "Our work. *Built around your business.*",
         "thought": "Good technology leaves room for *better work.*",
-        "review_text": "One partner for our website, automation and *AI.*",
+        "review_text": "One partner for all your IT needs, from software solutions to *automation.*",
         "review_status": "draft",
         "review_name": "Pavin",
         "review_company": "Orkay Tiles",
@@ -65,22 +65,22 @@
             "link": "https://www.orkaytiles.com/"
           },
           {
-            "label": "Customer conversations",
-            "title": "From first hello to the right team.",
+            "label": "Our services / AI & automation",
+            "title": "AI automation, agents, CRM and marketing systems.",
             "visual": "conversations",
-            "link": "/services/gohighlevel"
+            "link": "/services"
           },
           {
-            "label": "Voice & AI",
-            "title": "Another way to connect.",
+            "label": "Our services / Voice agents",
+            "title": "AI voice agents for business conversations.",
             "visual": "voice",
-            "link": "/services/rag-custom-automation"
+            "link": "/services"
           },
           {
-            "label": "Knowledge, connected",
-            "title": "Your documents. Within reach.",
+            "label": "Our services / Digital solutions",
+            "title": "Websites, apps, cloud, SEO and AI training.",
             "visual": "knowledge",
-            "link": "/services/rag-custom-automation"
+            "link": "/services"
           }
         ]
       }
@@ -219,7 +219,7 @@
             "label": "faster lead handling"
           },
           {
-            "value": "10\u201320 hrs",
+            "value": "10–20 hrs",
             "label": "saved per employee each week"
           },
           {
@@ -231,7 +231,7 @@
             "label": "boost in customer response"
           },
           {
-            "value": "4\u00d7",
+            "value": "4×",
             "label": "faster reporting"
           }
         ]
@@ -270,63 +270,63 @@
         "modules": [
           {
             "track": "foundation",
-            "day_range": "1\u20133",
+            "day_range": "1–3",
             "title": "The AI landscape and prompting",
             "topics": "Where AI came from, setting up your models, prompt frameworks and advanced prompting.",
             "tools": "ChatGPT, Claude, Gemini, DeepSeek"
           },
           {
             "track": "foundation",
-            "day_range": "4\u20137",
+            "day_range": "4–7",
             "title": "AI for everyday office work",
             "topics": "Copilot in Word, Excel and PowerPoint, research tools, AI ethics and NotebookLM.",
             "tools": "Copilot, Perplexity, NotebookLM"
           },
           {
             "track": "foundation",
-            "day_range": "8\u201317",
+            "day_range": "8–17",
             "title": "Assistants, images, video, voice and data",
             "topics": "Custom GPTs, Gemini in Workspace, Claude Projects, presentations, image and video generation, voice, avatars and data analysis.",
             "tools": "Gamma, Runway, ElevenLabs, HeyGen, Canva"
           },
           {
             "track": "foundation",
-            "day_range": "18\u201325",
+            "day_range": "18–25",
             "title": "Websites and your first app",
             "topics": "Prompt-to-website, design, Google AI Studio, Git basics, and building and shipping an app.",
             "tools": "Bolt.new, Lovable, Framer, Antigravity"
           },
           {
             "track": "foundation",
-            "day_range": "26\u201330",
+            "day_range": "26–30",
             "title": "Capstone and Demo Day",
             "topics": "Plan, build, test and present a project of your own.",
             "tools": "Your chosen stack"
           },
           {
             "track": "full",
-            "day_range": "31\u201339",
+            "day_range": "31–39",
             "title": "Agents, voice agents and n8n",
             "topics": "How agents think, voice agents you can call, backends, Google Sheets as a database, APIs, webhooks and bots.",
             "tools": "n8n, Vapi, Supabase, WhatsApp API"
           },
           {
             "track": "full",
-            "day_range": "40\u201349",
+            "day_range": "40–49",
             "title": "MCP, RAG and multi-agent systems",
             "topics": "Claude Cowork, MCP servers, AI skills, RAG agents, multi-agent workflows and selling agents as a service.",
             "tools": "Claude, MCP, Pinecone, CrewAI"
           },
           {
             "track": "full",
-            "day_range": "50\u201356",
+            "day_range": "50–56",
             "title": "Claude Code and local models",
             "topics": "Claude Code, running local and open-source models, Hugging Face and Codex.",
             "tools": "Claude Code, Ollama, Hugging Face"
           },
           {
             "track": "full",
-            "day_range": "57\u201360",
+            "day_range": "57–60",
             "title": "Advanced capstone and graduation",
             "topics": "Design, build, deploy and present an advanced AI project.",
             "tools": "Vercel, GitHub, Supabase"
@@ -406,42 +406,38 @@
     {
       "type": "testimonials",
       "fields": {
-        "heading": "In their *own words*",
+        "heading": "Hear what *people say*",
         "items": [
           {
             "name": "Hatim Sorangwala",
             "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
-            "photo": "hatim-sorangwala.jpg"
-          },
-          {
-            "name": "Alphonsa N. P",
-            "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital",
-            "quote": "The AI training is highly practical and directly applicable to modern healthcare operations.",
-            "photo": "alphonsa-n-p.jpg"
-          },
-          {
-            "name": "Khushi Dodiya",
-            "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview"
-          },
-          {
-            "name": "Haritha Nair",
-            "role": "AI design student, Vadodara",
-            "quote": "The live sessions and practical projects helped me quickly build real creative skills."
+            "photo": "hatim-sorangwala.jpg",
+            "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"
           },
           {
             "name": "Dev Chokshi",
             "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
-            "photo": "dev-chokshi.jpg"
+            "photo": "dev-chokshi.jpg",
+            "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"
+          },
+          {
+            "name": "Alphonsa N. P",
+            "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital",
+            "photo": "alphonsa-n-p.jpg",
+            "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."
+          },
+          {
+            "name": "Haritha Nair",
+            "role": "AI design student, Vadodara",
+            "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."
           },
           {
             "name": "Nilesh Chaudasama",
             "role": "Working professional, Vadodara",
-            "quote": "The training was practical, structured, and easy to apply in daily professional tasks."
+            "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."
           }
-        ]
+        ],
+        "layout": "fan"
       }
     },
     {

@@ -114,21 +114,21 @@ function render_view(string $name, array $vars): string
     return (string) ob_get_clean();
 }
 
-/** Runs a section partial. It sees exactly $f, $s, $page and $settings; the file arrives as an extra argument to keep it out of scope. */
-function section_include(array $f, int $s, array $page, array $settings): string
+/** Runs a section partial with its fields, page context and shared-background flag. */
+function section_include(array $f, int $s, array $page, array $settings, string $file, bool $sharedTerrain = false): string
 {
     ob_start();
-    include func_get_arg(4);
+    include $file;
     return (string) ob_get_clean();
 }
 
-function render_section_in(array $section, int $s, array $page, array $settings): string
+function render_section_in(array $section, int $s, array $page, array $settings, bool $sharedTerrain = false): string
 {
     $type = (string) ($section['type'] ?? '');
     if (!isset(section_registry()[$type])) {
         return '';
     }
-    return section_include($section['fields'] ?? [], $s, $page, $settings, SECTIONS_DIR . "/$type.php");
+    return section_include($section['fields'] ?? [], $s, $page, $settings, SECTIONS_DIR . "/$type.php", $sharedTerrain);
 }
 
 /** One section without page context ($page and $settings are empty). */
@@ -163,7 +163,14 @@ function render_page_body(array $page, array $settings): string
         $body .= render_view('page-header', ['page' => $page]);
     }
     foreach ($sections as $i => $section) {
-        $body .= render_section_in($section, $i, $page, $settings);
+        $sharedTerrain = ($section['type'] ?? '') === 'work_gallery' && ($sections[$i + 1]['type'] ?? '') === 'versus';
+        if ($sharedTerrain) {
+            $body .= '<div class="workscape-pair"><div class="workscape__terrain" aria-hidden="true"><canvas class="workscape__canvas"></canvas></div>';
+        }
+        $body .= render_section_in($section, $i, $page, $settings, $sharedTerrain);
+        if (($section['type'] ?? '') === 'versus' && ($sections[$i - 1]['type'] ?? '') === 'work_gallery') {
+            $body .= '</div>';
+        }
     }
     return $body;
 }

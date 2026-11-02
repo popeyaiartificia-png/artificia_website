@@ -5,7 +5,9 @@ $reviewDraft = !empty($f['review_text']) && !$reviewApproved;
 $showReview = !empty($f['review_text']) && ($reviewApproved || (function_exists('config') && config()['env'] === 'local'));
 ?>
 <section class="sec sec--work_gallery workscape" data-work-gallery>
+<?php if (!$sharedTerrain): ?>
   <div class="workscape__terrain" aria-hidden="true"><canvas class="workscape__canvas"></canvas></div>
+<?php endif ?>
   <div class="wrap workscape__head">
     <h2><?= heading_html($f['heading'] ?? '') ?></h2>
   </div>

@@ -4,6 +4,7 @@ $id = 'lf' . $s;
 $buttons = ['masterclass' => 'Send my enquiry', 'corporate' => 'Ask for the free pilot', 'services' => 'Book the free flow audit', 'contact' => 'Send message'];
 $label = trim($f['button_label'] ?? '') !== '' ? $f['button_label'] : $buttons[$type];
 $wa = whatsapp_url($settings);
+$stageForm = ($page['slug'] ?? '') === 'home';
 $field = function (string $name, string $text, string $type = 'text', bool $req = true, string $auto = '') use ($id): string {
     $fid = $id . '-' . $name;
     $attrs = ' id="' . $fid . '" name="' . $name . '" type="' . $type . '"' . ($req ? ' required' : '') . ($auto ? ' autocomplete="' . $auto . '"' : '');
@@ -24,9 +25,12 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
         . '<textarea class="input" id="' . $fid . '" name="' . $name . '" rows="4"' . ($req ? ' required' : '') . ' aria-describedby="' . $fid . '-err"></textarea><p class="field__err" id="' . $fid . '-err"></p></div>';
 };
 ?>
-<section class="sec sec--lead_form lead" id="enquire" data-section="lead">
+<section class="sec sec--lead_form lead<?= $stageForm ? ' lead--stage' : '' ?>" id="enquire" data-section="lead">
   <div class="wrap lead__grid">
     <div class="lead__side">
+<?php if ($stageForm): ?>
+      <p class="lead__eyebrow"><?= icon('arrow-up-right') ?>Start a conversation</p>
+<?php endif ?>
       <?= sec_head($f['heading'] ?? '') ?>
 <?php if (!empty($f['intro'])): ?>
       <p class="lede"><?= e($f['intro']) ?></p>
@@ -41,6 +45,9 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
       <p class="lead__wa">Prefer WhatsApp? <a href="<?= e($wa) ?>">Message us directly</a></p>
     </div>
     <form class="lead-form plate" data-form-type="<?= $type ?>" data-wa="<?= e($wa) ?>" method="post" action="/lead" novalidate>
+<?php if ($stageForm): ?>
+      <p class="lead-form__eyebrow">Your enquiry<?= icon('arrow-up-right') ?></p>
+<?php endif ?>
       <input type="hidden" name="form_type" value="<?= $type ?>">
       <input type="hidden" name="ts" value="<?= e(lead_ts((string) config()['app_secret'])) ?>">
 <?php foreach (array_keys(LEAD_TRACKING) as $h): // site.js fills these on submit ?>

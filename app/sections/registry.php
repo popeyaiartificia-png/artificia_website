@@ -181,6 +181,7 @@ function section_registry(): array
         ]],
         'testimonials' => ['label' => 'Testimonials', 'fields' => [
             'heading' => $text('Heading', true),
+            'layout' => $select('Layout', ['standard', 'fan']),
             'items' => $list('Testimonials', [
                 'name' => $text('Name', true),
                 'role' => $text('Role', true),

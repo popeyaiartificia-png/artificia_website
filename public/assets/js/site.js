@@ -68,10 +68,61 @@
     f.focus();
   });
 
+  // Testimonial cards keep working links without JavaScript; enhanced playback opens one player on demand.
+  var reviewDialog, reviewOpener, reviewOverflow;
+  d.addEventListener('click', function (e) {
+    var card = e.target.closest('[data-testimonial-fan] .voices__surface');
+    if (!card || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0 || !window.HTMLDialogElement) return;
+    e.preventDefault();
+    if (!reviewDialog) {
+      reviewDialog = d.createElement('dialog');
+      reviewDialog.className = 'review-player';
+      reviewDialog.setAttribute('aria-labelledby', 'review-player-title');
+      reviewDialog.innerHTML = '<div class="review-player__head"><div><h3 id="review-player-title"></h3><p></p></div><button class="review-player__close" type="button" aria-label="Close testimonial">&times;</button></div><div class="review-player__body"></div>';
+      d.body.appendChild(reviewDialog);
+      reviewDialog.querySelector('button').addEventListener('click', function () { reviewDialog.close(); });
+      reviewDialog.addEventListener('click', function (event) {
+        var r = reviewDialog.getBoundingClientRect();
+        if (event.target === reviewDialog && (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom)) reviewDialog.close();
+      });
+      reviewDialog.addEventListener('close', function () {
+        reviewDialog.querySelector('.review-player__body').replaceChildren();
+        d.body.style.overflow = reviewOverflow;
+        if (reviewOpener && reviewOpener.isConnected) reviewOpener.focus({ preventScroll: true });
+      });
+    }
+    reviewOpener = card;
+    reviewDialog.querySelector('h3').textContent = card.dataset.reviewName;
+    reviewDialog.querySelector('.review-player__head p').textContent = card.dataset.reviewRole;
+    var body = reviewDialog.querySelector('.review-player__body');
+    body.replaceChildren();
+    if (card.dataset.reviewSrc) {
+      var frame = d.createElement('iframe');
+      frame.src = card.dataset.reviewSrc;
+      frame.title = 'Testimonial from ' + card.dataset.reviewName;
+      frame.allow = 'autoplay; fullscreen'; frame.allowFullscreen = true;
+      var fallback = d.createElement('a');
+      fallback.className = 'review-player__link'; fallback.href = card.href;
+      fallback.target = '_blank'; fallback.rel = 'noopener'; fallback.textContent = 'Open video in a new tab';
+      body.append(frame, fallback);
+    } else {
+      var quote = d.createElement('blockquote');
+      quote.textContent = card.dataset.reviewQuote; body.appendChild(quote);
+    }
+    reviewOverflow = d.body.style.overflow;
+    d.body.style.overflow = 'hidden';
+    reviewDialog.showModal();
+  });
+
   // The WhatsApp button waits until the hero (and its chooser) has scrolled away.
-  var fab = d.querySelector('.wa-float'), hero = d.querySelector('.hero');
-  if (fab && hero && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { fab.classList.toggle('is-away', es[0].isIntersecting); }).observe(hero);
+  // It also steps aside over the footer, which carries its own WhatsApp link.
+  var fab = d.querySelector('.wa-float'), fabAway = [d.querySelector('.hero'), d.querySelector('[data-foot]')].filter(Boolean);
+  if (fab && fabAway.length && 'IntersectionObserver' in window) {
+    var fabIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.inSight = e.isIntersecting; });
+      fab.classList.toggle('is-away', fabAway.some(function (el) { return el.inSight; }));
+    });
+    fabAway.forEach(function (el) { fabIo.observe(el); });
   }
 
   // Attribution: the first visit's utm_*, gclid, fbclid and outside referrer are kept in the atk cookie for 30 days.
@@ -320,7 +371,7 @@
   // A topographic ground on a canvas: the stage's, and the sections' under it. `from` is the element whose top meets the
   // stage's bottom; each canvas shifts the field by its distance from there, so the moving contours run on without a seam.
   // The flood at the foot of Before AI / With AI: the dark rises over the same terrain, low ground first, so its edge is a moving contour
-  // with one neon line on the crest. uRise is how far it has climbed, in pixels.
+  // with a clean dark edge. uRise is how far it has climbed, in pixels.
   var FLOOD = [
     '  float s = clamp(uRes.x / 1536., .6, 1.2), y = gl_FragCoord.y, x = gl_FragCoord.x / uRes.x * 2. - 1.;',
     '  float amp = mix(34., 120., smoothstep(30., 320., uRise)) * clamp(uRes.x / 1536., .8, 1.2) * (.4 + .6 * x * x);',
@@ -328,9 +379,8 @@
     '  float swell = (sin(x * 2.6 + uTime * .55) * 9. + sin(x * 6.1 - uTime * .4) * 4.) * s;', // keeps moving when the page is still
     '  float e = y - rise + swell * smoothstep(0., 40., y) + (v - 4.5) * amp * smoothstep(0., 90. * s, y);',
     '  float aa = max(fwidth(e), 1e-3), o = 1. - smoothstep(-aa, aa, e);',
-    '  float l = (1. - smoothstep(.4, 1.5, abs(e) / aa)) * .95;', // one lit contour on the crest
-    '  vec3 c = mix(vec3(.067, .082, .059), vec3(.47, .5, .36), a) * o;',
-    '  gl_FragColor = vec4(mix(c, vec3(.824, 1., 0.), l), mix(o, 1., l));'
+    '  vec3 c = mix(FLOOD_BASE, FLOOD_LINE, a) * o;',
+    '  gl_FragColor = vec4(c, o);'
   ].join('\n');
   var topoField = function (topo, from, flood) {
     // Contour lines of a smooth noise field (marching squares), drawn once per size, like a survey map.
@@ -382,10 +432,11 @@
         'void main() {',
         '  vec2 p = (gl_FragCoord.xy + uOff) / 360.; float t = uTime * .05;',
         '  vec2 w = vec2(noise(p * .6 + vec2(t, 1.7)), noise(p * .6 + vec2(4.3, -t))) - .5;', // a slow warp folds the terrain
-        '  float v = fbm(p + w * 1.1 + vec2(t * .5, t * .3)) * 9.;',
+        '  float v = fbm(p + w * 1.1 + vec2(t * .5, t * .3)) * ' + (topo.weave ? '27.' : '9.') + ';',
         '  float dl = abs(fract(v - .5) - .5) / max(fwidth(v), 1e-4);', // distance to the nearest contour, in pixels
         '  float a = (1. - smoothstep(.35, 1.35, dl)) * .19;',
-        flood ? FLOOD : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
+        flood ? FLOOD.replace('FLOOD_BASE', flood.base || 'vec3(.067, .082, .059)').replace('FLOOD_LINE', flood.line || 'vec3(.47, .5, .36)')
+          : topo.weave ? '  float k = a * 2.1; gl_FragColor = vec4(vec3(.824, 1., 0.) * k, k);' : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
         '}'
       ].join('\n')));
       tg.bindAttribLocation(tp, 0, 'p');
@@ -407,17 +458,23 @@
         var w = topo.clientWidth, h = topo.clientHeight;
         if (topo.width !== w || topo.height !== h) { topo.width = w; topo.height = h; tg.viewport(0, 0, w, h); }
         tg.uniform2f(uR, w, h);
-        tg.uniform2f(uO, 0, from ? from.getBoundingClientRect().top - topo.getBoundingClientRect().bottom : 0);
-        tg.uniform1f(uT, now / 1000);
+        var box = topo.getBoundingClientRect();
+        tg.uniform2f(uO, box.left, from ? from.getBoundingClientRect().top - box.bottom : 0);
+        topo.terrainTime = now / 1000;
+        tg.uniform1f(uT, topo.terrainTime);
         if (flood) { tg.uniform1f(uL, flood.rise); was = flood.rise; }
         tg.drawArrays(tg.TRIANGLES, 0, 3);
       };
       requestAnimationFrame(loop);
       return true;
     };
+    // The footer adds no GPU work on phones, where WebGL contexts are scarce: a resting arc and a drawn map, as under reduced motion.
+    var lean = topo.closest('.foot') && !matchMedia('(min-width: 1100px)').matches;
     // Without motion or WebGL the flood stays what the CSS draws: a resting arc.
-    if (flood) { if (!still && liveTopo()) topo.parentNode.classList.add('is-live'); return; }
-    if (still || !liveTopo()) {
+    if (flood) { if (!still && !lean && liveTopo()) topo.parentNode.classList.add('is-live'); return; }
+    if (topo.weave && lean) { topo.style.display = 'none'; return; }
+    topo.terrainLive = !still && !lean && liveTopo();
+    if (!topo.terrainLive) {
       drawTopo();
       var rt;
       addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(drawTopo, 150); });
@@ -425,10 +482,13 @@
   };
   // Viewport-sized contour ground. CSS and the SVG remain usable without WebGL.
   var createWorkTerrain = function (section, canvas) {
+    var surface = section.closest('.workscape-pair') || section;
     var gl, program, buffer, vertex, fragment, uniforms, observer, raf = 0;
     var dead = false, lost = false, ready = false, seen = false, painted = false, last = 0, progress = -1;
     var ground = [0, 0, 0], line = [0, 0, 0];
     var pointer = { x: .5, y: .5, tx: .5, ty: .5, vx: 0, vy: 0, dx: 0, dy: 0, power: 0, force: 0, entered: false };
+    var boundary = surface.previousElementSibling;
+    var priorTerrain = boundary && boundary.matches('.tools--flow, .statement') ? boundary.querySelector('.topo-bg') : null;
     var startGround = [40, 44, 32], endGround = [244, 244, 237];
     var startLine = [54, 59, 37], endLine = [212, 215, 202];
     var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
@@ -445,6 +505,7 @@
         bg.push(Math.round(b)); stroke.push(Math.round(l));
       }
       section.style.setProperty('--work-ground', 'rgb(' + bg.join(',') + ')');
+      surface.style.setProperty('--work-ground', 'rgb(' + bg.join(',') + ')');
       section.style.setProperty('--work-line', 'rgb(' + stroke.join(',') + ')');
       section.classList.toggle('is-light', p > .42);
     };
@@ -453,7 +514,7 @@
       if (!dead && !lost && ready && seen && !d.hidden && !raf) raf = requestAnimationFrame(frame);
     };
     var updateSeen = function () {
-      var r = section.getBoundingClientRect();
+      var r = surface.getBoundingClientRect();
       seen = r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
       if (seen && !d.hidden) schedule(); else stop();
     };
@@ -473,7 +534,7 @@
     var leave = function () { pointer.force = 0; pointer.dx = pointer.dy = 0; pointer.entered = false; };
     var contextLost = function () {
       lost = true; ready = false; stop();
-      section.classList.remove('has-live-terrain');
+      section.classList.remove('has-live-terrain', 'can-live-terrain');
     };
     var release = function () {
       if (!gl) return;
@@ -505,6 +566,12 @@
         pointer.force *= fade; pointer.dx *= fade; pointer.dy *= fade;
         gl.useProgram(program);
         gl.uniform2f(uniforms.res, w, h);
+        gl.uniform2f(uniforms.css, canvas.clientWidth, canvas.clientHeight);
+        var bounds = canvas.getBoundingClientRect(), sectionBounds = section.getBoundingClientRect();
+        var anchor = afterStage || section;
+        gl.uniform3f(uniforms.join, anchor.getBoundingClientRect().top, bounds.bottom, sectionBounds.top);
+        gl.uniform1f(uniforms.joinEnabled, priorTerrain ? 1 : 0);
+        gl.uniform1f(uniforms.sharedTime, priorTerrain && priorTerrain.terrainTime || now / 1000);
         gl.uniform1f(uniforms.time, now / 1000);
         gl.uniform3f(uniforms.ground, ground[0], ground[1], ground[2]);
         gl.uniform3f(uniforms.line, line[0], line[1], line[2]);
@@ -517,7 +584,7 @@
           painted = true; section.classList.add('has-live-terrain');
         }
       } catch (_) {
-        ready = false; stop(); release(); section.classList.remove('has-live-terrain');
+        ready = false; stop(); release(); section.classList.remove('has-live-terrain', 'can-live-terrain');
         return;
       }
       schedule();
@@ -531,12 +598,14 @@
       window.removeEventListener('scroll', updateSeen); window.removeEventListener('resize', updateSeen);
       canvas.removeEventListener('webglcontextlost', contextLost);
       release();
-      section.classList.remove('has-live-terrain', 'is-light');
+      section.classList.remove('has-live-terrain', 'can-live-terrain', 'is-light');
       section.style.removeProperty('--work-ground'); section.style.removeProperty('--work-line');
+      if (surface !== section) surface.style.removeProperty('--work-ground');
     };
     var api = { setProgress: setProgress, destroy: destroy };
     setProgress(0);
     try {
+      if (priorTerrain && !priorTerrain.terrainLive) return api;
       gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
       if (!gl || !gl.getExtension('OES_standard_derivatives')) return api;
       var compile = function (type, source) {
@@ -550,7 +619,8 @@
       fragment = compile(gl.FRAGMENT_SHADER, [
         '#extension GL_OES_standard_derivatives : enable',
         'precision highp float;',
-        'uniform vec2 uRes, uPointer, uVelocity; uniform float uTime, uPower;',
+        'uniform vec2 uRes, uCSS, uPointer, uVelocity; uniform vec3 uJoin;',
+        'uniform float uTime, uSharedTime, uPower, uJoinEnabled;',
         'uniform vec3 uGround, uLine;',
         NOISE,
         'void main() {',
@@ -561,10 +631,24 @@
         '  vec2 delta = uv - uPointer; delta.x *= uRes.x / uRes.y;',
         '  float nearPointer = exp(-dot(delta, delta) * 8.);',
         '  p += warp * 1.1 + uVelocity * nearPointer * .15 * uPower;',
-        '  float field = fbm(p + vec2(t * .08, -t * .04)) * 3.;',
-        '  float dist = abs(fract(field - .5) - .5) / max(fwidth(field), .00001);',
-        '  float ink = 1. - smoothstep(.25, 1.25, dist);',
-        '  gl_FragColor = vec4(mix(uGround, uLine, ink), 1.);',
+        '  vec2 pixel = gl_FragCoord.xy * uCSS / uRes;',
+        '  float depth = uJoin.y - pixel.y - uJoin.z;',
+        '  float blend = uJoinEnabled > .5 ? smoothstep(0., 420., depth) : 1.;',
+        // Align the means by an integer contour period, so morphing density does not add a horizontal band.
+        '  float field = fbm(p + vec2(t * .08, -t * .04)) * 3. + 3.;',
+        '  if (blend < 1.) {',
+        '    vec2 q = (pixel + vec2(0., uJoin.x - uJoin.y)) / 360.;',
+        '    float clock = uSharedTime * .05;',
+        '    vec2 bend = vec2(noise(q * .6 + vec2(clock, 1.7)), noise(q * .6 + vec2(4.3, -clock))) - .5;',
+        '    float shared = fbm(q + bend * 1.1 + vec2(clock * .5, clock * .3)) * 9.;',
+        '    field = mix(shared, field, blend);',
+        '  }',
+        '  float dist = abs(fract(field - .5) - .5) / max(fwidth(field), mix(.0001, .00001, blend));',
+        '  float ink = 1. - smoothstep(mix(.35, .25, blend), mix(1.35, 1.25, blend), dist);',
+        '  vec3 joinGround = vec3(35., 39., 25.) / 255.;',
+        '  vec3 joinLine = mix(joinGround, vec3(.47, .5, .36), .19);',
+        '  vec3 ground = mix(joinGround, uGround, blend), line = mix(joinLine, uLine, blend);',
+        '  gl_FragColor = vec4(mix(ground, line, ink), 1.);',
         '}'
       ].join('\n'));
       program = gl.createProgram();
@@ -578,10 +662,10 @@
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
       gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
       uniforms = {};
-      [['res', 'uRes'], ['time', 'uTime'], ['ground', 'uGround'], ['line', 'uLine'], ['pointer', 'uPointer'], ['velocity', 'uVelocity'], ['power', 'uPower']].forEach(function (pair) {
+      [['res', 'uRes'], ['css', 'uCSS'], ['join', 'uJoin'], ['joinEnabled', 'uJoinEnabled'], ['sharedTime', 'uSharedTime'], ['time', 'uTime'], ['ground', 'uGround'], ['line', 'uLine'], ['pointer', 'uPointer'], ['velocity', 'uVelocity'], ['power', 'uPower']].forEach(function (pair) {
         uniforms[pair[0]] = gl.getUniformLocation(program, pair[1]);
       });
-      ready = true;
+      ready = true; section.classList.add('can-live-terrain');
       canvas.addEventListener('webglcontextlost', contextLost);
       section.addEventListener('pointermove', move, { passive: true }); section.addEventListener('pointerleave', leave);
       d.addEventListener('visibilitychange', visibility);
@@ -590,19 +674,36 @@
           seen = entries[0].isIntersecting;
           if (seen && !d.hidden) schedule(); else stop();
         });
-        observer.observe(section);
+        observer.observe(surface);
       } else {
         window.addEventListener('scroll', updateSeen, { passive: true }); window.addEventListener('resize', updateSeen);
       }
       updateSeen();
     } catch (_) {
-      ready = false; stop(); release(); section.classList.remove('has-live-terrain');
+      ready = false; stop(); release(); section.classList.remove('has-live-terrain', 'can-live-terrain');
     }
     return api;
   };
 
   var afterStage = (d.querySelector('.hero--stage') || {}).nextElementSibling;
-  d.querySelectorAll('.topo-bg').forEach(function (c) { if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30 }; topoField(c, afterStage || c.parentNode, c.flood); });
+  d.querySelectorAll('.topo-bg').forEach(function (c) {
+    // The shared gallery canvas also draws behind the comparison; keep only its later dark flood.
+    if (c.parentNode.matches('.versus') && c.closest('.workscape-pair')) return;
+    if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30 };
+    if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)' };
+    topoField(c, afterStage || c.parentNode, c.flood);
+  });
+
+  // The footer masthead clears over the panel; its generated robot remains one coherent cutout.
+  d.querySelectorAll('[data-foot]').forEach(function (foot) {
+    var bar = d.querySelector('[data-top]');
+    if (bar) {
+      var clear = function () { bar.classList.toggle('is-over-foot', innerWidth >= 1100 && innerHeight >= 620 && foot.getBoundingClientRect().top < 32); };
+      addEventListener('scroll', clear, { passive: true });
+      addEventListener('resize', clear);
+      clear();
+    }
+  });
 
   // The stage hero: a topographic ground, then the robot redrawn in WebGL with liquid neon blobs that reveal a second layer.
   d.querySelectorAll('[data-stage]').forEach(function (stage) {
@@ -1099,7 +1200,7 @@
   d.querySelectorAll('[data-work-gallery]').forEach(function (section) {
     if (!section.querySelector('.workscape__item')) return;
     gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function () {
-      var terrain = createWorkTerrain(section, section.querySelector('.workscape__canvas'));
+      var terrain = createWorkTerrain(section, (section.closest('.workscape-pair') || section).querySelector('.workscape__canvas'));
       // The measured reference uses GSAP's default power1.out for the background's color value.
       var paint = function (self) { terrain.setProgress(1 - Math.pow(1 - self.progress, 2)); };
       var sceneScroll = function () {
@@ -1272,13 +1373,14 @@
       if (context.conditions.reduce) { v.classList.remove('is-wait'); return; }
       var desktop = context.conditions.desktop;
       v.classList.add('is-wait');
-      gsap.set(v, { backgroundColor: v.previousElementSibling && v.previousElementSibling.matches('.workscape') ? '#F4F4ED' : '#232719' });
+      var sharedWhite = v.previousElementSibling && v.previousElementSibling.matches('.workscape');
+      gsap.set(v, { backgroundColor: sharedWhite ? 'transparent' : '#232719' });
       var tl = gsap.timeline({ scrollTrigger: { trigger: v, start: 'top 90%', end: desktop ? 'top 8%' : 'top 32%', scrub: 0.35,
         onUpdate: function (self) { v.classList.toggle('is-wait', self.progress < 0.72); } } });
-      tl.fromTo(v.querySelector('.versus__dawn'),
+      if (!sharedWhite) tl.fromTo(v.querySelector('.versus__dawn'),
         { clipPath: 'ellipse(85% 0% at 50% 100%)' },
-        { clipPath: 'ellipse(100% 155% at 50% 100%)', duration: 1, ease: 'none' }, 0)
-        .from(figA, { xPercent: desktop ? -14 : -5, opacity: 0.4, duration: 0.85, ease: 'power1.out', force3D: false }, 0)
+        { clipPath: 'ellipse(100% 155% at 50% 100%)', duration: 1, ease: 'none' }, 0);
+      tl.from(figA, { xPercent: desktop ? -14 : -5, opacity: 0.4, duration: 0.85, ease: 'power1.out', force3D: false }, 0)
         .from(figB, { xPercent: desktop ? 14 : 5, opacity: 0.4, duration: 0.85, ease: 'power1.out', force3D: false }, 0)
         .from(v.querySelector('.versus__grid'), { opacity: 0, y: 24, duration: 0.4, ease: 'power1.out' }, 0.6);
       // The flood climbs slowly at first, so it never covers copy that is still being read, then closes over what is left.
@@ -1296,6 +1398,40 @@
       };
       v.addEventListener('focusin', revealFocus);
       return function () { v.removeEventListener('focusin', revealFocus); v.classList.remove('is-wait'); };
+    });
+  });
+
+  // One portrait-led deck first, then the stories open together as the visitor scrolls.
+  // The fully open CSS layout remains the fallback on phones, short screens and reduced motion.
+  d.querySelectorAll('[data-testimonial-fan]').forEach(function (section) {
+    gsap.matchMedia().add('(min-width: 900px) and (min-height: 680px) and (prefers-reduced-motion: no-preference)', function () {
+      var cards = section.querySelectorAll('.voices__card');
+      if (cards.length < 2) return;
+      var stage = section.querySelector('.voices__stage'), fan = section.querySelector('.voices__fan');
+      var stamp = section.querySelector('.voices__stamp'), keyboardOpen = false;
+      section.classList.add('is-sequenced');
+      var reveal = gsap.timeline({ scrollTrigger: {
+        trigger: stage, start: 'top top', end: function () { return '+=' + Math.round(innerHeight * .85); },
+        pin: stage, scrub: .65, invalidateOnRefresh: true,
+        onUpdate: function (self) { section.classList.toggle('is-open', keyboardOpen || self.progress > .65); }
+      } });
+      // A short opening hold gives the single stack its own moment before the fan unfolds.
+      reveal.fromTo(fan, { '--fan-spread': 0 }, { '--fan-spread': 1, duration: .7, ease: 'power2.inOut', immediateRender: true }, .16)
+        .to({}, { duration: .14 });
+      if (stamp) reveal.to(stamp, { opacity: 0, scale: .75, rotation: 8, duration: .25, ease: 'power2.in' }, .16);
+      var revealFocus = function () {
+        if (keyboardOpen) return;
+        keyboardOpen = true;
+        // Release the scroll pin as well as the animation, so Tab can reach the following section.
+        var trigger = reveal.scrollTrigger, start = trigger.start, end = trigger.end;
+        trigger.kill();
+        reveal.pause().progress(1);
+        section.classList.add('is-open');
+        ST.refresh();
+        if (scrollY >= start && scrollY <= end) window.scrollTo({ top: section.getBoundingClientRect().top + scrollY, behavior: 'instant' });
+      };
+      section.addEventListener('focusin', revealFocus);
+      return function () { section.removeEventListener('focusin', revealFocus); section.classList.remove('is-sequenced', 'is-open'); };
     });
   });
 
@@ -1361,6 +1497,23 @@
       paint();
       tl.to(o, { t: 1, duration: 1.1, ease: 'power3.out', onUpdate: paint }, 0.1);
     }
+  });
+
+  // The footer arrives: neon floods up over the last section, the frame closes in, the robot rises, then the line is said and the AI circled.
+  d.querySelectorAll('[data-foot]').forEach(function (foot) {
+    var rise = foot.querySelector('.foot__rise'), flood = (rise.querySelector('canvas') || {}).flood;
+    if (flood && rise.classList.contains('is-live')) gsap.fromTo(flood, { rise: 30 }, { rise: function () { return rise.offsetHeight * 1.4; }, ease: 'power3.in',
+      scrollTrigger: { trigger: foot, start: 'top bottom', end: 'top 10%', scrub: 1, invalidateOnRefresh: true } });
+    gsap.matchMedia().add({ composed: '(min-width: 1100px) and (min-height: 620px)', stacked: '(max-width: 1099px), (max-height: 619px)' }, function (context) {
+      var composed = context.conditions.composed, words = foot.querySelectorAll('.foot__say > span'), mark = foot.querySelector('.foot__mark path');
+      if (composed) gsap.timeline({ scrollTrigger: { trigger: foot, start: 'top 88%', end: 'bottom bottom', scrub: 0.7, invalidateOnRefresh: true } })
+        .fromTo(foot.querySelector('.foot__panel'), { scale: 0.93 }, { scale: 1, ease: 'power2.out', duration: 1, transformOrigin: '50% 100%' }, 0)
+        .fromTo(foot.querySelector('.foot__figure'), { yPercent: 34 }, { yPercent: 0, ease: 'power2.out', duration: 1 }, 0);
+      var say = gsap.timeline({ scrollTrigger: { trigger: foot, start: composed ? 'top 42%' : 'top 70%', once: true } });
+      say.from(words, { yPercent: 40, opacity: 0, duration: 1, ease: out, stagger: 0.09 }, 0)
+        .fromTo(mark, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut' }, 0.45);
+      if (composed) say.from(foot.querySelectorAll('.foot__col'), { opacity: 0, y: 22, duration: 0.9, ease: out, stagger: 0.12 }, 0.2);
+    });
   });
 
   // Process steps: the rail fills with scroll and each step lights when the line reaches it.

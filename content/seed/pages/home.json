@@ -9,7 +9,7 @@
     {
       "type": "hero",
       "fields": {
-        "eyebrow": "AI automation \u00b7 Software \u00b7 Training \u00b7 Vadodara",
+        "eyebrow": "AI automation · Software · Training · Vadodara",
         "primary_cta_label": "Book Free AI Consultation",
         "primary_cta_link": "/services#enquire",
         "secondary_cta_label": "Explore our solutions",
@@ -124,7 +124,7 @@
       "fields": {
         "heading": "Our work. *Built around your business.*",
         "thought": "Good technology leaves room for *better work.*",
-        "review_text": "One partner for our website, automation and *AI.*",
+        "review_text": "One partner for all your IT needs, from software solutions to *automation.*",
         "review_status": "draft",
         "review_name": "Pavin",
         "review_company": "Orkay Tiles",
@@ -148,22 +148,22 @@
             "link": "https://www.orkaytiles.com/"
           },
           {
-            "label": "Customer conversations",
-            "title": "From first hello to the right team.",
+            "label": "Our services / AI & automation",
+            "title": "AI automation, agents, CRM and marketing systems.",
             "visual": "conversations",
-            "link": "/services/gohighlevel"
+            "link": "/services"
           },
           {
-            "label": "Voice & AI",
-            "title": "Another way to connect.",
+            "label": "Our services / Voice agents",
+            "title": "AI voice agents for business conversations.",
             "visual": "voice",
-            "link": "/services/rag-custom-automation"
+            "link": "/services"
           },
           {
-            "label": "Knowledge, connected",
-            "title": "Your documents. Within reach.",
+            "label": "Our services / Digital solutions",
+            "title": "Websites, apps, cloud, SEO and AI training.",
             "visual": "knowledge",
-            "link": "/services/rag-custom-automation"
+            "link": "/services"
           }
         ]
       }
@@ -236,189 +236,9 @@
       }
     },
     {
-      "type": "tools",
-      "fields": {
-        "heading": "The tools you will *learn*",
-        "intro": "Each one is taught hands-on in the masterclass, on the day shown. Days 31 to 60 belong to the Full program.",
-        "tools": [
-          {
-            "name": "ChatGPT",
-            "brand": "chatgpt",
-            "note": "Day 1"
-          },
-          {
-            "name": "Claude",
-            "brand": "claude",
-            "note": "Day 1"
-          },
-          {
-            "name": "Gemini",
-            "brand": "gemini",
-            "note": "Day 1"
-          },
-          {
-            "name": "Copilot",
-            "brand": "copilot",
-            "note": "Day 4"
-          },
-          {
-            "name": "NotebookLM",
-            "brand": "notebooklm",
-            "note": "Day 7"
-          },
-          {
-            "name": "Gamma",
-            "brand": "gamma",
-            "note": "Day 11"
-          },
-          {
-            "name": "ElevenLabs",
-            "brand": "elevenlabs",
-            "note": "Day 14"
-          },
-          {
-            "name": "HeyGen",
-            "brand": "heygen",
-            "note": "Day 15"
-          },
-          {
-            "name": "Canva",
-            "brand": "canva",
-            "note": "Day 16"
-          },
-          {
-            "name": "Lovable",
-            "brand": "lovable",
-            "note": "Day 18"
-          },
-          {
-            "name": "n8n",
-            "brand": "n8n",
-            "note": "Day 36"
-          },
-          {
-            "name": "Claude Code",
-            "brand": "claude-code",
-            "note": "Day 50"
-          }
-        ]
-      }
-    },
-    {
-      "type": "process_steps",
-      "fields": {
-        "heading": "Sixty days, *in four stretches*",
-        "intro": "The 30-day Foundation is the first three. The 60-day Full program adds the fourth.",
-        "steps": [
-          {
-            "title": "Days 1\u201310: prompting and everyday AI",
-            "text": "Prompt frameworks, ChatGPT, Claude and Gemini in depth, Copilot in Word, Excel and PowerPoint, research tools and NotebookLM."
-          },
-          {
-            "title": "Days 11\u201325: content, websites and a first app",
-            "text": "AI presentations, images, video, voice and avatars, Canva AI and data analysis, then prompt-to-website and building and shipping an app."
-          },
-          {
-            "title": "Days 26\u201330: capstone and Demo Day",
-            "text": "Plan, build, test and present a project of your own, with a portfolio page and a map of your next steps."
-          },
-          {
-            "title": "Days 31\u201360: agents, automation and RAG",
-            "text": "Voice agents, n8n automations and WhatsApp bots, MCP, RAG and multi-agent systems, then Claude Code and local models."
-          }
-        ]
-      }
-    },
-    {
-      "type": "case_study",
-      "fields": {
-        "heading": "Our client Orkay Tiles runs on *what we built*",
-        "client": "Orkay Tiles International",
-        "summary": "Orkay Tiles International is our client. We set up and run their GoHighLevel, built their website and deployed it on AWS, and created n8n workflows that handle their daily lead data.",
-        "image": "orkay-website.jpg",
-        "built": [
-          {
-            "title": "GoHighLevel, set up and run",
-            "text": "Two accounts: India dealer leads over WhatsApp and export buyers by email, each lead routed to the right rep."
-          },
-          {
-            "title": "A website on AWS",
-            "text": "We built orkaytiles.com and deployed it on AWS, with an admin Orkay's team edits."
-          },
-          {
-            "title": "n8n for the daily data",
-            "text": "Several n8n workflows move, check and follow up on each day's leads, so none sit unanswered."
-          },
-          {
-            "title": "Called by AI",
-            "text": "An AI voice agent calls new India leads in Hindi."
-          }
-        ],
-        "link_label": "Read the case study",
-        "link": "/case-studies/orkay-tiles"
-      }
-    },
-    {
-      "type": "card_grid",
-      "fields": {
-        "heading": "Who the masterclass *is for*",
-        "intro": "Students, working professionals, founders and freelancers sit in the same room. Each page shows how the course fits your week.",
-        "columns": "3",
-        "cards": [
-          {
-            "image": "audience-student.jpg",
-            "title": "Students",
-            "text": "Build a portfolio of real AI projects while you study: slides, images, video, a website and, on the Full program, agents and automations.",
-            "link": "/ai-masterclass/students"
-          },
-          {
-            "image": "audience-professional.jpg",
-            "title": "Working professionals",
-            "text": "Spend fewer hours on reports, emails, spreadsheets and slides. Learn the tools that fit the work you already do.",
-            "link": "/ai-masterclass/working-professionals"
-          },
-          {
-            "image": "audience-founder.jpg",
-            "title": "Business owners and founders",
-            "text": "See what AI can take off your desk, then build the first automations yourself, or have our team build them for you.",
-            "link": "/ai-masterclass/business-owners"
-          }
-        ]
-      }
-    },
-    {
-      "type": "stats",
-      "fields": {
-        "heading": "What AI-enabled teams *typically* see",
-        "note": "Typical outcomes for AI-enabled teams.",
-        "items": [
-          {
-            "value": "92%",
-            "label": "faster lead handling"
-          },
-          {
-            "value": "10\u201320 hrs",
-            "label": "saved per employee each week"
-          },
-          {
-            "value": "65%",
-            "label": "less repetitive work"
-          },
-          {
-            "value": "500%",
-            "label": "boost in customer response"
-          },
-          {
-            "value": "4\u00d7",
-            "label": "faster reporting"
-          }
-        ]
-      }
-    },
-    {
       "type": "testimonials",
       "fields": {
-        "heading": "In their *own words*",
+        "heading": "Hear what *people say*",
         "items": [
           {
             "name": "Hatim Sorangwala",
@@ -448,56 +268,8 @@
             "role": "Working professional, Vadodara",
             "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."
           }
-        ]
-      }
-    },
-    {
-      "type": "faqs",
-      "fields": {
-        "heading": "Common *questions*",
-        "items": [
-          {
-            "question": "What does Artificia do?",
-            "answer": "We teach AI and we build with it: a live masterclass for individuals, custom training for company teams, and AI systems for businesses."
-          },
-          {
-            "question": "Where are you based?",
-            "answer": "In Vadodara, Gujarat. Our office is on Gotri-Sevasi Road, opposite Osia Mall, and the masterclass is taught in person in Vadodara."
-          },
-          {
-            "question": "Do I need to know coding to learn AI?",
-            "answer": "No. The masterclass is designed for beginners and non-technical learners. You learn by using the tools, step by step."
-          },
-          {
-            "question": "How long is the masterclass?",
-            "answer": "One hour a day, on one of two tracks: the 30-day Foundation, or the 60-day Full program, which adds agents, automation, RAG and Claude Code."
-          },
-          {
-            "question": "Are classes live or recorded?",
-            "answer": "Live and in person. Each class has a short opener, the core idea, a live demo and hands-on practice, with your questions answered in the room."
-          },
-          {
-            "question": "Can you train our whole team?",
-            "answer": "Yes. Corporate programs are built around your documents and departments, on-site or online over Microsoft Teams. The first step is a free 2-hour pilot."
-          },
-          {
-            "question": "Which industries do you train?",
-            "answer": "Programs are built from your own documents and work, so they fit any sector. The corporate training page shows how they work for manufacturing, healthcare, pharmaceutical, chemical, import-export and finance teams."
-          },
-          {
-            "question": "What is a flow audit?",
-            "answer": "A free 15-minute call. We trace one process from enquiry to delivery, mark where time is lost, and show what to automate first."
-          }
-        ]
-      }
-    },
-    {
-      "type": "cta",
-      "fields": {
-        "heading": "Training a team? Try a *free pilot*.",
-        "text": "One 2-hour session on AI and prompting for your staff, with no commitment. Judge the training before you decide.",
-        "button_label": "Ask for the pilot",
-        "button_link": "/corporate-ai-training#enquire"
+        ],
+        "layout": "fan"
       }
     },
     {
