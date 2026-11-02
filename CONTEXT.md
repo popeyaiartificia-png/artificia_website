@@ -2,7 +2,7 @@
 
 **Read this first.** It is the single handover file for any AI assistant or developer joining the artificiaai.com rebuild. It covers what the business is, what has been built, the design direction and why, what was rejected, and what comes next.
 
-GitHub publication checkpoint (2 Nov 2026): repository-local author `jaytishah`, email `jaytishah20@gmail.com`; global Git settings unchanged. Previously published baseline: `cfa0343` on `popeyaiartificia-png/artificiaai-website`, branch `main`. The current homepage update batch is prepared for publication. Final preflight: all changed PHP/JS/JSON syntax and whitespace checks pass; scoped Design/Registry/ContentRules/Render suite returns 38 passes and the existing Windows CRLF .htaccess assertion failure (the same rule matches after LF normalization).
+GitHub publication verified (2 Nov 2026): feature commit `926a98c` was pushed to `popeyaiartificia-png/artificiaai-website` on `main`; `git ls-remote` confirmed the full hash `926a98c02bda640c469cdcd41877984d5e7cb029`. Repository-local author remains `jaytishah` / `jaytishah20@gmail.com`; global Git settings unchanged. This commit includes the gallery continuity, testimonial fan, plain-suit robot footer, branded enquiry, section removals and restored reviewer initials. Final PHP/JS/JSON syntax and whitespace checks passed. Scoped suite: 38 passes and one pre-existing Windows CRLF .htaccess assertion failure; both unchanged dot rules match after LF normalization.
 
 **Rule for whoever works on this repo (human or AI):** after *every* change, however small, run the checkpoint. (1) Update this file: fix any section the change makes untrue, and add one dated line to the **Changelog** at the bottom. (2) Add to today's entry in [PROGRESS.md](PROGRESS.md), the daily note: Done / Current lead / Next / Blocked. In Claude Code a Stop hook (`.claude/hooks/checkpoint.sh`) enforces this. Last updated: **2 Nov 2026**.
 
@@ -223,6 +223,8 @@ The homepage now has eight sections in the current design direction; its final e
 ---
 
 ## Changelog
+
+- **2026-11-02** Pushed feature commit `926a98c` to origin/main and verified its full hash on GitHub. The source commit contains all reviewed website changes, current generated assets/prompts and documentation; local config, uploads, runtime files and stock-photo references are excluded. Publication checkpoint recorded in the project notes.
 
 - **2026-11-02** Prepared the current homepage batch for user-requested GitHub publication. Restored initials for Haritha/Nilesh after verifying the legacy photos are stock; excluded those JPEGs/alt references and corrected provenance. PHP/JS/JSON and whitespace pass; scoped suite: 38 passes, one existing Windows CRLF assertion (LF-normalized dot rule matches). Final read-only review found no credentials or missing literal public assets.
 

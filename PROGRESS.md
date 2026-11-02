@@ -5,6 +5,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 ## 2026-11-02
 
 **Done**
+- Published feature commit 926a98c to popeyaiartificia-png/artificiaai-website on main; git ls-remote verified 926a98c02bda640c469cdcd41877984d5e7cb029. All reviewed source/assets and documentation are included; local config, uploads, runtime storage and stock reviewer-photo references are excluded. Final source/JSON/whitespace checks pass; scoped tests: 38 pass, one known Windows CRLF assertion.
 - Prepared the current homepage/gallery/testimonial/footer/form changes for GitHub publication on main. Final review caught stock photos assigned to Haritha/Nilesh: removed seed/sample/alt references, restored initials in local preview with prior snapshot/revisions, and excluded resized stock JPEGs from publication. Five responsive checks and full-review dialog pass. PHP/JS/JSON syntax and whitespace pass; scoped suite: 38 passes, one existing Windows CRLF .htaccess assertion (LF-normalized rule matches). No credentials or missing literal assets found.
 - Fixed the review cards being cut off at the form join: reserved 112-160px below the pinned stage for every rotated card end, retaining card sizes, overlap and scroll sequence. Continued the ivory surface into a homepage-only branded enquiry section with existing Statement Sans/Serif display fonts, Roboto Flex labels/fields, a rounded olive form panel, neon submit/focus states and accessible error colors. Removed the legacy chapter rule/highlighter styling here. Form fields, consent, attribution, spam protections and POST /lead retained. Seven viewport checks (320-1920px), keyboard pin release, reduced motion/no-JS and standalone contact-page scope passed with no overflow/page errors. Mocked validation and success responses verified focus/errors/thank-you without a real submission. Design/Registry tests: 18 passed; PHP syntax and scoped whitespace checks passed. Desktop/mobile and section-join screenshots reviewed.
 - Removed all contour graphics from the footer robot's suit using the built-in image generator. Current jacket is plain charcoal, with the neon satin tie, face, pose, lighting and transparent cutout retained. Saved versioned robot-neon-plain WebP assets (106,060 / 34,318 bytes), framed PNG and exact edit prompt; previous patterned assets retained as unused versions. Updated footer references and source/design records. Browser checks at 1536x864, 1280x720 and 390x844 pass: one image, centered figure/CTA, 22 links, no overflow or page errors. Desktop screenshot reviewed; PHP syntax and scoped whitespace checks passed.
@@ -24,7 +25,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Reworked the testimonial section from scattered cards into one centered portrait stack, then a balanced scroll-driven fan, following the supplied Lando social reference with a distinct lime quotation stamp for Artificia. Hatim leads the centre; the other four stories frame him symmetrically. Preserved the heading, stories, CMS fields, click-to-load dialogs and phone swipe row. Desktop pins only at 900px+ width / 680px+ height; reduced motion, short screens and no-JS retain the static layout. Reverse scrolling closes the deck; keyboard focus completes it and releases the pin. Corrected refresh-state capture with an explicit GSAP fromTo and cached trigger bounds before keyboard cleanup. Desktop/mobile screenshots reviewed. Thirteen browser check groups pass across nine viewport/height combinations, including refresh, reverse scroll, all five keyboard targets, dialogs/iframe cleanup/focus restoration, resizing after keyboard opening, runtime reduced motion and no-JS. No page errors/overflow. Scoped PHP tests: 18 passed; PHP/JS syntax and whitespace checks passed.
 
 **Current lead**
-- Publish the validated homepage update to origin/main and verify the remote commit.
+- GitHub publication verified; current feature checkpoint is 926a98c on main.
 - User review of the complete review-card edges and theme-aligned homepage form at http://127.0.0.1:8000/#enquire.
 - User review of the plain charcoal suit on the footer robot at http://127.0.0.1:8000; neon tie and footer layout retained.
 - User review of the larger, more closely overlapping testimonial cards on http://127.0.0.1:8000/ after Solutions.
@@ -32,7 +33,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 **Next**
 - Check the footer's smoothness on a real GPU and a real phone, plus the Lighthouse pass: checks ran on software rendering, so frame rates are unmeasured. Desktop now gains two WebGL contexts, paused off screen; the suit weave canvas was removed.
 - Free consultation offer (blueprint item 8), then the corporate training band.
-- Finish the current GitHub publication, then continue staging and homepage review.
+- Continue staging and homepage review from the published GitHub checkpoint.
 - Continue the remaining homepage sections in blueprint order after this section is reviewed.
 
 **Blocked**
