@@ -10,7 +10,7 @@
       "fields": {
         "eyebrow": "AI training and automation, Vadodara",
         "variant": "split",
-        "drawing": "documents",
+        "drawing": "predict",
         "doors": [
           {
             "label": "Learn AI",
@@ -26,6 +26,81 @@
             "label": "Build a system",
             "note": "GoHighLevel, websites, RAG",
             "link": "/services"
+          }
+        ]
+      }
+    },
+    {
+      "type": "statement",
+      "fields": {
+        "text": "We build *AI automation* and business software. Then we *train your team* to use it. Built in *Vadodara*."
+      }
+    },
+    {
+      "type": "work_gallery",
+      "fields": {
+        "heading": "Our work. *Built around your business.*",
+        "thought": "Good technology leaves room for *better work.*",
+        "review_text": "One partner for all your IT needs, from software solutions to *automation.*",
+        "review_status": "draft",
+        "review_name": "Pavin",
+        "review_company": "Orkay Tiles",
+        "items": [
+          {
+            "label": "Orkay Tiles / GoHighLevel",
+            "title": "GoHighLevel setup, management and ongoing support.",
+            "visual": "ghl",
+            "link": "/case-studies/orkay-tiles"
+          },
+          {
+            "label": "Orkay Tiles IT Support Team",
+            "title": "Less copying. More flow.",
+            "visual": "support",
+            "link": "/services/rag-custom-automation"
+          },
+          {
+            "label": "Orkay Tiles / Website",
+            "title": "A window into the brand.",
+            "visual": "website",
+            "link": "https://www.orkaytiles.com/"
+          },
+          {
+            "label": "Our services / AI & automation",
+            "title": "AI automation, agents, CRM and marketing systems.",
+            "visual": "conversations",
+            "link": "/services"
+          },
+          {
+            "label": "Our services / Voice agents",
+            "title": "AI voice agents for business conversations.",
+            "visual": "voice",
+            "link": "/services"
+          },
+          {
+            "label": "Our services / Digital solutions",
+            "title": "Websites, apps, cloud, SEO and AI training.",
+            "visual": "knowledge",
+            "link": "/services"
+          }
+        ]
+      }
+    },
+    {
+      "type": "versus",
+      "fields": {
+        "sides": [
+          {
+            "title": "*Before* AI",
+            "text": "Data copied by hand, tools that don't connect, and leads left waiting for a reply.",
+            "status_label": "Manual",
+            "figure": "person"
+          },
+          {
+            "title": "*With* AI",
+            "text": "After a consultation, we build the automation and train your people to use it.",
+            "link": "/corporate-ai-training",
+            "link_label": "See how we train your team",
+            "figure": "robot"
           }
         ]
       }
@@ -331,42 +406,38 @@
     {
       "type": "testimonials",
       "fields": {
-        "heading": "In their *own words*",
+        "heading": "Hear what *people say*",
         "items": [
           {
             "name": "Hatim Sorangwala",
             "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
-            "photo": "hatim-sorangwala.jpg"
-          },
-          {
-            "name": "Alphonsa N. P",
-            "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital",
-            "quote": "The AI training is highly practical and directly applicable to modern healthcare operations.",
-            "photo": "alphonsa-n-p.jpg"
-          },
-          {
-            "name": "Khushi Dodiya",
-            "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview"
-          },
-          {
-            "name": "Haritha Nair",
-            "role": "AI design student, Vadodara",
-            "quote": "The live sessions and practical projects helped me quickly build real creative skills."
+            "photo": "hatim-sorangwala.jpg",
+            "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"
           },
           {
             "name": "Dev Chokshi",
             "role": "Artificia AI student",
-            "video_url": "https://drive.google.com/file/d/VIDEO_ID/preview",
-            "photo": "dev-chokshi.jpg"
+            "photo": "dev-chokshi.jpg",
+            "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"
+          },
+          {
+            "name": "Alphonsa N. P",
+            "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital",
+            "photo": "alphonsa-n-p.jpg",
+            "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."
+          },
+          {
+            "name": "Haritha Nair",
+            "role": "AI design student, Vadodara",
+            "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."
           },
           {
             "name": "Nilesh Chaudasama",
             "role": "Working professional, Vadodara",
-            "quote": "The training was practical, structured, and easy to apply in daily professional tasks."
+            "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."
           }
-        ]
+        ],
+        "layout": "fan"
       }
     },
     {
@@ -389,6 +460,92 @@
             "title": "Finding the right document",
             "before": "Staff dig through folders and old emails for the latest SOP.",
             "after": "Ask in plain words and get the answer with the source page."
+          }
+        ]
+      }
+    },
+    {
+      "type": "crossoff",
+      "fields": {
+        "heading": "The work AI should *take off your desk*",
+        "intro": "Five bottlenecks to clear first.",
+        "items": [
+          {
+            "title": "Manual work",
+            "outcome": "Fewer manual handoffs",
+            "text": "Data is captured once, checked and sent where it belongs, with a person approving what matters."
+          },
+          {
+            "title": "Disconnected tools",
+            "outcome": "Clearer data flow",
+            "text": "Your CRM, WhatsApp, email and sheets update together, and each lead reaches the right person."
+          },
+          {
+            "title": "Slow lead response",
+            "outcome": "Faster response",
+            "text": "Every new lead gets a first reply on WhatsApp or email, with reminders until someone acts."
+          },
+          {
+            "title": "Repetitive reporting",
+            "outcome": "Better visibility",
+            "text": "Reports build themselves from live data and arrive by email."
+          },
+          {
+            "title": "AI adoption gaps",
+            "outcome": "Stronger team adoption",
+            "text": "Role-based training on your own documents makes AI part of daily work."
+          }
+        ],
+        "open_title": "Your next task",
+        "open_outcome": "Bring it to us",
+        "open_text": "One repetitive task, process bottleneck or growth challenge. We'll discuss where AI or automation may help and recommend a sensible next step.",
+        "cta_label": "Book a free AI consultation",
+        "cta_link": "/services#enquire"
+      }
+    },
+    {
+      "type": "solutions",
+      "fields": {
+        "heading": "Solutions for *the way you work.*",
+        "intro": "Choose the work you want to change. We build the system and help your team use it.",
+        "link_label": "Explore all solutions",
+        "link": "/services",
+        "items": [
+          {
+            "title": "AI automation",
+            "text": "Connect forms, sheets and your CRM. Move data between tools and keep approvals in the flow.",
+            "link": "/services",
+            "visual": "workflow"
+          },
+          {
+            "title": "Agentic AI",
+            "text": "AI agents and knowledge assistants that use your documents and approved tools, with people reviewing key actions.",
+            "link": "/services/rag-custom-automation",
+            "visual": "agentic"
+          },
+          {
+            "title": "Software & apps",
+            "text": "Websites, dashboards and internal tools, built around the way your business works.",
+            "link": "/services/website-development",
+            "visual": "software"
+          },
+          {
+            "title": "Marketing automation",
+            "text": "Keep enquiries, follow-ups and customer conversations connected in GoHighLevel.",
+            "link": "/services/gohighlevel",
+            "visual": "marketing"
+          },
+          {
+            "title": "SEO / AEO / GEO",
+            "text": "Technical SEO, answer-ready content and optimisation for search engines and AI search.",
+            "link": "/services#enquire",
+            "visual": "search"
+          },
+          {
+            "title": "Cloud & private AI",
+            "text": "Cloud deployment and private AI setups, on AWS or local infrastructure to suit your business.",
+            "link": "/services#enquire",
+            "visual": "cloud"
           }
         ]
       }

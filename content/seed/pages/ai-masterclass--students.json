@@ -11,7 +11,7 @@
       "type": "hero",
       "fields": {
         "subheading": "Learn the AI tools people use at work today, one hour a day alongside college. Leave with projects you can show.",
-        "image": "audience-student.jpg",
+        "drawing": "predict",
         "primary_cta_label": "Ask about the masterclass",
         "primary_cta_link": "#enquire",
         "secondary_cta_label": "See the full masterclass",

@@ -42,12 +42,14 @@ $nav = [
 <?php if ($jsonld): ?>
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $jsonld], JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 <?php endif; ?>
-<?php // 'motion' is promised only without a reduced-motion preference, and withdrawn if GSAP never arrives. ?>
+<?php // Enable the intro on every page load; motion still respects the visitor's preference. ?>
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.__motion)d.classList.remove('motion')},2500)}})(document.documentElement)</script>
+<link rel="preload" href="/assets/img/artificia-logo.png" as="image">
+<link rel="preload" href="/assets/fonts/roboto-serif-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/roboto-flex-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
-<meta name="theme-color" content="#08080d">
+<meta name="theme-color" content="#15160F">
 <?php if ($ga4 !== ''): ?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $ga4 ?>"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','<?= $ga4 ?>');</script>
@@ -61,10 +63,11 @@ $nav = [
 <script src="/assets/js/site.js" defer></script>
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader__mark"></span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bind top" data-top>
   <div class="wrap top__in">
-    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI home"></a>
+    <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="492" height="138" alt="Artificia AI home"></a>
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul>
 <?php foreach ($nav as $href => $label): ?>
@@ -79,44 +82,88 @@ $nav = [
 <main id="main" class="sheet">
 <?= $body ?>
 </main>
-<footer class="bind foot">
-  <div class="wrap foot__panel">
+<?php
+// Every page the footer has always linked to stays linked: search engines and visitors both walk these.
+$explore = [
+    ['/services', 'Services', [['/services/gohighlevel', 'GoHighLevel'], ['/services/website-development', 'Website development'], ['/services/content-marketing', 'Content and marketing'], ['/services/rag-custom-automation', 'RAG and custom automation']]],
+    ['/corporate-ai-training', 'Corporate training', [['/corporate-ai-training/manufacturing', 'Manufacturing'], ['/corporate-ai-training/healthcare', 'Healthcare']]],
+    ['/ai-masterclass', 'AI Masterclass', [['/ai-masterclass/students', 'For students'], ['/ai-masterclass/working-professionals', 'For working professionals'], ['/ai-masterclass/business-owners', 'For business owners']]],
+    ['/case-studies/orkay-tiles', 'Case study', []],
+    ['/about', 'About', []],
+    ['/blog', 'Blog', []],
+];
+$phone = (string) ($settings['org_phone'] ?? '');
+$email = (string) ($settings['org_email'] ?? '');
+$talk = array_filter([
+    [$wa, 'WhatsApp'],
+    $phone !== '' ? ['tel:' . preg_replace('/[^\d+]/', '', $phone), 'Call us'] : null,
+    $email !== '' ? ['mailto:' . $email, 'Email'] : null,
+    ['/contact', 'Contact'],
+]);
+$offers = ['AI Automation', 'Agentic AI', 'Software & Apps', 'Marketing Automation', 'SEO / AEO / GEO', 'Cloud & Private AI', 'Corporate AI Training', 'AI Masterclass'];
+$star = '<svg class="foot__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.6 7.7 4.3 10.4 12 12-7.7 1.6-10.4 4.3-12 12-1.6-7.7-4.3-10.4-12-12C7.7 10.4 10.4 7.7 12 0z"/></svg>';
+$flare = '<svg class="foot__flare" viewBox="0 0 72 62" preserveAspectRatio="none" aria-hidden="true"><path d="M0 62C32 62 38 0 72 0v62z"/></svg>';
+$bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
+?>
+<footer class="foot" data-foot>
+  <div class="foot__rise" aria-hidden="true"><canvas class="topo-bg"></canvas></div>
+  <div class="foot__panel">
+    <canvas class="topo-bg" aria-hidden="true"></canvas>
+    <p class="foot__say">
+      <span class="foot__say-a">Let&rsquo;s put </span>
+      <span class="foot__say-ai"><em>AI</em><svg class="foot__mark" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M31 9C61 0 95 11 98 37 104 65 80 87 49 91 20 97 1 78 4 51 6 26 31 6 59 7"/></svg></span>
+      <span class="foot__say-b"> to <em><span class="foot__kern">w</span>ork.</em></span>
+    </p>
+    <div class="foot__run" aria-hidden="true"><div class="foot__run-in">
+<?php for ($i = 0; $i < 4; $i++): ?>
+      <span class="foot__run-g"><?php foreach ($offers as $n => $offer): ?><span<?= $n % 2 ? ' class="is-serif"' : '' ?>><?= e($offer) ?></span><?= $star ?><?php endforeach ?></span>
+<?php endfor ?>
+    </div></div>
+    <div class="foot__figure" aria-hidden="true">
+      <img class="foot__robot" src="/assets/img/footer/robot-neon-plain.webp" srcset="/assets/img/footer/robot-neon-plain-640.webp 640w, /assets/img/footer/robot-neon-plain.webp 1220w" sizes="(min-width: 1100px) 900px, 130vw" width="1220" height="1150" alt="" loading="lazy" decoding="async">
+    </div>
     <div class="foot__grid">
-      <div class="foot__brand">
-        <a class="brand" href="/"><img src="/assets/img/artificia-logo.png" width="225" height="46" alt="Artificia AI" loading="lazy"></a>
-        <p>AI training and AI systems, built in Vadodara.</p>
-<?php if (!empty($settings['org_address'])): ?>
-        <address><?= nl2br(e($settings['org_address'])) ?></address>
+      <nav class="foot__col" aria-label="Explore">
+        <p class="foot__h">Explore</p>
+        <ul class="foot__big">
+<?php foreach ($explore as [$href, $label, $subs]): ?>
+          <li><?= $bigLink($href, $label) ?>
+<?php if ($subs): ?>
+            <ul class="foot__sub">
+<?php foreach ($subs as [$subHref, $subLabel]): ?>
+              <li><a href="<?= e($subHref) ?>"><?= e($subLabel) ?></a></li>
+<?php endforeach ?>
+            </ul>
 <?php endif ?>
-      </div>
-      <nav aria-label="Learn"><p class="foot__h">Learn</p><ul>
-        <li><a href="/ai-masterclass">AI Masterclass</a></li>
-        <li><a href="/ai-masterclass/students">For students</a></li>
-        <li><a href="/ai-masterclass/working-professionals">For working professionals</a></li>
-        <li><a href="/ai-masterclass/business-owners">For business owners</a></li>
-      </ul></nav>
-      <nav aria-label="Teams"><p class="foot__h">Teams</p><ul>
-        <li><a href="/corporate-ai-training">Corporate AI training</a></li>
-        <li><a href="/corporate-ai-training/manufacturing">Manufacturing</a></li>
-        <li><a href="/corporate-ai-training/healthcare">Healthcare</a></li>
-      </ul></nav>
-      <nav aria-label="Services"><p class="foot__h">Services</p><ul>
-        <li><a href="/services/gohighlevel">GoHighLevel</a></li>
-        <li><a href="/services/website-development">Website development</a></li>
-        <li><a href="/services/content-marketing">Content and marketing</a></li>
-        <li><a href="/services/rag-custom-automation">RAG and custom automation</a></li>
-      </ul></nav>
-      <nav aria-label="Company"><p class="foot__h">Company</p><ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/case-studies/orkay-tiles">Case study</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul></nav>
+          </li>
+<?php endforeach ?>
+        </ul>
+      </nav>
+      <nav class="foot__col foot__col--talk" aria-label="Talk to us">
+        <p class="foot__h">Talk to us</p>
+        <ul class="foot__big">
+<?php foreach ($talk as [$href, $label]): ?>
+          <li><?= $bigLink($href, $label) ?></li>
+<?php endforeach ?>
+        </ul>
+        <div class="foot__where">
+<?php if ($phone !== ''): ?>
+          <p><?= e($phone) ?></p>
+<?php endif ?>
+<?php if ($email !== ''): ?>
+          <p><?= e($email) ?></p>
+<?php endif ?>
+<?php if (!empty($settings['org_address'])): ?>
+          <address><?= nl2br(e($settings['org_address'])) ?></address>
+<?php endif ?>
+        </div>
+      </nav>
     </div>
-    <div class="foot__base">
-      <p>&copy; <?= date('Y') ?> Artificia Intellec Pvt Ltd</p>
-      <p><a href="/privacy">Privacy</a> &nbsp; <a href="/terms">Terms</a></p>
-    </div>
+  </div>
+  <a class="foot__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"><?= $flare ?><span class="foot__cta-in">Book Free AI Consultation<?= icon('arrow-right') ?></span><?= $flare ?></a>
+  <div class="foot__base">
+    <p>&copy; <?= date('Y') ?> <b>Artificia Intellec Pvt Ltd</b></p>
+    <p class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></p>
   </div>
 </footer>
 <a class="wa-float" href="<?= e($wa) ?>" aria-label="Chat with us on WhatsApp"><?= icon('whatsapp-logo') ?></a>

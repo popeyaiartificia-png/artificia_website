@@ -1,7 +1,11 @@
 <?php
-$variant = in_array($f['variant'] ?? '', ['centered', 'cover'], true) ? $f['variant'] : 'split';
+$variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage'], true) ? $f['variant'] : 'split';
 $h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
+if ($variant === 'stage') {
+    include VIEWS_DIR . '/hero-stage.php';
+    return;
+}
 $sketch = drawing((string) ($f['drawing'] ?? ''));
 $media = $sketch;
 if ($media === '' && !empty($f['image'])) {

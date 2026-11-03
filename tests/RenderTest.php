@@ -163,3 +163,23 @@ function test_blog_list_titles_are_plain_text(): void
     }
     ok(str_contains($html, '<a href="/blog/p1">Learn AI fast</a>') && !str_contains($html, '*AI*'), 'no literal asterisks');
 }
+
+function test_work_gallery_escapes_content_and_rejects_unsafe_links(): void
+{
+    $html = render_section(['type' => 'work_gallery', 'fields' => [
+        'heading' => 'Everyday *AI*',
+        'thought' => 'Your *workflow*',
+        'items' => [[
+            'label' => '<img src=x onerror=alert(1)>',
+            'title' => '<script>alert(1)</script>',
+            'visual' => '../unsafe',
+            'link' => 'javascript:alert(1)',
+        ]],
+    ]]);
+    ok(str_contains($html, 'Everyday <em>AI</em>'), 'heading supports safe emphasis');
+    ok(str_contains($html, '&lt;script&gt;'), 'title is escaped');
+    ok(str_contains($html, '&lt;img'), 'caption is escaped');
+    ok(!str_contains($html, '<script>'), 'no executable title');
+    ok(str_contains($html, 'href="#"'), 'unsafe link rejected');
+    ok(str_contains($html, 'workscape__item--workflow'), 'unknown visual uses the safe default');
+}

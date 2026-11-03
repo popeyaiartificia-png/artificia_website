@@ -6,7 +6,7 @@ const FIELD_TYPES = ['text', 'textarea', 'richtext', 'image', 'select', 'list'];
 function test_registry_has_all_types(): void
 {
     eq(array_keys(section_registry()), [
-        'hero', 'rich_text', 'text_image', 'card_grid', 'use_cases', 'process_steps', 'tools', 'curriculum',
+        'hero', 'statement', 'work_gallery', 'versus', 'rich_text', 'text_image', 'card_grid', 'solutions', 'use_cases', 'crossoff', 'process_steps', 'tools', 'curriculum',
         'stats', 'testimonials', 'case_study', 'faqs', 'lead_form', 'cta', 'people', 'map_contact', 'blog_list',
     ]);
 }
@@ -50,9 +50,14 @@ function test_every_list_has_subfields(): void
     }
     eq($lists, [
         'hero.doors' => ['label', 'note', 'link'],
+        'work_gallery.items' => ['label', 'title', 'visual', 'image', 'link'],
+        'versus.sides' => ['title', 'text', 'status_label', 'link', 'link_label', 'figure', 'image'],
         'card_grid.cards' => ['icon', 'drawing', 'image', 'title', 'text', 'link'],
+        'solutions.items' => ['title', 'text', 'link', 'visual'],
         'use_cases.items' => ['title', 'before', 'after'],
+        'crossoff.items' => ['title', 'outcome', 'text'],
         'process_steps.steps' => ['title', 'text'],
+        'tools.flow' => ['title', 'note'],
         'tools.tools' => ['name', 'brand', 'logo', 'note'],
         'curriculum.modules' => ['track', 'day_range', 'title', 'topics', 'tools'],
         'stats.items' => ['value', 'label'],
@@ -83,12 +88,17 @@ function test_required_flags(): void
     }
     eq($required, [
         'hero.doors.label', 'hero.doors.link',
+        'statement.text',
+        'work_gallery.heading', 'work_gallery.items', 'work_gallery.items.label', 'work_gallery.items.title', 'work_gallery.items.visual',
+        'versus.sides', 'versus.sides.title',
         'rich_text.body',
         'text_image.heading', 'text_image.body', 'text_image.image',
         'card_grid.heading', 'card_grid.cards', 'card_grid.cards.title', 'card_grid.cards.text',
+        'solutions.heading', 'solutions.items', 'solutions.items.title', 'solutions.items.text', 'solutions.items.link',
         'use_cases.heading', 'use_cases.items', 'use_cases.items.title',
+        'crossoff.heading', 'crossoff.items', 'crossoff.items.title', 'crossoff.items.outcome',
         'process_steps.heading', 'process_steps.steps', 'process_steps.steps.title', 'process_steps.steps.text',
-        'tools.heading', 'tools.tools', 'tools.tools.name',
+        'tools.heading', 'tools.flow.title', 'tools.tools', 'tools.tools.name',
         'curriculum.heading', 'curriculum.modules', 'curriculum.modules.track', 'curriculum.modules.day_range', 'curriculum.modules.title',
         'stats.items', 'stats.items.value', 'stats.items.label',
         'testimonials.heading', 'testimonials.items', 'testimonials.items.name', 'testimonials.items.role',
@@ -104,7 +114,7 @@ function test_required_flags(): void
 function test_select_options(): void
 {
     $r = section_registry();
-    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover']);
+    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover', 'stage']);
     eq($r['text_image']['fields']['image_side']['options'], ['left', 'right']);
     eq($r['card_grid']['fields']['columns']['options'], ['2', '3', '4']);
     eq($r['curriculum']['fields']['modules']['fields']['track']['options'], ['foundation', 'full']);
@@ -135,7 +145,7 @@ function test_hero_design_fields(): void
     ok(empty($doors['fields']['note']['required']));
     eq($hero['drawing']['type'], 'select');
     eq($hero['drawing']['label'], 'Drawing');
-    eq($hero['drawing']['options'], ['none', 'documents', 'masterclass', 'corporate', 'services']);
+    eq($hero['drawing']['options'], ['none', 'predict', 'documents', 'masterclass', 'corporate', 'services']);
 }
 
 function test_stats_note_default(): void
