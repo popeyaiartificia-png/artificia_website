@@ -14,11 +14,13 @@ Plain PHP 8 + MySQL site for https://artificiaai.com (Hostinger shared hosting).
 
 ## Local development
 
-1. `brew services start mariadb`, then create the `artificia` and `artificia_test` databases and a user
-   that can use both (the test runner drops and recreates `artificia_test`).
+1. `brew install php mariadb && brew services start mariadb`, then create the `artificia` and `artificia_test`
+   databases and a user that can use both (the test runner drops and recreates `artificia_test`).
 2. Create `~/.config/artificia/config.php` (outside the repo, never committed). It returns an array with
    `env` (`local`, `staging` or `production`), `base_url`, `db` (`dsn`, `user`, `pass`), `app_secret`
-   (64 hex characters), `staging_auth` (`user`, `pass`), `setup_token` and `mail_from`.
-3. `bin/serve` starts http://127.0.0.1:8000. `php tests/run.php` runs the tests.
+   (64 hex characters, `openssl rand -hex 32`), `staging_auth` (`user`, `pass`), `setup_token` and `mail_from`.
+3. `php bin/seed.php` loads the pages, templates and images. `php bin/create-admin.php you@example.com`
+   creates your admin login (it asks for the password).
+4. `bin/serve` starts http://127.0.0.1:8000 (admin at `/admin`). `php tests/run.php` runs the tests.
 
 On the server the config path is `$ARTIFICIA_CONFIG`, or `artificia-config.php` three folders above `app/`.
