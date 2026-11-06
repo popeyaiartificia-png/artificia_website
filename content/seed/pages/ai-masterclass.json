@@ -2,131 +2,1131 @@
   "slug": "ai-masterclass",
   "kind": "page",
   "title": "AI Masterclass",
-  "h1": "AI course in Vadodara, *one hour a day*",
-  "meta_title": "AI course in Vadodara: 30 or 60 days | Artificia AI",
-  "meta_description": "A live, offline AI course from an AI training institute in Vadodara. One hour a day: a 30-day Foundation or a 60-day Full program. No coding needed.",
+  "h1": "AI *Masterclass.*",
+  "meta_title": "AI Course in Vadodara: 30 & 60 Days | Artificia AI",
+  "meta_description": "Learn AI in Vadodara with live, hands-on classes. 30-day Foundation at ₹20,000 or 60-day Full program at ₹40,000. Explore tools, projects and the curriculum.",
   "sections": [
     {
       "type": "hero",
       "fields": {
-        "eyebrow": "No coding needed",
-        "subheading": "Offline and live in Vadodara, one hour a day. Take the 30-day Foundation, or the 60-day Full program with agents, RAG and voice agents.",
-        "image": "classroom-instructor.jpg",
-        "variant": "split",
-        "primary_cta_label": "Ask about the masterclass",
-        "primary_cta_link": "#enquire",
-        "secondary_cta_label": "See the 60 days",
-        "secondary_cta_link": "#curriculum"
+        "variant": "course",
+        "eyebrow": "Live AI training in Vadodara",
+        "subheading": "From your first prompt to working AI systems.",
+        "primary_cta_label": "View curriculum",
+        "primary_cta_link": "#curriculum",
+        "secondary_cta_label": "Help me choose",
+        "secondary_cta_link": "#enquire"
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "variant": "course-toolkit",
+        "heading": "Tools covered in the 60-day AI Masterclass",
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "brand": "chatgpt"
+          },
+          {
+            "name": "Claude",
+            "brand": "claude"
+          },
+          {
+            "name": "Gemini",
+            "brand": "gemini"
+          },
+          {
+            "name": "Meta AI",
+            "brand": "meta"
+          },
+          {
+            "name": "Grok",
+            "brand": "grok"
+          },
+          {
+            "name": "Kimi",
+            "brand": "kimi"
+          },
+          {
+            "name": "Mistral Le Chat",
+            "brand": "mistral"
+          },
+          {
+            "name": "DeepSeek",
+            "brand": "deepseek"
+          },
+          {
+            "name": "Qwen",
+            "brand": "qwen"
+          },
+          {
+            "name": "Teachable Machine",
+            "brand": "google"
+          },
+          {
+            "name": "Kaggle",
+            "brand": "kaggle"
+          },
+          {
+            "name": "Google Colab",
+            "brand": "google-colab"
+          },
+          {
+            "name": "Anaconda",
+            "brand": "anaconda"
+          },
+          {
+            "name": "Microsoft Copilot",
+            "brand": "copilot"
+          },
+          {
+            "name": "Otter.ai",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Google Workspace",
+            "brand": "google"
+          },
+          {
+            "name": "Fireflies.ai",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Grammarly",
+            "brand": "grammarly"
+          },
+          {
+            "name": "Copy.ai",
+            "symbol": "file-text"
+          },
+          {
+            "name": "QuillBot",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Microsoft Word",
+            "brand": "microsoft"
+          },
+          {
+            "name": "Microsoft Excel",
+            "brand": "microsoft"
+          },
+          {
+            "name": "Microsoft PowerPoint",
+            "brand": "microsoft"
+          },
+          {
+            "name": "Google Sheets",
+            "brand": "google-sheets"
+          },
+          {
+            "name": "Google Docs",
+            "brand": "google-docs"
+          },
+          {
+            "name": "Perplexity",
+            "brand": "perplexity"
+          },
+          {
+            "name": "Comet",
+            "brand": "perplexity"
+          },
+          {
+            "name": "Atlas",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Dia",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Consensus",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Elicit",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "SciSpace",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Glasp",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "You.com",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Frase.io",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Emily",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Manus",
+            "brand": "manus"
+          },
+          {
+            "name": "NotebookLM",
+            "brand": "notebooklm"
+          },
+          {
+            "name": "Obsidian AI",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Mem.ai",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Jasper AI",
+            "symbol": "chat-circle-text"
+          },
+          {
+            "name": "Google Slides",
+            "brand": "google-slides"
+          },
+          {
+            "name": "Gmail",
+            "brand": "gmail"
+          },
+          {
+            "name": "Google AI Studio",
+            "brand": "google-ai-studio"
+          },
+          {
+            "name": "Gamma",
+            "brand": "gamma"
+          },
+          {
+            "name": "Genspark",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Chronicle",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Slidesgo",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Beautiful.ai",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Tome",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Canva",
+            "brand": "canva"
+          },
+          {
+            "name": "Midjourney",
+            "brand": "midjourney"
+          },
+          {
+            "name": "Stable Diffusion",
+            "brand": "stability"
+          },
+          {
+            "name": "Leonardo AI",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Ideogram",
+            "brand": "ideogram"
+          },
+          {
+            "name": "FLUX",
+            "brand": "flux"
+          },
+          {
+            "name": "Krea",
+            "brand": "krea"
+          },
+          {
+            "name": "Adobe Firefly",
+            "brand": "adobe-firefly"
+          },
+          {
+            "name": "Recraft",
+            "brand": "recraft"
+          },
+          {
+            "name": "Runway",
+            "brand": "runway"
+          },
+          {
+            "name": "Pika",
+            "brand": "pika"
+          },
+          {
+            "name": "Kling AI",
+            "brand": "kling"
+          },
+          {
+            "name": "CapCut",
+            "brand": "capcut"
+          },
+          {
+            "name": "Luma AI",
+            "brand": "luma"
+          },
+          {
+            "name": "Higgsfield",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Google Veo",
+            "brand": "google"
+          },
+          {
+            "name": "Sora",
+            "brand": "sora"
+          },
+          {
+            "name": "Hailuo AI",
+            "brand": "hailuo"
+          },
+          {
+            "name": "Wan",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Google Flow",
+            "brand": "google"
+          },
+          {
+            "name": "ElevenLabs",
+            "brand": "elevenlabs"
+          },
+          {
+            "name": "Vapi",
+            "brand": "vapi"
+          },
+          {
+            "name": "Suno",
+            "brand": "suno"
+          },
+          {
+            "name": "Whisper",
+            "brand": "openai"
+          },
+          {
+            "name": "Udio",
+            "brand": "udio"
+          },
+          {
+            "name": "Adobe Podcast",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Descript",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Happy Scribe",
+            "symbol": "microphone"
+          },
+          {
+            "name": "HeyGen",
+            "brand": "heygen"
+          },
+          {
+            "name": "Synthesia",
+            "symbol": "microphone"
+          },
+          {
+            "name": "D-ID",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Adobe Premiere Pro",
+            "symbol": "microphone"
+          },
+          {
+            "name": "AdCreative.ai",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Predis.ai",
+            "symbol": "pen-nib"
+          },
+          {
+            "name": "Julius AI",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Numerous.ai",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Rows AI",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Airtable",
+            "brand": "airtable"
+          },
+          {
+            "name": "Bolt.new",
+            "brand": "stackblitz"
+          },
+          {
+            "name": "Lovable",
+            "brand": "lovable"
+          },
+          {
+            "name": "Claude Design",
+            "brand": "claude"
+          },
+          {
+            "name": "Webflow AI",
+            "brand": "webflow"
+          },
+          {
+            "name": "Replit Agent",
+            "brand": "replit"
+          },
+          {
+            "name": "v0",
+            "brand": "v0"
+          },
+          {
+            "name": "Surfer SEO",
+            "symbol": "gear-six"
+          },
+          {
+            "name": "Emergent",
+            "symbol": "gear-six"
+          },
+          {
+            "name": "Framer",
+            "brand": "framer"
+          },
+          {
+            "name": "Figma",
+            "brand": "figma"
+          },
+          {
+            "name": "Google Stitch",
+            "brand": "google"
+          },
+          {
+            "name": "Durable",
+            "symbol": "gear-six"
+          },
+          {
+            "name": "Gemini API",
+            "brand": "gemini"
+          },
+          {
+            "name": "Git",
+            "brand": "git"
+          },
+          {
+            "name": "GitHub",
+            "brand": "github"
+          },
+          {
+            "name": "GitHub Desktop",
+            "brand": "github"
+          },
+          {
+            "name": "VS Code",
+            "symbol": "gear-six"
+          },
+          {
+            "name": "Tabnine",
+            "symbol": "gear-six"
+          },
+          {
+            "name": "Cline",
+            "brand": "cline"
+          },
+          {
+            "name": "Google Apps Script",
+            "brand": "googleappsscript"
+          },
+          {
+            "name": "n8n",
+            "brand": "n8n"
+          },
+          {
+            "name": "Make",
+            "brand": "make"
+          },
+          {
+            "name": "Taskade",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Antigravity",
+            "brand": "antigravity"
+          },
+          {
+            "name": "Windsurf",
+            "brand": "windsurf"
+          },
+          {
+            "name": "Vercel",
+            "brand": "vercel"
+          },
+          {
+            "name": "Notion",
+            "brand": "notion"
+          },
+          {
+            "name": "Loom",
+            "brand": "loom"
+          },
+          {
+            "name": "LinkedIn",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Taplio",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Postwise",
+            "symbol": "file-text"
+          },
+          {
+            "name": "Buffer",
+            "brand": "buffer"
+          },
+          {
+            "name": "Supergrow",
+            "symbol": "file-text"
+          },
+          {
+            "name": "CrewAI",
+            "brand": "crewai"
+          },
+          {
+            "name": "Retell AI",
+            "brand": "retell"
+          },
+          {
+            "name": "Bland AI",
+            "symbol": "microphone"
+          },
+          {
+            "name": "PlayHT",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Murf",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Hume",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Cartesia",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Deepgram",
+            "brand": "deepgram"
+          },
+          {
+            "name": "LiveKit",
+            "brand": "livekit"
+          },
+          {
+            "name": "Pipecat",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Twilio",
+            "brand": "twilio"
+          },
+          {
+            "name": "Synthflow",
+            "symbol": "microphone"
+          },
+          {
+            "name": "OpenAI API",
+            "brand": "openai"
+          },
+          {
+            "name": "Jerry",
+            "symbol": "microphone"
+          },
+          {
+            "name": "Vobiz",
+            "symbol": "microphone"
+          },
+          {
+            "name": "WhatsApp Business API",
+            "brand": "whatsapp"
+          },
+          {
+            "name": "Supabase",
+            "brand": "supabase"
+          },
+          {
+            "name": "Firebase",
+            "brand": "firebase"
+          },
+          {
+            "name": "Postman",
+            "brand": "postman"
+          },
+          {
+            "name": "Zapier",
+            "brand": "zapier"
+          },
+          {
+            "name": "Activepieces",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Relay.app",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Clay",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Apollo.io",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "HubSpot AI",
+            "brand": "hubspot"
+          },
+          {
+            "name": "Instantly AI",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Gong",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Salesloft",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Clari",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Apify",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Happenstance",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Telegram Bot API",
+            "brand": "telegram"
+          },
+          {
+            "name": "Claude API",
+            "brand": "claude"
+          },
+          {
+            "name": "Intercom Fin",
+            "brand": "intercom"
+          },
+          {
+            "name": "Zendesk AI",
+            "brand": "zendesk"
+          },
+          {
+            "name": "Tidio",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Claude Cowork",
+            "brand": "claude"
+          },
+          {
+            "name": "Smithery",
+            "brand": "smithery"
+          },
+          {
+            "name": "Claude Code",
+            "brand": "claude-code"
+          },
+          {
+            "name": "Claude Desktop",
+            "brand": "claude"
+          },
+          {
+            "name": "MCP SDK",
+            "brand": "mcp"
+          },
+          {
+            "name": "TypeScript",
+            "brand": "typescript"
+          },
+          {
+            "name": "Python",
+            "brand": "python"
+          },
+          {
+            "name": "Slack",
+            "brand": "slack"
+          },
+          {
+            "name": "Anthropic Skills",
+            "brand": "anthropic"
+          },
+          {
+            "name": "AgentGPT",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Devin",
+            "brand": "devin"
+          },
+          {
+            "name": "Linear",
+            "brand": "linear"
+          },
+          {
+            "name": "Superpowers",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Skills.sh",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "scikit-learn",
+            "brand": "scikit-learn"
+          },
+          {
+            "name": "Hugging Face AutoTrain",
+            "brand": "huggingface"
+          },
+          {
+            "name": "Obviously AI",
+            "symbol": "chart-line-up"
+          },
+          {
+            "name": "Roboflow",
+            "brand": "roboflow"
+          },
+          {
+            "name": "Pinecone",
+            "brand": "pinecone"
+          },
+          {
+            "name": "LlamaIndex",
+            "brand": "llamaindex"
+          },
+          {
+            "name": "LangChain",
+            "brand": "langchain"
+          },
+          {
+            "name": "Qdrant",
+            "symbol": "database"
+          },
+          {
+            "name": "Weaviate",
+            "symbol": "database"
+          },
+          {
+            "name": "pgvector",
+            "symbol": "database"
+          },
+          {
+            "name": "Voyage AI",
+            "brand": "voyage"
+          },
+          {
+            "name": "Cohere",
+            "brand": "cohere"
+          },
+          {
+            "name": "LlamaParse",
+            "brand": "llamaindex"
+          },
+          {
+            "name": "Unstructured",
+            "brand": "unstructured"
+          },
+          {
+            "name": "Chroma",
+            "symbol": "database"
+          },
+          {
+            "name": "Flowise",
+            "symbol": "database"
+          },
+          {
+            "name": "Tavily",
+            "brand": "tavily"
+          },
+          {
+            "name": "Google Drive",
+            "brand": "google-drive"
+          },
+          {
+            "name": "OpenRouter",
+            "brand": "openrouter"
+          },
+          {
+            "name": "Exa",
+            "brand": "exa"
+          },
+          {
+            "name": "LangGraph",
+            "brand": "langgraph"
+          },
+          {
+            "name": "AutoGen",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Lyzr AI",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "FastAPI",
+            "brand": "fastapi"
+          },
+          {
+            "name": "Next.js",
+            "brand": "nextjs"
+          },
+          {
+            "name": "Stripe",
+            "brand": "stripe"
+          },
+          {
+            "name": "Resend",
+            "brand": "resend"
+          },
+          {
+            "name": "Gumroad",
+            "brand": "gumroad"
+          },
+          {
+            "name": "Goose",
+            "brand": "goose"
+          },
+          {
+            "name": "Docker",
+            "brand": "docker"
+          },
+          {
+            "name": "Ollama",
+            "brand": "ollama"
+          },
+          {
+            "name": "Open WebUI",
+            "brand": "open-webui"
+          },
+          {
+            "name": "Llama",
+            "brand": "meta"
+          },
+          {
+            "name": "Gemma",
+            "brand": "gemma"
+          },
+          {
+            "name": "Phi",
+            "brand": "microsoft"
+          },
+          {
+            "name": "Mistral",
+            "brand": "mistral"
+          },
+          {
+            "name": "Hugging Face",
+            "brand": "hugging-face"
+          },
+          {
+            "name": "LM Studio",
+            "brand": "lm-studio"
+          },
+          {
+            "name": "OpenClaw",
+            "brand": "openclaw"
+          },
+          {
+            "name": "Hermes Agent",
+            "brand": "hermes-agent"
+          },
+          {
+            "name": "Weights & Biases",
+            "brand": "weightsandbiases"
+          },
+          {
+            "name": "LangSmith",
+            "brand": "langsmith"
+          },
+          {
+            "name": "Helicone",
+            "symbol": "chart-line-up"
+          },
+          {
+            "name": "Transformers",
+            "brand": "huggingface"
+          },
+          {
+            "name": "Gradio",
+            "brand": "gradio"
+          },
+          {
+            "name": "Jan",
+            "symbol": "chart-line-up"
+          },
+          {
+            "name": "OpenAI Codex",
+            "brand": "codex"
+          },
+          {
+            "name": "GitHub Copilot",
+            "brand": "githubcopilot"
+          },
+          {
+            "name": "Cursor",
+            "brand": "cursor"
+          },
+          {
+            "name": "Harvey",
+            "symbol": "flow-arrow"
+          },
+          {
+            "name": "Nabla",
+            "symbol": "flow-arrow"
+          }
+        ]
       }
     },
     {
       "type": "process_steps",
       "fields": {
-        "heading": "How the masterclass *works*",
-        "intro": "Live classes in Vadodara, one hour a day. Each day ends with a task that adds to your portfolio.",
+        "variant": "course-projects",
+        "heading": "Real AI skills.\n*Real projects.*",
+        "intro": "Build websites, create content and automate everyday work in our 60-day AI Masterclass.",
+        "cta_label": "Explore the 60-day curriculum",
+        "cta_link": "#curriculum",
         "steps": [
-          {"title": "Pick your track", "text": "Start with the 30-day Foundation, or take the 60-day Full program for agents, RAG, voice agents and deployment."},
-          {"title": "Learn in person", "text": "Each class has a short opener, the core idea, a live demo and hands-on practice."},
-          {"title": "Build as you go", "text": "You make real things from the first week: prompts, presentations, images, a website and automations."},
-          {"title": "Show what you built", "text": "Day 30 is Demo Day. Full-program students present an advanced project on day 60."}
+          {
+            "title": "Your website. Live.",
+            "text": "Turn an idea into a responsive website and publish it online.",
+            "visual": "website",
+            "tools": "Lovable / Antigravity / Vercel",
+            "day_range": "Days 18–26"
+          },
+          {
+            "title": "Your AI content kit.",
+            "text": "Create presentations, visuals and short videos for a real brief.",
+            "visual": "content",
+            "tools": "Gamma / Canva / Runway",
+            "day_range": "Days 11–16"
+          },
+          {
+            "title": "An assistant for your documents.",
+            "text": "Build an AI assistant that finds answers in your own files.",
+            "visual": "assistant",
+            "tools": "Pinecone / LangChain / Gemini API",
+            "day_range": "Days 45–46"
+          },
+          {
+            "title": "A workflow that does the work.",
+            "text": "Connect forms, AI and Google Sheets in one working automation.",
+            "visual": "automation",
+            "tools": "n8n / Google Sheets / OpenAI API",
+            "day_range": "Days 36–39"
+          }
         ]
       }
     },
     {
       "type": "curriculum",
       "fields": {
-        "heading": "What you learn, *day by day*",
-        "intro": "The Foundation covers days 1 to 30. The Full program keeps going to day 60.",
+        "variant": "course",
+        "heading": "A little every day.\n*A lot by day sixty.*",
+        "intro": "The 30-day Foundation covers days 1–30. The 60-day Full program includes the Foundation and continues into agents, automation and deployment. Ask us for the day-by-day plan and we will walk you through it.",
         "modules": [
-          {"track": "foundation", "day_range": "1–3", "title": "The AI landscape and prompting", "topics": "Where AI came from, setting up your models, prompt frameworks and advanced prompting.", "tools": "ChatGPT, Claude, Gemini, DeepSeek"},
-          {"track": "foundation", "day_range": "4–7", "title": "AI for everyday office work", "topics": "Copilot in Word, Excel and PowerPoint, research tools, AI ethics and NotebookLM.", "tools": "Copilot, Perplexity, NotebookLM"},
-          {"track": "foundation", "day_range": "8–10", "title": "ChatGPT, Gemini and Claude in depth", "topics": "Custom GPTs, Gemini inside Google Workspace, and Claude Projects and Artifacts.", "tools": "ChatGPT, Gemini, Claude"},
-          {"track": "foundation", "day_range": "11–17", "title": "Slides, images, video, voice and data", "topics": "AI presentations, image and video generation, voice, avatars, Canva AI and data analysis.", "tools": "Gamma, Runway, ElevenLabs, HeyGen, Canva"},
-          {"track": "foundation", "day_range": "18–25", "title": "Websites and your first app", "topics": "Prompt-to-website, design, Google AI Studio, Git basics, and building and shipping an app.", "tools": "Bolt.new, Lovable, Framer, Antigravity"},
-          {"track": "foundation", "day_range": "26–30", "title": "Capstone and Demo Day", "topics": "Plan, build, test and present a project of your own, then map your next steps.", "tools": "Your chosen stack"},
-          {"track": "full", "day_range": "31–35", "title": "Agents, voice agents and backends", "topics": "How agents think, voice agents you can call, Supabase and Firebase, and Google Sheets as a database.", "tools": "Vapi, ElevenLabs, Supabase, Firebase"},
-          {"track": "full", "day_range": "36–39", "title": "Automation with n8n", "topics": "n8n basics, APIs and webhooks, AI agents for lead generation, and WhatsApp and Telegram bots.", "tools": "n8n, Google Sheets, WhatsApp Business API"},
-          {"track": "full", "day_range": "40–49", "title": "MCP, RAG and multi-agent systems", "topics": "Claude Cowork, MCP servers, AI skills, RAG agents, multi-agent workflows and agents as a service.", "tools": "Claude, MCP, Pinecone, CrewAI"},
-          {"track": "full", "day_range": "50–56", "title": "Claude Code and local models", "topics": "Claude Code, local and open-source models, Open Claw, Hugging Face and Codex.", "tools": "Claude Code, Ollama, Hugging Face, Codex"},
-          {"track": "full", "day_range": "57–60", "title": "Advanced capstone and graduation", "topics": "Design, build, deploy and present an advanced AI project.", "tools": "Vercel, GitHub, Supabase"}
-        ]
-      }
-    },
-    {
-      "type": "tools",
-      "fields": {
-        "heading": "Tools you will *use*",
-        "intro": "Each one is taught hands-on, on the day shown.",
-        "tools": [
-          {"name": "ChatGPT", "brand": "chatgpt", "note": "Day 1"},
-          {"name": "Claude", "brand": "claude", "note": "Day 1"},
-          {"name": "Gemini", "brand": "gemini", "note": "Day 1"},
-          {"name": "Copilot", "brand": "copilot", "note": "Day 4"},
-          {"name": "Perplexity", "brand": "perplexity", "note": "Day 5"},
-          {"name": "NotebookLM", "brand": "notebooklm", "note": "Day 7"},
-          {"name": "Gamma", "brand": "gamma", "note": "Day 11"},
-          {"name": "ElevenLabs", "brand": "elevenlabs", "note": "Day 14"},
-          {"name": "HeyGen", "brand": "heygen", "note": "Day 15"},
-          {"name": "Canva", "brand": "canva", "note": "Day 16"},
-          {"name": "Lovable", "brand": "lovable", "note": "Day 18"},
-          {"name": "Antigravity", "brand": "antigravity", "note": "Day 22"},
-          {"name": "n8n", "brand": "n8n", "note": "Day 36"},
-          {"name": "Pinecone", "brand": "pinecone", "note": "Day 45"},
-          {"name": "Claude Code", "brand": "claude-code", "note": "Day 50"}
+          {
+            "track": "foundation",
+            "day_range": "1–3",
+            "title": "AI foundations & better prompts",
+            "topics": "Understand AI, compare models and learn prompt frameworks, advanced prompting, custom instructions and reusable prompts.",
+            "tools": "ChatGPT · Claude · Gemini · DeepSeek"
+          },
+          {
+            "track": "foundation",
+            "day_range": "4–7",
+            "title": "Machine learning, office work & research",
+            "topics": "Explore machine learning with everyday examples. Use AI for documents, spreadsheets, meetings and research, with source checking and responsible use.",
+            "tools": "Teachable Machine · Copilot · Perplexity · NotebookLM"
+          },
+          {
+            "track": "foundation",
+            "day_range": "8–10",
+            "title": "Know your AI assistants",
+            "topics": "Go deeper into ChatGPT, Gemini and Claude: custom assistants, workspace tools, document analysis, Projects and Artifacts.",
+            "tools": "ChatGPT · Gemini · Claude"
+          },
+          {
+            "track": "foundation",
+            "day_range": "11–17",
+            "title": "Create with AI. Make sense of data.",
+            "topics": "Create presentations, images, video, voiceovers and avatar videos. Work with Canva, then clean data, create charts and build useful reports.",
+            "tools": "Gamma · Canva · Runway · ElevenLabs · HeyGen · Excel"
+          },
+          {
+            "track": "foundation",
+            "day_range": "18–22",
+            "title": "Websites, design & connected tools",
+            "topics": "Build a website from a prompt, learn UI design, test prompts in AI Studio, understand Git and use Google Sheets as a simple backend.",
+            "tools": "Lovable · Bolt.new · Figma · Google AI Studio · GitHub · Google Sheets"
+          },
+          {
+            "track": "foundation",
+            "day_range": "23–30",
+            "title": "Build, ship & show your first project",
+            "topics": "Move into an AI coding editor, work across files, connect integrations and deploy with GitHub and Vercel. Plan, build, test and present your project in a portfolio.",
+            "tools": "Antigravity · GitHub · Vercel · Canva · Loom"
+          },
+          {
+            "track": "full",
+            "day_range": "31–35",
+            "title": "AI agents, voice & backends",
+            "topics": "Understand agent reasoning. Build and test voice agents, then connect databases, authentication and storage to a working frontend.",
+            "tools": ""
+          },
+          {
+            "track": "full",
+            "day_range": "36–39",
+            "title": "Automate real workflows with n8n",
+            "topics": "Connect triggers, APIs and webhooks. Build lead workflows, WhatsApp and Telegram bots, sub-workflows and error handling.",
+            "tools": ""
+          },
+          {
+            "track": "full",
+            "day_range": "40–44",
+            "title": "Claude workflows, MCP & machine learning",
+            "topics": "Build reusable Claude workflows. Connect tools through MCP, manage API keys, explore AI skills and train and evaluate a simple machine learning model.",
+            "tools": ""
+          },
+          {
+            "track": "full",
+            "day_range": "45–49",
+            "title": "Knowledge agents & multi-agent systems",
+            "topics": "Build assistants that retrieve answers from documents. Explore embeddings, vector databases, multi-agent workflows, and packaging an agent as a service.",
+            "tools": ""
+          },
+          {
+            "track": "full",
+            "day_range": "50–56",
+            "title": "AI coding & models on your own machine",
+            "topics": "Work with Claude Code and Codex. Explore local and open-source models, model selection, Hugging Face and the Open Claw ecosystem.",
+            "tools": ""
+          },
+          {
+            "track": "full",
+            "day_range": "57–60",
+            "title": "Your advanced project, live",
+            "topics": "Plan an agent system, connect tools and a backend, test the experience and deploy. Finish with a live presentation, portfolio showcase and certificate distribution.",
+            "tools": ""
+          }
         ]
       }
     },
     {
       "type": "card_grid",
       "fields": {
-        "heading": "Who it is *for*",
-        "intro": "Students, working professionals, founders and freelancers. See how the masterclass fits your week.",
-        "columns": "3",
+        "variant": "course-plans",
+        "heading": "Your ambition.\n*Your starting point.*",
+        "intro": "Build a strong foundation in 30 days, or take the complete 60-day journey from everyday tools to working AI systems.",
+        "columns": "2",
         "cards": [
-          {"image": "audience-student.jpg", "title": "Students", "text": "Build a portfolio of real AI projects while you study.", "link": "/ai-masterclass/students"},
-          {"image": "audience-professional.jpg", "title": "Working professionals", "text": "Spend fewer hours on reports, emails and slides.", "link": "/ai-masterclass/working-professionals"},
-          {"image": "audience-founder.jpg", "title": "Business owners and founders", "text": "Learn what AI can take off your desk, and build the first automations.", "link": "/ai-masterclass/business-owners"}
-        ]
-      }
-    },
-    {
-      "type": "testimonials",
-      "fields": {
-        "heading": "What students *say*",
-        "items": [
-          {"name": "Hatim Sorangwala", "role": "Artificia AI student", "photo": "hatim-sorangwala.jpg", "video_url": "https://drive.google.com/file/d/103bVzroX5C0fOxDYioCAzEwGQKQQfOwj/view"},
-          {"name": "Dev Chokshi", "role": "Artificia AI student", "photo": "dev-chokshi.jpg", "video_url": "https://drive.google.com/file/d/1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw/view"},
-          {"name": "Haritha Nair", "role": "AI design student, Vadodara", "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."},
-          {"name": "Nilesh Chaudasama", "role": "Working professional, Vadodara", "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."}
+          {
+            "title": "Foundation",
+            "duration": "30 DAYS / DAYS 1–30",
+            "price": "₹20,000",
+            "text": "Live classes in Vadodara, one hour a day\nAI foundations, prompting & everyday productivity\nPresentations, images, video, audio & data\nWebsite building, Git & deployment\nYour first capstone & portfolio showcase",
+            "link": "#enquire"
+          },
+          {
+            "title": "The full program",
+            "duration": "60 DAYS / DAYS 1–60",
+            "price": "₹40,000",
+            "text": "Everything in the 30-day Foundation\nAI agents, voice agents & n8n automations\nBackends, APIs, MCP & document-based AI\nMulti-agent workflows, AI coding & local models\nAdvanced capstone, live demo & graduation",
+            "link": "#enquire"
+          }
         ]
       }
     },
     {
       "type": "faqs",
       "fields": {
-        "heading": "Questions before you *join*",
+        "heading": "A few things\n*you might ask.*",
         "items": [
-          {"question": "Do I need coding or a technical background?", "answer": "No. The masterclass is designed for beginners and non-technical learners. Most students start with zero experience and learn by doing, step by step."},
-          {"question": "Where and when are classes held?", "answer": "In person in Vadodara, one hour a day. Batch timings change, so message us on WhatsApp for the current ones."},
-          {"question": "What is the difference between the 30-day and 60-day programs?", "answer": "The 30-day Foundation covers everyday AI tools, content, websites and a capstone. The 60-day Full program adds agents, voice agents, n8n, MCP, RAG, Claude Code and local models."},
-          {"question": "Are classes live or recorded?", "answer": "Live. You learn in the room, with a live demo, hands-on practice and your questions answered on the spot."},
-          {"question": "What will I be able to do at the end?", "answer": "Use the main AI tools with confidence, make slides, images, video and a website, and present a capstone. Full-program students also build agents and automations."},
-          {"question": "Will I get a certificate?", "answer": "Yes. Foundation certificates are given on day 30, and Full-program certificates at graduation on day 60. You also keep a portfolio of the projects you built."},
-          {"question": "Does the course help with jobs or freelancing?", "answer": "It gives you skills and proof. Day 29 builds a portfolio page, a short video walkthrough and a LinkedIn post, and day 30 covers career and freelancing paths."},
-          {"question": "How do I join?", "answer": "Send the form below. We message you on WhatsApp to talk about your goals, you pick the 30-day or 60-day track, then you confirm your place."}
+          {
+            "question": "Do I need to know coding?",
+            "answer": "You can start the Foundation without prior coding experience. You will learn the basics of building and shipping with AI. The Full program goes further into APIs, backend systems, AI coding tools and introductory machine learning."
+          },
+          {
+            "question": "What is the difference between 30 and 60 days?",
+            "answer": "The 30-day Foundation costs ₹20,000 and covers days 1–30: AI tools, creative work, data, websites and a portfolio project. The 60-day Full program costs ₹40,000 and includes all of that, plus days 31–60 covering agents, automation, MCP, RAG, local models and an advanced project."
+          },
+          {
+            "question": "Where and how are classes held?",
+            "answer": "Classes are live and in person in Vadodara, one hour a day. Send an enquiry to discuss the class timings and joining details."
+          },
+          {
+            "question": "Who is this course for?",
+            "answer": "Students, working professionals, business owners and freelancers who want to use AI in practical work. Tell us your goals and we can help you choose a course."
+          },
+          {
+            "question": "What will I build?",
+            "answer": "The Foundation includes creative work, data exercises, a website and a capstone with a portfolio showcase. In the Full program, you also work on agents, voice, automation and document-based AI before building and presenting an advanced capstone."
+          },
+          {
+            "question": "Are paid tool subscriptions included?",
+            "answer": "Ask us which accounts you will need and whether any subscriptions, API usage or deployment charges are separate from the course fee before enrolling."
+          },
+          {
+            "question": "How do I get started?",
+            "answer": "Choose a course and send your details using the enquiry form. We will contact you on WhatsApp to discuss your goals, class timings and next steps."
+          }
         ]
       }
     },
     {
       "type": "lead_form",
       "fields": {
-        "heading": "Ask about the *masterclass*",
-        "intro": "Leave your details and we will reply on WhatsApp with timings and next steps.",
+        "heading": "Let’s build\n*your next chapter.*",
+        "intro": "Tell us a little about yourself. We will help you choose a course and share timings, joining details and next steps on WhatsApp.",
         "form_type": "masterclass",
+        "button_label": "Ask about the course",
         "side_points": [
-          {"text": "No coding needed"},
-          {"text": "One hour a day, in person in Vadodara"},
-          {"text": "A 30-day or a 60-day track"}
+          {
+            "text": "30-day Foundation — ₹20,000"
+          },
+          {
+            "text": "60-day Full program — ₹40,000"
+          },
+          {
+            "text": "Live in Vadodara, one hour a day"
+          }
         ]
       }
     }

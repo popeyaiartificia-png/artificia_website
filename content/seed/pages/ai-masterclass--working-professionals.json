@@ -10,6 +10,16 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before the course",
+        "after_label": "After the course",
+        "stat_value": "60",
+        "stat_unit": "days",
+        "stat_label": "AI Masterclass",
+        "statement": "Take repetitive work off your desk with AI.",
+        "before_text": "Repetitive work every day?",
+        "after_text": "Routine work, done with AI.",
+        "eyebrow": "AI Masterclass · For working professionals",
         "subheading": "Spend less of your week on reports, emails and slides. Learn the AI tools for office work in one hour a day, in Vadodara.",
         "image": "audience-professional.jpg",
         "primary_cta_label": "Ask about the masterclass",

@@ -10,6 +10,15 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before",
+        "after_label": "After",
+        "stat_value": "Free",
+        "statement": "An AI assistant that answers from your documents.",
+        "before_text": "Answers buried in documents?",
+        "after_text": "Answers from your own files.",
+        "eyebrow": "Solutions · Agentic AI",
+        "stat_label": "Flow audit to start",
         "subheading": "We build AI assistants that answer from your SOPs, manuals and records, and show the page each answer came from.",
         "image": "ai-documents.jpg",
         "primary_cta_label": "Book the free flow audit",

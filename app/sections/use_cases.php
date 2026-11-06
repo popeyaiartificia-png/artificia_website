@@ -1,3 +1,5 @@
+<?php if (($f['variant'] ?? '') === 'lines') { include VIEWS_DIR . '/solutions-outcomes.php'; return; } ?>
+<?php if (($f['variant'] ?? '') === 'departments') { include VIEWS_DIR . '/corporate-departments.php'; return; } ?>
 <section class="sec sec--use_cases usecases">
   <div class="wrap">
     <?= sec_head($f['heading'] ?? '') ?>

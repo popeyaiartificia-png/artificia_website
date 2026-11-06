@@ -3,7 +3,7 @@ $wa = whatsapp_url($settings);
 $nav = [
     '/ai-masterclass' => 'Masterclass',
     '/corporate-ai-training' => 'Corporate training',
-    '/services' => 'Services',
+    '/services' => 'Solutions',
     '/case-studies/orkay-tiles' => 'Case study',
     '/about' => 'About',
     '/contact' => 'Contact',
@@ -45,9 +45,24 @@ $nav = [
 <?php // Enable the intro on every page load; motion still respects the visitor's preference. ?>
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.__motion)d.classList.remove('motion')},2500)}})(document.documentElement)</script>
 <link rel="preload" href="/assets/img/artificia-logo.png" as="image">
-<link rel="preload" href="/assets/fonts/roboto-serif-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/roboto-flex-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/artificia-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/statement-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
+<?php if (str_contains($body, 'class="course-page"') || str_contains($body, 'data-masterclass')): // the course page, and every page using its hero layout ?>
+<link rel="stylesheet" href="/assets/css/course.css">
+<script src="/assets/js/course.js" defer></script>
+<?php endif ?>
+<?php if (str_contains($body, 'class="solutions-page')): ?>
+<link rel="stylesheet" href="/assets/css/solutions.css">
+<script src="/assets/js/solutions.js" defer></script>
+<?php endif ?>
+<?php if (str_contains($body, 'class="solutions-page about-page')): // About, and Contact which shares its sheet ?>
+<link rel="stylesheet" href="/assets/css/about.css">
+<?php endif ?>
+<?php if (str_contains($body, 'class="solutions-page corporate-page"')): ?>
+<link rel="stylesheet" href="/assets/css/corporate.css">
+<script src="/assets/js/corporate.js" defer></script>
+<?php endif ?>
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
 <meta name="theme-color" content="#15160F">
 <?php if ($ga4 !== ''): ?>
@@ -85,7 +100,7 @@ $nav = [
 <?php
 // Every page the footer has always linked to stays linked: search engines and visitors both walk these.
 $explore = [
-    ['/services', 'Services', [['/services/gohighlevel', 'GoHighLevel'], ['/services/website-development', 'Website development'], ['/services/content-marketing', 'Content and marketing'], ['/services/rag-custom-automation', 'RAG and custom automation']]],
+    ['/services', 'Solutions', [['/services/gohighlevel', 'GoHighLevel'], ['/services/website-development', 'Website development'], ['/services/content-marketing', 'Content and marketing'], ['/services/rag-custom-automation', 'RAG and custom automation']]],
     ['/corporate-ai-training', 'Corporate training', [['/corporate-ai-training/manufacturing', 'Manufacturing'], ['/corporate-ai-training/healthcare', 'Healthcare']]],
     ['/ai-masterclass', 'AI Masterclass', [['/ai-masterclass/students', 'For students'], ['/ai-masterclass/working-professionals', 'For working professionals'], ['/ai-masterclass/business-owners', 'For business owners']]],
     ['/case-studies/orkay-tiles', 'Case study', []],

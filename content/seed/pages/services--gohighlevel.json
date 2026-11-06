@@ -10,6 +10,15 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before",
+        "after_label": "After",
+        "stat_value": "Free",
+        "statement": "GoHighLevel, set up around how you sell.",
+        "before_text": "Leads left waiting?",
+        "after_text": "Every lead followed up.",
+        "eyebrow": "Solutions · Marketing automation",
+        "stat_label": "Flow audit to start",
         "subheading": "We set up GoHighLevel around how you sell: pipelines, WhatsApp and email follow-ups, lead routing and reports. Then we keep it running.",
         "image": "ai-sales.jpg",
         "primary_cta_label": "Book the free flow audit",

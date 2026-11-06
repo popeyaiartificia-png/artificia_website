@@ -22,7 +22,7 @@ const LEAD_OPTIONS = [
     'employees' => ['1–10', '11–25', '26–50', '51–100', '100+'],
     'adoption' => ['Not using AI yet', 'Exploring (ChatGPT, Claude)', 'Some tools or automations', 'Custom automations or models'],
     'objectives' => ['Automate repetitive work', 'Upskill the team on AI', 'Build AI agents or chatbots', 'Integrate n8n / Make / APIs', 'Something else'],
-    'service' => ['GoHighLevel setup', 'Website development', 'Content and marketing', 'RAG or custom automation', 'AI automation', 'Not sure yet'],
+    'service' => ['AI automation', 'Agentic AI', 'Software & apps', 'Website development', 'Marketing automation / GoHighLevel', 'SEO / AEO / GEO', 'Cloud & private AI', 'Content and marketing', 'Not sure yet'],
 ];
 
 /** Readable names for the `fields` answers (alert email, admin detail, CSV). */

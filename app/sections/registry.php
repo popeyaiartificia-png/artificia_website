@@ -37,7 +37,18 @@ function section_registry(): array
             'secondary_cta_label' => $text('Secondary button label'),
             'secondary_cta_link' => $text('Secondary button link'),
             'image' => $image('Image'),
-            'variant' => $select('Layout', ['split', 'centered', 'cover', 'stage']),
+            'variant' => $select('Layout', ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'journey']),
+            // The masterclass layout, used by every inner page: a short statement, the before and after captions on the
+            // ribbon, and one verified figure on the right. Empty fields fall back to the subheading or are left out.
+            'statement' => $text('Short statement (large, left of the visual)'),
+            'format' => $text('Small line under the statement'),
+            'before_label' => $text('Before caption: label'),
+            'before_text' => $text('Before caption'),
+            'after_label' => $text('After caption: label'),
+            'after_text' => $text('After caption'),
+            'stat_value' => $text('Figure on the right (verified only)'),
+            'stat_unit' => $text('Figure unit'),
+            'stat_label' => $text('Figure label'),
             'doors' => $list('Doors (chooser rows)', [
                 'label' => $text('Label', true),
                 'note' => $text('Note'),
@@ -90,6 +101,10 @@ function section_registry(): array
             'cta_link' => $text('Button link'),
         ]],
         'card_grid' => ['label' => 'Card grid', 'fields' => [
+            // pillars: big ruled rows, `*words*` in a title turn serif. notes: tall columns, each drawn from its icon.
+            // kit: documents dealt into a spread, each page drawn from its icon.
+            'variant' => $select('Layout', ['standard', 'course-plans', 'pillars', 'notes', 'kit']),
+            'eyebrow' => $text('Eyebrow (pillars only)'),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'columns' => $select('Columns', ['2', '3', '4']),
@@ -100,9 +115,12 @@ function section_registry(): array
                 'title' => $text('Title', true),
                 'text' => $area('Text', true),
                 'link' => $text('Link'),
+                'price' => $text('Course fee (course plans only)'),
+                'duration' => $text('Duration (course plans only)'),
             ], true),
         ]],
         'solutions' => ['label' => 'Solutions gallery', 'fields' => [
+            'variant' => $select('Layout', ['grid', 'chapters', 'programmes']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'link_label' => $text('All solutions link label'),
@@ -112,9 +130,12 @@ function section_registry(): array
                 'text' => $area('Description', true),
                 'link' => $text('Service page link', true),
                 'visual' => $select('Illustration', ['workflow', 'agentic', 'software', 'marketing', 'knowledge', 'search', 'cloud']),
+                'link_label' => $text('Link label (chapters layout)'),
+                'includes' => $area('What it includes, one per line (chapters layout)'),
             ], true),
         ]],
         'use_cases' => ['label' => 'Use cases (before and after)', 'fields' => [
+            'variant' => $select('Layout', ['standard', 'lines', 'departments']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'items' => $list('Use cases', [
@@ -139,28 +160,38 @@ function section_registry(): array
             'cta_link' => $text('Button link'),
         ]],
         'process_steps' => ['label' => 'Process steps', 'fields' => [
+            'variant' => $select('Layout', ['standard', 'course-projects']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
+            'cta_label' => $text('Button label'),
+            'cta_link' => $text('Button link'),
             'steps' => $list('Steps', [
                 'title' => $text('Title', true),
                 'text' => $area('Text', true),
+                'visual' => $select('Course project preview', ['website', 'content', 'assistant', 'automation']),
+                'tools' => $text('Project tools'),
+                'day_range' => $text('Syllabus days'),
             ], true),
         ]],
         'tools' => ['label' => 'Tools', 'fields' => [
+            'variant' => $select('Layout', ['standard', 'course-toolkit']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'flow' => $list('Flow (one piece of work, step by step)', [
                 'title' => $text('Step', true),
                 'note' => $text('Note'),
             ]),
+            'tools_label' => $text('Label above the tools (flow layout; default "Built on")'),
             'tools' => $list('Tools', [
                 'name' => $text('Name', true),
                 'brand' => $select('Logo (built in)', array_keys(require __DIR__ . '/../views/brands.php')),
+                'symbol' => $select('Symbol when no brand mark is available', $icons),
                 'logo' => $image('Logo upload (replaces the built-in one)'),
                 'note' => $text('Note'),
             ], true),
         ]],
         'curriculum' => ['label' => 'Curriculum', 'fields' => [
+            'variant' => $select('Layout', ['standard', 'course']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'modules' => $list('Modules', [
@@ -181,7 +212,7 @@ function section_registry(): array
         ]],
         'testimonials' => ['label' => 'Testimonials', 'fields' => [
             'heading' => $text('Heading', true),
-            'layout' => $select('Layout', ['standard', 'fan']),
+            'layout' => $select('Layout', ['standard', 'fan', 'proof']),
             'items' => $list('Testimonials', [
                 'name' => $text('Name', true),
                 'role' => $text('Role', true),
@@ -225,10 +256,16 @@ function section_registry(): array
             ]),
         ]],
         'cta' => ['label' => 'Call to action', 'fields' => [
+            // pass: a ticket with the details on its stub (the corporate free pilot).
+            'variant' => $select('Layout', ['standard', 'pass']),
             'heading' => $text('Heading', true),
             'text' => $area('Text'),
             'button_label' => $text('Button label', true),
             'button_link' => $text('Button link', true),
+            'details' => $list('Details (pass layout)', [
+                'label' => $text('Label', true),
+                'value' => $text('Value', true),
+            ]),
         ]],
         'people' => ['label' => 'People', 'fields' => [
             'heading' => $text('Heading', true),
@@ -237,6 +274,7 @@ function section_registry(): array
                 'role' => $text('Role', true),
                 'bio' => $area('Bio'),
                 'photo' => $image('Photo'),
+                'photo_2' => $image('Second photo (optional)'),
                 'linkedin' => $text('LinkedIn link'),
             ], true),
         ]],
@@ -244,6 +282,8 @@ function section_registry(): array
         'map_contact' => ['label' => 'Map and contact details', 'fields' => [
             'heading' => $text('Heading'),
             'show_map' => $select('Show map', ['yes', 'no']),
+            // address: the address and map only, for a page that lists the phone, WhatsApp and email elsewhere (Contact's hero).
+            'details' => $select('Details shown', ['all', 'address']),
         ]],
         'blog_list' => ['label' => 'Latest blog posts', 'fields' => [
             'heading' => $text('Heading'),

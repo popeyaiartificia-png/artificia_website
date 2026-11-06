@@ -9,9 +9,17 @@ $families = [
     'search' => ['Discoverability', 'Be found. Be the answer.', 'Search / AI discovery'],
     'cloud' => ['Infrastructure', 'AI, on your terms.', 'Cloud / Private deployment'],
 ];
+if (($f['variant'] ?? '') === 'chapters') {
+    include VIEWS_DIR . '/solutions-chapters.php';
+    return;
+}
+if (($f['variant'] ?? '') === 'programmes') {
+    include VIEWS_DIR . '/corporate-programmes.php';
+    return;
+}
 ?>
 <section class="sec sec--solutions solutions" data-solutions>
-  <canvas class="topo-bg" aria-hidden="true"></canvas>
+  <div class="solutions__terrain" aria-hidden="true"><canvas class="topo-bg"></canvas></div>
   <div class="wrap">
     <div class="solutions__eyebrow"><span class="solutions__signal" aria-hidden="true"></span> OUR SOLUTIONS <span class="solutions__index"><?= sprintf('%02d', count($items)) ?> ways forward</span></div>
     <div class="solutions__head">

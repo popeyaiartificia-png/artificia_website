@@ -1,4 +1,8 @@
 <?php
+if (($f['variant'] ?? '') === 'course') {
+    include VIEWS_DIR . '/course-curriculum.php';
+    return;
+}
 $tracks = ['foundation' => ['30-day Foundation', 'Days 1 to 30'], 'full' => ['60-day Full program', 'Days 31 to 60, after the Foundation']];
 $byTrack = ['foundation' => [], 'full' => []];
 foreach ($f['modules'] ?? [] as $m) {

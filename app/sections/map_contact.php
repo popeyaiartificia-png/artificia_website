@@ -5,8 +5,11 @@ $email = trim($settings['org_email'] ?? '');
 $wa = whatsapp_url($settings);
 $gbp = trim($settings['gbp_url'] ?? '');
 $showMap = ($f['show_map'] ?? 'yes') !== 'no' && $addr !== '';
+if (($f['details'] ?? 'all') === 'address') {
+    $phone = $email = $wa = '';
+}
 ?>
-<section class="sec sec--map_contact contact">
+<section class="sec sec--map_contact contact" id="visit">
   <div class="wrap">
     <?= sec_head(($f['heading'] ?? '') !== '' ? $f['heading'] : 'Contact') ?>
     <div class="contact__grid">
@@ -17,7 +20,9 @@ $showMap = ($f['show_map'] ?? 'yes') !== 'no' && $addr !== '';
 <?php if ($phone !== ''): ?>
         <div><dt>Phone</dt><dd><a href="tel:<?= e(preg_replace('/[^\d+]/', '', $phone)) ?>"><?= e($phone) ?></a></dd></div>
 <?php endif ?>
+<?php if ($wa !== ''): ?>
         <div><dt>WhatsApp</dt><dd><a href="<?= e($wa) ?>">Message us</a></dd></div>
+<?php endif ?>
 <?php if ($email !== ''): ?>
         <div><dt>Email</dt><dd><a href="mailto:<?= e($email) ?>"><?= e($email) ?></a></dd></div>
 <?php endif ?>

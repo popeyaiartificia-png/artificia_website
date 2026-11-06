@@ -2,27 +2,94 @@
   "slug": "about",
   "kind": "page",
   "title": "About Artificia",
-  "h1": "We teach AI, and *we build with it*",
-  "meta_title": "About us: Vijay Linju Raghavan and team | Artificia AI",
-  "meta_description": "Artificia Intellec Pvt Ltd is an AI training and automation company in Vadodara, Gujarat. Founded by Vijay Linju Raghavan.",
+  "h1": "We build with AI, *and we teach it.*",
+  "meta_title": "About Artificia: AI automation in Vadodara | Artificia AI",
+  "meta_description": "Artificia Intellec Pvt Ltd builds AI automation and business software, trains corporate teams and runs AI courses in Vadodara. Founded by Vijay Linju Raghavan.",
   "sections": [
     {
       "type": "hero",
       "fields": {
-        "subheading": "Artificia AI is an AI training and automation company in Vadodara, Gujarat. The people who teach the classes also build the systems.",
-        "image": "classroom-instructor.jpg",
-        "variant": "split",
-        "primary_cta_label": "Contact us",
-        "primary_cta_link": "/contact",
-        "secondary_cta_label": "See the masterclass",
-        "secondary_cta_link": "/ai-masterclass"
+        "statement": "We build AI systems, then teach your team to use them.",
+        "before_label": "Before",
+        "before_text": "AI ideas, but no one to build them?",
+        "after_label": "With Artificia",
+        "after_text": "Built, running and taught to your team.",
+        "stat_value": "03",
+        "stat_unit": "lines of work",
+        "stat_label": "Build · Train · Teach",
+        "variant": "about",
+        "eyebrow": "About Artificia · Vadodara, Gujarat",
+        "subheading": "Artificia Intellec Pvt Ltd builds AI automation and business software, trains teams to use it, and runs AI courses.",
+        "primary_cta_label": "Talk to us",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "What we do",
+        "secondary_cta_link": "#work"
       }
     },
     {
-      "type": "rich_text",
+      "type": "statement",
       "fields": {
-        "heading": "Who *we are*",
-        "body": "<p>Artificia Intellec Pvt Ltd is an AI company based in Vadodara. We train people to use AI on real work, and we help companies put it into their own operations.</p><p>Three lines of work, one team:</p><ul><li>A live <a href=\"/ai-masterclass\">AI Masterclass</a> for individuals, in Vadodara.</li><li><a href=\"/corporate-ai-training\">Corporate AI training</a> built around each client's documents.</li><li><a href=\"/services\">AI systems</a> for businesses: GoHighLevel, websites, content and RAG.</li></ul>"
+        "text": "The people who *build* our systems also *teach* our classes."
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "variant": "pillars",
+        "heading": "One team. *Three lines of work.*",
+        "intro": "What we learn building systems for clients goes straight into how we train teams and teach our classes.",
+        "cards": [
+          {
+            "title": "We build *AI systems for businesses.*",
+            "text": "AI automation, agentic AI, software and apps, marketing automation, SEO/AEO/GEO and private AI. It starts with a free AI consultation.",
+            "link": "/services"
+          },
+          {
+            "title": "We train *corporate teams.*",
+            "text": "AI training built around your own documents and departments, on-site or online.",
+            "link": "/corporate-ai-training"
+          },
+          {
+            "title": "We teach *individuals.*",
+            "text": "The AI Masterclass: offline in Vadodara, one hour a day, for 30 or 60 days. No coding needed.",
+            "link": "/ai-masterclass"
+          }
+        ]
+      }
+    },
+    {
+      "type": "card_grid",
+      "fields": {
+        "variant": "notes",
+        "heading": "Five rules we *work by.*",
+        "intro": "They apply to every system we build and every team we train.",
+        "cards": [
+          {
+            "icon": "magnifying-glass",
+            "title": "Problem first",
+            "text": "We start with the work that slows you down. The tool comes second."
+          },
+          {
+            "icon": "gear-six",
+            "title": "Built to run",
+            "text": "Systems are tested before launch and monitored after it."
+          },
+          {
+            "icon": "lock-key",
+            "title": "Your accounts, your data",
+            "text": "We set systems up in your company's own accounts, with private or self-hosted AI where it fits."
+          },
+          {
+            "icon": "users-three",
+            "title": "Your team, trained",
+            "text": "We train your people to use what we build, so it gets used."
+          },
+          {
+            "icon": "handshake",
+            "title": "Yours to keep",
+            "text": "You own everything we build, and it keeps running after the project ends."
+          }
+        ]
       }
     },
     {
@@ -30,19 +97,13 @@
       "fields": {
         "heading": "Our *founder*",
         "items": [
-          {"name": "Vijay Linju Raghavan", "role": "Founder", "bio": "Brings a background in film and photography, an economics degree from MSU Baroda, and experience founding tech and e-commerce ventures.", "photo": "vijay-linju-raghavan.jpg"}
-        ]
-      }
-    },
-    {
-      "type": "card_grid",
-      "fields": {
-        "heading": "What we *do*",
-        "columns": "3",
-        "cards": [
-          {"image": "learner-lime.jpg", "title": "AI Masterclass", "text": "Live in Vadodara, one hour a day, for 30 or 60 days.", "link": "/ai-masterclass"},
-          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "Custom programs, on-site or over Microsoft Teams.", "link": "/corporate-ai-training"},
-          {"image": "business-owner-desk.jpg", "title": "Services", "text": "GoHighLevel, websites, content and RAG automation.", "link": "/services"}
+          {
+            "name": "Vijay Linju Raghavan",
+            "role": "Founder",
+            "bio": "Vijay brings a background in film and photography, an economics degree from MSU Baroda, and experience founding tech and e-commerce ventures.",
+            "photo": "vijay-linju-raghavan.jpg",
+            "photo_2": "vijay-linju-raghavan-camera.jpg"
+          }
         ]
       }
     },
@@ -54,12 +115,22 @@
       }
     },
     {
-      "type": "cta",
+      "type": "lead_form",
       "fields": {
-        "heading": "Not sure where to *start*?",
-        "text": "Tell us what you want to do with AI. We will point you to the right course, program or service.",
-        "button_label": "Contact Artificia",
-        "button_link": "/contact"
+        "heading": "Tell us what you want *to do with AI.*",
+        "intro": "We will point you to the right solution, training or course, and reply on WhatsApp.",
+        "form_type": "contact",
+        "side_points": [
+          {
+            "text": "Solutions, corporate training or courses"
+          },
+          {
+            "text": "A reply on WhatsApp"
+          },
+          {
+            "text": "Based in Vadodara, Gujarat"
+          }
+        ]
       }
     }
   ]

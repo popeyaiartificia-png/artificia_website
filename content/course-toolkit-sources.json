@@ -1,0 +1,3173 @@
+{
+  "curriculum_source": {
+    "path": "D:/purnima/finalcourse.xlsx",
+    "sheet": "60-Day Curriculum",
+    "range": "A1:D61"
+  },
+  "scope": "Named tools, platforms, libraries and model families from the Tools column and activities; includes alternatives, advanced exploration and capstone stack examples. Product features and individual model versions are folded into their parent tool.",
+  "tools": [
+    {
+      "name": "ChatGPT",
+      "days": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        11,
+        12,
+        17,
+        31,
+        57
+      ],
+      "kind": "tool-or-platform",
+      "brand": "chatgpt"
+    },
+    {
+      "name": "Claude",
+      "days": [
+        1,
+        4,
+        5,
+        10,
+        11,
+        31,
+        40,
+        41,
+        57
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude"
+    },
+    {
+      "name": "Gemini",
+      "days": [
+        1,
+        3,
+        9,
+        12,
+        25
+      ],
+      "kind": "tool-or-platform",
+      "brand": "gemini"
+    },
+    {
+      "name": "Meta AI",
+      "days": [
+        2,
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "meta"
+    },
+    {
+      "name": "Grok",
+      "days": [
+        2,
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "grok"
+    },
+    {
+      "name": "Kimi",
+      "days": [
+        2
+      ],
+      "kind": "tool-or-platform",
+      "brand": "kimi"
+    },
+    {
+      "name": "Mistral Le Chat",
+      "days": [
+        2
+      ],
+      "kind": "tool-or-platform",
+      "brand": "mistral"
+    },
+    {
+      "name": "DeepSeek",
+      "days": [
+        3
+      ],
+      "kind": "tool-or-platform",
+      "brand": "deepseek"
+    },
+    {
+      "name": "Qwen",
+      "days": [
+        3,
+        52,
+        55
+      ],
+      "kind": "model-family",
+      "brand": "qwen"
+    },
+    {
+      "name": "Teachable Machine",
+      "days": [
+        4,
+        44
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google"
+    },
+    {
+      "name": "Kaggle",
+      "days": [
+        4,
+        44
+      ],
+      "kind": "tool-or-platform",
+      "brand": "kaggle"
+    },
+    {
+      "name": "Google Colab",
+      "days": [
+        4,
+        44
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-colab"
+    },
+    {
+      "name": "Anaconda",
+      "days": [
+        4
+      ],
+      "kind": "tool-or-platform",
+      "brand": "anaconda"
+    },
+    {
+      "name": "Microsoft Copilot",
+      "days": [
+        5,
+        17
+      ],
+      "kind": "tool-or-platform",
+      "brand": "copilot"
+    },
+    {
+      "name": "Otter.ai",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Google Workspace",
+      "days": [
+        5,
+        9
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google"
+    },
+    {
+      "name": "Fireflies.ai",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Grammarly",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "brand": "grammarly"
+    },
+    {
+      "name": "Copy.ai",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "QuillBot",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Microsoft Word",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "brand": "microsoft"
+    },
+    {
+      "name": "Microsoft Excel",
+      "days": [
+        5,
+        17
+      ],
+      "kind": "tool-or-platform",
+      "brand": "microsoft"
+    },
+    {
+      "name": "Microsoft PowerPoint",
+      "days": [
+        5
+      ],
+      "kind": "tool-or-platform",
+      "brand": "microsoft"
+    },
+    {
+      "name": "Google Sheets",
+      "days": [
+        5,
+        9,
+        17,
+        22,
+        37,
+        38
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-sheets"
+    },
+    {
+      "name": "Google Docs",
+      "days": [
+        5,
+        9,
+        27
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-docs"
+    },
+    {
+      "name": "Perplexity",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "brand": "perplexity"
+    },
+    {
+      "name": "Comet",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "brand": "perplexity"
+    },
+    {
+      "name": "Atlas",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Dia",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Consensus",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Elicit",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "SciSpace",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Glasp",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "You.com",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Frase.io",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Emily",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Manus",
+      "days": [
+        6
+      ],
+      "kind": "tool-or-platform",
+      "brand": "manus"
+    },
+    {
+      "name": "NotebookLM",
+      "days": [
+        7
+      ],
+      "kind": "tool-or-platform",
+      "brand": "notebooklm"
+    },
+    {
+      "name": "Obsidian AI",
+      "days": [
+        7
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Mem.ai",
+      "days": [
+        7
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Jasper AI",
+      "days": [
+        8
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chat-circle-text"
+    },
+    {
+      "name": "Google Slides",
+      "days": [
+        9,
+        11
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-slides"
+    },
+    {
+      "name": "Gmail",
+      "days": [
+        9
+      ],
+      "kind": "tool-or-platform",
+      "brand": "gmail"
+    },
+    {
+      "name": "Google AI Studio",
+      "days": [
+        9,
+        20
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-ai-studio"
+    },
+    {
+      "name": "Gamma",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "brand": "gamma"
+    },
+    {
+      "name": "Genspark",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Chronicle",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Slidesgo",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Beautiful.ai",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Tome",
+      "days": [
+        11
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Canva",
+      "days": [
+        11,
+        16,
+        19,
+        30
+      ],
+      "kind": "tool-or-platform",
+      "brand": "canva"
+    },
+    {
+      "name": "Midjourney",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "midjourney"
+    },
+    {
+      "name": "Stable Diffusion",
+      "days": [
+        12
+      ],
+      "kind": "model-family",
+      "brand": "stability"
+    },
+    {
+      "name": "Leonardo AI",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Ideogram",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "ideogram"
+    },
+    {
+      "name": "FLUX",
+      "days": [
+        12
+      ],
+      "kind": "model-family",
+      "brand": "flux"
+    },
+    {
+      "name": "Krea",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "krea"
+    },
+    {
+      "name": "Adobe Firefly",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "adobe-firefly"
+    },
+    {
+      "name": "Recraft",
+      "days": [
+        12
+      ],
+      "kind": "tool-or-platform",
+      "brand": "recraft"
+    },
+    {
+      "name": "Runway",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "runway"
+    },
+    {
+      "name": "Pika",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "pika"
+    },
+    {
+      "name": "Kling AI",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "kling"
+    },
+    {
+      "name": "CapCut",
+      "days": [
+        13,
+        15
+      ],
+      "kind": "tool-or-platform",
+      "brand": "capcut"
+    },
+    {
+      "name": "Luma AI",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "luma"
+    },
+    {
+      "name": "Higgsfield",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Google Veo",
+      "days": [
+        13
+      ],
+      "kind": "model-family",
+      "brand": "google"
+    },
+    {
+      "name": "Sora",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "sora"
+    },
+    {
+      "name": "Hailuo AI",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "hailuo"
+    },
+    {
+      "name": "Wan",
+      "days": [
+        13
+      ],
+      "kind": "model-family",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Google Flow",
+      "days": [
+        13
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google"
+    },
+    {
+      "name": "ElevenLabs",
+      "days": [
+        14,
+        15,
+        32
+      ],
+      "kind": "tool-or-platform",
+      "brand": "elevenlabs"
+    },
+    {
+      "name": "Vapi",
+      "days": [
+        14,
+        32,
+        33
+      ],
+      "kind": "tool-or-platform",
+      "brand": "vapi"
+    },
+    {
+      "name": "Suno",
+      "days": [
+        14
+      ],
+      "kind": "tool-or-platform",
+      "brand": "suno"
+    },
+    {
+      "name": "Whisper",
+      "days": [
+        14
+      ],
+      "kind": "model-family",
+      "brand": "openai"
+    },
+    {
+      "name": "Udio",
+      "days": [
+        14
+      ],
+      "kind": "tool-or-platform",
+      "brand": "udio"
+    },
+    {
+      "name": "Adobe Podcast",
+      "days": [
+        14
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Descript",
+      "days": [
+        14
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Happy Scribe",
+      "days": [
+        14
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "HeyGen",
+      "days": [
+        15
+      ],
+      "kind": "tool-or-platform",
+      "brand": "heygen"
+    },
+    {
+      "name": "Synthesia",
+      "days": [
+        15
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "D-ID",
+      "days": [
+        15
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Adobe Premiere Pro",
+      "days": [
+        15
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "AdCreative.ai",
+      "days": [
+        16
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Predis.ai",
+      "days": [
+        16
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "pen-nib"
+    },
+    {
+      "name": "Julius AI",
+      "days": [
+        17
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Numerous.ai",
+      "days": [
+        17
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Rows AI",
+      "days": [
+        17
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Airtable",
+      "days": [
+        17
+      ],
+      "kind": "tool-or-platform",
+      "brand": "airtable"
+    },
+    {
+      "name": "Bolt.new",
+      "days": [
+        18,
+        23,
+        28,
+        29,
+        34,
+        35
+      ],
+      "kind": "tool-or-platform",
+      "brand": "stackblitz"
+    },
+    {
+      "name": "Lovable",
+      "days": [
+        18,
+        23,
+        28,
+        29,
+        34,
+        35
+      ],
+      "kind": "tool-or-platform",
+      "brand": "lovable"
+    },
+    {
+      "name": "Claude Design",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude"
+    },
+    {
+      "name": "Webflow AI",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "brand": "webflow"
+    },
+    {
+      "name": "Replit Agent",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "brand": "replit"
+    },
+    {
+      "name": "v0",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "brand": "v0"
+    },
+    {
+      "name": "Surfer SEO",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "gear-six"
+    },
+    {
+      "name": "Emergent",
+      "days": [
+        18
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "gear-six"
+    },
+    {
+      "name": "Framer",
+      "days": [
+        19
+      ],
+      "kind": "tool-or-platform",
+      "brand": "framer"
+    },
+    {
+      "name": "Figma",
+      "days": [
+        19
+      ],
+      "kind": "tool-or-platform",
+      "brand": "figma"
+    },
+    {
+      "name": "Google Stitch",
+      "days": [
+        19
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google"
+    },
+    {
+      "name": "Durable",
+      "days": [
+        19
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "gear-six"
+    },
+    {
+      "name": "Gemini API",
+      "days": [
+        20,
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "gemini"
+    },
+    {
+      "name": "Git",
+      "days": [
+        21,
+        26
+      ],
+      "kind": "tool-or-platform",
+      "brand": "git"
+    },
+    {
+      "name": "GitHub",
+      "days": [
+        21,
+        26,
+        43,
+        51,
+        54
+      ],
+      "kind": "tool-or-platform",
+      "brand": "github"
+    },
+    {
+      "name": "GitHub Desktop",
+      "days": [
+        21
+      ],
+      "kind": "tool-or-platform",
+      "brand": "github"
+    },
+    {
+      "name": "VS Code",
+      "days": [
+        21,
+        50,
+        56
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "gear-six"
+    },
+    {
+      "name": "Tabnine",
+      "days": [
+        21
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "gear-six"
+    },
+    {
+      "name": "Cline",
+      "days": [
+        21
+      ],
+      "kind": "tool-or-platform",
+      "brand": "cline"
+    },
+    {
+      "name": "Google Apps Script",
+      "days": [
+        22
+      ],
+      "kind": "tool-or-platform",
+      "brand": "googleappsscript"
+    },
+    {
+      "name": "n8n",
+      "days": [
+        22,
+        31,
+        36,
+        37,
+        38,
+        39,
+        47
+      ],
+      "kind": "tool-or-platform",
+      "brand": "n8n"
+    },
+    {
+      "name": "Make",
+      "days": [
+        22,
+        36
+      ],
+      "kind": "tool-or-platform",
+      "brand": "make"
+    },
+    {
+      "name": "Taskade",
+      "days": [
+        22
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Antigravity",
+      "days": [
+        23,
+        24,
+        25,
+        26,
+        28,
+        29
+      ],
+      "kind": "tool-or-platform",
+      "brand": "antigravity"
+    },
+    {
+      "name": "Windsurf",
+      "days": [
+        24
+      ],
+      "kind": "tool-or-platform",
+      "brand": "windsurf"
+    },
+    {
+      "name": "Vercel",
+      "days": [
+        26,
+        48,
+        49,
+        51,
+        59
+      ],
+      "kind": "tool-or-platform",
+      "brand": "vercel"
+    },
+    {
+      "name": "Notion",
+      "days": [
+        27,
+        30,
+        43,
+        57
+      ],
+      "kind": "tool-or-platform",
+      "brand": "notion"
+    },
+    {
+      "name": "Loom",
+      "days": [
+        30,
+        59
+      ],
+      "kind": "tool-or-platform",
+      "brand": "loom"
+    },
+    {
+      "name": "LinkedIn",
+      "days": [
+        30
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Taplio",
+      "days": [
+        30
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Postwise",
+      "days": [
+        30
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "Buffer",
+      "days": [
+        30
+      ],
+      "kind": "tool-or-platform",
+      "brand": "buffer"
+    },
+    {
+      "name": "Supergrow",
+      "days": [
+        30
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "file-text"
+    },
+    {
+      "name": "CrewAI",
+      "days": [
+        31,
+        47
+      ],
+      "kind": "language-or-library",
+      "brand": "crewai"
+    },
+    {
+      "name": "Retell AI",
+      "days": [
+        32,
+        33
+      ],
+      "kind": "tool-or-platform",
+      "brand": "retell"
+    },
+    {
+      "name": "Bland AI",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "PlayHT",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Murf",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Hume",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Cartesia",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Deepgram",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "brand": "deepgram"
+    },
+    {
+      "name": "LiveKit",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "brand": "livekit"
+    },
+    {
+      "name": "Pipecat",
+      "days": [
+        32
+      ],
+      "kind": "language-or-library",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Twilio",
+      "days": [
+        32,
+        33
+      ],
+      "kind": "tool-or-platform",
+      "brand": "twilio"
+    },
+    {
+      "name": "Synthflow",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "OpenAI API",
+      "days": [
+        32,
+        38,
+        39,
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "openai"
+    },
+    {
+      "name": "Jerry",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "Vobiz",
+      "days": [
+        33
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone"
+    },
+    {
+      "name": "WhatsApp Business API",
+      "days": [
+        33,
+        39
+      ],
+      "kind": "tool-or-platform",
+      "brand": "whatsapp"
+    },
+    {
+      "name": "Supabase",
+      "days": [
+        34,
+        35,
+        45,
+        48,
+        58
+      ],
+      "kind": "tool-or-platform",
+      "brand": "supabase"
+    },
+    {
+      "name": "Firebase",
+      "days": [
+        34,
+        35,
+        58
+      ],
+      "kind": "tool-or-platform",
+      "brand": "firebase"
+    },
+    {
+      "name": "Postman",
+      "days": [
+        34,
+        35,
+        37
+      ],
+      "kind": "tool-or-platform",
+      "brand": "postman"
+    },
+    {
+      "name": "Zapier",
+      "days": [
+        36
+      ],
+      "kind": "tool-or-platform",
+      "brand": "zapier"
+    },
+    {
+      "name": "Activepieces",
+      "days": [
+        36
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Relay.app",
+      "days": [
+        36
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Clay",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Apollo.io",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "HubSpot AI",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "brand": "hubspot"
+    },
+    {
+      "name": "Instantly AI",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Gong",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Salesloft",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Clari",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Apify",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Happenstance",
+      "days": [
+        38
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Telegram Bot API",
+      "days": [
+        39
+      ],
+      "kind": "tool-or-platform",
+      "brand": "telegram"
+    },
+    {
+      "name": "Claude API",
+      "days": [
+        39
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude"
+    },
+    {
+      "name": "Intercom Fin",
+      "days": [
+        39
+      ],
+      "kind": "tool-or-platform",
+      "brand": "intercom"
+    },
+    {
+      "name": "Zendesk AI",
+      "days": [
+        39
+      ],
+      "kind": "tool-or-platform",
+      "brand": "zendesk"
+    },
+    {
+      "name": "Tidio",
+      "days": [
+        39
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Claude Cowork",
+      "days": [
+        40,
+        41
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude"
+    },
+    {
+      "name": "Smithery",
+      "days": [
+        41
+      ],
+      "kind": "tool-or-platform",
+      "brand": "smithery"
+    },
+    {
+      "name": "Claude Code",
+      "days": [
+        42,
+        50,
+        51
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude-code"
+    },
+    {
+      "name": "Claude Desktop",
+      "days": [
+        42
+      ],
+      "kind": "tool-or-platform",
+      "brand": "claude"
+    },
+    {
+      "name": "MCP SDK",
+      "days": [
+        43
+      ],
+      "kind": "language-or-library",
+      "brand": "mcp"
+    },
+    {
+      "name": "TypeScript",
+      "days": [
+        43
+      ],
+      "kind": "language-or-library",
+      "brand": "typescript"
+    },
+    {
+      "name": "Python",
+      "days": [
+        43,
+        54
+      ],
+      "kind": "language-or-library",
+      "brand": "python"
+    },
+    {
+      "name": "Slack",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "brand": "slack"
+    },
+    {
+      "name": "Anthropic Skills",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "brand": "anthropic"
+    },
+    {
+      "name": "AgentGPT",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Devin",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "brand": "devin"
+    },
+    {
+      "name": "Linear",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "brand": "linear"
+    },
+    {
+      "name": "Superpowers",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Skills.sh",
+      "days": [
+        43
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "scikit-learn",
+      "days": [
+        44
+      ],
+      "kind": "language-or-library",
+      "brand": "scikit-learn"
+    },
+    {
+      "name": "Hugging Face AutoTrain",
+      "days": [
+        44
+      ],
+      "kind": "tool-or-platform",
+      "brand": "huggingface"
+    },
+    {
+      "name": "Obviously AI",
+      "days": [
+        44
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chart-line-up"
+    },
+    {
+      "name": "Roboflow",
+      "days": [
+        44
+      ],
+      "kind": "tool-or-platform",
+      "brand": "roboflow"
+    },
+    {
+      "name": "Pinecone",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "pinecone"
+    },
+    {
+      "name": "LlamaIndex",
+      "days": [
+        45
+      ],
+      "kind": "language-or-library",
+      "brand": "llamaindex"
+    },
+    {
+      "name": "LangChain",
+      "days": [
+        45
+      ],
+      "kind": "language-or-library",
+      "brand": "langchain"
+    },
+    {
+      "name": "Qdrant",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "database"
+    },
+    {
+      "name": "Weaviate",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "database"
+    },
+    {
+      "name": "pgvector",
+      "days": [
+        45
+      ],
+      "kind": "language-or-library",
+      "symbol": "database"
+    },
+    {
+      "name": "Voyage AI",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "voyage"
+    },
+    {
+      "name": "Cohere",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "cohere"
+    },
+    {
+      "name": "LlamaParse",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "llamaindex"
+    },
+    {
+      "name": "Unstructured",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "unstructured"
+    },
+    {
+      "name": "Chroma",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "database"
+    },
+    {
+      "name": "Flowise",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "database"
+    },
+    {
+      "name": "Tavily",
+      "days": [
+        45
+      ],
+      "kind": "tool-or-platform",
+      "brand": "tavily"
+    },
+    {
+      "name": "Google Drive",
+      "days": [
+        46
+      ],
+      "kind": "tool-or-platform",
+      "brand": "google-drive"
+    },
+    {
+      "name": "OpenRouter",
+      "days": [
+        46
+      ],
+      "kind": "tool-or-platform",
+      "brand": "openrouter"
+    },
+    {
+      "name": "Exa",
+      "days": [
+        46
+      ],
+      "kind": "tool-or-platform",
+      "brand": "exa"
+    },
+    {
+      "name": "LangGraph",
+      "days": [
+        47
+      ],
+      "kind": "language-or-library",
+      "brand": "langgraph"
+    },
+    {
+      "name": "AutoGen",
+      "days": [
+        47
+      ],
+      "kind": "language-or-library",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Lyzr AI",
+      "days": [
+        47
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "FastAPI",
+      "days": [
+        48
+      ],
+      "kind": "language-or-library",
+      "brand": "fastapi"
+    },
+    {
+      "name": "Next.js",
+      "days": [
+        48
+      ],
+      "kind": "language-or-library",
+      "brand": "nextjs"
+    },
+    {
+      "name": "Stripe",
+      "days": [
+        49
+      ],
+      "kind": "tool-or-platform",
+      "brand": "stripe"
+    },
+    {
+      "name": "Resend",
+      "days": [
+        49
+      ],
+      "kind": "tool-or-platform",
+      "brand": "resend"
+    },
+    {
+      "name": "Gumroad",
+      "days": [
+        49
+      ],
+      "kind": "tool-or-platform",
+      "brand": "gumroad"
+    },
+    {
+      "name": "Goose",
+      "days": [
+        50
+      ],
+      "kind": "tool-or-platform",
+      "brand": "goose"
+    },
+    {
+      "name": "Docker",
+      "days": [
+        51
+      ],
+      "kind": "tool-or-platform",
+      "brand": "docker"
+    },
+    {
+      "name": "Ollama",
+      "days": [
+        52,
+        53
+      ],
+      "kind": "tool-or-platform",
+      "brand": "ollama"
+    },
+    {
+      "name": "Open WebUI",
+      "days": [
+        52
+      ],
+      "kind": "tool-or-platform",
+      "brand": "open-webui"
+    },
+    {
+      "name": "Llama",
+      "days": [
+        52,
+        55
+      ],
+      "kind": "model-family",
+      "brand": "meta"
+    },
+    {
+      "name": "Gemma",
+      "days": [
+        52,
+        55
+      ],
+      "kind": "model-family",
+      "brand": "gemma"
+    },
+    {
+      "name": "Phi",
+      "days": [
+        52,
+        55
+      ],
+      "kind": "model-family",
+      "brand": "microsoft"
+    },
+    {
+      "name": "Mistral",
+      "days": [
+        52
+      ],
+      "kind": "model-family",
+      "brand": "mistral"
+    },
+    {
+      "name": "Hugging Face",
+      "days": [
+        53,
+        55
+      ],
+      "kind": "tool-or-platform",
+      "brand": "hugging-face"
+    },
+    {
+      "name": "LM Studio",
+      "days": [
+        53
+      ],
+      "kind": "tool-or-platform",
+      "brand": "lm-studio"
+    },
+    {
+      "name": "OpenClaw",
+      "days": [
+        54
+      ],
+      "kind": "tool-or-platform",
+      "brand": "openclaw"
+    },
+    {
+      "name": "Hermes Agent",
+      "days": [
+        54
+      ],
+      "kind": "tool-or-platform",
+      "brand": "hermes-agent"
+    },
+    {
+      "name": "Weights & Biases",
+      "days": [
+        54
+      ],
+      "kind": "tool-or-platform",
+      "brand": "weightsandbiases"
+    },
+    {
+      "name": "LangSmith",
+      "days": [
+        54
+      ],
+      "kind": "tool-or-platform",
+      "brand": "langsmith"
+    },
+    {
+      "name": "Helicone",
+      "days": [
+        54
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chart-line-up"
+    },
+    {
+      "name": "Transformers",
+      "days": [
+        55
+      ],
+      "kind": "language-or-library",
+      "brand": "huggingface"
+    },
+    {
+      "name": "Gradio",
+      "days": [
+        55
+      ],
+      "kind": "language-or-library",
+      "brand": "gradio"
+    },
+    {
+      "name": "Jan",
+      "days": [
+        55
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "chart-line-up"
+    },
+    {
+      "name": "OpenAI Codex",
+      "days": [
+        56
+      ],
+      "kind": "tool-or-platform",
+      "brand": "codex"
+    },
+    {
+      "name": "GitHub Copilot",
+      "days": [
+        56
+      ],
+      "kind": "tool-or-platform",
+      "brand": "githubcopilot"
+    },
+    {
+      "name": "Cursor",
+      "days": [
+        56
+      ],
+      "kind": "tool-or-platform",
+      "brand": "cursor"
+    },
+    {
+      "name": "Harvey",
+      "days": [
+        57
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    },
+    {
+      "name": "Nabla",
+      "days": [
+        57
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "flow-arrow"
+    }
+  ],
+  "brand_asset_sources": [
+    {
+      "brand": "grok",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/grok.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/grok.svg",
+      "sha256": "9175fc90c22655160231976c849f25a03b888d7cc0e04c5f1b987b659bb07c95",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "kimi",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/kimi.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/kimi.svg",
+      "sha256": "ed08131b46acf70e6e2144eceb775e74098b58ea65fa21eaee04be7b05cfe63b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "mistral",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/mistral.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/mistral.svg",
+      "sha256": "a06cfa54e7deff7f7544175b006b7f8a03fbc5624c44f7d553a44d07ea96e629",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "deepseek",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/deepseek.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/deepseek.svg",
+      "sha256": "8f9443e351b6dacce71871790201b799d92e8bf96a45ef79aeb5e9bf4db423e2",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "qwen",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/qwen.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/qwen.svg",
+      "sha256": "b2c16efc3bd32b88a941842d41222e1e1e0e40441222218b725afc0aef6d9a36",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "google",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/google.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/google.svg",
+      "sha256": "d8cf9fb2d5e234e03254f1d6400d8cc8160c309b010d031a64f37084b5a21d01",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://partnermarketinghub.withgoogle.com",
+      "brand_license": null
+    },
+    {
+      "brand": "kaggle",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/kaggle.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/kaggle.svg",
+      "sha256": "05e4c3da8dafa5c88f83f825387206e458a7c570c38bd0da8ea60c62b5c43cd1",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.kaggle.com/brand-guidelines",
+      "brand_license": null
+    },
+    {
+      "brand": "google-colab",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/googlecolab.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/googlecolab.svg",
+      "sha256": "7543c1dd3e4c0decf35c68eb74a75bb9fbbae858df49c3855d358cebb98fad12",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://colab.research.google.com",
+      "brand_license": null
+    },
+    {
+      "brand": "anaconda",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/anaconda.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/anaconda.svg",
+      "sha256": "c48244ef9fda815ef09e80e498bc20233010bb8ba9d356780e8c35cb0bc46d29",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.anaconda.com",
+      "brand_license": null
+    },
+    {
+      "brand": "grammarly",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/grammarly.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/grammarly.svg",
+      "sha256": "6ddcf298c1664c345a2bb723fe1b73d6294fb949b2f06c4df598a583d96153f7",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.grammarly.com/media-assets",
+      "brand_license": null
+    },
+    {
+      "brand": "microsoft",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/microsoft.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/microsoft.svg",
+      "sha256": "0617d6111e99845e7ab06dd4ff1e16c2c1ad381575b3204ef02dd71b716ffa4b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "google-docs",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/googledocs.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/googledocs.svg",
+      "sha256": "880b39680b64812e5203f366c08779e86c824e3a6264a8eefca2a56afbf79fa6",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.google.com/docs/about",
+      "brand_license": null
+    },
+    {
+      "brand": "manus",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/manus.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/manus.svg",
+      "sha256": "8f70464df09b5b9e1643dcb7c0f2c6a2cfe3322b965b35d8e78b041f858b81b0",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "google-slides",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/googleslides.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/googleslides.svg",
+      "sha256": "0761b8cc80d7971bfc381d41d5da02e02afcf72414efe9db384105c2e8dd765a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://slides.google.com",
+      "brand_license": null
+    },
+    {
+      "brand": "gmail",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/gmail.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/gmail.svg",
+      "sha256": "a537f5d85d9a27efa3a5d6086e8df6072ee93f76b4d176639a5e483f74b74b9f",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://fonts.gstatic.com/s/i/productlogos/gmail_2020q4/v8/192px.svg",
+      "brand_license": null
+    },
+    {
+      "brand": "google-ai-studio",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/aistudio.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/aistudio.svg",
+      "sha256": "ca05675a319ba0b530fe396150357f5dddd7f7bbb2d15ffe5e21178e568a167c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "midjourney",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/midjourney.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/midjourney.svg",
+      "sha256": "e09640ccbf6f643b4624e540f198cd704a6bf3d75dc43b0938628caf4e98c30b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "stability",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/stability.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/stability.svg",
+      "sha256": "6cf25e3b187754f804f8a2f54a5955a166f877d907c83517adfe95b432585562",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f",
+      "identity_note": "Stability AI parent mark for Stable Diffusion."
+    },
+    {
+      "brand": "ideogram",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/ideogram.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/ideogram.svg",
+      "sha256": "4025876b532d087ddecdaac90deef5a48addde8ca14bbdd408970ac395992103",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "krea",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/krea.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/krea.svg",
+      "sha256": "05d722278e4fcca5f24a3919241beabf7b9f3e233a1e6bd9a47028e116aa7832",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "adobe-firefly",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/adobefirefly.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/adobefirefly.svg",
+      "sha256": "56782bd5e8acc6526af554b571ccdbba741d686da7c838fcfce513274c2cab84",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "recraft",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/recraft.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/recraft.svg",
+      "sha256": "ccb97a588aebf55a78bbc6ef6416cb0d9c5862a180dfada2713e0b6fc3245d08",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "pika",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/pika.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/pika.svg",
+      "sha256": "3bafa1b7df7d42043a706df18b4d32f64f0dd6a82f4e4c780934b03a368227a2",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "kling",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/kling.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/kling.svg",
+      "sha256": "9af7c7182a2b784259618f0d5243c433e52cbc6b4de10a8f7c5a9126dc1f24d0",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "capcut",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/capcut.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/capcut.svg",
+      "sha256": "1673e8216af7746473471a277e4f640282e0d75bb886832b1634a3e4ffe09c45",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "luma",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/luma.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/luma.svg",
+      "sha256": "d27fea3504ac83a9029979d397a4489944112f77a145a1ab8a2d61f524f3031c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "sora",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/sora.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/sora.svg",
+      "sha256": "460932aa52f25ecf16fcb58c2e1cf247e0a67372c065946516b401598ffc0a87",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "hailuo",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/hailuo.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/hailuo.svg",
+      "sha256": "5eb85f63defdf08995358ecbf444641dbb0e64b1873030c16b801e533409bac4",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "suno",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/suno.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/suno.svg",
+      "sha256": "5f1a3ba56ceb857802fb6c70a0351096180aeee407eb567f82dfdf62f197fee8",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://suno.com",
+      "brand_license": null
+    },
+    {
+      "brand": "openai",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/openai.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/openai.svg",
+      "sha256": "2b4a04ddc2395b20d168694d3850ce2050a702c4a0cdeb4d8b31b9a970481a8c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://openai.com/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "udio",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/udio.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/udio.svg",
+      "sha256": "d83b682ac03b39b14bc5b474334b0b9c0b00288d1400dfdea0575d4832c4a042",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "airtable",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/airtable.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/airtable.svg",
+      "sha256": "5d65b71d7c21151d54ef18acdcbac914c264f7139e3e8160a0895979fe31e391",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://airtable.com/press",
+      "brand_license": null
+    },
+    {
+      "brand": "stackblitz",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/stackblitz.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/stackblitz.svg",
+      "sha256": "8b5ba5865d185e04d3505b7606dcc68b2c7d86a2832015213a6b4f6eeb0a5e7b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://stackblitz.com",
+      "brand_license": null
+    },
+    {
+      "brand": "webflow",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/webflow.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/webflow.svg",
+      "sha256": "04343bc856b7c074048aa80b5f17582286ae611ef47af17472607df5cea68d6a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://brand-at.webflow.io/resources#logos",
+      "brand_license": null
+    },
+    {
+      "brand": "replit",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/replit.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/replit.svg",
+      "sha256": "5bb9de88db402d97c33c72704e05072e2cde77df56e2e12ebe79bd00f7dca6f4",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://repl.it",
+      "brand_license": null
+    },
+    {
+      "brand": "v0",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/v0.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/v0.svg",
+      "sha256": "2e1ff3e0ff6897333ff424e3ebf0921a4e14ae63a26f53ac607264e9c54342a0",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://v0.dev",
+      "brand_license": null
+    },
+    {
+      "brand": "framer",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/framer.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/framer.svg",
+      "sha256": "c6c80c9ba890e199e94d35340fb4cf2d5790f339d9846800d68283e3e58e6031",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://framer.com",
+      "brand_license": null
+    },
+    {
+      "brand": "figma",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/figma.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/figma.svg",
+      "sha256": "2f86fca501dfed321a62f28743f29d9dd738dac91668eac5260ab746d1ef8840",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.figma.com/using-the-figma-brand/",
+      "brand_license": null
+    },
+    {
+      "brand": "git",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/git.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/git.svg",
+      "sha256": "051a7fac8ef6c50593b8f86c402b238c9780397b9bf3cb50aa95e2f18a41a346",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://git-scm.com/downloads/logos",
+      "brand_license": {
+        "type": "CC-BY-3.0"
+      }
+    },
+    {
+      "brand": "github",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/github.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/github.svg",
+      "sha256": "3bf8cceead820aec50d4ee825a3fd02c5a1cd6665cc9cf4cbf3d9c8861a204bb",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/logos",
+      "brand_license": null
+    },
+    {
+      "brand": "cline",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/cline.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/cline.svg",
+      "sha256": "9003d2cdce82b016147b732abb4def60af55c348ba2cea2ba0b69a3c7d159b19",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "googleappsscript",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/googleappsscript.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/googleappsscript.svg",
+      "sha256": "e8f86d9f6ad86d9f5943458ecc3b760dbe1723ba64bfae2cc6f7b5ba2b4cfdbf",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/simple-icons/simple-icons/issues/3556#issuecomment-800482267",
+      "brand_license": null
+    },
+    {
+      "brand": "make",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/make.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/make.svg",
+      "sha256": "3985e5ed42709d253a772f99e56c5436af98c35d45bebc36b0aef29a9c9e7828",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.make.com/en/press",
+      "brand_license": null
+    },
+    {
+      "brand": "windsurf",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/windsurf.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/windsurf.svg",
+      "sha256": "6a084cb5c1a82bbf3eeda54e3bf450bf8d4a9368d80b815db22116b6b00a2aae",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://windsurf.com/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "vercel",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/vercel.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/vercel.svg",
+      "sha256": "57f1e4135486c566e9878fddd259f7f6bf8ec43f31e7e6e38a36d9e814a1c0e0",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://vercel.com/geist/brands",
+      "brand_license": null
+    },
+    {
+      "brand": "notion",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/notion.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/notion.svg",
+      "sha256": "b17d2a2b592a06252efef522d5205f0c7a958f748d40df1011ed081417e42f85",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.notion.so",
+      "brand_license": null
+    },
+    {
+      "brand": "loom",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/loom.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/loom.svg",
+      "sha256": "4d5d8bd139facfa88c12d600a5069a8babfeb82eeed9589a7e8d7e367ef048f7",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.loom.com/press",
+      "brand_license": null
+    },
+    {
+      "brand": "buffer",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/buffer.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/buffer.svg",
+      "sha256": "e9a9bc613840afb4d8c29bb2f1987c37436c7b7bffcc5c3dc84f4e6b04190ed5",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://buffer.com",
+      "brand_license": null
+    },
+    {
+      "brand": "crewai",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/crewai.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/crewai.svg",
+      "sha256": "6551b4dae99b4143b7105280fc878ff465a762fd9149ea7bd80200fbe1285461",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/crewAIInc/crewAI/blob/a7696d5aed7a85333735dde370fd9f0547aaabf5/docs/favicon.svg",
+      "brand_license": null
+    },
+    {
+      "brand": "deepgram",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/deepgram.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/deepgram.svg",
+      "sha256": "e6904363c90592bbb689e47aae10dc6ca5ae2f32ed9e1573a87c973be04bafb9",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://deepgram.com/company/newsroom",
+      "brand_license": null
+    },
+    {
+      "brand": "livekit",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/livekit.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/livekit.svg",
+      "sha256": "c7e4f0f291b7bf6ef8ecc7d729eb3c9be38e8d4f78509cd791a8ec2b0d00f75e",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://livekit.io/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "twilio",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/twilio.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/twilio.svg",
+      "sha256": "52dcf3b6cea65fdc9b5b525aa2bb9517f405a58c68d464f207f0ddf60c0114ea",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.twilio.com/company/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "firebase",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/firebase.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/firebase.svg",
+      "sha256": "3f46d84a41479d7789cc36b82c2b6852e6bbbfd30ebee5b7a3aef7d49758295a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://firebase.google.com/brand-guidelines",
+      "brand_license": null
+    },
+    {
+      "brand": "postman",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/postman.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/postman.svg",
+      "sha256": "ffa713180d8a0dc42d69fb219fda548293b25438288b6abc5ccb4e381463778f",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.getpostman.com/resources/media-assets/",
+      "brand_license": null
+    },
+    {
+      "brand": "zapier",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/zapier.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/zapier.svg",
+      "sha256": "51fa9cca6198c74f924600e6972520541261e2f74ff80b6bec5bbd60a4bdcc73",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.figma.com/file/NQFxTCE5pGR3dHZt0DkOyy/Zapier-Brand-Guidelines-%5BExternal%5D?type=design&node-id=101-9701&mode=design",
+      "brand_license": null
+    },
+    {
+      "brand": "hubspot",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/hubspot.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/hubspot.svg",
+      "sha256": "f96cfb6bba27c8e70a03e782f07d4d649e9f39d2fb8bea7136b370ab2c3f04a9",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.hubspot.com/style-guide",
+      "brand_license": null
+    },
+    {
+      "brand": "telegram",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/telegram.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/telegram.svg",
+      "sha256": "147fd8f8923e7e5f463fe98c0eb9913bead6b2ae59935728cda141002ec8a7c9",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://telegram.org/tour/screenshots",
+      "brand_license": null
+    },
+    {
+      "brand": "intercom",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/intercom.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/intercom.svg",
+      "sha256": "5500c77b2e27022c06ef7457ff395e2c41398a3fb03b41b02e337af3e3ecdb54",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.intercom.com/press",
+      "brand_license": null
+    },
+    {
+      "brand": "zendesk",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/zendesk.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/zendesk.svg",
+      "sha256": "0770c2be1029e226eb77ac653722f4a05763a580178eb1e8c2853d6d0811d416",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://brandland.zendesk.com",
+      "brand_license": null
+    },
+    {
+      "brand": "smithery",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/smithery.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/smithery.svg",
+      "sha256": "d2aed2ee85976d421d9bc89ea8fe5d873d2204b7afaf4a916ef4cce4aef402a1",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "mcp",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/mcp.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/mcp.svg",
+      "sha256": "8670df38c9558de3cdd98d8b39ee6cbaf1c929377cffc5952e9b02f9bf9429b3",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "typescript",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/typescript.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/typescript.svg",
+      "sha256": "7f023e8d1e767370306ec9437d2de5d5af97491d6208dd7799a3808a7c10a36a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.typescriptlang.org/branding",
+      "brand_license": null
+    },
+    {
+      "brand": "python",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/python.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/python.svg",
+      "sha256": "ad9468e1c4903f73ae7eebfbe980f0f727a10db695be3d914e7d8bd25356a862",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.python.org/community/logos/",
+      "brand_license": null
+    },
+    {
+      "brand": "slack",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/slack.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/slack.svg",
+      "sha256": "f23c317b279f53dcd2260a6cd2e279f7a696f87dcb3da259d6201f05bbc45b0d",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://slack.com/brand-guidelines",
+      "brand_license": null
+    },
+    {
+      "brand": "anthropic",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/anthropic.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/anthropic.svg",
+      "sha256": "1cc599f6ebce2016dc388cf84e54a52c6b13487655c7e243554d654c7bce1882",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.anthropic.com",
+      "brand_license": null
+    },
+    {
+      "brand": "devin",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/devin.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/devin.svg",
+      "sha256": "8d197b0c31522517ffa896cd4a1ee65719eb73bff9eb9bbf7edf64db6b1a573d",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "linear",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/linear.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/linear.svg",
+      "sha256": "90b91b61090f4f9c94f9cb24769642278f03e8eedcfe5680738cf3a186bfc00f",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://linear.app",
+      "brand_license": null
+    },
+    {
+      "brand": "scikit-learn",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/scikitlearn.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/scikitlearn.svg",
+      "sha256": "ebaf97475ff5e6af3d6a4799a164a3a385e902e442d012cc19c47237cecb2be8",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/scikit-learn/scikit-learn/blob/c5ef2e985c13119001aa697e446ebb3dbcb326e5/doc/logos/scikit-learn-logo.svg",
+      "brand_license": null
+    },
+    {
+      "brand": "huggingface",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/huggingface.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/huggingface.svg",
+      "sha256": "aa81744034eecf4ac6b3fb7108dd71223965c7af3c534932391314563b150109",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://huggingface.co/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "roboflow",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/roboflow.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/roboflow.svg",
+      "sha256": "d3674449d5c94fdee65715816f1f38213ccf67849b6a55668971ae4af2e61c9d",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://roboflow.com/press",
+      "brand_license": null
+    },
+    {
+      "brand": "llamaindex",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/llamaindex.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/llamaindex.svg",
+      "sha256": "a55fdac8fc62b224bb116d659bf0710ccfea8936b6decc99750bafa586107604",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "langchain",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/langchain.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/langchain.svg",
+      "sha256": "6d8347547ea7e96b9d183d28a0a4068d329250724aecd260674d09339a6b5fcf",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.langchain.com",
+      "brand_license": null
+    },
+    {
+      "brand": "voyage",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/voyage.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/voyage.svg",
+      "sha256": "0ee62d404c39764a5afeda633035cdd10a4d43d04f6d42671642c9a504d96ad6",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "cohere",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/cohere.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/cohere.svg",
+      "sha256": "72851dd36d6ab017f535202744765eead8f99cfb5ced77e1840bfdb70db7a85c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "unstructured",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/unstructured.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/unstructured.svg",
+      "sha256": "2d7bf0cab3d6caa9305eb5ffa04a3b8bc6f52114b116c38125e78ae5d61a0cfe",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "tavily",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/tavily.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/tavily.svg",
+      "sha256": "a701298ee19fd81a87fc07abe9adc944de8caf8083f194d58d9b8ee21811f7d4",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "openrouter",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/openrouter.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/openrouter.svg",
+      "sha256": "9148696e3a06d23e8fe2b743ebd3ee1173354dbd7b58d33d1ca6a40ee0018d53",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://openrouter.ai",
+      "brand_license": null
+    },
+    {
+      "brand": "exa",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/exa.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/exa.svg",
+      "sha256": "b1ae01ccce6798d7b9a129807e0fb9b0629cc035f4ead27d6300ab2adde792bb",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "langgraph",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/langgraph.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/langgraph.svg",
+      "sha256": "23327d183f1aecc70de8ef0e6f65f07d09199875c550c31d44a9c283500ec7b4",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.langchain.com/langgraph",
+      "brand_license": null
+    },
+    {
+      "brand": "fastapi",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/fastapi.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/fastapi.svg",
+      "sha256": "af0bdd5fd3f16a49e341089049418af7b02a04eefdc088b2e26c4524fa8b75d1",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/tiangolo/fastapi/blob/ffb4f77a11f83132b521ba0aac6c95792c19e797/docs/en/docs/img/icon-white.svg",
+      "brand_license": null
+    },
+    {
+      "brand": "stripe",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/stripe.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/stripe.svg",
+      "sha256": "130c6d957b8977f5eda2928267b9df531ca038a400a801765d263801bb1bd870",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://stripe.com/newsroom/information",
+      "brand_license": null
+    },
+    {
+      "brand": "resend",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/resend.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/resend.svg",
+      "sha256": "f382f57623a27c433fe6e656d31fbca4986f7b4448fdbfbce06a0d90c484393c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://resend.com/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "gumroad",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/gumroad.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/gumroad.svg",
+      "sha256": "b256468cf67d5a44e95e338a129527f7a1defc73fc0a86cfd9d94cabfd767601",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://gumroad.com",
+      "brand_license": null
+    },
+    {
+      "brand": "goose",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/goose.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/goose.svg",
+      "sha256": "8779d9a61c5b0be78a3d36cab6843ba5af86218ba2ff1b18eb918c7a8d25bb99",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "docker",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/docker.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/docker.svg",
+      "sha256": "65571291c261ef869c31540a38f3ca0f0ee3bb73f179c172211c8860f19a6359",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.docker.com/company/newsroom/media-resources",
+      "brand_license": null
+    },
+    {
+      "brand": "ollama",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/ollama.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/ollama.svg",
+      "sha256": "9c62bf0159ee96c8b58c86a732f33b002b4b3bb165ec86e8ecca51ad6a82dab6",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://github.com/ollama/ollama/issues/2152#issuecomment-1905286922",
+      "brand_license": null
+    },
+    {
+      "brand": "open-webui",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/openwebui.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/openwebui.svg",
+      "sha256": "9cbf7a1105e51029762678e6def27b2e95fb0ec83ff7827b2c75d11aa8c3c4d7",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "gemma",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/gemma.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/gemma.svg",
+      "sha256": "8f9b74f6bbbf17203da8d81c3a4bb8750dbf13afe3ab4c1d482e84be62cd03a6",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "hugging-face",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/huggingface.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/huggingface.svg",
+      "sha256": "aa81744034eecf4ac6b3fb7108dd71223965c7af3c534932391314563b150109",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://huggingface.co/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "lm-studio",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/lmstudio.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/lmstudio.svg",
+      "sha256": "4a575e8382b52ce742ac5d21d361a7d2a08cea7c12390ee1bbb755ef7d3cc25b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "openclaw",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/openclaw.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/openclaw.svg",
+      "sha256": "8ef4de8032b06492af52a2070fc044ce7cc0c1dcef70471b386571eb1c3b2b63",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "weightsandbiases",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/weightsandbiases.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/weightsandbiases.svg",
+      "sha256": "92301c77a1466722947118da495537dd2e7d75833dab5cc41accca7a2678c348",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing."
+    },
+    {
+      "brand": "langsmith",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/langsmith.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/langsmith.svg",
+      "sha256": "57271c021a68d01baade837874df068342a5ec0106c89a968f925a326d2f4caa",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "gradio",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/gradio.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/gradio.svg",
+      "sha256": "d7d0dd0a72ddd6ac858f6137bdbd6d63b3a173a13f0b69ce9712f709ee0d5bc8",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://www.gradio.app",
+      "brand_license": null
+    },
+    {
+      "brand": "codex",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/codex.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/codex.svg",
+      "sha256": "d08b4e824cd6727e89617f59e4737273ff53e44c1da849d016dd64dfd08b33e1",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "githubcopilot",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/githubcopilot.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/githubcopilot.svg",
+      "sha256": "c72c1e0018e84b3128c5a1ac43ec2be135ac6ec4eb9c0ea18ed76416d23f2af3",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://primer.style/foundations/icons/copilot-24",
+      "brand_license": {
+        "type": "MIT"
+      }
+    },
+    {
+      "brand": "cursor",
+      "package": "simple-icons",
+      "version": "15.22.0",
+      "package_license": "CC0-1.0",
+      "asset": "package/icons/cursor.svg",
+      "asset_url": "https://unpkg.com/simple-icons@15.22.0/icons/cursor.svg",
+      "sha256": "71572a9be192cc069ec22b48d785e61d754eeed7edb7d082d615f6d5620f70ec",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained paths and root presentation attributes; no mark redrawing.",
+      "brand_source": "https://cursor.com/brand",
+      "brand_license": null
+    },
+    {
+      "brand": "flux",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/flux.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/flux.svg",
+      "sha256": "c7d557466f39a895b1cd0d233a64c092ef61ba052160af7db20af37464a9138a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed SVG/title wrapper; solid monochrome fills/strokes use currentColor. Geometry unchanged.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "hermes-agent",
+      "package": "@lobehub/icons-static-svg",
+      "version": "1.101.0",
+      "package_license": "MIT",
+      "asset": "package/icons/hermesagent.svg",
+      "asset_url": "https://unpkg.com/@lobehub/icons-static-svg@1.101.0/icons/hermesagent.svg",
+      "sha256": "02d43c0a91fc2ee41f2684fc39613ff6687de29a4b079665bace5303671dd63b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed SVG/title wrapper; solid monochrome fills/strokes use currentColor. Geometry unchanged.",
+      "source_git_commit": "aea0ecb0fe1439467219197c52ffaeb579dfe33f"
+    },
+    {
+      "brand": "vapi",
+      "package": "official-brand-site",
+      "version": null,
+      "package_license": "Proprietary trademark asset",
+      "asset": "vapi-official.svg",
+      "asset_url": "https://vapi.ai/VAPI.svg",
+      "sha256": "eda5e5e7d7d0132f2705ee51dac0f626b21b9331e74f74f9162ed44d115193c1",
+      "viewBox": "0 0 101 33",
+      "changes": "Removed SVG/title wrapper; solid monochrome fills/strokes use currentColor. Geometry unchanged.",
+      "license_note": "Official trademark asset for identifying the taught service. No open-source asset license asserted; brand rights remain with owner."
+    },
+    {
+      "brand": "retell",
+      "package": "official-brand-site",
+      "version": null,
+      "package_license": "Proprietary trademark asset",
+      "asset": "retell-official.svg",
+      "asset_url": "https://cdn.prod.website-files.com/64ada0f2685b2d18caa5e699/6a6100c9991b0523680dff6a_logo.svg",
+      "sha256": "8d2f88109cdbeb66676f2bde3337e78e608df0d7f35d2f7ab3533c2856b39d65",
+      "viewBox": "0 0 72 20",
+      "changes": "Removed SVG/title wrapper; solid monochrome fills/strokes use currentColor. Geometry unchanged.",
+      "license_note": "Official trademark asset for identifying the taught service. No open-source asset license asserted; brand rights remain with owner."
+    }
+  ],
+  "note": "Neutral Phosphor functional symbols are used where an exact official mark or brand identity is unavailable. Tool marks identify curriculum products, not partnerships."
+}

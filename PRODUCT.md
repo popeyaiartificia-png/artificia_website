@@ -40,12 +40,12 @@ Artificia teaches AI in person in Vadodara, one hour a day, and the same team bu
 - Pages are built from a library of 20 designed section types that the SEO expert arranges; the design must hold up for any order of sections and any length of real copy.
 - Fast on a mid-range phone: server-rendered HTML, CSS + JS under 150 KB gzipped, hero image under 200 KB, Lighthouse mobile Performance 90+ and Accessibility 95+.
 - Motion is code-driven (GSAP, CSS, SVG); `prefers-reduced-motion` turns it off. No 3D or decorative WebGL.
-- Never on the site: prices or rupee values, batch dates, seat counters, countdowns, "best", "#1", "lowest", placement or internship promises, a fixed duration for corporate training.
+- Never on the site: unapproved prices or rupee values, batch dates, seat counters, countdowns, "best", "#1", "lowest", placement or internship promises, a fixed duration for corporate training. On 2 Nov 2026 the user explicitly approved public AI Masterclass fees: 30-day Foundation ₹20,000 and 60-day Full program ₹40,000. The current main course curriculum is sourced from their `D:/purnima/finalcourse.xlsx` (60 daily lessons); this supersedes the earlier CSV for `/ai-masterclass`.
 
 ## Brand Commitments
 
 - Name: **Artificia AI** (company Artificia Intellec Pvt Ltd). **Always the real logo, never a text wordmark** (Hardik, 27 Oct 2026). The current lockup (tagline "AI-Driven, Future-Focused.", supplied 29 Oct 2026 as a 4884 px square on black, `public/logo.png`) is used as `public/assets/img/artificia-logo.png`: cropped and keyed to transparency at 492×138 (3× its 34–42 px display height), top-left, at least 120 px wide, never redrawn. Its figure is #AED534. A vector version would still be sharper.
-- Brand Bible (`ARTIFICIA STUDY MATERIAL/CLAUDE.md`): Roboto is the shared web typeface. User-requested exception, 30 Oct 2026: the large homepage statement uses Mona Sans plus a Bodoni Moda serif substitute to match the reference typography; exact Brier use requires a licensed font.
+- Public website typography, updated by explicit user request on 2 Nov 2026: use the large statement's Mona Sans throughout the visitor-facing site, with the same Bodoni Moda accents. This supersedes the older Brand Bible Roboto rule for public pages. The original weight-660 / width-93 display face is retained; a matching width-93 variable Mona Sans supports readable 200-900 weights for copy, navigation, forms and labels. The statement's exact layout stays intact. Exact Brier use still requires a licensed font; the supplied Bodoni substitute is licensed under OFL. Admin retains its separate operational styles.
 - Brand anchors: lime `#AED534` on dark charcoal (`#2A2E2E` / `#08080d`) with white text (`MASTER_CORPORATE_TRAINING_SPEC.md` §10).
 - Voice: plain and factual; claims are sourced or not made.
 
@@ -56,7 +56,7 @@ Artificia teaches AI in person in Vadodara, one hour a day, and the same team bu
 - **Five typical outcomes for AI-enabled teams** (never presented as Artificia's results): 92% faster lead handling, 10–20 hrs a week saved per employee, 65% less repetitive work, 500% boost in customer response, 4× faster reporting.
 - **"100+ professionals trained through corporate training sessions."**
 - People: Hardik Aseri (instructor, `legacy/landing-page/images/hardik.jpg.jpeg`) and Vijay Linju Raghavan (`legacy/assets/images/all_images/about/vijay.jpg`).
-- **Absent, never to be invented:** other client logos or case studies, prices, batch dates, placement records, classroom photography (none supplied yet).
+- **Absent, never to be invented:** other client logos or case studies, unapproved prices, batch dates, placement records, classroom photography (none supplied yet). The two AI Masterclass fees above are user confirmed.
 
 ## Product Principles
 

@@ -10,6 +10,16 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before training",
+        "after_label": "After training",
+        "stat_value": "2",
+        "stat_unit": "hours",
+        "stat_label": "Free pilot session",
+        "statement": "AI for hospital teams, with clear rules on patient data.",
+        "before_text": "Admin and paperwork by hand?",
+        "after_text": "Staff using AI safely, every day.",
+        "eyebrow": "Corporate AI training · Healthcare",
         "subheading": "Nursing workflows, patient communication and hospital administration all run on documents. We train your staff to use AI on that work, with clear rules on patient data.",
         "image": "industry-healthcare.jpg",
         "primary_cta_label": "Ask for the free pilot",

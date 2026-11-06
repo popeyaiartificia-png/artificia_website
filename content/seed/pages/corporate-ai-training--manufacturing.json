@@ -10,6 +10,16 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before training",
+        "after_label": "After training",
+        "stat_value": "2",
+        "stat_unit": "hours",
+        "stat_label": "Free pilot session",
+        "statement": "AI for quotations, reports and plant documents.",
+        "before_text": "Quotes and reports by hand?",
+        "after_text": "Plant teams using AI every day.",
+        "eyebrow": "Corporate AI training · Manufacturing",
         "subheading": "Tenders, quotations, quality reports and dispatch updates take hours of copying. We train your teams to hand that work to AI, using your own documents.",
         "image": "industry-manufacturing.jpg",
         "primary_cta_label": "Ask for the free pilot",

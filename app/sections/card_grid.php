@@ -1,4 +1,9 @@
 <?php
+$views = ['course-plans' => 'course-plans', 'pillars' => 'about-work', 'notes' => 'about-notes', 'kit' => 'corporate-kit'];
+if (isset($views[$f['variant'] ?? ''])) {
+    include VIEWS_DIR . '/' . $views[$f['variant']] . '.php';
+    return;
+}
 $cols = in_array($f['columns'] ?? '', ['2', '3', '4'], true) ? $f['columns'] : '3';
 $photo = array_filter($f['cards'] ?? [], fn($c) => !empty($c['image'])) !== [];
 $drawn = !$photo && array_filter($f['cards'] ?? [], fn($c) => drawing((string) ($c['drawing'] ?? '')) !== '') !== [];

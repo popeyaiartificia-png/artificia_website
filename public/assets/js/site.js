@@ -22,7 +22,7 @@
     var logo = new Image();
     logo.onload = logo.onerror = step;
     logo.src = '/assets/img/artificia-logo.png';
-    var first = d.querySelector('main img');
+    var first = d.querySelector('main img:not([loading="lazy"])'); // a lazy image below the fold would hold the loader to its timeout
     if (first && !first.complete) { first.addEventListener('load', step); first.addEventListener('error', step); } else step();
     if (d.readyState === 'complete') step(); else addEventListener('load', step);
     setTimeout(leave, 3500);
@@ -116,7 +116,7 @@
 
   // The WhatsApp button waits until the hero (and its chooser) has scrolled away.
   // It also steps aside over the footer, which carries its own WhatsApp link.
-  var fab = d.querySelector('.wa-float'), fabAway = [d.querySelector('.hero'), d.querySelector('[data-foot]')].filter(Boolean);
+  var fab = d.querySelector('.wa-float'), fabAway = [d.querySelector('.hero, .course-hero, .sol-hero'), d.querySelector('[data-foot]')].filter(Boolean);
   if (fab && fabAway.length && 'IntersectionObserver' in window) {
     var fabIo = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.target.inSight = e.isIntersecting; });
@@ -374,21 +374,35 @@
   // with a clean dark edge. uRise is how far it has climbed, in pixels.
   var FLOOD = [
     '  float s = clamp(uRes.x / 1536., .6, 1.2), y = gl_FragCoord.y, x = gl_FragCoord.x / uRes.x * 2. - 1.;',
-    '  float amp = mix(34., 120., smoothstep(30., 320., uRise)) * clamp(uRes.x / 1536., .8, 1.2) * (.4 + .6 * x * x);',
-    '  float rise = uRise - 80. * s * (1. - x * x) * smoothstep(0., 200., uRise);', // calm and late in the middle, where the copy sits; livelier over the figures
-    '  float swell = (sin(x * 2.6 + uTime * .55) * 9. + sin(x * 6.1 - uTime * .4) * 4.) * s;', // keeps moving when the page is still
-    '  float e = y - rise + swell * smoothstep(0., 40., y) + (v - 4.5) * amp * smoothstep(0., 90. * s, y);',
+    '  float amp = mix(FLOOD_AMP, FLOOD_AMPMAX, smoothstep(30., 320., uRise)) * clamp(uRes.x / 1536., .8, 1.2) * (FLOOD_CALM + (1. - FLOOD_CALM) * x * x);',
+    '  float rise = uRise - FLOOD_DIP * s * (1. - x * x) * smoothstep(0., 200., uRise);', // calm and late in the middle, where the copy sits; livelier over the figures
+    '  float swell = (FLOOD_SWELL) * s;', // keeps moving when the page is still
+    '  float e = y - rise + swell * FLOOD_FADE + (v - 4.5) * amp * smoothstep(0., FLOOD_NEAR * s, y);',
     '  float aa = max(fwidth(e), 1e-3), o = 1. - smoothstep(-aa, aa, e);',
     '  vec3 c = mix(FLOOD_BASE, FLOOD_LINE, a) * o;',
     '  gl_FragColor = vec4(c, o);'
   ].join('\n');
+  // The homepage's floods keep their calm tuning; `fluid` floods (the section joins) swell wider and faster and show the
+  // contour wobble from the start, so even a low flood reads as liquid. `fluid` is a strength: 1 full, lower for a calmer edge.
+  var floodShader = function (flood) {
+    var k = +flood.fluid || 0, f = function (n) { return (n * k).toFixed(1); }, sp = (.5 + .5 * k).toFixed(2);
+    return FLOOD.replace('FLOOD_BASE', flood.base || 'vec3(.067, .082, .059)').replace('FLOOD_LINE', flood.line || 'vec3(.47, .5, .36)')
+      .replace('FLOOD_AMPMAX', k ? f(86) : '120.').replace('FLOOD_AMP', k ? f(46) : '34.').replace(/FLOOD_CALM/g, k ? '.72' : '.4').replace('FLOOD_NEAR', k ? '140.' : '90.')
+      .replace('FLOOD_FADE', k ? '1.' : 'smoothstep(0., 40., y)')
+      .replace('FLOOD_DIP', k ? '24.' : '80.')
+      .replace('FLOOD_SWELL', k
+        ? ('sin(gl_FragCoord.x / 115. + uTime * .95) * ' + f(30) + ' + sin(gl_FragCoord.x / 57. - uTime * .8) * ' + f(14) + ' + sin(gl_FragCoord.x / 31. + uTime * 1.6) * ' + f(6)).replace(/uTime/g, 'uTime * ' + sp)
+        : 'sin(x * 2.6 + uTime * .55) * 9. + sin(x * 6.1 - uTime * .4) * 4.');
+  };
   var topoField = function (topo, from, flood) {
+    var solutionTerrain = topo.closest('.solutions__terrain');
     // Contour lines of a smooth noise field (marching squares), drawn once per size, like a survey map.
     var drawTopo = function () {
       var dpr = Math.min(window.devicePixelRatio || 1, 2), w = topo.clientWidth, h = topo.clientHeight;
       topo.width = Math.round(w * dpr);
       topo.height = Math.round(h * dpr);
       var x = topo.getContext('2d'), seed = 11, G = 8, lat = [];
+      if (!x) return;
       var rnd = function () { seed = seed * 16807 % 2147483647; return seed / 2147483647; };
       for (var i = 0; i < G * G; i++) lat.push(rnd());
       var at = function (a, b) { return lat[(a % G + G) % G + ((b % G + G) % G) * G]; };
@@ -415,6 +429,7 @@
         }
       }
       x.stroke();
+      if (solutionTerrain) solutionTerrain.classList.add('has-topo');
     };
     // The living terrain: the same contour lines, drawn on the GPU from a slowly warping field, so the ground drifts and
     // folds like the reference's. 30 fps is plenty for something this slow; it pauses whenever its canvas is off screen.
@@ -435,7 +450,7 @@
         '  float v = fbm(p + w * 1.1 + vec2(t * .5, t * .3)) * ' + (topo.weave ? '27.' : '9.') + ';',
         '  float dl = abs(fract(v - .5) - .5) / max(fwidth(v), 1e-4);', // distance to the nearest contour, in pixels
         '  float a = (1. - smoothstep(.35, 1.35, dl)) * .19;',
-        flood ? FLOOD.replace('FLOOD_BASE', flood.base || 'vec3(.067, .082, .059)').replace('FLOOD_LINE', flood.line || 'vec3(.47, .5, .36)')
+        flood ? floodShader(flood)
           : topo.weave ? '  float k = a * 2.1; gl_FragColor = vec4(vec3(.824, 1., 0.) * k, k);' : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
         '}'
       ].join('\n')));
@@ -447,10 +462,15 @@
       tg.bufferData(tg.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), tg.STATIC_DRAW);
       tg.enableVertexAttribArray(0);
       tg.vertexAttribPointer(0, 2, tg.FLOAT, false, 0, 0);
-      var uR = tg.getUniformLocation(tp, 'uRes'), uT = tg.getUniformLocation(tp, 'uTime'), uO = tg.getUniformLocation(tp, 'uOff'), uL = tg.getUniformLocation(tp, 'uRise'), seen = true, last = 0, was = 0;
+      var uR = tg.getUniformLocation(tp, 'uRes'), uT = tg.getUniformLocation(tp, 'uTime'), uO = tg.getUniformLocation(tp, 'uOff'), uL = tg.getUniformLocation(tp, 'uRise'), seen = true, last = 0, was = 0, terrainLost = false;
+      if (solutionTerrain) topo.addEventListener('webglcontextlost', function () {
+        terrainLost = true;
+        solutionTerrain.classList.remove('has-topo');
+      }, { once: true });
       // A screen of margin, so the lines are already moving when the section arrives.
       if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; }, { rootMargin: '100% 0px' }).observe(topo);
       var loop = function (now) {
+        if (terrainLost) return;
         requestAnimationFrame(loop);
         // A flood on the move draws every frame; the rest of the time 30 fps is plenty.
         if (!seen || d.hidden || now - last < (flood && flood.rise !== was ? 16 : 33)) return;
@@ -464,12 +484,14 @@
         tg.uniform1f(uT, topo.terrainTime);
         if (flood) { tg.uniform1f(uL, flood.rise); was = flood.rise; }
         tg.drawArrays(tg.TRIANGLES, 0, 3);
+        if (solutionTerrain && !solutionTerrain.classList.contains('has-topo')) solutionTerrain.classList.add('has-topo');
       };
       requestAnimationFrame(loop);
       return true;
     };
-    // The footer adds no GPU work on phones, where WebGL contexts are scarce: a resting arc and a drawn map, as under reduced motion.
-    var lean = topo.closest('.foot') && !matchMedia('(min-width: 1100px)').matches;
+    // The footer and the fluid joins add no GPU work on phones, where WebGL contexts are scarce: a resting arc and a drawn map,
+    // as under reduced motion.
+    var lean = !!topo.closest('.foot, .flood-join') && !matchMedia(topo.closest('.foot') ? '(min-width: 1100px)' : '(min-width: 900px)').matches;
     // Without motion or WebGL the flood stays what the CSS draws: a resting arc.
     if (flood) { if (!still && !lean && liveTopo()) topo.parentNode.classList.add('is-live'); return; }
     if (topo.weave && lean) { topo.style.display = 'none'; return; }
@@ -685,13 +707,43 @@
     return api;
   };
 
+  // Carry the homepage's contour ground through every masterclass section, and on into the Solutions enquiry (and About's principles, founder and visit).
+  d.querySelectorAll('.course-page > section, .solutions-page > .lead--stage, .about-page > :is(.ab-notes, .team, .contact)').forEach(function (section) {
+    var terrain = d.createElement('canvas');
+    terrain.className = 'topo-bg';
+    terrain.setAttribute('aria-hidden', 'true');
+    section.prepend(terrain);
+  });
+  // Contact: Vadodara's local time in the direct-lines board (hidden without JS).
+  d.querySelectorAll('[data-clock]').forEach(function (el) {
+    var tick = function () { el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit' }) + ' IST'; };
+    tick(); el.hidden = false; setInterval(tick, 15000);
+  });
+  // Fluid joins: a section whose CSS sets --flood rises over the one before it the way the homepage's flood does, its ground
+  // climbing the contour map with a moving edge. --flood is `auto` (the section's own background colour) or an "r g b" triple.
+  d.querySelectorAll('main section').forEach(function (section) {
+    var want = getComputedStyle(section).getPropertyValue('--flood').trim();
+    if (!want || want === 'none' || !section.previousElementSibling || section.parentElement.closest('section')) return;
+    var rgb = (want === 'auto' ? getComputedStyle(section).backgroundColor : want).match(/[\d.]+/g);
+    if (!rgb || rgb.length < 3 || rgb[3] === '0') return;
+    rgb = rgb.slice(0, 3);
+    var join = d.createElement('div'), canvas = d.createElement('canvas');
+    join.className = 'flood-join';
+    join.setAttribute('aria-hidden', 'true');
+    join.style.setProperty('--flood-c', 'rgb(' + rgb.join(',') + ')');
+    canvas.className = 'topo-bg';
+    canvas.flood = { rise: 70, fluid: section.closest('.solutions-page') ? .45 : 1, base: 'vec3(' + rgb.map(function (n) { return (n / 255).toFixed(3); }).join(', ') + ')' };
+    join.appendChild(canvas);
+    section.classList.add('has-flood');
+    section.prepend(join);
+  });
   var afterStage = (d.querySelector('.hero--stage') || {}).nextElementSibling;
   d.querySelectorAll('.topo-bg').forEach(function (c) {
     // The shared gallery canvas also draws behind the comparison; keep only its later dark flood.
     if (c.parentNode.matches('.versus') && c.closest('.workscape-pair')) return;
     if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30 };
     if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)' };
-    topoField(c, afterStage || c.parentNode, c.flood);
+    topoField(c, c.closest('.course-page, .solutions-page') || afterStage || c.parentNode, c.flood); // inner pages: one map under every section
   });
 
   // The footer masthead clears over the panel; its generated robot remains one coherent cutout.
@@ -705,17 +757,18 @@
     }
   });
 
+  // The masthead floats over a dark hero and turns solid once the hero has gone (on phones, as soon as the page moves).
+  (function () {
+    var bar = d.querySelector('[data-top]'), hero = d.querySelector('[data-stage], .sol-hero, .course-hero');
+    if (!bar || !hero) return;
+    var solid = function () { bar.classList.toggle('is-solid', innerWidth < 900 ? scrollY > 40 : hero.getBoundingClientRect().bottom < 64); };
+    addEventListener('scroll', solid, { passive: true });
+    solid();
+  })();
+
   // The stage hero: a topographic ground, then the robot redrawn in WebGL with liquid neon blobs that reveal a second layer.
   d.querySelectorAll('[data-stage]').forEach(function (stage) {
     topoField(stage.querySelector('.stage__topo'), null);
-
-    // The masthead floats over the stage and turns solid once the stage has gone (on phones, as soon as the page moves).
-    var bar = d.querySelector('[data-top]');
-    if (bar) {
-      var solid = function () { bar.classList.toggle('is-solid', innerWidth < 900 ? scrollY > 40 : stage.getBoundingClientRect().bottom < 64); };
-      addEventListener('scroll', solid, { passive: true });
-      solid();
-    }
 
     if (still) return; // the photograph alone, standing still
     var cv = stage.querySelector('.stage__gl'), img = stage.querySelector('.stage__robot');
@@ -885,6 +938,8 @@
     var LIVERY = 'ARTIFICIA  ✦  AI AUTOMATION  ✦  AGENTIC WORKFLOWS  ✦  BUSINESS SOFTWARE  ✦  CORPORATE AI TRAINING  ✦  ';
     var BAND = { y: .6, r: .2, h: .027 }, TILT = .24; // TILT: how far we look down on the band, in radians
     var rigIn = 0, spin = 0, glyphs = [], glyphFor = '';
+    // Rebuild the band lettering with the real site font after a slow font download.
+    if (d.fonts) d.fonts.ready.then(function () { glyphFor = ''; });
     var drawRig = function (now, t, ir, cr) {
       if (!bx || !fx) return;
       var rd = Math.min(window.devicePixelRatio || 1, 1.5), cw = cr.width, ch = cr.height, Wp = Math.round(cw * rd), Hp = Math.round(ch * rd);
@@ -945,7 +1000,7 @@
       fx.closePath();
       fx.fill();
       arc(bh / 2, shade(242, 255, 184, .9), 1.1);
-      fx.font = '800 ' + Math.max(8, Math.round(bh * .46)) + 'px "Roboto Flex", system-ui, sans-serif';
+      fx.font = '800 ' + Math.max(8, Math.round(bh * .46)) + 'px "Artificia Sans", system-ui, sans-serif';
       if ('fontStretch' in fx) fx.fontStretch = 'expanded';
       var key = fx.font + '|' + Math.round(BR);
       if (glyphFor !== key) {
@@ -1145,7 +1200,7 @@
       list.querySelectorAll('.task__t').forEach(function (t) {
         var word = t.firstElementChild, text = word.textContent.trim().toUpperCase();
         t.style.cssText = 'font-size:100px;white-space:nowrap';
-        pen.font = '820 100px "Roboto Flex"';
+        pen.font = '820 100px "Artificia Sans"';
         var first = pen.measureText(text[0]), last = pen.measureText(text[text.length - 1]);
         var lead = -first.actualBoundingBoxLeft, tail = last.width - last.actualBoundingBoxRight + parseFloat(getComputedStyle(t).letterSpacing); // CSS spacing also follows the last letter
         var px = 100 * t.clientWidth / (word.getBoundingClientRect().width - lead - tail);
@@ -1497,6 +1552,14 @@
       paint();
       tl.to(o, { t: 1, duration: 1.1, ease: 'power3.out', onUpdate: paint }, 0.1);
     }
+  });
+
+  // Fluid joins climb with the scroll: over the contours where WebGL runs, as a rising arc on phones. They stay low while the
+  // section above is still being read and close over it only as the join reaches the top of the screen.
+  d.querySelectorAll('.flood-join').forEach(function (join) {
+    var trigger = { trigger: join.parentNode, start: 'top bottom', end: 'top top', scrub: 1, invalidateOnRefresh: true };
+    if (join.classList.contains('is-live')) gsap.fromTo(join.firstChild.flood, { rise: 70 }, { rise: function () { return join.offsetHeight * 1.4; }, ease: 'power4.in', scrollTrigger: trigger });
+    else gsap.fromTo(join, { clipPath: 'ellipse(85% 7% at 50% 100%)' }, { clipPath: 'ellipse(110% 100% at 50% 100%)', ease: 'power4.in', scrollTrigger: trigger });
   });
 
   // The footer arrives: neon floods up over the last section, the frame closes in, the robot rises, then the line is said and the AI circled.

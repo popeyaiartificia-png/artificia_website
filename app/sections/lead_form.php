@@ -4,7 +4,7 @@ $id = 'lf' . $s;
 $buttons = ['masterclass' => 'Send my enquiry', 'corporate' => 'Ask for the free pilot', 'services' => 'Book the free flow audit', 'contact' => 'Send message'];
 $label = trim($f['button_label'] ?? '') !== '' ? $f['button_label'] : $buttons[$type];
 $wa = whatsapp_url($settings);
-$stageForm = ($page['slug'] ?? '') === 'home';
+$stageForm = ($page['slug'] ?? '') === 'home' || in_array($page['sections'][0]['fields']['variant'] ?? '', ['course', 'solutions', 'about', 'corporate', 'contact'], true);
 $field = function (string $name, string $text, string $type = 'text', bool $req = true, string $auto = '') use ($id): string {
     $fid = $id . '-' . $name;
     $attrs = ' id="' . $fid . '" name="' . $name . '" type="' . $type . '"' . ($req ? ' required' : '') . ($auto ? ' autocomplete="' . $auto . '"' : '');

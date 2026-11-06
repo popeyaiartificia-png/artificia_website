@@ -10,6 +10,16 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before the course",
+        "after_label": "After the course",
+        "stat_value": "60",
+        "stat_unit": "days",
+        "stat_label": "AI Masterclass",
+        "statement": "Put AI to work in your own business.",
+        "before_text": "Doing everything yourself?",
+        "after_text": "AI working across your business.",
+        "eyebrow": "AI Masterclass · For business owners",
         "subheading": "Find out what AI can take off your desk, then build the first automations yourself. Live in Vadodara, one hour a day.",
         "image": "audience-founder.jpg",
         "primary_cta_label": "Ask about the masterclass",

@@ -12,6 +12,9 @@
 <?php if (!empty($p['bio'])): ?>
         <p class="person__bio"><?= e($p['bio']) ?></p>
 <?php endif ?>
+<?php if (!empty($p['photo_2'])): ?>
+        <figure class="person__fig2"><?= image($p['photo_2'], '(min-width: 900px) 280px, 70vw') ?></figure>
+<?php endif ?>
 <?php if (!empty($p['linkedin'])): ?>
         <a class="person__in" href="<?= link_href($p['linkedin'] ?? '') ?>" rel="noopener"><?= icon('linkedin-logo') ?>LinkedIn<span class="vh"> profile of <?= e($p['name'] ?? '') ?></span></a>
 <?php endif ?>

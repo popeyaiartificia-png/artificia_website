@@ -1,139 +1,189 @@
 {
   "slug": "services",
   "kind": "page",
-  "title": "Services",
-  "h1": "AI automation, *built for your business*",
-  "meta_title": "AI automation services in Vadodara | Artificia AI",
-  "meta_description": "GoHighLevel setup, website development, content and marketing, and RAG-based AI automation for businesses. Start with a free 15-minute flow audit.",
+  "title": "Solutions",
+  "h1": "Technology that *removes friction* from work.",
+  "meta_title": "AI Automation & Technology Solutions | Artificia AI",
+  "meta_description": "AI automation, agentic AI, software and apps, GoHighLevel marketing automation, SEO/AEO/GEO and private AI, built in Vadodara around how you work.",
   "sections": [
     {
       "type": "hero",
       "fields": {
-        "subheading": "We set up GoHighLevel, build websites, make content and build AI that answers from your own documents, hosted on AWS or Google Cloud. It starts with a free 15-minute flow audit.",
-        "drawing": "services",
-        "variant": "split",
-        "primary_cta_label": "Book the free flow audit",
+        "statement": "Find the friction. Build the system that removes it.",
+        "before_label": "Before",
+        "before_text": "Work slowed by manual steps?",
+        "after_label": "After",
+        "after_text": "Tools connected. Work flowing.",
+        "stat_value": "06",
+        "stat_unit": "solutions",
+        "stat_label": "One team in Vadodara",
+        "variant": "solutions",
+        "eyebrow": "Six solutions · One team · Vadodara",
+        "subheading": "We find the work that slows your business down, then build the system that takes it off your desk.",
+        "primary_cta_label": "Book Free AI Consultation",
         "primary_cta_link": "#enquire",
-        "secondary_cta_label": "See a client system",
-        "secondary_cta_link": "/case-studies/orkay-tiles"
-      }
-    },
-    {
-      "type": "card_grid",
-      "fields": {
-        "heading": "Four things we *build*",
-        "columns": "2",
-        "cards": [
-          {"image": "ai-sales.jpg", "title": "GoHighLevel setup", "text": "Your CRM, pipelines, WhatsApp and follow-ups, set up and run.", "link": "/services/gohighlevel"},
-          {"image": "orkay-website.jpg", "title": "Website development", "text": "Fast websites with forms that send every enquiry to your CRM.", "link": "/services/website-development"},
-          {"image": "ai-marketing.jpg", "title": "Content and marketing", "text": "Posts, videos and campaigns made with AI, in your brand's voice.", "link": "/services/content-marketing"},
-          {"image": "ai-documents.jpg", "title": "RAG and custom automation", "text": "AI that answers from your own documents, and shows the source.", "link": "/services/rag-custom-automation"}
+        "secondary_cta_label": "See all six solutions",
+        "secondary_cta_link": "#solutions",
+        "doors": [
+          {"label": "AI automation", "note": "Manual tasks", "link": "#solution-1"},
+          {"label": "Agentic AI", "note": "Answers buried in documents", "link": "#solution-2"},
+          {"label": "Software & apps", "note": "Workarounds in spreadsheets", "link": "#solution-3"},
+          {"label": "Marketing automation", "note": "Leads left waiting", "link": "#solution-4"},
+          {"label": "SEO / AEO / GEO", "note": "Hard to find online", "link": "#solution-5"},
+          {"label": "Cloud & private AI", "note": "Data that must stay private", "link": "#solution-6"}
         ]
       }
     },
     {
-      "type": "card_grid",
+      "type": "statement",
       "fields": {
-        "heading": "More we can *automate*",
-        "intro": "Below the four sits a wider catalogue. We pick only the parts that fit your business.",
-        "columns": "4",
-        "cards": [
-          {"icon": "flow-arrow", "title": "Workflow and system integration", "text": "Lead capture, CRM updates, approvals, reminders and reports that run on their own."},
-          {"icon": "file-text", "title": "Document and data processing", "text": "Invoices, POs, contracts and forms read, sorted and turned into reports."},
-          {"icon": "chat-circle-text", "title": "Departmental AI assistants", "text": "Assistants for HR, sales or support that answer from your own material."},
-          {"icon": "plugs-connected", "title": "AI agents", "text": "Agents that research, follow up and flag what needs attention today."}
-        ]
+        "text": "Start with the *problem*, not the tool. Then we build the *system* that fixes it."
       }
     },
     {
-      "type": "tools",
+      "type": "solutions",
       "fields": {
-        "heading": "The platforms we *build on*",
-        "intro": "Custom systems run on AWS or Google Cloud, set up in accounts your company owns, and connect to the tools your team already uses.",
-        "tools": [
-          {"name": "AWS", "brand": "aws", "note": "Hosting, storage and databases"},
-          {"name": "Google Cloud", "brand": "google-cloud", "note": "Cloud Console, APIs and Vertex AI"},
-          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "CRM and workflows"},
-          {"name": "n8n", "brand": "n8n", "note": "Automations"},
-          {"name": "Supabase", "brand": "supabase", "note": "Database and login"},
-          {"name": "Pinecone", "brand": "pinecone", "note": "Vector search"}
+        "variant": "chapters",
+        "heading": "Six ways we put *AI to work.*",
+        "intro": "Each one removes a different kind of friction. Most projects combine two or three.",
+        "items": [
+          {
+            "title": "AI automation",
+            "visual": "workflow",
+            "text": "Repetitive, rules-based work runs on its own, across the tools your team already uses.",
+            "includes": "Find the processes worth automating\nTriggers, routing, approvals and exceptions\nForms and documents read into your systems\nCRM updates, tasks, alerts and reports",
+            "link": "#enquire",
+            "link_label": "Plan an automation"
+          },
+          {
+            "title": "Agentic AI",
+            "visual": "agentic",
+            "text": "AI agents and knowledge assistants that use your documents and approved tools, with people reviewing key actions.",
+            "includes": "Assistants that answer from your documents, with the source\nAgents that use only the tools you approve\nHuman approval for important actions\nTested before launch, monitored after",
+            "link": "/services/rag-custom-automation",
+            "link_label": "Explore agentic AI"
+          },
+          {
+            "title": "Software & apps",
+            "visual": "software",
+            "text": "Websites, dashboards, portals and internal tools, built around the way your business works.",
+            "includes": "Websites with an admin your team edits\nDashboards and internal tools\nWeb and mobile apps\nAPIs that connect your systems",
+            "link": "/services/website-development",
+            "link_label": "Explore software and websites"
+          },
+          {
+            "title": "Marketing automation",
+            "visual": "marketing",
+            "text": "Enquiries captured, routed and followed up in GoHighLevel, so leads stop waiting for a reply.",
+            "includes": "GoHighLevel set up and run for you\nPipelines, lead routing and tags\nForms, calendars and landing pages\nWhatsApp, email and SMS follow-ups",
+            "link": "/services/gohighlevel",
+            "link_label": "Explore GoHighLevel"
+          },
+          {
+            "title": "SEO / AEO / GEO",
+            "visual": "search",
+            "text": "Technical SEO and answer-ready content, so search engines and AI search understand your business.",
+            "includes": "Technical SEO audit and fixes\nSearch intent mapped to your pages\nContent that answers real questions\nStructured data and local SEO",
+            "link": "#enquire",
+            "link_label": "Ask about search visibility"
+          },
+          {
+            "title": "Cloud & private AI",
+            "visual": "cloud",
+            "text": "Cloud deployment and private AI setups, on AWS, Google Cloud or your own infrastructure.",
+            "includes": "Hosting on AWS or Google Cloud, in your company's accounts\nBackups, monitoring and alerts\nPrivate or self-hosted AI models where they fit\nAccess control and logging",
+            "link": "#enquire",
+            "link_label": "Discuss private AI"
+          }
         ]
-      }
-    },
-    {
-      "type": "text_image",
-      "fields": {
-        "heading": "What a *flow audit* looks at",
-        "body": "<p>In 15 minutes we trace one order from enquiry to delivery, with you or your department heads.</p><p>We mark each handoff where work waits or gets repeated. You get a one-page summary, yours whether you work with us or not.</p>",
-        "image": "ai-before-after.jpg",
-        "image_side": "right",
-        "cta_label": "Book the free audit",
-        "cta_link": "#enquire"
       }
     },
     {
       "type": "use_cases",
       "fields": {
-        "heading": "Three jobs AI can *take over*",
+        "variant": "lines",
+        "heading": "What changes when *work flows.*",
+        "intro": "Results depend on your process, so we agree how to measure them before we build.",
         "items": [
-          {"title": "Answering enquiries", "before": "New leads wait hours for someone to call back.", "after": "An AI assistant replies on WhatsApp and the rep gets the lead."},
-          {"title": "Monthly reports", "before": "Someone copies figures between spreadsheets by hand.", "after": "The report builds itself from your sheets and arrives by email."},
-          {"title": "Finding the right document", "before": "Staff dig through folders and old emails for the latest SOP.", "after": "Ask in plain words and get the answer with the source page."}
+          {"title": "Fewer manual handoffs", "before": "Work passed between people by hand.", "after": "Data moves between your tools on its own."},
+          {"title": "Clearer data flow", "before": "The same figures typed into three places.", "after": "One source, updated once, seen by everyone."},
+          {"title": "Faster response", "before": "Enquiries wait until someone is free.", "after": "New enquiries get a reply and an owner straight away."},
+          {"title": "Better visibility", "before": "Status lives in someone's head.", "after": "Reports and dashboards show what moved."},
+          {"title": "Stronger team adoption", "before": "New tools nobody uses.", "after": "Your team is trained on the system we build."}
         ]
       }
     },
     {
       "type": "case_study",
       "fields": {
-        "heading": "A system we built and *still run*",
+        "heading": "A system we built and *still run.*",
         "client": "Orkay Tiles International",
-        "summary": "Orkay Tiles International is our client. We set up and run their GoHighLevel, deployed their website on AWS, and built the n8n workflows that handle their daily lead data.",
-        "image": "orkay-website.jpg",
+        "summary": "Orkay Tiles International, a tile manufacturer in Morbi, Gujarat, is our client. We set up and run its GoHighLevel accounts, built its website on AWS and created the n8n workflows that handle its daily lead data.",
+        "image": "orkay-website-hero.webp",
         "built": [
-          {"title": "Routed by language", "text": "Regional-language leads go to the rep who speaks that language."},
-          {"title": "AI voice calls", "text": "New India leads get a call in Hindi from an AI voice agent."},
-          {"title": "Followed up and reported", "text": "India leads get an automatic follow-up 18 hours later, and a daily report shows what moved."}
+          {"title": "A lead arrives", "text": "A dealer fills in a Meta form or messages on WhatsApp, and GoHighLevel gives the lead an owner."},
+          {"title": "Routed by language", "text": "Tamil, Telugu and Kannada form leads go to the rep who speaks that language."},
+          {"title": "Arya calls", "text": "Arya, an AI voice agent, calls new India leads in Hindi."},
+          {"title": "Followed up", "text": "India leads get an automatic follow-up 18 hours later."},
+          {"title": "Reported every morning", "text": "The team gets a report of new leads, stage moves and conversations."}
         ],
-        "link_label": "Read the case study",
+        "link_label": "Read the Orkay case study",
         "link": "/case-studies/orkay-tiles"
       }
     },
     {
-      "type": "process_steps",
+      "type": "tools",
       "fields": {
-        "heading": "How a build *works*",
-        "steps": [
-          {"title": "Audit", "text": "A free 15-minute call to trace one process and find where time is lost."},
-          {"title": "Plan", "text": "We agree what to build first, what it connects to and how you will know it works."},
-          {"title": "Build", "text": "We build it, test it with your team and put it into daily use."},
-          {"title": "Run", "text": "We monitor, maintain and improve it, and add new workflows as you grow."}
+        "heading": "How a project *runs*",
+        "intro": "Seven steps, from the first conversation to a system your team uses every day. It starts with a free AI consultation.",
+        "flow": [
+          {"title": "Discover", "note": "Where the manual work is"},
+          {"title": "Design", "note": "Workflow, data, approvals"},
+          {"title": "Build", "note": "Automations, agents, apps"},
+          {"title": "Integrate", "note": "CRM, WhatsApp, email, sheets"},
+          {"title": "Deploy", "note": "Tested, then switched on"},
+          {"title": "Train", "note": "Your team learns to use it"},
+          {"title": "Optimise", "note": "Measured and improved"}
+        ],
+        "tools": [
+          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "CRM and pipelines"},
+          {"name": "n8n", "brand": "n8n", "note": "Workflows"},
+          {"name": "WhatsApp", "brand": "whatsapp", "note": "Follow-ups"},
+          {"name": "AWS", "brand": "aws", "note": "Hosting"},
+          {"name": "Google Cloud", "brand": "google-cloud", "note": "Hosting"},
+          {"name": "Claude", "brand": "claude", "note": "AI models"},
+          {"name": "ChatGPT", "brand": "chatgpt", "note": "AI models"},
+          {"name": "Gemini", "brand": "gemini", "note": "AI models"}
         ]
       }
     },
     {
       "type": "faqs",
       "fields": {
-        "heading": "Questions about *services*",
+        "heading": "Questions about *our solutions*",
         "items": [
-          {"question": "What happens in the free flow audit?", "answer": "A 15-minute call where we trace one process with you, mark where work waits or repeats, and send a one-page summary you keep."},
+          {"question": "Which solution do I need?", "answer": "You don't need to know yet. Tell us what slows your team down and we suggest where to start. Many projects combine two or three solutions."},
+          {"question": "What happens in the free AI consultation?", "answer": "We trace one process with you, mark where work waits or repeats, and suggest what to build first. You get a one-page summary to keep, whether you work with us or not."},
           {"question": "Can you set up AWS or Google Cloud for us?", "answer": "Yes. We set up the services a system needs in the AWS console or the Google Cloud Console: hosting, storage, databases, API keys and AI models such as Gemini on Vertex AI. The accounts stay in your company's name."},
+          {"question": "Can AI run without our data leaving our systems?", "answer": "Where it fits, yes. We can set up private or self-hosted models on your own infrastructure. Running AI locally does not make a system secure on its own, so we plan access, logging and data handling with you."},
           {"question": "Do you only work with GoHighLevel?", "answer": "No. We use GoHighLevel when it fits, and we also build with n8n, custom websites and AI models, hosted on AWS or Google Cloud and connected to the tools you already use."},
-          {"question": "Who owns what you build?", "answer": "You do. Everything we build belongs to you and keeps running after the project ends."},
           {"question": "Can you work with our ERP or Tally?", "answer": "Yes. We can add an AI layer around systems like ERPNext, Tally or SAP: questions in plain words, automated MIS and alerts."},
-          {"question": "Do you look after systems after launch?", "answer": "Yes. We monitor workflows and agents, fix what breaks, and add new workflows when you need them."}
+          {"question": "Who owns what you build?", "answer": "You do. Everything we build belongs to you and keeps running after the project ends."},
+          {"question": "Do you look after systems after launch?", "answer": "Yes. We monitor workflows and agents, fix what breaks, and add new workflows when you need them. We also train your team to use what we build."}
         ]
       }
     },
     {
       "type": "lead_form",
       "fields": {
-        "heading": "Book the free *flow audit*",
-        "intro": "Tell us about one process that takes too long. We will set up a 15-minute call.",
+        "heading": "Book a free *AI consultation*",
+        "intro": "Tell us about one process that takes too long. We will reply on WhatsApp to set up a call.",
         "form_type": "services",
+        "button_label": "Book Free AI Consultation",
         "side_points": [
-          {"text": "15 minutes, free"},
+          {"text": "Free, with no obligation"},
           {"text": "A one-page summary you keep"},
-          {"text": "No obligation to work with us"}
+          {"text": "Based in Vadodara, Gujarat"}
         ]
       }
     }

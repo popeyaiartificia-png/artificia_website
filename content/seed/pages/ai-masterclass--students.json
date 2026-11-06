@@ -10,6 +10,16 @@
     {
       "type": "hero",
       "fields": {
+        "variant": "journey",
+        "before_label": "Before the course",
+        "after_label": "After the course",
+        "stat_value": "60",
+        "stat_unit": "days",
+        "stat_label": "AI Masterclass",
+        "statement": "Learn AI alongside college. Leave with projects.",
+        "before_text": "Unsure where to start with AI?",
+        "after_text": "Projects you can show.",
+        "eyebrow": "AI Masterclass · For students",
         "subheading": "Learn the AI tools people use at work today, one hour a day alongside college. Leave with projects you can show.",
         "drawing": "predict",
         "primary_cta_label": "Ask about the masterclass",

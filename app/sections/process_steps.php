@@ -1,6 +1,8 @@
-<section class="sec sec--process_steps steps" data-section="steps">
+<?php if (($f['variant'] ?? 'standard') === 'course-projects') { include VIEWS_DIR . '/course-projects.php'; return; } ?>
+<section class="sec sec--process_steps steps" data-section="steps"<?= ($page['sections'][0]['fields']['variant'] ?? '') === 'course' ? ' id="overview"' : '' ?>>
   <div class="wrap steps__grid">
     <div class="steps__head">
+<?php if (($page['sections'][0]['fields']['variant'] ?? '') === 'course'): ?><p class="course-eyebrow">01 / LEARN BY DOING</p><?php endif ?>
       <?= sec_head($f['heading'] ?? '') ?>
 <?php if (!empty($f['intro'])): ?>
       <p class="lede"><?= e($f['intro']) ?></p>

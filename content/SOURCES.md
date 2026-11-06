@@ -5,12 +5,14 @@
 | File | Source |
 |---|---|
 | `public/assets/img/showcase/orkay-desktop.webp`, `orkay-mobile.webp` | Real viewport screenshots of https://www.orkaytiles.com/, captured 31 Oct 2026 at the user's request (1440x960 desktop / 390x844 mobile). Necessary-only cookie choice dismissed the consent overlay before capture. Encoded as WebP; no generated or reconstructed website content. Orkay is the named client already approved in the case study. |
-| `public/assets/img/showcase/contours.svg` | Original periodic contour field generated in code for the gallery background. Static SVG retained as the fallback for the gallery's new animated canvas. |
+| `public/assets/img/showcase/contours.svg` | Original periodic contour field generated in code for the gallery background. Static SVG retained as the fallback for the gallery's animated canvas and the homepage Solutions contour background. |
 | `public/assets/img/artificia-logo.png` | Artificia's own logo, `ARTIFICIA STUDY MATERIAL/artificia-brand-docs/assets/logo.png` (Brand Bible: use as supplied). |
 | `public/assets/img/favicon.png` | The old site's favicon, `legacy/landing-page/images/favicon.jpg.jpeg`, resized to 64 px. |
 | `content/seed/media/vijay-linju-raghavan.jpg` | `legacy/assets/images/all_images/about/vijay.jpg`. |
+| `content/seed/media/vijay-linju-raghavan-camera.jpg` | `legacy/assets/images/all_images/about/vijay_top.jpg` (the old About page's founder-with-camera photo), copied unchanged. Only 275×255, so it is shown small. |
 | `content/seed/media/alphonsa-n-p.jpg` | `legacy/landing-page/images/testimonials/`, resized. (The old page's photos of Haritha Nair and Nilesh Chaudasama are byte-identical to the old template's stock team photos, `legacy/assets/images/team_image1.jpg` and `team_image2.jpg`, labelled "Joseph Carrion" and "Leon Brown" there, so they are not used; their cards show initials until real photos arrive.) |
 | `content/seed/media/hatim-sorangwala.jpg`, `dev-chokshi.jpg` | Google Drive thumbnails of their own testimonial videos (the Drive links in `legacy/landing-page/index.html`). Khushi Dodiya's video link no longer opens, so her testimonial was removed (28 Oct 2026). |
+| `content/seed/media/orkay-website-hero.webp` | Byte copy of `public/assets/img/showcase/orkay-desktop.webp` (the live orkaytiles.com hero with Orkay's brand ambassador, 31 Oct 2026 capture above), added 4 Nov 2026 at the user's request for the Solutions page case study. |
 | `content/seed/media/orkay-website.jpg` | Screenshot of the live orkaytiles.com (the "Morbi-made" section, no people), 27 Oct 2026. |
 | `content/seed/media/artificia-hero.jpg` | The old landing page's hero, `legacy/landing-page/images/cover-hero.jpg`, with the old baked-in logo removed, mirrored and resized to 2400 px. |
 | `content/seed/media/classroom-instructor.jpg`, `corporate-session.jpg`, `business-owner-desk.jpg`, `professional-office.jpg` | Illustrations from the old corporate page, `legacy/co-orporate/`. Used as illustrations, never as proof of a real class or client. |
@@ -42,10 +44,11 @@ The marks belong to their owners and are shown only to name the tools taught or 
 
 ## Fonts, icons and code
 
+- Public reading/UI font (2 Nov user request): `public/assets/fonts/artificia-sans-variable.woff2`, a renamed derivative of Mona Sans from the same official Google Fonts source used for the statement (https://github.com/google/fonts/tree/main/ofl/monasans). Local source `MonaSans[wdth,wght].ttf` SHA-256 `fd6e79634b5ae804a45aac7e2e3c2a325b41291fba59034f4732b0135b8475b3`. Width pinned to 93, weights 200-900 retained with default 400; Latin and supported punctuation/symbols subset, 561 glyphs / 365 Unicode characters, 68,604 bytes. Renamed Artificia Sans; copyright, OFL and attribution name records retained. Licence: `public/assets/fonts/monasans-OFL.txt`. Built locally with FontTools; build/provenance in ignored `storage/prepare-site-font.py` and `storage/artificia-sans-variable-provenance.json`. The existing fixed display face below remains unchanged to preserve exact statement metrics.
 - Statement sans: Mona Sans from the official Google Fonts source (https://github.com/google/fonts/tree/main/ofl/monasans), SIL Open Font License 1.1. Pinned to weight 660 / width 93, Latin subset, renamed Artificia Statement Sans to respect the reserved name. `statement-sans.woff2`: 17,896 bytes; upstream licence in `public/assets/fonts/monasans-OFL.txt`. Copyright retained in the font.
 - Statement serif: Bodoni Moda from the official Google Fonts source (https://github.com/google/fonts/tree/main/ofl/bodonimoda), SIL Open Font License 1.1. Pinned to weight 500 / optical size 72, Latin subset, renamed Artificia Statement Serif. `statement-serif.woff2`: 13,036 bytes; licence in `public/assets/fonts/bodonimoda-OFL.txt`. Close substitute for commercial Brier Bold; Brier was not copied or installed. An exact match requires a licensed Brier font.
 
-- Roboto Flex, Google Fonts, SIL Open Font License 1.1 (`public/assets/fonts/`).
+- Legacy Roboto assets remain under `public/assets/fonts/` (Google Fonts, SIL Open Font License 1.1); admin uses Roboto Flex. Public page CSS/preloads now use the statement's Mona Sans/Bodoni system instead of Roboto.
 - Phosphor Icons, regular weight, MIT licence (`app/views/icons.php`).
 - GSAP 3.13.0 and ScrollTrigger, GreenSock standard "no charge" licence (`public/assets/vendor/`).
 - Quill 2.0.3 rich-text editor (admin page editor only): `dist/quill.js` and `dist/quill.snow.css` from the npm package `quill@2.0.3` (sha512 `xEYQBqfYx/sfb33VJiKnSJp8ehloavImQ2A6564GAbqG55PGw1dAWUn1MUbQB62t0azawUS2CZZhWCjO8gRvTw==`), unchanged, in `public/assets/vendor/quill/`. BSD 3-Clause licence (the package's own `LICENSE`, copied alongside), © Slab, Jason Chen and salesforce.com.
@@ -73,3 +76,47 @@ The homepage testimonial layout takes its overlapping portrait-card composition,
 The video links for Hatim Sorangwala (Drive file 103bVzroX5C0fOxDYioCAzEwGQKQQfOwj) and Dev Chokshi (1c5KXs4l68QmhFu3rUaCY7r6I3NWdkklw), plus their existing seed portraits, come from legacy/landing-page/index.html. Connected Drive metadata confirms hatim.mp4 and dev.mp4; the Hatim embedded preview loaded its Play control in browser QA. The old Khushi Dodiya file 1pSwvcA3zmFFytjbKGpuf6MniX58VhVF2 returned 404 through the connected account and is not included in the new homepage fan. No raw video files were found in this project checkout. Players load only after a card is clicked, with a direct-link fallback.
 
 Written reviews are the existing sourced quotations from Alphonsa N. P, Haritha Nair and Nilesh Chaudasama, unchanged. Alphonsa uses the existing seed portrait. **Correction before publication, 2 Nov:** SHA-256 comparison confirms the legacy Haritha/Nilesh portraits are byte-identical to stock team photos (`legacy/assets/images/team_image1.jpg` and `team_image2.jpg`). They are unsuitable as reviewer identities. Both seed/sample photo references and alt-text entries have been removed; the cards use initials and quote excerpts, with full reviews in the dialog/no-JS section. The resized stock files are retained only in ignored local `storage/testimonial-stock-reference/` and are excluded from GitHub.
+
+
+### AI Masterclass course page (2 Nov 2026)
+
+Curriculum source: user-supplied `D:/purnima/finalcourse.xlsx`, sheet `60-Day Curriculum`, A1:D61 (header and 60 days). Grouped into 12 modules without changing day order or the 30-day boundary; daily titles lightly normalized for capitalization/encoding. Module descriptions summarize source activities. The original 16 featured tools were expanded on 3 Nov to the complete named catalog described below. Product features and individual model versions are folded into their parent tool; no version-tier claims are made. User explicitly confirmed 30 days = ₹20,000 and 60 days = ₹40,000. These supersede the older CSV for the main course page and the prior prohibition on these two public fees.
+
+Hero graphic is first-party HTML/CSS using the existing sourced tool marks and Phosphor icons. No new external image/font/library assets. Syllabus reading used read-only extraction; the supplied workbook is unchanged and is not copied into the public directory.
+
+### Course hero project studio revision (2 Nov 2026)
+
+The presentation, website and automation visual previews were first-party HTML/CSS compositions, subsequently replaced by the learning ribbon on 3 Nov. Existing sourced Phosphor icons and tool marks were reused. The syllabus supplied the project themes and day ranges. No new bitmap, font or library assets were introduced. Local-intent heading, server-rendered course facts and visible semantic breadcrumbs follow Google Search Central guidance: https://developers.google.com/search/docs/essentials and https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics. BreadcrumbList uses the visible Home / AI Masterclass hierarchy; no rich-result or ranking promise is made.
+
+### Course learning ribbon (3 Nov 2026)
+
+`app/views/course-learning-sculpture.php` is a first-party, server-rendered SVG composition: a continuous cubic ribbon from scattered question/prompt sheets to a website/chart and connected automation/check. The two illustrated endpoints describe the course's practical learning direction; they are not client results or testimonials. Geometry, gradients and icons are authored directly in code; no external art or new dependencies. Per the user's later 3 Nov request, a single 1.8-second sweep replaces the day-by-day journey, with Replay and static reduced-motion/no-JS output. The source-backed curriculum below gives a module overview (the day-by-day lesson list was removed at the user's request on 4 Nov), and fees come from existing plan data.
+
+The added path motion (3 Nov) is also first-party SVG/CSS/JS: a clipped sheen and light trail, three sparks, rim glow, arrival ring and check draw. It introduces no media assets, libraries or external services. Pause/Play, offscreen/background stopping and reduced-motion/static fallbacks control these decorative effects; endpoint artwork remains opaque.
+
+### Complete course toolkit (3 Nov 2026)
+
+The symbols-and-names catalog immediately below the hero contains all 222 normalized products, platforms, libraries and model families named in the workbook's Tools column or activities. It includes the source's advanced options, alternatives and capstone stack examples; it is not a promise of separate hands-on mastery of every product. Concepts such as RAG, generic APIs and CRUD are not separate tool entries. Day-level evidence and asset provenance are recorded in [course-toolkit-sources.json](course-toolkit-sources.json).
+
+The catalog is presented as two horizontal rows at the user's request. Each of the 222 tools is server rendered once in the accessible lists; inert, aria-hidden copies supply the visual loop. Copied SVG IDs are namespaced. The existing marks, source names and attribution remain unchanged; no new assets or dependencies were introduced for the moving layout.
+
+142 displayed names use legitimate existing/new brand marks, including documented parent identities; 80 use neutral Phosphor functional symbols where a precise mark or identity is unavailable. In particular, Emily, Jerry and Atlas retain their supplied names without an invented vendor logo. The 101 new inline SVG marks come from Simple Icons 15.22.0 (CC0), `@lobehub/icons-static-svg` 1.101.0 (MIT), and the official Vapi/Retell header wordmarks. Exact URLs, SHA-256 values and transformations are in the provenance JSON. The Lobe MIT notice is retained in `app/views/brands.php`; pinned upstream commit `aea0ecb0fe1439467219197c52ffaeb579dfe33f`. Marks are self-contained, use the page's foreground color and make no external image requests. All marks identify the curriculum tools, without implying partnerships.
+
+
+### Course project showcase (3 Nov 2026)
+
+`app/views/course-project-visual.php` contains four first-party SVG scenes: a website, presentation/social/video content kit, document assistant and connected form/AI/sheet workflow. They use no external images, libraries or SVG IDs. They are labelled course-project examples, with a reserved `.example` browser address. The previews demonstrate the syllabus's project direction rather than client or student results.
+
+Copy, tools and day captions are backed by the supplied workbook: website building/publishing on days18-26 (publishing on day26), creative content on days11-16, document/RAG assistant on days45-46, and connected n8n workflows on days36-39. The capstone is student-selected, so the footer says students can build around their own idea. Motion is a short one-time UI assembly/connection/check reveal; reduced motion and no-JS keep every scene complete.
+
+- Corporate training workshop hero (4 Nov 2026): original code-authored SVG in `app/views/corporate-workplace.php`. Stylised training illustration, not a photograph or client proof. No third-party assets.
+
+- Corporate hero image (4 Nov 2026): generated with the built-in imagegen tool; conceptual editorial illustration, not a real Artificia/client training photograph. Production WebP variants: `public/assets/img/corporate/ai-workshop-v1-{480,800,1200}.webp`; source `storage/corporate-ai-workshop-v1-source.png`; exact prompt `docs/assets/corporate-ai-workshop-prompt.txt`. Forest green/lime Indian corporate team workshop, own documents and practical AI workflows. Supersedes the SVG hero scene; original SVG retained unused.
+
+- Corporate hero final direction (4 Nov 2026): user requested animation only. Page again renders the original animated SVG workshop in `app/views/corporate-workplace.php`. Generated workshop photos and prompt are retained unused and are not loaded by this page.
+
+- Corporate workshop refinement (4 Nov 2026): original SVG scene and five original seated-character drawings in `app/views/corporate-workplace.php` and `app/views/corporate-people.php`. Code-authored materials, furniture, UI and coordinated document-to-reviewed-workflow animation. Conceptual illustration; no third-party assets or real-client implication.
+
+- Corporate workshop motion expansion (4 Nov 2026): original code-authored document-transfer sheets, workflow UI/cursor and character gesture rigs added to the existing SVG. Three colleagues, coordinated 10-second story, no additional media/library dependencies.
+
+- Corporate hero simplified (4 Nov 2026): original HTML/CSS customer-support example in corporate-workplace.php replaces the boardroom SVG. Three purposeful CSS motions; no third-party image or library. Product guide/FAQs/brand voice and reviewed reply are illustrative training inputs/output, not client proof.

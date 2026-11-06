@@ -52,13 +52,13 @@ function test_every_list_has_subfields(): void
         'hero.doors' => ['label', 'note', 'link'],
         'work_gallery.items' => ['label', 'title', 'visual', 'image', 'link'],
         'versus.sides' => ['title', 'text', 'status_label', 'link', 'link_label', 'figure', 'image'],
-        'card_grid.cards' => ['icon', 'drawing', 'image', 'title', 'text', 'link'],
-        'solutions.items' => ['title', 'text', 'link', 'visual'],
+        'card_grid.cards' => ['icon', 'drawing', 'image', 'title', 'text', 'link', 'price', 'duration'],
+        'solutions.items' => ['title', 'text', 'link', 'visual', 'link_label', 'includes'],
         'use_cases.items' => ['title', 'before', 'after'],
         'crossoff.items' => ['title', 'outcome', 'text'],
-        'process_steps.steps' => ['title', 'text'],
+        'process_steps.steps' => ['title', 'text', 'visual', 'tools', 'day_range'],
         'tools.flow' => ['title', 'note'],
-        'tools.tools' => ['name', 'brand', 'logo', 'note'],
+        'tools.tools' => ['name', 'brand', 'symbol', 'logo', 'note'],
         'curriculum.modules' => ['track', 'day_range', 'title', 'topics', 'tools'],
         'stats.items' => ['value', 'label'],
         'testimonials.items' => ['name', 'role', 'quote', 'photo', 'video_url'],
@@ -66,7 +66,8 @@ function test_every_list_has_subfields(): void
         'case_study.results' => ['value', 'label'],
         'faqs.items' => ['question', 'answer'],
         'lead_form.side_points' => ['text'],
-        'people.items' => ['name', 'role', 'bio', 'photo', 'linkedin'],
+        'cta.details' => ['label', 'value'],
+        'people.items' => ['name', 'role', 'bio', 'photo', 'photo_2', 'linkedin'],
     ]);
 }
 
@@ -106,7 +107,7 @@ function test_required_flags(): void
         'case_study.built.title', 'case_study.built.text',
         'faqs.heading', 'faqs.items', 'faqs.items.question', 'faqs.items.answer',
         'lead_form.heading', 'lead_form.form_type', 'lead_form.side_points.text',
-        'cta.heading', 'cta.button_label', 'cta.button_link',
+        'cta.heading', 'cta.button_label', 'cta.button_link', 'cta.details.label', 'cta.details.value',
         'people.heading', 'people.items', 'people.items.name', 'people.items.role',
     ]);
 }
@@ -114,7 +115,7 @@ function test_required_flags(): void
 function test_select_options(): void
 {
     $r = section_registry();
-    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover', 'stage']);
+    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'journey']);
     eq($r['text_image']['fields']['image_side']['options'], ['left', 'right']);
     eq($r['card_grid']['fields']['columns']['options'], ['2', '3', '4']);
     eq($r['curriculum']['fields']['modules']['fields']['track']['options'], ['foundation', 'full']);

@@ -1,7 +1,18 @@
 <?php
-$variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage'], true) ? $f['variant'] : 'split';
+$variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'journey'], true) ? $f['variant'] : 'split';
 $h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
+// Every inner page's hero uses the masterclass layout (user, 6 Nov 2026). Solutions, About, Corporate and Contact keep
+// their variants for their page themes; their earlier hero views stay on disk, unused. Two keep their own centre visual.
+if (in_array($variant, ['journey', 'solutions', 'about', 'corporate', 'contact'], true)) {
+    $journeyVisual = ['corporate' => 'corporate-workplace', 'contact' => 'contact-board'][$variant] ?? '';
+    include VIEWS_DIR . '/journey-hero.php';
+    return;
+}
+if ($variant === 'course') {
+    include VIEWS_DIR . '/course-hero.php';
+    return;
+}
 if ($variant === 'stage') {
     include VIEWS_DIR . '/hero-stage.php';
     return;
