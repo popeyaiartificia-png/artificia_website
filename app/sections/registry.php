@@ -37,7 +37,7 @@ function section_registry(): array
             'secondary_cta_label' => $text('Secondary button label'),
             'secondary_cta_link' => $text('Secondary button link'),
             'image' => $image('Image'),
-            'variant' => $select('Layout', ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'journey']),
+            'variant' => $select('Layout', ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'careers', 'journey']),
             // The masterclass layout, used by every inner page: a short statement, the before and after captions on the
             // ribbon, and one verified figure on the right. Empty fields fall back to the subheading or are left out.
             'statement' => $text('Short statement (large, left of the visual)'),
@@ -252,7 +252,7 @@ function section_registry(): array
         'lead_form' => ['label' => 'Enquiry form', 'fields' => [
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
-            'form_type' => $select('Form type', ['masterclass', 'corporate', 'services', 'contact'], true),
+            'form_type' => $select('Form type', ['masterclass', 'corporate', 'services', 'contact', 'careers'], true),
             'button_label' => $text('Button label'),
             'side_points' => $list('Side points', [
                 'text' => $text('Text', true),

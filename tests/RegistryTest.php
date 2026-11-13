@@ -115,11 +115,11 @@ function test_required_flags(): void
 function test_select_options(): void
 {
     $r = section_registry();
-    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'journey']);
+    eq($r['hero']['fields']['variant']['options'], ['split', 'centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'careers', 'journey']);
     eq($r['text_image']['fields']['image_side']['options'], ['left', 'right']);
     eq($r['card_grid']['fields']['columns']['options'], ['2', '3', '4']);
     eq($r['curriculum']['fields']['modules']['fields']['track']['options'], ['foundation', 'full']);
-    eq($r['lead_form']['fields']['form_type']['options'], ['masterclass', 'corporate', 'services', 'contact']);
+    eq($r['lead_form']['fields']['form_type']['options'], ['masterclass', 'corporate', 'services', 'contact', 'careers']);
     eq($r['map_contact']['fields']['show_map']['options'], ['yes', 'no']);
     eq($r['blog_list']['fields']['count']['options'], ['3', '6', '12']);
 }

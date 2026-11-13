@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Leads: POST /lead (validate, rate limit, save, answer), then the follow-ups: Meta Conversions API, the alert
 // email and the n8n forward. The visitor's answer depends only on the saved row; follow-ups never change it.
 
-const LEAD_TYPES = ['masterclass', 'corporate', 'services', 'contact'];
+const LEAD_TYPES = ['masterclass', 'corporate', 'services', 'contact', 'careers'];
 
 /** Each form's fields => required. name, email, phone and company are columns; the rest go in `fields`. */
 const LEAD_FORMS = [
