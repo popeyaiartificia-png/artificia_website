@@ -276,6 +276,11 @@ function section_registry(): array
                 'name' => $text('Name', true),
                 'role' => $text('Role', true),
                 'bio' => $area('Bio'),
+                // One per line, "Label: text". Credentials show under the bio; "more" sits behind a Know more toggle,
+                // where a text written as "a · b · c" shows as tags.
+                'credentials' => $area('Credentials (one per line, Label: text)'),
+                'more' => $area('Know more points (one per line, Title: text)'),
+                'quote' => $text('Guiding philosophy (optional)'),
                 'photo' => $image('Photo'),
                 'photo_2' => $image('Second photo (optional)'),
                 'linkedin' => $text('LinkedIn link'),

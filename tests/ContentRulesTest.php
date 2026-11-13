@@ -60,6 +60,14 @@ function test_seed_has_no_banned_words(): void
             if (($data['slug'] ?? '') === 'ai-masterclass') {
                 $s = str_replace(['₹20,000', '₹40,000'], '', $s);
             }
+            // The terms are the company's published legal text, copied verbatim on 13 Nov 2026; there these words are disclaimers.
+            if (($data['slug'] ?? '') === 'terms') {
+                continue;
+            }
+            // The owner requested the published privacy policy verbatim, including its recruitment data usage.
+            if (($data['slug'] ?? '') === 'privacy') {
+                $s = str_replace('Maintain placement records for compliance and future opportunities', '', $s);
+            }
             ok(!preg_match($re, $s, $m), "$name: \"" . ($m[0] ?? '') . "\" in: $s");
         }
     }

@@ -953,6 +953,16 @@ select.input {
 .hero--stage ~ .lead--stage .lead__side { display: flex; flex-direction: column; align-self: stretch; padding: clamp(1.5rem, 3.2vw, 3rem); background: #FBFBF6; border: 1px solid #DCDFD0; border-radius: 28px; }
 .hero--stage ~ .lead--stage .lead__wa { margin-top: auto; padding-top: 2.25rem; }
 @media (max-width: 639px) { .hero--stage ~ .lead--stage .lead__side { border-radius: 22px; } }
+/* Legal pages (terms, privacy): the contour map runs behind the text, which sits on the enquiry box's light panel. */
+.journey-hero--plain ~ .sec--rich_text { isolation: isolate; }
+.journey-hero--plain ~ .sec--rich_text > .topo-bg { display: block; }
+/* The long privacy policy keeps its shared contour canvas to one screen as the text scrolls past. */
+.privacy-terrain { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.privacy-terrain > .topo-bg { display: block; position: sticky; inset: auto; top: 0; height: 100svh; max-height: 100%; }
+html:not(.js) .privacy-terrain { background: url('../img/showcase/contours.svg') center top / 1000px auto repeat; }
+.journey-hero--plain ~ .sec--rich_text .rich__body { max-width: 72ch; margin: 0 auto; padding: clamp(1.5rem, 4.5vw, 4rem); background: #FBFBF6; border: 1px solid #DCDFD0; border-radius: 28px; }
+.journey-hero--plain ~ .sec--rich_text .rich__body h3 { margin-top: 1.4em; font-size: 1.1rem; }
+@media (max-width: 639px) { .journey-hero--plain ~ .sec--rich_text .rich__body { border-radius: 22px; } }
 
 /* ---------- CTA: a reversed page ---------- */
 .sec--cta { padding-block: clamp(5rem, 3rem + 7vw, 10rem); }

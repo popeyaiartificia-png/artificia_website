@@ -781,8 +781,9 @@
     return api;
   };
 
-  // Carry the homepage's contour ground through every masterclass section, and on into the homepage and Solutions enquiries (and About's hero, principles, founder and visit).
-  d.querySelectorAll('.course-page > section, .hero--stage ~ .lead--stage, .solutions-page > .lead--stage,.about-page > :is(.ab-notes, .team, .contact), .about-page:not(.contact-page) > .journey-hero').forEach(function (section) {
+  // Carry the homepage's contour ground through every masterclass section, and on into the homepage and Solutions enquiries (and About's hero, principles, founder and visit, and the legal pages' text).
+  d.querySelectorAll('.course-page > section, .hero--stage ~ .lead--stage, .solutions-page > .lead--stage,.about-page > :is(.ab-notes, .team, .contact), .about-page:not(.contact-page) > .journey-hero, .journey-hero--plain ~ .sec--rich_text').forEach(function (section) {
+    if (section.querySelector('.topo-bg')) return;
     var terrain = d.createElement('canvas');
     terrain.className = 'topo-bg';
     terrain.setAttribute('aria-hidden', 'true');

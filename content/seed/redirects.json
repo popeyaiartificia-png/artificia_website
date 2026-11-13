@@ -66,6 +66,12 @@
     "code": 301
   },
   {
+    "from_path": "/privacypolicy.htm",
+    "to_path": "/privacy",
+    "match_type": "exact",
+    "code": 301
+  },
+  {
     "from_path": "/Termsandcondition.html",
     "to_path": "/terms",
     "match_type": "exact",

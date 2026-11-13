@@ -243,18 +243,52 @@
 .about-page .person__name { max-width: 8ch; margin-top: 2.4rem; color: #101114; font: 660 clamp(3rem, 1.1rem + 5.4vw, 7.6rem)/.88 var(--display); letter-spacing: -.06em; }
 .about-page .person .entry { display: flex; align-items: center; gap: 14px; margin-top: 1.6rem; color: #4e5d00; font: 600 .68rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .about-page .person .entry::before { content: ''; width: 2.6rem; height: 2px; background: #4e5d00; }
-.about-page .person__bio { max-width: 30ch; margin-top: 1.3rem; color: #2e3229; font: 500 clamp(1.1rem, .9rem + .55vw, 1.5rem)/1.4 var(--sans); letter-spacing: -.02em; }
+.about-page .person__bio { max-width: 38ch; margin-top: 1.3rem; color: #2e3229; font: 500 clamp(1.1rem, .9rem + .55vw, 1.5rem)/1.4 var(--sans); letter-spacing: -.02em; }
+/* Credentials: label over a hairline, value beside it on wider screens. */
+.about-page .person__facts { max-width: 46rem; margin: 2.2rem 0 0; border-top: 1px solid #101114; }
+.about-page .person__facts > div { display: grid; gap: .35rem; padding: 1rem 0; border-bottom: 1px solid #10111426; }
+.about-page .person__facts dt { color: #4e5d00; font: 600 .68rem/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.about-page .person__facts dd { margin: 0; color: #2e3229; font: 500 1rem/1.5 var(--sans); }
+@media (min-width: 600px) { .about-page .person__facts > div { grid-template-columns: 11rem 1fr; gap: 1.5rem; } .about-page .person__facts dt { padding-top: .2rem; } }
+/* Know more: a native toggle; the plus turns to a minus. */
+.about-page .person__more { max-width: 46rem; margin-top: 1.6rem; }
+.about-page .person__more summary { display: inline-flex; align-items: center; gap: .8rem; padding: .7rem .8rem .7rem 1.2rem; border-radius: 999px; background: #101114; color: #f4f6f1;
+  font: 600 .8rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; list-style: none; transition: background .25s, color .25s; }
+.about-page .person__more summary::-webkit-details-marker { display: none; }
+.about-page .person__more summary:hover, .about-page .person__more[open] summary { background: #d2ff00; color: #101114; }
+.about-page .person__more summary:focus-visible { outline: 2px solid #4e5d00; outline-offset: 3px; }
+.about-page .person__more summary i { position: relative; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: currentColor; }
+.about-page .person__more summary i::before, .about-page .person__more summary i::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: .7rem; height: 2px; margin: -1px 0 0 -.35rem; background: #101114; transition: transform .3s; }
+.about-page .person__more summary:hover i::before, .about-page .person__more summary:hover i::after, .about-page .person__more[open] i::before, .about-page .person__more[open] i::after { background: #d2ff00; }
+.about-page .person__more summary i::after { transform: rotate(90deg); }
+.about-page .person__more[open] summary i::after { transform: rotate(0); }
+.about-page .person__more ul { display: grid; gap: 1.2rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
+.about-page .person__more li { padding-left: 1.2rem; border-left: 2px solid #d2ff00; color: #2e3229; font: 500 1rem/1.5 var(--sans); }
+.about-page .person__more li b { display: block; margin-bottom: .2rem; color: #101114; font-weight: 650; }
+.about-page .person__tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
+.about-page .person__tags span { padding: .38rem .75rem; border: 1px solid #10111426; border-radius: 999px; background: #fbfbf6; color: #2e3229; font: 500 .85rem/1.2 var(--sans); }
+/* Closing line: the guiding philosophy. */
+.about-page .person__quote { max-width: 40rem; margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid #10111426; color: #101114; font: 620 clamp(1.3rem, 1rem + .8vw, 1.8rem)/1.25 var(--display); letter-spacing: -.03em; }
+.about-page .person__quote span { display: block; margin-bottom: .6rem; color: #4e5d00; font: 600 .68rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.about-page .person__more[open] ul { animation: person-more .4s ease both; }
+@keyframes person-more { from { opacity: 0; transform: translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .about-page .person__more[open] ul { animation: none; } .about-page .person__more * { transition: none; } }
 .about-page .person__in { color: #101114; }
 .about-page > :is(.ab-notes, .team) > .topo-bg { display: block; } /* the contour map runs on behind the principles and the founder */
 /* Desktop: the stack on the left, the name, role and bio centred beside it. */
 @media (min-width: 900px) {
-  .about-page .person { grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); grid-template-rows: 1fr repeat(4, auto) 1fr; column-gap: clamp(2.5rem, 6vw, 7rem); }
-  .about-page .person :is(.person__fig, .person__fig2) { grid-row: 1 / -1; grid-column: 1; }
+  .about-page .person { grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); grid-template-rows: 1fr repeat(7, auto) 1fr; column-gap: clamp(2.5rem, 6vw, 7rem); }
+  .about-page .person :is(.person__fig, .person__fig2) { grid-row: 1 / -1; grid-column: 1; align-self: start; }
+  /* The text column now outgrows the stack: hold both prints at the top, the camera shot over the portrait's lower corner. */
+  .about-page .person__fig2 { margin-top: 80%; }
   .about-page .person > :not(figure) { grid-column: 2; }
   .about-page .person__name { grid-row: 2; margin-top: 0; }
   .about-page .person .entry { grid-row: 3; }
   .about-page .person__bio { grid-row: 4; }
-  .about-page .person__in { grid-row: 5; }
+  .about-page .person__facts { grid-row: 5; }
+  .about-page .person__more { grid-row: 6; }
+  .about-page .person__quote { grid-row: 7; }
+  .about-page .person__in { grid-row: 8; }
 }
 
 /* ---------- Visit us: the address and live map on olive ---------- */

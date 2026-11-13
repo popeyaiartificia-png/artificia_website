@@ -67,7 +67,7 @@ function test_every_list_has_subfields(): void
         'faqs.items' => ['question', 'answer'],
         'lead_form.side_points' => ['text'],
         'cta.details' => ['label', 'value'],
-        'people.items' => ['name', 'role', 'bio', 'photo', 'photo_2', 'linkedin'],
+        'people.items' => ['name', 'role', 'bio', 'credentials', 'more', 'quote', 'photo', 'photo_2', 'linkedin'],
     ]);
 }
 
