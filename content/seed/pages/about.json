@@ -9,6 +9,7 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "map",
         "statement": "We build AI systems, then teach your team to use them.",
         "before_label": "Before",
         "before_text": "AI ideas, but no one to build them?",

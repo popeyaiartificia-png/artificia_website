@@ -30,7 +30,7 @@ Artificia teaches AI in person in Vadodara, one hour a day, and the same team bu
 ## Operating Context
 
 - **AI Masterclass:** offline and live in Vadodara, 1 hour a day. A 30-day Foundation track and a 60-day Full program (Foundation plus agents, MCP, RAG, voice agents, deployment, Claude Code, local LLMs). No coding needed. Curriculum source: `Artificia_AI_60_Day_Curriculum.csv`.
-- **Corporate AI training:** custom length and format, on-site or online over Microsoft Teams and similar tools. Next step: a free 2-hour pilot session.
+- **Corporate AI training:** custom length and format, on-site or online over Microsoft Teams and similar tools. Next step: a free 1-hour pilot, an AI consultation and walkthrough to review how the team works and identify where AI can improve productivity and save time.
 - **Services:** all six blueprint families confirmed available by the user on 30 Oct 2026: AI Automation, Agentic AI, Software & Apps, Marketing Automation, SEO/AEO/GEO, and Cloud & Private AI. Includes GoHighLevel, websites and RAG knowledge assistants. Next step: a free 15-minute flow audit. Availability confirmation does not establish client results or security certifications.
 - WhatsApp is the visitor's default contact channel (number 919104488859).
 

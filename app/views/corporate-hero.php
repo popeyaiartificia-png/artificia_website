@@ -12,7 +12,7 @@
         <p class="co-workplace__lede"><?= e($f['subheading'] ?? '') ?></p>
         <div class="co-workplace__ctas">
           <a class="btn btn--lime" href="<?= link_href($f['primary_cta_link'] ?? '#enquire') ?>"><?= e($f['primary_cta_label'] ?? 'Discuss corporate training') ?><?= icon('arrow-up-right') ?></a>
-          <a class="sol-text-link" href="<?= link_href($f['secondary_cta_link'] ?? '#pilot') ?>"><?= e($f['secondary_cta_label'] ?? 'Start with a free 2-hour pilot') ?><?= icon('arrow-right') ?></a>
+          <a class="sol-text-link" href="<?= link_href($f['secondary_cta_link'] ?? '#pilot') ?>"><?= e($f['secondary_cta_label'] ?? 'Start with a free 1-hour pilot') ?><?= icon('arrow-right') ?></a>
         </div>
       </div>
       <figure class="co-workplace__scene" data-co-scene aria-label="Your team before and after the training">

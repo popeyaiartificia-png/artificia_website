@@ -1,10 +1,10 @@
 <?php /** @var string $title, $description, $canonical, $robots, $ogType, $body, $ga4, $pixel, $gsc, $current; @var ?string $ogImage; @var array $jsonld, $settings; @var bool $hasForm */
 $wa = whatsapp_url($settings);
 $nav = [
+    '/' => 'Home',
     '/ai-masterclass' => 'Masterclass',
     '/corporate-ai-training' => 'Corporate training',
     '/services' => 'Solutions',
-    '/case-studies/orkay-tiles' => 'Case study',
     '/about' => 'About',
     '/contact' => 'Contact',
 ];
@@ -48,8 +48,9 @@ $nav = [
 <link rel="preload" href="/assets/fonts/artificia-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/statement-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
-<?php if (str_contains($body, 'class="course-page"') || str_contains($body, 'data-masterclass')): // the course page, and every page using its hero layout ?>
+<?php if (str_contains($body, 'class="course-page"') || str_contains($body, 'journey-hero')): // the course page, and every page using its hero layout ?>
 <link rel="stylesheet" href="/assets/css/course.css">
+<link rel="stylesheet" href="/assets/css/journey.css">
 <script src="/assets/js/course.js" defer></script>
 <?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page')): ?>
@@ -98,12 +99,11 @@ $nav = [
 <?= $body ?>
 </main>
 <?php
-// Every page the footer has always linked to stays linked: search engines and visitors both walk these.
+// Shared footer navigation for the main public pages.
 $explore = [
     ['/services', 'Solutions', [['/services/gohighlevel', 'GoHighLevel'], ['/services/website-development', 'Website development'], ['/services/content-marketing', 'Content and marketing'], ['/services/rag-custom-automation', 'RAG and custom automation']]],
     ['/corporate-ai-training', 'Corporate training', [['/corporate-ai-training/manufacturing', 'Manufacturing'], ['/corporate-ai-training/healthcare', 'Healthcare']]],
     ['/ai-masterclass', 'AI Masterclass', [['/ai-masterclass/students', 'For students'], ['/ai-masterclass/working-professionals', 'For working professionals'], ['/ai-masterclass/business-owners', 'For business owners']]],
-    ['/case-studies/orkay-tiles', 'Case study', []],
     ['/about', 'About', []],
     ['/blog', 'Blog', []],
 ];
@@ -117,7 +117,12 @@ $talk = array_filter([
 ]);
 $offers = ['AI Automation', 'Agentic AI', 'Software & Apps', 'Marketing Automation', 'SEO / AEO / GEO', 'Cloud & Private AI', 'Corporate AI Training', 'AI Masterclass'];
 $star = '<svg class="foot__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.6 7.7 4.3 10.4 12 12-7.7 1.6-10.4 4.3-12 12-1.6-7.7-4.3-10.4-12-12C7.7 10.4 10.4 7.7 12 0z"/></svg>';
-$flare = '<svg class="foot__flare" viewBox="0 0 72 62" preserveAspectRatio="none" aria-hidden="true"><path d="M0 62C32 62 38 0 72 0v62z"/></svg>';
+$inSection = fn(string $p) => $current === $p || str_starts_with($current, $p . '/');
+$footCta = match (true) {
+    $inSection('/ai-masterclass') => 'Enquire About the Course',
+    $inSection('/corporate-ai-training') => 'Enquire About Corporate Training',
+    default => 'Book Free AI Audit',
+};
 $bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
 ?>
 <footer class="foot" data-foot>
@@ -175,7 +180,7 @@ $bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span 
       </nav>
     </div>
   </div>
-  <a class="foot__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"><?= $flare ?><span class="foot__cta-in">Book Free AI Consultation<?= icon('arrow-right') ?></span><?= $flare ?></a>
+  <a class="foot__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"><span class="foot__cta-in"><?= e($footCta) ?><?= icon('arrow-right') ?></span></a>
   <div class="foot__base">
     <p>&copy; <?= date('Y') ?> <b>Artificia Intellec Pvt Ltd</b></p>
     <p class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></p>

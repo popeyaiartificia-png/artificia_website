@@ -17,6 +17,8 @@
   font-style: normal;
   font-display: swap;
 }
+/* statement-serif.woff2 also maps its liga lookup (fi, fl, ff...) to rlig: browsers drop liga under letter-spacing,
+   and Bodoni's bare "f" hook then collides with the next "i" (Artificia). Keep that if this file is ever re-subset. */
 @font-face {
   font-family: "Artificia Statement Serif";
   src: url("../fonts/statement-serif.woff2") format("woff2");
@@ -47,6 +49,7 @@
   --btn-bg: var(--ink);
   --btn-fg: var(--paper);
   --btn-hover: var(--lime);
+  --button-radius: 12px;
 
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .09 0 0 0 0 .09 0 0 0 0 .06 .09 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
@@ -196,11 +199,16 @@ a { color: inherit; text-decoration-color: var(--muted); text-decoration-thickne
 .sec--tools, .sec--testimonials { background: var(--grain), var(--paper-2); }
 
 /* ---------- Buttons ---------- */
+/* One corner radius for every action, including native controls and button-like links. */
+button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"],
+.btn, .skip, .wa-float, .versus__go, .stage__hint, .vid__play, .foot__cta {
+  border-radius: var(--button-radius);
+}
 .btn {
   --h: 52px;
   display: inline-flex; align-items: center; justify-content: center; gap: .65rem;
   min-height: var(--h); padding: 0 1.4rem;
-  border: 1px solid var(--ink); border-radius: 0;
+  border: 1px solid var(--ink);
   background: transparent; color: var(--ink);
   font: 600 .9375rem/1.1 var(--sans); letter-spacing: .005em; text-decoration: none; white-space: nowrap;
   cursor: pointer;
@@ -229,7 +237,7 @@ a.brand img { display: block; width: auto; height: 34px; }
 /* One masthead on every page and at every width: Enquire, then the MENU button that opens a full page of contents. */
 .nav-toggle {
   display: inline-flex; align-items: center; gap: .5rem;
-  min-height: 40px; padding: 0 .9rem; border-radius: 6px;
+  min-height: 40px; padding: 0 .9rem;
   border: 1px solid rgba(242, 238, 228, .55); background: transparent; color: var(--ink);
   font: 500 .75rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
 }
@@ -252,9 +260,15 @@ a.brand img { display: block; width: auto; height: 34px; }
 .nav a::before { content: counter(nav, decimal-leading-zero); font: 500 .72rem/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
 /* The page you are on is lit in neon. */
 .nav a:hover, .nav a[aria-current="page"] { color: var(--neon); }
+/* The rows share the whole open screen, so the menu has no empty band under it; type follows the screen's height too. */
+.top.is-open .nav { display: flex; flex-direction: column; }
+.nav ul { flex: 1 0 auto; }
+.nav li { display: flex; flex: 1 0 auto; align-items: center; }
+@media (max-width: 1023px) { .nav a { font-size: clamp(1.9rem, min(1rem + 5vw, 6vh), 2.8rem); } }
 @media (min-width: 1024px) {
-  .nav { padding: 1.5rem var(--pad) 3rem; }
-  .nav a { gap: 1.5rem; padding: 1rem 0; font-size: clamp(2.4rem, 1rem + 2.6vw, 4rem); line-height: 1.05; }
+  .nav { padding: 1rem var(--pad) 2rem; }
+  .nav ul { max-width: none; }
+  .nav a { gap: 1.5rem; padding: .6rem 0; font-size: clamp(2.4rem, min(1rem + 4vw, 9vh), 6.5rem); line-height: 1; letter-spacing: -.035em; }
   .nav a::before { font-size: .75rem; }
 }
 @media (max-width: 1023px) { .top__in { gap: .6rem; } }
@@ -532,6 +546,26 @@ html:not(.js) .predict__opts button { pointer-events: none; }
 .pipe__n { font: 500 .66rem/1.45 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .tools__on { margin-top: 3rem; font: 500 .68rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .tools__on + .parts { margin-top: 1rem; }
+/* "And many more": the list is a sample, not a limit. A neon plus, the line, and a stack of further tools that fans out on hover. */
+.tools-more { --ring: var(--paper, #232719); display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 1.1rem 1.4rem; margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); padding: clamp(1.1rem, .8rem + 1vw, 1.6rem) clamp(1.1rem, .8rem + 1.2vw, 1.8rem); border: 1px dashed color-mix(in srgb, var(--neon, #d2ff00) 45%, transparent); border-radius: var(--button-radius, 12px); background: color-mix(in srgb, var(--neon, #d2ff00) 4%, transparent); }
+.tools-more__plus { position: relative; display: block; width: 46px; height: 46px; border-radius: 50%; background: var(--neon, #d2ff00); box-shadow: 0 0 0 6px color-mix(in srgb, var(--neon, #d2ff00) 14%, transparent), 0 0 28px color-mix(in srgb, var(--neon, #d2ff00) 40%, transparent); }
+.tools-more__plus::before, .tools-more__plus::after { content: ""; position: absolute; inset: 50% auto auto 50%; width: 18px; height: 2.5px; border-radius: 2px; background: #11150f; translate: -50% -50%; }
+.tools-more__plus::after { rotate: 90deg; }
+.tools-more__t { display: grid; gap: .3rem; font: 650 clamp(1.15rem, 1rem + .6vw, 1.6rem)/1.15 var(--display, inherit); letter-spacing: -.03em; }
+.tools-more__t span { color: var(--muted, #9c9f8e); font: 500 .9rem/1.45 var(--sans, inherit); letter-spacing: 0; }
+.tools-more__stack { grid-column: 1 / -1; display: flex; align-items: center; margin: 0; padding: 0 0 0 10px; list-style: none; }
+.tools-more__stack li { display: grid; place-items: center; flex: none; width: 44px; height: 44px; margin-left: -10px; border-radius: 50%; background: color-mix(in srgb, var(--ink, #eceadf) 10%, var(--ring)); box-shadow: 0 0 0 3px var(--ring); color: var(--ink, #eceadf); transition: margin .5s var(--ease, ease), transform .5s var(--ease, ease); }
+.tools-more__stack .brand { width: 20px; height: 20px; fill: currentColor; }
+.tools-more__stack .tools-more__chip { width: auto; height: 44px; padding: 0 1rem 0 1.15rem; border-radius: 22px; background: var(--neon, #d2ff00); color: #11150f; font: 700 .72rem/1 var(--sans, inherit); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+@media (max-width: 599px) { .tools-more__stack li:nth-child(n + 6):not(.tools-more__chip) { display: none; } }
+@media (max-width: 379px) { .tools-more__stack li { width: 36px; height: 36px; } .tools-more__stack .tools-more__chip { height: 36px; padding: 0 .8rem; } }
+.tools-more:hover .tools-more__stack li { margin-left: 6px; }
+.tools-more:hover .tools-more__stack li:not(.tools-more__chip) { transform: translateY(-3px); }
+@media (min-width: 900px) {
+  .tools-more { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .tools-more__stack { grid-column: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .tools-more__stack li { transition: none; } }
 @media (min-width: 1024px) {
   .pipe { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
   .pipe::before, .pipe::after { left: 0; right: 0; top: 2rem; bottom: auto; width: auto; height: 1px; }
@@ -616,7 +650,10 @@ html:not(.js) .predict__opts button { pointer-events: none; }
 
 /* ---------- Testimonials ---------- */
 .voices.sec:not(.hero):not(.pagehead)::before { content: none; }
-.voices { background: #F4F4ED; color: #141513; padding: clamp(5rem, 8vw, 9rem) 0 4rem; overflow: clip; }
+/* The paper floods up over the dark Solutions (a fluid join, site.js) and the contour map runs on behind the fan and the enquiry.
+   Clip sideways only, so the flood can rise above the section. */
+.voices { --flood: auto; background: #F4F4ED; color: #141513; padding: clamp(5rem, 8vw, 9rem) 0 4rem; overflow-x: clip; }
+.voices > .topo-bg { display: block; }
 .voices__heading { text-align: center; position: relative; z-index: 2; }
 .voices__eyebrow { margin: 0 0 1.5rem; font: 500 .65rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .13em; color: #59604B; }
 .voices__heading h2 { font: 660 clamp(3.2rem, 5.3vw, 6.5rem)/.9 var(--display); letter-spacing: -.06em; text-transform: uppercase; }
@@ -662,7 +699,7 @@ html:not(.js) .predict__opts button { pointer-events: none; }
 .review-player__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.3rem; }
 .review-player__head h3 { margin: 0; font: 600 1rem/1.2 var(--sans); }
 .review-player__head p { margin-top: .3rem; font-size: .75rem; color: #59604B; }
-.review-player__close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 1px solid #25302040; border-radius: 50%; background: transparent; color: inherit; font-size: 1.7rem; cursor: pointer; }
+.review-player__close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 1px solid #25302040; background: transparent; color: inherit; font-size: 1.7rem; cursor: pointer; }
 .review-player__close:focus-visible { outline: 2px solid #6C7F2B; outline-offset: 3px; }
 .review-player__body iframe { display: block; width: 100%; height: min(65svh, 680px); border: 0; background: #10150F; }
 .review-player__body blockquote { padding: 1.5rem 2rem 2.5rem; font: 400 clamp(1.4rem, 4vw, 2rem)/1.3 var(--sans); letter-spacing: -.025em; }
@@ -903,12 +940,19 @@ select.input {
 .lead--stage .check input:checked { border-color: var(--neon); }
 .lead--stage .check input:focus-visible, .lead--stage .lead-form a:focus-visible { outline-color: var(--neon); }
 .lead--stage .check--consent a { color: #F4F4ED; text-decoration-color: #A8BC74; text-underline-offset: .15em; }
-.lead--stage .btn--lime { min-height: 60px; padding: 1rem; border-color: var(--neon); border-radius: 10px; background: var(--neon); color: #161B10; font: 660 1rem/1.15 var(--display); text-transform: uppercase; letter-spacing: -.01em; }
+.lead--stage .btn--lime { min-height: 60px; padding: 1rem; border-color: var(--neon); background: var(--neon); color: #161B10; font: 660 1rem/1.15 var(--display); text-transform: uppercase; letter-spacing: -.01em; }
 .lead--stage .btn--lime:hover { background: #E0FF4D; border-color: #E0FF4D; color: #161B10; }
 .lead--stage .btn--lime:focus-visible { outline: 2px solid #F4F4ED; outline-offset: 4px; }
 .lead--stage .logline__msg { font: 660 clamp(1.5rem, 2vw, 2rem)/1.2 var(--display); }
 @media (min-width: 1024px) { .lead--stage .lead__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); } }
 @media (max-width: 639px) { .lead--stage .lead-form { border-radius: 22px; } }
+/* Homepage: the contours run on behind the enquiry, and the copy sits in a light box paired with the olive form. */
+.hero--stage ~ .lead--stage { isolation: isolate; }
+.hero--stage ~ .lead--stage > .topo-bg { display: block; }
+.hero--stage ~ .lead--stage .lead__grid { gap: clamp(1.25rem, 2.5vw, 2.5rem); }
+.hero--stage ~ .lead--stage .lead__side { display: flex; flex-direction: column; align-self: stretch; padding: clamp(1.5rem, 3.2vw, 3rem); background: #FBFBF6; border: 1px solid #DCDFD0; border-radius: 28px; }
+.hero--stage ~ .lead--stage .lead__wa { margin-top: auto; padding-top: 2.25rem; }
+@media (max-width: 639px) { .hero--stage ~ .lead--stage .lead__side { border-radius: 22px; } }
 
 /* ---------- CTA: a reversed page ---------- */
 .sec--cta { padding-block: clamp(5rem, 3rem + 7vw, 10rem); }
@@ -937,11 +981,6 @@ select.input {
 .contact__list dd { font-weight: 550; }
 .contact__list a { text-decoration-color: var(--lime); text-decoration-thickness: 2px; }
 .map { position: relative; min-height: 340px; overflow: hidden; background: var(--paper-2); border: 1px solid var(--line-2); }
-.map__facade { position: absolute; inset: 0; display: grid; place-items: end start; width: 100%; padding: 1.25rem; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
-.map__facade .draw { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .55; }
-.map__facade .draw .ln { stroke-width: 2.5; }
-.map__facade .btn { position: relative; background: var(--card); }
-.map__facade:hover .btn { background: var(--ink); color: var(--paper); }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 @media (min-width: 1024px) { .contact__grid { grid-template-columns: 5fr 7fr; gap: 5rem; } }
 
@@ -1040,10 +1079,10 @@ select.input {
 .stage__title em { background: none; color: var(--neon); -webkit-text-fill-color: var(--neon); }
 .stage__sub { margin-top: 1.2rem; max-width: 44ch; color: rgba(236, 234, 223, .68); font-size: clamp(.86rem, .8rem + .15vw, .95rem); line-height: 1.6; text-wrap: pretty; }
 .stage .btns { margin-top: 1.5rem; gap: .5rem 1.25rem; align-items: center; }
-.stage .btn { --h: 44px; padding: 0 1.05rem; border-radius: 6px; border-color: rgba(242, 238, 228, .45); color: var(--stage-ink); font-size: .82rem; }
+.stage .btn { --h: 44px; padding: 0 1.05rem; border-color: rgba(242, 238, 228, .45); color: var(--stage-ink); font-size: .82rem; }
 .stage .btn:hover { background: var(--stage-ink); color: var(--stage-bg); }
 /* The second action is a quiet text link, so there is one clear button. */
-.stage .btn--line { --h: auto; padding: .35rem 0; border: 0; border-bottom: 1px solid rgba(236, 234, 223, .4); border-radius: 0; background: none; }
+.stage .btn--line { --h: auto; padding: .35rem 0; border: 0; border-bottom: 1px solid rgba(236, 234, 223, .4); background: none; }
 .stage .btn--line:hover { background: none; color: var(--neon); border-bottom-color: var(--neon); }
 .stage .btn--lime { --h: 50px; padding-inline: 1.25rem; background: var(--neon); border-color: var(--neon); color: var(--on-lime); font-size: .9rem; }
 .stage .btn--lime:hover { background: #E4FF5C; border-color: #E4FF5C; color: var(--on-lime); }
@@ -1061,7 +1100,7 @@ select.input {
 .stage__doors a:hover .icon { transform: translate(2px, -2px); }
 .stage__hint {
   position: absolute; left: 50%; bottom: clamp(1.5rem, 4.5vh, 3rem); transform: translateX(-50%);
-  display: inline-flex; align-items: center; gap: .5rem; padding: .5rem .8rem; border-radius: 6px;
+  display: inline-flex; align-items: center; gap: .5rem; padding: .5rem .8rem;
   background: var(--neon); color: var(--on-lime);
   font-weight: 760; font-stretch: 110%; font-size: .68rem; line-height: 1; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
 }
@@ -1089,7 +1128,6 @@ select.input {
 /* The masthead over a stage: transparent, a neon Enquire and a menu button, solid again once the stage has gone. */
 body:has(.hero--stage) .top { position: fixed; left: 0; right: 0; background: transparent; border-bottom-color: transparent; transition: background-color .4s var(--ease), border-color .4s var(--ease); }
 body:has(.hero--stage) .top.is-solid, body:has(.hero--stage) .top.is-open { background: #15160F; border-bottom-color: var(--line); }
-body:has(.hero--stage) .top .btn { border-radius: 6px; }
 body:has(.hero--stage) .top__cta { font-weight: 760; font-stretch: 110%; letter-spacing: .05em; text-transform: uppercase; }
 
 /* The automation loop over the stage (wide screens only; site.js places the chips and draws the wires). */
@@ -1233,7 +1271,7 @@ body:has(.hero--stage) .top__cta { font-weight: 760; font-stretch: 110%; letter-
 /* Two sides (versus, its own section type): landonorris.com's "On track / Off track". Two heads in profile face each other
    across the page, cut hard by its edges (before: a person; with AI: the robot), drawn at the same head size with their crowns
    level. Between them a small serif word over a huge "AI" on each side, the two AIs set close like Lando's TRACK TRACK. A neon
-   marker strikes out the AI before and circles the AI with it; the circle rests drawn, and pointing at the other side swaps them.
+   marker strikes out the AI before and circles the AI with it; both marks stay drawn once the section arrives.
    The light surface arrives in one unpinned scroll sequence; figures stay opaque to the section edge. */
 /* Floating work gallery: an open editorial composition before Before AI / With AI. */
 .sec--work_gallery.sec:not(.hero):not(.pagehead)::before { content: none; }
@@ -1303,7 +1341,7 @@ html:not(.motion) .workscape-pair > .workscape {
 .workscape__head h2 em { color: var(--work-marker); font-weight: 350; }
 .workscape__navigation { display: none; align-items: center; gap: .65rem; flex-shrink: 0; }
 .workscape__hint { margin-right: .8rem; color: var(--work-meta); font: 400 .65rem/1.4 var(--mono); }
-.workscape__navigation button { display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #DDE1D247; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.workscape__navigation button { display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #DDE1D247; background: transparent; color: inherit; cursor: pointer; }
 .workscape__navigation button:hover { background: var(--work-marker); color: var(--work-ground); }
 .workscape.is-light .workscape__navigation button { border-color: #282C2055; }
 .workscape__navigation button:disabled { opacity: .3; cursor: default; }
@@ -1513,10 +1551,8 @@ html:not(.motion) .workscape-pair > .workscape {
 /* A compact, imperfect marker loop crosses the letters rather than framing them. */
 .versus__side--b .versus__mark { left: 5%; top: 4%; width: 90%; height: 90%; rotate: -8deg; }
 .versus__side--b .versus__mark path { stroke-width: 6; }
-/* The circle round "AI" with AI rests drawn (once the section has arrived); the other side's strike-out takes over while it is in play. */
-.versus:not(.is-wait) .versus__side--b .versus__mark path,
-.versus:has(.versus__side--a:is(:hover, :focus-within, .is-on)) .versus__side--a .versus__mark path { stroke-dashoffset: 0; }
-.versus:has(.versus__side--a:is(:hover, :focus-within, .is-on)) .versus__side--b .versus__mark path { stroke-dashoffset: 1; }
+/* Both marks draw on arrival and remain visible through hover, focus and touch. */
+.versus:not(.is-wait) .versus__mark path { stroke-dashoffset: 0; }
 .versus__p { max-width: 21em; font-size: clamp(1rem, .9rem + .35vw, 1.3rem); line-height: 1.55; text-wrap: pretty; }
 .versus__go { display: grid; place-items: center; width: 4.25rem; height: 4.25rem; background: var(--neon); color: #101114; transition: transform .35s var(--ease), background-color .2s; }
 .versus__go .icon { width: 22px; height: 22px; }
@@ -1679,11 +1715,11 @@ html:not(.motion) .workscape-pair > .workscape {
 .solutions__intro { max-width: 32ch; justify-self: end; padding-bottom: .4rem; color: var(--ink-2); font-size: 1rem; line-height: 1.7; }
 .solutions__track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 0; list-style: none; }
 .solution { min-width: 0; --surface: #1A2018; --card-ink: #EDF0E7; --card-muted: #ADB5A5; --card-line: #FFFFFF1C; --drawing-line: #A1B18F; --drawing-panel: #283124; --drawing-accent: var(--neon); --drawing-ink: #11150F; }
-.solution--workflow, .solution--search { --surface: #D2FF00; --card-ink: #151C0B; --card-muted: #3F4D20; --card-line: #18200C30; --drawing-line: #45571C; --drawing-panel: #E0FF68; --drawing-accent: #1A2510; --drawing-ink: #D2FF00; }
-.solution--software, .solution--marketing { --surface: #E8E9DE; --card-ink: #192014; --card-muted: #59614F; --card-line: #19201425; --drawing-line: #7D896D; --drawing-panel: #F4F5ED; --drawing-accent: #5A6D3C; --drawing-ink: #F4F5ED; }
+.solution--workflow, .solution--marketing { --surface: #D2FF00; --card-ink: #151C0B; --card-muted: #3F4D20; --card-line: #18200C30; --drawing-line: #45571C; --drawing-panel: #E0FF68; --drawing-accent: #1A2510; --drawing-ink: #D2FF00; }
+.solution--software, .solution--cloud { --surface: #E8E9DE; --card-ink: #192014; --card-muted: #59614F; --card-line: #19201425; --drawing-line: #7D896D; --drawing-panel: #F4F5ED; --drawing-accent: #5A6D3C; --drawing-ink: #F4F5ED; }
 .solution__link { position: relative; display: flex; flex-direction: column; height: 100%; min-height: 455px; padding: 1.65rem 1.65rem 1.25rem; overflow: hidden; border: 1px solid var(--card-line); border-radius: 4px; background: var(--surface); color: var(--card-ink); text-decoration: none; transition: border-color .35s, box-shadow .35s; }
 .solution__link:focus-visible { outline: 3px solid var(--neon); outline-offset: 5px; }
-.solution--workflow .solution__link:focus-visible, .solution--search .solution__link:focus-visible { outline-color: #fff; }
+.solution--workflow .solution__link:focus-visible, .solution--marketing .solution__link:focus-visible { outline-color: #fff; }
 .solution__meta { display: flex; align-items: center; justify-content: space-between; gap: .5rem; color: var(--card-muted); font: 400 .59rem/1.4 var(--mono); letter-spacing: .055em; text-transform: uppercase; }
 .solution__spark { color: var(--card-ink); font: 400 1.55rem/1 var(--sans); transition: transform .7s var(--ease); }
 .solution__body { padding-top: 1.8rem; }
@@ -1716,6 +1752,11 @@ html:not(.motion) .workscape-pair > .workscape {
 .solutions__all { display: inline-flex; align-items: center; gap: 1.5rem; padding-bottom: .4rem; border-bottom: 1px solid #75855C; font-size: .85rem; font-weight: 500; text-decoration: none; }
 .solutions__all .icon { width: 18px; height: 18px; color: var(--neon); transition: transform .35s; }
 .solutions__all:hover .icon { transform: translate(2px,-2px); }
+/* Rail (site.js, wider screens with motion): one row that runs past the right edge and slides left on scroll. */
+.solutions.is-rail { overflow-x: clip; }
+.solutions.is-rail .solutions__track { display: flex; }
+.solutions.is-rail .solution { flex: 0 0 calc((100% - 2rem) / 3); }
+@media (max-width: 1099px) { .solutions.is-rail .solution { flex-basis: calc((100% - 1rem) / 2); } }
 @media (min-width: 1500px) {
   .solution__link { min-height: 485px; }
   .solution__body { padding-top: 2rem; }
@@ -1798,7 +1839,7 @@ body:has(.hero--stage) .top .btn--lime:hover { background: #E4FF5C; border-color
    into the Book button. The robot's neon silk tie and plain charcoal suit are intrinsic to its single generated cutout.
    Phones stack it (headline, links, robot); from 1100px wide and 620px tall it composes as one screen. */
 .foot {
-  --fr: 8px; --strip: 44px; --tab: 56px; --flare: clamp(20px, 9vw, 72px);
+  --fr: 8px; --strip: 44px; --tab: 56px;
   --panel: #232719; --cream: #E8EADD; --leaf: #B2C73A; --tar: #16170F;
   --fw: max(128vw, 440px);
   position: relative; z-index: 5;
@@ -1859,16 +1900,14 @@ body:has(.hero--stage) .top .btn--lime:hover { background: #E4FF5C; border-color
 .foot__figure img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .foot__robot { z-index: 1; }
 
-/* The frame rises into the button below the generated tie. */
+/* A rounded button below the tie, with room above the frame to keep every corner visible. */
 .foot__cta {
-  position: absolute; z-index: 6; left: 50%; bottom: calc(var(--strip) - 8px); translate: -50% 0;
-  display: flex; align-items: stretch; height: calc(var(--tab) + 8px); border-bottom: 8px solid var(--neon);
+  position: absolute; z-index: 6; left: 50%; bottom: calc(var(--strip) + 12px); translate: -50% 0;
+  display: flex; align-items: stretch; max-width: calc(100% - 2 * var(--fr) - 16px); height: calc(var(--tab) + 8px); border: 0; background: var(--neon);
   transition: height .5s var(--ease);
 }
 .foot .foot__cta { color: var(--tar); }
-.foot__flare { flex: none; width: var(--flare); height: 100%; max-width: none; fill: var(--neon); }
-.foot__flare:last-child { scale: -1 1; }
-.foot__cta-in { display: flex; align-items: center; gap: .55em; margin-inline: -1px; padding: .2rem clamp(.2rem, 1vw, 1.1rem) 0; background: var(--neon); white-space: nowrap; font: 660 clamp(.8rem, 3.5vw, 1.1rem)/1 var(--display); letter-spacing: -.012em; text-transform: uppercase; }
+.foot__cta-in { display: flex; align-items: center; gap: .55em; padding: .2rem clamp(18px, 4vw, 48px) 0; white-space: nowrap; font: 660 clamp(.8rem, 3.5vw, 1.1rem)/1 var(--display); letter-spacing: -.012em; text-transform: uppercase; }
 .foot__cta .icon { flex: none; width: 1.15em; height: 1.15em; transition: translate .45s var(--ease); }
 .foot__cta:hover { height: calc(var(--tab) + 14px); }
 .foot__cta:hover .icon { translate: .3em 0; }
@@ -1889,7 +1928,7 @@ body:has(.hero--stage) .top .btn--lime:hover { background: #E4FF5C; border-color
 
 @media (min-width: 1100px) and (min-height: 620px) {
   .foot {
-    --fr: clamp(10px, 1.15vw, 22px); --strip: 40px; --tab: 62px; --flare: 72px;
+    --fr: clamp(10px, 1.15vw, 22px); --strip: 40px; --tab: 62px;
     --foot-h: max(100svh, 640px);
     --say: min(6.5vw, calc(var(--foot-h) * .15));
     --top: calc(var(--bar) + var(--say) * .74);
@@ -1918,7 +1957,7 @@ body:has(.hero--stage) .top .btn--lime:hover { background: #E4FF5C; border-color
   .foot__h { margin-bottom: clamp(.6rem, 1.5svh, 1rem); }
   .foot__where { margin-top: clamp(.8rem, 2svh, 1.4rem); font-size: clamp(.66rem, .72vw, .78rem); line-height: 1.6; }
   .foot__run { position: absolute; left: 0; right: 0; bottom: clamp(16px, 2.6svh, 30px); margin: 0; }
-  .foot__cta-in { padding-inline: .9rem; font-size: clamp(.95rem, 1.05vw, 1.2rem); }
+  .foot__cta-in { font-size: clamp(.95rem, 1.05vw, 1.2rem); }
   .foot__base { padding-inline: calc(var(--fr) + 2px); font-size: .8rem; }
   .foot__legal { font-size: .9rem; gap: 1.4rem; }
 }

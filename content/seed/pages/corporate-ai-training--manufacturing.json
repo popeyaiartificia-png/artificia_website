@@ -5,16 +5,17 @@
   "title": "Corporate AI training for manufacturing",
   "h1": "AI training for *manufacturing* teams",
   "meta_title": "AI training for manufacturing companies | Artificia AI",
-  "meta_description": "Corporate AI training for manufacturing companies in Gujarat. Tenders, quotations, quality reports and MIS, built from your own documents. Free 2-hour pilot.",
+  "meta_description": "Corporate AI training for manufacturing companies in Gujarat. Tenders, quotations, quality reports and MIS, built from your own documents. Free 1-hour pilot.",
   "sections": [
     {
       "type": "hero",
       "fields": {
+        "visual": "factory",
         "variant": "journey",
         "before_label": "Before training",
         "after_label": "After training",
-        "stat_value": "2",
-        "stat_unit": "hours",
+        "stat_value": "1",
+        "stat_unit": "hour",
         "stat_label": "Free pilot session",
         "statement": "AI for quotations, reports and plant documents.",
         "before_text": "Quotes and reports by hand?",
@@ -99,7 +100,7 @@
       "type": "lead_form",
       "fields": {
         "heading": "Ask for a *free pilot*",
-        "intro": "Tell us about your plant and teams. We will set up a 2-hour session on AI and prompting.",
+        "intro": "Tell us about your plant and teams. We will set up a free 1-hour AI consultation and walkthrough to review how your team works and identify where AI can improve productivity and save time.",
         "form_type": "corporate",
         "side_points": [
           {"text": "Scheduled around your shifts"},

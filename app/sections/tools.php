@@ -23,5 +23,18 @@
       <li class="part"><?= !empty($t['logo']) ? image($t['logo'], '28px') : brand((string) ($t['brand'] ?? '')) ?><span class="part__name"><?= e($t['name'] ?? '') ?></span><?php if (!empty($t['note'])): ?><span class="part__lead" aria-hidden="true"></span><span class="part__note"><?= e($t['note']) ?></span><?php endif ?></li>
 <?php endforeach ?>
     </ul>
+<?php if (trim($f['tools_more'] ?? '') !== ''): ?>
+    <?php // The list is a sample, not a limit: a closing panel with a stack of further tools. Decorative logos, keyed here. ?>
+    <div class="tools-more" data-reveal="fade">
+      <span class="tools-more__plus" aria-hidden="true"></span>
+      <p class="tools-more__t"><?= e($f['tools_more']) ?><?php if (trim($f['tools_more_note'] ?? '') !== ''): ?><span><?= e($f['tools_more_note']) ?></span><?php endif ?></p>
+      <ul class="tools-more__stack" aria-hidden="true">
+<?php foreach (['slack', 'hubspot', 'airtable', 'figma', 'loom', 'cursor', 'github', 'zendesk'] as $k => $b): ?>
+        <li style="--k: <?= $k ?>"><?= brand($b) ?></li>
+<?php endforeach ?>
+        <li class="tools-more__chip">+ many more</li>
+      </ul>
+    </div>
+<?php endif ?>
   </div>
 </section>

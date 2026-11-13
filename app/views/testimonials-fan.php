@@ -9,6 +9,7 @@ $cards = count($videos) === 2 && count($written) === 3
 $positions = count($videos) === 2 && count($written) === 3 ? [0, .86, -.86, -1.64, 1.64] : [];
 ?>
 <section class="sec sec--testimonials voices" data-testimonial-fan aria-label="Testimonials">
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
   <div class="voices__stage">
   <div class="voices__heading wrap">
     <p class="voices__eyebrow">Testimonials</p>

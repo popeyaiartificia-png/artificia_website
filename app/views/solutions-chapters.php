@@ -5,6 +5,7 @@ $items = array_values($items);
 $check = '<svg class="sol-card__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 ?>
 <section class="sec sol-ch" id="solutions" data-sol-chapters>
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
   <div class="wrap">
     <header class="sol-ch__head">
       <p class="sol-eyebrow"><span class="sol-dot" aria-hidden="true"></span>Our solutions <span class="sol-eyebrow__count"><?= sprintf('%02d', count($items)) ?></span></p>

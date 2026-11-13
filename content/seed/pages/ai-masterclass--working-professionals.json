@@ -10,6 +10,7 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "desk",
         "variant": "journey",
         "before_label": "Before the course",
         "after_label": "After the course",

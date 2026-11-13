@@ -4,8 +4,13 @@
   'use strict';
   var d = document, root = d.documentElement;
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // The FAQs share the page's contour map; the canvas must exist before site.js (loaded after this file) draws the map.
-  d.querySelectorAll('.corporate-page > .faq').forEach(function (s) { var c = d.createElement('canvas'); c.className = 'topo-bg'; c.setAttribute('aria-hidden', 'true'); s.prepend(c); });
+  // The hero, joins and FAQs share one contour map. Create canvases before site.js draws that page-anchored field.
+  d.querySelectorAll('.corporate-page > .faq, .corporate-page > .journey-hero, .corporate-page > .co-kit, .corporate-page > .co-dept').forEach(function (s) { var c = d.createElement('canvas'); c.className = 'topo-bg'; c.setAttribute('aria-hidden', 'true'); s.prepend(c); });
+  // What you keep: a clicked card turns neon; clicking it again switches it off. Each card on its own.
+  d.addEventListener('click', function (e) {
+    var card = e.target.closest && e.target.closest('.co-doc');
+    if (card) card.classList.toggle('is-lit');
+  });
   // Once the loader has gone, so the first moments are seen.
   var whenIn = function (fn) {
     if (root.classList.contains('is-in')) return fn();

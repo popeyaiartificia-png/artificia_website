@@ -15,6 +15,7 @@
 .sol-eyebrow__count { color: #d2ff00; }
 
 /* ---------- Hero: friction to flow ---------- */
+.solutions-page > .journey-hero--contours > .topo-bg { display: block; -webkit-mask-image: none; mask-image: none; }
 .sol-hero { position: relative; isolation: isolate; overflow: hidden; padding: calc(var(--bar) + 22px) 0 clamp(34px, 4vw, 60px); background: #0a0b07; color: #e9eddf; }
 .sol-hero > .topo-bg { display: block; -webkit-mask-image: linear-gradient(#000 50%, transparent); mask-image: linear-gradient(#000 50%, transparent); }
 .sol-hero::after { content: ''; position: absolute; z-index: -1; left: 47%; top: 62%; width: min(70vw, 1000px); height: min(46vw, 620px); translate: -50% -50%; background: radial-gradient(closest-side, #d2ff0012, transparent); pointer-events: none; }
@@ -76,7 +77,8 @@
 }
 
 /* ---------- Six solutions: a deck under a sticky index ---------- */
-.sol-ch { background: #11150f; padding-block: clamp(5rem, 3rem + 6vw, 10rem) clamp(7rem, 5rem + 5vw, 10rem); }
+.sol-ch { isolation: isolate; background: #11150f; padding-block: clamp(5rem, 3rem + 6vw, 10rem) clamp(7rem, 5rem + 5vw, 10rem); }
+.sol-ch > .topo-bg { display: block; -webkit-mask-image: none; mask-image: none; }
 .sol-ch__head { display: grid; gap: 1.3rem 4rem; margin-bottom: clamp(3rem, 2rem + 3vw, 5.5rem); }
 .sol-ch__intro { max-width: 40ch; color: #c0c6b6; font-size: clamp(1rem, .95rem + .25vw, 1.15rem); line-height: 1.55; }
 .sol-ch__body { display: grid; gap: 2rem; }
@@ -209,7 +211,8 @@
 }
 
 /* ---------- FAQs on the dark ---------- */
-.solutions-page .faq { background: #11150f; padding-block: clamp(5rem, 3rem + 5vw, 9rem); }
+.solutions-page .faq { isolation: isolate; background: #11150f; padding-block: clamp(5rem, 3rem + 5vw, 9rem); }
+.solutions-page .faq > .topo-bg { display: block; -webkit-mask-image: none; mask-image: none; }
 .solutions-page .faq .h2 { max-width: 11ch; font-size: clamp(2.3rem, 1.2rem + 3vw, 4.4rem); }
 .solutions-page .qa { border-color: #73835b; }
 .solutions-page .qa__item { border-color: #73835b50; }

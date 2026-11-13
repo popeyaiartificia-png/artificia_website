@@ -49,6 +49,7 @@ function section_registry(): array
             'stat_value' => $text('Figure on the right (verified only)'),
             'stat_unit' => $text('Figure unit'),
             'stat_label' => $text('Figure label'),
+            'visual' => $select('Centre visual (journey layout)', ['ribbon', 'solutions', 'map', 'pipeline', 'website', 'content', 'answers', 'care', 'factory', 'projects', 'desk', 'business', 'orkay']),
             'doors' => $list('Doors (chooser rows)', [
                 'label' => $text('Label', true),
                 'note' => $text('Note'),
@@ -182,6 +183,8 @@ function section_registry(): array
                 'note' => $text('Note'),
             ]),
             'tools_label' => $text('Label above the tools (flow layout; default "Built on")'),
+            'tools_more' => $text('Closing line under the tools, e.g. "And any tool your team already uses" (shows the "many more" panel)'),
+            'tools_more_note' => $text('Small note under the closing line'),
             'tools' => $list('Tools', [
                 'name' => $text('Name', true),
                 'brand' => $select('Logo (built in)', array_keys(require __DIR__ . '/../views/brands.php')),

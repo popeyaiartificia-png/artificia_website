@@ -9,6 +9,7 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "orkay",
         "statement": "GoHighLevel, a website and n8n workflows, run by us.",
         "before_label": "Before",
         "before_text": "Leads waiting for a reply?",

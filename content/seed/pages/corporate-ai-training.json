@@ -4,7 +4,7 @@
   "title": "Corporate AI training",
   "h1": "Make AI useful *across your organisation.*",
   "meta_title": "Corporate AI Training & Workforce Enablement | Artificia AI",
-  "meta_description": "Corporate AI training in Vadodara and Gujarat, built around your documents and departments. On-site or over Microsoft Teams. Start with a free 2-hour pilot.",
+  "meta_description": "Corporate AI training in Vadodara and Gujarat, built around your documents and departments. On-site or over Microsoft Teams. Start with a free 1-hour pilot.",
   "sections": [
     {
       "type": "hero",
@@ -17,7 +17,7 @@
         "subheading": "Training built around your own documents and departments. Every session ends in something your team keeps using.",
         "primary_cta_label": "Request a Corporate Training Consultation",
         "primary_cta_link": "#enquire",
-        "secondary_cta_label": "Start with a free 2-hour pilot",
+        "secondary_cta_label": "Start with a free 1-hour pilot",
         "secondary_cta_link": "#pilot",
         "doors": [
           {"label": "Leadership", "note": "Where AI fits first", "link": "#dept-leadership"},
@@ -92,6 +92,8 @@
         "heading": "How a programme *comes together*",
         "intro": "Six steps, from a first conversation to habits that last. Sessions run on-site at your office or online over Microsoft Teams.",
         "tools_label": "Trained on the tools you approve",
+        "tools_more": "And any tool your team already uses.",
+        "tools_more_note": "These are a sample, not a limit. We train on your approved stack, whatever it is.",
         "flow": [
           {"title": "Discovery", "note": "Where your teams are with AI"},
           {"title": "Goals", "note": "What the training must change"},
@@ -107,8 +109,18 @@
           {"name": "Copilot", "brand": "copilot"},
           {"name": "NotebookLM", "brand": "notebooklm"},
           {"name": "Perplexity", "brand": "perplexity"},
+          {"name": "Microsoft 365", "brand": "microsoft"},
+          {"name": "Google Workspace", "brand": "google"},
+          {"name": "Notion", "brand": "notion"},
           {"name": "Canva", "brand": "canva"},
-          {"name": "n8n", "brand": "n8n"}
+          {"name": "Gamma", "brand": "gamma"},
+          {"name": "Grammarly", "brand": "grammarly"},
+          {"name": "Midjourney", "brand": "midjourney"},
+          {"name": "ElevenLabs", "brand": "elevenlabs"},
+          {"name": "HeyGen", "brand": "heygen"},
+          {"name": "n8n", "brand": "n8n"},
+          {"name": "Zapier", "brand": "zapier"},
+          {"name": "Make", "brand": "make"}
         ]
       }
     },
@@ -117,13 +129,12 @@
       "fields": {
         "variant": "pass",
         "heading": "Start with a *free pilot.*",
-        "text": "One session for a group of your staff on the AI landscape and prompting. There is no commitment after it.",
+        "text": "We review how your team works and identify where AI can improve productivity and save time. There is no commitment after it.",
         "button_label": "Ask for the free pilot",
         "button_link": "#enquire",
         "details": [
-          {"label": "Length", "value": "2 hours"},
-          {"label": "Topic", "value": "AI landscape and prompting"},
-          {"label": "Where", "value": "Your office or Microsoft Teams"},
+          {"label": "Length", "value": "1 hour"},
+          {"label": "Topic", "value": "AI consultation and walkthrough"},
           {"label": "After", "value": "No commitment"}
         ]
       }
@@ -150,7 +161,7 @@
           {"question": "Which AI tools will my team learn?", "answer": "The ones your company approves. That can include ChatGPT, Claude, Gemini, Copilot and NotebookLM, and n8n for automation."},
           {"question": "Is our company data safe?", "answer": "We agree in writing what may never be uploaded and which tools are approved. Staff are trained to check AI output before it reaches a customer."},
           {"question": "Do you train for our industry?", "answer": "Yes. Exercises are built from your industry's own documents, so a hospital team and a factory team practise on different work."},
-          {"question": "How does the free pilot work?", "answer": "We run one 2-hour session for a group of your staff on the AI landscape and prompting, on-site or online. There is no commitment."}
+          {"question": "How does the free pilot work?", "answer": "We start with a free 1-hour AI consultation and walkthrough. We review how your team works and identify where AI can improve productivity and save time. There is no commitment."}
         ]
       }
     },
@@ -158,13 +169,13 @@
       "type": "lead_form",
       "fields": {
         "heading": "Request a corporate training *consultation.*",
-        "intro": "Tell us about your team. We will reply on WhatsApp to plan the free 2-hour pilot.",
+        "intro": "Tell us about your team. We will reply on WhatsApp to plan the free 1-hour AI consultation and walkthrough.",
         "form_type": "corporate",
         "button_label": "Request a consultation",
         "side_points": [
           {"text": "Built around your documents and departments"},
           {"text": "On-site, or online over Microsoft Teams"},
-          {"text": "Starts with a free 2-hour pilot"}
+          {"text": "Starts with a free 1-hour pilot"}
         ]
       }
     }

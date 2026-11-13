@@ -10,10 +10,23 @@ $statement = $jf('statement') !== '' ? $jf('statement') : $jf('subheading');
 // The small line under the statement: its own field, else the longer subheading when a short statement replaced it.
 $small = $jf('format') !== '' ? $jf('format') : ($jf('statement') !== '' ? $jf('subheading') : '');
 $long = mb_strlen(heading_plain($h1)) > 18;
-$visual = $journeyVisual ?? '';
+// Solutions (user, 12 Nov 2026: "change the layout if it looks better"): a split hero, copy left and the friction
+// switchboard large on the right (journey.css). One plain sentence under the title: the subheading, which says what
+// we do; the short statement only repeated the title's "removes friction".
+// Corporate (12 Nov) uses the same split so its "mountain of work" scene gets the whole right side.
+$split = ($f['visual'] ?? '') === 'solutions' || ($journeyVisual ?? '') === 'corporate-sky';
+$contours = ($f['variant'] ?? '') === 'solutions';
+if ($split && $jf('subheading') !== '') { $statement = $jf('subheading'); $small = ''; }
+// A page's own visual: set by the variant (Corporate, Contact) or chosen in the hero's visual field; else the ribbon.
+$visual = ($journeyVisual ?? '') !== '' ? $journeyVisual
+    : (in_array($f['visual'] ?? '', ['solutions', 'map', 'pipeline', 'website', 'content', 'answers', 'care', 'factory', 'projects', 'desk', 'business', 'orkay'], true) ? 'journey-visual' : '');
 ?>
-<section class="course-hero journey-hero" data-masterclass data-journey-phase="after" aria-labelledby="journey-title">
+<section class="course-hero journey-hero<?= $split ? ' journey-hero--split' : '' ?><?= $contours ? ' journey-hero--contours' : '' ?>" data-masterclass data-journey-phase="after" aria-labelledby="journey-title">
+<?php if ($contours): ?>
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
+<?php else: ?>
   <div class="masterclass-terrain" aria-hidden="true"><span></span><span></span><span></span></div>
+<?php endif ?>
   <div class="wrap">
     <div class="course-hero__top"><nav class="course-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page"><?= e($page['title'] ?? '') ?></li></ol></nav><?php if ($jf('eyebrow') !== ''): ?><p><span class="course-dot"></span><?= e($jf('eyebrow')) ?></p><?php endif ?></div>
     <h1 id="journey-title" class="masterclass-title<?= $long ? ' journey-title--wrap' : '' ?>"><?= heading_html($h1) ?></h1>

@@ -10,11 +10,12 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "care",
         "variant": "journey",
         "before_label": "Before training",
         "after_label": "After training",
-        "stat_value": "2",
-        "stat_unit": "hours",
+        "stat_value": "1",
+        "stat_unit": "hour",
         "stat_label": "Free pilot session",
         "statement": "AI for hospital teams, with clear rules on patient data.",
         "before_text": "Admin and paperwork by hand?",
@@ -108,7 +109,7 @@
       "type": "lead_form",
       "fields": {
         "heading": "Ask for a *free pilot*",
-        "intro": "Tell us about your hospital and teams. We will set up a 2-hour session on AI and prompting.",
+        "intro": "Tell us about your hospital and teams. We will set up a free 1-hour AI consultation and walkthrough to review how your team works and identify where AI can improve productivity and save time.",
         "form_type": "corporate",
         "side_points": [
           {"text": "Clear rules on patient data"},

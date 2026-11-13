@@ -4,6 +4,7 @@
 $items = array_values(array_filter($f['items'] ?? [], fn($it) => trim((string) ($it['quote'] ?? '')) !== ''));
 ?>
 <section class="sec co-proof">
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
   <div class="wrap co-proof__grid">
     <div class="co-proof__count">
       <p class="sol-eyebrow"><span class="sol-dot" aria-hidden="true"></span>Trained so far</p>

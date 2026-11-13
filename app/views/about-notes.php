@@ -24,7 +24,7 @@ $art = [
 <?php endif ?>
     </header>
     <ol class="ab-notes__grid" data-reveal="list" style="--cols: <?= max(1, min(5, count($f['cards'] ?? []))) ?>">
-<?php foreach (array_values($f['cards'] ?? []) as $i => $c): $icon = (string) ($c['icon'] ?? ''); ?>
+<?php foreach (array_values($f['cards'] ?? []) as $i => $c): $icon = (string) ($c['icon'] ?? ''); $cardId = 'ab-note-' . ($s ?? 0) . '-' . $i; ?>
       <li class="ab-note">
         <span class="ab-note__n" aria-hidden="true"><?= sprintf('%02d', $i + 1) ?></span>
 <?php if (isset($art[$icon])): ?>
@@ -32,8 +32,9 @@ $art = [
 <?php else: ?>
         <?= icon($icon, 'icon ab-note__icon') ?>
 <?php endif ?>
-        <h3 class="ab-note__t"><?= e($c['title'] ?? '') ?></h3>
-        <p class="ab-note__text"><?= e($c['text'] ?? '') ?></p>
+        <h3 class="ab-note__t" id="<?= e($cardId) ?>-title"><?= e($c['title'] ?? '') ?></h3>
+        <p class="ab-note__text" id="<?= e($cardId) ?>-text"><?= e($c['text'] ?? '') ?></p>
+        <button class="ab-note__toggle" type="button" aria-labelledby="<?= e($cardId) ?>-title" aria-describedby="<?= e($cardId) ?>-text" aria-pressed="false"></button>
       </li>
 <?php endforeach ?>
     </ol>

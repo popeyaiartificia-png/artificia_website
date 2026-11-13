@@ -9,6 +9,7 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "solutions",
         "statement": "Find the friction. Build the system that removes it.",
         "before_label": "Before",
         "before_text": "Work slowed by manual steps?",
@@ -20,7 +21,7 @@
         "variant": "solutions",
         "eyebrow": "Six solutions · One team · Vadodara",
         "subheading": "We find the work that slows your business down, then build the system that takes it off your desk.",
-        "primary_cta_label": "Book Free AI Consultation",
+        "primary_cta_label": "Book Free AI Audit",
         "primary_cta_link": "#enquire",
         "secondary_cta_label": "See all six solutions",
         "secondary_cta_link": "#solutions",
@@ -176,10 +177,10 @@
     {
       "type": "lead_form",
       "fields": {
-        "heading": "Book a free *AI consultation*",
+        "heading": "Book a free *AI audit*",
         "intro": "Tell us about one process that takes too long. We will reply on WhatsApp to set up a call.",
         "form_type": "services",
-        "button_label": "Book Free AI Consultation",
+        "button_label": "Book Free AI Audit",
         "side_points": [
           {"text": "Free, with no obligation"},
           {"text": "A one-page summary you keep"},

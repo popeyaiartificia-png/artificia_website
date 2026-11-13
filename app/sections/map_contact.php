@@ -3,7 +3,8 @@ $addr = trim($settings['org_address'] ?? '');
 $phone = trim($settings['org_phone'] ?? '');
 $email = trim($settings['org_email'] ?? '');
 $wa = whatsapp_url($settings);
-$gbp = trim($settings['gbp_url'] ?? '');
+$mapUrl = trim($settings['org_map_url'] ?? '') ?: trim($settings['gbp_url'] ?? '');
+$mapQuery = trim($settings['org_map_query'] ?? '') ?: $addr;
 $showMap = ($f['show_map'] ?? 'yes') !== 'no' && $addr !== '';
 if (($f['details'] ?? 'all') === 'address') {
     $phone = $email = $wa = '';
@@ -15,7 +16,7 @@ if (($f['details'] ?? 'all') === 'address') {
     <div class="contact__grid">
       <dl class="contact__list">
 <?php if ($addr !== ''): ?>
-        <div><dt>Address</dt><dd><?= nl2br(e($addr)) ?><?php if ($gbp !== ''): ?><br><a href="<?= link_href($gbp) ?>" rel="noopener">Open in Google Maps</a><?php endif ?></dd></div>
+        <div><dt>Address</dt><dd><?= nl2br(e($addr)) ?><?php if ($mapUrl !== ''): ?><br><a href="<?= link_href($mapUrl) ?>" rel="noopener">Open in Google Maps</a><?php endif ?></dd></div>
 <?php endif ?>
 <?php if ($phone !== ''): ?>
         <div><dt>Phone</dt><dd><a href="tel:<?= e(preg_replace('/[^\d+]/', '', $phone)) ?>"><?= e($phone) ?></a></dd></div>
@@ -29,10 +30,7 @@ if (($f['details'] ?? 'all') === 'address') {
       </dl>
 <?php if ($showMap): ?>
       <div class="map">
-        <button class="map__facade" type="button" data-src="https://www.google.com/maps?q=<?= e(rawurlencode($addr)) ?>&amp;output=embed">
-          <?= drawing('map') ?>
-          <span class="btn"><?= icon('map-pin') ?>Show the map</span>
-        </button>
+        <iframe src="https://www.google.com/maps?q=<?= e(rawurlencode($mapQuery)) ?>&amp;output=embed" title="Artificia AI office location on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
 <?php endif ?>
     </div>

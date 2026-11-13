@@ -3,5 +3,7 @@
   "org_phone": "+91 91044 88859",
   "org_email": "info@artificiaai.com",
   "whatsapp_number": "919104488859",
-  "gbp_url": ""
+  "gbp_url": "",
+  "org_map_url": "https://www.google.com/maps/place/Darshanam+Arise/@22.31608,73.131827,3068m/data=!3m1!1e3!4m6!3m5!1s0x395fc86087aab399:0x7b3bbafdd74a1233!8m2!3d22.31608!4d73.1318266!16s%2Fg%2F11c42x8py0?hl=en&entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D",
+  "org_map_query": "22.31608,73.1318266"
 }

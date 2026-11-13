@@ -344,3 +344,204 @@
   document.addEventListener('visibilitychange', sync);
   sync();
 }());
+
+/* About hero: one team, three lines of work. A comet runs the orbit Build → Train → Teach; at each station the dot
+   hologram in the middle swirls apart and re-forms as that line of work (an AI chip, a team, a graduation cap).
+   1.2 s a station, so all three have shown inside three seconds. The pointer scatters the dots. Reduced motion: the chip, still. */
+(function () {
+  'use strict';
+  var box = document.querySelector('.jv--map'), cv = box && box.querySelector('.jv-morph'), ctx = cv && cv.getContext('2d');
+  if (!ctx) return;
+  var d = document, root = d.documentElement, nodes = box.querySelectorAll('.jv-node');
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TAU = Math.PI * 2, STEP = 1.2, LEG = .45, MOVE = .6, DUST = 240;
+  var ANG = [-Math.PI / 2, Math.PI / 6, Math.PI * 5 / 6]; // stations: Build top, Train lower right, Teach lower left (as in journey-visual.php)
+  var font = getComputedStyle(d.querySelector('.masterclass-title') || d.body).fontFamily;
+  var W, H, dpr, cx, cy, rx, ry, S, p, shapes = [], N = 0, P, spr = [], pad;
+  var px = -1e4, py = -1e4, lit = -1;
+
+  // Each shape is drawn in a 200-unit box (lime, with white accents), then read back as a dot grid.
+  var gap = function (g, draw, w) { g.save(); g.globalCompositeOperation = 'destination-out'; g.lineWidth = w; draw(true); g.restore(); };
+  var head = function (g, x, y, r) { g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill(); };
+  var body = function (g, x, top, base, w) { g.beginPath(); g.roundRect(x - w, top, w * 2, base - top, [w * .8, w * .8, 0, 0]); g.fill(); };
+  var DRAW = [
+    function chip(g) {
+      g.fillStyle = g.strokeStyle = '#d2ff00';
+      g.lineWidth = 12;
+      g.beginPath(); g.roundRect(-58, -58, 116, 116, 16); g.stroke();
+      [-38, -13, 13, 38].forEach(function (o) { g.fillRect(o - 4.5, -94, 9, 28); g.fillRect(o - 4.5, 66, 9, 28); g.fillRect(-94, o - 4.5, 28, 9); g.fillRect(66, o - 4.5, 28, 9); });
+      g.fillStyle = '#fff';
+      g.font = '800 70px ' + font; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText('AI', 0, 5);
+    },
+    function team(g) { // three people side by side, the middle one (white) a step forward
+      g.fillStyle = '#d2ff00';
+      [-72, 72].forEach(function (x) { head(g, x, -22, 16); body(g, x, 4, 50, 28); });
+      g.fillStyle = '#fff';
+      head(g, 0, -36, 21); body(g, 0, -4, 62, 36);
+    },
+    function cap(g) {
+      g.fillStyle = g.strokeStyle = '#d2ff00';
+      g.beginPath(); g.moveTo(-54, -14); g.lineTo(-54, 32); g.quadraticCurveTo(0, 64, 54, 32); g.lineTo(54, -14); g.fill();
+      var board = function (stroke) { g.beginPath(); g.moveTo(0, -72); g.lineTo(100, -32); g.lineTo(0, 8); g.lineTo(-100, -32); g.closePath(); stroke ? (g.stroke(), g.fill()) : g.fill(); };
+      gap(g, board, 14);
+      board();
+      g.fillStyle = g.strokeStyle = '#fff';
+      g.lineWidth = 9; g.lineJoin = 'round';
+      g.beginPath(); g.moveTo(0, -32); g.lineTo(76, -24); g.lineTo(76, 34); g.stroke();
+      head(g, 0, -32, 8);
+      g.beginPath(); g.roundRect(66, 30, 20, 34, 5); g.fill();
+    }
+  ];
+  var sample = function (draw) {
+    var c = d.createElement('canvas'), n = Math.ceil(S), g, data, out = [], x, y, i;
+    c.width = c.height = n;
+    g = c.getContext('2d', { willReadFrequently: true });
+    g.translate(n / 2, n / 2); g.scale(n / 200, n / 200);
+    draw(g);
+    data = g.getImageData(0, 0, n, n).data;
+    for (y = p / 2; y < n; y += p) for (x = p / 2; x < n; x += p) {
+      i = ((y | 0) * n + (x | 0)) * 4;
+      if (data[i + 3] > 140) out.push([x - n / 2, y - n / 2, data[i + 2] > 128 ? 1 : 0]);
+    }
+    for (i = out.length - 1; i > 0; i--) { x = Math.random() * (i + 1) | 0; y = out[i]; out[i] = out[x]; out[x] = y; } // any dot may go anywhere: the swirl reads as one burst
+    return out;
+  };
+  // A glowing dot per tone: lime, white, and the dimmer orbit dust.
+  var sprite = function (rgb, core, glow) {
+    var z = Math.ceil(p * 2.6 * dpr), c = d.createElement('canvas'), g = c.getContext('2d'), gr;
+    c.width = c.height = z;
+    gr = g.createRadialGradient(z / 2, z / 2, 0, z / 2, z / 2, z / 2);
+    gr.addColorStop(0, 'rgba(' + rgb + ',1)'); gr.addColorStop(core, 'rgba(' + rgb + ',1)');
+    gr.addColorStop(core + .06, 'rgba(' + rgb + ',' + glow + ')'); gr.addColorStop(1, 'rgba(' + rgb + ',0)');
+    g.fillStyle = gr; g.fillRect(0, 0, z, z);
+    return c;
+  };
+
+  var setup = function () {
+    W = cv.clientWidth; H = cv.clientHeight;
+    if (!W || !H) return false;
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    cx = W / 2; cy = H / 2; rx = W * .36; ry = H * .4;
+    S = H * .6; p = Math.max(4, S / 40);
+    shapes = DRAW.map(sample);
+    var n = Math.max.apply(null, shapes.map(function (s) { return s.length; })) + DUST, i;
+    if (n !== N) {
+      N = n;
+      P = { a: new Float32Array(N), j: new Float32Array(N), dl: new Float32Array(N), ph: new Float32Array(N), ox: new Float32Array(N), oy: new Float32Array(N), vx: new Float32Array(N), vy: new Float32Array(N) };
+      for (i = 0; i < N; i++) { P.a[i] = Math.random() * TAU; P.j[i] = .9 + Math.random() * .22; P.dl[i] = Math.random() * .2; P.ph[i] = Math.random() * TAU; }
+    }
+    spr = [sprite('210,255,0', .2, .3), sprite('255,255,255', .2, .3), sprite('210,255,0', .12, .12)];
+    pad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+    pad.addColorStop(0, 'rgba(210,255,0,.35)'); pad.addColorStop(1, 'rgba(210,255,0,0)');
+    return true;
+  };
+
+  var ease = function (u) { u = u < 0 ? 0 : u > 1 ? 1 : u; return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+  var onRing = function (a, k) { return [cx + rx * k * Math.cos(a), cy + ry * k * Math.sin(a)]; };
+  // Where dot i rests in shape s at time t: its place in the shape, or (shape -1, or a spare dot) drifting on the orbit.
+  var home = function (s, i, t, out) {
+    var pt = s >= 0 && shapes[s][i];
+    if (pt) { out[0] = cx + pt[0]; out[1] = cy - H * .02 + pt[1]; out[2] = pt[2]; return; }
+    var a = P.a[i] + t * .12;
+    out[0] = cx + rx * P.j[i] * Math.cos(a); out[1] = cy + ry * P.j[i] * Math.sin(a); out[2] = 2;
+  };
+
+  var A = [0, 0, 0], B = [0, 0, 0];
+  var frame = function (t) {
+    var k = Math.floor(t / STEP), ts = t - k * STEP, s = k % 3, from = k ? (k - 1) % 3 : -1, prev = (s + 2) % 3;
+    var i, e, x, y, th, dx, dy, dd, dist, f, sz, tone, al, c, sn, q;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'destination-out'; // fade, leaving short trails behind fast dots
+    ctx.globalAlpha = 1; ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+
+    // The orbit: front half brighter than the back, a turning dashed ring outside it, dial ticks inside.
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(210,255,0,.13)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, Math.PI, TAU); ctx.stroke();
+    ctx.strokeStyle = 'rgba(210,255,0,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI); ctx.stroke();
+    ctx.setLineDash([2, 8]); ctx.lineDashOffset = -t * 16; ctx.strokeStyle = 'rgba(210,255,0,.2)';
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx * 1.07, ry * 1.09, 0, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = 'rgba(210,255,0,.22)'; ctx.beginPath();
+    for (i = 0; i < 96; i++) { th = i / 96 * TAU + t * .06; c = Math.cos(th); sn = Math.sin(th); f = i % 8 ? .97 : .93; ctx.moveTo(cx + rx * .99 * c, cy + ry * .99 * sn); ctx.lineTo(cx + rx * f * c, cy + ry * f * sn); }
+    ctx.stroke();
+    // The projector pad under the hologram.
+    ctx.save(); ctx.translate(cx, cy + S * .5); ctx.scale(S * .55, S * .08); ctx.fillStyle = pad; ctx.beginPath(); ctx.arc(0, 0, 1, 0, TAU); ctx.fill(); ctx.restore();
+
+    // The dots: from the last shape to this one, swirling round the centre and flung outwards on the way.
+    var scan = ts > MOVE + .1 && ts < MOVE + .55 ? cy - H * .02 - S / 2 + (ts - MOVE - .1) / .45 * S : -1e4;
+    for (i = 0; i < N; i++) {
+      home(from, i, t, A); home(s, i, t, B);
+      e = ease((ts - P.dl[i]) / (MOVE - .2));
+      x = A[0] + (B[0] - A[0]) * e; y = A[1] + (B[1] - A[1]) * e;
+      if (e > 0 && e < 1 && (A[2] < 2 || B[2] < 2)) { // spare dots stay on the orbit
+        q = Math.sin(Math.PI * e); th = (k % 2 ? -1 : 1) * 1.2 * q;
+        dx = (x - cx) * (1 + .3 * q); dy = (y - cy) * (1 + .3 * q);
+        c = Math.cos(th); sn = Math.sin(th);
+        x = cx + dx * c - dy * sn * (rx / ry); y = cy + dx * sn * (ry / rx) + dy * c;
+      }
+      // The pointer pushes dots aside; they spring home.
+      dx = x - px; dy = y - py; dd = dx * dx + dy * dy;
+      if (dd < 5000) { dist = Math.sqrt(dd) || 1; f = (1 - dist / 70.7) * 2.6; P.vx[i] += dx / dist * f; P.vy[i] += dy / dist * f; }
+      P.vx[i] = (P.vx[i] - P.ox[i] * .07) * .84; P.vy[i] = (P.vy[i] - P.oy[i] * .07) * .84;
+      P.ox[i] += P.vx[i]; P.oy[i] += P.vy[i];
+      x += P.ox[i]; y += P.oy[i];
+      tone = e < .5 ? A[2] : B[2];
+      al = tone === 2 ? .55 : .72 + .28 * Math.sin(t * 4 + P.ph[i]);
+      if (tone !== 2 && Math.abs(y - scan) < p * 1.2) { tone = 1; al = 1; } // the build scan passes over the finished shape
+      sz = p * 2.6 * (tone === 2 ? .7 : 1);
+      ctx.globalAlpha = al;
+      ctx.drawImage(spr[tone], x - sz / 2, y - sz / 2, sz, sz);
+    }
+    ctx.globalAlpha = 1;
+    if (scan > -1e4) {
+      var g = ctx.createLinearGradient(cx - S * .6, 0, cx + S * .6, 0);
+      g.addColorStop(0, 'rgba(210,255,0,0)'); g.addColorStop(.5, 'rgba(240,255,170,.7)'); g.addColorStop(1, 'rgba(210,255,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(cx - S * .6, scan - .75, S * 1.2, 1.5);
+    }
+
+    // The comet: one leg of the orbit per station, its tail longest at full speed; a ring breaks out where it lands.
+    var u = Math.min(1, ts / LEG), a = ANG[prev] + TAU / 3 * ease(u), tail = .08 + 1.1 * Math.sin(Math.PI * u), pt, pt2;
+    ctx.lineCap = 'round';
+    for (i = 0; i < 18; i++) {
+      pt = onRing(a - tail * i / 18, 1); pt2 = onRing(a - tail * (i + 1) / 18, 1);
+      ctx.strokeStyle = 'rgba(210,255,0,' + (1 - i / 18) * .9 + ')'; ctx.lineWidth = 3.2 * (1 - i / 18) + .4;
+      ctx.beginPath(); ctx.moveTo(pt[0], pt[1]); ctx.lineTo(pt2[0], pt2[1]); ctx.stroke();
+    }
+    pt = onRing(a, 1);
+    ctx.drawImage(spr[1], pt[0] - p * 2.2, pt[1] - p * 2.2, p * 4.4, p * 4.4);
+    if (ts > LEG && ts < LEG + .55) {
+      q = (ts - LEG) / .55; pt = onRing(ANG[s], 1);
+      ctx.strokeStyle = 'rgba(210,255,0,' + (1 - q) + ')'; ctx.lineWidth = 2 * (1 - q) + .5;
+      ctx.beginPath(); ctx.ellipse(pt[0], pt[1], 12 + q * 70, 8 + q * 46, 0, 0, TAU); ctx.stroke();
+    }
+    // The station's label lights as the comet reaches it.
+    var on = ts >= LEG * .85 ? s : k ? prev : -1;
+    if (on !== lit) { if (lit >= 0) nodes[lit].classList.remove('is-on'); if (on >= 0) nodes[on].classList.add('is-on'); lit = on; }
+  };
+
+  // One clock that only runs while the hero is on screen and the tab is showing.
+  var t = 0, last = 0, raf = 0, seen = false, started = false;
+  var tick = function (now) { t += Math.min(.05, (now - last) / 1000); last = now; frame(t); raf = requestAnimationFrame(tick); };
+  var go = function () {
+    if (still) return;
+    var run = seen && started && N && !d.hidden;
+    if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    if (!run && raf) { cancelAnimationFrame(raf); raf = 0; }
+  };
+  var redo = function () {
+    if (!setup()) return;
+    if (still) { for (var i = 0; i < 6; i++) frame(STEP - .02); } else frame(t); // still: the chip, formed, after its scan
+  };
+  new ResizeObserver(redo).observe(box);
+  if (d.fonts) d.fonts.ready.then(redo);
+  new IntersectionObserver(function (en) { seen = en[0].isIntersecting; go(); }).observe(box);
+  d.addEventListener('visibilitychange', go);
+  var hero = box.closest('section') || box;
+  hero.addEventListener('pointermove', function (ev) { var r = cv.getBoundingClientRect(); px = ev.clientX - r.left; py = ev.clientY - r.top; });
+  hero.addEventListener('pointerleave', function () { px = py = -1e4; });
+  var start = function () { started = true; go(); };
+  if (root.classList.contains('is-in')) start();
+  else new MutationObserver(function (m, mo) { if (root.classList.contains('is-in')) { mo.disconnect(); start(); } }).observe(root, { attributes: true, attributeFilter: ['class'] });
+}());

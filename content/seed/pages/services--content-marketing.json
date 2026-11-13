@@ -10,6 +10,7 @@
     {
       "type": "hero",
       "fields": {
+        "visual": "content",
         "variant": "journey",
         "before_label": "Before",
         "after_label": "After",
