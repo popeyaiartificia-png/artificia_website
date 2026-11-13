@@ -1,7 +1,22 @@
 <?php
-$variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage'], true) ? $f['variant'] : 'split';
+$variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'careers', 'journey'], true) ? $f['variant'] : 'split';
 $h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
+// Contact has a compact, purpose-built hero (user, 12 Nov 2026); Careers shares its frame with a role board (13 Nov).
+if ($variant === 'contact' || $variant === 'careers') {
+    include VIEWS_DIR . '/contact-hero.php';
+    return;
+}
+// Other inner pages share the masterclass layout; Corporate keeps its own centre visual.
+if (in_array($variant, ['journey', 'solutions', 'about', 'corporate'], true)) {
+    $journeyVisual = ['corporate' => 'corporate-sky'][$variant] ?? '';
+    include VIEWS_DIR . '/journey-hero.php';
+    return;
+}
+if ($variant === 'course') {
+    include VIEWS_DIR . '/course-hero.php';
+    return;
+}
 if ($variant === 'stage') {
     include VIEWS_DIR . '/hero-stage.php';
     return;

@@ -52,7 +52,7 @@
     <rect x="293" y="111" width="135" height="78" rx="9" fill="#364529" stroke="#829663" stroke-width="1.5"/>
     <circle cx="315" cy="133" r="10" fill="#B2C73A"/>
     <path d="m310 133 3 3 6-7" stroke="#26331B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="334" y="138" fill="#DDE5D3" font-family="Roboto Flex, Arial, sans-serif" font-size="13">Helpdesk</text>
+    <text x="334" y="138" fill="#DDE5D3" font-family="Artificia Sans, Arial, sans-serif" font-size="13">Helpdesk</text>
     <path d="M307 156h94m-94 12h68" stroke="#819568" stroke-width="2" stroke-linecap="round"/>
   </svg>
   <div class="work-support__foot"><span>Systems</span><span>Maintenance</span><span>Support</span></div>

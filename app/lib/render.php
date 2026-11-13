@@ -158,7 +158,10 @@ function render_layout(array $vars): string
 function render_page_body(array $page, array $settings): string
 {
     $sections = $page['sections'];
-    $body = '';
+    // Inner pages in the homepage theme wrap their sections, so their stylesheet and script load only there.
+    // About and Corporate training are siblings of Solutions: they share that theme (floods, masthead, type) and add their own sheet.
+    $theme = ($sections[0]['type'] ?? '') === 'hero' ? (['course' => 'course-page', 'solutions' => 'solutions-page', 'about' => 'solutions-page about-page', 'corporate' => 'solutions-page corporate-page', 'contact' => 'solutions-page about-page contact-page', 'careers' => 'solutions-page about-page contact-page careers-page'][$sections[0]['fields']['variant'] ?? ''] ?? '') : '';
+    $body = $theme !== '' ? '<div class="' . $theme . '">' : '';
     if (($sections[0]['type'] ?? '') !== 'hero') {
         $body .= render_view('page-header', ['page' => $page]);
     }
@@ -172,7 +175,7 @@ function render_page_body(array $page, array $settings): string
             $body .= '</div>';
         }
     }
-    return $body;
+    return $body . ($theme !== '' ? '</div>' : '');
 }
 
 /** Whether a page carries a lead form (and with it a fresh form token, so it must never be served from a cache). */

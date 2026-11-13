@@ -1,3 +1,4 @@
+<?php if (($f['variant'] ?? '') === 'pass') { include VIEWS_DIR . '/corporate-pass.php'; return; } ?>
 <section class="sec sec--cta cta">
   <div class="wrap cta__in">
     <div>

@@ -3,6 +3,15 @@
   'use strict';
   var d = document, root = d.documentElement;
 
+  // Each About principle keeps its neon glow until it is clicked again.
+  d.querySelectorAll('.ab-note__toggle').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var glowing = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(glowing));
+      button.closest('.ab-note').classList.toggle('is-glowing', glowing);
+    });
+  });
+
   // The loader: it leaves once the fonts, the first picture and the page are in, never before 1.6s and never after 3.5s.
   var loader = d.querySelector('.loader');
   var enter = function () { root.classList.add('is-in'); };
@@ -22,7 +31,7 @@
     var logo = new Image();
     logo.onload = logo.onerror = step;
     logo.src = '/assets/img/artificia-logo.png';
-    var first = d.querySelector('main img');
+    var first = d.querySelector('main img:not([loading="lazy"])'); // a lazy image below the fold would hold the loader to its timeout
     if (first && !first.complete) { first.addEventListener('load', step); first.addEventListener('error', step); } else step();
     if (d.readyState === 'complete') step(); else addEventListener('load', step);
     setTimeout(leave, 3500);
@@ -45,25 +54,21 @@
     top.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
   }
 
-  // Videos and the map load nothing until the visitor asks for them.
+  // Videos load nothing until the visitor asks for them.
   d.addEventListener('click', function (e) {
-    var b = e.target.closest('.vid[data-src], .map__facade[data-src]');
+    var b = e.target.closest('.vid[data-src]');
     if (!b) return;
     var src = b.getAttribute('data-src') || '';
     if (src.indexOf('https://') !== 0) return; // the server allowlists hosts; never load anything else
     var f = d.createElement('iframe');
     f.src = src;
-    f.title = b.getAttribute('data-title') || 'Map';
+    f.title = b.getAttribute('data-title') || 'Video';
     f.allow = 'autoplay; fullscreen';
     f.setAttribute('allowfullscreen', '');
-    if (b.classList.contains('vid')) {
-      var w = d.createElement('div');
-      w.className = 'vid is-playing';
-      w.appendChild(f);
-      b.replaceWith(w);
-    } else {
-      b.replaceWith(f);
-    }
+    var w = d.createElement('div');
+    w.className = 'vid is-playing';
+    w.appendChild(f);
+    b.replaceWith(w);
     f.setAttribute('tabindex', '-1');
     f.focus();
   });
@@ -116,7 +121,7 @@
 
   // The WhatsApp button waits until the hero (and its chooser) has scrolled away.
   // It also steps aside over the footer, which carries its own WhatsApp link.
-  var fab = d.querySelector('.wa-float'), fabAway = [d.querySelector('.hero'), d.querySelector('[data-foot]')].filter(Boolean);
+  var fab = d.querySelector('.wa-float'), fabAway = [d.querySelector('.hero, .course-hero, .sol-hero'), d.querySelector('[data-foot]')].filter(Boolean);
   if (fab && fabAway.length && 'IntersectionObserver' in window) {
     var fabIo = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.target.inSight = e.isIntersecting; });
@@ -208,6 +213,14 @@
         .then(function (r) { return r.json().catch(function () { return {}; }); })
         .then(function (res) { if (res && res.ok === true) done(res); else fail(res || {}); })
         .catch(function () { fail({}); });
+    });
+  });
+
+  // Careers: a role card picks its role in the application form on the way down to it.
+  d.querySelectorAll('[data-pick-role]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var select = d.querySelector('#enquire select[name="role"]');
+      if (select) select.value = link.getAttribute('data-pick-role');
     });
   });
 
@@ -374,21 +387,51 @@
   // with a clean dark edge. uRise is how far it has climbed, in pixels.
   var FLOOD = [
     '  float s = clamp(uRes.x / 1536., .6, 1.2), y = gl_FragCoord.y, x = gl_FragCoord.x / uRes.x * 2. - 1.;',
-    '  float amp = mix(34., 120., smoothstep(30., 320., uRise)) * clamp(uRes.x / 1536., .8, 1.2) * (.4 + .6 * x * x);',
-    '  float rise = uRise - 80. * s * (1. - x * x) * smoothstep(0., 200., uRise);', // calm and late in the middle, where the copy sits; livelier over the figures
-    '  float swell = (sin(x * 2.6 + uTime * .55) * 9. + sin(x * 6.1 - uTime * .4) * 4.) * s;', // keeps moving when the page is still
-    '  float e = y - rise + swell * smoothstep(0., 40., y) + (v - 4.5) * amp * smoothstep(0., 90. * s, y);',
+    '  float amp = mix(FLOOD_AMP, FLOOD_AMPMAX, smoothstep(30., 320., uRise)) * clamp(uRes.x / 1536., .8, 1.2) * (FLOOD_CALM + (1. - FLOOD_CALM) * x * x);',
+    '  float rise = uRise - FLOOD_DIP * s * (1. - x * x) * smoothstep(0., 200., uRise);', // calm and late in the middle, where the copy sits; livelier over the figures
+    '  float swell = (FLOOD_SWELL) * s;', // keeps moving when the page is still
+    '  float e = y - rise + swell * FLOOD_FADE + (v - 4.5) * amp * smoothstep(0., FLOOD_NEAR * s, y);',
     '  float aa = max(fwidth(e), 1e-3), o = 1. - smoothstep(-aa, aa, e);',
     '  vec3 c = mix(FLOOD_BASE, FLOOD_LINE, a) * o;',
     '  gl_FragColor = vec4(c, o);'
   ].join('\n');
+  // The homepage's floods keep their calm tuning; `fluid` floods (the section joins) swell wider and faster and show the
+  // contour wobble from the start, so even a low flood reads as liquid. `fluid` is a strength: 1 full, lower for a calmer edge.
+  var floodShader = function (flood) {
+    var k = +flood.fluid || 0, f = function (n) { return (n * k).toFixed(1); }, sp = (.5 + .5 * k).toFixed(2);
+    var shader = FLOOD.replace('FLOOD_BASE', flood.base || 'vec3(.067, .082, .059)').replace('FLOOD_LINE', flood.line || 'vec3(.47, .5, .36)');
+    // Contact's short join and the footer's neon use broad, slow swells on the shared map, with no small surface ripples.
+    if (flood.profile === 'contact' || flood.profile === 'calm') return shader
+      .replace('FLOOD_AMPMAX', '18.').replace('FLOOD_AMP', '12.').replace(/FLOOD_CALM/g, '.9')
+      .replace('FLOOD_NEAR', '180.').replace('FLOOD_FADE', '1.').replace('FLOOD_DIP', '0.')
+      .replace('FLOOD_SWELL', 'sin(x * 2.6 + uTime * .45) * 8. + sin(x * 5.1 - uTime * .3) * 3.');
+    return shader.replace('FLOOD_AMPMAX', k ? f(86) : '120.').replace('FLOOD_AMP', k ? f(46) : '34.').replace(/FLOOD_CALM/g, k ? '.72' : '.4').replace('FLOOD_NEAR', k ? '140.' : '90.')
+      .replace('FLOOD_FADE', k ? '1.' : 'smoothstep(0., 40., y)')
+      .replace('FLOOD_DIP', k ? '24.' : '80.')
+      .replace('FLOOD_SWELL', k
+        ? ('sin(gl_FragCoord.x / 115. + uTime * .95) * ' + f(30) + ' + sin(gl_FragCoord.x / 57. - uTime * .8) * ' + f(14) + ' + sin(gl_FragCoord.x / 31. + uTime * 1.6) * ' + f(6)).replace(/uTime/g, 'uTime * ' + sp)
+        : 'sin(x * 2.6 + uTime * .55) * 9. + sin(x * 6.1 - uTime * .4) * 4.');
+  };
+  // Chromium discards the oldest canvas when a page opens too many WebGL contexts. Keep headroom for the robot and
+  // gallery, and release inner-page section contexts once they leave the nearby viewport.
+  var topoContexts = 0, topoContextLimit = 12;
   var topoField = function (topo, from, flood) {
+    var solutionTerrain = topo.closest('.solutions__terrain');
+    var releaseLive = null, fallbackResize = false;
+    var managed = !flood && !!topo.closest('.course-page, .solutions-page') && 'IntersectionObserver' in window;
+    var freshCanvas = function () {
+      var next = topo.cloneNode(false);
+      next.flood = topo.flood; next.weave = topo.weave;
+      topo.terrainLive = false;
+      topo.replaceWith(next); topo = next;
+    };
     // Contour lines of a smooth noise field (marching squares), drawn once per size, like a survey map.
     var drawTopo = function () {
       var dpr = Math.min(window.devicePixelRatio || 1, 2), w = topo.clientWidth, h = topo.clientHeight;
       topo.width = Math.round(w * dpr);
       topo.height = Math.round(h * dpr);
       var x = topo.getContext('2d'), seed = 11, G = 8, lat = [];
+      if (!x) return;
       var rnd = function () { seed = seed * 16807 % 2147483647; return seed / 2147483647; };
       for (var i = 0; i < G * G; i++) lat.push(rnd());
       var at = function (a, b) { return lat[(a % G + G) % G + ((b % G + G) % G) * G]; };
@@ -415,12 +458,42 @@
         }
       }
       x.stroke();
+      if (solutionTerrain) solutionTerrain.classList.add('has-topo');
+    };
+    var fallback = function () {
+      topo.terrainLive = false;
+      if (flood) {
+        topo.style.display = 'none';
+        topo.parentNode.classList.remove('is-live');
+        return;
+      }
+      // A canvas which has held WebGL cannot acquire a 2D context. Replace it before drawing the static map.
+      freshCanvas();
+      drawTopo();
+      if (!fallbackResize) {
+        fallbackResize = true;
+        var rt;
+        addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!topo.terrainLive) drawTopo(); }, 150); });
+      }
     };
     // The living terrain: the same contour lines, drawn on the GPU from a slowly warping field, so the ground drifts and
     // folds like the reference's. 30 fps is plenty for something this slow; it pauses whenever its canvas is off screen.
     var liveTopo = function () {
+      if (topoContexts >= topoContextLimit) return false;
       var tg = topo.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
-      if (!tg || !tg.getExtension('OES_standard_derivatives')) return false;
+      if (!tg) return false;
+      topoContexts++;
+      var terrainLost = false, raf = 0, observer;
+      var release = function () {
+        if (terrainLost) return;
+        terrainLost = true; topoContexts--; topo.terrainLive = false;
+        cancelAnimationFrame(raf);
+        if (observer) observer.disconnect();
+        var extension = tg.getExtension('WEBGL_lose_context');
+        if (extension && !tg.isContextLost()) extension.loseContext();
+        releaseLive = null;
+      };
+      if (!tg.getExtension('OES_standard_derivatives')) { release(); return false; }
       var sh = function (type, src) { var s = tg.createShader(type); tg.shaderSource(s, src); tg.compileShader(s); return s; };
       var tp = tg.createProgram();
       tg.attachShader(tp, sh(tg.VERTEX_SHADER, 'attribute vec2 p; void main() { gl_Position = vec4(p, 0., 1.); }'));
@@ -435,23 +508,33 @@
         '  float v = fbm(p + w * 1.1 + vec2(t * .5, t * .3)) * ' + (topo.weave ? '27.' : '9.') + ';',
         '  float dl = abs(fract(v - .5) - .5) / max(fwidth(v), 1e-4);', // distance to the nearest contour, in pixels
         '  float a = (1. - smoothstep(.35, 1.35, dl)) * .19;',
-        flood ? FLOOD.replace('FLOOD_BASE', flood.base || 'vec3(.067, .082, .059)').replace('FLOOD_LINE', flood.line || 'vec3(.47, .5, .36)')
+        flood ? floodShader(flood)
           : topo.weave ? '  float k = a * 2.1; gl_FragColor = vec4(vec3(.824, 1., 0.) * k, k);' : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
         '}'
       ].join('\n')));
       tg.bindAttribLocation(tp, 0, 'p');
       tg.linkProgram(tp);
-      if (!tg.getProgramParameter(tp, tg.LINK_STATUS)) return false;
+      if (!tg.getProgramParameter(tp, tg.LINK_STATUS)) { release(); return false; }
       tg.useProgram(tp);
       tg.bindBuffer(tg.ARRAY_BUFFER, tg.createBuffer());
       tg.bufferData(tg.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), tg.STATIC_DRAW);
       tg.enableVertexAttribArray(0);
       tg.vertexAttribPointer(0, 2, tg.FLOAT, false, 0, 0);
       var uR = tg.getUniformLocation(tp, 'uRes'), uT = tg.getUniformLocation(tp, 'uTime'), uO = tg.getUniformLocation(tp, 'uOff'), uL = tg.getUniformLocation(tp, 'uRise'), seen = true, last = 0, was = 0;
+      topo.addEventListener('webglcontextlost', function () {
+        if (terrainLost) return; // An off-screen section was deliberately released.
+        release();
+        if (solutionTerrain) solutionTerrain.classList.remove('has-topo');
+        fallback();
+      }, { once: true });
       // A screen of margin, so the lines are already moving when the section arrives.
-      if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; }, { rootMargin: '100% 0px' }).observe(topo);
+      if (!managed && 'IntersectionObserver' in window) {
+        observer = new IntersectionObserver(function (es) { seen = es[0].isIntersecting; }, { rootMargin: '100% 0px' });
+        observer.observe(topo);
+      }
       var loop = function (now) {
-        requestAnimationFrame(loop);
+        if (terrainLost) return;
+        raf = requestAnimationFrame(loop);
         // A flood on the move draws every frame; the rest of the time 30 fps is plenty.
         if (!seen || d.hidden || now - last < (flood && flood.rise !== was ? 16 : 33)) return;
         last = now;
@@ -464,21 +547,42 @@
         tg.uniform1f(uT, topo.terrainTime);
         if (flood) { tg.uniform1f(uL, flood.rise); was = flood.rise; }
         tg.drawArrays(tg.TRIANGLES, 0, 3);
+        if (solutionTerrain && !solutionTerrain.classList.contains('has-topo')) solutionTerrain.classList.add('has-topo');
       };
-      requestAnimationFrame(loop);
+      releaseLive = release;
+      raf = requestAnimationFrame(loop);
       return true;
     };
-    // The footer adds no GPU work on phones, where WebGL contexts are scarce: a resting arc and a drawn map, as under reduced motion.
-    var lean = topo.closest('.foot') && !matchMedia('(min-width: 1100px)').matches;
+    // The footer and the fluid joins add no GPU work on phones, where WebGL contexts are scarce: a resting arc and a drawn map,
+    // as under reduced motion.
+    var lean = !!topo.closest('.foot, .flood-join') && !matchMedia(topo.closest('.foot') ? '(min-width: 1100px)' : '(min-width: 900px)').matches;
     // Without motion or WebGL the flood stays what the CSS draws: a resting arc.
-    if (flood) { if (!still && !lean && liveTopo()) topo.parentNode.classList.add('is-live'); return; }
-    if (topo.weave && lean) { topo.style.display = 'none'; return; }
-    topo.terrainLive = !still && !lean && liveTopo();
-    if (!topo.terrainLive) {
-      drawTopo();
-      var rt;
-      addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(drawTopo, 150); });
+    if (flood) {
+      if (!still && !lean) {
+        if (liveTopo()) topo.parentNode.classList.add('is-live');
+        else fallback();
+      }
+      return;
     }
+    if (topo.weave && lean) { topo.style.display = 'none'; return; }
+    if (!still && !lean && managed) {
+      var holder = topo.parentNode, started = false;
+      var nearby = function (seen) {
+        if (seen && !started) {
+          started = true;
+          topo.terrainLive = liveTopo();
+          if (!topo.terrainLive) fallback();
+        } else if (!seen && releaseLive) {
+          releaseLive(); freshCanvas(); started = false;
+        }
+      };
+      var box = holder.getBoundingClientRect();
+      nearby(box.bottom >= -innerHeight && box.top <= innerHeight * 2);
+      new IntersectionObserver(function (es) { nearby(es[0].isIntersecting); }, { rootMargin: innerHeight + 'px 0px' }).observe(holder);
+      return;
+    }
+    topo.terrainLive = !still && !lean && liveTopo();
+    if (!topo.terrainLive) fallback();
   };
   // Viewport-sized contour ground. CSS and the SVG remain usable without WebGL.
   var createWorkTerrain = function (section, canvas) {
@@ -685,13 +789,51 @@
     return api;
   };
 
+  // Carry the homepage's contour ground through every masterclass section, and on into the homepage and Solutions enquiries (and About's hero, principles, founder and visit, and the legal pages' text).
+  d.querySelectorAll('.course-page > section, .hero--stage ~ .lead--stage, .solutions-page > .lead--stage,.about-page > :is(.ab-notes, .team, .contact), .about-page:not(.contact-page) > .journey-hero, .journey-hero--plain ~ .sec--rich_text').forEach(function (section) {
+    if (section.querySelector('.topo-bg')) return;
+    var terrain = d.createElement('canvas');
+    terrain.className = 'topo-bg';
+    terrain.setAttribute('aria-hidden', 'true');
+    section.prepend(terrain);
+  });
+  // Contact: Vadodara's local time in the direct-lines board (hidden without JS).
+  d.querySelectorAll('[data-clock]').forEach(function (el) {
+    var tick = function () { el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit' }) + ' IST'; };
+    tick(); el.hidden = false; setInterval(tick, 15000);
+  });
+  // Fluid joins: a section whose CSS sets --flood rises over the one before it the way the homepage's flood does, its ground
+  // climbing the contour map with a moving edge. --flood is `auto` (the section's own background colour) or an "r g b" triple.
+  d.querySelectorAll('main section').forEach(function (section) {
+    var want = getComputedStyle(section).getPropertyValue('--flood').trim();
+    if (!want || want === 'none' || !section.previousElementSibling || section.parentElement.closest('section')) return;
+    var rgb = (want === 'auto' ? getComputedStyle(section).backgroundColor : want).match(/[\d.]+/g);
+    if (!rgb || rgb.length < 3 || rgb[3] === '0') return;
+    rgb = rgb.slice(0, 3);
+    var join = d.createElement('div'), canvas = d.createElement('canvas');
+    join.className = 'flood-join';
+    join.setAttribute('aria-hidden', 'true');
+    join.style.setProperty('--flood-c', 'rgb(' + rgb.join(',') + ')');
+    canvas.className = 'topo-bg';
+    var fluid = section.closest('.solutions-page') ? .45 : 1;
+    if (section.closest('.corporate-page') && section.matches('.statement, .co-kit')) fluid = .25;
+    canvas.flood = { rise: 70, fluid: fluid, base: 'vec3(' + rgb.map(function (n) { return (n / 255).toFixed(3); }).join(', ') + ')' };
+    if (section.matches('.contact-page > .ab-work')) {
+      canvas.flood.profile = 'contact';
+      join.classList.add('flood-join--contact');
+    }
+    join.appendChild(canvas);
+    section.classList.add('has-flood');
+    section.prepend(join);
+    if (canvas.flood.profile === 'contact') canvas.flood.rise = Math.min(56, join.offsetHeight * .6);
+  });
   var afterStage = (d.querySelector('.hero--stage') || {}).nextElementSibling;
   d.querySelectorAll('.topo-bg').forEach(function (c) {
     // The shared gallery canvas also draws behind the comparison; keep only its later dark flood.
     if (c.parentNode.matches('.versus') && c.closest('.workscape-pair')) return;
     if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30 };
-    if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)' };
-    topoField(c, afterStage || c.parentNode, c.flood);
+    if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)', profile: 'calm' };
+    topoField(c, c.closest('.course-page, .solutions-page') || afterStage || c.parentNode, c.flood); // inner pages: one map under every section
   });
 
   // The footer masthead clears over the panel; its generated robot remains one coherent cutout.
@@ -705,17 +847,18 @@
     }
   });
 
+  // The masthead floats over a dark hero and turns solid once the hero has gone (on phones, as soon as the page moves).
+  (function () {
+    var bar = d.querySelector('[data-top]'), hero = d.querySelector('[data-stage], .sol-hero, .course-hero');
+    if (!bar || !hero) return;
+    var solid = function () { bar.classList.toggle('is-solid', innerWidth < 900 ? scrollY > 40 : hero.getBoundingClientRect().bottom < 64); };
+    addEventListener('scroll', solid, { passive: true });
+    solid();
+  })();
+
   // The stage hero: a topographic ground, then the robot redrawn in WebGL with liquid neon blobs that reveal a second layer.
   d.querySelectorAll('[data-stage]').forEach(function (stage) {
     topoField(stage.querySelector('.stage__topo'), null);
-
-    // The masthead floats over the stage and turns solid once the stage has gone (on phones, as soon as the page moves).
-    var bar = d.querySelector('[data-top]');
-    if (bar) {
-      var solid = function () { bar.classList.toggle('is-solid', innerWidth < 900 ? scrollY > 40 : stage.getBoundingClientRect().bottom < 64); };
-      addEventListener('scroll', solid, { passive: true });
-      solid();
-    }
 
     if (still) return; // the photograph alone, standing still
     var cv = stage.querySelector('.stage__gl'), img = stage.querySelector('.stage__robot');
@@ -884,7 +1027,10 @@
     var bx = rigB && rigB.getContext('2d'), fx = rigF && rigF.getContext('2d');
     var LIVERY = 'ARTIFICIA  ✦  AI AUTOMATION  ✦  AGENTIC WORKFLOWS  ✦  BUSINESS SOFTWARE  ✦  CORPORATE AI TRAINING  ✦  ';
     var BAND = { y: .6, r: .2, h: .027 }, TILT = .24; // TILT: how far we look down on the band, in radians
+    var CAP = { y: .345, rx: .15, ry: .14, tilt: .38, base: 4 }; // the neural cap over the skull: centre (at the temples) and radii in photo heights, base latitude in degrees
     var rigIn = 0, spin = 0, glyphs = [], glyphFor = '';
+    // Rebuild the band lettering with the real site font after a slow font download.
+    if (d.fonts) d.fonts.ready.then(function () { glyphFor = ''; });
     var drawRig = function (now, t, ir, cr) {
       if (!bx || !fx) return;
       var rd = Math.min(window.devicePixelRatio || 1, 1.5), cw = cr.width, ch = cr.height, Wp = Math.round(cw * rd), Hp = Math.round(ch * rd);
@@ -945,7 +1091,7 @@
       fx.closePath();
       fx.fill();
       arc(bh / 2, shade(242, 255, 184, .9), 1.1);
-      fx.font = '800 ' + Math.max(8, Math.round(bh * .46)) + 'px "Roboto Flex", system-ui, sans-serif';
+      fx.font = '800 ' + Math.max(8, Math.round(bh * .46)) + 'px "Artificia Sans", system-ui, sans-serif';
       if ('fontStretch' in fx) fx.fontStretch = 'expanded';
       var key = fx.font + '|' + Math.round(BR);
       if (glyphFor !== key) {
@@ -972,6 +1118,49 @@
         fx.fillText(gl[0], 0, bh * .03);
         fx.restore();
       });
+
+      // The neural cap, balancing the band: a holographic wireframe of latitudes and meridians wrapping the skull, curving the
+      // other way to the band (we look up at it), turning slowly, with signals running up the meridians to the crown.
+      // Front surface only, fading at the silhouette; the back is hidden by the head. Lines are lime over a faint ink stroke so they read on the white shell.
+      var RX = h * CAP.rx, RY = h * CAP.ry, sy = oy + h * CAP.y + (1 - al) * h * .03, ct = Math.cos(CAP.tilt), st = Math.sin(CAP.tilt);
+      var lw = Math.max(1, h * .0011), lrot = t * .12 + spin * .4, D = Math.PI / 180;
+      var sp = function (la, lo) {
+        var y = Math.sin(la), z = Math.cos(la) * Math.cos(lo);
+        return [cx + RX * Math.cos(la) * Math.sin(lo), sy - RY * (y * ct + z * st), z * ct - y * st];
+      };
+      var vis = function (z) { var f = Math.min(Math.max(z / .45, 0), 1); return f * f * (3 - 2 * f); };
+      var line = function (pts, a) {
+        for (var n = 1; n < pts.length; n++) {
+          var p0 = pts[n - 1], p1 = pts[n], v = vis((p0[2] + p1[2]) / 2) * a;
+          if (v < .01) continue;
+          fx.globalAlpha = al * v;
+          fx.beginPath(); fx.moveTo(p0[0], p0[1]); fx.lineTo(p1[0], p1[1]);
+          fx.strokeStyle = 'rgba(16, 18, 10, .3)'; fx.lineWidth = lw * 3; fx.stroke();
+          fx.strokeStyle = '#d2ff00'; fx.lineWidth = lw; fx.stroke();
+        }
+      };
+      var n2, pts;
+      [[CAP.base, .95], [30, .5], [52, .45], [72, .35]].forEach(function (L) {
+        for (pts = [], n2 = 0; n2 <= 48; n2++) pts.push(sp(L[0] * D, (n2 / 48 * 2 - 1) * Math.PI));
+        line(pts, L[1]);
+      });
+      for (var m = 0; m < 14; m++) {
+        for (pts = [], n2 = 0; n2 <= 12; n2++) pts.push(sp((CAP.base + (78 - CAP.base) * n2 / 12) * D, m / 14 * 2 * Math.PI + lrot));
+        line(pts, .4);
+        var nd = pts[0];
+        fx.globalAlpha = al * vis(nd[2]); fx.fillStyle = '#d2ff00';
+        fx.beginPath(); fx.arc(nd[0], nd[1], lw * 1.8, 0, 2 * Math.PI); fx.fill();
+      }
+      // Signals: each climbs a meridian from the base ring to the crown in 1.6 s, then picks another.
+      for (var k = 0; k < 4; k++) {
+        var ph = t / 1.6 + k / 4, cyc2 = Math.floor(ph), pr = ph - cyc2, lo = ((cyc2 * 5 + k * 3) % 14) / 14 * 2 * Math.PI + lrot;
+        for (var j = 8; j >= 0; j--) {
+          var q = sp((CAP.base + (78 - CAP.base) * Math.max(pr - j * .025, 0)) * D, lo), a = vis(q[2]) * (1 - j / 9) * Math.sin(Math.PI * pr);
+          if (a < .01) continue;
+          fx.globalAlpha = al * a; fx.fillStyle = j ? '#d2ff00' : '#f4ffd0';
+          fx.beginPath(); fx.arc(q[0], q[1], lw * (j ? 2 - j * .15 : 3), 0, 2 * Math.PI); fx.fill();
+        }
+      }
       bx.globalAlpha = fx.globalAlpha = 1;
     };
     var on = false, raf = 0, t0 = performance.now(), lastF = 0;
@@ -1145,7 +1334,7 @@
       list.querySelectorAll('.task__t').forEach(function (t) {
         var word = t.firstElementChild, text = word.textContent.trim().toUpperCase();
         t.style.cssText = 'font-size:100px;white-space:nowrap';
-        pen.font = '820 100px "Roboto Flex"';
+        pen.font = '820 100px "Artificia Sans"';
         var first = pen.measureText(text[0]), last = pen.measureText(text[text.length - 1]);
         var lead = -first.actualBoundingBoxLeft, tail = last.width - last.actualBoundingBoxRight + parseFloat(getComputedStyle(t).letterSpacing); // CSS spacing also follows the last letter
         var px = 100 * t.clientWidth / (word.getBoundingClientRect().width - lead - tail);
@@ -1280,7 +1469,7 @@
   // Statement: match the reference cascade: .15s line stagger, .6s wipes, retraction after .3s.
   // The original server-rendered heading remains available to screen readers; the animated copy is decorative.
   d.querySelectorAll('.statement__t').forEach(function (t) {
-    var original = t.innerHTML;
+    var original = t.innerHTML, byRow = !!t.closest('.corporate-page');
     gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function () {
       var readable = d.createElement('span'), visual = d.createElement('span');
       readable.className = 'statement__readable';
@@ -1288,10 +1477,15 @@
       visual.className = 'statement__visual';
       visual.setAttribute('aria-hidden', 'true');
       t.replaceChildren(readable, visual);
-      var tl, observer, timer, signature = '', started = false, disposed = false;
+      var tl, observer, timer, rowTriggers = [], rowTimelines = [], revealedWords = 0, signature = '', started = false, disposed = false;
+      var clearRows = function () {
+        rowTriggers.forEach(function (trigger) { trigger.kill(); }); rowTriggers = [];
+        rowTimelines.forEach(function (timeline) { timeline.kill(); }); rowTimelines = [];
+      };
       var build = function () {
         if (disposed) return;
         if (tl) { if (tl.scrollTrigger) tl.scrollTrigger.kill(); tl.kill(); }
+        clearRows();
         visual.innerHTML = original;
         var walk = d.createTreeWalker(visual, NodeFilter.SHOW_TEXT), nodes = [], n, gap = false, previousWord;
         while ((n = walk.nextNode())) nodes.push(n);
@@ -1331,12 +1525,37 @@
         });
         visual.replaceChildren(rows);
         signature = t.clientWidth + ':' + getComputedStyle(t).fontSize;
-        if (!lines.length || started) { ST.refresh(); return; }
+        if (!lines.length || (started && !byRow)) { ST.refresh(); return; }
         var bars = visual.querySelectorAll('.statement__bar'), boxes = visual.querySelectorAll('.statement__line');
+        // This short statement still spans most of a laptop screen. Reveal each row when it arrives, so the bars on
+        // lower lines cannot finish below the fold. Batch rows arriving together to retain the reference's cascade.
+        if (byRow) {
+          var ends = new Map(), count = 0, pending = [];
+          boxes.forEach(function (box, i) {
+            count += lines[i].words.length; ends.set(box, count);
+            if (count <= revealedWords) return;
+            gsap.set(box, { clipPath: 'inset(0 100% 0 0)' });
+            gsap.set(bars[i], { scaleX: 1, transformOrigin: 'right center' });
+            pending.push(box);
+          });
+          rowTriggers = ST.batch(pending, { start: 'top 82%', once: true, interval: .1, onEnter: function (batch) {
+            batch.forEach(function (box, i) {
+              if (disposed || !visual.contains(box)) return;
+              revealedWords = Math.max(revealedWords, ends.get(box));
+              var wipe = gsap.timeline({ delay: i * .15 })
+                .to(box, { clipPath: 'inset(0 0% 0 0)', duration: .6, ease: 'power2.out' }, 0)
+                .to(box.querySelector('.statement__bar'), { scaleX: 0, duration: .6, ease: 'power2.inOut' }, .3);
+              rowTimelines.push(wipe);
+            });
+          } });
+          ST.refresh(); return;
+        }
         // Measured on landonorris.com: lines cascade instead of waiting for earlier wipes to finish.
         gsap.set(boxes, { clipPath: 'inset(0 100% 0 0)' });
         gsap.set(bars, { scaleX: 1, transformOrigin: 'right center' });
-        tl = gsap.timeline({ scrollTrigger: { trigger: t, start: 'top 90%', once: true },
+        // Inner pages open with a full-height hero, so their statement arrives low and large: wait until it is well in
+        // view, or the cascade finishes before most lines are on screen (user, 12 Nov). The homepage keeps the reference.
+        tl = gsap.timeline({ scrollTrigger: { trigger: t, start: t.closest('.solutions-page, .course-page') ? 'top 70%' : 'top 90%', once: true },
           onStart: function () { started = true; } });
         bars.forEach(function (bar, i) {
           var at = i * 0.15;
@@ -1358,6 +1577,7 @@
       }).catch(function () { if (!disposed) t.innerHTML = original; });
       return function () {
         disposed = true; clearTimeout(timer);
+        clearRows();
         if (observer) observer.disconnect();
         if (tl) { if (tl.scrollTrigger) tl.scrollTrigger.kill(); tl.kill(); }
         t.innerHTML = original;
@@ -1443,6 +1663,24 @@
       section.addEventListener('focusin', revealFocus);
       return function () { section.removeEventListener('focusin', revealFocus); };
     });
+    // Wider screens: the section holds while the six cards slide left with the scroll, then the page moves on.
+    gsap.matchMedia().add('(min-width: 900px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)', function () {
+      var track = section.querySelector('.solutions__track');
+      section.classList.add('is-rail');
+      var shift = function () { return track.scrollWidth - track.clientWidth; };
+      var slide = gsap.to(track, { x: function () { return -shift(); }, ease: 'none', scrollTrigger: {
+        trigger: track, start: 'center 52%', end: function () { return '+=' + shift(); },
+        pin: section, scrub: 0.6, invalidateOnRefresh: true } });
+      // Tabbing to a card scrolls to the frame where that card is fully in view.
+      var showFocus = function (e) {
+        var card = e.target.closest('.solution'), st = slide.scrollTrigger, max = shift();
+        if (!card || !max) return;
+        var p = Math.min(1, Math.max(0, (card.offsetLeft - track.offsetLeft + card.offsetWidth - track.clientWidth) / max));
+        window.scrollTo({ top: st.start + (st.end - st.start) * p, behavior: 'instant' });
+      };
+      section.addEventListener('focusin', showFocus);
+      return function () { section.removeEventListener('focusin', showFocus); section.classList.remove('is-rail'); };
+    });
   });
 
   // The list crosses itself off at the reading line, always in order, however fast the visitor scrolls.
@@ -1497,6 +1735,14 @@
       paint();
       tl.to(o, { t: 1, duration: 1.1, ease: 'power3.out', onUpdate: paint }, 0.1);
     }
+  });
+
+  // Fluid joins climb with the scroll: over the contours where WebGL runs, as a rising arc on phones. They stay low while the
+  // section above is still being read and close over it only as the join reaches the top of the screen.
+  d.querySelectorAll('.flood-join').forEach(function (join) {
+    var trigger = { trigger: join.parentNode, start: 'top bottom', end: 'top top', scrub: 1, invalidateOnRefresh: true };
+    if (join.classList.contains('is-live')) gsap.fromTo(join.firstChild.flood, { rise: function () { return join.classList.contains('flood-join--contact') ? Math.min(56, join.offsetHeight * .6) : 70; } }, { rise: function () { return join.offsetHeight * 1.4; }, ease: join.classList.contains('flood-join--contact') ? 'sine.inOut' : 'power4.in', scrollTrigger: trigger });
+    else gsap.fromTo(join, { clipPath: join.classList.contains('flood-join--contact') ? 'ellipse(90% 45% at 50% 100%)' : 'ellipse(85% 7% at 50% 100%)' }, { clipPath: 'ellipse(110% 100% at 50% 100%)', ease: 'power4.in', scrollTrigger: trigger });
   });
 
   // The footer arrives: neon floods up over the last section, the frame closes in, the robot rises, then the line is said and the AI circled.

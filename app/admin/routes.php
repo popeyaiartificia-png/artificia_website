@@ -267,6 +267,8 @@ function settings_fields(): array
         ],
         'Business details' => [
             'gbp_url' => ['Google Business Profile URL', 'url', ''],
+            'org_map_url' => ['Google Maps URL', 'url', 'Destination for the office map link.'],
+            'org_map_query' => ['Map location', 'text', 'Google Maps place name or coordinates. Blank uses the address.'],
             'whatsapp_number' => ['WhatsApp number', 'digits', 'With country code. Blank uses 919104488859.'],
             'org_phone' => ['Phone', 'text', ''],
             'org_email' => ['Public email', 'email', ''],

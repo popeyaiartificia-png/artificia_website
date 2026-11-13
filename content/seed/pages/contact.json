@@ -2,33 +2,63 @@
   "slug": "contact",
   "kind": "page",
   "title": "Contact",
-  "h1": "Contact Artificia",
+  "h1": "Contact *Artificia.*",
   "meta_title": "Contact us in Vadodara | Artificia AI",
   "meta_description": "Visit, call or WhatsApp Artificia AI at Darshanam Arise, Gotri-Sevasi Road, opposite Osia Mall, Vadodara. Or send us a message.",
   "sections": [
     {
-      "type": "map_contact",
+      "type": "hero",
       "fields": {
-        "heading": "Visit, call or *WhatsApp*",
-        "show_map": "yes"
+        "statement": "Tell us what you want to do with AI.",
+        "stat_value": "Free",
+        "stat_label": "AI consultation to start",
+        "variant": "contact",
+        "eyebrow": "Contact · Vadodara, Gujarat",
+        "subheading": "Questions about AI automation, team training or our courses? Message, call or visit us in Vadodara.",
+        "primary_cta_label": "Send a message",
+        "primary_cta_link": "#enquire",
+        "secondary_cta_label": "Find the office",
+        "secondary_cta_link": "#visit"
       }
     },
     {
       "type": "card_grid",
       "fields": {
-        "heading": "Or go straight to the *right form*",
-        "columns": "3",
+        "variant": "pillars",
+        "eyebrow": "Where to start",
+        "heading": "Or go straight to *the right team.*",
+        "intro": "Each of these forms reaches the team that handles that work.",
         "cards": [
-          {"image": "classroom-instructor.jpg", "title": "AI Masterclass", "text": "Ask about batches and tracks.", "link": "/ai-masterclass#enquire"},
-          {"image": "corporate-session.jpg", "title": "Corporate AI training", "text": "Ask for the free 2-hour pilot.", "link": "/corporate-ai-training#enquire"},
-          {"image": "business-owner-desk.jpg", "title": "Services", "text": "Book the free 15-minute flow audit.", "link": "/services#enquire"}
+          {
+            "title": "AI automation *and software*",
+            "text": "Book a free AI audit.",
+            "link": "/services#enquire"
+          },
+          {
+            "title": "Corporate *AI training*",
+            "text": "Ask for the free 2-hour pilot.",
+            "link": "/corporate-ai-training#enquire"
+          },
+          {
+            "title": "AI *Masterclass*",
+            "text": "Ask about batches and tracks.",
+            "link": "/ai-masterclass#enquire"
+          }
         ]
+      }
+    },
+    {
+      "type": "map_contact",
+      "fields": {
+        "heading": "Visit *us*",
+        "show_map": "yes",
+        "details": "address"
       }
     },
     {
       "type": "lead_form",
       "fields": {
-        "heading": "Send us a *message*",
+        "heading": "Send us a *message.*",
         "intro": "Tell us what you need and we will reply on WhatsApp.",
         "form_type": "contact"
       }

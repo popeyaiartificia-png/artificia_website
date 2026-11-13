@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Leads: POST /lead (validate, rate limit, save, answer), then the follow-ups: Meta Conversions API, the alert
 // email and the n8n forward. The visitor's answer depends only on the saved row; follow-ups never change it.
 
-const LEAD_TYPES = ['masterclass', 'corporate', 'services', 'contact'];
+const LEAD_TYPES = ['masterclass', 'corporate', 'services', 'contact', 'careers'];
 
 /** Each form's fields => required. name, email, phone and company are columns; the rest go in `fields`. */
 const LEAD_FORMS = [
@@ -13,6 +13,7 @@ const LEAD_FORMS = [
         'location' => true, 'objectives' => false, 'challenge' => false],
     'services' => ['name' => true, 'phone' => true, 'email' => true, 'company' => false, 'service' => true, 'message' => false],
     'contact' => ['name' => true, 'phone' => true, 'email' => false, 'message' => true],
+    'careers' => ['name' => true, 'phone' => true, 'email' => true, 'role' => true, 'resume' => true, 'message' => false],
 ];
 
 /** The options of each select (and the objectives checkboxes): lead_form.php draws these, lead_validate() accepts only these. */
@@ -22,13 +23,14 @@ const LEAD_OPTIONS = [
     'employees' => ['1–10', '11–25', '26–50', '51–100', '100+'],
     'adoption' => ['Not using AI yet', 'Exploring (ChatGPT, Claude)', 'Some tools or automations', 'Custom automations or models'],
     'objectives' => ['Automate repetitive work', 'Upskill the team on AI', 'Build AI agents or chatbots', 'Integrate n8n / Make / APIs', 'Something else'],
-    'service' => ['GoHighLevel setup', 'Website development', 'Content and marketing', 'RAG or custom automation', 'AI automation', 'Not sure yet'],
+    'service' => ['AI automation', 'Agentic AI', 'Software & apps', 'Website development', 'Marketing automation / GoHighLevel', 'SEO / AEO / GEO', 'Cloud & private AI', 'Content and marketing', 'Not sure yet'],
+    'role' => ['AI Engineer', 'Marketing', 'AI SEO Expert', 'Teaching Expert'], // the Careers hero's role cards pick these by label
 ];
 
 /** Readable names for the `fields` answers (alert email, admin detail, CSV). */
 const LEAD_LABELS = [
     'i_am' => 'Which describes them', 'track' => 'Track', 'employees' => 'Team size', 'adoption' => 'AI today', 'location' => 'City',
-    'objectives' => 'Objectives', 'challenge' => 'Anything we should know', 'service' => 'Service', 'message' => 'Message',
+    'objectives' => 'Objectives', 'challenge' => 'Anything we should know', 'service' => 'Service', 'message' => 'Message', 'role' => 'Role', 'resume' => 'Resume link',
 ];
 
 /** Tracking fields every form posts (hidden), with their column sizes. */
@@ -112,7 +114,7 @@ function lead_validate(string $type, array $in): array
             continue;
         }
         $long = in_array($key, ['message', 'challenge'], true);
-        $v = lead_str($in[$key] ?? '', $long ? 5000 : 255, $long);
+        $v = lead_str($in[$key] ?? '', $long ? 5000 : ($key === 'resume' ? 1000 : 255), $long);
         if ($v === '') {
             if ($required) {
                 $errors[$key] = isset(LEAD_OPTIONS[$key]) ? 'Choose one.' : 'Fill this in.';
@@ -121,6 +123,8 @@ function lead_validate(string $type, array $in): array
         }
         if ($key === 'email' && !filter_var($v, FILTER_VALIDATE_EMAIL)) {
             $errors[$key] = 'Enter a valid email address, like name@example.com.';
+        } elseif ($key === 'resume' && !(preg_match('#^https?://#i', $v) && filter_var($v, FILTER_VALIDATE_URL))) {
+            $errors[$key] = 'Paste the full link to your resume, starting with https://';
         } elseif ($key === 'phone' && ($v = normalize_phone($v)) === null) {
             $errors[$key] = 'Enter a 10-digit mobile number, or the full number starting with + and the country code.';
         } elseif (isset(LEAD_OPTIONS[$key]) && !in_array($v, LEAD_OPTIONS[$key], true)) {
@@ -264,7 +268,9 @@ function lead_handle(PDO $db, array $in, array $server, array $settings): array
     if ($flags['rate_limited']) {
         return ['id' => $saved['id']] + $limited;
     }
-    return ['status' => 200, 'body' => ['ok' => true] + ($flags['spam'] ? [] : ['event_id' => $saved['event_id']]), 'id' => $saved['id']];
+    // Job applications are not sales leads, so they get no event_id and the ad pixels never count them.
+    $track = !$flags['spam'] && $v['data']['form_type'] !== 'careers';
+    return ['status' => 200, 'body' => ['ok' => true] + ($track ? ['event_id' => $saved['event_id']] : []), 'id' => $saved['id']];
 }
 
 /** A fetch from site.js asks for JSON; a plain form post (no JavaScript) gets a page. */
@@ -326,7 +332,7 @@ function lead_followups(PDO $db, int $id, array $settings, string $baseUrl): voi
             $token = (string) ($settings['meta_capi_token'] ?? '');
             // Sent from an admin preview or the /_design gallery: a test, not a visitor.
             $preview = preg_match('#^/(admin|_design)(/|$)#', (string) parse_url($lead['page_url'], PHP_URL_PATH)) === 1;
-            if ($pixel === '' || $token === '' || $preview) {
+            if ($pixel === '' || $token === '' || $preview || $lead['form_type'] === 'careers') { // applications are not sales leads
                 return;
             }
             $source = $lead['page_url'] !== '' ? $lead['page_url'] : rtrim($baseUrl, '/') . '/'; // event_source_url is never empty

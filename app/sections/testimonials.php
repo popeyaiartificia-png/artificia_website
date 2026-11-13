@@ -3,6 +3,10 @@ if (($f['layout'] ?? '') === 'fan') {
     echo render_view('testimonials-fan', ['f' => $f]);
     return;
 }
+if (($f['layout'] ?? '') === 'proof') {
+    include VIEWS_DIR . '/corporate-proof.php';
+    return;
+}
 // Videos and written quotes are laid out as two rows so cards of one kind line up.
 // Only Drive and YouTube links become players; anything else is treated as a written quote.
 $items = array_map(fn($it) => ['src' => video_embed_src((string) ($it['video_url'] ?? ''))] + $it, $f['items'] ?? []);

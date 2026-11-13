@@ -1,4 +1,7 @@
 <section class="sec sec--faqs faq" id="faq">
+<?php if (($page['sections'][0]['fields']['variant'] ?? '') === 'solutions'): ?>
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
+<?php endif ?>
   <div class="wrap faq__grid">
     <?= sec_head($f['heading'] ?? '') ?>
     <div class="qa">

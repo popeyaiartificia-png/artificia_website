@@ -2,107 +2,148 @@
   "slug": "corporate-ai-training",
   "kind": "page",
   "title": "Corporate AI training",
-  "h1": "Corporate AI training, *built around your work*",
-  "meta_title": "Corporate AI training in Vadodara, Gujarat | Artificia AI",
-  "meta_description": "Corporate AI training in Vadodara and Gujarat, built around your documents and departments. On-site or over Microsoft Teams. Start with a free 2-hour pilot.",
+  "h1": "Make AI useful *across your organisation.*",
+  "meta_title": "Corporate AI Training & Workforce Enablement | Artificia AI",
+  "meta_description": "Corporate AI training in Vadodara and Gujarat, built around your documents and departments. On-site or over Microsoft Teams. Start with a free 1-hour pilot.",
   "sections": [
     {
       "type": "hero",
       "fields": {
-        "eyebrow": "Corporate AI training in Vadodara and Gujarat",
-        "subheading": "Custom training for your teams, on-site or online over Microsoft Teams. Built from your own documents, and every session ends in something that works.",
-        "image": "corporate-session.jpg",
-        "variant": "split",
-        "primary_cta_label": "Ask for the free pilot",
+        "statement": "Training built on your team's own work.",
+        "stat_value": "100+",
+        "stat_label": "Professionals trained through corporate training sessions",
+        "variant": "corporate",
+        "eyebrow": "Corporate AI training · On-site or online · Gujarat",
+        "subheading": "Training built around your own documents and departments. Every session ends in something your team keeps using.",
+        "primary_cta_label": "Request a Corporate Training Consultation",
         "primary_cta_link": "#enquire",
-        "secondary_cta_label": "See a client system",
-        "secondary_cta_link": "/case-studies/orkay-tiles"
+        "secondary_cta_label": "Start with a free 1-hour pilot",
+        "secondary_cta_link": "#pilot",
+        "doors": [
+          {"label": "Leadership", "note": "Where AI fits first", "link": "#dept-leadership"},
+          {"label": "Sales", "note": "Proposals in your voice", "link": "#dept-sales"},
+          {"label": "Marketing", "note": "Campaigns made in-house", "link": "#dept-marketing"},
+          {"label": "HR", "note": "Job descriptions and onboarding", "link": "#dept-hr"},
+          {"label": "Finance", "note": "Invoices read, MIS drafted", "link": "#dept-finance"},
+          {"label": "Operations", "note": "Reports without re-typing", "link": "#dept-operations"},
+          {"label": "Customer support", "note": "Answers from your documents", "link": "#dept-customer-support"},
+          {"label": "IT & developers", "note": "Agents with human approval", "link": "#dept-it-developers"}
+        ]
       }
     },
     {
-      "type": "process_steps",
+      "type": "statement",
       "fields": {
-        "heading": "How a program *comes together*",
-        "intro": "Length and format are set by your needs, not by a fixed syllabus.",
-        "steps": [
-          {"title": "Discovery", "text": "We meet leadership and department heads, and map the work that takes the most time."},
-          {"title": "A curriculum from your documents", "text": "Exercises are rebuilt around your own files, reports and systems, not textbook examples."},
-          {"title": "Sessions that end in a deliverable", "text": "Each session ends with something working: a tested prompt, an automated workflow or an internal tool."},
-          {"title": "Support after", "text": "Refreshers and follow-up help keep the new habits going as the tools change."}
-        ]
+        "text": "Not a class about AI. *Your team's own work,* done *with AI.*"
       }
     },
     {
       "type": "card_grid",
       "fields": {
-        "heading": "Training for every *department*",
-        "intro": "Departments can train together, each working on exercises for its own role.",
-        "columns": "3",
+        "variant": "kit",
+        "heading": "Five things your company *keeps.*",
+        "intro": "The session ends. These stay with your team, built on its own work.",
         "cards": [
-          {"image": "ai-sales.jpg", "title": "Sales", "text": "Proposals, follow-ups and call summaries drafted in your company's voice."},
-          {"image": "ai-hr.jpg", "title": "HR", "text": "Job descriptions, CV screening and onboarding packs."},
-          {"image": "ai-ops.jpg", "title": "Operations", "text": "Status reports, and updates that move between systems without re-typing."},
-          {"image": "ai-finance.jpg", "title": "Accounts", "text": "Invoice and expense extraction, reconciliation support and monthly MIS."},
-          {"image": "ai-marketing.jpg", "title": "Marketing", "text": "Campaign copy, decks and social content made in-house."},
-          {"image": "ai-support.jpg", "title": "Customer support", "text": "Answers to common questions, drafted from your own documents."}
+          {"icon": "flow-arrow", "title": "Role-relevant workflows", "text": "Each department leaves with workflows tested on its own files."},
+          {"icon": "lock-key", "title": "Safer AI use", "text": "Approved tools, a written list of what never gets uploaded, and the habit of checking AI output before a customer sees it."},
+          {"icon": "clock", "title": "Better daily habits", "text": "Repeatable prompts for writing, research, meetings, documents and analysis."},
+          {"icon": "file-text", "title": "Practical projects", "text": "Every session ends in something that works: a tested prompt, an automated workflow or an internal tool."},
+          {"icon": "chart-line-up", "title": "An adoption plan", "text": "Who uses what next, with follow-up so the new habits last."}
         ]
       }
     },
     {
-      "type": "card_grid",
+      "type": "use_cases",
       "fields": {
-        "heading": "Programs shaped by your *industry*",
-        "intro": "The tools change by industry. The training method does not.",
-        "columns": "3",
-        "cards": [
-          {"image": "industry-manufacturing.jpg", "title": "Manufacturing", "text": "Quotations, tenders, quality reports and MIS, with less copying between sheets.", "link": "/corporate-ai-training/manufacturing"},
-          {"image": "industry-healthcare.jpg", "title": "Healthcare", "text": "Patient communication, nursing workflows and hospital administration, with care for privacy.", "link": "/corporate-ai-training/healthcare"},
-          {"image": "industry-pharmaceutical.jpg", "title": "Pharmaceutical", "text": "SOPs, documentation and reports that teams can search in plain words."},
-          {"image": "industry-chemical.jpg", "title": "Chemical", "text": "Safety documents, supplier emails and plant reports in one place."},
-          {"image": "industry-import-export.jpg", "title": "Import and export", "text": "Enquiries in many languages, quotations and shipment follow-ups."},
-          {"image": "industry-finance.jpg", "title": "Finance", "text": "Reconciliation, reporting and client questions answered from your own files."}
-        ]
-      }
-    },
-    {
-      "type": "text_image",
-      "fields": {
-        "heading": "Start with a *free pilot*",
-        "body": "<p>Before you commit, we run one 2-hour session for a group of your staff on the AI landscape and prompting.</p><p>It runs on-site at your office, or online over Microsoft Teams. There is no commitment.</p>",
-        "image": "ai-executive.jpg",
-        "image_side": "left",
-        "cta_label": "Ask for the pilot",
-        "cta_link": "#enquire"
-      }
-    },
-    {
-      "type": "stats",
-      "fields": {
-        "heading": "What AI-enabled teams *typically* see",
-        "note": "Typical outcomes for AI-enabled teams.",
+        "variant": "departments",
+        "heading": "Pick a team. See *its own work,* with AI.",
+        "intro": "Departments can train together, each on exercises for its own role.",
         "items": [
-          {"value": "92%", "label": "faster lead handling"},
-          {"value": "10–20 hrs", "label": "saved per employee each week"},
-          {"value": "65%", "label": "less repetitive work"},
-          {"value": "500%", "label": "boost in customer response"},
-          {"value": "4×", "label": "faster reporting"}
+          {"title": "Leadership", "before": "AI ideas everywhere, and no clear place to start.", "after": "An AI opportunity map, the risks to manage, and the first use cases worth doing."},
+          {"title": "Sales", "before": "Proposals, follow-ups and call notes written from a blank page.", "after": "Proposals, follow-ups and call summaries drafted in your company's voice."},
+          {"title": "Marketing", "before": "Every campaign, deck and post starts from scratch.", "after": "Campaign copy, decks and social content made in-house, and checked before it goes out."},
+          {"title": "HR", "before": "Job descriptions, CV screening and onboarding packs done by hand.", "after": "Job descriptions, CV screening and onboarding packs prepared faster, with people making every decision."},
+          {"title": "Finance", "before": "Invoices and expenses typed in line by line.", "after": "Invoice and expense details extracted, reconciliation supported and the monthly MIS drafted."},
+          {"title": "Operations", "before": "Status reports re-typed from one system into another.", "after": "Status reports and updates that move between systems without re-typing."},
+          {"title": "Customer support", "before": "The same questions answered from memory, again and again.", "after": "Answers to common questions drafted from your own documents."},
+          {"title": "IT & developers", "before": "AI tools tried one by one, with no rules on what they may touch.", "after": "Workflows and agents built with tool permissions, testing and human approval."}
         ]
       }
     },
     {
-      "type": "stats",
+      "type": "solutions",
       "fields": {
-        "heading": "Trained in *real sessions*",
-        "note": "Artificia's own count across its corporate training sessions.",
+        "variant": "programmes",
+        "heading": "Six programmes. *Shaped around you.*",
+        "intro": "Each runs as an executive briefing, a workshop, a multi-session programme or a custom cohort. Its length follows your goals.",
         "items": [
-          {"value": "100+", "label": "professionals trained through corporate training sessions"}
+          {"title": "AI for Leadership", "text": "For CXOs, founders and senior managers.", "includes": "An AI opportunity map\nRisk and governance overview\nPrioritised use cases\nAn adoption roadmap", "link": "#enquire", "link_label": "Book an executive briefing"},
+          {"title": "AI Productivity for Teams", "text": "For employees across every function.", "includes": "Research, writing and meetings\nDocuments and analysis\nSafe tool use\nTeam playbooks", "link": "#enquire", "link_label": "Plan a team workshop"},
+          {"title": "Department-Specific Training", "text": "For sales, marketing, HR, finance, operations, support and IT.", "includes": "Role-based scenarios\nWorkflow exercises\nTemplates\nA department action plan", "link": "#departments", "link_label": "Choose your department"},
+          {"title": "AI Automation & Agentic Systems", "text": "For technical teams, process owners and product or IT teams.", "includes": "Workflow design and agents\nTool permissions and retrieval\nEvaluation and monitoring\nHuman approval", "link": "#enquire", "link_label": "Discuss an advanced workshop"},
+          {"title": "AI for Marketing & Search", "text": "For marketing, growth and agency teams.", "includes": "AI-assisted campaign workflows\nSEO, AEO and GEO basics\nContent checks\nReporting", "link": "#enquire", "link_label": "Request marketing-team training"},
+          {"title": "Custom Corporate Academy", "text": "For organisations with specific skill gaps.", "includes": "Needs analysis\nCustom modules\nCohort design and assessment\nFollow-up", "link": "#enquire", "link_label": "Request a tailored proposal"}
+        ]
+      }
+    },
+    {
+      "type": "tools",
+      "fields": {
+        "heading": "How a programme *comes together*",
+        "intro": "Six steps, from a first conversation to habits that last. Sessions run on-site at your office or online over Microsoft Teams.",
+        "tools_label": "Trained on the tools you approve",
+        "tools_more": "And any tool your team already uses.",
+        "tools_more_note": "These are a sample, not a limit. We train on your approved stack, whatever it is.",
+        "flow": [
+          {"title": "Discovery", "note": "Where your teams are with AI"},
+          {"title": "Goals", "note": "What the training must change"},
+          {"title": "Curriculum", "note": "Built from your own documents"},
+          {"title": "Live delivery", "note": "On-site or over Teams"},
+          {"title": "Assessment", "note": "What each person can now do"},
+          {"title": "Follow-up", "note": "Refreshers as the tools change"}
+        ],
+        "tools": [
+          {"name": "ChatGPT", "brand": "chatgpt"},
+          {"name": "Claude", "brand": "claude"},
+          {"name": "Gemini", "brand": "gemini"},
+          {"name": "Copilot", "brand": "copilot"},
+          {"name": "NotebookLM", "brand": "notebooklm"},
+          {"name": "Perplexity", "brand": "perplexity"},
+          {"name": "Microsoft 365", "brand": "microsoft"},
+          {"name": "Google Workspace", "brand": "google"},
+          {"name": "Notion", "brand": "notion"},
+          {"name": "Canva", "brand": "canva"},
+          {"name": "Gamma", "brand": "gamma"},
+          {"name": "Grammarly", "brand": "grammarly"},
+          {"name": "Midjourney", "brand": "midjourney"},
+          {"name": "ElevenLabs", "brand": "elevenlabs"},
+          {"name": "HeyGen", "brand": "heygen"},
+          {"name": "n8n", "brand": "n8n"},
+          {"name": "Zapier", "brand": "zapier"},
+          {"name": "Make", "brand": "make"}
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "fields": {
+        "variant": "pass",
+        "heading": "Start with a *free pilot.*",
+        "text": "We review how your team works and identify where AI can improve productivity and save time. There is no commitment after it.",
+        "button_label": "Ask for the free pilot",
+        "button_link": "#enquire",
+        "details": [
+          {"label": "Length", "value": "1 hour"},
+          {"label": "Topic", "value": "AI consultation and walkthrough"},
+          {"label": "After", "value": "No commitment"}
         ]
       }
     },
     {
       "type": "testimonials",
       "fields": {
-        "heading": "In her *own words*",
+        "layout": "proof",
+        "heading": "*100+ professionals* trained through corporate training sessions.",
         "items": [
           {"name": "Alphonsa N. P", "role": "Chief Nursing Administrator, Aadicura Super Speciality Hospital", "photo": "alphonsa-n-p.jpg", "quote": "Joining Artificia was an eye-opening experience. The AI training is highly practical and directly applicable to modern healthcare operations."}
         ]
@@ -113,25 +154,28 @@
       "fields": {
         "heading": "Questions from HR and *leadership*",
         "items": [
-          {"question": "How long is a program?", "answer": "As long as your goals need. Length and format are set after discovery, around your departments and your team's schedule."},
+          {"question": "How long is a programme?", "answer": "As long as your goals need. Length and format are set after discovery, around your departments and your team's schedule."},
           {"question": "Can the training run online?", "answer": "Yes. Sessions run on-site at your office, or online over Microsoft Teams and similar tools. A mix of both also works."},
           {"question": "Who should attend?", "answer": "Anyone who works with documents, data or customers. Departments can attend together while each works on exercises for its own role."},
           {"question": "What does each session deliver?", "answer": "Something your team keeps using: a tested prompt, a working automation or an internal tool, built on your own work."},
+          {"question": "Which AI tools will my team learn?", "answer": "The ones your company approves. That can include ChatGPT, Claude, Gemini, Copilot and NotebookLM, and n8n for automation."},
           {"question": "Is our company data safe?", "answer": "We agree in writing what may never be uploaded and which tools are approved. Staff are trained to check AI output before it reaches a customer."},
-          {"question": "How does the free pilot work?", "answer": "We run one 2-hour session for a group of your staff on the AI landscape and prompting, on-site or online. There is no commitment."}
+          {"question": "Do you train for our industry?", "answer": "Yes. Exercises are built from your industry's own documents, so a hospital team and a factory team practise on different work."},
+          {"question": "How does the free pilot work?", "answer": "We start with a free 1-hour AI consultation and walkthrough. We review how your team works and identify where AI can improve productivity and save time. There is no commitment."}
         ]
       }
     },
     {
       "type": "lead_form",
       "fields": {
-        "heading": "Ask for the *free pilot*",
-        "intro": "Tell us about your team and we will set up a 2-hour session.",
+        "heading": "Request a corporate training *consultation.*",
+        "intro": "Tell us about your team. We will reply on WhatsApp to plan the free 1-hour AI consultation and walkthrough.",
         "form_type": "corporate",
+        "button_label": "Request a consultation",
         "side_points": [
           {"text": "Built around your documents and departments"},
           {"text": "On-site, or online over Microsoft Teams"},
-          {"text": "No commitment after the pilot"}
+          {"text": "Starts with a free 1-hour pilot"}
         ]
       }
     }

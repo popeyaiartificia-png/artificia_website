@@ -27,6 +27,12 @@ function schema_graph(array $page, array $settings, string $baseUrl): array
     $title = heading_plain($page['title']);
     $provider = ['@type' => 'Organization', 'name' => 'Artificia AI', 'url' => "$baseUrl/"];
     $graph = [];
+    if (in_array($page['sections'][0]['fields']['variant'] ?? '', ['course', 'solutions'], true)) {
+        $graph[] = ['@type' => 'BreadcrumbList', 'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => "$baseUrl/"],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => $title, 'item' => $url],
+        ]];
+    }
 
     if ($page['slug'] === 'home') {
         $graph[] = schema_organization($settings, $baseUrl);

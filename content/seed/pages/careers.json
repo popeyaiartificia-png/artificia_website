@@ -1,0 +1,53 @@
+{
+  "slug": "careers",
+  "kind": "page",
+  "title": "Careers",
+  "h1": "Careers at *Artificia.*",
+  "meta_title": "Careers at Artificia AI, Vadodara",
+  "meta_description": "Open roles at Artificia AI in Vadodara: AI Engineer, Marketing, AI SEO Expert and Teaching Expert. Choose a role and send us a link to your resume.",
+  "sections": [
+    {
+      "type": "hero",
+      "fields": {
+        "variant": "careers",
+        "eyebrow": "Careers · Vadodara, Gujarat",
+        "statement": "Help businesses put AI to work.",
+        "subheading": "We build AI automation and software, train company teams and teach AI in Vadodara. Pick a role and send us a link to your resume.",
+        "primary_cta_label": "Apply with your resume",
+        "primary_cta_link": "#enquire",
+        "stat_value": "4",
+        "stat_label": "open roles",
+        "doors": [
+          {
+            "label": "AI Engineer",
+            "note": "Build AI automation, agents and software for client businesses.",
+            "link": "#enquire"
+          },
+          {
+            "label": "Marketing",
+            "note": "Plan and run campaigns, content and marketing automation.",
+            "link": "#enquire"
+          },
+          {
+            "label": "AI SEO Expert",
+            "note": "Get businesses found on Google and in AI answers: SEO, AEO and GEO.",
+            "link": "#enquire"
+          },
+          {
+            "label": "Teaching Expert",
+            "note": "Teach AI to company teams and to AI Masterclass learners.",
+            "link": "#enquire"
+          }
+        ]
+      }
+    },
+    {
+      "type": "lead_form",
+      "fields": {
+        "heading": "Apply for *a role.*",
+        "intro": "Choose the role and paste a link to your resume: Google Drive, Dropbox, OneDrive or LinkedIn. Set it so anyone with the link can view it.",
+        "form_type": "careers"
+      }
+    }
+  ]
+}
