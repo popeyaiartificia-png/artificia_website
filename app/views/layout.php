@@ -105,6 +105,7 @@ $explore = [
     ['/corporate-ai-training', 'Corporate training', [['/corporate-ai-training/manufacturing', 'Manufacturing'], ['/corporate-ai-training/healthcare', 'Healthcare']]],
     ['/ai-masterclass', 'AI Masterclass', [['/ai-masterclass/students', 'For students'], ['/ai-masterclass/working-professionals', 'For working professionals'], ['/ai-masterclass/business-owners', 'For business owners']]],
     ['/about', 'About', []],
+    ['/careers', 'Careers', []],
     ['/blog', 'Blog', []],
 ];
 $phone = (string) ($settings['org_phone'] ?? '');
@@ -121,6 +122,7 @@ $inSection = fn(string $p) => $current === $p || str_starts_with($current, $p . 
 $footCta = match (true) {
     $inSection('/ai-masterclass') => 'Enquire About the Course',
     $inSection('/corporate-ai-training') => 'Enquire About Corporate Training',
+    $inSection('/careers') => 'Apply for a Role',
     default => 'Book Free AI Audit',
 };
 $bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span data-t="' . e($label) . '">' . e($label) . '</span></a>';

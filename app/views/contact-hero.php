@@ -1,5 +1,5 @@
 <?php
-/** A compact contact hero. Contact details stay tied to the same settings as the footer. */
+/** A compact contact hero, shared by Careers (its role board replaces the direct lines). Contact details stay tied to the same settings as the footer. */
 $addr = trim($settings['org_address'] ?? '');
 $phone = trim($settings['org_phone'] ?? '');
 $email = trim($settings['org_email'] ?? '');
@@ -38,6 +38,36 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
         <p class="contact-hero__note"><span><?= e(trim($f['stat_value'] . ' ' . ($f['stat_unit'] ?? ''))) ?></span> <?= e($f['stat_label'] ?? '') ?></p>
 <?php endif ?>
       </div>
+<?php if (($f['variant'] ?? '') === 'careers'):
+    // Careers (13 Nov 2026): the role board. Each card is a hero door (label = role, note = one line) and picks that
+    // role in the application form below (site.js); the strip under them shows how to apply: one resume link.
+    $roles = $f['doors'] ?? [];
+    $roleIcon = function (string $role): string {
+        foreach (['engineer' => 'tree-structure', 'market' => 'megaphone', 'seo' => 'magnifying-glass', 'teach' => 'chalkboard-teacher'] as $word => $name) {
+            if (stripos($role, $word) !== false) return $name;
+        }
+        return 'briefcase';
+    };
+?>
+      <div class="contact-direct careers-board" role="group" aria-label="Open roles">
+        <div class="contact-direct__head"><h2>Open roles</h2><p><i class="contact-direct__live" aria-hidden="true"></i>Now hiring · Vadodara</p></div>
+        <ul class="contact-direct__list careers-board__roles">
+<?php foreach ($roles as $n => $role): $label = (string) ($role['label'] ?? ''); ?>
+          <li><a class="contact-direct__link" href="<?= link_href($role['link'] ?? '#enquire') ?>"<?= in_array($label, LEAD_OPTIONS['role'], true) ? ' data-pick-role="' . e($label) . '"' : '' ?>>
+            <span class="contact-direct__symbol" aria-hidden="true"><?= icon($roleIcon($label)) ?></span>
+            <span class="contact-direct__text"><span class="contact-direct__label">Role <?= sprintf('%02d', $n + 1) ?></span><strong><?= e($label) ?></strong><?php if (!empty($role['note'])): ?><span class="contact-direct__sub"><?= e($role['note']) ?></span><?php endif ?></span>
+            <span class="contact-direct__arrow" aria-hidden="true"><?= icon('arrow-right') ?></span>
+          </a></li>
+<?php endforeach ?>
+        </ul>
+        <a class="careers-board__resume" href="#enquire">
+          <span class="contact-direct__symbol" aria-hidden="true"><?= icon('file-text') ?></span>
+          <span class="careers-board__field"><span class="contact-direct__label">How to apply <span>Share one link to your resume</span></span><span class="careers-board__url" aria-hidden="true"><span>drive.google.com/your-resume</span></span></span>
+          <span class="careers-board__ok" aria-hidden="true"><?= icon('check') ?></span>
+          <span class="contact-direct__arrow" aria-hidden="true"><?= icon('arrow-right') ?></span>
+        </a>
+      </div>
+<?php else: ?>
       <div class="contact-direct" role="group" aria-label="Direct contact options">
         <div class="contact-direct__head"><h2>Direct lines</h2><p><i class="contact-direct__live" aria-hidden="true"></i>Vadodara <span data-clock hidden></span></p></div>
         <a class="contact-direct__chat" href="<?= e(whatsapp_url($settings)) ?>" rel="noopener">
@@ -59,6 +89,7 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
 <?php endforeach ?>
         </ul>
       </div>
+<?php endif ?>
     </div>
   </div>
 </section>

@@ -107,6 +107,28 @@
               },
               "renameOutput": true,
               "outputKey": "AI Consultation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.form_type }}",
+                    "rightValue": "careers",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Careers"
             }
           ]
         },
@@ -673,6 +695,183 @@
           "name": "Google Sheets (Artificia)"
         }
       }
+    },
+    {
+      "name": "Sheet: Careers",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        520,
+        520
+      ],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1cugHJ7RpYbj8vaBDZsg4kGlMmyG17_uk3mHFhrH5s-A"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Careers"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Submitted At": "={{ $json.body.submitted_at }}",
+            "Lead ID": "={{ $json.body.lead_id }}",
+            "Name": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Phone": "={{ $json.body.phone }}",
+            "Role": "={{ $json.body.fields.role || '' }}",
+            "Resume": "={{ $json.body.fields.resume || '' }}",
+            "Message": "={{ $json.body.fields.message || '' }}",
+            "Page URL": "={{ $json.body.page_url }}",
+            "UTM Source": "={{ $json.body.utm.source }}",
+            "UTM Medium": "={{ $json.body.utm.medium }}",
+            "UTM Campaign": "={{ $json.body.utm.campaign }}",
+            "Referrer": "={{ $json.body.referrer }}",
+            "Admin URL": "={{ $json.body.admin_url }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Submitted At",
+              "displayName": "Submitted At",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead ID",
+              "displayName": "Lead ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resume",
+              "displayName": "Resume",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Page URL",
+              "displayName": "Page URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "UTM Source",
+              "displayName": "UTM Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "UTM Medium",
+              "displayName": "UTM Medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "UTM Campaign",
+              "displayName": "UTM Campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Referrer",
+              "displayName": "Referrer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Admin URL",
+              "displayName": "Admin URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (Artificia)"
+        }
+      }
     }
   ],
   "connections": {
@@ -706,6 +905,13 @@
         [
           {
             "node": "Sheet: AI Consultation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sheet: Careers",
             "type": "main",
             "index": 0
           }

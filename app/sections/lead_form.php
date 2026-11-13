@@ -1,10 +1,10 @@
 <?php
-$type = in_array($f['form_type'] ?? '', ['masterclass', 'corporate', 'services', 'contact'], true) ? $f['form_type'] : 'contact';
+$type = in_array($f['form_type'] ?? '', ['masterclass', 'corporate', 'services', 'contact', 'careers'], true) ? $f['form_type'] : 'contact';
 $id = 'lf' . $s;
-$buttons = ['masterclass' => 'Send my enquiry', 'corporate' => 'Ask for the free pilot', 'services' => 'Book the free flow audit', 'contact' => 'Send message'];
+$buttons = ['masterclass' => 'Send my enquiry', 'corporate' => 'Ask for the free pilot', 'services' => 'Book the free flow audit', 'contact' => 'Send message', 'careers' => 'Send my application'];
 $label = trim($f['button_label'] ?? '') !== '' ? $f['button_label'] : $buttons[$type];
 $wa = whatsapp_url($settings);
-$stageForm = ($page['slug'] ?? '') === 'home' || in_array($page['sections'][0]['fields']['variant'] ?? '', ['course', 'solutions', 'about', 'corporate', 'contact'], true);
+$stageForm = ($page['slug'] ?? '') === 'home' || in_array($page['sections'][0]['fields']['variant'] ?? '', ['course', 'solutions', 'about', 'corporate', 'contact', 'careers'], true);
 $field = function (string $name, string $text, string $type = 'text', bool $req = true, string $auto = '') use ($id): string {
     $fid = $id . '-' . $name;
     $attrs = ' id="' . $fid . '" name="' . $name . '" type="' . $type . '"' . ($req ? ' required' : '') . ($auto ? ' autocomplete="' . $auto . '"' : '');
@@ -46,7 +46,7 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
     </div>
     <form class="lead-form plate" data-form-type="<?= $type ?>" data-wa="<?= e($wa) ?>" method="post" action="/lead" novalidate>
 <?php if ($stageForm): ?>
-      <p class="lead-form__eyebrow">Your enquiry<?= icon('arrow-up-right') ?></p>
+      <p class="lead-form__eyebrow"><?= $type === 'careers' ? 'Your application' : 'Your enquiry' ?><?= icon('arrow-up-right') ?></p>
 <?php endif ?>
       <input type="hidden" name="form_type" value="<?= $type ?>">
       <input type="hidden" name="ts" value="<?= e(lead_ts((string) config()['app_secret'])) ?>">
@@ -84,6 +84,12 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
         <?= $select('service', 'What do you need?', LEAD_OPTIONS['service']) ?>
       </div>
       <?= $area('message', 'Tell us about the process', false) ?>
+<?php elseif ($type === 'careers'): ?>
+      <?= $field('name', 'Full name', 'text', true, 'name') ?>
+      <div class="lead-form__row"><?= $field('phone', 'WhatsApp number', 'tel', true, 'tel') ?><?= $field('email', 'Email', 'email', true, 'email') ?></div>
+      <?= $select('role', 'Role', LEAD_OPTIONS['role']) ?>
+      <?= $field('resume', 'Link to your resume', 'url', true, 'url') ?>
+      <?= $area('message', 'Anything you would like us to know?', false) ?>
 <?php else: ?>
       <div class="lead-form__row"><?= $field('name', 'Full name', 'text', true, 'name') ?><?= $field('phone', 'Phone or WhatsApp', 'tel', true, 'tel') ?></div>
       <?= $field('email', 'Email', 'email', false, 'email') ?>

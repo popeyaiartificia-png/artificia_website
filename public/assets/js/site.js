@@ -216,6 +216,14 @@
     });
   });
 
+  // Careers: a role card picks its role in the application form on the way down to it.
+  d.querySelectorAll('[data-pick-role]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var select = d.querySelector('#enquire select[name="role"]');
+      if (select) select.value = link.getAttribute('data-pick-role');
+    });
+  });
+
   // Curriculum: pointing at a module marks its days on the ruler.
   d.querySelectorAll('.curr').forEach(function (sec) {
     var ruler = sec.querySelector('.ruler'), hl = sec.querySelector('.ruler__hl');
