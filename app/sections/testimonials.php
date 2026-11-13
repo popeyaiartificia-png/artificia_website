@@ -19,8 +19,10 @@ $sig = function (array $it, bool $photo): string {
     $face = !$photo ? '' : (!empty($it['photo'])
         ? image($it['photo'], '48px', false, 'wit__photo')
         : '<span class="wit__photo wit__initials" aria-hidden="true">' . e($initials) . '</span>');
+    $note = $photo ? trim((string) ($it['photo_note'] ?? '')) : '';
     return '<div class="wit__sig">' . $face
-        . '<div><p class="wit__name">' . e($it['name'] ?? '') . '</p><p class="wit__role">' . e($it['role'] ?? '') . '</p></div></div>';
+        . '<div><p class="wit__name">' . e($it['name'] ?? '') . '</p><p class="wit__role">' . e($it['role'] ?? '') . '</p></div></div>'
+        . ($note !== '' ? '<p class="wit__photo-note">' . e($note) . '</p>' : '');
 };
 ?>
 <section class="sec sec--testimonials quotes">

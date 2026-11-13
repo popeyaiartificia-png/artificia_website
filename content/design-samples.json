@@ -429,11 +429,15 @@
           {
             "name": "Haritha Nair",
             "role": "AI design student, Vadodara",
+            "photo": "illustrative-woman-portrait-v1.webp",
+            "photo_note": "AI-generated illustrative portrait; not a photograph of Haritha Nair.",
             "quote": "Before joining Artificia, AI design felt overwhelming and complicated. The live sessions and practical projects helped me quickly build real creative skills."
           },
           {
             "name": "Nilesh Chaudasama",
             "role": "Working professional, Vadodara",
+            "photo": "illustrative-man-portrait-v1.webp",
+            "photo_note": "AI-generated illustrative portrait; not a photograph of Nilesh Chaudasama.",
             "quote": "Artificia helped me discover powerful AI tools that completely changed how I work. The training was practical, structured, and easy to apply in daily professional tasks."
           }
         ],

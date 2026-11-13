@@ -114,6 +114,12 @@
       var quote = d.createElement('blockquote');
       quote.textContent = card.dataset.reviewQuote; body.appendChild(quote);
     }
+    if (card.dataset.reviewNote) {
+      var note = d.createElement('p');
+      note.className = 'review-player__photo-note';
+      note.textContent = card.dataset.reviewNote;
+      body.appendChild(note);
+    }
     reviewOverflow = d.body.style.overflow;
     d.body.style.overflow = 'hidden';
     reviewDialog.showModal();
@@ -818,7 +824,7 @@
     var fluid = section.closest('.solutions-page') ? .45 : 1;
     if (section.closest('.corporate-page') && section.matches('.statement, .co-kit')) fluid = .25;
     canvas.flood = { rise: 70, fluid: fluid, base: 'vec3(' + rgb.map(function (n) { return (n / 255).toFixed(3); }).join(', ') + ')' };
-    if (section.matches('.contact-page > .ab-work')) {
+    if (section.matches('.contact-page > .ab-work, .careers-page > .lead--careers')) {
       canvas.flood.profile = 'contact';
       join.classList.add('flood-join--contact');
     }
@@ -1351,6 +1357,12 @@
   if (!root.classList.contains('motion') || !gsap || !ST) { root.classList.remove('motion'); return; }
   window.__motion = true;
   gsap.registerPlugin(ST);
+  // Expanding the founder moves every following section; refresh their scroll positions so floods stay clear of the text.
+  d.querySelectorAll('.about-page .person__more').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      requestAnimationFrame(function () { ST.refresh(); });
+    });
+  });
   var out = 'expo.out';
   var once = function (el, start) { return { trigger: el, start: start || 'top 85%', once: true }; };
   var lit = function (head) { head.classList.add('is-lit'); };

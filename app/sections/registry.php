@@ -221,6 +221,7 @@ function section_registry(): array
                 'role' => $text('Role', true),
                 'quote' => $area('Quote'),
                 'photo' => $image('Photo'),
+                'photo_note' => $text('Photo disclosure (for illustrative images)'),
                 'video_url' => $text('Video link'),
             ], true),
         ]],

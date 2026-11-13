@@ -1,5 +1,6 @@
 <?php
-/** A compact contact hero, shared by Careers (its role board replaces the direct lines). Contact details stay tied to the same settings as the footer. */
+/** Contact and Careers share the frame; the conversation layout is exclusive to Contact. */
+$isContact = ($f['variant'] ?? '') !== 'careers';
 $addr = trim($settings['org_address'] ?? '');
 $phone = trim($settings['org_phone'] ?? '');
 $email = trim($settings['org_email'] ?? '');
@@ -8,7 +9,7 @@ if ($phone !== '') $lines[] = ['Call', $phone, 'Talk to the team', 'tel:' . preg
 if ($email !== '') $lines[] = ['Email', $email, 'For documents and longer briefs', 'mailto:' . $email, 'envelope-simple'];
 if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1] ?? $addr, '#visit', 'map-pin'];
 ?>
-<section class="sol-hero contact-hero" aria-labelledby="ct-title">
+<section class="sol-hero contact-hero<?= $isContact ? ' contact-hero--connect' : '' ?>" aria-labelledby="ct-title">
   <canvas class="topo-bg" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="sol-hero__top">
@@ -35,7 +36,7 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
 <?php endif ?>
         </div>
 <?php if (!empty($f['stat_value'])): ?>
-        <p class="contact-hero__note"><span><?= e(trim($f['stat_value'] . ' ' . ($f['stat_unit'] ?? ''))) ?></span> <?= e($f['stat_label'] ?? '') ?></p>
+        <p class="contact-hero__note"><?php if ($isContact): ?><span class="contact-hero__note-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span><?php endif ?><span><?= e(trim($f['stat_value'] . ' ' . ($f['stat_unit'] ?? ''))) ?></span> <?= e($f['stat_label'] ?? '') ?></p>
 <?php endif ?>
       </div>
 <?php if (($f['variant'] ?? '') === 'careers'):
@@ -68,28 +69,37 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
         </a>
       </div>
 <?php else: ?>
-      <div class="contact-direct" role="group" aria-label="Direct contact options">
-        <div class="contact-direct__head"><h2>Direct lines</h2><p><i class="contact-direct__live" aria-hidden="true"></i>Vadodara <span data-clock hidden></span></p></div>
-        <a class="contact-direct__chat" href="<?= e(whatsapp_url($settings)) ?>" rel="noopener">
-          <span class="contact-direct__symbol" aria-hidden="true"><?= icon('whatsapp-logo') ?></span>
-          <span class="contact-direct__text"><span class="contact-direct__label">WhatsApp <span>Our usual reply channel</span></span><strong>Chat with us</strong><?php if ($phone !== ''): ?><span class="contact-direct__sub"><?= e($phone) ?></span><?php endif ?></span>
-          <span class="contact-direct__thread" aria-hidden="true">
-            <span class="contact-direct__bubble">Hi! Can AI take work off my team?<svg class="contact-direct__ticks" viewBox="0 0 16 10"><path d="M1 5.5l3 3 6.5-7M7.5 8.5l6.5-7"/></svg></span>
-            <span class="contact-direct__reply"><span class="contact-direct__bubble contact-direct__bubble--in contact-direct__typing"><i></i><i></i><i></i></span><span class="contact-direct__bubble contact-direct__bubble--in contact-direct__answer">Yes! Let's start with a free AI consultation.</span></span>
+      <div class="contact-connect">
+        <div class="contact-connect__meta"><span>A conversation starts here</span><span><i aria-hidden="true"></i>Vadodara <span data-clock hidden></span></span></div>
+        <a class="contact-conversation" href="<?= e(whatsapp_url($settings)) ?>" rel="noopener" aria-label="Chat with us on WhatsApp<?= $phone !== '' ? ': ' . e($phone) : '' ?>">
+          <span class="contact-conversation__head">
+            <span class="contact-conversation__symbol" aria-hidden="true"><?= icon('whatsapp-logo') ?></span>
+            <span class="contact-conversation__channel"><span>WhatsApp</span><span>Our usual reply channel</span></span>
+            <span class="contact-conversation__hello" aria-hidden="true">hello.</span>
           </span>
-          <span class="contact-direct__arrow" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
+          <span class="contact-conversation__intro"><strong>Chat with us<span aria-hidden="true">.</span></strong><?php if ($phone !== ''): ?><span><?= e($phone) ?></span><?php endif ?></span>
+          <span class="contact-conversation__thread" aria-hidden="true">
+            <span class="contact-conversation__message">Hi! Can AI take work off my team?<svg class="contact-direct__ticks" viewBox="0 0 16 10"><path d="M1 5.5l3 3 6.5-7M7.5 8.5l6.5-7"/></svg></span>
+            <span class="contact-conversation__reply"><span class="contact-conversation__sender">Artificia</span><span>Yes! Let's start with a free AI consultation.</span></span>
+          </span>
+          <span class="contact-conversation__cta"><span>Let's talk on WhatsApp</span><span aria-hidden="true"><?= icon('arrow-up-right') ?></span></span>
         </a>
-        <ul class="contact-direct__list">
-<?php foreach ($lines as [$label, $value, $sub, $href, $symbol]): ?>
-          <li><a class="contact-direct__link" href="<?= e($href) ?>">
-            <span class="contact-direct__symbol" aria-hidden="true"><?= icon($symbol) ?></span>
-            <span class="contact-direct__text"><span class="contact-direct__label"><?= e($label) ?></span><strong><?= e($value) ?></strong><span class="contact-direct__sub"><?= e($sub) ?></span></span>
-            <span class="contact-direct__arrow" aria-hidden="true"><?= icon($href === '#visit' ? 'arrow-right' : 'arrow-up-right') ?></span>
-          </a></li>
-<?php endforeach ?>
-        </ul>
       </div>
 <?php endif ?>
     </div>
+<?php if ($isContact && $lines): ?>
+    <div class="contact-routes" role="group" aria-labelledby="contact-routes-title">
+      <h2 id="contact-routes-title">Direct lines<span>More ways to<br>say hello.</span></h2>
+      <ul class="contact-routes__list">
+<?php foreach ($lines as [$label, $value, $sub, $href, $symbol]): ?>
+        <li><a class="contact-route" href="<?= e($href) ?>">
+          <span class="contact-route__icon" aria-hidden="true"><?= icon($symbol) ?></span>
+          <span class="contact-route__text"><span class="contact-route__label"><?= e($label) ?></span><strong><?= e($value) ?></strong><span class="contact-route__sub"><?= e($sub) ?></span></span>
+          <span class="contact-route__arrow" aria-hidden="true"><?= icon($href === '#visit' ? 'arrow-right' : 'arrow-up-right') ?></span>
+        </a></li>
+<?php endforeach ?>
+      </ul>
+    </div>
+<?php endif ?>
   </div>
 </section>

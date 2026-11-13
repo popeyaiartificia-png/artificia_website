@@ -262,15 +262,42 @@
 .about-page .person__more summary:hover i::before, .about-page .person__more summary:hover i::after, .about-page .person__more[open] i::before, .about-page .person__more[open] i::after { background: #d2ff00; }
 .about-page .person__more summary i::after { transform: rotate(90deg); }
 .about-page .person__more[open] summary i::after { transform: rotate(0); }
-.about-page .person__more ul { display: grid; gap: 1.2rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
-.about-page .person__more li { padding-left: 1.2rem; border-left: 2px solid #d2ff00; color: #2e3229; font: 500 1rem/1.5 var(--sans); }
-.about-page .person__more li b { display: block; margin-bottom: .2rem; color: #101114; font-weight: 650; }
+.about-page .person__more-list { display: grid; gap: 1.2rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
+.about-page .person__more-list > li { padding-left: 1.2rem; border-left: 2px solid #d2ff00; color: #2e3229; font: 500 1rem/1.5 var(--sans); }
+.about-page .person__more-list > li > b { display: block; margin-bottom: .2rem; color: #101114; font-weight: 650; }
 .about-page .person__tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
 .about-page .person__tags span { padding: .38rem .75rem; border: 1px solid #10111426; border-radius: 999px; background: #fbfbf6; color: #2e3229; font: 500 .85rem/1.2 var(--sans); }
-/* Guiding philosophy: a left-aligned closing statement, with a quiet lime mark on its rule. */
-.about-page .person__quote { position: relative; width: 100%; max-width: 42ch; margin: clamp(3rem, 5vw, 5rem) 0 clamp(1.5rem, 3vw, 3rem); padding-top: clamp(1.5rem, 2.5vw, 2.5rem); border-top: 1px solid #323c2540; color: #20251b; font: 600 clamp(1.65rem, 3.2vw, 3.4rem)/1.16 var(--display); letter-spacing: -.035em; text-align: left; text-wrap: pretty; }
-.about-page .person__quote::before { content: ''; position: absolute; top: -2px; left: 0; width: 3.5rem; height: 3px; background: #aed534; }
-.about-page .person__quote span { display: block; margin-bottom: clamp(1rem, 1.8vw, 1.7rem); color: #566537; font: 600 .65rem/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+/* Guiding philosophy: four thoughts on a pale inset sheet, ending on a lime highlight. */
+.about-page .person__quote { position: relative; width: 100%; min-width: 0; margin: 2rem 0 0; padding: clamp(1.25rem, 2.2vw, 2rem); border: 1px solid #cdd3c0; border-left: 3px solid #687b43; background: #edf0e5; color: #26301e; text-align: left; }
+.about-page .person__quote::before { content: ''; position: absolute; top: -1px; bottom: -1px; left: -3px; width: 3px; background: #aed534; transform-origin: top; }
+.philosophy__label { margin: 0; color: #5a6847; font: 600 .65rem/1.4 var(--sans); letter-spacing: .15em; text-transform: uppercase; }
+.philosophy__layout { margin-top: 1.5rem; }
+.philosophy__words { min-width: 0; margin: 0; }
+.philosophy__words ol { position: relative; display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+.philosophy__words ol::before, .philosophy__words ol::after { content: ''; position: absolute; top: .8rem; bottom: .9rem; left: .75rem; width: 1px; background: #687b4333; transform-origin: top; }
+.philosophy__words ol::after { background: #93ad42; opacity: 0; }
+.philosophy__words li { position: relative; z-index: 1; display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); align-items: baseline; gap: clamp(.6rem, 1.5vw, 1.5rem); }
+.philosophy__number { position: relative; z-index: 1; display: grid; place-items: center; padding-block: .3rem; background: #edf0e5; color: #879274; font: 500 .65rem/1.5 var(--sans); letter-spacing: .04em; }
+.philosophy__sentence { color: #4a5540; font: 550 clamp(1.1rem, 1.65vw, 1.4rem)/1.35 var(--display); letter-spacing: -.025em; text-wrap: pretty; }
+.philosophy__final { padding-top: .4rem; }
+.philosophy__final .philosophy__sentence { justify-self: start; padding: 0 .12em .08em; background: linear-gradient(transparent 43%, #c5e66b 43% 88%, transparent 88%) left / 100% 100% no-repeat; color: #26301e; font: 500 clamp(1.7rem, 2.5vw, 2.4rem)/1.15 var(--serif); letter-spacing: -.035em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+@media (prefers-reduced-motion: no-preference) {
+  .motion .person__more[open] .person__quote::before { animation: philosophy-rule .9s cubic-bezier(.2, .7, .2, 1) both; }
+  .motion .person__more[open] .philosophy__words ol::after { animation: philosophy-route 1.05s cubic-bezier(.2, .7, .2, 1) .15s both; }
+  .motion .person__more[open] .philosophy__words li { animation: philosophy-arrive .6s cubic-bezier(.2, .7, .2, 1) calc(.1s + var(--thought-index, 0) * .13s) both; }
+  .motion .person__more[open] .philosophy__final .philosophy__sentence { animation: philosophy-highlight .85s cubic-bezier(.2, .7, .2, 1) .55s both; }
+}
+@keyframes philosophy-rule { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes philosophy-route { from { opacity: .7; transform: scaleY(0); } to { opacity: .7; transform: scaleY(1); } }
+@keyframes philosophy-arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes philosophy-highlight { from { background-size: 0 100%; } to { background-size: 100% 100%; } }
+@media (max-width: 719px) {
+  .philosophy__words ol { gap: 1.1rem; }
+  .philosophy__words li { grid-template-columns: 1.1rem minmax(0, 1fr); }
+  .philosophy__words ol::before, .philosophy__words ol::after { left: .55rem; }
+  .philosophy__final .philosophy__sentence { font-size: clamp(1.6rem, 6.4vw, 2.2rem); }
+}
+.about-page .person__expansion { padding-bottom: clamp(3rem, 5vw, 5rem); }
 .about-page .person__more[open] ul { animation: person-more .4s ease both; }
 @keyframes person-more { from { opacity: 0; transform: translateY(-6px); } }
 @media (prefers-reduced-motion: reduce) { .about-page .person__more[open] ul { animation: none; } .about-page .person__more * { transition: none; } }
@@ -278,7 +305,7 @@
 .about-page > :is(.ab-notes, .team) > .topo-bg { display: block; } /* the contour map runs on behind the principles and the founder */
 /* Desktop: the stack on the left, the name, role and bio centred beside it. */
 @media (min-width: 900px) {
-  .about-page .person { grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); grid-template-rows: 1fr repeat(7, auto) 1fr; column-gap: clamp(2.5rem, 6vw, 7rem); }
+  .about-page .person { --person-gap: clamp(2.5rem, 6vw, 7rem); grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); grid-template-rows: 1fr repeat(7, auto) 1fr; column-gap: var(--person-gap); }
   .about-page .person :is(.person__fig, .person__fig2) { grid-row: 1 / -1; grid-column: 1; align-self: start; }
   /* The text column now outgrows the stack: hold both prints at the top, the camera shot over the portrait's lower corner. */
   .about-page .person__fig2 { margin-top: 80%; }
@@ -287,8 +314,14 @@
   .about-page .person .entry { grid-row: 3; }
   .about-page .person__bio { grid-row: 4; }
   .about-page .person__facts { grid-row: 5; }
-  .about-page .person__more { grid-row: 6; }
-  .about-page .person > .person__quote { grid-column: 1 / -1; grid-row: 10; }
+  .about-page .person > .person__more { grid-column: 1 / -1; grid-row: 6; max-width: none; }
+  .about-page .person__more > summary { margin-left: calc((100% - var(--person-gap)) * .4385964912 + var(--person-gap)); }
+  .about-page .person__expansion { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); align-items: start; column-gap: var(--person-gap); padding-top: clamp(2rem, 3vw, 3rem); }
+  .about-page .person__expansion > .person__more-list { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .about-page .person__expansion > .person__quote { grid-column: 1; grid-row: 1; align-self: stretch; display: flex; flex-direction: column; margin-top: 0; }
+  .about-page .person__expansion .philosophy__layout { display: flex; flex: 1; }
+  .about-page .person__expansion .philosophy__words { display: flex; flex: 1; }
+  .about-page .person__expansion .philosophy__words ol { flex: 1; align-content: space-between; }
   .about-page .person__in { grid-row: 8; }
 }
 
@@ -485,6 +518,121 @@ html:not(.js) .contact-hero.sol-hero { background: #232719 url('../img/showcase/
 @keyframes ct-ring { 0% { opacity: 0; scale: 1; } 3% { opacity: .9; scale: 1; } 13%, 100% { opacity: 0; scale: 1.8; } }
 @keyframes ct-jiggle { 0%, 3%, 11%, 100% { rotate: none; } 5% { rotate: -14deg; } 7% { rotate: 11deg; } 9% { rotate: -6deg; } }
 @media (prefers-reduced-motion: reduce) { .contact-direct a, .contact-direct__arrow, .contact-direct__symbol { transition: none; } .contact-direct a:is(:hover, :focus-visible) { transform: none; } }
+
+/* Contact: an editorial opening, a paper conversation card, and a single ruled contact strip.
+   The modifier keeps Careers' shared hero and role board unchanged. */
+.contact-hero--connect { --connect-paper: #f4f6f1; --connect-ink: #232719; --connect-lime: #d2ff00; }
+.sol-hero.contact-hero--connect { padding-top: calc(var(--bar) + 18px); }
+.contact-hero--connect .contact-hero__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(48px, 7vw, 112px); margin-top: 28px; }
+.contact-hero--connect > .topo-bg { opacity: .52; }
+.contact-hero--connect .contact-hero__title { font-size: clamp(4.5rem, 6vw, 6.7rem); line-height: .88; letter-spacing: -.06em; }
+.contact-hero--connect .contact-hero__title em { margin-top: 8px; font-size: 1.06em; line-height: .94; }
+.contact-hero--connect .contact-hero__statement { max-width: none; margin-top: 25px; font-size: clamp(1.1rem, 1.4vw, 1.45rem); }
+.contact-hero--connect .contact-hero__lede { max-width: 43ch; margin-top: 12px; font-size: .9rem; }
+.contact-hero--connect .contact-hero__actions { margin-top: 25px; }
+.contact-hero--connect .contact-hero__actions .btn { min-height: 50px; padding-inline: 22px; }
+.contact-hero--connect .contact-hero__note { gap: 7px; margin-top: 22px; padding: 0; border: 0; font-size: .72rem; }
+.contact-hero--connect .contact-hero__note > span { font: inherit; }
+.contact-hero--connect .contact-hero__note > .contact-hero__note-icon { display: grid; place-items: center; width: 24px; height: 24px; margin-right: 2px; border: 1px solid #d2ff0059; border-radius: 50%; }
+.contact-hero__note-icon .icon { width: 12px; height: 12px; }
+.contact-connect { position: relative; min-width: 0; padding: 0 8px 0 0; }
+.contact-connect__meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 12px; margin: 0 2px 15px; color: #c0c6b6; font: 500 .59rem/1.5 var(--sans); }
+.contact-connect__meta > span:first-child { letter-spacing: .1em; text-transform: uppercase; }
+.contact-connect__meta > span:last-child { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.contact-connect__meta i { width: 5px; height: 5px; border-radius: 50%; background: var(--connect-lime); }
+.contact-connect__meta [data-clock] { font-variant-numeric: tabular-nums; }
+.contact-conversation { position: relative; display: block; padding: clamp(23px, 1.8vw, 28px); border: 1px solid var(--connect-paper); border-radius: 22px; background: var(--connect-paper); color: var(--connect-ink); text-decoration: none; box-shadow: 0 24px 60px -36px #0a0b07; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.contact-conversation::before { content: ''; position: absolute; z-index: -1; inset: 4px -8px -4px 8px; border: 1px solid #dde1d23b; border-radius: inherit; rotate: 2.5deg; pointer-events: none; transition: rotate .45s var(--ease); }
+.contact-conversation__head { display: flex; align-items: center; gap: 11px; }
+.contact-conversation__symbol { display: grid; flex: none; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--connect-lime); }
+.contact-conversation__symbol .icon { width: 24px; height: 24px; }
+.contact-conversation__channel { display: grid; gap: 3px; font-size: .67rem; line-height: 1.3; }
+.contact-conversation__channel > span:first-child { font-weight: 650; }
+.contact-conversation__channel > span:last-child { color: #626856; font-size: .61rem; }
+.contact-conversation__hello { margin-left: auto; color: #687349; font: 500 2rem/1 var(--serif); letter-spacing: -.06em; rotate: -9deg; }
+.contact-conversation__intro { display: grid; gap: 7px; margin-top: 18px; }
+.contact-conversation__intro strong { font: 660 clamp(2rem, 2.7vw, 2.75rem)/1 var(--display); letter-spacing: -.055em; }
+.contact-conversation__intro strong > span { color: #6b801c; }
+.contact-conversation__intro > span { color: #626856; font-size: .75rem; font-variant-numeric: tabular-nums; }
+.contact-conversation__thread { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; margin-top: 22px; }
+.contact-conversation__message { max-width: 90%; padding: 12px 15px; border-radius: 14px 14px 3px 14px; background: var(--connect-lime); color: var(--connect-ink); font-size: .8rem; line-height: 1.5; }
+.contact-conversation__reply { display: grid; align-self: flex-start; gap: 6px; max-width: 86%; }
+.contact-conversation__sender { padding-left: 2px; color: #626856; font-size: .53rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+.contact-conversation__reply > span:last-child { padding: 12px 15px; border-radius: 14px 14px 14px 3px; background: #e4e9dc; font-size: .8rem; line-height: 1.5; }
+.contact-conversation__cta { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 20px; padding-top: 14px; border-top: 1px solid #23271926; font-size: .75rem; font-weight: 600; }
+.contact-conversation__cta > span:last-child { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--button-radius); background: var(--connect-ink); color: var(--connect-paper); transition: background-color .3s, color .3s, transform .3s; }
+.contact-conversation__cta .icon { width: 16px; height: 16px; }
+.contact-conversation:is(:hover, :focus-visible) { transform: translateY(-4px); box-shadow: 0 32px 65px -36px #0a0b07; }
+.contact-conversation:is(:hover, :focus-visible)::before { rotate: 1deg; }
+.contact-conversation:is(:hover, :focus-visible) .contact-conversation__cta > span:last-child { background: var(--connect-lime); color: var(--connect-ink); transform: translate(2px, -2px); }
+.contact-conversation:focus-visible, .contact-route:focus-visible { outline: 2px solid var(--connect-lime); outline-offset: 5px; }
+.contact-routes { display: grid; grid-template-columns: .68fr 3fr; align-items: center; gap: 24px; margin-top: 30px; padding-block: 20px; border-top: 1px solid #dde1d233; border-bottom: 1px solid #dde1d233; }
+.contact-routes h2 { margin: 0; color: #b9c2aa; font: 500 .57rem/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+.contact-routes h2 > span { display: block; margin-top: 6px; color: #dde1d2; font: 500 1.15rem/1.1 var(--serif); letter-spacing: -.025em; text-transform: none; }
+.contact-routes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.contact-routes__list > li { min-width: 0; }
+.contact-routes__list > li + li { padding-left: 24px; border-left: 1px solid #dde1d226; }
+.contact-route { display: grid; grid-template-columns: 20px minmax(0, 1fr) 16px; align-items: start; gap: 11px; min-height: 68px; color: #dde1d2; text-decoration: none; }
+.contact-route__icon { color: #bbc7a3; }
+.contact-route__icon .icon { width: 19px; height: 19px; }
+.contact-route__text { display: flex; flex-direction: column; align-items: start; min-width: 0; }
+.contact-route__label { color: #bbc7a3; font-size: .57rem; font-weight: 500; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; }
+.contact-route strong { max-width: 100%; margin-top: 7px; font: 550 clamp(.87rem, 1.05vw, 1.08rem)/1.25 var(--sans); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.contact-route__sub { margin-top: 5px; color: #bfc5b4; font-size: .64rem; line-height: 1.5; }
+.contact-route__arrow { color: #bbc7a3; transition: color .3s, transform .3s; }
+.contact-route__arrow .icon { width: 15px; height: 15px; }
+.contact-route:is(:hover, :focus-visible) strong, .contact-route:is(:hover, :focus-visible) .contact-route__arrow { color: var(--connect-lime); }
+.contact-route:is(:hover, :focus-visible) .contact-route__arrow { transform: translate(2px, -2px); }
+.contact-route[href="#visit"]:is(:hover, :focus-visible) .contact-route__arrow { transform: translateX(3px); }
+@media (min-width: 761px) and (max-width: 1100px) {
+  .contact-hero--connect .contact-hero__grid { gap: 35px; }
+  .contact-hero--connect .contact-hero__title { font-size: clamp(3.8rem, 7.6vw, 5.3rem); }
+  .contact-connect__meta > span:first-child { display: none; }
+  .contact-routes { grid-template-columns: 1fr; gap: 17px; }
+  .contact-routes h2 > span { display: none; }
+  .contact-routes__list { gap: 18px; }
+  .contact-routes__list > li + li { padding-left: 18px; }
+}
+@media (max-width: 760px) {
+  .contact-hero--connect .contact-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 35px; margin-top: 29px; }
+  .contact-hero--connect .contact-hero__title { font-size: clamp(3.65rem, 15.5vw, 6.7rem); line-height: .9; }
+  .contact-hero--connect .contact-hero__title em { display: block; margin-left: 0; }
+  .contact-hero--connect .contact-hero__statement { max-width: 29ch; margin-top: 22px; font-size: 1.16rem; }
+  .contact-hero--connect .contact-hero__lede { margin-top: 12px; font-size: .84rem; }
+  .contact-hero--connect .contact-hero__actions { gap: 12px 20px; margin-top: 22px; }
+  .contact-hero--connect .contact-hero__actions .btn { min-height: 48px; padding-inline: 18px; }
+  .contact-hero--connect .contact-hero__note { margin-top: 17px; }
+  .contact-connect { width: 100%; max-width: 520px; padding-right: 9px; justify-self: center; }
+  .contact-connect__meta { font-size: .55rem; }
+  .contact-conversation { padding: 23px; border-radius: 19px; }
+  .contact-conversation__intro strong { font-size: 2.25rem; }
+  .contact-conversation__thread { margin-top: 23px; }
+  .contact-conversation__message, .contact-conversation__reply > span:last-child { font-size: .75rem; }
+  .contact-routes { grid-template-columns: 1fr; gap: 18px; margin-top: 33px; padding-block: 21px 0; border-bottom: 0; }
+  .contact-routes h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .contact-routes h2 > span { margin: 0; font-size: 1rem; }
+  .contact-routes h2 br { display: none; }
+  .contact-routes__list { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .contact-routes__list > li, .contact-routes__list > li + li { padding: 0; border-left: 0; border-bottom: 1px solid #dde1d226; }
+  .contact-route { grid-template-columns: 24px minmax(0, 1fr) 24px; align-items: center; gap: 14px; min-height: 88px; padding-block: 17px; }
+  .contact-route strong { margin-top: 4px; font-size: 1.03rem; }
+  .contact-route__arrow { justify-self: end; }
+}
+@media (max-width: 360px) {
+  .contact-connect__meta { flex-direction: column; }
+  .contact-conversation { padding: 20px; }
+  .contact-conversation__hello { font-size: 1.75rem; }
+  .contact-conversation__message, .contact-conversation__reply { max-width: 95%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .motion.is-in .contact-conversation { animation: ct-rise .8s var(--ease) .2s both; }
+  .motion.is-in .contact-conversation__message { animation: ct-rise .7s var(--ease) .45s both; }
+  .motion.is-in .contact-conversation__reply { animation: ct-rise .7s var(--ease) .75s both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-conversation, .contact-conversation::before, .contact-conversation__cta > span:last-child, .contact-route__arrow { transition: none; }
+  .contact-conversation:is(:hover, :focus-visible), .contact-conversation:is(:hover, :focus-visible) .contact-conversation__cta > span:last-child, .contact-route:is(:hover, :focus-visible) .contact-route__arrow { transform: none; }
+}
 
 /* Careers (13 Nov 2026): the Contact hero frame with a role board. Four role tiles (2 x 2), then the resume strip, where a
    link types itself into the field and is ticked. One 8 s loop lights the roles in turn, then types the link. Without

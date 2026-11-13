@@ -2,8 +2,12 @@
 $variant = in_array($f['variant'] ?? '', ['centered', 'cover', 'stage', 'course', 'solutions', 'about', 'corporate', 'contact', 'careers', 'journey'], true) ? $f['variant'] : 'split';
 $h1 = ($page['h1'] ?? '') !== '' ? $page['h1'] : ($page['title'] ?? '');
 $doors = $f['doors'] ?? [];
-// Contact has a compact, purpose-built hero (user, 12 Nov 2026); Careers shares its frame with a role board (13 Nov).
-if ($variant === 'contact' || $variant === 'careers') {
+if ($variant === 'careers') {
+    include VIEWS_DIR . '/careers-hero.php';
+    return;
+}
+// Contact has its own conversation-led hero.
+if ($variant === 'contact') {
     include VIEWS_DIR . '/contact-hero.php';
     return;
 }

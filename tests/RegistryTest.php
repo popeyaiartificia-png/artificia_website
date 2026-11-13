@@ -61,7 +61,7 @@ function test_every_list_has_subfields(): void
         'tools.tools' => ['name', 'brand', 'symbol', 'logo', 'note'],
         'curriculum.modules' => ['track', 'day_range', 'title', 'topics', 'tools'],
         'stats.items' => ['value', 'label'],
-        'testimonials.items' => ['name', 'role', 'quote', 'photo', 'video_url'],
+        'testimonials.items' => ['name', 'role', 'quote', 'photo', 'photo_note', 'video_url'],
         'case_study.built' => ['title', 'text'],
         'case_study.results' => ['value', 'label'],
         'faqs.items' => ['question', 'answer'],

@@ -60,6 +60,9 @@ $nav = [
 <?php if (str_contains($body, 'class="solutions-page about-page')): // About, and Contact which shares its sheet ?>
 <link rel="stylesheet" href="/assets/css/about.css">
 <?php endif ?>
+<?php if (str_contains($body, 'class="solutions-page careers-page"')): ?>
+<link rel="stylesheet" href="/assets/css/careers.css">
+<?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page corporate-page"')): ?>
 <link rel="stylesheet" href="/assets/css/corporate.css">
 <script src="/assets/js/corporate.js" defer></script>

@@ -4,6 +4,7 @@ $pairs = fn(string $s): array => array_values(array_filter(array_map(
     fn($l) => array_map('trim', explode(':', $l, 2)) + [1 => ''],
     preg_split('/\R/', $s)
 ), fn($p) => $p[0] !== ''));
+$isAbout = ($page['slug'] ?? '') === 'about';
 ?>
 <section class="sec sec--people team">
   <div class="wrap">
@@ -29,14 +30,21 @@ $pairs = fn(string $s): array => array_values(array_filter(array_map(
 <?php if ($rows = $pairs($p['more'] ?? '')): ?>
         <details class="person__more">
           <summary><span>Know more</span><i aria-hidden="true"></i></summary>
-          <ul>
+<?php if ($isAbout): ?>
+          <div class="person__expansion">
+<?php endif ?>
+          <ul class="person__more-list">
 <?php foreach ($rows as [$k, $v]): ?>
             <li><b><?= e($k) ?></b><?php if (str_contains($v, ' · ')): /* a " · " list shows as tags */ ?><span class="person__tags"><?php foreach (explode(' · ', $v) as $t): ?><span><?= e($t) ?></span><?php endforeach ?></span><?php else: ?><?= e($v) ?><?php endif ?></li>
 <?php endforeach ?>
           </ul>
+<?php if ($isAbout): ?>
+<?php if (!empty($p['quote'])) include VIEWS_DIR . '/founder-philosophy.php'; ?>
+          </div>
+<?php endif ?>
         </details>
 <?php endif ?>
-<?php if (!empty($p['quote'])): ?>
+<?php if (!$isAbout && !empty($p['quote'])): ?>
         <p class="person__quote"><span>Guiding philosophy</span><?= e($p['quote']) ?></p>
 <?php endif ?>
 <?php if (!empty($p['photo_2'])): ?>

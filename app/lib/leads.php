@@ -24,7 +24,7 @@ const LEAD_OPTIONS = [
     'adoption' => ['Not using AI yet', 'Exploring (ChatGPT, Claude)', 'Some tools or automations', 'Custom automations or models'],
     'objectives' => ['Automate repetitive work', 'Upskill the team on AI', 'Build AI agents or chatbots', 'Integrate n8n / Make / APIs', 'Something else'],
     'service' => ['AI automation', 'Agentic AI', 'Software & apps', 'Website development', 'Marketing automation / GoHighLevel', 'SEO / AEO / GEO', 'Cloud & private AI', 'Content and marketing', 'Not sure yet'],
-    'role' => ['AI Engineer', 'Marketing', 'AI SEO Expert', 'Teaching Expert'], // the Careers hero's role cards pick these by label
+    'role' => ['AI Engineer', 'Marketing', 'SEO AEO Expert', 'Teaching Expert'], // the Careers hero's role cards pick these by label
 ];
 
 /** Readable names for the `fields` answers (alert email, admin detail, CSV). */

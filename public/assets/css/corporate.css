@@ -148,13 +148,13 @@
 /* ---------- What you keep: five documents dealt from one pile ---------- */
 .co-kit { overflow-x: clip; padding-block: clamp(5.5rem, 3rem + 7vw, 11rem) clamp(3rem, 2rem + 3vw, 5rem); }
 .co-kit__spread { --gap: clamp(12px, 1.2vw, 20px); display: grid; gap: var(--gap); margin: clamp(3rem, 2rem + 3vw, 5rem) 0 0; padding: 0; list-style: none; view-timeline: --co-kit block; }
-.co-doc { position: relative; display: flex; flex-direction: column; gap: .8rem; padding: 1.1rem 1.1rem 1.5rem; border: 1px solid #10111417; background: #fff; box-shadow: 0 1px 0 #1011140a, 0 26px 44px -30px #10111459; translate: 0 var(--y, 0); rotate: var(--r, 0deg); transition: translate .6s var(--ease), rotate .6s var(--ease), box-shadow .6s; }
-.co-doc:hover { z-index: 2; translate: 0 calc(var(--y, 0px) - 10px); rotate: 0deg; box-shadow: 0 1px 0 #1011140a, 0 40px 60px -32px #10111473; }
-/* Clicked: the card itself turns brand neon. Each card toggles on its own. */
-.co-doc { cursor: pointer; transition: translate .6s var(--ease), rotate .6s var(--ease), box-shadow .6s, background-color .35s, border-color .35s; }
-.co-doc.is-lit { z-index: 3; translate: 0 calc(var(--y, 0px) - 10px); rotate: 0deg; background: #d2ff00; border-color: #d2ff00; box-shadow: 0 0 18px 2px #d2ff00b3, 0 0 56px 8px #d2ff0066, 0 40px 60px -32px #10111473; }
-.co-doc.is-lit :is(.co-doc__type, .co-doc__type span, .co-doc__text) { color: #101114; }
-.co-doc.is-lit .co-doc__art { background: #fff; border-color: #10111433; }
+.co-doc { position: relative; display: flex; flex-direction: column; gap: .8rem; padding: 1.1rem 1.1rem 1.5rem; border: 1px solid #10111417; background: #fff; box-shadow: 0 1px 0 #1011140a, 0 26px 44px -30px #10111459; translate: 0 var(--y, 0); rotate: var(--r, 0deg); cursor: default; transition: translate .6s var(--ease), rotate .6s var(--ease), box-shadow .6s, background-color .35s, border-color .35s; }
+/* Decorative hover only: the cards are informational, with no click state. */
+@media (hover: hover) and (pointer: fine) {
+  .co-doc:hover { z-index: 3; translate: 0 calc(var(--y, 0px) - 10px); rotate: 0deg; background: #d2ff00; border-color: #d2ff00; box-shadow: 0 0 18px 2px #d2ff00b3, 0 0 56px 8px #d2ff0066, 0 40px 60px -32px #10111473; }
+  .co-doc:hover :is(.co-doc__type, .co-doc__type span, .co-doc__text) { color: #101114; }
+  .co-doc:hover .co-doc__art { background: #fff; border-color: #10111433; }
+}
 .co-doc__type { display: flex; justify-content: space-between; color: #6b7160; font: 600 .6rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
 .co-doc__type span { color: #9aa08e; }
 .co-doc__art { width: 100%; height: auto; margin: .2rem 0 .5rem; border: 1px solid #10111412; background: #f6f7f2; }
@@ -302,7 +302,9 @@
 .co-pass { overflow-x: clip; background: #232719; padding-block: clamp(1rem, .5rem + 2vw, 3rem) clamp(6rem, 4rem + 6vw, 10rem); }
 .co-pass > .wrap { filter: drop-shadow(0 40px 50px #00000059); }
 .co-pass__ticket { display: grid; background: #f4f6f1; color: #101114; }
-.co-pass__main { display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: clamp(1.8rem, 1rem + 3.4vw, 4.6rem); }
+.co-pass__main { min-width: 0; container-type: inline-size; padding: clamp(1.8rem, 1rem + 3.4vw, 4.6rem); }
+.co-pass__content { display: grid; align-items: center; gap: 1.5rem; }
+.co-pass__copy { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
 .co-pass__kicker { display: flex; align-items: center; gap: 10px; color: #4e5d00; font: 550 .68rem/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
 .co-pass__kicker .sol-dot { background: #4e5d00; box-shadow: none; }
 .co-pass .h2 { max-width: 12ch; color: #101114; }
@@ -317,12 +319,25 @@
 .co-pass__facts dt { color: #11150fa6; font: 600 .6rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .co-pass__facts dd { margin: .35rem 0 0; font: 650 clamp(1.02rem, .95rem + .3vw, 1.2rem)/1.3 var(--sans); letter-spacing: -.015em; }
 .co-pass__code { display: block; height: 44px; background: repeating-linear-gradient(90deg, #11150f 0 2px, transparent 2px 5px, #11150f 5px 6px, transparent 6px 9px, #11150f 9px 12px, transparent 12px 14px, #11150f 14px 15px, transparent 15px 19px); }
+.co-pass__visual { width: 100%; max-width: 340px; min-width: 0; margin: 0 auto; }
+.co-pass__art { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--sans); }
+.co-pass__papers { filter: drop-shadow(0 10px 8px #11150f12); }
+.co-pass__lens { filter: drop-shadow(0 9px 6px #11150f25); }
+.co-pass__opportunity { filter: drop-shadow(0 12px 9px #11150f24); }
+.co-pass__visual figcaption { margin-top: .5rem; color: #5e6851; font: 550 .61rem/1.5 var(--sans); letter-spacing: .11em; text-align: center; text-transform: uppercase; }
+.co-pass__dial { display: none; flex: none; align-self: center; width: 132px; max-width: 100%; font-family: var(--sans); rotate: -10deg; }
+/* The illustration sits beside the offer only when the white part of the ticket has room. */
+@container (min-width: 500px) {
+  .co-pass__content { grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); gap: clamp(1rem, 3cqw, 2rem); }
+  .co-pass__copy .h2 { font-size: clamp(2.5rem, 10.2cqw, 5.4rem); }
+}
 @media (min-width: 900px) {
   /* Notches where the stub tears off, and a perforation down the tear. */
   .co-pass__ticket { --stub: clamp(17rem, 24vw, 23rem); --cut: calc(100% - var(--stub)); grid-template-columns: minmax(0, 1fr) var(--stub);
     -webkit-mask: radial-gradient(circle 16px at var(--cut) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 16px at var(--cut) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
     mask: radial-gradient(circle 16px at var(--cut) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 16px at var(--cut) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat; }
   .co-pass__stub { border-top: 0; border-left: 2px dashed #10111459; }
+  .co-pass__dial { display: block; }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
