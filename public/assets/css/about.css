@@ -267,9 +267,10 @@
 .about-page .person__more li b { display: block; margin-bottom: .2rem; color: #101114; font-weight: 650; }
 .about-page .person__tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
 .about-page .person__tags span { padding: .38rem .75rem; border: 1px solid #10111426; border-radius: 999px; background: #fbfbf6; color: #2e3229; font: 500 .85rem/1.2 var(--sans); }
-/* Closing line: the guiding philosophy. */
-.about-page .person__quote { max-width: 40rem; margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid #10111426; color: #101114; font: 620 clamp(1.3rem, 1rem + .8vw, 1.8rem)/1.25 var(--display); letter-spacing: -.03em; }
-.about-page .person__quote span { display: block; margin-bottom: .6rem; color: #4e5d00; font: 600 .68rem/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+/* Guiding philosophy: a left-aligned closing statement, with a quiet lime mark on its rule. */
+.about-page .person__quote { position: relative; width: 100%; max-width: 42ch; margin: clamp(3rem, 5vw, 5rem) 0 clamp(1.5rem, 3vw, 3rem); padding-top: clamp(1.5rem, 2.5vw, 2.5rem); border-top: 1px solid #323c2540; color: #20251b; font: 600 clamp(1.65rem, 3.2vw, 3.4rem)/1.16 var(--display); letter-spacing: -.035em; text-align: left; text-wrap: pretty; }
+.about-page .person__quote::before { content: ''; position: absolute; top: -2px; left: 0; width: 3.5rem; height: 3px; background: #aed534; }
+.about-page .person__quote span { display: block; margin-bottom: clamp(1rem, 1.8vw, 1.7rem); color: #566537; font: 600 .65rem/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
 .about-page .person__more[open] ul { animation: person-more .4s ease both; }
 @keyframes person-more { from { opacity: 0; transform: translateY(-6px); } }
 @media (prefers-reduced-motion: reduce) { .about-page .person__more[open] ul { animation: none; } .about-page .person__more * { transition: none; } }
@@ -287,7 +288,7 @@
   .about-page .person__bio { grid-row: 4; }
   .about-page .person__facts { grid-row: 5; }
   .about-page .person__more { grid-row: 6; }
-  .about-page .person__quote { grid-row: 7; }
+  .about-page .person > .person__quote { grid-column: 1 / -1; grid-row: 10; }
   .about-page .person__in { grid-row: 8; }
 }
 
