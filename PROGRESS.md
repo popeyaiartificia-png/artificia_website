@@ -2,6 +2,25 @@
 
 One entry per day, newest first. Each has Done / Current lead / Next / Blocked. The full picture lives in [CONTEXT.md](CONTEXT.md).
 
+## 2026-11-14
+
+**Done**
+- User deployed the site with the CMS on Hostinger at https://artificiaai.com. Live smoke check: 19 sitemap pages 200, old .html URLs and /landing-page/, /co-orporate/ 301 to new pages, https/non-www canonical host, robots indexable, private folders 403.
+- Base-level SEO (user asked, onpage-optimizer skill): titles, meta descriptions, one H1 and canonicals pass on every page. Added a default 1200x630 share image (public/assets/img/og-default.jpg) for pages with no Social image, Service schema on service and corporate pages, and postcode/geo/logo in the LocalBusiness schema. New SeoTest test passes; suite 167 / 11 (same 11 as before). Local only: not committed or deployed.
+- Committed the SEO changes with the 13–14 Nov notes on site-v1 and pushed to origin/site-v1. Not deployed: the live site needs site-v1 merged into main.
+
+**Current lead**
+- Get the site into Google: Search Console verification and sitemap submission.
+
+**Next**
+- User: Admin → Settings on the live site: Search Console verification code, GA4 ID, Google Business Profile URL; then submit https://artificiaai.com/sitemap.xml in Search Console. Repoint Meta ads from /landing-page/ to the new pages.
+- Merge site-v1 into main and deploy so the SEO changes reach artificiaai.com (main has 10 newer commits; the user decides).
+- With the user's CMS login (the user logs in in the browser, no password in chat), fill the live Settings via the browser; re-run SEO with DataForSEO once re-authenticated.
+- Content: /blog (19 words), /careers and /contact are thin; link the 3 masterclass audience pages and the 2 industry pages from their hub page copy (internal-link-architect skill).
+
+**Blocked**
+- DataForSEO connector rejects its auth token, so live keyword/SERP data is unavailable until it is fixed.
+
 ## 2026-11-13
 
 **Done**
@@ -47,6 +66,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Full-page menu: added Home (01; neon on the homepage). Rows now share the whole open screen and type follows viewport height and width (62px at 1536x695, 90px at 1920x1000, 35px on a 390 phone), removing the empty band under the list (user asked). Checked 320, 390, 768, 1100, 1536, 1920: no menu scroll, no overflow; "Corporate training" wraps only at 320.
 - Headless Edge QA at 1100x800, 1536x695, 1920x1000: glow toggles one-at-a-time, no drawing overlaps title/intro/includes/CTA, all inside the panel, 18 tools with logos, no console errors.
 - Footer button label follows the page (user asked): /ai-masterclass* "Enquire About the Course", /corporate-ai-training* "Enquire About Corporate Training", else "Book Free AI Audit"; still links to #enquire (or /contact). layout.php only. Checked 360 and 1536px: correct labels, no overflow.
+- (Hardik's machine) Pulled 5 new origin/main commits and merged them into site-v1 (d685eec, clean merge); local main matches origin/main. Backed up the local DB to storage/db-before-reseed-2026-11-13.sql and ran `php bin/seed.php --force`, so the updated site now runs at http://127.0.0.1:8000 (all main pages 200). Mac tests: 166 pass / 11 fail. Nothing pushed.
 
 **Current lead**
 - User review of the Terms and Conditions at http://127.0.0.1:8000/terms. Open questions: keep the corrected email (Privacy still shows info@artificia.com), and renumber "3.4" to "3.3"?
@@ -230,6 +250,21 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 
 **Blocked**
 - None for this hero refinement.
+
+## 2026-11-03 (Hardik's machine)
+
+**Done**
+- Pulled the 3 new commits from origin/main (homepage revamp, polish and enquiry flow, publication record) and merged them into local site-v1 (1daa500, clean merge). Local main fast-forwarded to c28d4bf. Nothing pushed.
+- Started the local server with bin/serve at http://127.0.0.1:8000. / and /ai-masterclass/students return 200 and /admin redirects to login, with no server errors.
+
+**Current lead**
+- Re-seed this machine's local DB so the new homepage shows. The DB still has the old 12-section homepage (hero, text_image, card_grid, tools, process_steps, case_study, card_grid, stats, testimonials, faqs, cta, lead_form), not the new 8 (hero, statement, tools, work_gallery, versus, solutions, testimonials, lead_form).
+
+**Next**
+- Run `php bin/seed.php --force`. It updates seeded pages in place, and local pages were last edited 2026-10-28. Then review the homepage in the browser and run `php tests/run.php`.
+
+**Blocked**
+- The re-seed waits for the user's go-ahead. The auto-mode permission check blocked it because it overwrites local DB content.
 
 ## 2026-11-02
 

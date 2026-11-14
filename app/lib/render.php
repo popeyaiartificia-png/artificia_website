@@ -197,7 +197,7 @@ function render_page(array $page, array $settings): string
         'description' => heading_plain($page['meta_description'] ?: strip_tags((string) $page['excerpt'])),
         'canonical' => $base . page_path($page),
         'robots' => page_noindex(db(), $page) ? 'noindex' : '',
-        'ogImage' => $ogImage ? $base . $ogImage : null,
+        'ogImage' => $base . ($ogImage ?: '/assets/img/og-default.jpg'), // pages without a Social image still get a share preview
         'ogType' => $page['kind'] === 'post' ? 'article' : 'website',
         'jsonld' => schema_graph($page, $settings, $base),
         'hasForm' => page_has_form($page),
