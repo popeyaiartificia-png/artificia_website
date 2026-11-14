@@ -100,6 +100,21 @@ function test_schema_home_has_org_and_local_business(): void
     ok(!isset($bare['telephone']) && !isset($bare['sameAs']), 'unset settings are omitted');
 }
 
+function test_schema_service_pages_and_local_business_pin_geo(): void
+{
+    $svc = seo_node(schema_graph(seo_page(['slug' => 'services/gohighlevel', 'title' => 'GoHighLevel']), [], SEO_BASE), 'Service');
+    eq($svc['url'], SEO_BASE . '/services/gohighlevel');
+    ok(seo_node(schema_graph(seo_page(['slug' => 'corporate-ai-training/healthcare']), [], SEO_BASE), 'Service') !== null);
+    eq(seo_node(schema_graph(seo_page(['slug' => 'services']), [], SEO_BASE), 'Service'), null, 'hub page is not a Service');
+
+    $org = seo_node(schema_graph(seo_page(['slug' => 'home']), [
+        'org_address' => "Office 11, Darshanam Arise\nVadodara, Gujarat 391101", 'org_map_query' => '22.31608,73.1318266',
+    ], SEO_BASE), 'LocalBusiness');
+    eq($org['address']['streetAddress'], 'Office 11, Darshanam Arise, Vadodara, Gujarat 391101');
+    eq($org['address']['postalCode'], '391101');
+    eq($org['geo'], ['@type' => 'GeoCoordinates', 'latitude' => 22.31608, 'longitude' => 73.1318266]);
+}
+
 function test_schema_article_for_posts(): void
 {
     $graph = schema_graph(seo_page([
