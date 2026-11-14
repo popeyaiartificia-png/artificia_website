@@ -366,7 +366,7 @@
   var body = function (g, x, top, base, w) { g.beginPath(); g.roundRect(x - w, top, w * 2, base - top, [w * .8, w * .8, 0, 0]); g.fill(); };
   var DRAW = [
     function chip(g) {
-      g.fillStyle = g.strokeStyle = '#d2ff00';
+      g.fillStyle = g.strokeStyle = '#AED534';
       g.lineWidth = 12;
       g.beginPath(); g.roundRect(-58, -58, 116, 116, 16); g.stroke();
       [-38, -13, 13, 38].forEach(function (o) { g.fillRect(o - 4.5, -94, 9, 28); g.fillRect(o - 4.5, 66, 9, 28); g.fillRect(-94, o - 4.5, 28, 9); g.fillRect(66, o - 4.5, 28, 9); });
@@ -375,13 +375,13 @@
       g.fillText('AI', 0, 5);
     },
     function team(g) { // three people side by side, the middle one (white) a step forward
-      g.fillStyle = '#d2ff00';
+      g.fillStyle = '#AED534';
       [-72, 72].forEach(function (x) { head(g, x, -22, 16); body(g, x, 4, 50, 28); });
       g.fillStyle = '#fff';
       head(g, 0, -36, 21); body(g, 0, -4, 62, 36);
     },
     function cap(g) {
-      g.fillStyle = g.strokeStyle = '#d2ff00';
+      g.fillStyle = g.strokeStyle = '#AED534';
       g.beginPath(); g.moveTo(-54, -14); g.lineTo(-54, 32); g.quadraticCurveTo(0, 64, 54, 32); g.lineTo(54, -14); g.fill();
       var board = function (stroke) { g.beginPath(); g.moveTo(0, -72); g.lineTo(100, -32); g.lineTo(0, 8); g.lineTo(-100, -32); g.closePath(); stroke ? (g.stroke(), g.fill()) : g.fill(); };
       gap(g, board, 14);
@@ -432,9 +432,9 @@
       P = { a: new Float32Array(N), j: new Float32Array(N), dl: new Float32Array(N), ph: new Float32Array(N), ox: new Float32Array(N), oy: new Float32Array(N), vx: new Float32Array(N), vy: new Float32Array(N) };
       for (i = 0; i < N; i++) { P.a[i] = Math.random() * TAU; P.j[i] = .9 + Math.random() * .22; P.dl[i] = Math.random() * .2; P.ph[i] = Math.random() * TAU; }
     }
-    spr = [sprite('210,255,0', .2, .3), sprite('255,255,255', .2, .3), sprite('210,255,0', .12, .12)];
+    spr = [sprite('174, 213, 52', .2, .3), sprite('255,255,255', .2, .3), sprite('174, 213, 52', .12, .12)];
     pad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
-    pad.addColorStop(0, 'rgba(210,255,0,.35)'); pad.addColorStop(1, 'rgba(210,255,0,0)');
+    pad.addColorStop(0, 'rgba(174, 213, 52,.35)'); pad.addColorStop(1, 'rgba(174, 213, 52,0)');
     return true;
   };
 
@@ -459,11 +459,11 @@
 
     // The orbit: front half brighter than the back, a turning dashed ring outside it, dial ticks inside.
     ctx.lineWidth = 1;
-    ctx.strokeStyle = 'rgba(210,255,0,.13)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, Math.PI, TAU); ctx.stroke();
-    ctx.strokeStyle = 'rgba(210,255,0,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI); ctx.stroke();
-    ctx.setLineDash([2, 8]); ctx.lineDashOffset = -t * 16; ctx.strokeStyle = 'rgba(210,255,0,.2)';
+    ctx.strokeStyle = 'rgba(174, 213, 52,.13)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, Math.PI, TAU); ctx.stroke();
+    ctx.strokeStyle = 'rgba(174, 213, 52,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI); ctx.stroke();
+    ctx.setLineDash([2, 8]); ctx.lineDashOffset = -t * 16; ctx.strokeStyle = 'rgba(174, 213, 52,.2)';
     ctx.beginPath(); ctx.ellipse(cx, cy, rx * 1.07, ry * 1.09, 0, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = 'rgba(210,255,0,.22)'; ctx.beginPath();
+    ctx.strokeStyle = 'rgba(174, 213, 52,.22)'; ctx.beginPath();
     for (i = 0; i < 96; i++) { th = i / 96 * TAU + t * .06; c = Math.cos(th); sn = Math.sin(th); f = i % 8 ? .97 : .93; ctx.moveTo(cx + rx * .99 * c, cy + ry * .99 * sn); ctx.lineTo(cx + rx * f * c, cy + ry * f * sn); }
     ctx.stroke();
     // The projector pad under the hologram.
@@ -497,7 +497,7 @@
     ctx.globalAlpha = 1;
     if (scan > -1e4) {
       var g = ctx.createLinearGradient(cx - S * .6, 0, cx + S * .6, 0);
-      g.addColorStop(0, 'rgba(210,255,0,0)'); g.addColorStop(.5, 'rgba(240,255,170,.7)'); g.addColorStop(1, 'rgba(210,255,0,0)');
+      g.addColorStop(0, 'rgba(174, 213, 52,0)'); g.addColorStop(.5, 'rgba(240,255,170,.7)'); g.addColorStop(1, 'rgba(174, 213, 52,0)');
       ctx.fillStyle = g; ctx.fillRect(cx - S * .6, scan - .75, S * 1.2, 1.5);
     }
 
@@ -506,14 +506,14 @@
     ctx.lineCap = 'round';
     for (i = 0; i < 18; i++) {
       pt = onRing(a - tail * i / 18, 1); pt2 = onRing(a - tail * (i + 1) / 18, 1);
-      ctx.strokeStyle = 'rgba(210,255,0,' + (1 - i / 18) * .9 + ')'; ctx.lineWidth = 3.2 * (1 - i / 18) + .4;
+      ctx.strokeStyle = 'rgba(174, 213, 52,' + (1 - i / 18) * .9 + ')'; ctx.lineWidth = 3.2 * (1 - i / 18) + .4;
       ctx.beginPath(); ctx.moveTo(pt[0], pt[1]); ctx.lineTo(pt2[0], pt2[1]); ctx.stroke();
     }
     pt = onRing(a, 1);
     ctx.drawImage(spr[1], pt[0] - p * 2.2, pt[1] - p * 2.2, p * 4.4, p * 4.4);
     if (ts > LEG && ts < LEG + .55) {
       q = (ts - LEG) / .55; pt = onRing(ANG[s], 1);
-      ctx.strokeStyle = 'rgba(210,255,0,' + (1 - q) + ')'; ctx.lineWidth = 2 * (1 - q) + .5;
+      ctx.strokeStyle = 'rgba(174, 213, 52,' + (1 - q) + ')'; ctx.lineWidth = 2 * (1 - q) + .5;
       ctx.beginPath(); ctx.ellipse(pt[0], pt[1], 12 + q * 70, 8 + q * 46, 0, 0, TAU); ctx.stroke();
     }
     // The station's label lights as the comet reaches it.

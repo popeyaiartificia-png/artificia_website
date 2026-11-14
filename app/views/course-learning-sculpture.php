@@ -61,7 +61,7 @@ $learningPath = 'M185 505 C450 610 800 490 735 385 C670 280 260 335 320 220 C380
 <svg class="learning-sculpture" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="learning-paper-light" gradientUnits="userSpaceOnUse" x1="340" y1="65" x2="540" y2="565"><stop stop-color="#f0f3e7"/><stop offset=".35" stop-color="#d7dfc8"/><stop offset=".61" stop-color="#eef1e3"/><stop offset="1" stop-color="#c5d0b4"/></linearGradient>
-    <linearGradient id="learning-paper-lime" gradientUnits="userSpaceOnUse" x1="300" y1="70" x2="620" y2="550"><stop stop-color="#e2ff65"/><stop offset="1" stop-color="#b5d92b"/></linearGradient>
+    <linearGradient id="learning-paper-lime" gradientUnits="userSpaceOnUse" x1="300" y1="70" x2="620" y2="550"><stop stop-color="var(--lime-hi)"/><stop offset="1" stop-color="var(--lime)"/></linearGradient>
     <linearGradient id="learning-ribbon-edge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a3b080"/><stop offset=".55" stop-color="#607343"/><stop offset="1" stop-color="#25351b"/></linearGradient>
     <linearGradient id="learning-before-paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#35432c"/><stop offset="1" stop-color="#1c2919"/></linearGradient>
     <linearGradient id="learning-after-paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1f5e8"/><stop offset="1" stop-color="#cfdcbc"/></linearGradient>
@@ -83,8 +83,8 @@ $learningPath = 'M185 505 C450 610 800 490 735 385 C670 280 260 335 320 220 C380
   </g>
   <polyline class="learning-ribbon__rim learning-ribbon__rim--left" points="<?= $learningPoly($learningLeft) ?>" fill="none" stroke="#f6f8ed" stroke-width=".8" opacity=".75"/>
   <polyline class="learning-ribbon__rim learning-ribbon__rim--right" points="<?= $learningPoly($learningRight) ?>" fill="none" stroke="#c7d4ad" stroke-width=".8" opacity=".75"/>
-  <path class="learning-trace" d="<?= $learningPath ?>" pathLength="1" fill="none" stroke="#d2ff00" stroke-width="1.7" stroke-linecap="round" opacity=".8"/>
-  <circle class="learning-marker" cx="185" cy="505" r="4.5" fill="#d2ff00" stroke="#344820" stroke-width="2"/>
+  <path class="learning-trace" d="<?= $learningPath ?>" pathLength="1" fill="none" stroke="var(--lime)" stroke-width="1.7" stroke-linecap="round" opacity=".8"/>
+  <circle class="learning-marker" cx="185" cy="505" r="4.5" fill="var(--lime)" stroke="#344820" stroke-width="2"/>
   <g class="learning-orbit-particles" fill="#f2ffc5">
     <circle class="learning-spark" data-spark="0" cx="185" cy="505" r="3.2" opacity=".9"/>
     <circle class="learning-spark" data-spark="1" cx="185" cy="505" r="2.4" opacity=".7"/>
@@ -109,7 +109,7 @@ $learningPath = 'M185 505 C450 610 800 490 735 385 C670 280 260 335 320 220 C380
       <circle cx="35" cy="69" r="1.8" fill="#aabb8e"/>
     </g>
   </g>
-  <circle class="learning-arrival-ring" cx="665" cy="85" r="46" fill="none" stroke="#d2ff00" stroke-width="1.6" opacity="0"/>
+  <circle class="learning-arrival-ring" cx="665" cy="85" r="46" fill="none" stroke="var(--lime)" stroke-width="1.6" opacity="0"/>
   <g class="learning-after-art" transform="translate(665 85)">
     <ellipse cx="12" cy="44" rx="95" ry="14" fill="#0b1308" opacity=".25"/>
     <g class="learning-after-art__website" transform="translate(-76 -58) rotate(-6)">
@@ -128,10 +128,10 @@ $learningPath = 'M185 505 C450 610 800 490 735 385 C670 280 260 335 320 220 C380
     <g class="learning-after-art__automation" transform="translate(82 20)">
       <path d="M-27 7H-8Q0 7 0 15V22Q0 30 8 30H22" fill="none" stroke="#c4dd9c" stroke-width="1.8"/>
       <rect x="-38" y="-5" width="23" height="23" rx="3" fill="#415d2c" stroke="#bad38e" stroke-width=".8"/>
-      <path d="M-26-1c1.2 5.1 2.8 6.8 8 8-5.2 1.2-6.8 2.8-8 8-1.2-5.2-2.8-6.8-8-8 5.2-1.2 6.8-2.9 8-8Z" fill="#d2ff00"/>
-      <rect x="20" y="14" width="33" height="33" rx="4" fill="#d2ff00" stroke="#e0f99e" stroke-width="1"/>
+      <path d="M-26-1c1.2 5.1 2.8 6.8 8 8-5.2 1.2-6.8 2.8-8 8-1.2-5.2-2.8-6.8-8-8 5.2-1.2 6.8-2.9 8-8Z" fill="var(--lime)"/>
+      <rect x="20" y="14" width="33" height="33" rx="4" fill="var(--lime)" stroke="#e0f99e" stroke-width="1"/>
       <path class="learning-complete-check" d="m28 30 6 6 11-13" pathLength="1" fill="none" stroke="#30471d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="0"/>
-      <circle cx="3" cy="26" r="2.3" fill="#d2ff00"/>
+      <circle cx="3" cy="26" r="2.3" fill="var(--lime)"/>
     </g>
   </g>
 </svg>

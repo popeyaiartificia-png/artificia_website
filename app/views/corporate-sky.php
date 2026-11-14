@@ -18,7 +18,7 @@ for ($k = 0; $k < 8; $k++) $coStack[] = 321 - $k * 11;
   <svg class="co-sky__svg" viewBox="0 0 690 420" aria-hidden="true">
     <defs>
       <linearGradient id="co-ground" x1="0" x2="1"><stop offset="0" stop-color="#c7d1bb" stop-opacity="0"/><stop offset=".5" stop-color="#c7d1bb" stop-opacity=".35"/><stop offset="1" stop-color="#c7d1bb" stop-opacity="0"/></linearGradient>
-      <radialGradient id="co-glow"><stop offset="0" stop-color="#d2ff00" stop-opacity=".35"/><stop offset="1" stop-color="#d2ff00" stop-opacity="0"/></radialGradient>
+      <radialGradient id="co-glow"><stop offset="0" stop-color="var(--lime)" stop-opacity=".35"/><stop offset="1" stop-color="var(--lime)" stop-opacity="0"/></radialGradient>
     </defs>
     <!-- the sky: one arc the sun crosses once a day -->
     <path class="co-sk__arc" d="M90 330A230 230 0 0 1 550 330"/>

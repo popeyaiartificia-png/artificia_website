@@ -37,7 +37,7 @@
     {
       "type": "statement",
       "fields": {
-        "text": "We build *AI automation* and business software. Then we *train your team* to use it. Built in *Vadodara*."
+        "text": "We build *AI automation* and business software. Then we *train your team* to use it and *grow*."
       }
     },
     {
@@ -75,46 +75,47 @@
             "note": "Measured and improved"
           }
         ],
+        "tools_label": "Our AI engineering stack",
         "tools": [
           {
-            "name": "GoHighLevel",
-            "brand": "gohighlevel",
-            "note": "CRM and pipelines"
+            "name": "Python",
+            "brand": "python",
+            "note": "AI engineering"
           },
           {
-            "name": "n8n",
-            "brand": "n8n",
-            "note": "Workflows"
+            "name": "LangChain",
+            "brand": "langchain",
+            "note": "LLM applications"
           },
           {
-            "name": "WhatsApp",
-            "brand": "whatsapp",
-            "note": "Follow-ups"
+            "name": "LangGraph",
+            "brand": "langgraph",
+            "note": "Agent orchestration"
           },
           {
-            "name": "AWS",
-            "brand": "aws",
-            "note": "Hosting"
+            "name": "LlamaIndex",
+            "brand": "llamaindex",
+            "note": "Data and retrieval"
           },
           {
-            "name": "Google Cloud",
-            "brand": "google-cloud",
-            "note": "Hosting"
+            "name": "Hugging Face",
+            "brand": "huggingface",
+            "note": "Open models"
           },
           {
-            "name": "Claude",
-            "brand": "claude",
-            "note": "AI models"
+            "name": "Pinecone",
+            "brand": "pinecone",
+            "note": "Vector search"
           },
           {
-            "name": "ChatGPT",
-            "brand": "chatgpt",
-            "note": "AI models"
+            "name": "FastAPI",
+            "brand": "fastapi",
+            "note": "AI APIs"
           },
           {
-            "name": "Gemini",
-            "brand": "gemini",
-            "note": "AI models"
+            "name": "OpenAI",
+            "brand": "openai",
+            "note": "Foundation models"
           }
         ]
       }

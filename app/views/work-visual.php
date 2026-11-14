@@ -41,8 +41,8 @@
     <rect x="70" y="35" width="250" height="155" rx="10" fill="#293620" stroke="#7F925F" stroke-width="1.5"/>
     <rect x="81" y="46" width="228" height="131" rx="4" fill="#151D0F"/>
     <path d="M166 190v24h58v-24m-83 25h108" stroke="#7F925F" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="195" cy="110" r="50" fill="#B2C73A" opacity=".08"/>
-    <g stroke="#B2C73A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="195" cy="110" r="50" fill="var(--lime)" opacity=".08"/>
+    <g stroke="var(--lime)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
       <path d="M159 123v-18a36 36 0 0 1 72 0v18"/>
       <rect x="151" y="116" width="16" height="30" rx="6"/>
       <rect x="223" y="116" width="16" height="30" rx="6"/>
@@ -50,7 +50,7 @@
       <path d="M195 164h8" stroke-width="7"/>
     </g>
     <rect x="293" y="111" width="135" height="78" rx="9" fill="#364529" stroke="#829663" stroke-width="1.5"/>
-    <circle cx="315" cy="133" r="10" fill="#B2C73A"/>
+    <circle cx="315" cy="133" r="10" fill="var(--lime)"/>
     <path d="m310 133 3 3 6-7" stroke="#26331B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="334" y="138" fill="#DDE5D3" font-family="Artificia Sans, Arial, sans-serif" font-size="13">Helpdesk</text>
     <path d="M307 156h94m-94 12h68" stroke="#819568" stroke-width="2" stroke-linecap="round"/>

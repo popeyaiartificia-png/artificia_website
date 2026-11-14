@@ -32,9 +32,9 @@ $details = array_values(array_filter($f['details'] ?? [], fn($d) => trim((string
               <g transform="rotate(5 165 141)">
                 <rect x="91" y="43" width="153" height="193" rx="6" fill="#fbfcf8" stroke="#7a856a"/>
                 <rect x="107" y="61" width="29" height="29" rx="4" fill="#232719"/>
-                <path d="M115 69h9l5 5v9h-14zm9 0v6h5" stroke="#d2ff00" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M115 69h9l5 5v9h-14zm9 0v6h5" stroke="var(--lime)" stroke-width="1.3" stroke-linejoin="round"/>
                 <path d="M147 68h56m-56 12h37M108 108h116m-116 13h82m-82 14h103" stroke="#abb29f" stroke-width="2.5" stroke-linecap="round"/>
-                <rect x="105" y="149" width="119" height="20" rx="2" fill="#d2ff00"/>
+                <rect x="105" y="149" width="119" height="20" rx="2" fill="var(--lime)"/>
                 <path d="M112 159h99m-103 27h62m-62 13h80" stroke="#4e5d00" stroke-width="2.5" stroke-linecap="round"/>
                 <circle cx="216" cy="207" r="12" fill="#eef1e7" stroke="#abb29f"/>
                 <path d="m211 207 3 3 6-7" stroke="#4e5d00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -42,21 +42,21 @@ $details = array_values(array_filter($f['details'] ?? [], fn($d) => trim((string
             </g>
             <g class="co-pass__lens">
               <path d="m267 195 33 38" stroke="#11150f" stroke-width="20" stroke-linecap="round"/>
-              <path d="m283 215 12 14" stroke="#d2ff00" stroke-width="4" stroke-linecap="round"/>
+              <path d="m283 215 12 14" stroke="var(--lime)" stroke-width="4" stroke-linecap="round"/>
               <circle cx="225" cy="148" r="66" fill="#11150f"/>
-              <circle cx="225" cy="148" r="56" fill="#232e16" stroke="#d2ff00" stroke-width="1.5"/>
+              <circle cx="225" cy="148" r="56" fill="#232e16" stroke="var(--lime)" stroke-width="1.5"/>
               <path d="M183 132a45 45 0 0 1 30-27" stroke="#f4f6f1" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
-              <path d="m225 119 7 21 21 8-21 7-7 22-7-22-21-7 21-8z" fill="#d2ff00"/>
-              <path d="m252 115 3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#d2ff00"/>
+              <path d="m225 119 7 21 21 8-21 7-7 22-7-22-21-7 21-8z" fill="var(--lime)"/>
+              <path d="m252 115 3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="var(--lime)"/>
               <circle cx="225" cy="148" r="77" stroke="#4e5d00" stroke-opacity=".28" stroke-dasharray="2 6"/>
             </g>
             <path class="co-pass__trail" d="M61 213c-39 42-29 82 36 82" stroke="#637046" stroke-width="1.5" stroke-dasharray="4 5"/>
             <path d="m89 289 9 6-9 6" stroke="#637046" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <g class="co-pass__opportunity" transform="rotate(-4 217 293)">
               <rect x="102" y="248" width="231" height="101" rx="8" fill="#11150f"/>
-              <path d="M120 275h195" stroke="#d2ff00" stroke-opacity=".2"/>
-              <text x="119" y="267" fill="#d2ff00" font-size="16" font-weight="650">AI opportunities</text>
-              <g stroke="#d2ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M120 275h195" stroke="var(--lime)" stroke-opacity=".2"/>
+              <text x="119" y="267" fill="var(--lime)" font-size="16" font-weight="650">AI opportunities</text>
+              <g stroke="var(--lime)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="126" cy="295" r="7"/>
                 <path d="M126 291v4l3 2"/>
                 <path d="m120 327 4-5 4 2 6-9m-5 0h5v5"/>

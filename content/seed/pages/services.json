@@ -146,15 +146,16 @@
           {"title": "Train", "note": "Your team learns to use it"},
           {"title": "Optimise", "note": "Measured and improved"}
         ],
+        "tools_label": "Our AI engineering stack",
         "tools": [
-          {"name": "GoHighLevel", "brand": "gohighlevel", "note": "CRM and pipelines"},
-          {"name": "n8n", "brand": "n8n", "note": "Workflows"},
-          {"name": "WhatsApp", "brand": "whatsapp", "note": "Follow-ups"},
-          {"name": "AWS", "brand": "aws", "note": "Hosting"},
-          {"name": "Google Cloud", "brand": "google-cloud", "note": "Hosting"},
-          {"name": "Claude", "brand": "claude", "note": "AI models"},
-          {"name": "ChatGPT", "brand": "chatgpt", "note": "AI models"},
-          {"name": "Gemini", "brand": "gemini", "note": "AI models"}
+          {"name": "Python", "brand": "python", "note": "AI engineering"},
+          {"name": "LangChain", "brand": "langchain", "note": "LLM applications"},
+          {"name": "LangGraph", "brand": "langgraph", "note": "Agent orchestration"},
+          {"name": "LlamaIndex", "brand": "llamaindex", "note": "Data and retrieval"},
+          {"name": "Hugging Face", "brand": "huggingface", "note": "Open models"},
+          {"name": "Pinecone", "brand": "pinecone", "note": "Vector search"},
+          {"name": "FastAPI", "brand": "fastapi", "note": "AI APIs"},
+          {"name": "OpenAI", "brand": "openai", "note": "Foundation models"}
         ]
       }
     },

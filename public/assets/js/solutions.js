@@ -32,7 +32,7 @@
     var sprite = d.createElement('canvas'), sg = sprite.getContext('2d');
     sprite.width = sprite.height = 48;
     var rg = sg.createRadialGradient(24, 24, 0, 24, 24, 24);
-    rg.addColorStop(0, 'rgba(246,255,200,1)'); rg.addColorStop(.22, 'rgba(210,255,0,.85)'); rg.addColorStop(1, 'rgba(210,255,0,0)');
+    rg.addColorStop(0, 'rgba(246,255,200,1)'); rg.addColorStop(.22, 'rgba(174, 213, 52,.85)'); rg.addColorStop(1, 'rgba(174, 213, 52,0)');
     sg.fillStyle = rg; sg.fillRect(0, 0, 48, 48);
 
     var layout = function () {
@@ -60,10 +60,10 @@
       var g = clamp(gx / W, .08, .92);
       grad = ctx.createLinearGradient(0, 0, W, 0);
       grad.addColorStop(0, 'rgba(150,158,128,0)'); grad.addColorStop(.05, 'rgba(150,158,128,.3)');
-      grad.addColorStop(g - .07, 'rgba(165,174,140,.42)'); grad.addColorStop(g + .05, 'rgba(210,255,0,.42)'); grad.addColorStop(1, 'rgba(210,255,0,.62)');
+      grad.addColorStop(g - .07, 'rgba(165,174,140,.42)'); grad.addColorStop(g + .05, 'rgba(174, 213, 52,.42)'); grad.addColorStop(1, 'rgba(174, 213, 52,.62)');
       gradOn = ctx.createLinearGradient(0, 0, W, 0);
       gradOn.addColorStop(0, 'rgba(232,238,214,0)'); gradOn.addColorStop(.05, 'rgba(232,238,214,.75)');
-      gradOn.addColorStop(g - .07, 'rgba(238,244,220,.9)'); gradOn.addColorStop(g + .04, 'rgba(210,255,0,1)'); gradOn.addColorStop(1, 'rgba(222,255,80,1)');
+      gradOn.addColorStop(g - .07, 'rgba(238,244,220,.9)'); gradOn.addColorStop(g + .04, 'rgba(174, 213, 52,1)'); gradOn.addColorStop(1, 'rgba(222,255,80,1)');
       draw();
     };
 

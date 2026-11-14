@@ -515,7 +515,7 @@
         '  float dl = abs(fract(v - .5) - .5) / max(fwidth(v), 1e-4);', // distance to the nearest contour, in pixels
         '  float a = (1. - smoothstep(.35, 1.35, dl)) * .19;',
         flood ? floodShader(flood)
-          : topo.weave ? '  float k = a * 2.1; gl_FragColor = vec4(vec3(.824, 1., 0.) * k, k);' : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
+          : topo.weave ? '  float k = a * 2.1; gl_FragColor = vec4(vec3(174., 213., 52.) / 255. * k, k);' : '  gl_FragColor = vec4(vec3(.47, .5, .36) * a, a);',
         '}'
       ].join('\n')));
       tg.bindAttribLocation(tp, 0, 'p');
@@ -839,7 +839,7 @@
     if (c.parentNode.matches('.versus') && c.closest('.workscape-pair')) return;
     // Its contour lines at Solutions' 65% terrain strength, so the flood and the section under it read as one ground.
     if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30, line: 'vec3(.329, .354, .255)' };
-    if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)', profile: 'calm' };
+    if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(174., 213., 52.) / 255.', line: 'vec3(.16, .2, 0.)', profile: 'calm' };
     topoField(c, c.closest('.course-page, .solutions-page') || afterStage || c.parentNode, c.flood); // inner pages: one map under every section
   });
 
@@ -895,7 +895,7 @@
     var FS = [
       'precision highp float;',
       'uniform sampler2D uBase, uHelm, uInk; uniform vec2 uRes; uniform vec4 uRect, uHRect; uniform float uHas, uTime, uScan; uniform vec3 uBg, uThink;',
-      'const vec3 LIME = vec3(.824, 1., 0.), INK = vec3(.05, .055, .035), TONE = vec3(.068, .08, .036);',
+      'const vec3 LIME = vec3(174., 213., 52.) / 255., INK = vec3(.05, .055, .035), TONE = vec3(.068, .08, .036);',
       NOISE,
       'float luma(vec3 c) { return dot(c, vec3(.299, .587, .114)); }',
       'float inside(vec2 uv) { return step(0., uv.x) * step(uv.x, 1.) * step(0., uv.y) * step(uv.y, 1.); }',
@@ -1090,8 +1090,8 @@
         fx.strokeStyle = style; fx.lineWidth = lw; fx.lineCap = 'butt'; fx.lineJoin = 'round'; fx.stroke();
       };
       fx.globalAlpha = al;
-      arc(0, shade(210, 255, 0, .07), bh * 1.9); // a halo spilling onto the neck
-      fx.fillStyle = shade(210, 255, 0, 1, true);
+      arc(0, shade(174, 213, 52, .07), bh * 1.9); // a halo spilling onto the neck
+      fx.fillStyle = shade(174, 213, 52, 1, true);
       fx.beginPath();
       for (i = -24; i <= 24; i++) { var q0 = bp(i / 48 * Math.PI, bh / 2); if (i === -24) fx.moveTo(q0[0], q0[1]); else fx.lineTo(q0[0], q0[1]); }
       for (i = 24; i >= -24; i--) { var q1 = bp(i / 48 * Math.PI, -bh / 2); fx.lineTo(q1[0], q1[1]); }
@@ -1143,7 +1143,7 @@
           fx.globalAlpha = al * v;
           fx.beginPath(); fx.moveTo(p0[0], p0[1]); fx.lineTo(p1[0], p1[1]);
           fx.strokeStyle = 'rgba(16, 18, 10, .3)'; fx.lineWidth = lw * 3; fx.stroke();
-          fx.strokeStyle = '#d2ff00'; fx.lineWidth = lw; fx.stroke();
+          fx.strokeStyle = '#AED534'; fx.lineWidth = lw; fx.stroke();
         }
       };
       var n2, pts;
@@ -1155,7 +1155,7 @@
         for (pts = [], n2 = 0; n2 <= 12; n2++) pts.push(sp((CAP.base + (78 - CAP.base) * n2 / 12) * D, m / 14 * 2 * Math.PI + lrot));
         line(pts, .4);
         var nd = pts[0];
-        fx.globalAlpha = al * vis(nd[2]); fx.fillStyle = '#d2ff00';
+        fx.globalAlpha = al * vis(nd[2]); fx.fillStyle = '#AED534';
         fx.beginPath(); fx.arc(nd[0], nd[1], lw * 1.8, 0, 2 * Math.PI); fx.fill();
       }
       // Signals: each climbs a meridian from the base ring to the crown in 1.6 s, then picks another.
@@ -1164,7 +1164,7 @@
         for (var j = 8; j >= 0; j--) {
           var q = sp((CAP.base + (78 - CAP.base) * Math.max(pr - j * .025, 0)) * D, lo), a = vis(q[2]) * (1 - j / 9) * Math.sin(Math.PI * pr);
           if (a < .01) continue;
-          fx.globalAlpha = al * a; fx.fillStyle = j ? '#d2ff00' : '#f4ffd0';
+          fx.globalAlpha = al * a; fx.fillStyle = j ? '#AED534' : '#f4ffd0';
           fx.beginPath(); fx.arc(q[0], q[1], lw * (j ? 2 - j * .15 : 3), 0, 2 * Math.PI); fx.fill();
         }
       }
