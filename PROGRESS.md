@@ -27,6 +27,8 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Live check after the user's deploy: b5eb055 did not reach the server (og-default.jpg 404, old share tags); everything else is up. Logged in to the live CMS (user gave the login): 8/20 pages pass SEO checks; Settings has no GA4, Search Console, Meta Pixel, GBP URL or lead alert email. No CMS changes made.
 - User re-deployed; b5eb055 now live and verified (share image + large cards on every page, Service schema on 7 pages, LocalBusiness postcode/geo/logo, all JSON-LD valid).
 - Live CMS Settings (user asked): Lead alert email → info@artificiaai.com, Meta Pixel → 908862172011061. Pixel verified on live pages; the Lead event fires on form submit.
+- Live UI/UX/SEO audit (read-only, user asked what is still missing): Lighthouse mobile home A11y 96 / BP 77 / SEO 100, masterclass 100 / 77 / 100; LCP 4.4 s throttled, caused by the 1.6 s minimum loader on every page view; 19 pages clean of overflow at 390/1440; small text and small targets site-wide; testimonial label-in-name mismatch. Full list in the CONTEXT changelog.
+- Fixed P1/P2 from the audit (user asked) and committed on main: loader once per visit, testimonial labels, mock-UI contrast, 12px text floor site-wide, 24px tap targets, stacked course hero top bar on phones. Local checks: Lighthouse home a11y 100, no text under 12px, no overflow on 19 pages × 2 widths, tests 174 / 11.
 
 **Current lead**
 - User review of CMS Package A (SEO desk) at http://127.0.0.1:8080/admin/seo, /admin/seo/schema, /admin/seo/files and a page's SEO & meta tab.
@@ -35,6 +37,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Get the site into Google: Search Console verification and sitemap submission.
 
 **Next**
+- Push main and run hPanel Git Deploy, then re-measure live (Lighthouse + throttled LCP). Remaining audit items: P3 apple-touch-icon/manifest, HSTS, hard-coded colours in page CSS.
 - Send one test enquiry marked TEST to confirm the alert email reaches info@artificiaai.com (PHP mail() can land in spam) and the lead shows in Meta Events Manager.
 - CMS Package B: internal-link rules + orphan report + link picker, broken-link / click-depth scan, image alt-text list, revisions restore + scheduled publish (after the user reviews Package A at http://127.0.0.1:8080/admin/seo).
 - Commit and deploy (hPanel Git pull) once the user approves; production runs migration 004 on its first request.

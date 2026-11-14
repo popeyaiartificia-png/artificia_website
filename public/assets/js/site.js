@@ -15,7 +15,7 @@
   // The loader: it leaves once the fonts, the first picture and the page are in, never before 1.6s and never after 3.5s.
   var loader = d.querySelector('.loader');
   var enter = function () { root.classList.add('is-in'); };
-  if (loader && root.classList.contains('js')) {
+  if (loader && root.classList.contains('js') && !root.classList.contains('al')) {
     var done = 0, gone = false;
     var leave = function () {
       if (gone) return;

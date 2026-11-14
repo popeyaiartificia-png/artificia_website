@@ -39,7 +39,7 @@ typography:
     lineHeight: 1.65
   label:
     fontFamily: "Artificia Sans, Arial, sans-serif"
-    fontSize: "0.72rem"
+    fontSize: "0.75rem"
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "0.06em"
@@ -132,11 +132,12 @@ Built for students first: a comfortable, low-glare page for evening reading on a
 - **Emphasis** (`*word*` in a heading) Bodoni Moda 500, roman, with the existing highlighter band at 86% height where that component uses it. The statement, review heading and footer retain their existing emphasis treatment.
 - **Title / h3** Mona Sans 660, 1.3-1.6rem.
 - **Body** Mona Sans 400, 1.0625rem, 1.65; prose max 66ch, its first paragraph 1.15em in ink as a standfirst; ledes 1.06-1.3rem, 54ch.
-- **Label** Mona Sans 500, .72rem, .06em tracking, uppercase.
+- **Label** Mona Sans 500, .75rem (12px), .06em tracking, uppercase.
 
 ### Named Rules
 **The Case Rule.** Components retain their established sentence case or uppercase styling; small labels use tracked uppercase Mona Sans.
 **The Under Rule.** Entry and metadata lines sit under their title. The only thing above a heading is the section's ruled number.
+**The 12px Floor (14 Nov 2026).** No readable text renders under 12px (.75rem) at any viewport: labels, kickers, breadcrumbs, meta lines, footer links, captions. Tap targets outside running text are at least 24×24px (WCAG 2.2 AA): checkboxes 24px; breadcrumb links carry 4px vertical padding with a matching negative margin. The exemption is text inside `aria-hidden` illustrations (the work-gallery mock screens, the /services journey visual, drawings), which may stay smaller but keeps 4.5:1 contrast on its own card colour.
 
 ## Layout
 
