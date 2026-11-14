@@ -837,7 +837,8 @@
   d.querySelectorAll('.topo-bg').forEach(function (c) {
     // The shared gallery canvas also draws behind the comparison; keep only its later dark flood.
     if (c.parentNode.matches('.versus') && c.closest('.workscape-pair')) return;
-    if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30 };
+    // Its contour lines at Solutions' 65% terrain strength, so the flood and the section under it read as one ground.
+    if (c.parentNode.matches('.versus__dusk')) c.flood = { rise: 30, line: 'vec3(.329, .354, .255)' };
     if (c.parentNode.matches('.foot__rise')) c.flood = { rise: 30, base: 'vec3(.824, 1., 0.)', line: 'vec3(.16, .2, 0.)', profile: 'calm' };
     topoField(c, c.closest('.course-page, .solutions-page') || afterStage || c.parentNode, c.flood); // inner pages: one map under every section
   });
@@ -1415,7 +1416,7 @@
       paint(ground);
       return function () { ground.kill(); terrain.destroy(); };
     });
-    gsap.matchMedia().add('(min-width: 1100px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)', function () {
+    gsap.matchMedia().add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', function () {
       var viewport = section.querySelector('.workscape__viewport'), track = section.querySelector('.workscape__track');
       // The authored scene has six unique shapes. Other CMS combinations use the open, static grid.
       if (section.querySelectorAll('.workscape__item').length !== 6 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'knowledge', 'voice'].some(function (kind) {
@@ -1618,8 +1619,9 @@
       // The flood climbs slowly at first, so it never covers copy that is still being read, then closes over what is left.
       // The long scrub lets it keep flowing for a moment after the page stops.
       var flood = (v.querySelector('.versus__dusk canvas') || {}).flood;
-      if (flood) gsap.fromTo(flood, { rise: 30 }, { rise: function () { return innerHeight * (desktop ? 1.1 : 0.55); }, ease: 'power4.in',
-        scrollTrigger: { trigger: v, start: 'bottom 100%', end: 'bottom 12%', scrub: 1, invalidateOnRefresh: true } });
+      // It closes while the section's foot is still mid-screen, so no paper is left between the masthead and Solutions.
+      if (flood) gsap.fromTo(flood, { rise: 30 }, { rise: function () { return innerHeight * (desktop ? 1.1 : 0.55); }, ease: 'power2.in',
+        scrollTrigger: { trigger: v, start: 'bottom 100%', end: 'bottom 45%', scrub: 0.6, invalidateOnRefresh: true } });
       // Keyboard navigation must never land on a visually hidden link during the arrival.
       var revealFocus = function () {
         if (tl.progress() < 1) {
