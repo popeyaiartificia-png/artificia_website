@@ -24,6 +24,9 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Base-level SEO (user asked, onpage-optimizer skill): titles, meta descriptions, one H1 and canonicals pass on every page. Added a default 1200x630 share image (public/assets/img/og-default.jpg) for pages with no Social image, Service schema on service and corporate pages, and postcode/geo/logo in the LocalBusiness schema. New SeoTest test passes; suite 167 / 11 (same 11 as before). Local only: not committed or deployed.
 - Committed the SEO changes with the 13–14 Nov notes on site-v1 and pushed to origin/site-v1. Not deployed: the live site needs site-v1 merged into main.
 - Merged site-v1 into main (user asked) and pushed origin/main; code merged cleanly with the SEO desk, tests 174 / 11 (unchanged). Live needs hPanel → Git → Deploy.
+- Live check after the user's deploy: b5eb055 did not reach the server (og-default.jpg 404, old share tags); everything else is up. Logged in to the live CMS (user gave the login): 8/20 pages pass SEO checks; Settings has no GA4, Search Console, Meta Pixel, GBP URL or lead alert email. No CMS changes made.
+- User re-deployed; b5eb055 now live and verified (share image + large cards on every page, Service schema on 7 pages, LocalBusiness postcode/geo/logo, all JSON-LD valid).
+- Live CMS Settings (user asked): Lead alert email → info@artificiaai.com, Meta Pixel → 908862172011061. Pixel verified on live pages; the Lead event fires on form submit.
 
 **Current lead**
 - User review of CMS Package A (SEO desk) at http://127.0.0.1:8080/admin/seo, /admin/seo/schema, /admin/seo/files and a page's SEO & meta tab.
@@ -32,6 +35,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Get the site into Google: Search Console verification and sitemap submission.
 
 **Next**
+- Send one test enquiry marked TEST to confirm the alert email reaches info@artificiaai.com (PHP mail() can land in spam) and the lead shows in Meta Events Manager.
 - CMS Package B: internal-link rules + orphan report + link picker, broken-link / click-depth scan, image alt-text list, revisions restore + scheduled publish (after the user reviews Package A at http://127.0.0.1:8080/admin/seo).
 - Commit and deploy (hPanel Git pull) once the user approves; production runs migration 004 on its first request.
 - User to check the seamless case study → How a project runs join on /services.
@@ -41,6 +45,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Content: /blog (19 words), /careers and /contact are thin; link the 3 masterclass audience pages and the 2 industry pages from their hub page copy (internal-link-architect skill).
 
 **Blocked**
+- GA4 and Search Console wait on the user, who will add them in the CMS.
 - DataForSEO connector rejects its auth token, so live keyword/SERP data is unavailable until it is fixed.
 
 ## 2026-11-13

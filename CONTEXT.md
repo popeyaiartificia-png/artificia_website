@@ -198,8 +198,8 @@ The homepage now has eight sections in the current design direction; its final e
 ### 6.3 Repo state
 
 - **Live since 14 Nov 2026 (user deployed it):** https://artificiaai.com runs this app with the CMS on Hostinger. Smoke check 14 Nov: all 19 sitemap pages 200, old .html URLs and the two ad funnels 301 to their new pages, http/www 301 to https://artificiaai.com, robots allows indexing, private folders (/storage, /app, /.git, /.env) 403.
-- **Live gaps (Admin → Settings, user action):** no Search Console verification, GA4 ID, Meta Pixel ID or Google Business Profile URL set on 14 Nov. Next: verify Search Console, submit /sitemap.xml.
-- The 14 Nov SEO code changes (default share image, Service schema, LocalBusiness postcode/geo/logo) are merged into `main` and pushed (14 Nov, user asked). **Live only after someone clicks Deploy in hPanel → Git**: Hostinger pulls `main` on that click, not on push.
+- **Live Settings (14 Nov):** Lead alert email = info@artificiaai.com and Meta Pixel ID = 908862172011061 (the old /landing-page/ pixel) set by Claude at the user's request; pixel verified on live pages (PageView everywhere, Lead on form submit via site.js). Alert mail goes through PHP mail() from no-reply@artificiaai.com; delivery not yet tested. **Still empty:** GA4 ID and Search Console code (user will add them in the CMS when they have them), Google Business Profile URL, Meta Conversions API token. Leads also go to the n8n webhook on Hardik's laptop (Tailscale).
+- **The 14 Nov SEO code changes are live** (b5eb055, user re-ran the hPanel Git deploy): og-default.jpg serves, every page has og:image + summary_large_image, the 7 /services/* and /corporate-ai-training* pages carry Service schema, and the home LocalBusiness has postcode 391101, geo and logo. All live JSON-LD parses.
 
 ## 7. Next plans (recommended order)
 
@@ -618,3 +618,9 @@ Newest first. One line per change.
 - **2026-11-14** Committed the SEO code changes with the 13–14 Nov notes on site-v1 and pushed to origin/site-v1 (user asked). Live site unchanged until site-v1 is merged into main and deployed. origin/main's 10 newer commits (SEO desk, contact, fonts) were not merged into site-v1. User offered CMS admin access for the live Settings and will re-authenticate DataForSEO.
 
 - **2026-11-14** Merged site-v1 into main at the user's request and pushed origin/main. Code merged cleanly with main's SEO desk (Package A); only CONTEXT/PROGRESS conflicted, both sides kept. Tests 174 pass / 11 fail (same 11 as before); local /, /services/gohighlevel, /contact, /careers, /llms.txt, /robots.txt 200 with no PHP errors, share image and Service schema present. Live needs hPanel Git Deploy.
+
+- **2026-11-14** Live check after the user's hPanel deploy: all pages, /llms.txt and the SEO desk work, but b5eb055 is not live (/assets/img/og-default.jpg 404, twitter:card still summary), so the server is still on 98f7a6d; the pull did not happen. Logged in to the live CMS with the user's credentials: dashboard 8/20 pages pass SEO checks (same issues as locally); Settings has no tracking IDs and no lead alert email. Nothing changed in the CMS.
+
+- **2026-11-14** Second hPanel deploy pulled b5eb055; verified live: og-default.jpg 200, share tags on all 17 pages, Service schema on 7, LocalBusiness postcode/geo/logo, 0 invalid JSON-LD blocks across the sitemap, no PHP errors.
+
+- **2026-11-14** Live CMS Settings, user asked: Lead alert email info@artificiaai.com, Meta Pixel 908862172011061. Saved (webhook URL/token unchanged); pixel init + PageView confirmed on /, /ai-masterclass, /corporate-ai-training, /contact. GA4/Search Console left for the user.
