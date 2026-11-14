@@ -67,7 +67,6 @@
 .careers-page > .lead--careers:not(.has-flood)::after { content: ''; position: absolute; inset: auto 0 calc(100% - 1px); height: var(--careers-flow); background: #f4f4ed; clip-path: ellipse(90% 45% at 50% 100%); pointer-events: none; }
 .careers-page .lead__side { align-self: start; }
 .careers-page .lead--stage .h2 { max-width: 10ch; font-size: clamp(3rem, 5.6vw, 6rem); }
-.careers-page .lead--careers .h2 em { color: #4e5d00; }
 .careers-page .lead__side > .lede { max-width: 36ch; }
 .careers-resume-note { display: flex; align-items: start; gap: 15px; max-width: 390px; margin-top: 32px; padding: 22px 0; border-top: 1px solid #23271926; border-bottom: 1px solid #23271926; }
 .careers-resume-note__icon { display: grid; place-items: center; flex: none; width: 42px; height: 48px; border: 1px solid #8e9e5b; border-radius: 7px; background: #d2ff0030; color: #4e5d00; }

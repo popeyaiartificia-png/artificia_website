@@ -912,7 +912,8 @@ select.input {
 .lead__eyebrow { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.8rem; color: #59604B; font: 500 .68rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
 .lead__eyebrow .icon { width: 30px; height: 30px; padding: 7px; border-radius: 50%; background: var(--neon); color: #202719; }
 .lead--stage .h2 { max-width: none; font: 660 clamp(3rem, 6vw, 6rem)/.94 var(--display); letter-spacing: -.055em; text-transform: uppercase; }
-.lead--stage .h2 em { display: block; margin-top: .1em; padding: 0; background: none; color: var(--neon); font: 500 1.08em/.92 var(--serif); letter-spacing: -.05em; }
+/* Ivory panel: neon text is unreadable here, so the em is ink swiped with the lime highlighter (the site's signature). */
+.lead--stage.sec .h2 em { display: block; width: fit-content; margin-top: .1em; padding: 0 .12em 0 .04em; color: #141513; -webkit-text-fill-color: #141513; background: linear-gradient(var(--neon), var(--neon)) 0 74% / 100% .36em no-repeat; font: 500 1.08em/.92 var(--serif); letter-spacing: -.05em; }
 .lead--stage .lede { max-width: 33ch; margin-top: 1.8rem; color: #535A48; font: 400 clamp(1.05rem, 1.4vw, 1.2rem)/1.6 var(--sans); }
 .lead--stage .points { gap: .85rem; margin-top: 2rem; }
 .lead--stage .points li { padding-left: 1.25rem; color: #3F4734; font: 450 1rem/1.5 var(--sans); }
