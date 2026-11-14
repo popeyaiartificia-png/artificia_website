@@ -43,11 +43,11 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
       </ul>
 <?php endif ?>
 <?php if ($type === 'careers'): ?>
-      <div class="careers-resume-note"><span class="careers-resume-note__icon" aria-hidden="true"><?= icon('file-text') ?></span><div><h3>A quick link check.</h3><p>Open your resume link in a private browser window to check that it works without signing in.</p></div></div>
+      <div class="careers-resume-note"><span class="careers-resume-note__icon" aria-hidden="true"><?= icon('file-text') ?></span><div><h3>Sharing a link instead?</h3><p>Set it to “Anyone with the link can view” (Google Drive, OneDrive, Dropbox), then open it in a private browser window to check it works without signing in. A PDF needs no check.</p></div></div>
 <?php endif ?>
       <p class="lead__wa">Prefer WhatsApp? <a href="<?= e($wa) ?>">Message us directly</a></p>
     </div>
-    <form class="lead-form plate" data-form-type="<?= $type ?>" data-wa="<?= e($wa) ?>" method="post" action="/lead" novalidate>
+    <form class="lead-form plate" data-form-type="<?= $type ?>" data-wa="<?= e($wa) ?>" method="post" action="/lead"<?= $type === 'careers' ? ' enctype="multipart/form-data"' : '' ?> novalidate>
 <?php if ($stageForm): ?>
       <p class="lead-form__eyebrow"><?= $type === 'careers' ? 'Your application' : 'Your enquiry' ?><?= icon('arrow-up-right') ?></p>
 <?php endif ?>
@@ -91,7 +91,12 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
       <?= $field('name', 'Full name', 'text', true, 'name') ?>
       <div class="lead-form__row"><?= $field('phone', 'WhatsApp number', 'tel', true, 'tel') ?><?= $field('email', 'Email', 'email', true, 'email') ?></div>
       <?= $select('role', 'Role', LEAD_OPTIONS['role']) ?>
-      <?= $field('resume', 'Link to your resume', 'url', true, 'url') ?>
+      <fieldset class="fieldset resume-pick">
+        <legend>Your resume <span class="req" aria-hidden="true">*</span></legend>
+        <div class="field"><label for="<?= $id ?>-resume_file">Attach a PDF <span class="opt">(up to 5 MB)</span></label><input class="input input--file" id="<?= $id ?>-resume_file" name="resume_file" type="file" accept="application/pdf,.pdf" aria-describedby="<?= $id ?>-resume_file-err"><p class="field__err" id="<?= $id ?>-resume_file-err"></p></div>
+        <p class="resume-pick__or" aria-hidden="true"><span>or</span></p>
+        <?= $field('resume', 'Paste a link (Drive, OneDrive, Dropbox, LinkedIn)', 'url', false, 'url') ?>
+      </fieldset>
       <?= $area('message', 'Anything you would like us to know?', false) ?>
 <?php else: ?>
       <div class="lead-form__row"><?= $field('name', 'Full name', 'text', true, 'name') ?><?= $field('phone', 'Phone or WhatsApp', 'tel', true, 'tel') ?></div>

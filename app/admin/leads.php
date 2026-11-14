@@ -151,6 +151,9 @@ function admin_lead(PDO $db, string $method, int $id): HttpResponse
         $action = admin_post_str('action');
         if ($action === 'delete') {
             $db->prepare('DELETE FROM leads WHERE id = ?')->execute([$id]);
+            if (preg_match('/[?&]f=([0-9a-f]{32}\.pdf)$/D', (string) ($lead['fields']['resume_file'] ?? ''), $m)) {
+                @unlink(RESUME_DIR . '/' . $m[1]);
+            }
             return admin_redirect('/admin/leads', 'Lead deleted. It is gone from the inbox and the export; remove it from the Google Sheet too if it was forwarded.');
         }
         if ($action === 'retry') {
@@ -161,4 +164,19 @@ function admin_lead(PDO $db, string $method, int $id): HttpResponse
         }
     }
     return new HttpResponse(200, admin_view('lead', ['title' => $lead['name'] ?: 'Lead', 'lead' => $lead, 'isAdmin' => admin_role_allows($user, 'admin')], $user));
+}
+
+/** A Careers resume PDF (lead field resume_file links here), for signed-in users only. */
+function admin_resume(PDO $db, string $method): HttpResponse
+{
+    $user = auth_require('seo', $db);
+    $f = admin_get_str('f');
+    if (!preg_match('/^[0-9a-f]{32}\.pdf$/D', $f) || !is_file(RESUME_DIR . "/$f")) {
+        return admin_not_found($user);
+    }
+    if (PHP_SAPI !== 'cli') {
+        header('Content-Disposition: inline; filename="resume.pdf"');
+        header('X-Content-Type-Options: nosniff');
+    }
+    return new HttpResponse(200, (string) file_get_contents(RESUME_DIR . "/$f"), null, 'application/pdf');
 }

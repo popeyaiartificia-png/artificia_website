@@ -13,7 +13,7 @@ const LEAD_FORMS = [
         'location' => true, 'objectives' => false, 'challenge' => false],
     'services' => ['name' => true, 'phone' => true, 'email' => true, 'company' => false, 'service' => true, 'message' => false],
     'contact' => ['name' => true, 'phone' => true, 'email' => false, 'message' => true],
-    'careers' => ['name' => true, 'phone' => true, 'email' => true, 'role' => true, 'resume' => true, 'message' => false],
+    'careers' => ['name' => true, 'phone' => true, 'email' => true, 'role' => true, 'resume' => false, 'message' => false], // resume: a link or a PDF (resume_file), one of the two
 ];
 
 /** The options of each select (and the objectives checkboxes): lead_form.php draws these, lead_validate() accepts only these. */
@@ -24,14 +24,35 @@ const LEAD_OPTIONS = [
     'adoption' => ['Not using AI yet', 'Exploring (ChatGPT, Claude)', 'Some tools or automations', 'Custom automations or models'],
     'objectives' => ['Automate repetitive work', 'Upskill the team on AI', 'Build AI agents or chatbots', 'Integrate n8n / Make / APIs', 'Something else'],
     'service' => ['AI automation', 'Agentic AI', 'Software & apps', 'Website development', 'Marketing automation / GoHighLevel', 'SEO / AEO / GEO', 'Cloud & private AI', 'Content and marketing', 'Not sure yet'],
-    'role' => ['AI Engineer', 'Marketing', 'SEO AEO Expert', 'Teaching Expert'], // the Careers hero's role cards pick these by label
+    'role' => ['AI Teaching Expert', 'SEO & AEO Marketing', 'AI Engineer', 'Automation Engineer', 'IoT Expert'], // the Careers hero's role cards pick these by label
 ];
 
 /** Readable names for the `fields` answers (alert email, admin detail, CSV). */
 const LEAD_LABELS = [
     'i_am' => 'Which describes them', 'track' => 'Track', 'employees' => 'Team size', 'adoption' => 'AI today', 'location' => 'City',
-    'objectives' => 'Objectives', 'challenge' => 'Anything we should know', 'service' => 'Service', 'message' => 'Message', 'role' => 'Role', 'resume' => 'Resume link',
+    'objectives' => 'Objectives', 'challenge' => 'Anything we should know', 'service' => 'Service', 'message' => 'Message', 'role' => 'Role', 'resume' => 'Resume link', 'resume_file' => 'Resume PDF',
 ];
+
+/** Careers resume PDFs: storage/ is never web-served (root .htaccess); an admin opens them through GET /admin/resume. */
+const RESUME_DIR = __DIR__ . '/../../storage/resumes';
+const RESUME_MAX_BYTES = 5 * 1024 * 1024;
+
+/** A $_FILES entry checked as a resume: [tmp path, null] for a PDF up to 5 MB, [null, error] for a bad one, [null, null] for none. */
+function lead_resume_pdf(mixed $f): array
+{
+    $err = is_array($f) ? ($f['error'] ?? UPLOAD_ERR_NO_FILE) : UPLOAD_ERR_NO_FILE;
+    if ($err === UPLOAD_ERR_NO_FILE) {
+        return [null, null];
+    }
+    if (in_array($err, [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true) || (int) ($f['size'] ?? 0) > RESUME_MAX_BYTES) {
+        return [null, 'This file is over 5 MB. Attach a smaller PDF, or paste a link instead.'];
+    }
+    $tmp = is_string($f['tmp_name'] ?? null) ? $f['tmp_name'] : '';
+    if ($err !== UPLOAD_ERR_OK || !is_file($tmp)) {
+        return [null, 'The file did not upload. Try again, or paste a link instead.'];
+    }
+    return file_get_contents($tmp, false, null, 0, 5) === '%PDF-' ? [$tmp, null] : [null, 'Attach your resume as a PDF file.'];
+}
 
 /** Tracking fields every form posts (hidden), with their column sizes. */
 const LEAD_TRACKING = [
@@ -92,7 +113,7 @@ function lead_own_url(string $url): string
  * fields) plus `fields`: this form's other answers, empty ones left out.
  * @return array{ok:bool, errors:array<string,string>, data:array}
  */
-function lead_validate(string $type, array $in): array
+function lead_validate(string $type, array $in, array $files = []): array
 {
     if (!isset(LEAD_FORMS[$type])) {
         return ['ok' => false, 'errors' => ['form_type' => 'This form is not recognised. Reload the page and try again.'], 'data' => []];
@@ -133,6 +154,14 @@ function lead_validate(string $type, array $in): array
             $data[$key] = $v;
         } else {
             $data['fields'][$key] = $v;
+        }
+    }
+    if ($type === 'careers') {
+        [$data['resume_pdf'], $pdfError] = lead_resume_pdf($files['resume_file'] ?? null);
+        if ($pdfError !== null) {
+            $errors['resume_file'] = $pdfError;
+        } elseif ($data['resume_pdf'] === null && !isset($data['fields']['resume']) && !isset($errors['resume'])) {
+            $errors['resume'] = 'Attach your resume as a PDF, or paste a link to it.';
         }
     }
     if (($in['consent'] ?? '') !== '1') {
@@ -240,10 +269,10 @@ function lead_find(PDO $db, int $id): ?array
  * only for a real lead (spam gets the same thank-you, but no tracking event). id is the saved lead, or null.
  * @return array{status:int, body:array, id:?int}
  */
-function lead_handle(PDO $db, array $in, array $server, array $settings): array
+function lead_handle(PDO $db, array $in, array $server, array $settings, array $files = []): array
 {
     $wa = whatsapp_url($settings);
-    $v = lead_validate(is_string($in['form_type'] ?? null) ? $in['form_type'] : '', $in);
+    $v = lead_validate(is_string($in['form_type'] ?? null) ? $in['form_type'] : '', $in, $files);
     if (!$v['ok']) {
         return ['status' => 422, 'body' => ['ok' => false, 'errors' => $v['errors']], 'id' => null];
     }
@@ -256,6 +285,15 @@ function lead_handle(PDO $db, array $in, array $server, array $settings): array
     if ($flags['ceiling']) {
         return $limited;
     }
+    $pdf = null;
+    if (($v['data']['resume_pdf'] ?? null) !== null && !$flags['spam']) { // spam is saved, its file is not
+        $pdf = RESUME_DIR . '/' . bin2hex(random_bytes(16)) . '.pdf';
+        if (!(is_dir(RESUME_DIR) || @mkdir(RESUME_DIR, 0700, true)) || !move_uploaded_file($v['data']['resume_pdf'], $pdf)) {
+            error_log('Resume PDF not stored in ' . RESUME_DIR);
+            return ['status' => 500, 'body' => ['ok' => false, 'message' => 'Your resume could not be saved just now. Paste a link to it instead, or send it to us on WhatsApp.', 'whatsapp' => $wa], 'id' => null];
+        }
+        $v['data']['fields']['resume_file'] = rtrim((string) config()['base_url'], '/') . '/admin/resume?f=' . basename($pdf);
+    }
     try {
         $saved = lead_save($db, $v['data'] + [
             'ip' => $ip, 'user_agent' => lead_str($server['HTTP_USER_AGENT'] ?? '', 500),
@@ -263,6 +301,7 @@ function lead_handle(PDO $db, array $in, array $server, array $settings): array
         ]);
     } catch (Throwable $e) {
         error_log('Lead not saved: ' . $e->getMessage());
+        $pdf && @unlink($pdf);
         return ['status' => 500, 'body' => ['ok' => false, 'message' => 'Your enquiry could not be saved just now. Please send it to us on WhatsApp instead.', 'whatsapp' => $wa], 'id' => null];
     }
     if ($flags['rate_limited']) {
@@ -297,7 +336,7 @@ function lead_result_html(array $r, array $in, array $server, array $settings): 
 function lead_endpoint(PDO $db): void
 {
     $settings = settings($db);
-    $r = lead_handle($db, $_POST, $_SERVER, $settings);
+    $r = lead_handle($db, $_POST, $_SERVER, $settings, $_FILES);
     http_response_code($r['status']);
     header('Cache-Control: no-store');
     if (lead_wants_json($_SERVER)) {

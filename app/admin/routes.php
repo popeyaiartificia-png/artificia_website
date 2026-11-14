@@ -54,6 +54,7 @@ function admin_routes(): array
         'GET /admin/leads' => 'admin_leads',
         'GET /admin/leads/export' => 'admin_leads_export',
         'GET /admin/leads/{id}' => 'admin_lead',
+        'GET /admin/resume' => 'admin_resume',
         'POST /admin/leads/{id}' => 'admin_lead',
     ];
 }

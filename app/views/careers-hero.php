@@ -13,7 +13,7 @@ $roles = $f['doors'] ?? [];
     </div>
     <div class="careers-hero__grid">
       <div class="careers-hero__copy">
-        <p class="careers-hero__kicker"><?= icon('arrow-up-right') ?>Build. Train. Teach.</p>
+        <p class="careers-hero__kicker"><?= icon('arrow-up-right') ?>Build. Automate. Teach.</p>
         <h1 id="careers-title" class="careers-hero__title"><?= heading_html($h1) ?></h1>
 <?php if (!empty($f['statement'])): ?>
         <p class="careers-hero__statement"><?= e($f['statement']) ?></p>
@@ -48,10 +48,10 @@ $roles = $f['doors'] ?? [];
       </div>
     </div>
     <div class="careers-path" role="group" aria-labelledby="careers-path-title">
-      <p id="careers-path-title">Your next step<span>One role. One resume link.</span></p>
+      <p id="careers-path-title">Your next step<span>One role. One resume.</span></p>
       <ol>
         <li><span class="careers-path__number">01</span><span>Choose <strong>your role</strong></span><?= icon('arrow-right') ?></li>
-        <li><span class="careers-path__number">02</span><span>Share <strong>your resume link</strong></span><?= icon('arrow-right') ?></li>
+        <li><span class="careers-path__number">02</span><span>Attach <strong>a PDF or a link</strong></span><?= icon('arrow-right') ?></li>
         <li><span class="careers-path__number">03</span><span>Send <strong>your application</strong></span><?= icon('check') ?></li>
       </ol>
     </div>

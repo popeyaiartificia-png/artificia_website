@@ -4,7 +4,7 @@
   "title": "Careers",
   "h1": "Careers at *Artificia.*",
   "meta_title": "Careers at Artificia AI, Vadodara",
-  "meta_description": "Open roles at Artificia AI in Vadodara: AI Engineer, Marketing, SEO AEO Expert and Teaching Expert. Choose a role and send us a link to your resume.",
+  "meta_description": "Open roles at Artificia AI in Vadodara: AI Teaching Expert, SEO & AEO Marketing, AI Engineer, Automation Engineer and IoT Expert. Apply with your resume as a PDF or a link.",
   "sections": [
     {
       "type": "hero",
@@ -12,30 +12,35 @@
         "variant": "careers",
         "eyebrow": "Careers · Vadodara, Gujarat",
         "statement": "Help businesses put AI to work.",
-        "subheading": "We build AI automation and software, train company teams and teach AI in Vadodara. Pick a role and send us a link to your resume.",
+        "subheading": "We build AI automation, software and connected devices, train company teams and teach AI in Vadodara. Pick a role and send us your resume.",
         "primary_cta_label": "Apply with your resume",
         "primary_cta_link": "#enquire",
-        "stat_value": "4",
+        "stat_value": "5",
         "stat_label": "open roles",
         "doors": [
           {
-            "label": "AI Engineer",
-            "note": "Build AI automation, agents and software for client businesses.",
-            "link": "#enquire"
-          },
-          {
-            "label": "Marketing",
-            "note": "Plan and run campaigns, content and marketing automation.",
-            "link": "#enquire"
-          },
-          {
-            "label": "SEO AEO Expert",
-            "note": "Get businesses found on Google and in AI answers: SEO, AEO and GEO.",
-            "link": "#enquire"
-          },
-          {
-            "label": "Teaching Expert",
+            "label": "AI Teaching Expert",
             "note": "Teach AI to company teams and to AI Masterclass learners.",
+            "link": "#enquire"
+          },
+          {
+            "label": "SEO & AEO Marketing",
+            "note": "Get businesses found on Google and in AI answers, and run the campaigns around it.",
+            "link": "#enquire"
+          },
+          {
+            "label": "AI Engineer",
+            "note": "Build AI agents, RAG systems and AI features for client software.",
+            "link": "#enquire"
+          },
+          {
+            "label": "Automation Engineer",
+            "note": "Connect business tools with n8n, Make, GoHighLevel and APIs.",
+            "link": "#enquire"
+          },
+          {
+            "label": "IoT Expert",
+            "note": "Bring sensors, devices and machines into AI-driven workflows.",
             "link": "#enquire"
           }
         ]
@@ -45,7 +50,7 @@
       "type": "lead_form",
       "fields": {
         "heading": "Apply for *a role.*",
-        "intro": "Choose the role and paste a link to your resume: Google Drive, Dropbox, OneDrive or LinkedIn. Set it so anyone with the link can view it.",
+        "intro": "Choose the role, then attach your resume as a PDF or paste a link to it. A link must be set so anyone with it can view.",
         "form_type": "careers"
       }
     }

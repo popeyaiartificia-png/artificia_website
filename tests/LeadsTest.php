@@ -117,6 +117,27 @@ function test_validate_required_per_type(): void
     ok(mb_check_encoding(lead_validate('contact', lead_test_in('contact', ['message' => "ok \xC3"]))['data']['fields']['message'], 'UTF-8'), 'invalid UTF-8 is scrubbed');
 }
 
+function test_careers_resume_link_or_pdf(): void
+{
+    $in = lead_test_in('careers', ['role' => 'IoT Expert', 'resume' => '']);
+    $pdf = tempnam(sys_get_temp_dir(), 'cv');
+    $txt = tempnam(sys_get_temp_dir(), 'cv');
+    file_put_contents($pdf, "%PDF-1.4
+");
+    file_put_contents($txt, 'not a pdf');
+    $file = fn(string $tmp, int $size = 10, int $err = UPLOAD_ERR_OK) => ['resume_file' => ['tmp_name' => $tmp, 'size' => $size, 'error' => $err]];
+    ok(isset(lead_validate('careers', $in)['errors']['resume']), 'a link or a PDF is required');
+    ok(lead_validate('careers', array_merge($in, ['resume' => 'https://drive.google.com/x']))['ok'], 'a link alone passes');
+    $v = lead_validate('careers', $in, $file($pdf));
+    ok($v['ok'] && $v['data']['resume_pdf'] === $pdf, 'a PDF alone passes');
+    ok(isset(lead_validate('careers', $in, $file($txt))['errors']['resume_file']), 'a non-PDF is refused');
+    ok(isset(lead_validate('careers', $in, $file($pdf, RESUME_MAX_BYTES + 1))['errors']['resume_file']), 'over 5 MB is refused');
+    ok(isset(lead_validate('careers', $in, $file('', 0, UPLOAD_ERR_INI_SIZE))['errors']['resume_file']), 'a server size limit is reported');
+    ok(isset(lead_validate('careers', lead_test_in('careers', ['role' => 'Marketing', 'resume' => 'https://x.example/cv']))['errors']['role']), 'old roles are gone');
+    unlink($pdf);
+    unlink($txt);
+}
+
 function test_normalize_phone(): void
 {
     eq(normalize_phone('98765 43210'), '+919876543210');

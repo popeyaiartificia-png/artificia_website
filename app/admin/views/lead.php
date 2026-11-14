@@ -24,7 +24,7 @@ if ($isAdmin) {
 $digits = preg_replace('/\D/', '', $lead['phone']);
 $answers = [];
 foreach ($lead['fields'] as $k => $v) {
-    $answers[LEAD_LABELS[$k] ?? $k] = e(lead_field_text($v));
+    $answers[LEAD_LABELS[$k] ?? $k] = in_array($k, ['resume', 'resume_file'], true) ? $url(lead_field_text($v)) : e(lead_field_text($v));
 }
 ?>
 <a class="back" href="/admin/leads">&larr; All leads</a>
