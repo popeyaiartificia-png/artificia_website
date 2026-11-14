@@ -177,20 +177,28 @@ function schema_graph(array $page, array $settings, string $baseUrl): array
     if ($course) {
         $graph[] = ['@type' => 'Course', 'name' => $title, 'description' => $page['meta_description'] ?? '', 'url' => $url, 'provider' => $provider];
     }
+    if (preg_match('#^/(services/|corporate-ai-training)#', page_path($page))) {
+        $graph[] = ['@type' => 'Service', 'name' => $title, 'description' => $page['meta_description'] ?? '', 'url' => $url, 'provider' => $provider];
+    }
     return $graph;
 }
 
 function schema_organization(array $settings, string $baseUrl): array
 {
-    $address = $settings['org_address'] ?? '';
+    $address = preg_replace('/\s*\n\s*/', ', ', trim($settings['org_address'] ?? ''));
+    preg_match('/\b\d{6}\b/', $address, $pin);
+    $latLng = preg_match('/^(-?[\d.]+),\s*(-?[\d.]+)$/', $settings['org_map_query'] ?? '', $m) ? $m : null;
     return array_filter([
         '@type' => ['EducationalOrganization', 'LocalBusiness'],
         'name' => 'Artificia AI',
         'url' => "$baseUrl/",
+        'logo' => "$baseUrl/assets/img/artificia-logo.png",
+        'image' => "$baseUrl/assets/img/og-default.jpg",
         'address' => array_filter([
             '@type' => 'PostalAddress', 'streetAddress' => $address, 'addressLocality' => 'Vadodara',
-            'addressRegion' => 'Gujarat', 'addressCountry' => 'IN',
+            'addressRegion' => 'Gujarat', 'postalCode' => $pin[0] ?? '', 'addressCountry' => 'IN',
         ]),
+        'geo' => $latLng ? ['@type' => 'GeoCoordinates', 'latitude' => (float) $latLng[1], 'longitude' => (float) $latLng[2]] : null,
         'telephone' => $settings['org_phone'] ?? '',
         'email' => $settings['org_email'] ?? '',
         'sameAs' => array_values(array_filter([$settings['gbp_url'] ?? ''])),

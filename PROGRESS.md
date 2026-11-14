@@ -20,20 +20,28 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - /services case study → How a project runs made seamless (user screenshot: white strip + wave between them). solutions.css: when `.cs` is followed by `.tools--flow`, no bottom padding, the dark card goes full-bleed with square corners and fades #11150f → #1c221a (the tools ground), its contour lines fade out, and the tools section no longer floods. Checked with headless Edge at 1229 and 1920px.
 - Enquiry heading emphasis made legible (user: neon "AI audit" on the ivory panel was barely visible). `.lead--stage.sec .h2 em` in site.css is now ink serif swiped with a neon highlighter band (the site's signature `.h2 em` treatment) instead of neon text; applies to every ivory enquiry block (/services "AI audit", /careers "a role.", course, home). Dead careers.css olive override removed. Headless Edge (Playwright) /services 1536 + 390, /careers 1536: ink fill, band behind lower half of the letters, no page errors. Local only. **Next:** user review, then commit + hPanel Deploy.
 - **CMS → Orkay-style, Package A (SEO desk), user asked.** Compared the Orkay CMS (`D:\orkay_website`) with ours; agreed keep/drop list is in CONTEXT.md (Admin, Orkay-style CMS port). Built: SEO tools → Meta manager (`/admin/seo`), Schema (`/admin/seo/schema`), robots & llms.txt (`/admin/seo/files`) and a public `/llms.txt`; editor SEO tab gains focus keyword (new "keyword" score check), canonical, automatic-schema switch and custom JSON-LD with presets. Migration `004_seo_desk.sql` (auto-applied locally). Tests: new SeoDeskTest 6/6, DbTest migration list updated, full suite same 31 env failures. Headless Edge at 1536x695@1.25 and 390 with a temporary SEO login (deleted afterwards): screens load, no overflow or page errors, a Meta manager save shows and was restored, an unedited preset is refused on the SEO tab. Local only, not committed.
+- User deployed the site with the CMS on Hostinger at https://artificiaai.com. Live smoke check: 19 sitemap pages 200, old .html URLs and /landing-page/, /co-orporate/ 301 to new pages, https/non-www canonical host, robots indexable, private folders 403.
+- Base-level SEO (user asked, onpage-optimizer skill): titles, meta descriptions, one H1 and canonicals pass on every page. Added a default 1200x630 share image (public/assets/img/og-default.jpg) for pages with no Social image, Service schema on service and corporate pages, and postcode/geo/logo in the LocalBusiness schema. New SeoTest test passes; suite 167 / 11 (same 11 as before). Local only: not committed or deployed.
+- Committed the SEO changes with the 13–14 Nov notes on site-v1 and pushed to origin/site-v1. Not deployed: the live site needs site-v1 merged into main.
+- Merged site-v1 into main (user asked) and pushed origin/main; code merged cleanly with the SEO desk, tests 174 / 11 (unchanged). Live needs hPanel → Git → Deploy.
 
 **Current lead**
 - User review of CMS Package A (SEO desk) at http://127.0.0.1:8080/admin/seo, /admin/seo/schema, /admin/seo/files and a page's SEO & meta tab.
 - User review of the new Contact Direct lines card at http://127.0.0.1:8080/contact.
 - User review of the /services rail on the local preview, then push to `main` and pull on Hostinger for the live fix (also delivers the gallery + flood fixes in cdc77c5 and the asset cache-busting).
+- Get the site into Google: Search Console verification and sitemap submission.
 
 **Next**
 - CMS Package B: internal-link rules + orphan report + link picker, broken-link / click-depth scan, image alt-text list, revisions restore + scheduled publish (after the user reviews Package A at http://127.0.0.1:8080/admin/seo).
 - Commit and deploy (hPanel Git pull) once the user approves; production runs migration 004 on its first request.
 - User to check the seamless case study → How a project runs join on /services.
 - User to check the resized /services statement at http://127.0.0.1:8080/services, then commit + hPanel Deploy.
+- User: Admin → Settings on the live site: Search Console verification code, GA4 ID, Google Business Profile URL; then submit https://artificiaai.com/sitemap.xml in Search Console. Repoint Meta ads from /landing-page/ to the new pages.
+- With the user's CMS login (the user logs in in the browser, no password in chat), fill the live Settings via the browser; re-run SEO with DataForSEO once re-authenticated.
+- Content: /blog (19 words), /careers and /contact are thin; link the 3 masterclass audience pages and the 2 industry pages from their hub page copy (internal-link-architect skill).
 
 **Blocked**
-- Nothing.
+- DataForSEO connector rejects its auth token, so live keyword/SERP data is unavailable until it is fixed.
 
 ## 2026-11-13
 
@@ -99,6 +107,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 - Full-page menu: added Home (01; neon on the homepage). Rows now share the whole open screen and type follows viewport height and width (62px at 1536x695, 90px at 1920x1000, 35px on a 390 phone), removing the empty band under the list (user asked). Checked 320, 390, 768, 1100, 1536, 1920: no menu scroll, no overflow; "Corporate training" wraps only at 320.
 - Headless Edge QA at 1100x800, 1536x695, 1920x1000: glow toggles one-at-a-time, no drawing overlaps title/intro/includes/CTA, all inside the panel, 18 tools with logos, no console errors.
 - Footer button label follows the page (user asked): /ai-masterclass* "Enquire About the Course", /corporate-ai-training* "Enquire About Corporate Training", else "Book Free AI Audit"; still links to #enquire (or /contact). layout.php only. Checked 360 and 1536px: correct labels, no overflow.
+- (Hardik's machine) Pulled 5 new origin/main commits and merged them into site-v1 (d685eec, clean merge); local main matches origin/main. Backed up the local DB to storage/db-before-reseed-2026-11-13.sql and ran `php bin/seed.php --force`, so the updated site now runs at http://127.0.0.1:8000 (all main pages 200). Mac tests: 166 pass / 11 fail. Nothing pushed.
 
 **Current lead**
 - User review of the two added illustrative testimonial portraits on http://127.0.0.1:8080/ (scroll to Hear what people say).
@@ -288,6 +297,21 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 
 **Blocked**
 - None for this hero refinement.
+
+## 2026-11-03 (Hardik's machine)
+
+**Done**
+- Pulled the 3 new commits from origin/main (homepage revamp, polish and enquiry flow, publication record) and merged them into local site-v1 (1daa500, clean merge). Local main fast-forwarded to c28d4bf. Nothing pushed.
+- Started the local server with bin/serve at http://127.0.0.1:8000. / and /ai-masterclass/students return 200 and /admin redirects to login, with no server errors.
+
+**Current lead**
+- Re-seed this machine's local DB so the new homepage shows. The DB still has the old 12-section homepage (hero, text_image, card_grid, tools, process_steps, case_study, card_grid, stats, testimonials, faqs, cta, lead_form), not the new 8 (hero, statement, tools, work_gallery, versus, solutions, testimonials, lead_form).
+
+**Next**
+- Run `php bin/seed.php --force`. It updates seeded pages in place, and local pages were last edited 2026-10-28. Then review the homepage in the browser and run `php tests/run.php`.
+
+**Blocked**
+- The re-seed waits for the user's go-ahead. The auto-mode permission check blocked it because it overwrites local DB content.
 
 ## 2026-11-02
 
