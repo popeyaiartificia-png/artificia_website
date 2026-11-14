@@ -1,4 +1,4 @@
-/* Solutions page: friction pulled into flow in the hero, the solution deck and the outcome lines that straighten. Everything still works, and reads, without it. */
+/* Solutions page: friction pulled into flow in the hero, the solution panels and the outcome lines that straighten. Everything still works, and reads, without it. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement;
@@ -218,7 +218,51 @@
     if (!still) whenIn(function () { started = true; schedule(); });
   };
 
-  // The outcome lines read the scroll position, once per frame. (The solution cards' rail is site.js; section joins are its fluid floods.)
+  // The six solutions as panels on wider screens: one card open, the rest folded into spines. A spine's button, a pointer
+  // resting on it, or a hero link to #solution-N opens that card. Its list replays each time it opens.
+  var panels = function (section) {
+    var items = [].slice.call(section.querySelectorAll('.sol-ch__item'));
+    var wide = matchMedia('(min-width: 1000px) and (min-height: 500px)'), hover = matchMedia('(hover: hover) and (pointer: fine)');
+    var current = items[0], wait = 0;
+    var open = function (item) {
+      if (!item || item === current) return;
+      current = item;
+      items.forEach(function (it) {
+        var on = it === item;
+        it.classList.toggle('is-open', on);
+        it.querySelector('.sol-ch__tab').setAttribute('aria-expanded', on);
+        if (!on) it.classList.remove('is-seen');
+      });
+      setTimeout(function () { item.classList.add('is-seen'); }, 200);
+    };
+    var mode = function () {
+      section.classList.toggle('is-panels', wide.matches);
+      // Stacked cards all show their lists.
+      if (!wide.matches) items.forEach(function (it) { it.classList.add('is-seen'); });
+    };
+    current.classList.add('is-open');
+    items.forEach(function (item) {
+      item.querySelector('.sol-ch__tab').addEventListener('click', function () { open(item); });
+      item.addEventListener('mouseenter', function () { if (hover.matches) { clearTimeout(wait); wait = setTimeout(function () { open(item); }, 160); } });
+      item.addEventListener('mouseleave', function () { clearTimeout(wait); });
+    });
+    var fromHash = function () { var m = /^#solution-(\d+)$/.exec(location.hash); if (m) open(items[m[1] - 1]); };
+    d.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#solution-"]');
+      if (a) setTimeout(fromHash, 0);
+    });
+    addEventListener('hashchange', fromHash);
+    if (wide.addEventListener) wide.addEventListener('change', mode); else wide.addListener(mode);
+    mode(); fromHash();
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { section.classList.add('is-arrived'); io.disconnect(); }
+      }, { threshold: .2 });
+      io.observe(section.querySelector('.sol-ch__list'));
+    } else section.classList.add('is-arrived');
+  };
+
+  // The outcome lines read the scroll position, once per frame. (Section joins are site.js's fluid floods.)
   var scroll = function () {
     var cards = [].slice.call(d.querySelectorAll('[data-sol-card]'));
     var rows = [].slice.call(d.querySelectorAll('[data-sol-row]'));
@@ -239,7 +283,11 @@
     // Each card plays its list once, the first time it is properly in view.
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-seen'); io.unobserve(e.target); } });
+        es.forEach(function (e) {
+          // A folded panel plays its list when it opens instead.
+          if (!e.isIntersecting || (e.target.closest('.is-panels') && !e.target.classList.contains('is-open'))) return;
+          e.target.classList.add('is-seen'); io.unobserve(e.target);
+        });
       }, { threshold: .35 });
       cards.forEach(function (c) { io.observe(c); });
     } else cards.forEach(function (c) { c.classList.add('is-seen'); });
@@ -256,6 +304,7 @@
 
   var start = function () {
     d.querySelectorAll('[data-sol-flow]').forEach(flow);
+    d.querySelectorAll('[data-sol-chapters]').forEach(panels);
     scroll();
   };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', start); else start();

@@ -1,5 +1,6 @@
 <?php
-/** The six solutions as a row of cards; on wider screens site.js pins the section and slides the row left (the homepage's rail).
+/** The six solutions as cards. On wider screens solutions.js turns them into panels: one card open, the others folded into
+ *  coloured spines beside it (each spine's button opens its card). Phones, short screens and no-JS keep the stacked cards.
  *  Uses the homepage's card palettes and illustrations ($families and $items come from sections/solutions.php). */
 $items = array_values($items);
 $check = '<svg class="sol-card__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
@@ -23,7 +24,12 @@ $check = '<svg class="sol-card__check" viewBox="0 0 24 24" aria-hidden="true" fo
     $label = trim((string) ($item['link_label'] ?? '')) !== '' ? $item['link_label'] : 'Explore ' . ($item['title'] ?? '');
 ?>
         <li class="sol-ch__item solution solution--<?= e($visual) ?>" id="solution-<?= $i + 1 ?>" style="--i: <?= $i ?>" data-sol-card>
-          <article class="sol-card">
+          <button class="sol-ch__tab" type="button" aria-controls="solution-<?= $i + 1 ?>-card" aria-expanded="<?= $i ? 'false' : 'true' ?>">
+            <span class="sol-ch__num"><?= sprintf('%02d', $i + 1) ?></span>
+            <span class="sol-ch__name"><?= e($item['title'] ?? '') ?></span>
+            <span class="sol-ch__plus" aria-hidden="true"></span>
+          </button>
+          <article class="sol-card" id="solution-<?= $i + 1 ?>-card">
             <div class="sol-card__copy">
               <p class="sol-card__meta"><span><?= sprintf('%02d', $i + 1) ?> / <?= e($family[0]) ?></span><span class="sol-card__spark" aria-hidden="true">&#10035;</span></p>
               <h3 class="sol-card__title"><?= e($item['title'] ?? '') ?></h3>

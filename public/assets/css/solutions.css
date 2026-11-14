@@ -76,7 +76,7 @@
   .sol-hero__foot { margin-top: 26px; }
 }
 
-/* ---------- Six solutions: cards, a sideways rail on wider screens (site.js adds .is-rail) ---------- */
+/* ---------- Six solutions: stacked cards; side-by-side panels on wider screens (solutions.js adds .is-panels) ---------- */
 .sol-ch { isolation: isolate; background: #11150f; padding-block: clamp(5rem, 3rem + 6vw, 10rem) clamp(7rem, 5rem + 5vw, 10rem); }
 .sol-ch > .topo-bg { display: block; -webkit-mask-image: none; mask-image: none; }
 .sol-ch__head { display: grid; gap: 1.3rem 4rem; margin-bottom: clamp(3rem, 2rem + 3vw, 5.5rem); }
@@ -114,24 +114,51 @@
   .sol-ch__head .sol-eyebrow { grid-column: 1 / -1; }
   .sol-ch__intro { justify-self: end; }
 }
-/* The rail: three cards in a row that slide left with the scroll, as on the homepage; cards stack copy over drawing and fit the screen. */
-.sol-ch.is-rail { overflow-x: clip; }
-.sol-ch.is-rail .sol-ch__list { display: flex; gap: 1rem; }
-.sol-ch.is-rail .sol-ch__item { flex: 0 0 calc((100% - 2rem) / 3); }
-@media (max-width: 1099px) { .sol-ch.is-rail .sol-ch__item { flex-basis: calc((100% - 1rem) / 2); } }
-.sol-ch.is-rail .sol-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); height: min(calc(100vh - var(--bar) - 64px), 780px); min-height: 0; }
-.sol-ch.is-rail .sol-card__copy { padding: clamp(1.2rem, .6rem + 1vw, 1.8rem); }
-.sol-ch.is-rail .sol-card__title { margin-top: clamp(.8rem, .4rem + 1vh, 1.6rem); font-size: clamp(1.8rem, 1rem + 1.3vw, 2.8rem); }
-.sol-ch.is-rail .sol-card__text { margin-top: .6rem; font-size: .92rem; line-height: 1.5; }
-.sol-ch.is-rail .sol-card__inc { margin-top: 1rem; }
-.sol-ch.is-rail .sol-card__inc li { padding: .38rem 0; font-size: .84rem; }
-.sol-ch.is-rail .sol-card__go { padding-top: 1rem; }
-.sol-ch.is-rail .sol-card__visual { min-height: 0; padding: .8rem .8rem 2.8rem; border-left: 0; border-top: 1px solid var(--card-line); }
-.sol-ch.is-rail .sol-card__visual .solution__art { position: absolute; inset: .8rem .8rem 2.8rem; width: calc(100% - 1.6rem); height: calc(100% - 3.6rem); }
+/* Panels (solutions.js adds .is-panels from 1000px wide / 500px high): one card open, the other five folded into spines in
+   their own palettes, so all six read at once as a lime / black / ivory band. Opening widens a panel and fades its card in. */
+.sol-ch__tab { display: none; }
+.sol-ch.is-panels .sol-ch__list { --spine: 4rem; --gap: 10px; display: flex; gap: var(--gap); height: clamp(460px, calc(100svh - var(--bar) - 2.5rem), 620px); container-type: inline-size; }
+.sol-ch.is-panels .sol-ch__item { position: relative; flex: 0 0 var(--spine); overflow: hidden; border: 1px solid var(--card-line); border-radius: 4px; background: var(--surface); color: var(--card-ink); transition: flex-grow .8s var(--ease); }
+.sol-ch.is-panels .sol-ch__item.is-open { flex-grow: 1; }
+.sol-ch.is-panels .sol-ch__tab { position: absolute; inset: 0 auto 0 0; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 1rem; width: var(--spine); padding: 1.25rem 0 1.1rem; border: 0; border-radius: 0; background: none; color: inherit; font: inherit; cursor: pointer; transition: border-color .4s; }
+.sol-ch.is-panels .is-open .sol-ch__tab { border-right: 1px solid var(--card-line); cursor: default; }
+.sol-ch.is-panels .sol-ch__tab:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+.sol-ch__num { color: var(--card-muted); font: 550 .62rem/1 var(--sans); letter-spacing: .09em; }
+.sol-ch__name { margin-top: auto; writing-mode: vertical-rl; rotate: 180deg; font: 660 clamp(1.2rem, .9rem + .5vw, 1.55rem)/1 var(--display); letter-spacing: -.045em; white-space: nowrap; transition: translate .6s var(--ease), opacity .4s; }
+.sol-ch__plus { position: relative; flex: none; width: 2rem; height: 2rem; border: 1px solid var(--card-line); border-radius: 50%; transition: rotate .6s var(--ease), scale .4s var(--ease), background .3s, color .3s; }
+.sol-ch__plus::before, .sol-ch__plus::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 10px; height: 1.5px; margin: -.75px 0 0 -5px; background: currentColor; }
+.sol-ch__plus::after { rotate: 90deg; }
+.sol-ch.is-panels .sol-ch__item:not(.is-open):hover .sol-ch__name { translate: 0 -6px; }
+.sol-ch.is-panels .sol-ch__item:not(.is-open):hover .sol-ch__plus { rotate: 90deg; background: var(--card-ink); color: var(--surface); }
+.sol-ch.is-panels .is-open .sol-ch__name { opacity: .35; }
+.sol-ch.is-panels .is-open .sol-ch__plus { scale: 0; }
+/* The card keeps its open width while folded, so its text never reflows as the panel widens; the panel clips it. */
+.sol-ch.is-panels .sol-card { position: absolute; inset: 0 auto 0 var(--spine); width: calc(100cqw - 6 * var(--spine) - 5 * var(--gap)); min-height: 0; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); border: 0; border-radius: 0; background: none; opacity: 0; visibility: hidden; translate: 24px 0; transition: opacity .25s, translate .25s, visibility 0s .25s; }
+.sol-ch.is-panels .is-open .sol-card { opacity: 1; visibility: visible; translate: 0 0; transition: opacity .6s var(--ease) .25s, translate .8s var(--ease) .2s, visibility 0s; }
+.sol-ch.is-panels .sol-card__copy { padding: clamp(1.2rem, .6rem + 1vw, 2rem); }
+.sol-ch.is-panels .sol-card__title { margin-top: clamp(.8rem, .2rem + 1.4vh, 1.8rem); font-size: clamp(1.9rem, 1rem + 1.4vw, 3.2rem); }
+.sol-ch.is-panels .sol-card__text { margin-top: .6rem; font-size: .92rem; line-height: 1.5; }
+.sol-ch.is-panels .sol-card__inc { margin-top: 1rem; }
+.sol-ch.is-panels .sol-card__inc li { padding: .38rem 0; font-size: .84rem; }
+.sol-ch.is-panels .sol-card__go { padding-top: 1rem; }
+.sol-ch.is-panels .sol-card__visual { min-height: 0; padding: 0; }
+.sol-ch.is-panels .sol-card__visual .solution__art { position: absolute; inset: 1rem 1rem 3rem; width: calc(100% - 2rem); height: calc(100% - 4rem); }
+/* Arrival: the spines rise in turn the first time the section is in view. */
+.motion .sol-ch.is-panels:not(.is-arrived) .sol-ch__item { opacity: 0; translate: 0 32px; }
+.motion .sol-ch.is-panels .sol-ch__item { transition: flex-grow .8s var(--ease), opacity .7s var(--ease) calc(var(--i) * 70ms), translate .9s var(--ease) calc(var(--i) * 70ms); }
+@media (prefers-reduced-motion: reduce) {
+  .sol-ch.is-panels .sol-ch__item, .sol-ch.is-panels .sol-card, .sol-ch.is-panels .is-open .sol-card { transition: none; }
+}
 
 /* ---------- Joins: each new ground floods up over the one before it (the homepage's fluid join; site.js builds it) ---------- */
 .solutions-page > :is(.sec--statement, .sol-ch, .sol-out, .tools--flow, .faq, .lead--stage) { --flood: auto; }
 .solutions-page :is(.sec--statement, .tools--flow) > .topo-bg { -webkit-mask-image: linear-gradient(#000 55%, transparent); mask-image: linear-gradient(#000 55%, transparent); }
+/* Services statement: less air above, more below so the next flood rises under the last line, and the type capped by
+   screen height so the whole sentence fits one short laptop screen (1536x695). */
+.solutions-page:not(.about-page, .corporate-page, .careers-page) > .sec--statement { padding-block: clamp(3rem, 1rem + 4vw, 7rem) clamp(5rem, 1rem + 11vw, 14rem); }
+@media (min-width: 992px) {
+  .solutions-page:not(.about-page, .corporate-page, .careers-page) > .sec--statement .statement__t { font-size: min(7.349537vw, 13svh); }
+}
 .solutions-page .lead--stage .h2 { font-size: clamp(2.3rem, 6vw, 6rem); }
 .solutions-page > .lead--stage > .topo-bg { display: block; } /* the flood's contour lines run on behind the enquiry */
 
@@ -170,7 +197,13 @@
 /* ---------- Proof: the Orkay system, running ---------- */
 .solutions-page .cs { background: #f4f6f1; color: #101114; padding-block: 0 clamp(7.5rem, 5rem + 5vw, 10rem); }
 .solutions-page .cs__grid { position: relative; isolation: isolate; overflow: hidden; gap: clamp(2rem, 3vw, 3.5rem); padding: clamp(1.6rem, .8rem + 3.4vw, 4.8rem); border-radius: 4px; background: #11150f; color: #e9eddf; }
+/* The dark proof card runs edge to edge and straight into How a project runs: no light gap, no wave between them. */
+.solutions-page .cs:has(+ .tools--flow) { padding-bottom: 0; }
+.solutions-page .cs:has(+ .tools--flow) .cs__grid { max-width: none; padding-inline: calc(max(0px, (100% - 1536px) / 2) + clamp(1.6rem, .8rem + 3.4vw, 4.8rem)); border-radius: 0; background: linear-gradient(#11150f 55%, #1c221a); }
+.solutions-page .cs:has(+ .tools--flow) .cs__grid > .topo-bg { -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
+.solutions-page > .cs + .tools--flow { --flood: none; }
 .solutions-page .cs__grid::before { content: ''; position: absolute; z-index: -1; right: -10%; top: -30%; width: 70%; height: 120%; background: radial-gradient(closest-side, #d2ff0014, transparent); pointer-events: none; }
+.solutions-page .cs__grid > .topo-bg { display: block; } /* the contour lines run on inside the dark proof card */
 .solutions-page .cs__work { display: contents; }
 .solutions-page .cs .h2 { color: #eef1e6; font-size: clamp(2.3rem, 1.2rem + 3.2vw, 4.6rem); }
 .solutions-page .cs .entry { color: #b8c5a6; font: 600 .62rem/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; }

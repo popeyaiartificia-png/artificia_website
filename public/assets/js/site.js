@@ -1678,10 +1678,10 @@
       return function () { section.removeEventListener('focusin', revealFocus); };
     });
   });
-  // Wider screens (homepage and /services): the section holds while the six cards slide left with the scroll, then the page moves on.
-  d.querySelectorAll('[data-solutions], [data-sol-chapters]').forEach(function (section) {
+  // Wider screens (homepage): the section holds while the six cards slide left with the scroll, then the page moves on.
+  d.querySelectorAll('[data-solutions]').forEach(function (section) {
     gsap.matchMedia().add('(min-width: 900px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)', function () {
-      var track = section.querySelector('.solutions__track, .sol-ch__list');
+      var track = section.querySelector('.solutions__track');
       section.classList.add('is-rail');
       var shift = function () { return track.scrollWidth - track.clientWidth; };
       var slide = gsap.to(track, { x: function () { return -shift(); }, ease: 'none', scrollTrigger: {

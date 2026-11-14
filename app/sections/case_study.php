@@ -1,5 +1,6 @@
 <section class="sec sec--case_study cs" data-section="case">
   <div class="wrap cs__grid">
+    <canvas class="topo-bg" aria-hidden="true"></canvas>
     <div class="cs__copy">
 <?php if (!empty($f['logo'])): ?>
       <div class="cs__logo"><?= image($f['logo'], '160px') ?></div>

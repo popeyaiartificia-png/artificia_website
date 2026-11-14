@@ -433,9 +433,9 @@
   .co-ba__team svg:nth-child(n+4) { display: none; }
 }
 @media (max-width: 1279px) { .co-ba__rows li { min-height: 76px; } } /* both states keep the same row height when lines wrap */
-/* The contour lines run on behind the dark programmes and FAQs, continuing the map from the floods around them. */
-.corporate-page > :is(.co-progs, .faq) { isolation: isolate; }
-.corporate-page > :is(.co-progs, .faq) > .topo-bg { display: block; }
+/* The contour lines run on behind the dark programmes, free-pilot pass and FAQs, continuing the map from the floods around them. */
+.corporate-page > :is(.co-progs, .co-pass, .faq) { isolation: isolate; }
+.corporate-page > :is(.co-progs, .co-pass, .faq) > .topo-bg { display: block; }
 
 /* ---------- Hero visual: the same team, the same work, before and after AI training (corporate-race.php) ----------
    One 9s loop. Before: the first task crawls while the calendar turns Mon to Thu. After: all four tasks fill and tick

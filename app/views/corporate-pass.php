@@ -4,6 +4,7 @@
 $details = array_values(array_filter($f['details'] ?? [], fn($d) => trim((string) ($d['value'] ?? '')) !== ''));
 ?>
 <section class="sec co-pass" id="pilot">
+  <canvas class="topo-bg" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="co-pass__ticket">
       <div class="co-pass__main">
