@@ -1,5 +1,5 @@
 <?php
-/** The six solutions as a deck: each card pins under the masthead and the next one slides over it, beside a sticky index.
+/** The six solutions as a row of cards; on wider screens site.js pins the section and slides the row left (the homepage's rail).
  *  Uses the homepage's card palettes and illustrations ($families and $items come from sections/solutions.php). */
 $items = array_values($items);
 $check = '<svg class="sol-card__check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
@@ -15,15 +15,6 @@ $check = '<svg class="sol-card__check" viewBox="0 0 24 24" aria-hidden="true" fo
 <?php endif ?>
     </header>
     <div class="sol-ch__body">
-      <div class="sol-ch__index" aria-hidden="true">
-        <p class="sol-ch__big"><span class="sol-ch__digits" data-sol-num>01</span><span class="sol-ch__of">/ <?= sprintf('%02d', count($items)) ?></span></p>
-        <ol class="sol-ch__names">
-<?php foreach ($items as $i => $item): ?>
-          <li data-sol-name><span><?= sprintf('%02d', $i + 1) ?></span><?= e($item['title'] ?? '') ?></li>
-<?php endforeach ?>
-        </ol>
-        <div class="sol-ch__meter"><span data-sol-meter></span></div>
-      </div>
       <ol class="sol-ch__list">
 <?php foreach ($items as $i => $item):
     $visual = $item['visual'] ?? 'workflow';

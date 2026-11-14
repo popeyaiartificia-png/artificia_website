@@ -76,13 +76,12 @@
   .sol-hero__foot { margin-top: 26px; }
 }
 
-/* ---------- Six solutions: a deck under a sticky index ---------- */
+/* ---------- Six solutions: cards, a sideways rail on wider screens (site.js adds .is-rail) ---------- */
 .sol-ch { isolation: isolate; background: #11150f; padding-block: clamp(5rem, 3rem + 6vw, 10rem) clamp(7rem, 5rem + 5vw, 10rem); }
 .sol-ch > .topo-bg { display: block; -webkit-mask-image: none; mask-image: none; }
 .sol-ch__head { display: grid; gap: 1.3rem 4rem; margin-bottom: clamp(3rem, 2rem + 3vw, 5.5rem); }
 .sol-ch__intro { max-width: 40ch; color: #c0c6b6; font-size: clamp(1rem, .95rem + .25vw, 1.15rem); line-height: 1.55; }
 .sol-ch__body { display: grid; gap: 2rem; }
-.sol-ch__index { display: none; }
 .sol-ch__list { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
 .sol-ch__item { min-width: 0; }
 .sol-card { display: grid; grid-template-columns: minmax(0, 1fr); overflow: hidden; border: 1px solid var(--card-line); border-radius: 4px; background: var(--surface); color: var(--card-ink); transform-origin: 50% 0; }
@@ -104,8 +103,8 @@
 .sol-card__visual .solution__art { width: min(100%, 600px); max-height: none; }
 .sol-card__tag { position: absolute; left: clamp(1.2rem, 2vw, 2rem); right: clamp(1.2rem, 2vw, 2rem); bottom: 1.1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; font-size: .8rem; font-weight: 600; }
 .sol-card__tag span { color: var(--card-muted); font: 550 .58rem/1.6 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
-.sol-ch__item.is-on .solution__pulse, .sol-ch__item.is-seen .solution__pulse { animation: solution-pulse 2.4s linear infinite; }
-.sol-ch__item.is-on .sol-card__spark { rotate: 90deg; }
+.sol-ch__item.is-seen .solution__pulse { animation: solution-pulse 2.4s linear infinite; }
+.sol-ch__item.is-seen .sol-card__spark { rotate: 90deg; }
 @media (min-width: 900px) {
   .sol-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); min-height: 540px; }
   .sol-card__visual { border-top: 0; border-left: 1px solid var(--card-line); }
@@ -115,27 +114,20 @@
   .sol-ch__head .sol-eyebrow { grid-column: 1 / -1; }
   .sol-ch__intro { justify-self: end; }
 }
-/* The deck: each card pins a little lower than the one before and the next slides over it. */
-@media (min-width: 1100px) and (min-height: 700px) {
-  .sol-ch__body { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); align-items: start; gap: clamp(2rem, 4vw, 5rem); }
-  .sol-ch__index { position: sticky; top: calc(var(--bar) + 44px); display: block; }
-  .sol-ch__list { gap: 0; }
-  .sol-ch__item { position: sticky; top: calc(var(--bar) + 30px + var(--i) * 14px); padding-bottom: 7vh; }
-  .sol-ch__item:last-child { padding-bottom: 0; }
-  .sol-card { height: min(calc(100vh - var(--bar) - 150px), 660px); min-height: 0; transform: scale(var(--sc, 1)); filter: brightness(var(--br, 1)); will-change: transform; }
-  .sol-card__copy { overflow: hidden; }
-}
-.sol-ch__big { display: flex; align-items: baseline; gap: .7rem; color: #d2ff00; }
-.sol-ch__digits { display: inline-block; font: 500 clamp(5rem, 2.5rem + 5vw, 9rem)/.85 var(--serif); letter-spacing: -.05em; }
-.sol-ch__digits.is-flip { animation: sol-flip .55s var(--ease); }
-.sol-ch__of { color: #8d977b; font-size: .8rem; letter-spacing: .08em; }
-.sol-ch__names { margin: 2.2rem 0 0; padding: 0; border-top: 1px solid #ffffff1a; list-style: none; }
-.sol-ch__names li { display: flex; gap: .9rem; padding: .8rem 0; border-bottom: 1px solid #ffffff12; color: #7f8a6c; font-size: 1.02rem; font-weight: 550; transition: color .4s, padding .55s var(--ease); }
-.sol-ch__names li span { padding-top: .32em; font-size: .6rem; letter-spacing: .1em; }
-.sol-ch__names li.is-on { padding-left: .7rem; color: #eef1e6; }
-.sol-ch__names li.is-on span { color: #d2ff00; }
-.sol-ch__meter { height: 2px; margin-top: 1.4rem; background: #ffffff14; }
-.sol-ch__meter span { display: block; width: calc(var(--p, 0) * 100%); height: 100%; background: #d2ff00; box-shadow: 0 0 12px #d2ff0080; }
+/* The rail: three cards in a row that slide left with the scroll, as on the homepage; cards stack copy over drawing and fit the screen. */
+.sol-ch.is-rail { overflow-x: clip; }
+.sol-ch.is-rail .sol-ch__list { display: flex; gap: 1rem; }
+.sol-ch.is-rail .sol-ch__item { flex: 0 0 calc((100% - 2rem) / 3); }
+@media (max-width: 1099px) { .sol-ch.is-rail .sol-ch__item { flex-basis: calc((100% - 1rem) / 2); } }
+.sol-ch.is-rail .sol-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); height: min(calc(100vh - var(--bar) - 64px), 780px); min-height: 0; }
+.sol-ch.is-rail .sol-card__copy { padding: clamp(1.2rem, .6rem + 1vw, 1.8rem); }
+.sol-ch.is-rail .sol-card__title { margin-top: clamp(.8rem, .4rem + 1vh, 1.6rem); font-size: clamp(1.8rem, 1rem + 1.3vw, 2.8rem); }
+.sol-ch.is-rail .sol-card__text { margin-top: .6rem; font-size: .92rem; line-height: 1.5; }
+.sol-ch.is-rail .sol-card__inc { margin-top: 1rem; }
+.sol-ch.is-rail .sol-card__inc li { padding: .38rem 0; font-size: .84rem; }
+.sol-ch.is-rail .sol-card__go { padding-top: 1rem; }
+.sol-ch.is-rail .sol-card__visual { min-height: 0; padding: .8rem .8rem 2.8rem; border-left: 0; border-top: 1px solid var(--card-line); }
+.sol-ch.is-rail .sol-card__visual .solution__art { position: absolute; inset: .8rem .8rem 2.8rem; width: calc(100% - 1.6rem); height: calc(100% - 3.6rem); }
 
 /* ---------- Joins: each new ground floods up over the one before it (the homepage's fluid join; site.js builds it) ---------- */
 .solutions-page > :is(.sec--statement, .sol-ch, .sol-out, .tools--flow, .faq, .lead--stage) { --flood: auto; }
@@ -228,7 +220,6 @@
 @keyframes sol-pop { from { opacity: 0; transform: scale(.55); } to { opacity: 1; transform: none; } }
 @keyframes sol-spin { to { rotate: 360deg; } }
 @keyframes sol-ping { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: scale(1.9); } }
-@keyframes sol-flip { 0% { opacity: 0; transform: translateY(.35em); } 100% { opacity: 1; transform: none; } }
 @keyframes sol-run-y { 0%, 8% { opacity: 1; transform: translateY(-100%); } 20%, 100% { opacity: 1; transform: translateY(240%); } }
 @keyframes sol-run-x { 0%, 8% { opacity: 1; transform: translateX(-100%); } 20%, 100% { opacity: 1; transform: translateX(240%); } }
 @keyframes sol-node { 0% { background: #11150f; box-shadow: none; } 3%, 18% { background: #d2ff00; box-shadow: 0 0 0 6px #d2ff0024, 0 0 18px #d2ff00; } 30%, 100% { background: #11150f; box-shadow: none; } }

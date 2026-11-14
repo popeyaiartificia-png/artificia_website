@@ -2,6 +2,23 @@
 
 One entry per day, newest first. Each has Done / Current lead / Next / Blocked. The full picture lives in [CONTEXT.md](CONTEXT.md).
 
+## 2026-11-14
+
+**Done**
+- /services solution cards switched to the homepage-style carousel (user asked). The live site showed full-width stacked cards on the user's laptop (~690px tall window) because the old stacking deck only ran at 700px+ height. Now at 900px+ wide / 600px+ high with motion: three compact cards in a row, the section pins, scrolling slides cards 4-6 in, then the next section. Reused the homepage rail in site.js (now `[data-solutions], [data-sol-chapters]`); removed the sticky 01-06 index markup, CSS and deck JS. Headless Edge against :8080 at 1536x695@1.25, 1920x1080, 1000x800: rail pins and releases, cards fit the screen, no copy clipped, no overflow/page errors; 390px phone and reduced motion keep stacked cards. Suite: render/registry/design tests pass; 101 failures are the shared `artificia_test` DB being recreated by another session.
+- Before/With AI to Solutions flood missing on the live site (user screenshot at 1536x695). Cause: live still serves the 13 Nov 12:03 site.css, whose flood rule only matched `.versus:has(+ .sec--solutions)`; with the pinned Solutions rail the next sibling is GSAP's `.pin-spacer`. The fix is already in commit cdc77c5 (pushed, not yet pulled on Hostinger); verified locally at 1536x695 that the flood draws.
+- Cache-busting: layout.php appends `?v=<filemtime>` to every site CSS/JS URL, since /assets is served with a 7-day max-age and returning visitors would otherwise keep old files after a deploy. HTML is `no-store`, so new URLs apply immediately. Tests: same 31 pre-existing failures with and without the change (GD missing, page-list mismatch).
+
+**Current lead**
+- User review of the /services rail on the local preview, then push to `main` and pull on Hostinger for the live fix (also delivers the gallery + flood fixes in cdc77c5 and the asset cache-busting).
+
+**Next**
+- Commit and deploy (hPanel Git pull) once the user approves.
+- After the pull, recheck the Before/With AI flood and horizontal gallery on artificiaai.com at 1536x695.
+
+**Blocked**
+- Nothing.
+
 ## 2026-11-13
 
 **Done**

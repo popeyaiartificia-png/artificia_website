@@ -1,5 +1,7 @@
 <?php /** @var string $title, $description, $canonical, $robots, $ogType, $body, $ga4, $pixel, $gsc, $current; @var ?string $ogImage; @var array $jsonld, $settings; @var bool $hasForm */
 $wa = whatsapp_url($settings);
+// Cache-busting: each deploy changes the file time, so visitors never keep last week's CSS/JS (served with a 7-day max-age).
+$asset = fn(string $p): string => $p . '?v=' . (@filemtime(dirname(__DIR__, 2) . '/public' . $p) ?: 0);
 $nav = [
     '/' => 'Home',
     '/ai-masterclass' => 'Masterclass',
@@ -47,25 +49,25 @@ $nav = [
 <link rel="preload" href="/assets/img/artificia-logo.png" as="image">
 <link rel="preload" href="/assets/fonts/artificia-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/statement-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="<?= $asset('/assets/css/site.css') ?>">
 <?php if (str_contains($body, 'class="course-page"') || str_contains($body, 'journey-hero')): // the course page, and every page using its hero layout ?>
-<link rel="stylesheet" href="/assets/css/course.css">
-<link rel="stylesheet" href="/assets/css/journey.css">
-<script src="/assets/js/course.js" defer></script>
+<link rel="stylesheet" href="<?= $asset('/assets/css/course.css') ?>">
+<link rel="stylesheet" href="<?= $asset('/assets/css/journey.css') ?>">
+<script src="<?= $asset('/assets/js/course.js') ?>" defer></script>
 <?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page')): ?>
-<link rel="stylesheet" href="/assets/css/solutions.css">
-<script src="/assets/js/solutions.js" defer></script>
+<link rel="stylesheet" href="<?= $asset('/assets/css/solutions.css') ?>">
+<script src="<?= $asset('/assets/js/solutions.js') ?>" defer></script>
 <?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page about-page')): // About, and Contact which shares its sheet ?>
-<link rel="stylesheet" href="/assets/css/about.css">
+<link rel="stylesheet" href="<?= $asset('/assets/css/about.css') ?>">
 <?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page careers-page"')): ?>
-<link rel="stylesheet" href="/assets/css/careers.css">
+<link rel="stylesheet" href="<?= $asset('/assets/css/careers.css') ?>">
 <?php endif ?>
 <?php if (str_contains($body, 'class="solutions-page corporate-page"')): ?>
-<link rel="stylesheet" href="/assets/css/corporate.css">
-<script src="/assets/js/corporate.js" defer></script>
+<link rel="stylesheet" href="<?= $asset('/assets/css/corporate.css') ?>">
+<script src="<?= $asset('/assets/js/corporate.js') ?>" defer></script>
 <?php endif ?>
 <link rel="icon" href="/assets/img/favicon.png" type="image/png">
 <meta name="theme-color" content="#15160F">
@@ -79,7 +81,7 @@ $nav = [
 <?php endif; ?>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/assets/js/site.js" defer></script>
+<script src="<?= $asset('/assets/js/site.js') ?>" defer></script>
 </head>
 <body>
 <div class="loader" aria-hidden="true"><span class="loader__mark"></span></div>

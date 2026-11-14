@@ -5,7 +5,6 @@
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
   var smooth = function (e0, e1, x) { var t = clamp((x - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
-  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
   // Once the loader has gone, so the first moments are seen.
   var whenIn = function (fn) {
     if (root.classList.contains('is-in')) return fn();
@@ -219,45 +218,14 @@
     if (!still) whenIn(function () { started = true; schedule(); });
   };
 
-  // The deck and the outcome lines read the scroll position, once per frame. (Section joins are site.js's fluid floods.)
+  // The outcome lines read the scroll position, once per frame. (The solution cards' rail is site.js; section joins are its fluid floods.)
   var scroll = function () {
     var cards = [].slice.call(d.querySelectorAll('[data-sol-card]'));
-    var names = [].slice.call(d.querySelectorAll('[data-sol-name]'));
-    var num = d.querySelector('[data-sol-num]'), meter = d.querySelector('[data-sol-meter]');
     var rows = [].slice.call(d.querySelectorAll('[data-sol-row]'));
-    var deckQ = matchMedia('(min-width: 1100px) and (min-height: 700px)');
-    var tops = [], current = -1, queued = false;
-    var measure = function () {
-      tops = cards.map(function (li) { return parseFloat(getComputedStyle(li).top) || 0; });
-    };
+    var queued = false;
     var update = function () {
       queued = false;
-      var vh = innerHeight, deck = deckQ.matches, active = 0;
-      cards.forEach(function (li, i) {
-        var r = li.getBoundingClientRect(), card = li.firstElementChild;
-        if (r.top < vh * .5) active = i;
-        if (deck && !still && i < cards.length - 1) {
-          var next = cards[i + 1].getBoundingClientRect().top;
-          var q = clamp(1 - (next - tops[i + 1]) / Math.max(1, card.offsetHeight), 0, 1);
-          card.style.setProperty('--sc', (1 - q * .06).toFixed(4));
-          card.style.setProperty('--br', (1 - q * .55).toFixed(3));
-        } else if (card.style.length) {
-          card.style.removeProperty('--sc'); card.style.removeProperty('--br');
-        }
-      });
-      if (cards.length && active !== current) {
-        current = active;
-        names.forEach(function (n, i) { n.classList.toggle('is-on', i === active); });
-        cards.forEach(function (c, i) { c.classList.toggle('is-on', i === active); });
-        if (num) {
-          num.textContent = pad(active + 1);
-          if (!still) { num.classList.remove('is-flip'); void num.offsetWidth; num.classList.add('is-flip'); }
-        }
-      }
-      if (meter && cards.length) {
-        var list = cards[0].parentNode.getBoundingClientRect();
-        meter.style.setProperty('--p', clamp((vh * .5 - list.top) / Math.max(1, list.height - vh * .3), 0, 1).toFixed(3));
-      }
+      var vh = innerHeight;
       rows.forEach(function (row) {
         var p = still ? 1 : clamp((vh * .9 - row.getBoundingClientRect().top) / (vh * .4), 0, 1);
         row.style.setProperty('--p', p.toFixed(3));
@@ -265,8 +233,8 @@
     };
     var queue = function () { if (!queued) { queued = true; requestAnimationFrame(update); } };
     addEventListener('scroll', queue, { passive: true });
-    addEventListener('resize', function () { measure(); queue(); });
-    measure(); update();
+    addEventListener('resize', queue);
+    update();
 
     // Each card plays its list once, the first time it is properly in view.
     if ('IntersectionObserver' in window) {
