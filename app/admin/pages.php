@@ -180,8 +180,8 @@ function editor_page_from_post(array $page): array
     foreach ($sections as &$s) {
         $s['fields'] = editor_drop_empty($s['fields']);
     }
-    $in = ['id' => $page['id'], 'kind' => $page['kind'], 'noindex' => !empty($_POST['noindex']), 'sections' => $sections];
-    foreach (['title', 'slug', 'h1', 'meta_title', 'meta_description', 'og_image_id', 'template_id'] as $k) {
+    $in = ['id' => $page['id'], 'kind' => $page['kind'], 'noindex' => !empty($_POST['noindex']), 'schema_auto' => !empty($_POST['schema_auto']), 'sections' => $sections];
+    foreach (['title', 'slug', 'h1', 'meta_title', 'meta_description', 'focus_keyword', 'canonical', 'schema_custom', 'og_image_id', 'template_id'] as $k) {
         $in[$k] = trim(admin_post_str($k));
     }
     if ($page['kind'] === 'page' && in_array($page['slug'], EDITOR_FIXED_SLUGS, true)) {
@@ -204,7 +204,8 @@ function editor_errors(array $messages): array
 {
     $out = ['fields' => [], 'sections' => [], 'all' => $messages];
     $prefixes = ['The page heading (h1)' => 'h1', 'The meta title' => 'meta_title', 'The meta description' => 'meta_description',
-        'The slug' => 'slug', "A blog post's web address" => 'slug'];
+        'The slug' => 'slug', "A blog post's web address" => 'slug', 'The canonical' => 'canonical', 'The custom schema' => 'schema_custom',
+        'Every block in the custom schema' => 'schema_custom'];
     foreach (array_keys(PAGE_TEXT_LIMITS) as $col) {
         $prefixes["The $col "] = $col; // "The meta_title is too long ..."
     }
@@ -235,7 +236,7 @@ function editor_render(PDO $db, array $user, array $page, array $form, int $stat
     $f = $errors['fields'];
     if ($errors['sections']) {
         $tab = 'content';
-    } elseif (isset($f['h1']) || isset($f['meta_title']) || isset($f['meta_description'])) {
+    } elseif (array_intersect_key($f, array_flip(['h1', 'meta_title', 'meta_description', 'focus_keyword', 'canonical', 'schema_custom']))) {
         $tab = 'seo';
     } elseif (isset($f['slug'])) {
         $tab = 'settings';

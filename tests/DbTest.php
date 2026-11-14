@@ -4,7 +4,7 @@ declare(strict_types=1);
 function test_migrate_applies_once(): void
 {
     $db = test_db(false);
-    eq(migrate($db, MIGRATIONS_DIR), ['001_init.sql', '002_page_noindex.sql', '003_lead_spam_reason.sql'], 'first run');
+    eq(migrate($db, MIGRATIONS_DIR), ['001_init.sql', '002_page_noindex.sql', '003_lead_spam_reason.sql', '004_seo_desk.sql'], 'first run');
     eq(migrate($db, MIGRATIONS_DIR), [], 'second run');
 }
 
@@ -19,7 +19,7 @@ function test_migration_reruns_after_partial_failure(): void
 {
     $db = test_db();
     $db->exec('DELETE FROM schema_migrations'); // as if the run died before recording itself
-    eq(migrate($db, MIGRATIONS_DIR), ['001_init.sql', '002_page_noindex.sql', '003_lead_spam_reason.sql'], 'every migration re-runs without error');
+    eq(migrate($db, MIGRATIONS_DIR), ['001_init.sql', '002_page_noindex.sql', '003_lead_spam_reason.sql', '004_seo_desk.sql'], 'every migration re-runs without error');
 }
 
 function test_connection_is_utf8mb4_whatever_the_dsn_says(): void

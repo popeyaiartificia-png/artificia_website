@@ -16,6 +16,9 @@ function admin_nav(): array
         ['group' => 'Content', 'label' => 'Posts', 'path' => '/admin/posts', 'icon' => 'newspaper', 'role' => 'seo', 'badge' => null],
         ['group' => 'Content', 'label' => 'Templates', 'path' => '/admin/templates', 'icon' => 'stack', 'role' => 'seo', 'badge' => null],
         ['group' => 'Content', 'label' => 'Media', 'path' => '/admin/media', 'icon' => 'image', 'role' => 'seo', 'badge' => null],
+        ['group' => 'SEO', 'label' => 'Meta manager', 'path' => '/admin/seo', 'icon' => 'magnifying-glass', 'role' => 'seo', 'badge' => null],
+        ['group' => 'SEO', 'label' => 'Schema', 'path' => '/admin/seo/schema', 'icon' => 'tree-structure', 'role' => 'seo', 'badge' => null],
+        ['group' => 'SEO', 'label' => 'robots & llms.txt', 'path' => '/admin/seo/files', 'icon' => 'globe', 'role' => 'seo', 'badge' => null],
         ['group' => 'SEO', 'label' => 'Redirects', 'path' => '/admin/redirects', 'icon' => 'arrows-left-right', 'role' => 'seo', 'badge' => null],
         ['group' => 'Leads', 'label' => 'Leads', 'path' => '/admin/leads', 'icon' => 'tray', 'role' => 'seo', 'badge' => fn() => leads_recent_count(db())],
         ['group' => 'System', 'label' => 'Settings', 'path' => '/admin/settings', 'icon' => 'gear-six', 'role' => 'admin', 'badge' => null],
@@ -50,11 +53,14 @@ function admin_role_allows(array $user, string $min): bool
 function admin_nav_groups(array $user, string $current): array
 {
     $groups = [];
+    $paths = array_column(admin_nav(), 'path');
     foreach (admin_nav() as $item) {
         if (!admin_has_route($item['path']) || !admin_role_allows($user, $item['role'])) {
             continue;
         }
-        $item['active'] = $current === $item['path'] || ($item['path'] !== '/admin' && str_starts_with($current, $item['path'] . '/'));
+        // A section owns the addresses below it, except those another nav item owns (/admin/seo vs /admin/seo/schema).
+        $item['active'] = $current === $item['path'] || ($item['path'] !== '/admin' && str_starts_with($current, $item['path'] . '/')
+            && !array_filter($paths, fn($p) => strlen($p) > strlen($item['path']) && ($current === $p || str_starts_with($current, "$p/"))));
         $item['count'] = is_callable($item['badge']) ? (int) ($item['badge'])() : (int) $item['badge'];
         $groups[$item['group']][] = $item;
     }

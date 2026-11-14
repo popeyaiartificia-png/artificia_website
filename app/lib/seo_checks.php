@@ -18,6 +18,7 @@ const SEO_CHECK_LABELS = [
     'h1' => 'not exactly one H1', 'alt' => 'images missing alt text', 'words' => 'too little text',
     'links_out' => 'few links to other pages', 'links_in' => 'no other page links here',
     'slug' => 'address hard to read', 'duplicate' => 'near-duplicate of another page', 'schema' => 'schema problem',
+    'keyword' => 'focus keyword missing from title, H1 or description',
 ];
 
 /** check key => neutral name for the editor's score card, where passing checks are listed too. */
@@ -25,7 +26,7 @@ const SEO_CHECK_NAMES = [
     'title' => 'Title length', 'title_duplicate' => 'Title is unique', 'description' => 'Description length',
     'description_duplicate' => 'Description is unique', 'h1' => 'One H1', 'alt' => 'Image alt text', 'words' => 'Enough text',
     'links_out' => 'Links to other pages', 'links_in' => 'Linked from other pages', 'slug' => 'Readable address',
-    'duplicate' => 'Not a near-duplicate', 'schema' => 'Valid schema',
+    'duplicate' => 'Not a near-duplicate', 'schema' => 'Valid schema', 'keyword' => 'Focus keyword used',
 ];
 
 /** Visible words of rendered HTML: svg, script and style contents and all tags removed. */
@@ -159,8 +160,17 @@ function seo_analyse(PDO $db, array $settings): array
             }
         }
 
+        $keyword = mb_strtolower(trim((string) ($page['focus_keyword'] ?? '')));
+        if ($keyword !== '') {
+            $where = ['title' => $me['title'], 'H1' => heading_plain((string) ($page['h1'] ?: $page['title'])), 'description' => $me['desc']];
+            $missing = array_keys(array_filter($where, fn($t) => !str_contains(mb_strtolower($t), $keyword)));
+            if ($missing) {
+                $add('keyword', 'The focus keyword "' . trim((string) $page['focus_keyword']) . '" is not in the ' . implode(' or ', $missing) . '.');
+            }
+        }
+
         try {
-            $graph = schema_graph($page, $settings, $base);
+            $graph = schema_for_page($page, $settings, $base);
             json_encode($graph, JSON_THROW_ON_ERROR);
             foreach ($graph as $node) {
                 if (!is_array($node) || empty($node['@type'])) {

@@ -90,7 +90,12 @@ function dispatch(string $method, string $path): void
     }
     if ($path === '/robots.txt') {
         header('Content-Type: text/plain; charset=utf-8');
-        echo robots_txt($c['env'], $c['base_url']);
+        echo robots_txt($c['env'], $c['base_url'], settings($db));
+        return;
+    }
+    if ($path === '/llms.txt') {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo llms_txt($db, $c['base_url'], settings($db));
         return;
     }
     if ($path === '/admin' || str_starts_with($path, '/admin/')) {

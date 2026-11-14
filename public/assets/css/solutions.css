@@ -182,7 +182,7 @@
 .sol-out__before, .sol-out__after { display: flex; gap: .9rem; font-size: clamp(.95rem, .9rem + .2vw, 1.08rem); line-height: 1.45; }
 .sol-out__before span, .sol-out__after span { flex: none; width: 3.6rem; padding-top: .35em; font: 600 .58rem/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; }
 .sol-out__before { color: #6b7160; opacity: calc(1 - var(--p) * .45); }
-.sol-out__before span { color: #8e9581; }
+.sol-out__before span { color: #5f6653; }
 .sol-out__after { color: #101114; font-weight: 600; opacity: calc(.2 + var(--p) * .8); transform: translateY(calc((1 - var(--p)) * 10px)); }
 .sol-out__after span { color: #4e5d00; }
 @media (min-width: 1000px) {

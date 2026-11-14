@@ -43,8 +43,8 @@ function page_noindex(PDO $db, array $page): bool
     return !empty($page['noindex']);
 }
 
-const SLUG_RESERVED = ['admin', 'blog', '_design', 'assets', 'uploads', 'lead', 'sitemap.xml', 'robots.txt', 'live', 'legacy'];
-const PAGE_TEXT_LIMITS = ['title' => 255, 'h1' => 255, 'meta_title' => 255, 'meta_description' => 500];
+const SLUG_RESERVED = ['admin', 'blog', '_design', 'assets', 'uploads', 'lead', 'sitemap.xml', 'robots.txt', 'llms.txt', 'live', 'legacy'];
+const PAGE_TEXT_LIMITS = ['title' => 255, 'h1' => 255, 'meta_title' => 255, 'meta_description' => 500, 'focus_keyword' => 100, 'canonical' => 500];
 
 /** Up to three lowercase segments; the first must not be one the router or server owns. `home` is just an ordinary slug. */
 function slug_valid(string $slug): bool
@@ -175,6 +175,10 @@ function page_save(PDO $db, array $page, int $userId): int
             throw new InvalidArgumentException("The $col is too long (at most $max characters).");
         }
     }
+    if ($values['canonical'] !== '' && !preg_match('#^(/(?!/)|https://)[^\s"<>]*$#D', $values['canonical'])) {
+        throw new InvalidArgumentException('The canonical address must be a path on this site (starting with /) or a full https:// address.');
+    }
+    $values['schema_custom'] = schema_custom_clean((string) ($row['schema_custom'] ?? ''));
     $excerpt = trim((string) ($row['excerpt'] ?? ''));
     $status = ($row['status'] ?? '') === 'published' ? 'published' : 'draft';
     $values += [
@@ -184,6 +188,7 @@ function page_save(PDO $db, array $page, int $userId): int
         'template_id' => positive_int($row['template_id'] ?? null),
         'status' => $status,
         'noindex' => empty($row['noindex']) ? 0 : 1,
+        'schema_auto' => array_key_exists('schema_auto', $row) && empty($row['schema_auto']) ? 0 : 1,
         // Only the stored value counts: a caller (or a form) can't backdate a page. The DB's clock, like updated_at's.
         'published_at' => $current['published_at'] ?? ($status === 'published' ? $db->query('SELECT NOW()')->fetchColumn() : null),
         'updated_by' => $userId > 0 ? $userId : null,
@@ -298,7 +303,7 @@ function template_unique_errors(PDO $db, array $page, array $sections, array $re
 function page_duplicate(PDO $db, int $id, string $newSlug, int $userId): int
 {
     $page = page_find($db, $id) ?? throw new InvalidArgumentException('That page was not found.');
-    $copy = array_intersect_key($page, array_flip(['kind', 'title', 'h1', 'meta_title', 'meta_description', 'og_image_id', 'excerpt', 'sections', 'template_id', 'noindex']));
+    $copy = array_intersect_key($page, array_flip(['kind', 'title', 'h1', 'meta_title', 'meta_description', 'focus_keyword', 'og_image_id', 'excerpt', 'sections', 'template_id', 'noindex', 'schema_auto', 'schema_custom']));
     return page_save($db, $copy + ['slug' => $newSlug, 'status' => 'draft'], $userId);
 }
 

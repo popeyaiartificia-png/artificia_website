@@ -79,6 +79,7 @@ $slugHint = $fixed ? "The router serves this page at $path, so its address can't
         </div>
         <?= admin_field('h1', 'Page heading (H1)', (string) $form['h1'], $fe['h1'] ?? null, 'text', 'The one big heading at the top of the page. Put *stars* around words to colour them. Required to publish.', 'maxlength="255" placeholder="' . e((string) $form['title']) . '"') ?>
         <?= admin_field('meta_title', 'Meta title', (string) $form['meta_title'], $fe['meta_title'] ?? null, 'text', 'The blue link in Google results: 30 to 60 characters. Required to publish.', 'maxlength="255" data-count="30-60" placeholder="' . e(heading_plain((string) $form['title'])) . '"') ?>
+        <?= admin_field('focus_keyword', 'Focus keyword', (string) ($form['focus_keyword'] ?? ''), $fe['focus_keyword'] ?? null, 'text', 'The search phrase this ' . $noun . ' should rank for. The score checks it appears in the meta title, H1 and description.', 'maxlength="100" autocomplete="off"') ?>
         <?= admin_field('meta_description', 'Meta description', (string) $form['meta_description'], $fe['meta_description'] ?? null, 'textarea', 'The grey text under the link: 70 to 160 characters. Required to publish.', 'maxlength="500" data-count="70-160" data-fallback="' . e($descFallback) . '" placeholder="' . e($descFallback ?: 'Empty: Google picks some text from the page.') . '"') ?>
 <?php if ($post): ?>
         <p class="hint">Social image: the post's cover image (Settings tab) is used when it is shared.</p>
@@ -89,6 +90,23 @@ $slugHint = $fixed ? "The router serves this page at $path, so its address can't
           <label><input type="checkbox" name="noindex" value="1"<?= !empty($form['noindex']) ? ' checked' : '' ?>> Hide from search engines (noindex)</label>
           <p class="hint">Adds a robots noindex tag and leaves the <?= $noun ?> out of sitemap.xml. Visitors with the link can still open it.</p>
         </div>
+        <?= admin_field('canonical', 'Canonical address', (string) ($form['canonical'] ?? ''), $fe['canonical'] ?? null, 'text', "Leave empty: this $noun is its own canonical. Fill it only when another page is the main copy: /other-page or https://…", 'maxlength="500" autocomplete="off" spellcheck="false" placeholder="' . e($path) . '"') ?>
+
+        <h3 class="editor__sub">Schema (structured data)</h3>
+        <div class="check">
+          <label><input type="checkbox" name="schema_auto" value="1"<?= ($form['schema_auto'] ?? 1) ? ' checked' : '' ?>> Automatic schema</label>
+          <p class="hint">Breadcrumbs, FAQPage from the FAQ section, Course from the curriculum, Article on posts, Organization on the homepage. Switch off only to replace it with your own below.</p>
+        </div>
+        <div class="field">
+          <label for="schema-preset">Start from a preset</label>
+          <select id="schema-preset" data-schema-preset data-dirty-ignore>
+            <option value="">Choose a type</option>
+<?php foreach (SCHEMA_PRESETS as $name => $node): ?>
+            <option value="<?= e(json_encode(['@context' => 'https://schema.org'] + $node, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)) ?>"><?= e($name) ?></option>
+<?php endforeach ?>
+          </select>
+        </div>
+        <?= admin_field('schema_custom', 'Custom JSON-LD', (string) ($form['schema_custom'] ?? ''), $fe['schema_custom'] ?? null, 'textarea', 'Added to the automatic schema. One JSON object, a list of them, or {"@graph": […]}. Rewrite every "Replace …" value; check the result in SEO tools → Schema.', 'spellcheck="false" class="mono" data-schema-box') ?>
       </div>
 
       <div class="tabpanel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings"<?= $hidden('settings') ?>>

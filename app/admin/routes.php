@@ -8,6 +8,7 @@ require __DIR__ . '/media.php';
 require __DIR__ . '/pages.php';
 require __DIR__ . '/redirects.php';
 require __DIR__ . '/leads.php';
+require __DIR__ . '/seo.php';
 
 /**
  * "METHOD /path" => handler(PDO, method): HttpResponse. Later tasks add their pages here and a line in admin_nav() (shell.php).
@@ -49,6 +50,11 @@ function admin_routes(): array
         'GET /admin/preview/{id}' => 'admin_preview',
         'GET /admin/section-form' => 'admin_section_form',
         'GET /admin/templates' => 'admin_templates',
+        'GET /admin/seo' => 'admin_meta',
+        'POST /admin/seo' => 'admin_meta',
+        'GET /admin/seo/schema' => 'admin_seo_schema',
+        'GET /admin/seo/files' => 'admin_seo_files',
+        'POST /admin/seo/files' => 'admin_seo_files',
         'GET /admin/redirects' => 'admin_redirects',
         'POST /admin/redirects' => 'admin_redirects',
         'GET /admin/leads' => 'admin_leads',

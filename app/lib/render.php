@@ -184,6 +184,13 @@ function page_has_form(array $page): bool
     return in_array('lead_form', array_column($page['sections'], 'type'), true);
 }
 
+/** The page's own address, unless the SEO desk pointed its canonical elsewhere (a /path here or a full https:// address). */
+function page_canonical(array $page, string $base): string
+{
+    $c = trim((string) ($page['canonical'] ?? ''));
+    return $c === '' ? $base . page_path($page) : (str_starts_with($c, '/') ? $base . $c : $c);
+}
+
 function render_page(array $page, array $settings): string
 {
     $base = config()['base_url'];
@@ -195,11 +202,11 @@ function render_page(array $page, array $settings): string
         'body' => $body,
         'title' => heading_plain($page['meta_title'] ?: $page['title']),
         'description' => heading_plain($page['meta_description'] ?: strip_tags((string) $page['excerpt'])),
-        'canonical' => $base . page_path($page),
+        'canonical' => page_canonical($page, $base),
         'robots' => page_noindex(db(), $page) ? 'noindex' : '',
         'ogImage' => $ogImage ? $base . $ogImage : null,
         'ogType' => $page['kind'] === 'post' ? 'article' : 'website',
-        'jsonld' => schema_graph($page, $settings, $base),
+        'jsonld' => schema_for_page($page, $settings, $base),
         'hasForm' => page_has_form($page),
     ]);
 }

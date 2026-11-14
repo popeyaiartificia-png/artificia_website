@@ -8,6 +8,7 @@ $nav = [
     '/corporate-ai-training' => 'Corporate training',
     '/services' => 'Solutions',
     '/about' => 'About',
+    '/careers' => 'Careers',
     '/contact' => 'Contact',
 ];
 ?>

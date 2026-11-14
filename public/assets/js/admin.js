@@ -131,6 +131,23 @@
     });
   }
 
+  // Counters "n/max" on [data-count="min-max"] (page editor, Meta manager): amber under the minimum, warn over the maximum.
+  doc.addEventListener('DOMContentLoaded', function () {
+    doc.querySelectorAll('[data-count]').forEach(function (inp) {
+      var lim = inp.getAttribute('data-count').split('-'), c = doc.createElement('p');
+      c.className = 'counter';
+      inp.insertAdjacentElement('afterend', c);
+      function update() {
+        var n = Array.from(inp.value.replace(/\*([^*\n]+)\*/g, '$1').trim()).length;
+        c.textContent = n + '/' + lim[1];
+        c.classList.toggle('is-under', n < +lim[0]);
+        c.classList.toggle('is-over', n > +lim[1]);
+      }
+      inp.addEventListener('input', update);
+      update();
+    });
+  });
+
   /* ---- Page editor ---- */
   // On DOMContentLoaded: by then the deferred quill.js and media.js after this file have run.
   doc.addEventListener('DOMContentLoaded', function () {
@@ -263,20 +280,6 @@
       });
     });
 
-    // Counters "n/max": amber under the minimum, warn over the maximum.
-    form.querySelectorAll('[data-count]').forEach(function (inp) {
-      var lim = inp.getAttribute('data-count').split('-'), c = doc.createElement('p');
-      c.className = 'counter';
-      inp.insertAdjacentElement('afterend', c);
-      function update() {
-        var n = len(plain(inp.value));
-        c.textContent = n + '/' + lim[1];
-        c.classList.toggle('is-under', n < +lim[0]);
-        c.classList.toggle('is-over', n > +lim[1]);
-      }
-      inp.addEventListener('input', update);
-      update();
-    });
 
     // Placeholders show what the page uses when a field is empty; the snippet shows what Google would.
     var title = doc.getElementById('f-title'), slug = doc.getElementById('f-slug'), mt = doc.getElementById('f-meta_title'),
@@ -297,6 +300,19 @@
     rich(form);
     renumber();
     snippet();
+  });
+
+  // Schema preset (page editor SEO tab): fills the custom JSON-LD box; asks first when the box already has text.
+  doc.addEventListener('change', function (e) {
+    var sel = e.target;
+    if (!sel.hasAttribute || !sel.hasAttribute('data-schema-preset') || !sel.value) return;
+    var box = doc.querySelector('[data-schema-box]');
+    if (box && (!box.value.trim() || confirm('Replace the custom JSON-LD with the ' + sel.options[sel.selectedIndex].text + ' preset?'))) {
+      box.value = sel.value;
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+      box.focus();
+    }
+    sel.value = '';
   });
 
   window.Admin = { toast: toast, setDirty: setDirty };

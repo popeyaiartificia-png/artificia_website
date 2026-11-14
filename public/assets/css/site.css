@@ -254,7 +254,7 @@ a.brand img { display: block; width: auto; height: 34px; }
 .nav li { counter-increment: nav; border-bottom: 1px solid var(--line); }
 .nav a {
   display: flex; align-items: baseline; gap: 1.1rem; padding: 1.05rem 0; text-decoration: none;
-  color: var(--ink); font: 660 clamp(1.9rem, 1.4rem + 2.4vw, 2.6rem)/1.1 var(--display); letter-spacing: -.02em;
+  color: var(--ink); font: 660 clamp(1.35rem, 1rem + 1.7vw, 1.85rem)/1.1 var(--display); letter-spacing: -.02em;
   transition: color .2s;
 }
 .nav a::before { content: counter(nav, decimal-leading-zero); font: 500 .72rem/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
@@ -264,11 +264,11 @@ a.brand img { display: block; width: auto; height: 34px; }
 .top.is-open .nav { display: flex; flex-direction: column; }
 .nav ul { flex: 1 0 auto; }
 .nav li { display: flex; flex: 1 0 auto; align-items: center; }
-@media (max-width: 1023px) { .nav a { font-size: clamp(1.9rem, min(1rem + 5vw, 6vh), 2.8rem); } }
+@media (max-width: 1023px) { .nav a { font-size: clamp(1.35rem, min(.7rem + 3.5vw, 4.2vh), 2rem); } }
 @media (min-width: 1024px) {
   .nav { padding: 1rem var(--pad) 2rem; }
   .nav ul { max-width: none; }
-  .nav a { gap: 1.5rem; padding: .6rem 0; font-size: clamp(2.4rem, min(1rem + 4vw, 9vh), 6.5rem); line-height: 1; letter-spacing: -.035em; }
+  .nav a { gap: 1.5rem; padding: .6rem 0; font-size: clamp(1.7rem, min(.7rem + 2.8vw, 6.3vh), 4.5rem); line-height: 1; letter-spacing: -.035em; }
   .nav a::before { font-size: .75rem; }
 }
 @media (max-width: 1023px) { .top__in { gap: .6rem; } }
@@ -1369,7 +1369,7 @@ html:not(.motion) .workscape-pair > .workscape {
 .workscape__thought svg { display: block; width: 105px; height: 32px; margin-top: 1.15rem; fill: none; stroke: var(--work-marker); stroke-width: 1.5; }
 .workscape__thought--review { max-width: 28ch; }
 .workscape__thought--review blockquote { margin: 0; font: inherit; color: inherit; }
-.workscape__draft { display: block; margin-bottom: .8rem; font: 450 .6rem/1.4 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--work-marker); }
+.workscape__draft { display: block; margin-bottom: .8rem; font: 450 .6rem/1.4 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: #4e5d00; }
 .workscape__byline { margin-top: 1.25rem; padding-left: 2.4rem; position: relative; font: 450 .8rem/1.5 var(--sans); letter-spacing: 0; color: var(--work-meta); }
 .workscape__byline::before { content: ""; position: absolute; top: .7em; left: 0; width: 1.6rem; height: 1px; background: var(--work-marker); }
 .workscape__byline > span:first-child { color: var(--work-strong); font-weight: 550; }

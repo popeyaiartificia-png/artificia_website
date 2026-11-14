@@ -224,6 +224,18 @@ input:disabled, select:disabled, textarea:disabled { background: var(--panel); c
 .err::before { content: "Error: "; font-weight: 600; }
 .check label { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 13px; font-weight: 400; color: var(--ink); }
 .check input { width: 16px; height: 16px; accent-color: var(--lime); }
+.check label + label { margin-top: 6px; }
+.mono, textarea.mono { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+textarea.mono { min-height: 200px; }
+pre.mono { max-height: 420px; margin: 8px 0 0; padding: 12px; overflow: auto; white-space: pre-wrap; background: var(--tint); border: 1px solid var(--line); }
+.editor__sub { margin: 28px 0 10px; font-size: 14px; }
+.meta td { vertical-align: top; }
+.meta td:nth-child(1) { min-width: 0; width: 22%; }
+.meta td:nth-child(2) { width: 30%; }
+.meta td:nth-child(3) { width: 42%; }
+.meta__label { display: block; margin: 0 0 4px; font-size: 11px; color: var(--muted); }
+.meta .counter + .meta__label, .meta input + .meta__label { margin-top: 10px; }
+.meta textarea { min-height: 84px; }
 .aside { margin: 16px 0 0; color: var(--muted); }
 .aside a { color: var(--ink); }
 .aside a:hover { color: var(--lime); }
