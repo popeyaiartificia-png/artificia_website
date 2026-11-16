@@ -1429,8 +1429,8 @@
     });
     gsap.matchMedia().add('(min-width: 1100px) and (prefers-reduced-motion: no-preference)', function () {
       var viewport = section.querySelector('.workscape__viewport'), track = section.querySelector('.workscape__track');
-      // The authored scene has six unique shapes. Other CMS combinations use the open, static grid.
-      if (section.querySelectorAll('.workscape__item').length !== 6 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'knowledge', 'voice'].some(function (kind) {
+      // The authored scene has five unique shapes. Other CMS combinations use the open, static grid.
+      if (section.querySelectorAll('.workscape__item').length !== 5 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'voice'].some(function (kind) {
         return section.querySelectorAll('.workscape__item--' + kind).length !== 1;
       })) return;
       var prev = section.querySelector('[data-work-prev]'), next = section.querySelector('[data-work-next]');
