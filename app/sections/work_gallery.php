@@ -1,5 +1,13 @@
 <?php
 $galleryItems = $f['items'] ?? [];
+// Published CMS content survives a code deploy. Keep the removed homepage card
+// out of older saved galleries so the five-card scrolling composition can run.
+if (($page['slug'] ?? '') === 'home') {
+    $galleryItems = array_values(array_filter($galleryItems, static fn(array $item): bool =>
+        ($item['visual'] ?? '') !== 'knowledge'
+        || ($item['label'] ?? '') !== 'Our services / Digital solutions'
+    ));
+}
 $reviewApproved = ($f['review_status'] ?? 'draft') === 'approved';
 $reviewDraft = !empty($f['review_text']) && !$reviewApproved;
 $showReview = !empty($f['review_text']) && ($reviewApproved || (function_exists('config') && config()['env'] === 'local'));
