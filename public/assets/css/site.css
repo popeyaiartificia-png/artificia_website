@@ -1529,7 +1529,7 @@ html:not(.motion) .workscape-pair > .workscape {
   .workscape.is-horizontal .workscape__navigation { display: flex; position: absolute; bottom: 8px; right: max(var(--edge), 88px); z-index: 2; padding: 5px 0 5px 14px; background: var(--work-ground); }
   .workscape.is-horizontal .workscape__viewport { height: calc(100svh - 84px); min-height: 0; overflow: hidden; }
   .workscape.is-horizontal .workscape__picture { will-change: transform; }
-  .workscape.is-horizontal .workscape__track { --work-unit: min(clamp(42px, 5svh, 62px), max(38px, calc((100vw - 2 * var(--pad) - 484px) / 23))); --work-service-height: clamp(190px, 24svh, 230px); --work-brand-height: min(580px, calc(100svh - 200px)); --work-cluster-offset: max(0px, calc((100svh - 198px - var(--work-brand-height)) / 2)); position: relative; width: max-content; height: 100%; max-width: none; margin: 0; padding: 16px var(--pad) 48px; display: grid; grid-template-columns: repeat(42, var(--work-unit)); grid-template-rows: repeat(12, minmax(0, 1fr)); column-gap: 22px; }
+  .workscape.is-horizontal .workscape__track { --work-unit: min(clamp(42px, 5svh, 62px), max(38px, calc((100vw - 2 * var(--pad) - 484px) / 23))); --work-service-height: clamp(190px, 24svh, 230px); --work-brand-height: min(580px, calc(100svh - 200px)); --work-cluster-offset: max(0px, calc((100svh - 198px - var(--work-brand-height)) / 2)); position: relative; width: max-content; height: 100%; max-width: none; margin: 0; padding: 16px var(--pad) 48px; display: grid; grid-template-columns: repeat(44, var(--work-unit)); grid-template-rows: repeat(12, minmax(0, 1fr)); column-gap: 22px; }
   .workscape.is-horizontal .workscape__list { display: contents; }
   .workscape.is-horizontal .workscape__thought { grid-area: 1 / 8 / span 3 / span 6; align-self: start; margin: 5px 0 0; max-width: 19ch; font-size: clamp(1.5rem, 3.3svh, 2.7rem); }
   .workscape.is-horizontal .workscape__thought--review { max-width: 19rem; }
@@ -1544,15 +1544,15 @@ html:not(.motion) .workscape-pair > .workscape {
   .workscape.is-horizontal .workscape__item--mobile .workscape__picture { align-self: start; width: auto; aspect-ratio: 390 / 844; }
   .workscape.is-horizontal .work-phone { height: 100%; }
   .workscape.is-horizontal .workscape__item--workflow, .workscape.is-horizontal .workscape__item--support { grid-area: 9 / 2 / span 4 / span 4; }
-  .workscape.is-horizontal .workscape__item--website { grid-area: 5 / 8 / span 8 / span 6; }
+  .workscape.is-horizontal .workscape__item--website { grid-area: 4 / 8 / span 9 / span 8; }
   .workscape.is-horizontal .workscape__item--website .workscape__picture { flex: none; }
   .workscape.is-horizontal .work-browser img { height: auto; }
   .workscape.is-horizontal .workscape__item--service { grid-row: 1 / -1; height: auto; align-self: start; }
   .workscape.is-horizontal .workscape__item--service .workscape__link { height: auto; }
   .workscape.is-horizontal .workscape__item--service .workscape__picture { flex: none; }
-  .workscape.is-horizontal .workscape__item--conversations { grid-column: 15 / span 7; margin-top: calc(var(--work-cluster-offset) + 10px); }
-  .workscape.is-horizontal .workscape__item--voice, .workscape.is-horizontal .workscape__item--assistants, .workscape.is-horizontal .workscape__item--knowledge { grid-column: 24 / span 8; margin-top: calc(var(--work-cluster-offset) + var(--work-brand-height) - var(--work-service-height)); }
-  .workscape.is-horizontal .workscape__item--assistants { grid-column: 35 / span 8; }
+  .workscape.is-horizontal .workscape__item--conversations { grid-column: 17 / span 7; margin-top: calc(var(--work-cluster-offset) + 10px); }
+  .workscape.is-horizontal .workscape__item--voice, .workscape.is-horizontal .workscape__item--assistants, .workscape.is-horizontal .workscape__item--knowledge { grid-column: 26 / span 8; margin-top: calc(var(--work-cluster-offset) + var(--work-brand-height) - var(--work-service-height)); }
+  .workscape.is-horizontal .workscape__item--assistants { grid-column: 37 / span 8; }
   .workscape.is-horizontal .work-service { height: var(--work-service-height); aspect-ratio: auto; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); padding: 12px; gap: 5px 12px; }
   .workscape.is-horizontal .work-service__headline { font-size: clamp(22px, 3.3svh, 28px); }
   .workscape.is-horizontal .work-service__intro { margin-top: 6px; line-height: 1.4; }
@@ -1560,7 +1560,7 @@ html:not(.motion) .workscape-pair > .workscape {
   .workscape.is-horizontal .work-service__arrow { width: 24px; height: 24px; }
   .workscape.is-horizontal .work-flow, .workscape.is-horizontal .work-support { height: 100%; }
   /* Keep each panel's height and vertical offset; brands precede the lower voice/chat card. */
-  .workscape.is-horizontal .workscape__brands { grid-area: 1 / 23 / -1 / span 9; align-self: start; max-width: none; min-height: 0; margin: var(--work-cluster-offset) 0 0; }
+  .workscape.is-horizontal .workscape__brands { grid-area: 1 / 25 / -1 / span 9; align-self: start; max-width: none; min-height: 0; margin: var(--work-cluster-offset) 0 0; }
   .workscape.is-horizontal .work-brands { height: var(--work-brand-height); aspect-ratio: auto; }
 }
 @media (min-width: 1100px) and (max-height: 799px) {
