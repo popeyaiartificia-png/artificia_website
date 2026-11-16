@@ -1551,6 +1551,7 @@ html:not(.motion) .workscape-pair > .workscape {
   .workscape.is-horizontal .workscape__item--service .workscape__picture { flex: none; }
   .workscape.is-horizontal .workscape__item--conversations { grid-column: 13 / span 7; margin-top: calc(var(--work-cluster-offset) + 10px); }
   .workscape.is-horizontal .workscape__item--voice, .workscape.is-horizontal .workscape__item--assistants, .workscape.is-horizontal .workscape__item--knowledge { grid-column: 22 / span 8; margin-top: calc(var(--work-cluster-offset) + var(--work-brand-height) - var(--work-service-height)); }
+  .workscape.is-horizontal .workscape__item--assistants { grid-column: 21 / span 8; }
   .workscape.is-horizontal .work-service { height: var(--work-service-height); aspect-ratio: auto; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); padding: 12px; gap: 5px 12px; }
   .workscape.is-horizontal .work-service__headline { font-size: clamp(22px, 3.3svh, 28px); }
   .workscape.is-horizontal .work-service__intro { margin-top: 6px; line-height: 1.4; }
