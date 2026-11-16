@@ -1427,7 +1427,7 @@
       paint(ground);
       return function () { ground.kill(); terrain.destroy(); };
     });
-    gsap.matchMedia().add('(min-width: 1100px) and (min-height: 900px) and (prefers-reduced-motion: no-preference)', function () {
+    gsap.matchMedia().add('(min-width: 1100px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)', function () {
       var viewport = section.querySelector('.workscape__viewport'), track = section.querySelector('.workscape__track');
       // Three project visuals, automation, and one combined voice/chat service card.
       if (section.querySelectorAll('.workscape__item').length !== 5 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'assistants'].some(function (kind) {

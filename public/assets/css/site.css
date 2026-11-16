@@ -1558,6 +1558,19 @@ html:not(.motion) .workscape-pair > .workscape {
   /* Short laptops (1536x695 at 125%): the review uses its whole grid area so it clears the website card. */
   .workscape.is-horizontal .workscape__thought--review { max-width: none; font-size: clamp(1.15rem, 3.3svh, 2.7rem); }
 }
+@media (min-width: 1100px) and (min-height: 620px) and (max-height: 899px) {
+  /* Fit both rows of the L inside a laptop viewport without disabling sideways travel. */
+  .workscape.is-horizontal .workscape__track { --work-unit: min(clamp(42px, 5svh, 62px), calc((100vw - 2 * var(--pad) - 352px) / 17)); --work-panel-height: min(calc((8 * var(--work-unit) + 154px) * .5625), calc((100svh - 258px) / 2)); --work-cluster-offset: max(0px, calc((100svh - 258px - 2 * var(--work-panel-height)) / 2)); padding-block: 16px 48px; }
+  .workscape.is-horizontal .workscape__caption { margin-bottom: .5rem; }
+  .workscape.is-horizontal .workscape__title { margin-top: .4rem; }
+  .workscape.is-horizontal .work-service, .workscape.is-horizontal .work-brands { height: var(--work-panel-height); aspect-ratio: auto; }
+  .workscape.is-horizontal .work-service { padding: 12px; gap: 5px 12px; }
+  .workscape.is-horizontal .work-service__headline { font-size: clamp(24px, 3.9svh, 32px); }
+  .workscape.is-horizontal .work-service__intro { margin-top: 6px; line-height: 1.4; }
+  .workscape.is-horizontal .work-service__footer { padding-top: 4px; }
+  .workscape.is-horizontal .work-service__arrow { width: 24px; height: 24px; }
+  .workscape.is-horizontal .workscape__brands { margin-top: calc(var(--work-cluster-offset) + var(--work-panel-height) + 80px); }
+}
 @media (max-width: 1099px) {
   .workscape__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem 2rem; }
   .workscape__item--website { grid-column: span 2; }
