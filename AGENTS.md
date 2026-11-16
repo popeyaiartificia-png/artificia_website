@@ -17,6 +17,9 @@ explicitly changes this policy. Do not force-push or discard someone else's work
   choose an entire side merely to remove conflict markers.
 - Push with `git push origin main`. If another writer updated `main`, fetch and
   integrate their work before retrying; never bypass the non-fast-forward check.
+- Keep this checkout and `origin/main` synchronized after completed work. Confirm
+  the working tree is clean and local `main` matches remote `main` using
+  `git ls-remote origin refs/heads/main` before reporting completion.
 - For a new checkout, run `git config --local core.hooksPath .githooks`,
   `git config --local remote.pushDefault origin`,
   `git config --local remote.origin.push refs/heads/main:refs/heads/main`,
