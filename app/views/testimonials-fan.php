@@ -31,12 +31,11 @@ $positions = count($videos) === 2 && count($written) === 3 ? [0, .86, -.86, -1.6
 ?>
     <li class="voices__card" style="--fan-x: <?= $x ?>; --fan-angle: <?= $angle ?>deg; --fan-drop: <?= $drop ?>px; --fan-z: <?= $z ?>; --fan-depth: <?= $depth ?>">
       <a class="voices__surface<?= empty($it['photo']) ? ' voices__surface--type' : '' ?>" href="<?= $src !== '' ? e($src) : '#written-testimonials' ?>"<?= $src !== '' ? ' target="_blank" rel="noopener"' : '' ?>
-        data-review-name="<?= e($name) ?>" data-review-role="<?= e($it['role'] ?? '') ?>"<?= $photoNote !== '' ? ' data-review-note="' . e($photoNote) . '"' : '' ?><?= $src !== '' ? ' data-review-src="' . e($src) . '"' : ' data-review-quote="' . e($it['quote'] ?? '') . '"' ?>
-        aria-label="<?= e(($src !== '' ? 'Watch testimonial from ' : 'Read review from ') . $name . ($photoNote !== '' ? '. ' . $photoNote : '')) ?>">
+        data-review-name="<?= e($name) ?>" data-review-role="<?= e($it['role'] ?? '') ?>"<?= $photoNote !== '' ? ' data-review-note="' . e($photoNote) . '"' : '' ?><?= $src !== '' ? ' data-review-src="' . e($src) . '"' : ' data-review-quote="' . e($it['quote'] ?? '') . '"' ?>>
 <?php if (!empty($it['photo'])): ?>
         <?= image($it['photo'], '(min-width: 900px) min(23vw, 460px), min(88vw, 380px)') ?>
 <?php if ($photoNote !== ''): ?>
-        <span class="voices__photo-note<?= $x > 0 ? ' voices__photo-note--right' : '' ?>" title="<?= e($photoNote) ?>">Illustrative portrait</span>
+        <span class="voices__photo-note<?= $x > 0 ? ' voices__photo-note--right' : '' ?>" title="<?= e($photoNote) ?>">Illustrative portrait<span class="vh">: <?= e($photoNote) ?></span></span>
 <?php endif ?>
 <?php else: ?>
         <span class="voices__initials" aria-hidden="true"><?= e($initials) ?></span>

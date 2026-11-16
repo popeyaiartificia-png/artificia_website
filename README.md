@@ -24,3 +24,28 @@ Plain PHP 8 + MySQL site for https://artificiaai.com (Hostinger shared hosting).
 4. `bin/serve` starts http://127.0.0.1:8000 (admin at `/admin`). `php tests/run.php` runs the tests.
 
 On the server the config path is `$ARTIFICIA_CONFIG`, or `artificia-config.php` three folders above `app/`.
+
+## Git workflow
+
+Work, commit and push directly on `main`; the owner does not use feature branches
+or pull requests for this repository. Before starting with a clean working tree:
+
+```sh
+git switch main
+git fetch origin
+git merge --ff-only origin/main
+```
+
+After reviewing and committing the intended files, use `git push origin main`.
+If the remote has moved, integrate those changes locally and resolve any conflicts
+before retrying. Never force-push. Concurrent edits can still need resolution.
+
+Enable the main-only guard and safe defaults once per new checkout:
+
+```sh
+git config --local core.hooksPath .githooks
+git config --local remote.pushDefault origin
+git config --local remote.origin.push refs/heads/main:refs/heads/main
+git config --local push.default simple
+git config --local pull.ff only
+```

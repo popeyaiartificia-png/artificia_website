@@ -15,7 +15,7 @@
   // Let the 700ms logo assembly finish, then leave as soon as the page is ready (2.2s safety cap).
   var loader = d.querySelector('.loader');
   var enter = function () { root.classList.add('is-in'); };
-  if (loader && root.classList.contains('js') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (loader && root.classList.contains('js') && !root.classList.contains('al') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var done = 0, gone = false, safetyTimer;
     loader.classList.add('is-active');
     var leave = function () {

@@ -1,0 +1,14 @@
+#!/bin/sh
+# Keep this repository on the owner's direct-to-main workflow.
+branch=$(git symbolic-ref --quiet --short HEAD) || exit 1
+if [ "$branch" != main ]; then
+    echo "Push blocked: switch to main; this repository uses direct pushes to main." >&2
+    exit 1
+fi
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    if [ "$local_ref" != refs/heads/main ] || [ "$remote_ref" != refs/heads/main ]; then
+        echo "Push blocked: only refs/heads/main -> refs/heads/main is permitted." >&2
+        exit 1
+    fi
+done

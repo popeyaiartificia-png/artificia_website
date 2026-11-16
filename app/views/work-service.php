@@ -2,7 +2,7 @@
 <div class="work-service work-service--automation">
   <div class="work-service__eyebrow"><span>01 / AI &amp; automation</span><?= icon('flow-arrow') ?></div>
   <p class="work-service__headline">Less busywork.<br><em>More possibility.</em></p>
-  <p class="work-service__intro">Connect your tools. Give your team<br>room to do better work.</p>
+  <p class="work-service__intro">Connect your tools. Give your team room to do better work.</p>
   <div class="work-service__workflow" aria-hidden="true">
     <span class="work-service__workflow-label">A MORE CONNECTED WORKDAY</span>
     <div class="work-service__workflow-nodes">

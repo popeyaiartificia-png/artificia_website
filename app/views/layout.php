@@ -45,8 +45,8 @@ $nav = [
 <?php if ($jsonld): ?>
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $jsonld], JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 <?php endif; ?>
-<?php // Enable the intro on every page load; motion still respects the visitor's preference. ?>
-<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.__motion)d.classList.remove('motion')},2500)}})(document.documentElement)</script>
+<?php // Show the intro once per visit; motion still respects the visitor's preference. ?>
+<script>(function(d){d.classList.add('js');try{if(sessionStorage.getItem('al'))d.classList.add('al');else sessionStorage.setItem('al','1')}catch(e){}if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.__motion)d.classList.remove('motion')},2500)}})(document.documentElement)</script>
 <link rel="preload" href="/assets/img/artificia-logo.png" as="image">
 <link rel="preload" href="/assets/fonts/artificia-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/statement-sans.woff2" as="font" type="font/woff2" crossorigin>
