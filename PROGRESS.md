@@ -2,6 +2,22 @@
 
 One entry per day, newest first. Each has Done / Current lead / Next / Blocked. The full picture lives in [CONTEXT.md](CONTEXT.md).
 
+## 2026-11-17
+
+**Done**
+- **WordPress migration started (owner's brief), Phase 2 built and verified locally** (work of 16–17 Nov). Theme `wordpress/artificia` is a thin adapter: WordPress holds content (one block per section type, fields from the registry), media, settings and leads; this repo's section/view templates, helpers, lead pipeline and assets render it unchanged. Added `wp artificia import` (settings, 39 images keeping `/uploads` URLs, 20 pages, templates, leads with ids, résumés; repeatable). Shared-code edits: pluggable `image()`/`posts_recent()`, `sitemap_xml_for()`/`llms_txt_for()`.
+- **Validation:** local WordPress 7.1.4 (:8090) vs this checkout's PHP site (:8081), same local DB. 42 addresses: every page body byte-identical including headers, plus sitemap/robots/llms, slash variants, 404 and WordPress-only addresses. Remaining: /privacy whitespace between paragraphs (invisible), `/home` absolute redirect target, redirects not imported (Phase 4), `/admin` → WordPress login. Assets byte-identical. 84 full-page Edge screenshot pairs: 47 pixel-identical, no size differences, the rest animation-timing noise also seen site-vs-itself. Block editor: 22 blocks register, all imported blocks valid, forms and SEO panel work, an editor re-save changes whitespace only. Leads: success/422/honeypot/no-JS/careers PDF all correct; n8n payload = 15-field contract with token header and +05:30 times. PHP tests: same 31 pre-existing failures by name, 163 pass.
+- Generated SSH key `~/.ssh/artificia_hostinger` for Hostinger (private key stays on this laptop).
+
+**Current lead**
+- WordPress version runs locally at http://127.0.0.1:8090 (admin login in `D:\artificia-wp-local\LOCAL-LOGIN.txt`); runbook in docs/wordpress-migration.md.
+
+**Next**
+- WordPress Phase 1 on staging once the owner has done the hPanel steps; then Phase 4 (SEO plugin mapping, redirects) and the live-database import.
+
+**Blocked**
+- Owner actions: create `new.artificiaai.com`, install WordPress on it, enable SSH with the public key, choose Rank Math or Yoast.
+
 ## 2026-11-16
 
 **Done**

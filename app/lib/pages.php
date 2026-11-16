@@ -24,6 +24,8 @@ function page_path(array $page): string
     };
 }
 
+// The WordPress theme (wordpress/artificia) defines its own posts_recent() first, reading WordPress posts.
+if (!function_exists('posts_recent')) {
 /** Newest published posts first. */
 function posts_recent(PDO $db, int $limit): array
 {
@@ -32,6 +34,7 @@ function posts_recent(PDO $db, int $limit): array
     $stmt->bindValue(1, $limit, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetchAll();
+}
 }
 
 /** Whether search engines are told to skip a page: its stored flag, except the blog index, which is hidden only while no post is published. */

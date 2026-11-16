@@ -96,6 +96,8 @@ function whatsapp_url(array $settings): string
     return 'https://wa.me/' . ($digits !== '' ? $digits : '919104488859');
 }
 
+// The WordPress theme (wordpress/artificia) defines its own image() first, reading the media library.
+if (!function_exists('image')) {
 /** An image field (a media id) as a responsive <img>; '' when empty or unknown. */
 function image(mixed $id, string $sizes, bool $eager = false, string $class = ''): string
 {
@@ -104,6 +106,7 @@ function image(mixed $id, string $sizes, bool $eager = false, string $class = ''
     }
     $tag = img_tag(db(), (int) $id, $sizes, $eager);
     return $class !== '' && $tag !== '' ? '<img class="' . e($class) . '" ' . substr($tag, 5) : $tag;
+}
 }
 
 function render_view(string $name, array $vars): string

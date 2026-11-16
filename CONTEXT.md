@@ -4,7 +4,7 @@
 
 GitHub publication verified (2 Nov 2026): feature commit `926a98c` was pushed to `popeyaiartificia-png/artificiaai-website` on `main`; `git ls-remote` confirmed the full hash `926a98c02bda640c469cdcd41877984d5e7cb029`. Repository-local author remains `jaytishah` / `jaytishah20@gmail.com`; global Git settings unchanged. This commit includes the gallery continuity, testimonial fan, plain-suit robot footer, branded enquiry, section removals and restored reviewer initials. Final PHP/JS/JSON syntax and whitespace checks passed. Scoped suite: 38 passes and one pre-existing Windows CRLF .htaccess assertion failure; both unchanged dot rules match after LF normalization.
 
-**Rule for whoever works on this repo (human or AI):** after *every* change, however small, run the checkpoint. (1) Update this file: fix any section the change makes untrue, and add one dated line to the **Changelog** at the bottom. (2) Add to today's entry in [PROGRESS.md](PROGRESS.md), the daily note: Done / Current lead / Next / Blocked. In Claude Code a Stop hook (`.claude/hooks/checkpoint.sh`) enforces this. Last updated: **16 Nov 2026**.
+**Rule for whoever works on this repo (human or AI):** after *every* change, however small, run the checkpoint. (1) Update this file: fix any section the change makes untrue, and add one dated line to the **Changelog** at the bottom. (2) Add to today's entry in [PROGRESS.md](PROGRESS.md), the daily note: Done / Current lead / Next / Blocked. In Claude Code a Stop hook (`.claude/hooks/checkpoint.sh`) enforces this. Last updated: **17 Nov 2026**.
 
 Deeper detail lives in these files; this one summarises them and records decisions that are not written anywhere else:
 
@@ -18,6 +18,7 @@ Deeper detail lives in these files; this one summarises them and records decisio
 | [content/SOURCES.md](content/SOURCES.md) | Where every image, logo, font and library came from (licences). |
 | [README.md](README.md) | Local setup. |
 | [MD_OVERVIEW.md](MD_OVERVIEW.md) | Markdown inventory, engineering orientation, documentation conflicts and recommended next work (30 Oct 2026; documentation review, not runtime certification). |
+| [docs/wordpress-migration.md](docs/wordpress-migration.md) | **WordPress migration (started 16 Nov 2026):** how the `wordpress/artificia` theme reuses this site's code, the importer, server layout, local setup. |
 
 ---
 
@@ -87,6 +88,8 @@ docs/ref/          the blueprint PDF
 ```
 
 **Page model:** every page is an ordered list of sections chosen from the library. The SEO expert arranges them in the admin, so every section must look right in any order and with any length of real copy.
+
+**WordPress migration (owner's brief, started 16 Nov 2026; the live site is unchanged until go-live):** the site is moving to WordPress on the same Hostinger account with no visible change. Design: the theme `wordpress/artificia` is a thin adapter; WordPress stores content (one block per section type, fields straight from `app/sections/registry.php`), media, settings and leads, while rendering, SEO output and the lead pipeline reuse `app/sections`, `app/views`, `app/lib` and `public/assets` from the same checkout unchanged. So **design changes made in this repo apply to both sites**; keep section/view code free of direct DB access (use `image()`, `posts_recent()`, `config()`, which the theme supplies). `image()` and `posts_recent()` are now pluggable (`if (!function_exists(...))`), and `seo.php` has `sitemap_xml_for()` / `llms_txt_for()` taking ready rows; the old site's output is unchanged. Details: [docs/wordpress-migration.md](docs/wordpress-migration.md).
 
 ## 5. Design direction
 
@@ -211,7 +214,18 @@ The homepage now has eight sections in the current design direction; its final e
 - **Live Settings (14 Nov):** Lead alert email = info@artificiaai.com and Meta Pixel ID = 908862172011061 (the old /landing-page/ pixel) set by Claude at the user's request; pixel verified on live pages (PageView everywhere, Lead on form submit via site.js). Alert mail goes through PHP mail() from no-reply@artificiaai.com; delivery not yet tested. **Still empty:** GA4 ID and Search Console code (user will add them in the CMS when they have them), Google Business Profile URL, Meta Conversions API token. Leads also go to the n8n webhook on Hardik's laptop (Tailscale).
 - **The 14 Nov SEO code changes are live** (b5eb055, user re-ran the hPanel Git deploy): og-default.jpg serves, every page has og:image + summary_large_image, the 7 /services/* and /corporate-ai-training* pages carry Service schema, and the home LocalBusiness has postcode 391101, geo and logo. All live JSON-LD parses.
 
+### 6.4 WordPress migration (16 Nov 2026)
+
+Phase 2 (theme) is built and verified **locally** (WordPress 7.1.4 in `D:\artificia-wp-local`, http://127.0.0.1:8090, against the current site from this checkout on :8081, both on the local database copy). Parts of phases 3 and 5 are done too. Nothing is on Hostinger yet.
+
+- **Built:** theme `wordpress/artificia` (adapter, 22 section blocks with a registry-driven editor form and a "Page heading and SEO" panel, front-end routes, Leads screen, Settings → Artificia), `wp artificia import` (settings, 39 images keeping their `/uploads` URLs, 20 pages + a draft `/case-studies` placeholder parent, 3 templates as patterns, leads with their ids, résumés). Block names use dashes (`artificia/rich-text`): WordPress rejects underscores.
+- **Verified locally:** 42 addresses compared: every page body byte-identical to the current site (headers too), plus sitemap.xml, robots.txt, llms.txt, trailing-slash, 404, query-string and WordPress-only addresses (feeds, archives, authors → 404). Only differences: `/privacy` whitespace between paragraphs (invisible; no public CSS uses pre-wrap), `/home` redirect target absolute instead of relative, redirects not imported yet, `/admin` now goes to the WordPress login. CSS/JS/fonts/images byte-identical with the same content types. 84 full-page Edge screenshot pairs (4 sizes, frozen clock, seeded random): 47 pixel-identical, none differ in page size; the rest are faint animation-timing noise (the current site shows the same noise against itself). Block editor: all 22 blocks register, every imported block valid, forms and SEO panel work; re-saving from the editor changes only whitespace between paragraphs and the sitemap lastmod of edited pages. Leads: JSON success with event id, 422 validation, honeypot saved as spam and not forwarded, no-JS thank-you page, careers PDF stored privately (admin-only download, no event id), n8n payload matches the 15-field contract in order with `X-Artificia-Token` and `+05:30` times, IST row times. Old `/admin/leads/{id}` links open the WordPress lead. PHP test suite unchanged by the shared-code edits (same 31 pre-existing failures by name, 163 pass).
+- **Waiting on the owner:** staging subdomain `new.artificiaai.com`, WordPress Auto Installer there, SSH access with the public key Claude generated (`~/.ssh/artificia_hostinger.pub` on this laptop), and the SEO plugin choice (Rank Math or Yoast).
+- **Not done yet:** redirects (Phase 4, into the chosen SEO/redirect plugin), SEO plugin mapping, staging setup, Lighthouse, live-DB import, owner review, go-live.
+
 ## 7. Next plans (recommended order)
+
+0. **WordPress migration (current work, §6.4):** Phase 1 staging once the owner has done the hPanel steps, then Phase 4 SEO/redirects, live-database import, Phase 6 tests on staging. Until go-live, keep shipping design changes in this repo as usual: they apply to both sites.
 
 1. ~~Commit the 29–30 Oct work~~ (done long ago; the site is live from `main`).
 2. **Finish the homepage in blueprint order:** Free consultation offer → Corporate training band → Case studies/demos → Courses preview → Why Artificia → Resources. Then drop the leftover paper sections listed in §6.1. One section per round, shown to the user before moving on.
@@ -225,6 +239,8 @@ The homepage now has eight sections in the current design direction; its final e
 9. **Later, separate phases:** student portal/LMS and payments (the blueprint wants them; the original spec ruled them out of v1), plus resources/articles for SEO and AEO.
 
 ## 8. Open decisions (need management or the user)
+
+- **WordPress SEO plugin (16 Nov):** Rank Math or Yoast, whichever the SEO person prefers. Rank Math includes redirects; Yoast's free version does not, so it would add the Redirection plugin. Either way the theme prints the head itself so titles, canonicals, robots and schema stay identical.
 
 - **Accent colour resolved (14 Nov):** the user chose logo lime `#AED534` across the entire website, replacing the statement colour and the older stage neon. Implemented locally; include in the next production deployment.
 - **Service availability resolved:** the user confirmed all six blueprint service families are available on 30 Oct. Dedicated detail pages for Agentic AI, SEO/AEO/GEO, and Cloud & Private AI remain part of the service-page migration.
@@ -242,7 +258,7 @@ The homepage now has eight sections in the current design direction; its final e
 
 - Read this file, then DESIGN.md and PRODUCT.md, before changing anything. The blueprint PDF is the authority on content and order; the user's decisions in §5.4 override it where they differ.
 - Build one homepage section at a time in the Lando look, and show the user each one. Tell the user every time the design changes or new pages are built.
-- Stay on the PHP + plain CSS/JS + GSAP stack (no Node on the host). No new libraries without a reason.
+- Stay on the PHP + plain CSS/JS + GSAP stack (no Node on the host). No new libraries without a reason. The WordPress move (owner's brief, 16 Nov) keeps this: the theme reuses the same PHP templates and assets, no page builder, no build step.
 - Never invent facts. If a claim has no source, leave it out and flag it.
 - Check visually with a headless browser from the CLI, not the Claude in Chrome extension.
 - Images: Canva. Record the source of every new raster in content/SOURCES.md.
@@ -253,6 +269,7 @@ The homepage now has eight sections in the current design direction; its final e
 
 ## Changelog
 
+- **2026-11-17** WordPress migration, Phase 2 built and verified locally (work of 16–17 Nov): theme `wordpress/artificia` reuses app/sections, app/views, app/lib and public/assets unchanged (22 section blocks, page SEO panel, routes, Leads and Settings screens); `wp artificia import` copies the database. `image()`/`posts_recent()` made pluggable and `sitemap_xml_for()`/`llms_txt_for()` split out in app/lib (old site output unchanged, same test results). 42 addresses compared: page HTML byte-identical except invisible whitespace on /privacy; lead pipeline and n8n payload verified with a local stand-in. Waiting for the owner's hPanel steps (staging subdomain, WordPress install, SSH key) and the SEO plugin choice. Runbook: docs/wordpress-migration.md.
 - **2026-11-16** Retried publication to `popeyaiartificia-png/artificia_website` successfully and established main's upstream as origin/main; the earlier GitHub permission issue is resolved. Verified local/remote main at `8b46cc1e2898aaeac7427e4891555eca56643f05`, zero ahead/behind and a clean working tree before this documentation checkpoint. Recorded the user's ongoing synchronization instruction in AGENTS.md, including remote hash verification after completed work. Application and hosting configuration unchanged.
 
 - **2026-11-16** Reconnected this checkout to `popeyaiartificia-png/artificia_website` at the user's request, removing the prior origin and stale remote-tracking refs while preserving local main/history. Updated the current repository link and enabled the documented main-only Git defaults. Validation: new remote reachable, fetch successful, no other active Git links found; push rejected with HTTP 403 for `jaytishah`, so publication awaits write access. No application files or hosting configuration changed.

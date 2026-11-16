@@ -38,6 +38,13 @@ function robots_blocks_site(string $txt): bool
 /** llms.txt: Custom (llms_mode = custom, llms_custom set) as typed; else every live indexable page and post with its description. */
 function llms_txt(PDO $db, string $baseUrl, array $settings): string
 {
+    $rows = $db->query("SELECT slug, kind, title, meta_title, meta_description, excerpt, noindex FROM pages WHERE status = 'published' ORDER BY kind, slug = 'home' DESC, slug")->fetchAll();
+    return llms_txt_for(array_values(array_filter($rows, fn($r) => !page_noindex($db, $r))), $baseUrl, $settings);
+}
+
+/** llms.txt from the live indexable pages and posts, already in order (the WordPress theme passes its own). */
+function llms_txt_for(array $rows, string $baseUrl, array $settings): string
+{
     if (($settings['llms_mode'] ?? '') === 'custom' && trim($settings['llms_custom'] ?? '') !== '') {
         return trim(str_replace("\r", '', $settings['llms_custom'])) . "\n";
     }
@@ -46,11 +53,10 @@ function llms_txt(PDO $db, string $baseUrl, array $settings): string
     if ($intro !== '') {
         $out .= '> ' . str_replace("\n", "\n> ", $intro) . "\n\n";
     }
-    $rows = $db->query("SELECT slug, kind, title, meta_title, meta_description, excerpt, noindex FROM pages WHERE status = 'published' ORDER BY kind, slug = 'home' DESC, slug")->fetchAll();
     foreach (['page' => 'Pages', 'post' => 'Blog'] as $kind => $heading) {
         $lines = '';
         foreach ($rows as $r) {
-            if ($r['kind'] !== $kind || page_noindex($db, $r)) {
+            if ($r['kind'] !== $kind) {
                 continue;
             }
             $desc = trim(heading_plain($r['meta_description'] ?: strip_tags((string) $r['excerpt'])));
@@ -65,8 +71,13 @@ function llms_txt(PDO $db, string $baseUrl, array $settings): string
 function sitemap_xml(PDO $db, string $baseUrl): string
 {
     $rows = $db->query("SELECT slug, kind, noindex, updated_at FROM pages WHERE status = 'published' ORDER BY kind, slug")->fetchAll();
-    $rows = array_filter($rows, fn($r) => !page_noindex($db, $r));
-    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    return sitemap_xml_for(array_filter($rows, fn($r) => !page_noindex($db, $r)), $baseUrl);
+}
+
+/** sitemap.xml from the live indexable pages and posts, already in order (the WordPress theme passes its own). */
+function sitemap_xml_for(array $rows, string $baseUrl): string
+{
+    $xml ='<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
     foreach ($rows as $r) {
         $xml .= '<url><loc>' . e($baseUrl . page_path($r)) . '</loc><lastmod>' . date('Y-m-d', strtotime($r['updated_at'])) . "</lastmod></url>\n";
     }
