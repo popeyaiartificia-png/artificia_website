@@ -22,16 +22,7 @@
   <img src="/assets/img/showcase/orkay-mobile.webp" width="390" height="844" loading="lazy" decoding="async" alt="Mobile preview of the Orkay Tiles website">
 </div>
 <?php elseif ($visual === 'conversations'): ?>
-<div class="work-conversation" aria-hidden="true">
-  <div class="work-conversation__top"><?= icon('flow-arrow') ?><span>AI &amp; automation<span>Our service offerings</span></span></div>
-  <p class="work-offer__title">Put AI<br><em>to work.</em></p>
-  <ul class="work-offer__list">
-    <li><span>AI automation<small>Workflows &amp; integrations</small></span><?= icon('arrow-up-right') ?></li>
-    <li><span>Agentic AI<small>Agents &amp; knowledge assistants</small></span><?= icon('arrow-up-right') ?></li>
-    <li><span>Marketing automation<small>GoHighLevel &amp; customer journeys</small></span><?= icon('arrow-up-right') ?></li>
-  </ul>
-  <div class="work-offer__footer">One connected business.<?= icon('arrow-up-right') ?></div>
-</div>
+<?= render_view('work-service', ['visual' => $visual]) ?>
 <?php elseif ($visual === 'support'): ?>
 <div class="work-support" aria-hidden="true">
   <span class="work-ui-note">IT SUPPORT &amp; SYSTEMS</span>
@@ -64,23 +55,7 @@
   <div class="work-flow__foot"><span>Forms</span><span>Sheets</span><span>CRM</span><span>In sync ↗</span></div>
 </div>
 <?php elseif ($visual === 'knowledge'): ?>
-<div class="work-knowledge" aria-hidden="true">
-  <aside><span class="work-knowledge__mark">&#10035;</span><span>Software</span><span>Cloud</span><span>Search</span><span>Training</span><i></i><span>Build.<br>Connect.<br>Grow.</span></aside>
-  <div class="work-knowledge__main">
-    <span class="work-ui-note">OUR SERVICE OFFERINGS</span>
-    <p>Build. Deploy.<br><em>Grow.</em></p>
-    <div class="work-delivery__services">
-      <span><strong>Software &amp; apps</strong><small>Websites &amp; dashboards</small></span>
-      <span><strong>Cloud &amp; private AI</strong><small>Deployment &amp; infrastructure</small></span>
-      <span><strong>SEO / AEO / GEO</strong><small>Search &amp; AI visibility</small></span>
-      <span><strong>Corporate AI training</strong><small>Skills for your team</small></span>
-    </div>
-  </div>
-</div>
+<?= render_view('work-service', ['visual' => $visual]) ?>
 <?php else: ?>
-<div class="work-voice" aria-hidden="true">
-  <span class="work-ui-note">AI VOICE AGENTS</span>
-  <div class="work-voice__wave"><?php for ($bar = 0; $bar < 25; $bar++): ?><i style="--wave:<?= [12, 18, 32, 44, 24, 62, 86, 55, 98, 68, 42, 76, 100, 64, 84, 46, 70, 54, 32, 48, 25, 36, 20, 14, 9][$bar] ?>%"></i><?php endfor ?></div>
-  <div class="work-voice__foot"><span>Listen</span><span>Understand</span><span>Assist ↗</span></div>
-</div>
+<?= render_view('work-service', ['visual' => 'voice']) ?>
 <?php endif ?>

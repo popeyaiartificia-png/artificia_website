@@ -82,7 +82,7 @@
           },
           {
             "name": "Otter.ai",
-            "symbol": "file-text"
+            "brand": "otter-ai"
           },
           {
             "name": "Google Workspace",
@@ -90,7 +90,7 @@
           },
           {
             "name": "Fireflies.ai",
-            "symbol": "file-text"
+            "brand": "fireflies-ai"
           },
           {
             "name": "Grammarly",
@@ -98,23 +98,23 @@
           },
           {
             "name": "Copy.ai",
-            "symbol": "file-text"
+            "brand": "copy-ai"
           },
           {
             "name": "QuillBot",
-            "symbol": "file-text"
+            "brand": "quillbot"
           },
           {
             "name": "Microsoft Word",
-            "brand": "microsoft"
+            "brand": "microsoft-word"
           },
           {
             "name": "Microsoft Excel",
-            "brand": "microsoft"
+            "brand": "microsoft-excel"
           },
           {
             "name": "Microsoft PowerPoint",
-            "brand": "microsoft"
+            "brand": "microsoft-powerpoint"
           },
           {
             "name": "Google Sheets",
@@ -134,39 +134,39 @@
           },
           {
             "name": "Atlas",
-            "symbol": "chat-circle-text"
+            "brand": "chatgpt"
           },
           {
             "name": "Dia",
-            "symbol": "chat-circle-text"
+            "brand": "dia"
           },
           {
             "name": "Consensus",
-            "symbol": "chat-circle-text"
+            "brand": "consensus"
           },
           {
             "name": "Elicit",
-            "symbol": "chat-circle-text"
+            "brand": "elicit"
           },
           {
             "name": "SciSpace",
-            "symbol": "chat-circle-text"
+            "brand": "scispace"
           },
           {
             "name": "Glasp",
-            "symbol": "chat-circle-text"
+            "brand": "glasp"
           },
           {
             "name": "You.com",
-            "symbol": "chat-circle-text"
+            "brand": "you-com"
           },
           {
             "name": "Frase.io",
-            "symbol": "chat-circle-text"
+            "brand": "frase-io"
           },
           {
             "name": "Emily",
-            "symbol": "chat-circle-text"
+            "brand": "emily"
           },
           {
             "name": "Manus",
@@ -178,15 +178,15 @@
           },
           {
             "name": "Obsidian AI",
-            "symbol": "chat-circle-text"
+            "brand": "obsidian"
           },
           {
             "name": "Mem.ai",
-            "symbol": "chat-circle-text"
+            "brand": "mem-ai"
           },
           {
             "name": "Jasper AI",
-            "symbol": "chat-circle-text"
+            "brand": "jasper-ai"
           },
           {
             "name": "Google Slides",
@@ -206,23 +206,23 @@
           },
           {
             "name": "Genspark",
-            "symbol": "pen-nib"
+            "brand": "genspark"
           },
           {
             "name": "Chronicle",
-            "symbol": "pen-nib"
+            "brand": "chronicle"
           },
           {
             "name": "Slidesgo",
-            "symbol": "pen-nib"
+            "brand": "slidesgo"
           },
           {
             "name": "Beautiful.ai",
-            "symbol": "pen-nib"
+            "brand": "beautiful-ai"
           },
           {
             "name": "Tome",
-            "symbol": "pen-nib"
+            "brand": "tome"
           },
           {
             "name": "Canva",
@@ -238,7 +238,7 @@
           },
           {
             "name": "Leonardo AI",
-            "symbol": "pen-nib"
+            "brand": "leonardo-ai"
           },
           {
             "name": "Ideogram",
@@ -282,7 +282,7 @@
           },
           {
             "name": "Higgsfield",
-            "symbol": "microphone"
+            "brand": "higgsfield"
           },
           {
             "name": "Google Veo",
@@ -298,7 +298,7 @@
           },
           {
             "name": "Wan",
-            "symbol": "microphone"
+            "brand": "wan"
           },
           {
             "name": "Google Flow",
@@ -326,15 +326,15 @@
           },
           {
             "name": "Adobe Podcast",
-            "symbol": "microphone"
+            "brand": "adobe-podcast"
           },
           {
             "name": "Descript",
-            "symbol": "microphone"
+            "brand": "descript"
           },
           {
             "name": "Happy Scribe",
-            "symbol": "microphone"
+            "brand": "happy-scribe"
           },
           {
             "name": "HeyGen",
@@ -342,35 +342,35 @@
           },
           {
             "name": "Synthesia",
-            "symbol": "microphone"
+            "brand": "synthesia"
           },
           {
             "name": "D-ID",
-            "symbol": "microphone"
+            "brand": "d-id"
           },
           {
             "name": "Adobe Premiere Pro",
-            "symbol": "microphone"
+            "brand": "adobe-premiere-pro"
           },
           {
             "name": "AdCreative.ai",
-            "symbol": "pen-nib"
+            "brand": "adcreative-ai"
           },
           {
             "name": "Predis.ai",
-            "symbol": "pen-nib"
+            "brand": "predis-ai"
           },
           {
             "name": "Julius AI",
-            "symbol": "file-text"
+            "brand": "julius-ai"
           },
           {
             "name": "Numerous.ai",
-            "symbol": "file-text"
+            "brand": "numerous-ai"
           },
           {
             "name": "Rows AI",
-            "symbol": "file-text"
+            "brand": "rows-ai"
           },
           {
             "name": "Airtable",
@@ -402,11 +402,11 @@
           },
           {
             "name": "Surfer SEO",
-            "symbol": "gear-six"
+            "brand": "surfer-seo"
           },
           {
             "name": "Emergent",
-            "symbol": "gear-six"
+            "brand": "emergent"
           },
           {
             "name": "Framer",
@@ -422,7 +422,7 @@
           },
           {
             "name": "Durable",
-            "symbol": "gear-six"
+            "brand": "durable"
           },
           {
             "name": "Gemini API",
@@ -442,11 +442,11 @@
           },
           {
             "name": "VS Code",
-            "symbol": "gear-six"
+            "brand": "visual-studio-code"
           },
           {
             "name": "Tabnine",
-            "symbol": "gear-six"
+            "brand": "tabnine"
           },
           {
             "name": "Cline",
@@ -466,7 +466,7 @@
           },
           {
             "name": "Taskade",
-            "symbol": "flow-arrow"
+            "brand": "taskade"
           },
           {
             "name": "Antigravity",
@@ -490,15 +490,15 @@
           },
           {
             "name": "LinkedIn",
-            "symbol": "file-text"
+            "brand": "linkedin"
           },
           {
             "name": "Taplio",
-            "symbol": "file-text"
+            "brand": "taplio"
           },
           {
             "name": "Postwise",
-            "symbol": "file-text"
+            "brand": "postwise"
           },
           {
             "name": "Buffer",
@@ -506,7 +506,7 @@
           },
           {
             "name": "Supergrow",
-            "symbol": "file-text"
+            "brand": "supergrow"
           },
           {
             "name": "CrewAI",
@@ -518,23 +518,23 @@
           },
           {
             "name": "Bland AI",
-            "symbol": "microphone"
+            "brand": "bland-ai"
           },
           {
             "name": "PlayHT",
-            "symbol": "microphone"
+            "brand": "playht"
           },
           {
             "name": "Murf",
-            "symbol": "microphone"
+            "brand": "murf"
           },
           {
             "name": "Hume",
-            "symbol": "microphone"
+            "brand": "hume"
           },
           {
             "name": "Cartesia",
-            "symbol": "microphone"
+            "brand": "cartesia"
           },
           {
             "name": "Deepgram",
@@ -546,7 +546,7 @@
           },
           {
             "name": "Pipecat",
-            "symbol": "microphone"
+            "brand": "pipecat"
           },
           {
             "name": "Twilio",
@@ -554,19 +554,15 @@
           },
           {
             "name": "Synthflow",
-            "symbol": "microphone"
+            "brand": "synthflow"
           },
           {
             "name": "OpenAI API",
             "brand": "openai"
           },
           {
-            "name": "Jerry",
-            "symbol": "microphone"
-          },
-          {
             "name": "Vobiz",
-            "symbol": "microphone"
+            "brand": "vobiz"
           },
           {
             "name": "WhatsApp Business API",
@@ -590,19 +586,19 @@
           },
           {
             "name": "Activepieces",
-            "symbol": "flow-arrow"
+            "brand": "activepieces"
           },
           {
             "name": "Relay.app",
-            "symbol": "flow-arrow"
+            "brand": "relay-app"
           },
           {
             "name": "Clay",
-            "symbol": "flow-arrow"
+            "brand": "clay"
           },
           {
             "name": "Apollo.io",
-            "symbol": "flow-arrow"
+            "brand": "apollo-io"
           },
           {
             "name": "HubSpot AI",
@@ -610,27 +606,27 @@
           },
           {
             "name": "Instantly AI",
-            "symbol": "flow-arrow"
+            "brand": "instantly-ai"
           },
           {
             "name": "Gong",
-            "symbol": "flow-arrow"
+            "brand": "gong"
           },
           {
             "name": "Salesloft",
-            "symbol": "flow-arrow"
+            "brand": "salesloft"
           },
           {
             "name": "Clari",
-            "symbol": "flow-arrow"
+            "brand": "clari"
           },
           {
             "name": "Apify",
-            "symbol": "flow-arrow"
+            "brand": "apify"
           },
           {
             "name": "Happenstance",
-            "symbol": "flow-arrow"
+            "brand": "happenstance"
           },
           {
             "name": "Telegram Bot API",
@@ -650,7 +646,7 @@
           },
           {
             "name": "Tidio",
-            "symbol": "flow-arrow"
+            "brand": "tidio"
           },
           {
             "name": "Claude Cowork",
@@ -690,7 +686,7 @@
           },
           {
             "name": "AgentGPT",
-            "symbol": "flow-arrow"
+            "brand": "agentgpt"
           },
           {
             "name": "Devin",
@@ -702,11 +698,11 @@
           },
           {
             "name": "Superpowers",
-            "symbol": "flow-arrow"
+            "brand": "superpowers"
           },
           {
             "name": "Skills.sh",
-            "symbol": "flow-arrow"
+            "brand": "vercel"
           },
           {
             "name": "scikit-learn",
@@ -718,7 +714,7 @@
           },
           {
             "name": "Obviously AI",
-            "symbol": "chart-line-up"
+            "brand": "obviously-ai"
           },
           {
             "name": "Roboflow",
@@ -738,15 +734,15 @@
           },
           {
             "name": "Qdrant",
-            "symbol": "database"
+            "brand": "qdrant"
           },
           {
             "name": "Weaviate",
-            "symbol": "database"
+            "brand": "weaviate"
           },
           {
             "name": "pgvector",
-            "symbol": "database"
+            "brand": "postgresql"
           },
           {
             "name": "Voyage AI",
@@ -766,11 +762,11 @@
           },
           {
             "name": "Chroma",
-            "symbol": "database"
+            "brand": "chroma"
           },
           {
             "name": "Flowise",
-            "symbol": "database"
+            "brand": "flowise"
           },
           {
             "name": "Tavily",
@@ -794,11 +790,11 @@
           },
           {
             "name": "AutoGen",
-            "symbol": "flow-arrow"
+            "brand": "autogen"
           },
           {
             "name": "Lyzr AI",
-            "symbol": "flow-arrow"
+            "brand": "lyzr-ai"
           },
           {
             "name": "FastAPI",
@@ -878,7 +874,7 @@
           },
           {
             "name": "Helicone",
-            "symbol": "chart-line-up"
+            "brand": "helicone"
           },
           {
             "name": "Transformers",
@@ -890,7 +886,7 @@
           },
           {
             "name": "Jan",
-            "symbol": "chart-line-up"
+            "brand": "jan"
           },
           {
             "name": "OpenAI Codex",
@@ -906,11 +902,11 @@
           },
           {
             "name": "Harvey",
-            "symbol": "flow-arrow"
+            "brand": "harvey"
           },
           {
             "name": "Nabla",
-            "symbol": "flow-arrow"
+            "brand": "nabla"
           }
         ]
       }

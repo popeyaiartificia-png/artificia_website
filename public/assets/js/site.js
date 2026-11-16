@@ -12,30 +12,39 @@
     });
   });
 
-  // The loader: it leaves once the fonts, the first picture and the page are in, never before 1.6s and never after 3.5s.
+  // Let the 700ms logo assembly finish, then leave as soon as the page is ready (2.2s safety cap).
   var loader = d.querySelector('.loader');
   var enter = function () { root.classList.add('is-in'); };
-  if (loader && root.classList.contains('js')) {
-    var done = 0, gone = false;
+  if (loader && root.classList.contains('js') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var done = 0, gone = false, safetyTimer;
+    loader.classList.add('is-active');
     var leave = function () {
       if (gone) return;
       gone = true;
-      setTimeout(function () {
-        loader.classList.add('is-out');
-        setTimeout(enter, 350);
-        setTimeout(function () { loader.remove(); }, 1200);
-      }, Math.max(0, 1600 - performance.now()));
+      clearTimeout(safetyTimer);
+      loader.classList.add('is-out');
+      setTimeout(enter, 120);
+      setTimeout(function () { loader.remove(); }, 550);
     };
     var step = function () { done++; if (done === 4) leave(); };
     (d.fonts && d.fonts.ready ? d.fonts.ready : Promise.resolve()).then(step, step);
-    var logo = new Image();
-    logo.onload = logo.onerror = step;
-    logo.src = '/assets/img/artificia-logo.png';
+    var assemble = function () {
+      requestAnimationFrame(function () {
+        if (gone) return;
+        var animation = loader.querySelector('.loader__piece:last-child').getAnimations()[0];
+        if (animation) animation.finished.then(step, step); else step();
+      });
+    };
+    var logo = d.querySelector('.brand img'); // reuse the preloaded logo instead of requesting another copy
+    if (logo && !logo.complete) { logo.addEventListener('load', assemble); logo.addEventListener('error', step); }
+    else if (logo && logo.naturalWidth) assemble(); else step();
     var first = d.querySelector('main img:not([loading="lazy"])'); // a lazy image below the fold would hold the loader to its timeout
     if (first && !first.complete) { first.addEventListener('load', step); first.addEventListener('error', step); } else step();
     if (d.readyState === 'complete') step(); else addEventListener('load', step);
-    setTimeout(leave, 3500);
+    // Start the cap at the first paint, so page setup cannot consume the logo's animation time.
+    requestAnimationFrame(function () { if (!gone) safetyTimer = setTimeout(leave, 2200); });
   } else {
+    if (loader) loader.remove();
     enter();
   }
 
@@ -166,6 +175,8 @@
       if (wa) {
         var a = d.createElement('a');
         a.href = wa;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
         a.textContent = 'Message us on WhatsApp';
         st.appendChild(d.createTextNode(' '));
         st.appendChild(a);

@@ -1,5 +1,24 @@
 # Where the shipped files come from
 
+## AI engineering stack (16 Nov 2026)
+
+The homepage and Solutions page retain Python, LangChain, LangGraph, LlamaIndex, Hugging Face, Pinecone, FastAPI and OpenAI, and add eight technologies checked against primary documentation on 16 Nov 2026:
+
+| Displayed technology | Primary source |
+|---|---|
+| MCP | [Model Context Protocol introduction](https://modelcontextprotocol.io/docs/getting-started/intro) |
+| Claude Agents | [Claude Agent SDK overview](https://code.claude.com/docs/en/agent-sdk/overview) |
+| CrewAI | [CrewAI documentation](https://docs.crewai.com/) |
+| OpenAI Agents SDK | [OpenAI Agents SDK documentation](https://developers.openai.com/api/docs/guides/agents/sdk) |
+| Amazon Bedrock | [Amazon Bedrock Agents](https://aws.amazon.com/bedrock/agents/) |
+| Vertex AI | [Vertex AI Agent Builder documentation](https://docs.cloud.google.com/agent-builder) |
+| Gemini API | [Gemini API documentation](https://ai.google.dev/gemini-api/docs) |
+| A2A Protocol | [Agent2Agent protocol documentation](https://a2a-protocol.org/latest/) |
+
+All visual marks already exist in the site. Claude and OpenAI identify their agent SDKs; AWS identifies Amazon Bedrock, Google Cloud identifies Vertex AI, and Gemini identifies its API. A2A uses the existing neutral Phosphor tree-structure symbol rather than an invented vendor logo. No new assets, dependencies, partner badges or certification claims were added.
+
+The visible description gives agentic AI, multi-agent systems, Model Context Protocol (MCP), retrieval-augmented generation (RAG), voice AI and cloud APIs useful context in server-rendered HTML. Selection combines current developer documentation with [Google India's Year in Search 2025](https://blog.google/intl/en-in/products/explore-communicate/indias-year-in-search-2025-the-a-to-z-of-trending-searches/), which identifies rising interest in Gemini and other AI platforms. That report measures trending queries, not current monthly keyword volumes; this selection is editorial and is not presented as a most-searched ranking. [Google Search Central](https://developers.google.com/search/docs/appearance/ai-features) continues to recommend useful, reliable content and standard SEO practices; no ranking or AI-search visibility guarantee is made.
+
 ## Images
 
 | File | Source |
@@ -98,11 +117,15 @@ The added path motion (3 Nov) is also first-party SVG/CSS/JS: a clipped sheen an
 
 ### Complete course toolkit (3 Nov 2026)
 
-The symbols-and-names catalog immediately below the hero contains all 222 normalized products, platforms, libraries and model families named in the workbook's Tools column or activities. It includes the source's advanced options, alternatives and capstone stack examples; it is not a promise of separate hands-on mastery of every product. Concepts such as RAG, generic APIs and CRUD are not separate tool entries. Day-level evidence and asset provenance are recorded in [course-toolkit-sources.json](course-toolkit-sources.json).
+The symbols-and-names catalog immediately below the hero contains 221 displayed products, platforms, libraries and model families from the workbook's Tools column or activities. The original 222-name inventory is reduced by the owner-requested removal of Jerry on 16 Nov 2026; its source evidence remains in the provenance file's excluded_tools list. It includes the source's advanced options, alternatives and capstone stack examples; it is not a promise of separate hands-on mastery of every product. Concepts such as RAG, generic APIs and CRUD are not separate tool entries. Day-level evidence and asset provenance are recorded in [course-toolkit-sources.json](course-toolkit-sources.json).
 
-The catalog is presented as two horizontal rows at the user's request. Each of the 222 tools is server rendered once in the accessible lists; inert, aria-hidden copies supply the visual loop. Copied SVG IDs are namespaced. The existing marks, source names and attribution remain unchanged; no new assets or dependencies were introduced for the moving layout.
+The catalog is presented as two horizontal rows at the user's request. Each of the 221 displayed tools is server rendered once in the accessible lists; inert, aria-hidden copies supply the visual loop. Copied SVG IDs are namespaced. The existing marks, source names and attribution remain unchanged; no new assets or dependencies were introduced for the moving layout.
 
-142 displayed names use legitimate existing/new brand marks, including documented parent identities; 80 use neutral Phosphor functional symbols where a precise mark or identity is unavailable. In particular, Emily, Jerry and Atlas retain their supplied names without an invented vendor logo. The 101 new inline SVG marks come from Simple Icons 15.22.0 (CC0), `@lobehub/icons-static-svg` 1.101.0 (MIT), and the official Vapi/Retell header wordmarks. Exact URLs, SHA-256 values and transformations are in the provenance JSON. The Lobe MIT notice is retained in `app/views/brands.php`; pinned upstream commit `aea0ecb0fe1439467219197c52ffaeb579dfe33f`. Marks are self-contained, use the page's foreground color and make no external image requests. All marks identify the curriculum tools, without implying partnerships.
+All 221 displayed names use sourced brand marks, including documented parent/platform identities. Emily is MeetEmily, confirmed by the course owner with https://app.meetemily.ai/login; its icon comes from the official https://meetemily.ai/em.svg. Jerry was removed at the owner's request. The original 101 added inline SVG marks came from Simple Icons 15.22.0 (CC0), `@lobehub/icons-static-svg` 1.101.0 (MIT), and the official Vapi/Retell header wordmarks. The Lobe MIT notice is retained in `app/views/brands.php`; pinned upstream commit `aea0ecb0fe1439467219197c52ffaeb579dfe33f`.
+
+On 16 Nov 2026, 79 further tool placeholders were replaced with logos: 77 new built-in keys and two existing parent marks (ChatGPT for Atlas and Vercel for Skills.sh, matching their official product sites). Obsidian AI uses the Obsidian platform identity, without identifying a particular AI plugin; pgvector uses its PostgreSQL platform mark. Seven added vectors use Simple Icons 11.15.0 or 16.38.0 (CC0). The remaining artwork comes from the tool websites, documentation, brand kits or official repositories, with two documented archive/mirror exceptions: Leonardo AI from AI Logo Collection and Tome from WebCatalog because the original sites blocked requests or returned 404. PlayHT uses its official documentation favicon. Superpowers uses the official repository app icon.
+
+The 68 self-hosted SVG/WebP files in `public/assets/img/tools/` total about 260 KiB; image conversions preserve transparency and proportions, with raster dimensions capped at 128px for a 48px desktop/40px mobile display. Original source colors remain in the asset files; the toolkit displays all added image logos in black and white through a scoped CSS grayscale filter (owner-requested refinement, 16 Nov 2026). Adaptive SVGs still use their dark variant, and the transparent black Superpowers icon keeps its scoped white display treatment. Existing inline logos retain their ivory currentColor. There are no runtime requests to external logo services. Per-tool source URLs, original and local SHA-256 values, package versions, transformations and identity notes are recorded in [course-toolkit-sources.json](course-toolkit-sources.json). All marks identify the curriculum tools, without implying partnerships.
 
 
 ### Course project showcase (3 Nov 2026)

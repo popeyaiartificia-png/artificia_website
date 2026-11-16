@@ -85,7 +85,15 @@ $nav = [
 <script src="<?= $asset('/assets/js/site.js') ?>" defer></script>
 </head>
 <body>
-<div class="loader" aria-hidden="true"><span class="loader__mark"></span></div>
+<div class="loader" aria-hidden="true">
+  <span class="loader__mark">
+    <span class="loader__piece"></span>
+    <span class="loader__piece"></span>
+    <span class="loader__piece"></span>
+    <span class="loader__piece"></span>
+    <span class="loader__piece"></span>
+  </span>
+</div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bind top" data-top>
   <div class="wrap top__in">
@@ -131,7 +139,7 @@ $footCta = match (true) {
     $inSection('/careers') => 'Apply for a Role',
     default => 'Book Free AI Audit',
 };
-$bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
+$bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"' . ($href === $wa ? ' target="_blank" rel="noopener noreferrer"' : '') . '><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
 ?>
 <footer class="foot" data-foot>
   <div class="foot__rise" aria-hidden="true"><canvas class="topo-bg"></canvas></div>
@@ -194,6 +202,6 @@ $bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"><span 
     <p class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></p>
   </div>
 </footer>
-<a class="wa-float" href="<?= e($wa) ?>" aria-label="Chat with us on WhatsApp"><?= icon('whatsapp-logo') ?></a>
+<a class="wa-float" href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><?= icon('whatsapp-logo') ?></a>
 </body>
 </html>

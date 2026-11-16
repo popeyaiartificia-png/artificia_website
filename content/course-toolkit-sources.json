@@ -153,7 +153,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "otter-ai"
     },
     {
       "name": "Google Workspace",
@@ -170,7 +170,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "fireflies-ai"
     },
     {
       "name": "Grammarly",
@@ -186,7 +186,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "copy-ai"
     },
     {
       "name": "QuillBot",
@@ -194,7 +194,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "quillbot"
     },
     {
       "name": "Microsoft Word",
@@ -202,7 +202,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "brand": "microsoft"
+      "brand": "microsoft-word"
     },
     {
       "name": "Microsoft Excel",
@@ -211,7 +211,7 @@
         17
       ],
       "kind": "tool-or-platform",
-      "brand": "microsoft"
+      "brand": "microsoft-excel"
     },
     {
       "name": "Microsoft PowerPoint",
@@ -219,7 +219,7 @@
         5
       ],
       "kind": "tool-or-platform",
-      "brand": "microsoft"
+      "brand": "microsoft-powerpoint"
     },
     {
       "name": "Google Sheets",
@@ -266,7 +266,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "chatgpt"
     },
     {
       "name": "Dia",
@@ -274,7 +274,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "dia"
     },
     {
       "name": "Consensus",
@@ -282,7 +282,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "consensus"
     },
     {
       "name": "Elicit",
@@ -290,7 +290,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "elicit"
     },
     {
       "name": "SciSpace",
@@ -298,7 +298,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "scispace"
     },
     {
       "name": "Glasp",
@@ -306,7 +306,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "glasp"
     },
     {
       "name": "You.com",
@@ -314,7 +314,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "you-com"
     },
     {
       "name": "Frase.io",
@@ -322,7 +322,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "frase-io"
     },
     {
       "name": "Emily",
@@ -330,7 +330,7 @@
         6
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "emily"
     },
     {
       "name": "Manus",
@@ -354,7 +354,7 @@
         7
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "obsidian"
     },
     {
       "name": "Mem.ai",
@@ -362,7 +362,7 @@
         7
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "mem-ai"
     },
     {
       "name": "Jasper AI",
@@ -370,7 +370,7 @@
         8
       ],
       "kind": "tool-or-platform",
-      "symbol": "chat-circle-text"
+      "brand": "jasper-ai"
     },
     {
       "name": "Google Slides",
@@ -412,7 +412,7 @@
         11
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "genspark"
     },
     {
       "name": "Chronicle",
@@ -420,7 +420,7 @@
         11
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "chronicle"
     },
     {
       "name": "Slidesgo",
@@ -428,7 +428,7 @@
         11
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "slidesgo"
     },
     {
       "name": "Beautiful.ai",
@@ -436,7 +436,7 @@
         11
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "beautiful-ai"
     },
     {
       "name": "Tome",
@@ -444,7 +444,7 @@
         11
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "tome"
     },
     {
       "name": "Canva",
@@ -479,7 +479,7 @@
         12
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "leonardo-ai"
     },
     {
       "name": "Ideogram",
@@ -568,7 +568,7 @@
         13
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "higgsfield"
     },
     {
       "name": "Google Veo",
@@ -600,7 +600,7 @@
         13
       ],
       "kind": "model-family",
-      "symbol": "microphone"
+      "brand": "wan"
     },
     {
       "name": "Google Flow",
@@ -660,7 +660,7 @@
         14
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "adobe-podcast"
     },
     {
       "name": "Descript",
@@ -668,7 +668,7 @@
         14
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "descript"
     },
     {
       "name": "Happy Scribe",
@@ -676,7 +676,7 @@
         14
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "happy-scribe"
     },
     {
       "name": "HeyGen",
@@ -692,7 +692,7 @@
         15
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "synthesia"
     },
     {
       "name": "D-ID",
@@ -700,7 +700,7 @@
         15
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "d-id"
     },
     {
       "name": "Adobe Premiere Pro",
@@ -708,7 +708,7 @@
         15
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "adobe-premiere-pro"
     },
     {
       "name": "AdCreative.ai",
@@ -716,7 +716,7 @@
         16
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "adcreative-ai"
     },
     {
       "name": "Predis.ai",
@@ -724,7 +724,7 @@
         16
       ],
       "kind": "tool-or-platform",
-      "symbol": "pen-nib"
+      "brand": "predis-ai"
     },
     {
       "name": "Julius AI",
@@ -732,7 +732,7 @@
         17
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "julius-ai"
     },
     {
       "name": "Numerous.ai",
@@ -740,7 +740,7 @@
         17
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "numerous-ai"
     },
     {
       "name": "Rows AI",
@@ -748,7 +748,7 @@
         17
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "rows-ai"
     },
     {
       "name": "Airtable",
@@ -822,7 +822,7 @@
         18
       ],
       "kind": "tool-or-platform",
-      "symbol": "gear-six"
+      "brand": "surfer-seo"
     },
     {
       "name": "Emergent",
@@ -830,7 +830,7 @@
         18
       ],
       "kind": "tool-or-platform",
-      "symbol": "gear-six"
+      "brand": "emergent"
     },
     {
       "name": "Framer",
@@ -862,7 +862,7 @@
         19
       ],
       "kind": "tool-or-platform",
-      "symbol": "gear-six"
+      "brand": "durable"
     },
     {
       "name": "Gemini API",
@@ -910,7 +910,7 @@
         56
       ],
       "kind": "tool-or-platform",
-      "symbol": "gear-six"
+      "brand": "visual-studio-code"
     },
     {
       "name": "Tabnine",
@@ -918,7 +918,7 @@
         21
       ],
       "kind": "tool-or-platform",
-      "symbol": "gear-six"
+      "brand": "tabnine"
     },
     {
       "name": "Cline",
@@ -965,7 +965,7 @@
         22
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "taskade"
     },
     {
       "name": "Antigravity",
@@ -1026,7 +1026,7 @@
         30
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "linkedin"
     },
     {
       "name": "Taplio",
@@ -1034,7 +1034,7 @@
         30
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "taplio"
     },
     {
       "name": "Postwise",
@@ -1042,7 +1042,7 @@
         30
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "postwise"
     },
     {
       "name": "Buffer",
@@ -1058,7 +1058,7 @@
         30
       ],
       "kind": "tool-or-platform",
-      "symbol": "file-text"
+      "brand": "supergrow"
     },
     {
       "name": "CrewAI",
@@ -1084,7 +1084,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "bland-ai"
     },
     {
       "name": "PlayHT",
@@ -1092,7 +1092,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "playht"
     },
     {
       "name": "Murf",
@@ -1100,7 +1100,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "murf"
     },
     {
       "name": "Hume",
@@ -1108,7 +1108,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "hume"
     },
     {
       "name": "Cartesia",
@@ -1116,7 +1116,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "cartesia"
     },
     {
       "name": "Deepgram",
@@ -1140,7 +1140,7 @@
         32
       ],
       "kind": "language-or-library",
-      "symbol": "microphone"
+      "brand": "pipecat"
     },
     {
       "name": "Twilio",
@@ -1157,7 +1157,7 @@
         32
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "synthflow"
     },
     {
       "name": "OpenAI API",
@@ -1171,20 +1171,12 @@
       "brand": "openai"
     },
     {
-      "name": "Jerry",
-      "days": [
-        32
-      ],
-      "kind": "tool-or-platform",
-      "symbol": "microphone"
-    },
-    {
       "name": "Vobiz",
       "days": [
         33
       ],
       "kind": "tool-or-platform",
-      "symbol": "microphone"
+      "brand": "vobiz"
     },
     {
       "name": "WhatsApp Business API",
@@ -1241,7 +1233,7 @@
         36
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "activepieces"
     },
     {
       "name": "Relay.app",
@@ -1249,7 +1241,7 @@
         36
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "relay-app"
     },
     {
       "name": "Clay",
@@ -1257,7 +1249,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "clay"
     },
     {
       "name": "Apollo.io",
@@ -1265,7 +1257,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "apollo-io"
     },
     {
       "name": "HubSpot AI",
@@ -1281,7 +1273,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "instantly-ai"
     },
     {
       "name": "Gong",
@@ -1289,7 +1281,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "gong"
     },
     {
       "name": "Salesloft",
@@ -1297,7 +1289,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "salesloft"
     },
     {
       "name": "Clari",
@@ -1305,7 +1297,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "clari"
     },
     {
       "name": "Apify",
@@ -1313,7 +1305,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "apify"
     },
     {
       "name": "Happenstance",
@@ -1321,7 +1313,7 @@
         38
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "happenstance"
     },
     {
       "name": "Telegram Bot API",
@@ -1361,7 +1353,7 @@
         39
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "tidio"
     },
     {
       "name": "Claude Cowork",
@@ -1445,7 +1437,7 @@
         43
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "agentgpt"
     },
     {
       "name": "Devin",
@@ -1469,7 +1461,7 @@
         43
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "superpowers"
     },
     {
       "name": "Skills.sh",
@@ -1477,7 +1469,7 @@
         43
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "vercel"
     },
     {
       "name": "scikit-learn",
@@ -1501,7 +1493,7 @@
         44
       ],
       "kind": "tool-or-platform",
-      "symbol": "chart-line-up"
+      "brand": "obviously-ai"
     },
     {
       "name": "Roboflow",
@@ -1541,7 +1533,7 @@
         45
       ],
       "kind": "tool-or-platform",
-      "symbol": "database"
+      "brand": "qdrant"
     },
     {
       "name": "Weaviate",
@@ -1549,7 +1541,7 @@
         45
       ],
       "kind": "tool-or-platform",
-      "symbol": "database"
+      "brand": "weaviate"
     },
     {
       "name": "pgvector",
@@ -1557,7 +1549,7 @@
         45
       ],
       "kind": "language-or-library",
-      "symbol": "database"
+      "brand": "postgresql"
     },
     {
       "name": "Voyage AI",
@@ -1597,7 +1589,7 @@
         45
       ],
       "kind": "tool-or-platform",
-      "symbol": "database"
+      "brand": "chroma"
     },
     {
       "name": "Flowise",
@@ -1605,7 +1597,7 @@
         45
       ],
       "kind": "tool-or-platform",
-      "symbol": "database"
+      "brand": "flowise"
     },
     {
       "name": "Tavily",
@@ -1653,7 +1645,7 @@
         47
       ],
       "kind": "language-or-library",
-      "symbol": "flow-arrow"
+      "brand": "autogen"
     },
     {
       "name": "Lyzr AI",
@@ -1661,7 +1653,7 @@
         47
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "lyzr-ai"
     },
     {
       "name": "FastAPI",
@@ -1826,7 +1818,7 @@
         54
       ],
       "kind": "tool-or-platform",
-      "symbol": "chart-line-up"
+      "brand": "helicone"
     },
     {
       "name": "Transformers",
@@ -1850,7 +1842,7 @@
         55
       ],
       "kind": "tool-or-platform",
-      "symbol": "chart-line-up"
+      "brand": "jan"
     },
     {
       "name": "OpenAI Codex",
@@ -1882,7 +1874,7 @@
         57
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "harvey"
     },
     {
       "name": "Nabla",
@@ -1890,7 +1882,7 @@
         57
       ],
       "kind": "tool-or-platform",
-      "symbol": "flow-arrow"
+      "brand": "nabla"
     }
   ],
   "brand_asset_sources": [
@@ -3167,7 +3159,1003 @@
       "viewBox": "0 0 72 20",
       "changes": "Removed SVG/title wrapper; solid monochrome fills/strokes use currentColor. Geometry unchanged.",
       "license_note": "Official trademark asset for identifying the taught service. No open-source asset license asserted; brand rights remain with owner."
+    },
+    {
+      "name": "Otter.ai",
+      "brand": "otter-ai",
+      "brand_source": "https://otter.ai",
+      "asset_url": "https://cdn.prod.website-files.com/618e9316785b3582a5178502/618e943a80919a98b5e9bf69_apple-icon.png",
+      "sha256": "c3c1e1bd914136b91d541da523a65b0ae02bfe4602530356b5187f1139adacae",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/otter-ai.webp",
+      "local_sha256": "fdf218cb9714c2dcfa330b37fdce764828fbcc5e731e32f96ea17722cd5d1b3f",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Fireflies.ai",
+      "brand": "fireflies-ai",
+      "brand_source": "https://fireflies.ai",
+      "asset_url": "https://fireflies.ai/apple-icon.png?apple-icon.0zim7nfg3coaw.png",
+      "sha256": "6bec3ebd0ef7bca5053c76ca55cdb59efd17604ce63f9ae47c80c3298f563b7b",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/fireflies-ai.webp",
+      "local_sha256": "8ce3823f8c556ca6d91d285f6498d83d412b3473d56deb7b8301ac33d9dcd3af",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Copy.ai",
+      "brand": "copy-ai",
+      "brand_source": "https://www.copy.ai",
+      "asset_url": "https://cdn.prod.website-files.com/628288c5cd3e8411b90a36a4/6793eea6a090d6d2f4fa5570_favicon_256x256%20(2).png",
+      "sha256": "e4077d7a1f93aca0cb85311554a4f0ba2dd4a378dfa09255b37f6e521a22b1d1",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/copy-ai.webp",
+      "local_sha256": "1fbe3a50e38015f192cdcf42ccffedc3b5b1c242e406c90971d0baa20b089abe",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "QuillBot",
+      "brand": "quillbot",
+      "brand_source": "https://quillbot.com/blog/site-images/favicons/apple-touch-icon.png",
+      "asset_url": "https://quillbot.com/blog/site-images/favicons/apple-touch-icon.png",
+      "sha256": "5956e6078fc2ad44272684a84b5ee09a478c7a6735dce160e9707e6abbee93f4",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/quillbot.webp",
+      "local_sha256": "88937c409d0d7759f92e882fba1baa671346718282715c1931f8b75232397088",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Atlas",
+      "brand": "chatgpt",
+      "brand_source": "https://openai.com/index/introducing-chatgpt-atlas/",
+      "identity": "parent/platform",
+      "changes": "OpenAI browser with ChatGPT built in; documented parent product mark.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Dia",
+      "brand": "dia",
+      "brand_source": "https://www.diabrowser.com",
+      "asset_url": "https://www.diabrowser.com/favicon.svg",
+      "sha256": "29f3638e3e41781e7ebff7093009bde40c962dc9a31ad5399dfdb50999dcd25e",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/dia.svg",
+      "local_sha256": "29f3638e3e41781e7ebff7093009bde40c962dc9a31ad5399dfdb50999dcd25e",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Consensus",
+      "brand": "consensus",
+      "brand_source": "https://consensus.app",
+      "asset_url": "https://consensus.app/favicon.svg",
+      "sha256": "196fdd2f621818686bac9555bc8fad6f5ea2f745758283b3024e45c20632a8a8",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/consensus.svg",
+      "local_sha256": "196fdd2f621818686bac9555bc8fad6f5ea2f745758283b3024e45c20632a8a8",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Elicit",
+      "brand": "elicit",
+      "brand_source": "https://elicit.com",
+      "asset_url": "https://framerusercontent.com/images/GWXKVhGBLC34aTLlmLIMsRVb4.png",
+      "sha256": "18789ffe6f238d1768fc369b096f36d2df967603847814e8b9a015ea42d943e2",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/elicit.webp",
+      "local_sha256": "1f7b00987d352f89a3648bce1f9060c8d56a3324b02ecc603923ddea180c627f",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "SciSpace",
+      "brand": "scispace",
+      "brand_source": "https://scispace.com",
+      "asset_url": "https://scispace.com/favicon.ico",
+      "sha256": "fee02038267cb67732982e47550c42bf0aaebfde568c1254c0224ca21e4c3578",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/scispace.svg",
+      "local_sha256": "fee02038267cb67732982e47550c42bf0aaebfde568c1254c0224ca21e4c3578",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Glasp",
+      "brand": "glasp",
+      "brand_source": "https://glasp.co/brand/glasp-icon-white.svg",
+      "asset_url": "https://glasp.co/brand/glasp-icon-white.svg",
+      "sha256": "770b072e0b5bfb6505dc360f61f45d5ec14e2a1050d5f489706e873848da8b0c",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/glasp.svg",
+      "local_sha256": "770b072e0b5bfb6505dc360f61f45d5ec14e2a1050d5f489706e873848da8b0c",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "You.com",
+      "brand": "you-com",
+      "brand_source": "https://you.com",
+      "asset_url": "https://you.com/icon.svg?icon.1r1kw8cf43bjt.svg",
+      "sha256": "9a9092a110da4f6283910961484810f92bb2e37e45c31c2f2972340c60c3f4b1",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/you-com.svg",
+      "local_sha256": "9a9092a110da4f6283910961484810f92bb2e37e45c31c2f2972340c60c3f4b1",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Frase.io",
+      "brand": "frase-io",
+      "brand_source": "https://www.frase.io",
+      "asset_url": "https://www.frase.io/apple-touch-icon.png",
+      "sha256": "b15f613cedf82e4caed32f51b502be8e460552480f5f7403241780621ab3efe2",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/frase-io.webp",
+      "local_sha256": "fa25e96e11ecb3645868badfdb9fe12b1608f5fa88b9250882392cdf8a656eb7",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Emily",
+      "brand": "emily",
+      "brand_source": "https://meetemily.ai",
+      "asset_url": "https://meetemily.ai/em.svg",
+      "sha256": "b88392758f3f2cac744d66e13dbc7a67d6b0f271a2f99657dc6719efe0e0eb5a",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/emily.svg",
+      "local_sha256": "b88392758f3f2cac744d66e13dbc7a67d6b0f271a2f99657dc6719efe0e0eb5a",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Obsidian AI",
+      "brand": "obsidian",
+      "package": "simple-icons",
+      "version": "16.38.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@16.38.0/icons/obsidian.svg",
+      "brand_source": "https://obsidian.md",
+      "sha256": "ceee016a3e7afcfa931e19b3dfa9eb26685fc8a9b4f177ff921e358d628abb33",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. Obsidian platform identity for the syllabus note-taking entry; no specific AI plugin is implied.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Mem.ai",
+      "brand": "mem-ai",
+      "brand_source": "https://mem.ai",
+      "asset_url": "https://mem.ai/favicons/apple-touch-icon-57x57.png",
+      "sha256": "d875bfece4bb8a84014e09a773a14d09d2e2421d077df3aae3e3c52ad8fb78d4",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/mem-ai.webp",
+      "local_sha256": "d07f8164581e331c341aec0974992cc2e41dab05b3349479d3420e76461919d7",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Jasper AI",
+      "brand": "jasper-ai",
+      "brand_source": "https://www.jasper.ai",
+      "asset_url": "https://cdn.prod.website-files.com/6807ee8d73c233fb82842313/681e121f9445a06741087852_Webclip.png",
+      "sha256": "3d0bd75679f0f5250c87a677e5def608083a147ac8bb720464ff39cc6ffad3fe",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/jasper-ai.webp",
+      "local_sha256": "b4540877691aba798511a92e05666b2028469b11dfa42518920d932234f2744a",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Genspark",
+      "brand": "genspark",
+      "brand_source": "https://www.genspark.ai",
+      "asset_url": "https://www.genspark.ai/apple-touch-icon.png",
+      "sha256": "f3d80910e6d4564e00d1c3a150944353521fdc9dd62ed97d289493a3c8cc67bc",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/genspark.webp",
+      "local_sha256": "650064f56c6ec43387ea06b5a1b184f52bc34c80e70614ff141819d2a24d4a95",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Chronicle",
+      "brand": "chronicle",
+      "brand_source": "https://chroniclehq.com",
+      "asset_url": "https://chroniclehq.com/favicon.ico?225f4e4a2e93fa1c",
+      "sha256": "6edd98338f2837a9bbbf51fb5382ea1327420be03917271f5bd356a985f1892b",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/chronicle.webp",
+      "local_sha256": "461aecd5ded012443765283f029fb251475ae13a9b1d051326b17099b8955a2d",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Slidesgo",
+      "brand": "slidesgo",
+      "brand_source": "https://slidesgo.com",
+      "asset_url": "https://slidesgo.com/favicons/apple-favicon-180x180.png",
+      "sha256": "e2ce11e973e8ade3d2b3440d41a8b2945bcba154ae4ac5f0a7f9e745334fbdec",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/slidesgo.webp",
+      "local_sha256": "3dc36b75c93f714fc3dc08a695e69d212982e7ab1f8184d5e9304960c40d49c1",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Beautiful.ai",
+      "brand": "beautiful-ai",
+      "brand_source": "https://www.beautiful.ai",
+      "asset_url": "https://cdn.prod.website-files.com/59deb588800ae30001ec19c9/691b4ae4a724e6c686bfb035_BAI%20symbol%3Dfull%20color%20black.png",
+      "sha256": "67c4c274c606331ff6463c6156fb2f07cb188b05f23f5e42470d51b3c420c68c",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/beautiful-ai.webp",
+      "local_sha256": "6a0c45aa1ce3d340160e208013c9441de6153aa1b5f5f11b77c78ee01a739b46",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Tome",
+      "brand": "tome",
+      "brand_source": "https://cdn-1.webcatalog.io/catalog/tome/tome-icon-filled-256.png",
+      "asset_url": "https://cdn-1.webcatalog.io/catalog/tome/tome-icon-filled-256.png",
+      "sha256": "45a8c61e449f46f43d797941bb0db2c364f6b01adfdf71a72b6b75842920a612",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/tome.webp",
+      "local_sha256": "ecbf20bd95b2e4d2ecb97878f1c3da9c150fead9712299314dcfc03c18fac005",
+      "note": "Archived product identity from WebCatalog; original tome.app assets return 404.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Leonardo AI",
+      "brand": "leonardo-ai",
+      "brand_source": "https://ailogocollection.com/logos/leonardo-ai",
+      "asset_url": "https://ngccgynpmxypswzjxnpx.supabase.co/storage/v1/object/public/logo-submissions/logos/leonardo-ai-logomark-light.svg",
+      "sha256": "9cd1be58a2b7f3f9568f9d62659d43144c77551b608814ac1b3832b44017471d",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/leonardo-ai.svg",
+      "local_sha256": "9cd1be58a2b7f3f9568f9d62659d43144c77551b608814ac1b3832b44017471d",
+      "note": "Brand asset mirror; official site blocked asset requests during this update.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Higgsfield",
+      "brand": "higgsfield",
+      "brand_source": "https://higgsfield.ai",
+      "asset_url": "https://higgsfield.ai/apple-icon.png",
+      "sha256": "47f5136c65f9dd2360c59d2b65d06d9e7289230aa4edd7b150f28e6f0582bf1c",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/higgsfield.webp",
+      "local_sha256": "827d4e2cdba38b2eb78f2930b93a7cdb2eaab7426d25976535769215b661d816",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Wan",
+      "brand": "wan",
+      "brand_source": "https://wan.video",
+      "asset_url": "https://g.alicdn.com/sail-web/wan-static-resources/0.0.30/images/favicon.ico",
+      "sha256": "9dda78d28bed40ccabb3d44e283d101b25d7b1bbe4817547f23b35fb2139ef90",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/wan.webp",
+      "local_sha256": "12f0ddbb54e31bac24c19377e17ae91d8a827b0cb4ab4b5894057a777983ade0",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Adobe Podcast",
+      "brand": "adobe-podcast",
+      "brand_source": "https://podcast.adobe.com",
+      "asset_url": "https://podcast.adobe.com/adobe-podcast-favicon.svg",
+      "sha256": "54d334552c64866d4423b9db7c3e14bfaefc090d55c17a93e1b72e94920eb73a",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/adobe-podcast.svg",
+      "local_sha256": "54d334552c64866d4423b9db7c3e14bfaefc090d55c17a93e1b72e94920eb73a",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Descript",
+      "brand": "descript",
+      "brand_source": "https://www.descript.com",
+      "asset_url": "https://static-cdn.descript.com/web/icons/favicon.svg",
+      "sha256": "62d80d495dd8e447ccaa2ed0ddccac833d9e6227bb33b136bd558e590a9d2b85",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/descript.svg",
+      "local_sha256": "62d80d495dd8e447ccaa2ed0ddccac833d9e6227bb33b136bd558e590a9d2b85",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Happy Scribe",
+      "brand": "happy-scribe",
+      "brand_source": "https://www.happyscribe.com",
+      "asset_url": "https://www.happyscribe.com/favicon/favicon.svg",
+      "sha256": "924a8b20f4aad91acfe723ba34a519a800ba0337e4536f2e7ca3fbc1ac453236",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/happy-scribe.svg",
+      "local_sha256": "924a8b20f4aad91acfe723ba34a519a800ba0337e4536f2e7ca3fbc1ac453236",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Synthesia",
+      "brand": "synthesia",
+      "brand_source": "https://www.synthesia.io",
+      "asset_url": "https://cdn.prod.website-files.com/65e89895c5a4b8d764c0d710/6618fd69d436784c0bba5e9e_webclip.png",
+      "sha256": "c7e6198818832392403352dff7289076dc9fdc1648fbb1543cb7cfec55a2916a",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/synthesia.webp",
+      "local_sha256": "4c4674484c62b22fabc987c210bf608c9b0f0fc8db216ba2b6fcb7670de7a09f",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "D-ID",
+      "brand": "d-id",
+      "brand_source": "https://www.d-id.com/wp-content/uploads/2023/11/d-id-logo.svg",
+      "asset_url": "https://www.d-id.com/wp-content/uploads/2023/11/d-id-logo.svg",
+      "sha256": "6005326b69655e44ebdfdbea4df5873674db5f65751980f789e66f05c4f66260",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/d-id.svg",
+      "local_sha256": "6005326b69655e44ebdfdbea4df5873674db5f65751980f789e66f05c4f66260",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Adobe Premiere Pro",
+      "brand": "adobe-premiere-pro",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/adobepremierepro.svg",
+      "brand_source": "https://www.adobe.com/products/premiere.html",
+      "sha256": "99b48567deeb7f54d95d5d3e7cb8b9394f3fdabc2fa7845fff377f80c2c975db",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. ",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "AdCreative.ai",
+      "brand": "adcreative-ai",
+      "brand_source": "https://www.adcreative.ai",
+      "asset_url": "https://cdn.prod.website-files.com/661ce890f68a1d352ebbed35/66aa467aba9463ef88f4949d_256.png",
+      "sha256": "3aada768c103c34ad36d2eb36ca18083f1cd50a2ec7f281e117a889cd97aa923",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/adcreative-ai.webp",
+      "local_sha256": "3b0259829bbd657227dc5a268c06896bf1e4aca25ed6d22d2626aaa3ffb0b3ad",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Predis.ai",
+      "brand": "predis-ai",
+      "brand_source": "https://predis.ai",
+      "asset_url": "https://predis.ai/assets/img/favicon.png",
+      "sha256": "e2d1a3e5547a739d3d8f581892e48deca6f1dc8b7654e7f74a024e6894d07d93",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/predis-ai.webp",
+      "local_sha256": "25ba7594fa6a58a0539ca4bd702823eaf088ad9f288ca4517e7c665e3736ad79",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Julius AI",
+      "brand": "julius-ai",
+      "brand_source": "https://julius.ai",
+      "asset_url": "https://julius.ai/favicon.ico?23f30d1c0141030b",
+      "sha256": "d3b2b5dd07f686947d0354d496a5fe1054fc9935b6ff0b2f37199928d8405b66",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/julius-ai.webp",
+      "local_sha256": "017c54aabda933496b8323d48cf51b207d836b380fd82b2bd82c9721a6547480",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Numerous.ai",
+      "brand": "numerous-ai",
+      "brand_source": "https://numerous.ai",
+      "asset_url": "https://numerous.ai/gpt3-jasper-flow2-1d/assets/images/apple-touch-icon.png",
+      "sha256": "bdf97c384043b3763a2eb19d4fbe432d7c7012b3495853fc51d480eaf470d007",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/numerous-ai.webp",
+      "local_sha256": "beaf36e851a2b02f4351d86a6fb488b06381e119bb54b93a3e7b1c2eb32ed822",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Rows AI",
+      "brand": "rows-ai",
+      "brand_source": "https://rows.com",
+      "asset_url": "https://rows.com/favicons/apple-touch-icon.png?v=1",
+      "sha256": "5b45f6270335eec549819974b9f9c0a011b99b6d9dcde03feb5f1e275ff8494b",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/rows-ai.webp",
+      "local_sha256": "a1406a620d3ddaa9691e6fb8c728aa71e4911d692a1a8ba6cb03787adba38a2d",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Surfer SEO",
+      "brand": "surfer-seo",
+      "brand_source": "https://surferseo.com",
+      "asset_url": "https://surfer.ai/favicon/icon.svg",
+      "sha256": "c98cf7dff4e5e93891f0cc67f5d4062fe57bec36829f8749f56cbe4072b49593",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/surfer-seo.svg",
+      "local_sha256": "c98cf7dff4e5e93891f0cc67f5d4062fe57bec36829f8749f56cbe4072b49593",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Emergent",
+      "brand": "emergent",
+      "brand_source": "https://emergent.sh",
+      "asset_url": "https://cdn.prod.website-files.com/6a0edf12ef1a8562ed56d806/6a16a2349f51334d1700e015_emergent.png",
+      "sha256": "b3894547352f1855a04382c90be897bc76b0b3cf880207d7622f3d7d55ccc282",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/emergent.webp",
+      "local_sha256": "fbf416cbb0f00918465991017faf50be49fce35675a57a9628849ebd0f17a073",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Durable",
+      "brand": "durable",
+      "brand_source": "https://durable.co",
+      "asset_url": "https://durable.com/apple-touch-icon.png",
+      "sha256": "3faa0821199e6794275587786cf7918864b5ba895b7dfb8c1abb7b0ad8a47512",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/durable.webp",
+      "local_sha256": "ea9d350352867fb46333a3f9ac4de37e6f5212275199e098efe39cc19a4cf719",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "VS Code",
+      "brand": "visual-studio-code",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/visualstudiocode.svg",
+      "brand_source": "https://code.visualstudio.com/brand",
+      "sha256": "09553cc3887603f3f8b61d411f7ec5f21afd2aa11d391200094fa7eabe68899b",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. ",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Tabnine",
+      "brand": "tabnine",
+      "brand_source": "https://www.tabnine.com",
+      "asset_url": "https://www.tricentis.com/favicon.ico?v=2",
+      "sha256": "5e6dad571470397a895571e83f62a90a57398490b02b0d4f95f0ae62c3998572",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/tabnine.webp",
+      "local_sha256": "e6401846737257ef0d0a0292326967e74e58e886f8d62de20a7f75a39e6c2cf3",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Taskade",
+      "brand": "taskade",
+      "brand_source": "https://www.taskade.com",
+      "asset_url": "https://www.taskade.com/favicon.svg",
+      "sha256": "3c0d862abe315ae33b2647628210e81ffc7be0d08c72cb5cc2f9514d95407402",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/taskade.svg",
+      "local_sha256": "3c0d862abe315ae33b2647628210e81ffc7be0d08c72cb5cc2f9514d95407402",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "LinkedIn",
+      "brand": "linkedin",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/linkedin.svg",
+      "brand_source": "https://brand.linkedin.com",
+      "sha256": "2687ac468d96bd03e748dc8646ef6465cb4cc7f34b96e1d0bc86fcb3dd79121a",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. ",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Taplio",
+      "brand": "taplio",
+      "brand_source": "https://taplio.com",
+      "asset_url": "https://cdn.prod.website-files.com/6939243f5769a4de787769c3/693fd25c10dab46c2d863cbd_taplio_webclip.png",
+      "sha256": "a08331873c0fface31a66ef8cce6a30033f14c2e4284139e50c6dec755081158",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/taplio.webp",
+      "local_sha256": "167e42ddf8ea8f702c706f50120f1d2f1190cc3e465d27453d3ef44f8533c8de",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Postwise",
+      "brand": "postwise",
+      "brand_source": "https://postwise.ai",
+      "asset_url": "https://postwise.ai/img/favicon.ico",
+      "sha256": "95c32ac6340f8c2f6ab57163af9aff5c36a421ba3b6976be2319b4a17350efe6",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/postwise.webp",
+      "local_sha256": "37455bfbb3df3d52d7f98bde9b8bd5128e9030e6c319d742c5f95bc9d48da40f",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Supergrow",
+      "brand": "supergrow",
+      "brand_source": "https://www.supergrow.ai",
+      "asset_url": "https://www.supergrow.ai/icon.png?79aee97cd99ba058",
+      "sha256": "5c8d3683d71d3d9c3c1bca9611e101e6df880a65172dc09009ab03d0f2abcb34",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/supergrow.webp",
+      "local_sha256": "53f159861ead083a3d95fcc99d688bb26847d9d8f2b8c0168bc328187910a155",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Bland AI",
+      "brand": "bland-ai",
+      "brand_source": "https://www.bland.ai",
+      "asset_url": "https://www.bland.ai/images/webclip.png",
+      "sha256": "b0ba1dc22565a84a8abee6ac7056b1173c978f1e45edbfee59504261adac3aef",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/bland-ai.webp",
+      "local_sha256": "96e00f1bde40edefeab285668ac55803f0ec6d28adfbdf875f8d50fe69938010",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "PlayHT",
+      "brand": "playht",
+      "brand_source": "https://docs.play.ht",
+      "asset_url": "https://docs.play.ht/apple-touch-icon.png?v=568dc0163414",
+      "sha256": "0ee179748c6b5ed8d863e57e8988290f20590eaa9093d5c005f6c328dd685414",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/playht.webp",
+      "local_sha256": "1ba3cfa9866b2fdfdc2a984867b5ba034a5cd97709bda0335dc158f8f313d383",
+      "note": "Official PlayHT documentation favicon; public marketing domains are unavailable.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Murf",
+      "brand": "murf",
+      "brand_source": "https://murf.ai",
+      "asset_url": "https://cdn.prod.website-files.com/66b3765153a8a0c399c70981/67065c22d34646f3bb23b232_android-chrome-256x256.png",
+      "sha256": "5d1237d3a15e57e1ffcb275d069821a1a8a85cccddf1be6ba76b974b4c6fa853",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/murf.webp",
+      "local_sha256": "7cae977a81ba5280106882e7b3d09ef9ab2a93ad59bcdcf9582a1d7a16268bb4",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Hume",
+      "brand": "hume",
+      "brand_source": "https://www.hume.ai",
+      "asset_url": "https://www.hume.ai/favicon.ico?favicon.bd1999a1.ico",
+      "sha256": "b21dfa9f0f614af7ecf3c04fc9ee4a5abe47ae66f4cc92cb51ba018e0a40cdca",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/hume.webp",
+      "local_sha256": "76f9f793b5c10ab2b2e3dd3c7405eb8af7647384eeff809884be304b65c68503",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Cartesia",
+      "brand": "cartesia",
+      "brand_source": "https://cartesia.ai",
+      "asset_url": "https://www.cartesia.ai/favicon.svg",
+      "sha256": "04f868f72688c4730694788eaf9c02a65465d7a550b439cbbd2d0b3c42e9af11",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/cartesia.svg",
+      "local_sha256": "04f868f72688c4730694788eaf9c02a65465d7a550b439cbbd2d0b3c42e9af11",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Pipecat",
+      "brand": "pipecat",
+      "package": "simple-icons",
+      "version": "16.38.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@16.38.0/icons/pipecat.svg",
+      "brand_source": "https://pipecat.ai",
+      "sha256": "42581d4b9cff2a3781f6d9d2cc4e5a1a33b6eafddac91518cfc5bd901fb6bd36",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. ",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Synthflow",
+      "brand": "synthflow",
+      "brand_source": "https://synthflow.ai",
+      "asset_url": "https://cdn.prod.website-files.com/67558e246490829b0a44ad8e/680f3c8cf4185727e41de2af_favicon%20large.png",
+      "sha256": "21c28b6b5b9f7e547feac09ba4c4f377f51e2ad4c854e2edd95e6b41462fc50b",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/synthflow.webp",
+      "local_sha256": "929386e19bc5de866821f91ac7654c989f73cd8514f78afa045bb63270bf9212",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Vobiz",
+      "brand": "vobiz",
+      "brand_source": "https://vobiz.ai",
+      "asset_url": "https://www.vobiz.ai/favicon.svg?v=2",
+      "sha256": "69c61e31efe04f20ed4418de9d65d961c96fc044b08242b913685738807a869b",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/vobiz.svg",
+      "local_sha256": "69c61e31efe04f20ed4418de9d65d961c96fc044b08242b913685738807a869b",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Activepieces",
+      "brand": "activepieces",
+      "brand_source": "https://www.activepieces.com",
+      "asset_url": "https://www.activepieces.com/favicon.svg",
+      "sha256": "b81576062e7964d1fb19ce3bdb2fc029b1c08b9df857b0298b326e559d02b616",
+      "changes": "Retained official vector paths and used currentColor for its monochrome mark; removed adaptive favicon CSS.",
+      "identity": "direct",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Relay.app",
+      "brand": "relay-app",
+      "brand_source": "https://www.relay.app",
+      "asset_url": "https://relay.app/apple-touch-icon.png",
+      "sha256": "c48a0d6c455a61a1d961e15926751869b99deaaac3c33ad4a34dfb603b4ca43e",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/relay-app.webp",
+      "local_sha256": "5bd5d492e66dfcbc73ee7e22f7bb868abcbf49367b0f17774dd399be6ce14200",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Clay",
+      "brand": "clay",
+      "brand_source": "https://www.clay.com",
+      "asset_url": "https://cdn.prod.website-files.com/61477f2c24a826836f969afe/6a3a92ab3c92c9caa6245619_dot-com_favicon_2026_512.png",
+      "sha256": "512e02eaedbf36404ad8b3df4e7411ddd86aae38d68206174360893a1c410220",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/clay.webp",
+      "local_sha256": "eb5c4dcbbc693f01486a42063aca141b540941051d7e8b7e699ab9855710a627",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Apollo.io",
+      "brand": "apollo-io",
+      "brand_source": "https://www.apollo.io",
+      "asset_url": "https://www.apollo.io/icon.svg?icon.11df6mby0rn6l.svg",
+      "sha256": "a879057d70f90d0620da34b98a85c1de587b3eaa2c025e78cef5932cba3727ca",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/apollo-io.svg",
+      "local_sha256": "a879057d70f90d0620da34b98a85c1de587b3eaa2c025e78cef5932cba3727ca",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Instantly AI",
+      "brand": "instantly-ai",
+      "brand_source": "https://instantly.ai",
+      "asset_url": "https://cdn.prod.website-files.com/63860c8c65e7bef4a1eeebeb/63f62e4d1df86f1bf7f133d5_cleaned_rounded.png",
+      "sha256": "2cb9cd3a0a7752810cc36e62ef3cd78ceb469f53c0ac16b7b52fb64f65ec32c2",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/instantly-ai.webp",
+      "local_sha256": "7cb67402ee096f1b159230ab7b529596113dac3f9576891939debcb43ff7d3fe",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Gong",
+      "brand": "gong",
+      "brand_source": "https://www.gong.io",
+      "asset_url": "https://www.gong.io/marketing-assets/favicon.svg",
+      "sha256": "68520f07a7dcb9dd665c3773cc87d33be0a795cfc7169f9fcf7f98461495a2ee",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/gong.svg",
+      "local_sha256": "68520f07a7dcb9dd665c3773cc87d33be0a795cfc7169f9fcf7f98461495a2ee",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Salesloft",
+      "brand": "salesloft",
+      "brand_source": "https://www.salesloft.com",
+      "asset_url": "https://www.salesloft.com/icon.svg",
+      "sha256": "d54b21738ed4c3322aa9cb5e24f8d34920b7f6cbd4b8120de3334b85abfd0361",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/salesloft.svg",
+      "local_sha256": "d54b21738ed4c3322aa9cb5e24f8d34920b7f6cbd4b8120de3334b85abfd0361",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Clari",
+      "brand": "clari",
+      "brand_source": "https://www.clari.com",
+      "asset_url": "https://www.salesloft.com/icon.svg",
+      "sha256": "d54b21738ed4c3322aa9cb5e24f8d34920b7f6cbd4b8120de3334b85abfd0361",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/clari.svg",
+      "local_sha256": "d54b21738ed4c3322aa9cb5e24f8d34920b7f6cbd4b8120de3334b85abfd0361",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Apify",
+      "brand": "apify",
+      "brand_source": "https://apify.com",
+      "asset_url": "https://apify.com/icon0.svg?icon0.0z-sy_vfu_0k9.svg?dpl=da667eea1a",
+      "sha256": "17aedf06ae9cb585c5a773e66944174b8ffe44b1df011aa0032faef9b63601b7",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/apify.svg",
+      "local_sha256": "17aedf06ae9cb585c5a773e66944174b8ffe44b1df011aa0032faef9b63601b7",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Happenstance",
+      "brand": "happenstance",
+      "brand_source": "https://happenstance.ai",
+      "asset_url": "https://happenstance.ai/apple-icon.png?apple-icon.0q-n3nqjtoj96.png",
+      "sha256": "13b642ce0c10f4dc0baea9b3190cce1146133a431ea3ab2907cf82950e582223",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/happenstance.webp",
+      "local_sha256": "4adc1e5b3155920e069bb5e20f2582047063edd651eb88100b524e2da5aacefc",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Tidio",
+      "brand": "tidio",
+      "brand_source": "https://www.tidio.com",
+      "asset_url": "https://www.tidio.com/images/favicon/icon.svg",
+      "sha256": "cb770b2ac6d14a0066526e79294faa799606688b706fb0ceb6f5efe59ba40773",
+      "changes": "Self-hosted original brand artwork without modification.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/tidio.svg",
+      "local_sha256": "cb770b2ac6d14a0066526e79294faa799606688b706fb0ceb6f5efe59ba40773",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "AgentGPT",
+      "brand": "agentgpt",
+      "brand_source": "https://raw.githubusercontent.com/reworkd/AgentGPT/main/next/public/favicon.svg",
+      "asset_url": "https://raw.githubusercontent.com/reworkd/AgentGPT/main/next/public/favicon.svg",
+      "sha256": "16068647d5e9ebeb8d59bebe36557379b7b25d9a3c29c505525484a919642835",
+      "changes": "Retained official vector paths and used currentColor for its monochrome mark; removed adaptive favicon CSS.",
+      "identity": "direct",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Superpowers",
+      "brand": "superpowers",
+      "brand_source": "https://raw.githubusercontent.com/obra/superpowers/main/assets/app-icon.png",
+      "asset_url": "https://raw.githubusercontent.com/obra/superpowers/main/assets/app-icon.png",
+      "sha256": "b7477eb39b5109617fe37e51dd65d8bdd8dff6c40fda49adfbc21eec445777ee",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/superpowers.webp",
+      "local_sha256": "41f9440a7ef50a7d06ffd1b5ac2c2497a25d9ed35429c7f08a2afdbe9f1247c8",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Skills.sh",
+      "brand": "vercel",
+      "brand_source": "https://skills.sh",
+      "identity": "parent/platform",
+      "changes": "Vercel parent mark, as used in the official Skills header and favicon.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Obviously AI",
+      "brand": "obviously-ai",
+      "brand_source": "https://www.obviously.ai",
+      "asset_url": "https://cdn.prod.website-files.com/5fbb75c0795486e7856db4c8/61152701800ddfa7d6d2d19f_webclip.png",
+      "sha256": "e0c922f1215e2e1266fa9d139a75225f4cded06dd37d4cb11c1e9cedcf117e4c",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/obviously-ai.webp",
+      "local_sha256": "2e815517edeff07a72d85a628f030d6eeb2b7fc376e41fb53572b821e35a0ede",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Qdrant",
+      "brand": "qdrant",
+      "package": "simple-icons",
+      "version": "16.38.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@16.38.0/icons/qdrant.svg",
+      "brand_source": "https://qdrant.tech",
+      "sha256": "c5fbbbf771648975f22973627b4eb5620c68a4f81ccfb6c21633bb1d04f9fdf1",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. ",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Weaviate",
+      "brand": "weaviate",
+      "brand_source": "https://weaviate.io",
+      "asset_url": "https://weaviate.io/img/favicon.ico",
+      "sha256": "93b6184e6cb19de4584b804191e9b399178423fbdd7dbc08c33ff86ca3ba024b",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/weaviate.webp",
+      "local_sha256": "02a539849892647eccb2841373cdb5ca8763e62011d6d941ac309c20720f83ce",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "pgvector",
+      "brand": "postgresql",
+      "package": "simple-icons",
+      "version": "16.38.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@16.38.0/icons/postgresql.svg",
+      "brand_source": "https://github.com/pgvector/pgvector",
+      "sha256": "c8ccadbd88c9312c2ad3734c4861b31d3485ce179ee91d64793143f83cfa745c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; original vector paths retained. PostgreSQL parent/platform mark: pgvector is the vector similarity extension for PostgreSQL.",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Chroma",
+      "brand": "chroma",
+      "brand_source": "https://www.trychroma.com",
+      "asset_url": "https://www.trychroma.com/img/favicon.ico",
+      "sha256": "fbefa5cca4231c3f7ee4611a0a55050d07f0e107b12e363e2fc1f65705679df1",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/chroma.webp",
+      "local_sha256": "2199a8aeaaccf638df1a52a529786a03eadc83d78b282517495569d861d56ffd",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Flowise",
+      "brand": "flowise",
+      "brand_source": "https://flowiseai.com",
+      "asset_url": "https://flowiseai.com/favicon.ico",
+      "sha256": "e10a0d80459be8e664f2c183bcedd765b1984f7feef288576d46fa39be4d0ab0",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/flowise.webp",
+      "local_sha256": "6a920920b1bf6593fec678d761f74756a83bdac691cb07ceb4547b7ca62b80a7",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "AutoGen",
+      "brand": "autogen",
+      "brand_source": "https://microsoft.github.io/autogen/stable/",
+      "asset_url": "https://microsoft.github.io/autogen/stable/_static/favicon-512x512.png",
+      "sha256": "c1f90048923bdaa4e2eeb6ab70f3cc059dc706d43e7208f336102702fc231b81",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/autogen.webp",
+      "local_sha256": "5430c9c40b2ab8ee3dcbff60f1bfc96bc59025ac94d6a60d1a8c8b32ea6c80ef",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Lyzr AI",
+      "brand": "lyzr-ai",
+      "brand_source": "https://b3591924.assetcdn.net/2.0/3591924/wp-content/uploads/2026/09/logo-lyzr-white.webp?lossy=1&strip=1&webp=1",
+      "asset_url": "https://b3591924.assetcdn.net/2.0/3591924/wp-content/uploads/2026/09/logo-lyzr-white.webp?lossy=1&strip=1&webp=1",
+      "sha256": "4fe0373164616439b0f9e2d10674fb379962eae6ade0d08ae21f30402718bbfa",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/lyzr-ai.webp",
+      "local_sha256": "9feda3f06c37ded534f80981bf44ca3b03906ef5537312bbbdbf7e940bbf3c3d",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Helicone",
+      "brand": "helicone",
+      "brand_source": "https://www.helicone.ai",
+      "asset_url": "https://www.helicone.ai/favicon.ico",
+      "sha256": "e102b27ca8cc1997f1ceab143e9ac8093488dd0acf184f7aac2b13c1e47cd9e8",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/helicone.webp",
+      "local_sha256": "80c431bc4d6fc9f880b580101608df5c9aece1115b293dc5816166e54d3958e9",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Jan",
+      "brand": "jan",
+      "brand_source": "https://jan.ai",
+      "asset_url": "https://www.jan.ai/favicon.ico",
+      "sha256": "60426f33d57fd801ab7f25956784a6ca6db4a3305bfb76e72ad7fe1556abe412",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/jan.webp",
+      "local_sha256": "81c35b0c90e8418932bb10c4bd803c7b103561091f7f85c65d4e52c43b894386",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Harvey",
+      "brand": "harvey",
+      "brand_source": "https://www.harvey.ai",
+      "asset_url": "https://www.harvey.ai/icons/brand-favicon.png",
+      "sha256": "84ecac480db644bea938ff76e302b9476d539d50c446d96e99815ca1b7dc9460",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/harvey.webp",
+      "local_sha256": "89c9c94fa793d20c88e510318d88fa2808ac6e7c09f2c5adbcfbc55a5e93892c",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Nabla",
+      "brand": "nabla",
+      "brand_source": "https://www.nabla.com",
+      "asset_url": "https://cdn.prod.website-files.com/67c6ddc58c9e7b3f7d095cb3/69e8ed278ce22f3e664e7f87_Webclip.png",
+      "sha256": "1a268f5a85a4856533ffa3369dfb99d8a51c433e569817f5f59484c44b249ceb",
+      "changes": "Converted the original image to lossless WebP, preserving transparency and proportions; capped at 128px for a 52px display.",
+      "identity": "direct",
+      "local_asset": "public/assets/img/tools/nabla.webp",
+      "local_sha256": "f7ae1192f0beefa2776f08fdfce3e723bf8806912d41da737c4caba0c77bfc99",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Microsoft Word",
+      "brand": "microsoft-word",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/microsoftword.svg",
+      "sha256": "92bbd002d1bb151aa918e51b680586af256ff2b7ccc5314e41a893e3c4a30d5c",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained original vector paths. Uses currentColor, matching the existing ivory monochrome tool logos. Replaces the shared Microsoft parent mark at the owner's request.",
+      "identity": "direct",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Microsoft Excel",
+      "brand": "microsoft-excel",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/microsoftexcel.svg",
+      "sha256": "3392b76e2c1791f6622bc6a27bcf332ea6985cf263f8cb7153a37d43d74d2940",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained original vector paths. Uses currentColor, matching the existing ivory monochrome tool logos. Replaces the shared Microsoft parent mark at the owner's request.",
+      "identity": "direct",
+      "added_on": "2026-11-16"
+    },
+    {
+      "name": "Microsoft PowerPoint",
+      "brand": "microsoft-powerpoint",
+      "package": "simple-icons",
+      "version": "11.15.0",
+      "package_license": "CC0-1.0",
+      "asset_url": "https://unpkg.com/simple-icons@11.15.0/icons/microsoftpowerpoint.svg",
+      "sha256": "068333400277f45786efcd042d89cc98f5127ef1d7ec543f30710783ee4377a6",
+      "viewBox": "0 0 24 24",
+      "changes": "Removed standalone SVG/title wrapper; retained original vector paths. Uses currentColor, matching the existing ivory monochrome tool logos. Replaces the shared Microsoft parent mark at the owner's request.",
+      "identity": "direct",
+      "added_on": "2026-11-16"
     }
   ],
-  "note": "Neutral Phosphor functional symbols are used where an exact official mark or brand identity is unavailable. Tool marks identify curriculum products, not partnerships."
+  "note": "All 221 displayed tools use sourced brand marks, including documented parent/platform identities. Emily is MeetEmily (confirmed by the course owner at https://app.meetemily.ai/login); Jerry was removed at the course owner's request on 16 Nov 2026. Tool marks identify curriculum products, not partnerships.",
+  "excluded_tools": [
+    {
+      "name": "Jerry",
+      "days": [
+        32
+      ],
+      "kind": "tool-or-platform",
+      "symbol": "microphone",
+      "reason": "Removed from the public toolkit at the course owner's request on 16 Nov 2026."
+    }
+  ]
 }

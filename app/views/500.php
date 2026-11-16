@@ -21,7 +21,7 @@
   <div class="wrap">
     <div class="sec__head"><h1 class="h1 h1--page">Something went <em>wrong</em></h1></div>
     <p class="lede">This page could not load just now. Try again in a few minutes, or message us on WhatsApp and we&rsquo;ll help you straight away.</p>
-    <p><a class="btn btn--lime" href="<?= e($wa) ?>">Message us on WhatsApp</a></p>
+    <p><a class="btn btn--lime" href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a></p>
   </div>
 </section>
 </main>

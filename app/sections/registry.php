@@ -175,7 +175,7 @@ function section_registry(): array
             ], true),
         ]],
         'tools' => ['label' => 'Tools', 'fields' => [
-            'variant' => $select('Layout', ['standard', 'course-toolkit']),
+            'variant' => $select('Layout', ['standard', 'engineering-stack', 'course-toolkit']),
             'heading' => $text('Heading', true),
             'intro' => $area('Intro'),
             'flow' => $list('Flow (one piece of work, step by step)', [
@@ -183,6 +183,7 @@ function section_registry(): array
                 'note' => $text('Note'),
             ]),
             'tools_label' => $text('Label above the tools (flow layout; default "Built on")'),
+            'tools_summary' => $area('Short description below the tools'),
             'tools_more' => $text('Closing line under the tools, e.g. "And any tool your team already uses" (shows the "many more" panel)'),
             'tools_more_note' => $text('Small note under the closing line'),
             'tools' => $list('Tools', [

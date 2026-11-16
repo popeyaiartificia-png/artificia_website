@@ -23,7 +23,7 @@ $names = ['form_type' => 'Form', 'name' => 'Full name', 'phone' => 'Phone', 'ema
 <?php else: ?>
       <p><?= e($message) ?></p>
 <?php endif ?>
-      <p><a href="<?= e($wa) ?>">Message us on WhatsApp</a> or <a href="<?= e($back) ?>">go back to the form</a>.</p>
+      <p><a href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or <a href="<?= e($back) ?>">go back to the form</a>.</p>
     </div>
 <?php endif ?>
   </div>

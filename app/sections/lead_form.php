@@ -45,7 +45,7 @@ $area = function (string $name, string $text, bool $req) use ($id): string {
 <?php if ($type === 'careers'): ?>
       <div class="careers-resume-note"><span class="careers-resume-note__icon" aria-hidden="true"><?= icon('file-text') ?></span><div><h3>Sharing a link instead?</h3><p>Set it to “Anyone with the link can view” (Google Drive, OneDrive, Dropbox), then open it in a private browser window to check it works without signing in. A PDF needs no check.</p></div></div>
 <?php endif ?>
-      <p class="lead__wa">Prefer WhatsApp? <a href="<?= e($wa) ?>">Message us directly</a></p>
+      <p class="lead__wa">Prefer WhatsApp? <a href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">Message us directly</a></p>
     </div>
     <form class="lead-form plate" data-form-type="<?= $type ?>" data-wa="<?= e($wa) ?>" method="post" action="/lead"<?= $type === 'careers' ? ' enctype="multipart/form-data"' : '' ?> novalidate>
 <?php if ($stageForm): ?>

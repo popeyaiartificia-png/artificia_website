@@ -44,6 +44,7 @@
       "type": "tools",
       "fields": {
         "heading": "How we *automate your business*",
+        "variant": "engineering-stack",
         "intro": "Seven steps, from the first conversation to a system your team uses every day. It starts with a free AI consultation.",
         "flow": [
           {
@@ -76,6 +77,7 @@
           }
         ],
         "tools_label": "Our AI engineering stack",
+        "tools_summary": "Building agentic AI and multi-agent systems with Model Context Protocol (MCP), retrieval-augmented generation (RAG), voice AI and cloud APIs.",
         "tools": [
           {
             "name": "Python",
@@ -116,6 +118,46 @@
             "name": "OpenAI",
             "brand": "openai",
             "note": "Foundation models"
+          },
+          {
+            "name": "MCP",
+            "brand": "mcp",
+            "note": "Model Context Protocol"
+          },
+          {
+            "name": "Claude Agents",
+            "brand": "claude",
+            "note": "Claude Agent SDK"
+          },
+          {
+            "name": "CrewAI",
+            "brand": "crewai",
+            "note": "Multi-agent orchestration"
+          },
+          {
+            "name": "OpenAI Agents SDK",
+            "brand": "openai",
+            "note": "Agent tools and handoffs"
+          },
+          {
+            "name": "Amazon Bedrock",
+            "brand": "aws",
+            "note": "Cloud AI agents"
+          },
+          {
+            "name": "Vertex AI",
+            "brand": "google-cloud",
+            "note": "Managed AI deployment"
+          },
+          {
+            "name": "Gemini API",
+            "brand": "gemini",
+            "note": "Multimodal AI APIs"
+          },
+          {
+            "name": "A2A Protocol",
+            "symbol": "tree-structure",
+            "note": "Agent-to-agent communication"
           }
         ]
       }

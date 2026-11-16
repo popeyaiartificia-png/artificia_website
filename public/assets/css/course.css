@@ -231,6 +231,7 @@
   .course-projects__foot .btn { width: 100%; justify-content: space-between; padding-inline: 18px; font-size: .8rem; gap: 15px; }
 }
 .course-curriculum { --course-surface: #f4f6f1; padding-block: clamp(48px,6vw,96px) calc(clamp(64px,6vw,96px) + var(--course-curve)); background: var(--course-surface); color: #11150f; --ink: #11150f; --ink-2: #505749; --em: #4e5d00; --muted: #59614e; --line: #17220f26; }
+.course-curriculum .h2 em { color: var(--ink); -webkit-text-fill-color: var(--ink); text-decoration: underline var(--lime) .36em; text-underline-offset: -.36em; text-decoration-skip-ink: none; }
 .course-timeline { display: flex; gap: 18px; align-items: center; margin: 50px 0 60px; font-size: .65rem; font-weight: 600; }
 .course-timeline > div { height: 4px; background: var(--lime); flex: 1; position: relative; }
 .course-timeline > div:nth-of-type(2) { background: #718152; }
@@ -272,8 +273,10 @@
 .course-toolkit__track { display: flex; width: max-content; }
 .course-toolkit__group { display: flex; align-items: center; flex: none; gap: 46px; list-style: none; margin: 0; padding: 8px 46px 8px 0; }
 .course-toolkit__item { display: flex; flex: none; align-items: center; gap: 16px; min-height: 56px; white-space: nowrap; font-size: .87rem; line-height: 1.4; color: #c7d2b8; }
-.course-toolkit__mark { display: grid; place-items: center; flex: none; width: 52px; height: 52px; color: #e4ebd9; }
+.course-toolkit__mark { display: grid; place-items: center; flex: none; width: 52px; height: 52px; color: #e4ebd9; color-scheme: dark; }
 .course-toolkit__mark :is(svg,img) { display: block; width: 48px; height: 48px; max-width: 100%; fill: currentColor; object-fit: contain; }
+.course-toolkit__mark image { filter: grayscale(1); }
+.course-toolkit__mark .brand__image--dark { filter: brightness(0) invert(1); }
 :not(.has-toolkit-motion) > .course-toolkit__rows [data-toolkit-copy] { display: none; }
 .has-toolkit-motion .course-toolkit__viewport { scrollbar-width: none; }
 .has-toolkit-motion .course-toolkit__viewport::-webkit-scrollbar { display: none; }

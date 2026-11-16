@@ -71,7 +71,7 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
 <?php else: ?>
       <div class="contact-card" role="group" aria-labelledby="contact-card-title">
         <div class="contact-card__head"><h2 id="contact-card-title">Direct lines</h2><span class="contact-card__time"><i aria-hidden="true"></i>Vadodara <span data-clock hidden></span></span></div>
-        <a class="contact-wa" href="<?= e(whatsapp_url($settings)) ?>" rel="noopener">
+        <a class="contact-wa" href="<?= e(whatsapp_url($settings)) ?>" target="_blank" rel="noopener noreferrer">
           <span class="contact-wa__icon" aria-hidden="true"><?= icon('whatsapp-logo') ?></span>
           <span class="contact-wa__label">WhatsApp <span>Our usual reply channel</span></span>
           <strong class="contact-wa__title">Chat with us<span aria-hidden="true">.</span></strong>
