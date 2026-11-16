@@ -1,12 +1,27 @@
 <?php
 $galleryItems = $f['items'] ?? [];
-// Published CMS content survives a code deploy. Keep the removed homepage card
-// out of older saved galleries so the five-card scrolling composition can run.
+// Published CMS content survives a code deploy. Replace the retired Digital
+// solutions slot with RAG so older homepage saves match the six-card scene too.
 if (($page['slug'] ?? '') === 'home') {
-    $galleryItems = array_values(array_filter($galleryItems, static fn(array $item): bool =>
-        ($item['visual'] ?? '') !== 'knowledge'
-        || ($item['label'] ?? '') !== 'Our services / Digital solutions'
-    ));
+    $ragItem = [
+        'label' => 'Our services / RAG chatbot',
+        'title' => 'Answers from your documents and business knowledge.',
+        'visual' => 'knowledge',
+        'link' => '/services/rag-custom-automation',
+    ];
+    $hasRag = (bool) array_filter($galleryItems, static fn(array $item): bool =>
+        ($item['visual'] ?? '') === 'knowledge' && ($item['label'] ?? '') === $ragItem['label']
+    );
+    $compatibleItems = [];
+    foreach ($galleryItems as $item) {
+        if (($item['visual'] ?? '') === 'knowledge' && ($item['label'] ?? '') === 'Our services / Digital solutions') {
+            if ($hasRag) continue;
+            $item = $ragItem;
+            $hasRag = true;
+        }
+        $compatibleItems[] = $item;
+    }
+    $galleryItems = $compatibleItems;
 }
 $reviewApproved = ($f['review_status'] ?? 'draft') === 'approved';
 $reviewDraft = !empty($f['review_text']) && !$reviewApproved;
@@ -44,7 +59,7 @@ $showReview = !empty($f['review_text']) && ($reviewApproved || (function_exists(
     $visual = in_array($item['visual'] ?? '', ['website', 'mobile', 'ghl', 'conversations', 'workflow', 'support', 'knowledge', 'voice'], true) ? $item['visual'] : 'workflow';
     $linked = !empty($item['link']);
 ?>
-        <li class="workscape__item workscape__item--<?= e($visual) ?>">
+        <li class="workscape__item workscape__item--<?= e($visual) ?><?= in_array($visual, ['conversations', 'voice', 'knowledge'], true) ? ' workscape__item--service' : '' ?>">
           <<?= $linked ? 'a' : 'div' ?> class="workscape__link"<?php if ($linked): ?> href="<?= link_href($item['link']) ?>"<?php endif ?>>
             <div class="workscape__caption"><span><?= e($item['label'] ?? '') ?></span><?php if ($linked): ?><?= icon('arrow-up-right') ?><?php endif ?></div>
             <div class="workscape__picture">

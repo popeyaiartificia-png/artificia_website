@@ -41,8 +41,10 @@ function test_home_legacy_gallery_omits_removed_digital_solutions_card(): void
     $original = $items;
     $html = work_gallery_test_render($items);
 
-    eq(work_gallery_test_visuals($html), ['ghl', 'support', 'website', 'conversations', 'voice']);
+    eq(work_gallery_test_visuals($html), ['ghl', 'support', 'website', 'conversations', 'voice', 'knowledge']);
     ok(!str_contains($html, 'Legacy digital solutions'), 'removed card content is not rendered');
+    ok(str_contains($html, 'Our services / RAG chatbot'), 'legacy slot shows the newly requested RAG card');
+    ok(str_contains($html, 'href="/services/rag-custom-automation"'), 'RAG card links to its service page');
     eq($items, $original, 'rendering leaves the saved CMS items intact');
     eq(substr_count($html, '<li><img src="/assets/img/brands/'), 12, 'all brand logos remain');
 }
@@ -57,6 +59,29 @@ function test_current_five_card_home_gallery_is_unchanged(): void
         ok(str_contains($html, $item['label']), 'retained card label: ' . $item['label']);
         ok(str_contains($html, $item['title']), 'retained card title: ' . $item['title']);
     }
+}
+
+function test_current_rag_home_gallery_is_not_duplicated(): void
+{
+    $rag = ['visual' => 'knowledge', 'label' => 'Our services / RAG chatbot', 'title' => 'Custom RAG description'];
+    $items = [...work_gallery_test_items(), $rag];
+    $html = work_gallery_test_render($items);
+
+    eq(work_gallery_test_visuals($html), ['ghl', 'support', 'website', 'conversations', 'voice', 'knowledge']);
+    eq(substr_count($html, 'Our services / RAG chatbot'), 1, 'only one RAG card');
+    ok(str_contains($html, 'Custom RAG description'), 'current CMS wording is preserved');
+}
+
+function test_home_legacy_slot_does_not_duplicate_existing_rag_card(): void
+{
+    $rag = ['visual' => 'knowledge', 'label' => 'Our services / RAG chatbot', 'title' => 'Approved RAG description'];
+    $items = [...work_gallery_test_items(), work_gallery_test_removed_item(), $rag];
+    $html = work_gallery_test_render($items);
+
+    eq(work_gallery_test_visuals($html), ['ghl', 'support', 'website', 'conversations', 'voice', 'knowledge']);
+    eq(substr_count($html, 'Our services / RAG chatbot'), 1);
+    ok(!str_contains($html, 'Legacy digital solutions'), 'retired card stays removed');
+    ok(str_contains($html, 'Approved RAG description'), 'existing RAG item takes precedence');
 }
 
 function test_other_page_retains_digital_solutions_gallery_card(): void
