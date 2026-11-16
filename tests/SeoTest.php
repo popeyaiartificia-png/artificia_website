@@ -100,6 +100,21 @@ function test_schema_home_has_org_and_local_business(): void
     ok(!isset($bare['telephone']) && !isset($bare['sameAs']), 'unset settings are omitted');
 }
 
+function test_schema_about_and_contact_pages(): void
+{
+    $settings = ['org_address' => 'Alkapuri, Vadodara', 'org_phone' => '+91 91044 88859', 'org_email' => 'hello@example.test'];
+    $about = seo_node(schema_graph(seo_page(['slug' => 'about', 'title' => 'About']), $settings, SEO_BASE), 'AboutPage');
+    eq($about['url'], SEO_BASE . '/about');
+    eq($about['mainEntity']['name'], 'Artificia AI');
+    ok(!isset($about['mainEntity']['contactPoint']), 'contactPoint is Contact only');
+    $contact = seo_node(schema_graph(seo_page(['slug' => 'contact', 'title' => 'Contact']), $settings, SEO_BASE), 'ContactPage');
+    eq($contact['mainEntity']['contactPoint']['telephone'], '+91 91044 88859');
+    eq($contact['mainEntity']['contactPoint']['email'], 'hello@example.test');
+    $bare = seo_node(schema_graph(seo_page(['slug' => 'contact']), [], SEO_BASE), 'ContactPage');
+    ok(!isset($bare['mainEntity']['contactPoint']), 'no contactPoint without a phone or email');
+    eq(seo_node(schema_graph(seo_page(['slug' => 'about']), $settings, SEO_BASE), 'EducationalOrganization'), null, 'org stays top-level on home only');
+}
+
 function test_schema_service_pages_and_local_business_pin_geo(): void
 {
     $svc = seo_node(schema_graph(seo_page(['slug' => 'services/gohighlevel', 'title' => 'GoHighLevel']), [], SEO_BASE), 'Service');

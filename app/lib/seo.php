@@ -147,6 +147,15 @@ function schema_graph(array $page, array $settings, string $baseUrl): array
         $graph[] = schema_organization($settings, $baseUrl);
         $graph[] = ['@type' => 'WebSite', 'name' => 'Artificia AI', 'url' => "$baseUrl/"];
     }
+    if (in_array($page['slug'], ['about', 'contact'], true)) {
+        $org = schema_organization($settings, $baseUrl);
+        if ($page['slug'] === 'contact' && ($org['telephone'] ?? '') . ($org['email'] ?? '') !== '') {
+            $org['contactPoint'] = array_filter(['@type' => 'ContactPoint', 'contactType' => 'customer support',
+                'telephone' => $org['telephone'] ?? '', 'email' => $org['email'] ?? '', 'areaServed' => 'IN']);
+        }
+        $graph[] = ['@type' => $page['slug'] === 'about' ? 'AboutPage' : 'ContactPage', 'name' => $title,
+            'url' => $url, 'description' => $page['meta_description'] ?? '', 'mainEntity' => $org];
+    }
     if ($page['kind'] === 'post') {
         $published = $page['published_at'] ?? $page['updated_at'] ?? null;
         $graph[] = array_filter([
