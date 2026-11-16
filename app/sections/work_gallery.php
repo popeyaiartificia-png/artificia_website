@@ -47,9 +47,14 @@ $showReview = !empty($f['review_text']) && ($reviewApproved || (function_exists(
       <p class="workscape__thought"><?= heading_html($f['thought']) ?><svg viewBox="0 0 130 32" aria-hidden="true"><path d="M3 22C32 5 74 4 111 10L23 28 126 4M62 30l17-25"/></svg></p>
 <?php endif ?>
       <ul class="workscape__list" aria-label="Websites and connected AI experiences">
-<?php foreach ($galleryItems as $i => $item):
+<?php $brandsRendered = false;
+foreach ($galleryItems as $i => $item):
     $visual = in_array($item['visual'] ?? '', ['website', 'mobile', 'ghl', 'conversations', 'workflow', 'support', 'knowledge', 'voice', 'assistants'], true) ? $item['visual'] : 'workflow';
     $linked = !empty($item['link']);
+    if ($visual === 'assistants' && !$brandsRendered) {
+        echo render_view('work-brands', []);
+        $brandsRendered = true;
+    }
 ?>
         <li class="workscape__item workscape__item--<?= e($visual) ?><?= in_array($visual, ['conversations', 'voice', 'knowledge', 'assistants'], true) ? ' workscape__item--service' : '' ?>">
           <<?= $linked ? 'a' : 'div' ?> class="workscape__link"<?php if ($linked): ?> href="<?= link_href($item['link']) ?>"<?php endif ?>>
@@ -65,15 +70,10 @@ $showReview = !empty($f['review_text']) && ($reviewApproved || (function_exists(
           </<?= $linked ? 'a' : 'div' ?>>
         </li>
 <?php endforeach ?>
+<?php if (!$brandsRendered): ?>
+        <?= render_view('work-brands', []) ?>
+<?php endif ?>
       </ul>
-      <div class="workscape__brands">
-        <div class="workscape__caption"><span>Brands we&rsquo;ve worked with</span></div>
-        <ul class="workscape__picture work-brands">
-<?php foreach (['volkswagen' => 'Volkswagen', 'fashion-code' => 'Fashion Code', 'royal-caribbean' => 'Royal Caribbean International', 'national-geographic' => 'National Geographic Channel', 'godrej-properties' => 'Godrej Properties', 'tata' => 'Tata', 'holland-america' => 'Holland America Line', 'vasan-eye-care' => 'Vasan Eye Care Hospital', 'aircel' => 'Aircel', 'brg-group' => 'BRG Group Sargam House', 'laxcon' => 'Laxcon', 'britannia' => 'Britannia'] as $logo => $brand): ?>
-          <li><img src="/assets/img/brands/<?= $logo ?>.webp" alt="<?= $brand ?>" loading="lazy" decoding="async"></li>
-<?php endforeach ?>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
