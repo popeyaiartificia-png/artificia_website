@@ -1427,7 +1427,7 @@
       paint(ground);
       return function () { ground.kill(); terrain.destroy(); };
     });
-    gsap.matchMedia().add('(min-width: 1100px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)', function () {
+    gsap.matchMedia().add('(min-width: 1100px) and (min-height: 900px) and (prefers-reduced-motion: no-preference)', function () {
       var viewport = section.querySelector('.workscape__viewport'), track = section.querySelector('.workscape__track');
       // Three project visuals, automation, and one combined voice/chat service card.
       if (section.querySelectorAll('.workscape__item').length !== 5 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'assistants'].some(function (kind) {
@@ -1449,8 +1449,8 @@
       var reveals = [];
       track.querySelectorAll('.workscape__item').forEach(function (card, i) {
         var picture = card.querySelector('.workscape__picture'), label = card.querySelector('.workscape__caption > span');
-        // Four rem of relative travel, with the frame intact so website text and UI controls stay legible.
-        gsap.fromTo(picture, { x: -32 }, { x: 32, ease: 'none',
+        // Project previews drift; service frames stay aligned with the brands panel in the L.
+        if (!card.classList.contains('workscape__item--service')) gsap.fromTo(picture, { x: -32 }, { x: 32, ease: 'none',
           scrollTrigger: { trigger: card, containerAnimation: travel, start: 'left right', end: 'right left', scrub: true } });
         if (!label || !label.textContent.trim()) return;
         var original = label.innerHTML, bar = d.createElement('i');
