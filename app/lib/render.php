@@ -114,6 +114,42 @@ function render_view(string $name, array $vars): string
     return (string) ob_get_clean();
 }
 
+/** Keep the homepage's combined voice/chat card compatible with older CMS saves. */
+function work_gallery_items(array $items, string $slug): array
+{
+    if ($slug !== 'home') return $items;
+
+    $combined = [
+        'label' => 'Our services / Voice AI & RAG chatbots',
+        'title' => 'Voice agents and document-powered chatbots for your business.',
+        'visual' => 'assistants',
+        'link' => '/services',
+    ];
+    foreach ($items as $item) {
+        if (($item['visual'] ?? '') === 'assistants') {
+            $combined = $item;
+            break;
+        }
+    }
+
+    $result = [];
+    $inserted = false;
+    foreach ($items as $item) {
+        $visual = $item['visual'] ?? '';
+        $label = $item['label'] ?? '';
+        $merge = $visual === 'assistants'
+            || ($visual === 'voice' && $label === 'Our services / Voice agents')
+            || ($visual === 'knowledge' && in_array($label, ['Our services / RAG chatbot', 'Our services / Digital solutions'], true));
+        if (!$merge) {
+            $result[] = $item;
+        } elseif (!$inserted) {
+            $result[] = $combined;
+            $inserted = true;
+        }
+    }
+    return $result;
+}
+
 /** Runs a section partial with its fields, page context and shared-background flag. */
 function section_include(array $f, int $s, array $page, array $settings, string $file, bool $sharedTerrain = false): string
 {

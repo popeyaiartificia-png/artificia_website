@@ -71,7 +71,7 @@ function section_registry(): array
             'items' => $list('Visuals', [
                 'label' => $text('Caption', true),
                 'title' => $text('Short description', true),
-                'visual' => $select('Visual', ['website', 'mobile', 'ghl', 'conversations', 'workflow', 'support', 'knowledge', 'voice'], true),
+                'visual' => $select('Visual', ['website', 'mobile', 'ghl', 'conversations', 'workflow', 'support', 'knowledge', 'voice', 'assistants'], true),
                 'image' => $image('Image upload (replaces the built-in visual)'),
                 'link' => $text('Link'),
             ], true),

@@ -1429,8 +1429,8 @@
     });
     gsap.matchMedia().add('(min-width: 1100px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)', function () {
       var viewport = section.querySelector('.workscape__viewport'), track = section.querySelector('.workscape__track');
-      // The authored scene has three project visuals and three matching service cards.
-      if (section.querySelectorAll('.workscape__item').length !== 6 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'knowledge', 'voice'].some(function (kind) {
+      // Three project visuals, automation, and one combined voice/chat service card.
+      if (section.querySelectorAll('.workscape__item').length !== 5 || section.querySelectorAll('.workscape__item--mobile, .workscape__item--ghl').length !== 1 || section.querySelectorAll('.workscape__item--workflow, .workscape__item--support').length !== 1 || ['website', 'conversations', 'assistants'].some(function (kind) {
         return section.querySelectorAll('.workscape__item--' + kind).length !== 1;
       })) return;
       var prev = section.querySelector('[data-work-prev]'), next = section.querySelector('[data-work-next]');

@@ -1,5 +1,11 @@
 <?php
 $service = match ($visual) {
+    'assistants' => [
+        'kind' => 'assistants', 'label' => '02 / Voice AI & RAG chatbots', 'icon' => 'chat-circle-text',
+        'headline' => 'Your business.', 'accent' => 'Ready to respond.',
+        'intro' => 'Voice agents for calls. RAG chatbots for answers from your documents.',
+        'cta' => 'Explore voice & chat AI',
+    ],
     'conversations' => [
         'kind' => 'automation', 'label' => '01 / AI & automation', 'icon' => 'flow-arrow',
         'headline' => 'Less busywork.', 'accent' => 'More possibility.',
@@ -44,6 +50,34 @@ $service = match ($visual) {
       <rect x="257" y="43" width="56" height="56" rx="17" fill="#2F4432" stroke="#809B68"/>
       <path d="m275 70 7 7 13-15" stroke="#C8D9B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="121" cy="155" r="4" fill="#AED534"/><path d="M319 138v10m-5-5h10M35 44v10m-5-5h10" stroke="#859B73" stroke-width="1.5"/>
+    </svg>
+<?php elseif ($service['kind'] === 'assistants'): ?>
+    <svg class="work-service__sculpture work-service__assistants" viewBox="0 0 360 190" fill="none" focusable="false">
+      <defs>
+        <radialGradient id="work-assistants" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(111 61) rotate(57) scale(113)"><stop stop-color="#F0F6D6"/><stop offset=".45" stop-color="#BCD787"/><stop offset=".78" stop-color="#8CA957"/><stop offset="1" stop-color="#5D783D"/></radialGradient>
+      </defs>
+      <ellipse cx="180" cy="100" rx="143" ry="66" transform="rotate(-12 180 100)" stroke="#6D8649" stroke-opacity=".2"/>
+      <path d="M52 114c30-63 88-72 138-35s80 44 116 14" stroke="#819965" stroke-dasharray="3 5"/>
+      <g class="work-service__document" transform="rotate(10 234 94)">
+        <rect x="194" y="26" width="86" height="122" rx="13" fill="#233C2B" stroke="#496349"/>
+        <path d="M209 47h38m-38 10h53m-53 57h39m-39 10h27" stroke="#839A77" stroke-width="3" stroke-linecap="round"/>
+        <rect x="207" y="72" width="60" height="21" rx="4" fill="#AED534"/>
+        <path d="M217 82h39" stroke="#42642E" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <circle cx="127" cy="98" r="65" stroke="#6D8649" stroke-opacity=".14" stroke-dasharray="2 5"/>
+      <circle cx="127" cy="96" r="56" fill="url(#work-assistants)" stroke="#8EAB61" stroke-opacity=".6"/>
+      <path d="M82 80a48 48 0 0 1 59-30" stroke="#FAFFE7" stroke-opacity=".65" stroke-linecap="round"/>
+      <g class="work-service__wave" fill="#29472C">
+<?php foreach ([14, 25, 41, 30, 54, 66, 45, 62, 49, 35, 19] as $bar => $height): ?>
+        <rect x="<?= 98 + $bar * 5.5 ?>" y="<?= 96 - $height / 2 ?>" width="3.5" height="<?= $height ?>" rx="1.75" style="--bar:<?= $bar ?>"/>
+<?php endforeach ?>
+      </g>
+      <g class="work-service__reply">
+        <path d="M244 103h58a15 15 0 0 1 15 15v17a15 15 0 0 1-15 15h-34l-16 12v-12h-8a15 15 0 0 1-15-15v-17a15 15 0 0 1 15-15Z" fill="#F5F7EC" stroke="#9FB28A"/>
+        <circle cx="257" cy="126" r="3.5" fill="#648145"/><circle cx="273" cy="126" r="3.5" fill="#648145"/><circle cx="289" cy="126" r="3.5" fill="#648145"/>
+      </g>
+      <circle class="work-service__satellite" cx="61" cy="140" r="5" fill="#AED534" stroke="#8CA464"/>
+      <path d="M304 52v10m-5-5h10M53 55v8m-4-4h8" stroke="#81956B" stroke-width="1.5"/>
     </svg>
 <?php elseif ($service['kind'] === 'voice'): ?>
     <svg class="work-service__sculpture work-service__sound" viewBox="0 0 360 190" fill="none" focusable="false">

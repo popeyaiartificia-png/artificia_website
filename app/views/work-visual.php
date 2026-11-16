@@ -54,7 +54,7 @@
   <div class="work-flow__nodes"><span><?= icon('file-text') ?><small>Input</small></span><i></i><span class="work-flow__core"><?= icon('flow-arrow') ?><small>Connect</small></span><i></i><span><?= icon('database') ?><small>System</small></span></div>
   <div class="work-flow__foot"><span>Forms</span><span>Sheets</span><span>CRM</span><span>In sync ↗</span></div>
 </div>
-<?php elseif ($visual === 'knowledge'): ?>
+<?php elseif (in_array($visual, ['knowledge', 'assistants'], true)): ?>
 <?= render_view('work-service', ['visual' => $visual]) ?>
 <?php else: ?>
 <?= render_view('work-service', ['visual' => 'voice']) ?>

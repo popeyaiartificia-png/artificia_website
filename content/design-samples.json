@@ -71,16 +71,10 @@
             "link": "/services"
           },
           {
-            "label": "Our services / Voice agents",
-            "title": "AI voice agents for business conversations.",
-            "visual": "voice",
+            "label": "Our services / Voice AI & RAG chatbots",
+            "title": "Voice agents and document-powered chatbots for your business.",
+            "visual": "assistants",
             "link": "/services"
-          },
-          {
-            "label": "Our services / RAG chatbot",
-            "title": "Answers from your documents and business knowledge.",
-            "visual": "knowledge",
-            "link": "/services/rag-custom-automation"
           }
         ]
       }
