@@ -1,4 +1,19 @@
 <?php
+// Apply the owner's approved replacement to the original homepage CMS draft.
+// Git deployments retain CMS data; preserve reviews an editor has since changed.
+if (($page['slug'] ?? '') === 'home'
+    && ($f['thought'] ?? '') === 'Good technology leaves room for *better work.*'
+    && ($f['review_status'] ?? 'draft') === 'draft'
+    && ($f['review_name'] ?? '') === 'Pavin'
+    && ($f['review_company'] ?? '') === 'Orkay Tiles'
+    && in_array($f['review_text'] ?? '', [
+        'One partner for our website, automation and *AI.*',
+        'One partner for all your IT needs, from software solutions to *automation.*',
+    ], true)) {
+    $f['review_text'] = 'Our one-stop solution for all *IT-related challenges.*';
+    $f['review_name'] = 'Pavan Jivani';
+    $f['review_status'] = 'approved';
+}
 $galleryItems = work_gallery_items($f['items'] ?? [], $page['slug'] ?? '');
 $reviewApproved = ($f['review_status'] ?? 'draft') === 'approved';
 $reviewDraft = !empty($f['review_text']) && !$reviewApproved;

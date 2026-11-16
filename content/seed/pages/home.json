@@ -166,10 +166,10 @@
       "type": "work_gallery",
       "fields": {
         "heading": "Our work. *Built around your business.*",
-        "thought": "Good technology leaves room for *better work.*",
-        "review_text": "One partner for all your IT needs, from software solutions to *automation.*",
-        "review_status": "draft",
-        "review_name": "Pavin",
+        "thought": "Our one-stop solution for all *IT-related challenges.*",
+        "review_text": "Our one-stop solution for all *IT-related challenges.*",
+        "review_status": "approved",
+        "review_name": "Pavan Jivani",
         "review_company": "Orkay Tiles",
         "items": [
           {
