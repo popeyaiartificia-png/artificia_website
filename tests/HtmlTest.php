@@ -14,9 +14,9 @@ function test_sanitize_keeps_allowed(): void
     eq(sanitize_html($in), $in);
     eq(sanitize_html('<a href="https://x.com/a?b=1&amp;c=2">x</a>'), '<a href="https://x.com/a?b=1&amp;c=2" rel="noopener">x</a>');
     eq(sanitize_html('<a href="http://x.com">x</a>'), '<a href="http://x.com" rel="noopener">x</a>');
-    eq(sanitize_html('<a href="mailto:a@b.co">x</a>'), '<a href="mailto:a@b.co">x</a>');
-    eq(sanitize_html('<a href="tel:+911234">x</a>'), '<a href="tel:+911234">x</a>');
-    eq(sanitize_html('<a href="/contact">x</a>'), '<a href="/contact">x</a>');
+    eq(sanitize_html('<a href="mailto:a@b.co">x</a>'), '<a href="mailto:a@b.co" target="_blank" rel="noopener noreferrer">x</a>');
+    eq(sanitize_html('<a href="tel:+911234">x</a>'), '<a href="tel:+911234" target="_blank" rel="noopener noreferrer">x</a>');
+    eq(sanitize_html('<a href="/contact">x</a>'), '<a href="/contact" target="_blank" rel="noopener noreferrer">x</a>');
 }
 
 function test_sanitize_word_paste(): void

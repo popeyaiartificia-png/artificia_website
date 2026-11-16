@@ -29,10 +29,10 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
 <?php endif ?>
         <div class="contact-hero__actions">
 <?php if (!empty($f['primary_cta_label'])): ?>
-          <a class="btn btn--lime" href="<?= link_href($f['primary_cta_link'] ?? '#enquire') ?>"><?= e($f['primary_cta_label']) ?><?= icon('arrow-up-right') ?></a>
+          <a class="btn btn--lime" href="<?= link_href($f['primary_cta_link'] ?? '#enquire') ?>"<?= contact_link_target($f['primary_cta_link'] ?? '#enquire') ?>><?= e($f['primary_cta_label']) ?><?= icon('arrow-up-right') ?></a>
 <?php endif ?>
 <?php if (!empty($f['secondary_cta_label'])): ?>
-          <a class="sol-text-link" href="<?= link_href($f['secondary_cta_link'] ?? '#visit') ?>"><?= e($f['secondary_cta_label']) ?><?= icon('arrow-right') ?></a>
+          <a class="sol-text-link" href="<?= link_href($f['secondary_cta_link'] ?? '#visit') ?>"<?= contact_link_target($f['secondary_cta_link'] ?? '#visit') ?>><?= e($f['secondary_cta_label']) ?><?= icon('arrow-right') ?></a>
 <?php endif ?>
         </div>
 <?php if (!empty($f['stat_value'])): ?>
@@ -81,7 +81,7 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
 <?php if ($lines): ?>
         <ul class="contact-lines">
 <?php foreach ($lines as $n => [$label, $value, $sub, $href, $symbol]): ?>
-          <li><a class="contact-line" href="<?= e($href) ?>">
+          <li><a class="contact-line" href="<?= e($href) ?>"<?= contact_link_target($href) ?>>
             <span class="contact-line__no" aria-hidden="true"><?= sprintf('%02d', $n + 1) ?></span>
             <span class="contact-line__main"><span class="contact-line__label"><?= icon($symbol) ?><?= e($label) ?></span><strong><?= e($value) ?></strong></span>
             <span class="contact-line__sub"><?= e($sub) ?></span>

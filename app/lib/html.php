@@ -127,6 +127,20 @@ function html_flush_run(string &$run, bool $wrap): string
     return preg_match('/\S/u', str_replace('<br>', '', $html)) === 1 ? '<p>' . trim($html) . '</p>' : '';
 }
 
+/** Contact routes and communication links keep the website open in its own tab. */
+function contact_link_target(string $href): string
+{
+    $parts = parse_url($href);
+    $host = strtolower($parts['host'] ?? '');
+    $path = rtrim($parts['path'] ?? '', '/');
+    $communication = preg_match('#^(?:mailto:|tel:)#i', $href) === 1
+        || in_array($host, ['wa.me', 'whatsapp.com', 'www.whatsapp.com', 'api.whatsapp.com', 'web.whatsapp.com',
+            'm.me', 'messenger.com', 'www.messenger.com'], true)
+        || (in_array($host, ['facebook.com', 'www.facebook.com', 'm.facebook.com'], true)
+            && preg_match('#^/messages(?:/|$)#i', $parts['path'] ?? '') === 1);
+    return $communication || $path === '/contact' ? ' target="_blank" rel="noopener noreferrer"' : '';
+}
+
 function html_link_attrs(string $href): string
 {
     // Browsers ignore tabs/newlines anywhere in a URL and trim control chars and spaces at the ends, so do the same before judging it.
@@ -136,5 +150,6 @@ function html_link_attrs(string $href): string
     if (!$absolute && preg_match('#^(mailto:|tel:)#i', $href) !== 1 && preg_match('#^/(?![/\\\\])#', $href) !== 1) {
         return '';
     }
-    return ' href="' . e($href) . '"' . ($absolute ? ' rel="noopener"' : '');
+    $target = contact_link_target($href);
+    return ' href="' . e($href) . '"' . ($target !== '' ? $target : ($absolute ? ' rel="noopener"' : ''));
 }

@@ -22,13 +22,13 @@ if (($f['details'] ?? 'all') === 'address') {
         <div><dt>Address</dt><dd><?= nl2br(e($addr)) ?><?php if ($mapUrl !== ''): ?><br><a href="<?= link_href($mapUrl) ?>" target="_blank" rel="noopener noreferrer" aria-label="Open in Google Maps (opens in a new tab)">Open in Google Maps</a><?php endif ?></dd></div>
 <?php endif ?>
 <?php if ($phone !== ''): ?>
-        <div><dt>Phone</dt><dd><a href="tel:<?= e(preg_replace('/[^\d+]/', '', $phone)) ?>"><?= e($phone) ?></a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:<?= e(preg_replace('/[^\d+]/', '', $phone)) ?>" target="_blank" rel="noopener noreferrer"><?= e($phone) ?></a></dd></div>
 <?php endif ?>
 <?php if ($wa !== ''): ?>
         <div><dt>WhatsApp</dt><dd><a href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">Message us</a></dd></div>
 <?php endif ?>
 <?php if ($email !== ''): ?>
-        <div><dt>Email</dt><dd><a href="mailto:<?= e($email) ?>"><?= e($email) ?></a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:<?= e($email) ?>" target="_blank" rel="noopener noreferrer"><?= e($email) ?></a></dd></div>
 <?php endif ?>
       </dl>
 <?php if ($showMap): ?>

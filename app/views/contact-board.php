@@ -14,7 +14,7 @@ if ($addr !== '') $lines[] = ['Visit', 'Vadodara office', explode("\n", $addr)[1
   <ul class="ct-lines">
 <?php foreach ($lines as $i => [$k, $v, $sub, $href, $typing]): ?>
     <li class="ct-line" style="--i:<?= $i ?>">
-      <a href="<?= e($href) ?>"<?= str_starts_with($href, 'http') ? ' target="_blank" rel="noopener noreferrer"' : '' ?>>
+      <a href="<?= e($href) ?>"<?= contact_link_target($href) ?>>
         <span class="ct-line__k"><?= e($k) ?></span>
         <span class="ct-line__v"><?= e($v) ?><?php if ($typing): ?><span class="ct-line__typing" aria-hidden="true"><i></i><i></i><i></i></span><?php endif ?></span>
         <span class="ct-line__s"><?= e($sub) ?></span>

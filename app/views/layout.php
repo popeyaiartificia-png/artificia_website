@@ -101,11 +101,11 @@ $nav = [
     <nav class="nav" id="site-nav" aria-label="Main">
       <ul>
 <?php foreach ($nav as $href => $label): ?>
-        <li><a href="<?= e($href) ?>"<?= $current === $href || str_starts_with($current, $href . '/') ? ' aria-current="page"' : '' ?>><?= e($label) ?></a></li>
+        <li><a href="<?= e($href) ?>"<?= contact_link_target($href) ?><?= $current === $href || str_starts_with($current, $href . '/') ? ' aria-current="page"' : '' ?>><?= e($label) ?></a></li>
 <?php endforeach ?>
       </ul>
     </nav>
-    <a class="btn btn--lime top__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>">Enquire</a>
+    <a class="btn btn--lime top__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"<?= contact_link_target($hasForm ? '#enquire' : '/contact') ?>>Enquire</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><?= icon('list') ?><span>Menu</span></button>
   </div>
 </header>
@@ -139,7 +139,7 @@ $footCta = match (true) {
     $inSection('/careers') => 'Apply for a Role',
     default => 'Book Free AI Audit',
 };
-$bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"' . ($href === $wa ? ' target="_blank" rel="noopener noreferrer"' : '') . '><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
+$bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"' . contact_link_target($href) . '><span data-t="' . e($label) . '">' . e($label) . '</span></a>';
 ?>
 <footer class="foot" data-foot>
   <div class="foot__rise" aria-hidden="true"><canvas class="topo-bg"></canvas></div>
@@ -196,7 +196,7 @@ $bigLink = fn(string $href, string $label) => '<a href="' . e($href) . '"' . ($h
       </nav>
     </div>
   </div>
-  <a class="foot__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"><span class="foot__cta-in"><?= e($footCta) ?><?= icon('arrow-right') ?></span></a>
+  <a class="foot__cta" href="<?= $hasForm ? '#enquire' : '/contact' ?>"<?= contact_link_target($hasForm ? '#enquire' : '/contact') ?>><span class="foot__cta-in"><?= e($footCta) ?><?= icon('arrow-right') ?></span></a>
   <div class="foot__base">
     <p>&copy; <?= date('Y') ?> <b>Artificia Intellec Pvt Ltd</b></p>
     <p class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></p>
