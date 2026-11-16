@@ -44,7 +44,7 @@ Deeper detail lives in these files; this one summarises them and records decisio
 |---|---|
 | Live site (new site since 13 Nov 2026, commit `bffc276`) | https://artificiaai.com |
 | **Design reference for the new look** | **https://landonorris.com/** (hero stage, loader, scroll behaviour, surfaces, type) |
-| GitHub repo (private) | `popeyaiartificia-png/artificiaai-website` |
+| GitHub repo for this checkout | `popeyaiartificia-png/artificia_website` |
 | Hosting | Hostinger Premium shared hosting, LiteSpeed, **no Node.js**. Site root `/home/u447231494/domains/artificiaai.com/public_html`. The same account also hosts popeyai.com and popeyai.io: never touch their folders. |
 | Old site backup | `legacy/` folder and git tag `legacy-live-2025-09-17` (reference only) |
 
@@ -201,6 +201,8 @@ The homepage now has eight sections in the current design direction; its final e
 
 ### 6.3 Repo state
 
+- **Local repository connection (16 Nov):** `D:\artificia_wordpress` now uses only `https://github.com/popeyaiartificia-png/artificia_website.git` as `origin` for fetch and push. The previous origin and its remote-tracking refs were removed; local `main`, files and commit history were retained. Main-only push defaults and the tracked pre-push guard are enabled. The new remote is reachable and empty, but the first push was rejected with HTTP 403 because GitHub account `jaytishah` lacks write access. After access is granted or an authorized account is selected, run `git push --set-upstream origin main`, then verify local and remote main hashes match. Existing hosting/deployment connections were not changed; older repository names in historical notes describe past work.
+
 - **Gallery layout (16 Nov):** Enlarged the Orkay Tiles website preview from six to eight columns, about 35% wider: 349 to 473px at 1536x695, 434 to 586px at 1920x1080. Native 3:2 image proportions and full image remain. The frame starts at row 4 and the track expands to 44 columns; automation/brands/Voice shift together to 17/25/37, preserving the latest brands-before-Voice order, gaps and final viewport positions. Nine Edge laptop/desktop/1100x620/799-800px typography/slow-font/phone/reduced-motion/no-JS cases pass: enlarged frame and decoded image, review clearance, focus/scroll visibility, no cropping/page overflow/runtime errors. Laptop visual reviewed; whitespace passes. Evidence: storage/enlarged-website-qa.json and enlarged-website-laptop.png. CSS only; deploy site.css, no CMS update.
 
 - **Homepage gallery deployment compatibility (16 Nov):** Voice AI and RAG are now combined into one assistants card at the user's request. work_gallery_items() normalizes old five-card, retired-Digital six-card and separate-RAG six-card homepage saves into the current five-card JS/CSS contract. Seed/sample/local CMS match; local save has a backup/revision and its updater is idempotent. Other pages/items and saved input are preserved. Eight renderer regressions plus Design/Registry: 26 passed. Ten Edge viewport/motion/no-JS cases and four resize/motion transitions pass with one combined card, two total service cards, twelve brands, working controls/keyboard, no clipping, overflow or runtime errors. Desktop/phone visuals reviewed. Evidence: storage/combined-voice-rag-qa.json. Deploy current PHP/CSS/JS together through Hostinger Git Deploy; no production CMS write is needed.
@@ -250,6 +252,8 @@ The homepage now has eight sections in the current design direction; its final e
 ---
 
 ## Changelog
+
+- **2026-11-16** Reconnected this checkout to `popeyaiartificia-png/artificia_website` at the user's request, removing the prior origin and stale remote-tracking refs while preserving local main/history. Updated the current repository link and enabled the documented main-only Git defaults. Validation: new remote reachable, fetch successful, no other active Git links found; push rejected with HTTP 403 for `jaytishah`, so publication awaits write access. No application files or hosting configuration changed.
 
 - **2026-11-16** Masterclass curriculum emphasis ("A lot by day sixty.") now uses ink text with a lime highlighter stroke instead of olive lettering. Per-line decoration follows wrapped words; five Edge desktop/phone/reduced-motion/no-JS checks pass with no overflow/runtime errors, and desktop/320px visuals reviewed. Local only; deploy course.css, no CMS update required. Evidence: storage/curriculum-highlight-qa.json.
 
