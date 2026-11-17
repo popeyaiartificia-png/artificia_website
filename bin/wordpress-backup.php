@@ -16,7 +16,7 @@ if (!$out) {
 try {
     $db->exec('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ');
     $db->exec('START TRANSACTION WITH CONSISTENT SNAPSHOT');
-    gzwrite($out, "SET time_zone='+00:00';\nSET FOREIGN_KEY_CHECKS=0;\n");
+    gzwrite($out, "SET SQL_MODE='NO_AUTO_VALUE_ON_ZERO';\nSET time_zone='+00:00';\nSET FOREIGN_KEY_CHECKS=0;\n");
     $tables = $db->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
     foreach ($tables as $table) {
         if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {

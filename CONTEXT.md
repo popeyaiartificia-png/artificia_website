@@ -272,6 +272,8 @@ Phase 2 (theme) is built and verified **locally** (WordPress 7.1.4 in `D:\artifi
 
 ## Changelog
 
+- **2026-11-17** Isolated backup restore found WordPress zero-date defaults require a compatible restore SQL mode. The dump now sets NO_AUTO_VALUE_ON_ZERO, like mysqldump, alongside UTC. PHP lint passes; row/timestamp restoration is being rechecked in a disposable local database before launch.
+
 - **2026-11-17** Backup database sessions and dump preamble now explicitly use UTC, preserving TIMESTAMP values regardless of the restore session timezone. PHP lint and whitespace checks pass; isolated restore validation requested before launch backup.
 
 - **2026-11-17** Added bin/wordpress-backup.php and bin/wordpress-backup.sh for private consistent-snapshot database plus WordPress/shared-code/upload/r?sum? archives. PHP lint and shell syntax pass; production backup execution will be validated before enabling the daily schedule. Staging source/target counts and redirects match; 5/5 form storage checks pass without external sends.
