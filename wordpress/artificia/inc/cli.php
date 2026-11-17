@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 /**
- * Imports the PHP site's settings, media, pages and posts, page templates and leads. Its database is only read.
+ * Imports the PHP site's settings, media, pages and posts, page templates, redirects and leads. Its database is only read.
  *
  * ## OPTIONS
  *
@@ -21,11 +21,16 @@ WP_CLI::add_command('artificia import', function (array $args, array $assoc): vo
     $config = require $assoc['config'];
     artificia_ist(function () use ($config, $assoc): void {
         $old = db_connect($config['db']['dsn'], $config['db']['user'], $config['db']['pass']);
+        $identity = 'SELECT CONCAT(@@hostname, ":", @@port, "/", DATABASE())';
+        if ($old->query($identity)->fetchColumn() === db()->query($identity)->fetchColumn()) {
+            WP_CLI::error('The source and WordPress databases must be different; the old database is the rollback.');
+        }
         kses_remove_filters(); // the PHP site's content is already cleaned; kses would rewrite block attributes
         artificia_import_settings($old);
         $media = artificia_import_media($old, $assoc['uploads'] ?? null);
         artificia_import_pages($old, $media);
         artificia_import_templates($old, $media);
+        artificia_import_redirects($old);
         artificia_import_leads($old);
         if (isset($assoc['resumes'])) {
             artificia_import_resumes($assoc['resumes']);
@@ -280,6 +285,28 @@ function artificia_import_templates(PDO $old, array $media): void
     }
     update_option('artificia_templates', $templates, false);
     WP_CLI::log(count($templates) . ' templates');
+}
+
+/** Replace the imported snapshot atomically, including rules removed since the previous import. */
+function artificia_import_redirects(PDO $old): void
+{
+    $rows = $old->query('SELECT id, from_path, to_path, match_type, code FROM redirects ORDER BY id')->fetchAll();
+    $db = db();
+    artificia_redirects_table($db);
+    $db->beginTransaction();
+    try {
+        $db->exec('DELETE FROM redirects');
+        $insert = $db->prepare('INSERT INTO redirects (id, from_path, to_path, match_type, code) VALUES (?, ?, ?, ?, ?)');
+        foreach ($rows as $row) {
+            $insert->execute(array_values($row));
+        }
+        $db->commit();
+    } catch (Throwable $e) {
+        $db->rollBack();
+        throw $e;
+    }
+    update_option('artificia_redirects_imported', '1', false);
+    WP_CLI::log(count($rows) . ' redirects');
 }
 
 /** Leads keep their ids, so links in old alert emails and n8n rows (/admin/leads/{id}) still open them. */

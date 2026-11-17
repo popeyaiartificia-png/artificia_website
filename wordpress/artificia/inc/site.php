@@ -2,6 +2,8 @@
 // Front end: the PHP site's routes, pages rendered through its layout, and WordPress kept from adding anything visitors would see.
 declare(strict_types=1);
 
+require __DIR__ . '/redirects.php';
+
 /** Runs $fn on the PHP site's clock: its templates, lead times and database session use Asia/Kolkata; WordPress keeps PHP on UTC. */
 function artificia_ist(callable $fn): mixed
 {
@@ -148,6 +150,12 @@ function artificia_tables(PDO $db): void
 
 // The PHP site's own routes, answered before WordPress looks for a page.
 add_action('init', function (): void {
+    if (PHP_SAPI !== 'cli') {
+        $canonical = canonical_redirect(config(), $_SERVER);
+        if ($canonical !== null) {
+            redirect($canonical, 301);
+        }
+    }
     $path = request_path();
     $text = function (string $type, string $body): never {
         header("Content-Type: $type; charset=utf-8");
@@ -210,7 +218,7 @@ function artificia_resume(string $file): void
 // Only the URLs the PHP site had: no slash-only redirects (it served /about and /about/ alike) and no guessing at
 // mistyped addresses. It ignored query strings, so ?s=, ?p= and ?cat= show the page as before; WordPress-only
 // addresses (feeds, archives, author pages, /about/2) are its 404.
-add_filter('redirect_canonical', fn($to, $from) => $to && untrailingslashit(strtok($to, '?')) === untrailingslashit(strtok($from, '?')) ? false : $to, 10, 2);
+add_filter('redirect_canonical', '__return_false');
 add_filter('do_redirect_guess_404_permalink', '__return_false');
 add_filter('request', function (array $vars): array {
     if (is_admin()) {
@@ -229,6 +237,14 @@ add_action('do_faviconico', function (): void {
     exit;
 });
 add_action('template_redirect', function (): void {
+    $path = request_path();
+    if (trim($path, '/') === 'home') {
+        redirect(redirect_location('/', (string) ($_SERVER['QUERY_STRING'] ?? '')), 301);
+    }
+    $hit = artificia_legacy_redirect($path, is_singular(['page', 'post']));
+    if ($hit) {
+        redirect(redirect_location($hit['to'], (string) ($_SERVER['QUERY_STRING'] ?? '')), $hit['code']);
+    }
     if (is_feed() || is_embed() || is_trackback()) {
         artificia_send(null);
         exit;

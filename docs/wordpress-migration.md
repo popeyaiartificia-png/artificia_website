@@ -36,16 +36,16 @@ wp artificia import --config=/path/to/artificia-config.php --uploads=/path/to/li
 Reads the old database only. Matches everything by its old id, so re-running updates in place (run it again just
 before go-live to catch late edits). Imports settings, media (as attachments keeping their `/uploads` files), pages and
 posts (parents first; a draft placeholder page holds an address segment that had no page, e.g. `/case-studies`),
-templates (as block patterns), leads (same ids) and résumés. Not yet: redirects (Phase 4, into the chosen plugin).
+templates (as block patterns), leads (same ids) and résumés. Redirects are imported into the separate WordPress database with the original schema and shared lookup behavior. The importer refuses to run if its source and destination database identities match.
 
 After a fresh WordPress install, before the first import: delete the sample page, "Hello world" post and the draft
 privacy page (`wp post delete 1 2 3 --force`), set permalinks to `/blog/%postname%` and timezone `Asia/Kolkata`.
 
-## Server layout (planned for Phase 1, needs SSH)
+## Server layout (17 Nov hosting continuation)
 
-- A second clone of this repo **outside** `public_html`: `/home/u447231494/domains/artificiaai.com/artificia-wp`.
-  `git pull` there deploys the theme. `live/` (the current site) is never touched.
-- Staging WordPress from hPanel's Auto Installer on `new.artificiaai.com`.
+- Shared code **outside** `public_html`: `/home/u447231494/domains/artificiaai.com/artificia-wp`.
+  Root auto-deployment is disabled because the earlier hPanel deployment replaced `public_html`, including untracked uploads and r?sum?s. The current PHP site is now directly in `public_html`; keep its files and database for rollback. Use controlled updates to shared code, never a static/root replacement deployment.
+- Staging `new.artificiaai.com` points to `public_html/wp`, with HTTP Basic Auth and noindex. WordPress uses the separate database `u447231494_artificiawp`; the original `u447231494_artificia` database is read only during import.
 - Symlinks: `wp-content/themes/artificia` → `artificia-wp/wordpress/artificia`, and `<wordpress>/assets` → `artificia-wp/public/assets`.
 - `wp-config.php`: `WP_ENVIRONMENT_TYPE` (`staging`, later `production`), `UPLOADS` = `uploads`,
   `ARTIFICIA_APP_SECRET` and `ARTIFICIA_MAIL_FROM` copied from the old config (never printed or committed).
