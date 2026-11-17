@@ -5,6 +5,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 ## 2026-11-17
 
 **Done**
+- WordPress domain cutover completed at 14:17 IST; initial health, core checksums, original 9-lead equality and indexing checks pass. Staging test records removed. Settings importer now copies the source snapshot exactly, removing obsolete staging-only keys; PHP lint passes. Final browser/crawl checks pass on retry; intermittent parallel-crawl 500s are being logged and investigated before completion.
 - Backup portability now specifies utf8mb4 and matching SQL modes, and checks every compressed write/finalization; the file archive includes root routing .htaccess. Final restore passes: 15 tables/721 rows and hashes exactly match source, including timestamps; test database removed. Staging careers multipart PDF upload returns 200 and invalid HTTP input returns 422. All 269 imported blocks and 15-rule redirect admin verified.
 - Isolated restore exposed strict-mode rejection of WordPress zero-date defaults; backup preamble now sets NO_AUTO_VALUE_ON_ZERO and UTC. PHP lint passes; fresh restore validation underway.
 - Backup timestamp safety: database connection and SQL restore preamble explicitly use UTC. PHP lint/whitespace pass; isolated local restore check underway.

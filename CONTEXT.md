@@ -272,6 +272,8 @@ Phase 2 (theme) is built and verified **locally** (WordPress 7.1.4 in `D:\artifi
 
 ## Changelog
 
+- **2026-11-17** WordPress is live at artificiaai.com (cutover 08:47 UTC / 14:17 IST): initial health and original 9-lead equality pass, core checksums pass, indexing is enabled, staging test records removed. Final verification found only an extra empty staging-only CAPI option; the settings importer now replaces the source snapshot exactly instead of retaining obsolete keys. PHP lint passes; final post-launch verification and intermittent hosting 500 investigation continue.
+
 - **2026-11-17** Hardened private backups with explicit utf8mb4 restoration, matching source/restore SQL modes and checked gzip writes/finalization so partial disk writes cannot report success. File archives include the public-root routing .htaccess required for restoration. Final isolated restore passes: all 15 tables and 721 rows match source counts and SHA256 exactly, including timestamps, starting from strict SQL mode/latin1/+05:30. Disposable test DB removed. Staging careers multipart PDF upload returns 200; invalid HTTP form input returns 422. Native redirects admin and all 269 imported blocks across 20 pages also pass read-only admin verification.
 
 - **2026-11-17** Isolated backup restore found WordPress zero-date defaults require a compatible restore SQL mode. The dump now sets NO_AUTO_VALUE_ON_ZERO, like mysqldump, alongside UTC. PHP lint passes; row/timestamp restoration is being rechecked in a disposable local database before launch.

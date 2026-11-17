@@ -50,7 +50,7 @@ function artificia_by_meta(string $key): array
 function artificia_import_settings(PDO $old): void
 {
     $settings = $old->query('SELECT k, v FROM settings')->fetchAll(PDO::FETCH_KEY_PAIR);
-    update_option('artificia_settings', $settings + settings());
+    update_option('artificia_settings', $settings);
     WP_CLI::log(count($settings) . ' settings');
 }
 
