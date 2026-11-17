@@ -60,7 +60,7 @@ These come from the spec, PRODUCT.md and the blueprint's accuracy rule. Breaking
 **Proof that may be used:**
 - **Orkay Tiles International**, named client with permission: Artificia set up and runs their GoHighLevel accounts and built their website. Claims are limited to what is live (Arya calls with no booking or transfer; 18-hour follow-up with no reassignment).
 - **Gallery review (user-approved wording and attribution, 16 Nov 2026):** "Our one-stop solution for all IT-related challenges." - Pavan Jivani, Orkay Tiles. This replaces the earlier Pavin draft and the generic gallery statement.
-- **Testimonials:** videos from Hatim Sorangwala and Dev Chokshi; written quotes from Alphonsa N. P (Chief Nursing Administrator, Aadicura Super Speciality Hospital), Haritha Nair and Nilesh Chaudasama. Khushi Dodiya's was removed because the video link is dead. Haritha's and Nilesh's old photos were unrelated stock images. Since 13 Nov, their outer cards use newly generated natural-looking illustrative portraits, explicitly disclosed on the cards, in the review dialogs and no-JS reviews. They are not photographs of the named reviewers; the original sourced quotations are unchanged.
+- **Testimonials:** videos from Hatim Sorangwala and Dev Chokshi; written quotes from Alphonsa N. P (Chief Nursing Administrator, Aadicura Super Speciality Hospital), Haritha Nair and Nilesh Chaudasama. Khushi Dodiya's was removed because the video link is dead. Haritha's and Nilesh's old photos were unrelated stock images. Since 13 Nov, their outer cards use newly generated natural-looking illustrative portraits, disclosed beneath the card group, in the review dialogs, image alt text and no-JS reviews. The owner requested removal of the on-image "Illustrative portrait" badges on 17 Nov; those badges are removed without changing the images or reviews. They are not photographs of the named reviewers; the original sourced quotations are unchanged.
 - **Five "typical outcomes for AI-enabled teams"** (never presented as Artificia's own results): 92% faster lead handling, 10–20 hrs a week saved per employee, 65% less repetitive work, 500% boost in customer response, 4× faster reporting.
 - **"100+ professionals trained through corporate training sessions"** (confirmed wording).
 
@@ -273,6 +273,8 @@ The homepage now has eight sections in the current design direction; its final e
 ---
 
 ## Changelog
+
+- **2026-11-17** Removed the two on-image "Illustrative portrait" testimonial badges at the owner's request. Kept the portraits, names, quotes, layout and animation, with the existing small section disclosure, image alt text, review-dialog and no-JS notes. Shared PHP template only. PHP lint/whitespace pass; four local Edge cases (desktop, phone, reduced motion and no JavaScript) show zero badges, all five cards, working written-review dialogs, retained notes and no overflow/runtime errors. Desktop/phone visuals reviewed; controlled Hostinger deployment and live verification pending.
 
 - **2026-11-17** Final post-launch production backup passed (15 tables plus files/config/routing, gzip verified); all 14 source settings match exactly and only the scheduled daily backup remains after temporary-job cleanup. Updated current-state handovers and corrected obsolete staging next steps. Final Git synchronization is the last housekeeping step.
 
