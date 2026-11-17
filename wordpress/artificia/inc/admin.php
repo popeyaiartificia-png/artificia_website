@@ -42,8 +42,162 @@ add_action('admin_menu', function (): void {
     $new = artificia_ist(fn() => leads_recent_count(artificia_leads_db()));
     add_menu_page('Leads', 'Leads' . ($new ? " <span class=\"awaiting-mod\">$new</span>" : ''), 'edit_pages', 'artificia-leads', 'artificia_leads_screen', 'dashicons-email-alt', 3);
     add_options_page('Artificia settings', 'Artificia', 'manage_options', 'artificia-settings', 'artificia_settings_screen');
+    add_management_page('Redirects', 'Redirects', 'manage_options', 'artificia-redirects', 'artificia_redirects_screen');
     remove_menu_page('edit-comments.php');
 });
+
+/** The legacy redirect editor's published-address check, using WordPress instead of the old pages table. */
+function artificia_redirect_page_at(string $path): bool
+{
+    $path = rtrim($path, '/') ?: '/';
+    $slug = trim($path, '/');
+    $page = $slug === '' ? get_post((int) get_option('page_on_front')) : get_page_by_path($slug, OBJECT, 'page');
+    if ($page && $page->post_status === 'publish' && page_path(artificia_page($page)) === $path) {
+        return true;
+    }
+    if (preg_match('#^/blog/([^/]+)$#', $path, $m)) {
+        $posts = get_posts(['post_type' => 'post', 'post_status' => 'publish', 'name' => $m[1], 'numberposts' => 1]);
+        return $posts && page_path(artificia_page($posts[0])) === $path;
+    }
+    return false;
+}
+
+/** redirect_save() rules, with WordPress's published pages; shared matching and loop detection stay unchanged. */
+function artificia_redirect_save(PDO $db, array $row): int
+{
+    $from = trim((string) ($row['from_path'] ?? ''));
+    if (preg_match('#^([a-z][a-z0-9+.-]*:|//)#i', $from)) {
+        throw new InvalidArgumentException('The old address must be a path on this site, like /old-page, not a full web address.');
+    }
+    if ($from === '' || preg_match('#[?\#\s]#', $from)) {
+        throw new InvalidArgumentException('The old address must be a plain path like /old-page, with no spaces, "?" or "#".');
+    }
+    $from = '/' . ltrim($from, '/');
+    $to = trim((string) ($row['to_path'] ?? ''));
+    if (!preg_match('#^(/(?![/\\\\])|https?://[^/\s])#i', $to) || preg_match('#\s#', $to)) {
+        throw new InvalidArgumentException('The new address must be a path like /new-page, or a full address starting with http:// or https://.');
+    }
+    $type = (string) ($row['match_type'] ?? 'exact');
+    if (!in_array($type, ['exact', 'prefix'], true)) {
+        throw new InvalidArgumentException('The match type must be exact or prefix.');
+    }
+    $code = (int) ($row['code'] ?? 301);
+    if (!in_array($code, [301, 302], true)) {
+        throw new InvalidArgumentException('The redirect type must be 301 (permanent) or 302 (temporary).');
+    }
+    if (strcasecmp($from, $to) === 0) {
+        throw new InvalidArgumentException('A redirect cannot send a page to itself.');
+    }
+    if (artificia_redirect_page_at($from)) {
+        throw new InvalidArgumentException("A page already lives at $from; a redirect there would hide it.");
+    }
+    $id = positive_int($row['id'] ?? null);
+    if ($id !== null) {
+        $exists = $db->prepare('SELECT 1 FROM redirects WHERE id = ?');
+        $exists->execute([$id]);
+        if (!$exists->fetchColumn()) {
+            throw new InvalidArgumentException('That redirect no longer exists.');
+        }
+    }
+    $duplicate = $db->prepare('SELECT 1 FROM redirects WHERE from_path = ? AND id <> ?');
+    $duplicate->execute([$from, $id ?? 0]);
+    if ($duplicate->fetchColumn()) {
+        throw new InvalidArgumentException("There is already a redirect from $from. Edit that one instead.");
+    }
+    $db->beginTransaction();
+    try {
+        $values = [$from, $to, $type, $code];
+        if ($id === null) {
+            $db->prepare('INSERT INTO redirects (from_path, to_path, match_type, code) VALUES (?, ?, ?, ?)')->execute($values);
+            $id = (int) $db->lastInsertId();
+        } else {
+            $db->prepare('UPDATE redirects SET from_path = ?, to_path = ?, match_type = ?, code = ? WHERE id = ?')->execute([...$values, $id]);
+        }
+        if (redirect_loops($db, $from, $type, $to)) {
+            throw new InvalidArgumentException("This would create a redirect loop: $to leads back to $from.");
+        }
+        $db->commit();
+    } catch (Throwable $e) {
+        $db->rollBack();
+        throw $e;
+    }
+    return $id;
+}
+
+add_action('admin_post_artificia_redirect', function (): void {
+    if (!current_user_can('manage_options')) {
+        wp_die('Not allowed.', '', ['response' => 403]);
+    }
+    $id = absint($_POST['id'] ?? 0);
+    check_admin_referer("artificia_redirect_$id");
+    $draft = [];
+    foreach (['from_path', 'to_path', 'match_type', 'code'] as $key) {
+        $draft[$key] = is_string($_POST[$key] ?? null) ? wp_unslash($_POST[$key]) : '';
+    }
+    $db = db();
+    artificia_redirects_table($db);
+    try {
+        if (($_POST['do'] ?? '') === 'delete' && $id > 0) {
+            $db->prepare('DELETE FROM redirects WHERE id = ?')->execute([$id]);
+            $notice = ['message' => 'Redirect deleted. The old address now shows a 404 unless a page lives there.'];
+        } elseif (($_POST['do'] ?? '') === 'save') {
+            artificia_redirect_save($db, $draft + ($id > 0 ? ['id' => $id] : []));
+            update_option('artificia_redirects_imported', '1', false);
+            $notice = ['message' => $id > 0 ? 'Redirect updated. The change is live now.' : 'Redirect added. It is live now.'];
+        } else {
+            throw new InvalidArgumentException('Choose Save or Delete.');
+        }
+    } catch (InvalidArgumentException $e) {
+        $notice = ['error' => $e->getMessage(), 'id' => $id, 'draft' => $draft];
+    }
+    set_transient('artificia_redirect_notice_' . get_current_user_id(), $notice, MINUTE_IN_SECONDS);
+    wp_safe_redirect(admin_url('tools.php?page=artificia-redirects'));
+    exit;
+});
+
+function artificia_redirects_screen(): void
+{
+    if (!current_user_can('manage_options')) {
+        wp_die('Not allowed.', '', ['response' => 403]);
+    }
+    $db = db();
+    artificia_redirects_table($db);
+    $noticeKey = 'artificia_redirect_notice_' . get_current_user_id();
+    $notice = get_transient($noticeKey) ?: [];
+    delete_transient($noticeKey);
+    $rows = $db->query('SELECT id, from_path, to_path, match_type, code FROM redirects ORDER BY from_path')->fetchAll();
+    array_unshift($rows, ['id' => 0, 'from_path' => '', 'to_path' => '', 'match_type' => 'exact', 'code' => 301]);
+    echo '<div class="wrap"><h1>Redirects</h1><p>Keep old links working. Exact matches one address; Prefix includes addresses beneath it. Tracking query strings are kept unless the new address has its own.</p>';
+    if ($notice) {
+        echo '<div class="notice notice-' . (isset($notice['error']) ? 'error' : 'success') . '"><p>' . esc_html((string) ($notice['error'] ?? $notice['message'])) . '</p></div>';
+    }
+    echo '<table class="widefat striped"><thead><tr><th>Old address</th><th>New address</th><th>Match</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+    foreach ($rows as $row) {
+        $id = (int) $row['id'];
+        if (isset($notice['error']) && (int) $notice['id'] === $id) {
+            $row = $notice['draft'] + $row;
+        }
+        $form = 'artificia-redirect-' . $id;
+        echo '<tr><td><form id="' . esc_attr($form) . '" method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+        wp_nonce_field("artificia_redirect_$id");
+        echo '<input type="hidden" name="action" value="artificia_redirect"><input type="hidden" name="id" value="' . $id . '"><input class="regular-text" aria-label="Old address" name="from_path" value="' . esc_attr((string) $row['from_path']) . '" placeholder="/old-page" required></form></td>';
+        echo '<td><input class="regular-text" aria-label="New address" form="' . esc_attr($form) . '" name="to_path" value="' . esc_attr((string) $row['to_path']) . '" placeholder="/new-page" required></td>';
+        echo '<td><select aria-label="Match type" form="' . esc_attr($form) . '" name="match_type">';
+        foreach (['exact' => 'Exact', 'prefix' => 'Prefix'] as $value => $label) {
+            echo '<option value="' . esc_attr($value) . '"' . selected($row['match_type'], $value, false) . '>' . esc_html($label) . '</option>';
+        }
+        echo '</select></td><td><select aria-label="Redirect status" form="' . esc_attr($form) . '" name="code">';
+        foreach ([301 => '301 Permanent', 302 => '302 Temporary'] as $value => $label) {
+            echo '<option value="' . $value . '"' . selected((int) $row['code'], $value, false) . '>' . esc_html($label) . '</option>';
+        }
+        echo '</select></td><td><button class="button button-primary" form="' . esc_attr($form) . '" name="do" value="save">' . ($id ? 'Save' : 'Add redirect') . '</button>';
+        if ($id) {
+            echo ' <button class="button" form="' . esc_attr($form) . '" name="do" value="delete" formnovalidate>Delete</button>';
+        }
+        echo '</td></tr>';
+    }
+    echo '</tbody></table></div>';
+}
 
 function artificia_leads_db(): PDO
 {
