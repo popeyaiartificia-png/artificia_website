@@ -30,8 +30,9 @@ function redirect_location(string $to, string $query): string
 /**
  * Insert a redirect, or update it when $r['id'] is set; returns its id.
  * Throws InvalidArgumentException with a message for the SEO editor on any rule break.
+ * WordPress supplies its published-page lookup; the original CMS uses redirect_page_at().
  */
-function redirect_save(PDO $db, array $r): int
+function redirect_save(PDO $db, array $r, ?callable $pageAt = null): int
 {
     $from = trim((string) ($r['from_path'] ?? ''));
     // A scheme, host or "//" means the editor pasted a full URL; reject before adding the leading slash.
@@ -58,7 +59,7 @@ function redirect_save(PDO $db, array $r): int
     if (strcasecmp($from, $to) === 0) {
         throw new InvalidArgumentException('A redirect cannot send a page to itself.');
     }
-    if (redirect_page_at($db, $from)) {
+    if ($pageAt ? $pageAt($from) : redirect_page_at($db, $from)) {
         throw new InvalidArgumentException("A page already lives at $from; a redirect there would hide it.");
     }
 
@@ -86,8 +87,8 @@ function redirect_save(PDO $db, array $r): int
         } else {
             $db->prepare('UPDATE redirects SET from_path = ?, to_path = ?, match_type = ?, code = ? WHERE id = ?')->execute([...$args, $id]);
         }
-        if (redirect_loops($db, $from, $type, $to)) {
-            throw new InvalidArgumentException("This would create a redirect loop: $to leads back to $from.");
+        if (redirect_loops($db, $to)) {
+            throw new InvalidArgumentException("The new address leads to a redirect loop: $to.");
         }
         $db->commit();
     } catch (Throwable $e) {
@@ -111,20 +112,21 @@ function redirect_page_at(PDO $db, string $path): bool
     return false;
 }
 
-/** Whether following $to hits an address the row ($from, $type) would redirect, within 10 hops. */
-function redirect_loops(PDO $db, string $from, string $type, string $to): bool
+/** Whether following the saved rules from $to visits the same local path twice. */
+function redirect_loops(PDO $db, string $to): bool
 {
-    $path = $to;
-    for ($hop = 0; $hop < 10; $hop++) {
-        $path = preg_split('#[?\#]#', $path)[0];
-        if ($type === 'prefix' ? strncasecmp($path, $from, strlen($from)) === 0 : strcasecmp($path, $from) === 0) {
+    $seen = [];
+    while (str_starts_with($to, '/')) {
+        $path = preg_split('#[?\#]#', $to)[0];
+        if (isset($seen[$path])) {
             return true;
         }
+        $seen[$path] = true;
         $next = redirect_match($db, $path);
-        if (!$next || !str_starts_with($next['to'], '/')) { // no redirect, or it leaves the site
+        if (!$next) {
             return false;
         }
-        $path = $next['to'];
+        $to = $next['to'];
     }
     return false;
 }

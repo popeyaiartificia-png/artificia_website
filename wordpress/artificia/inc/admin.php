@@ -62,66 +62,10 @@ function artificia_redirect_page_at(string $path): bool
     return false;
 }
 
-/** redirect_save() rules, with WordPress's published pages; shared matching and loop detection stay unchanged. */
+/** The shared saver keeps validation and transactions identical; only the published-page lookup differs. */
 function artificia_redirect_save(PDO $db, array $row): int
 {
-    $from = trim((string) ($row['from_path'] ?? ''));
-    if (preg_match('#^([a-z][a-z0-9+.-]*:|//)#i', $from)) {
-        throw new InvalidArgumentException('The old address must be a path on this site, like /old-page, not a full web address.');
-    }
-    if ($from === '' || preg_match('#[?\#\s]#', $from)) {
-        throw new InvalidArgumentException('The old address must be a plain path like /old-page, with no spaces, "?" or "#".');
-    }
-    $from = '/' . ltrim($from, '/');
-    $to = trim((string) ($row['to_path'] ?? ''));
-    if (!preg_match('#^(/(?![/\\\\])|https?://[^/\s])#i', $to) || preg_match('#\s#', $to)) {
-        throw new InvalidArgumentException('The new address must be a path like /new-page, or a full address starting with http:// or https://.');
-    }
-    $type = (string) ($row['match_type'] ?? 'exact');
-    if (!in_array($type, ['exact', 'prefix'], true)) {
-        throw new InvalidArgumentException('The match type must be exact or prefix.');
-    }
-    $code = (int) ($row['code'] ?? 301);
-    if (!in_array($code, [301, 302], true)) {
-        throw new InvalidArgumentException('The redirect type must be 301 (permanent) or 302 (temporary).');
-    }
-    if (strcasecmp($from, $to) === 0) {
-        throw new InvalidArgumentException('A redirect cannot send a page to itself.');
-    }
-    if (artificia_redirect_page_at($from)) {
-        throw new InvalidArgumentException("A page already lives at $from; a redirect there would hide it.");
-    }
-    $id = positive_int($row['id'] ?? null);
-    if ($id !== null) {
-        $exists = $db->prepare('SELECT 1 FROM redirects WHERE id = ?');
-        $exists->execute([$id]);
-        if (!$exists->fetchColumn()) {
-            throw new InvalidArgumentException('That redirect no longer exists.');
-        }
-    }
-    $duplicate = $db->prepare('SELECT 1 FROM redirects WHERE from_path = ? AND id <> ?');
-    $duplicate->execute([$from, $id ?? 0]);
-    if ($duplicate->fetchColumn()) {
-        throw new InvalidArgumentException("There is already a redirect from $from. Edit that one instead.");
-    }
-    $db->beginTransaction();
-    try {
-        $values = [$from, $to, $type, $code];
-        if ($id === null) {
-            $db->prepare('INSERT INTO redirects (from_path, to_path, match_type, code) VALUES (?, ?, ?, ?)')->execute($values);
-            $id = (int) $db->lastInsertId();
-        } else {
-            $db->prepare('UPDATE redirects SET from_path = ?, to_path = ?, match_type = ?, code = ? WHERE id = ?')->execute([...$values, $id]);
-        }
-        if (redirect_loops($db, $from, $type, $to)) {
-            throw new InvalidArgumentException("This would create a redirect loop: $to leads back to $from.");
-        }
-        $db->commit();
-    } catch (Throwable $e) {
-        $db->rollBack();
-        throw $e;
-    }
-    return $id;
+    return redirect_save($db, $row, 'artificia_redirect_page_at');
 }
 
 add_action('admin_post_artificia_redirect', function (): void {

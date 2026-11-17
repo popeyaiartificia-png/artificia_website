@@ -115,6 +115,52 @@ function test_redirect_loop_through_prefix_rejected(): void
     redirect_test_rejects(fn() => redirect_save($db, redirect_test_row('/new/x', '/old/y')), 'loop');
 }
 
+function test_redirect_prefix_cannot_redirect_its_bare_folder_to_itself(): void
+{
+    $db = test_db();
+    redirect_test_rejects(fn() => redirect_save($db, redirect_test_row('/old/', '/old', ['match_type' => 'prefix'])), 'loop');
+    eq(redirect_match($db, '/old'), null, 'the rejected rule was rolled back');
+}
+
+function test_redirect_long_chains_allow_destinations_but_reject_cycles(): void
+{
+    $db = test_db();
+    for ($i = 0; $i < 12; $i++) {
+        redirect_save($db, redirect_test_row("/step-$i", '/step-' . ($i + 1)));
+    }
+    ok(redirect_save($db, redirect_test_row('/entry', '/step-0')) > 0, 'a long chain ending at a destination is valid');
+    redirect_test_rejects(fn() => redirect_save($db, redirect_test_row('/step-12', '/step-0')), 'loop');
+    eq(redirect_match($db, '/step-12'), null, 'closing the long cycle saved nothing');
+}
+
+function test_redirect_cannot_enter_an_existing_cycle(): void
+{
+    $db = test_db();
+    redirect_test_add($db, '/cycle-a', '/cycle-b', 'exact');
+    redirect_test_add($db, '/cycle-b', '/cycle-a', 'exact');
+    redirect_test_rejects(fn() => redirect_save($db, redirect_test_row('/entry', '/cycle-a')), 'loop');
+    eq(redirect_match($db, '/entry'), null);
+}
+
+function test_redirect_prefix_can_target_a_more_specific_exact_rule(): void
+{
+    $db = test_db();
+    redirect_save($db, redirect_test_row('/old/exception', '/contact'));
+    ok(redirect_save($db, redirect_test_row('/old/', '/old/exception', ['match_type' => 'prefix'])) > 0);
+    eq(redirect_match($db, '/old/exception')['to'], '/contact', 'the exact rule wins and ends the chain');
+}
+
+function test_redirect_save_accepts_the_wordpress_page_lookup(): void
+{
+    $db = test_db();
+    $lookup = fn(string $path): bool => $path === '/wordpress-page';
+    redirect_test_rejects(fn() => redirect_save($db, redirect_test_row(' wordpress-page ', '/new'), $lookup), 'A page already lives at /wordpress-page');
+    eq(redirect_match($db, '/wordpress-page'), null);
+    ok(redirect_save($db, redirect_test_row('/old', '/new'), $lookup) > 0);
+    redirect_test_rejects(fn() => redirect_save($db, redirect_test_row('/new', '/old'), $lookup), 'loop');
+    eq(redirect_match($db, '/new'), null, 'WordPress rules use the same rollback on failure');
+}
+
 function test_redirect_update_checks_loop_against_the_edited_row(): void
 {
     $db = test_db();
