@@ -8,6 +8,7 @@ if (PHP_SAPI !== 'cli' || count($argv) !== 3 || !is_file(rtrim($argv[1], '/\\') 
 umask(0077);
 require rtrim($argv[1], '/\\') . '/wp-load.php';
 $db = db();
+$db->exec("SET time_zone = '+00:00'");
 $out = gzopen($argv[2], 'wb9');
 if (!$out) {
     throw new RuntimeException('Could not create private database backup.');
@@ -15,7 +16,7 @@ if (!$out) {
 try {
     $db->exec('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ');
     $db->exec('START TRANSACTION WITH CONSISTENT SNAPSHOT');
-    gzwrite($out, "SET FOREIGN_KEY_CHECKS=0;\n");
+    gzwrite($out, "SET time_zone='+00:00';\nSET FOREIGN_KEY_CHECKS=0;\n");
     $tables = $db->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN);
     foreach ($tables as $table) {
         if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {

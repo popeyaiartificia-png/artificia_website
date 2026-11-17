@@ -5,6 +5,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 ## 2026-11-17
 
 **Done**
+- Backup timestamp safety: database connection and SQL restore preamble explicitly use UTC. PHP lint/whitespace pass; isolated local restore check underway.
 - Added private WordPress backup scripts (consistent database snapshot + core/uploads/shared code/private r?sum?s/config, gzip integrity check). PHP and Bash syntax pass; production execution and daily scheduling pending. Staging administrator login, page editor and 22 registered blocks verified; all 5 form types save with no forwarding.
 - Native administrator **Tools ? Redirects** now preserves original add/edit/delete, exact/prefix, 301/302 and loop/published-page checks with nonces. PHP lint and 21 local assertions pass; test rows restored. Hosting staging: all 5 form types save correctly without forwarding; all 8 desktop/mobile geometry/screenshot cases match with no visible design/content change. Lighthouse baseline before migration: home Performance 39, contact 52, both Accessibility/SEO 100; performance budget was already unmet and no redesign is authorized.
 - Added the WordPress editor guide (pages/sections, SEO, media, leads, settings and deployment safety). Staging matches 46 URL statuses/redirects and public SEO; the CDN-reencoded logo has identical pixels. Final visual/form checks continue.

@@ -272,6 +272,8 @@ Phase 2 (theme) is built and verified **locally** (WordPress 7.1.4 in `D:\artifi
 
 ## Changelog
 
+- **2026-11-17** Backup database sessions and dump preamble now explicitly use UTC, preserving TIMESTAMP values regardless of the restore session timezone. PHP lint and whitespace checks pass; isolated restore validation requested before launch backup.
+
 - **2026-11-17** Added bin/wordpress-backup.php and bin/wordpress-backup.sh for private consistent-snapshot database plus WordPress/shared-code/upload/r?sum? archives. PHP lint and shell syntax pass; production backup execution will be validated before enabling the daily schedule. Staging source/target counts and redirects match; 5/5 form storage checks pass without external sends.
 
 - **2026-11-17** Added the WordPress editor handoff in docs/wordpress-editor-guide.md. Protected hosting staging core checksums and production-data import pass; parity review confirms matching statuses/redirects/SEO and unchanged logo pixels. All five form types validate and save correctly in the separate staging database without forwarding. All eight desktop/mobile screenshot cases match page dimensions and main geometry; no visible design/content/SEO changes. Added administrator-only Tools ? Redirects with original exact/prefix, 301/302, page/loop protection and nonces; PHP lint and 21 local runtime checks pass. Core code and guides will be published before the protected live cutover.
