@@ -21,16 +21,16 @@ Use **Posts** for blog articles, with Artificia sections, excerpt, featured imag
 
 ## Enquiries
 
-Open **Leads**, choose a form filter and open a record. Flag unwanted submissions as spam. Administrators can export CSV, resend a record to n8n and open an attached r?sum?. Applications are kept separate from sales conversion tracking.
+Open **Leads**, choose a form filter and open a record. Flag unwanted submissions as spam. Administrators can export CSV, resend a record to n8n and open an attached resume. Applications are kept separate from sales conversion tracking.
 
 ## Redirects
 
-Administrators open **Tools ? Redirects** to add or edit an old address and its destination. Choose Exact for one address, Prefix for the whole path, and 301 for a permanent move. Existing pages cannot be hidden by a redirect, and loops are rejected.
+Administrators open **Tools > Redirects** to add or edit an old address and its destination. Choose Exact for one address, Prefix for the whole path, and 301 for a permanent move. Existing pages cannot be hidden by a redirect, and loops are rejected.
 
 ## Site settings
 
-Administrators open **Settings ? Artificia** for business/contact details, tracking IDs, alert delivery, n8n, robots.txt and llms.txt. Keep secret tokens private. Existing delivery settings are imported; n8n still depends on the owner's laptop/Tailscale service being available.
+Administrators open **Settings > Artificia** for business/contact details, tracking IDs, alert delivery, n8n, robots.txt and llms.txt. Keep secret tokens private. Existing delivery settings are imported; n8n still depends on the owner's laptop/Tailscale service being available.
 
 ## Hosting
 
-Do not use Hostinger's static deployment or re-enable root replacement auto-deployment. WordPress files, uploads, its database and private r?sum?s must survive code updates. The deployment and rollback procedures are in [wordpress-migration.md](wordpress-migration.md).
+Do not use Hostinger's static deployment or re-enable root replacement auto-deployment. WordPress files, uploads, its database and private resumes must survive code updates. The deployment and rollback procedures are in [wordpress-migration.md](wordpress-migration.md).

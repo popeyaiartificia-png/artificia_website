@@ -1,18 +1,33 @@
 # artificiaai.com
 
-Plain PHP 8 + MySQL site for https://artificiaai.com (Hostinger shared hosting). No framework, no Composer.
+WordPress 7.1.4 serves https://artificiaai.com on Hostinger shared hosting, using the custom Artificia theme and this repository's existing PHP templates, CSS, JavaScript and assets. The previous plain-PHP CMS remains available for rollback. No build step, Composer or page builder.
 
 - Spec: `docs/superpowers/specs/2026-10-27-artificiaai-site-design.md`
 - Plan: `docs/superpowers/plans/`
 - `legacy/` is the old static site (reference only), plus mirrors of the two ad funnels,
   `legacy/landing-page/` and `legacy/co-orporate/`. Tag `legacy-live-2025-09-17` is the original backup.
 
+## Production WordPress
+
+- Public site: https://artificiaai.com; administrator: https://artificiaai.com/wp-admin/.
+- WordPress core and durable uploads: `/home/u447231494/domains/artificiaai.com/public_html/wp`.
+- Shared Git checkout/theme/assets: `/home/u447231494/domains/artificiaai.com/artificia-wp`.
+- Database: `u447231494_artificiawp`; original PHP database retained separately.
+- Private new resume PDFs: `artificia-wp/storage/resumes`, outside the web root.
+- Hostinger root replacement auto-deployment is **disabled**. Never deploy a static archive or replace `public_html`.
+- After pushing `main`, update only the private source checkout with `git -C /home/u447231494/domains/artificiaai.com/artificia-wp pull --ff-only origin main`. Shell SSH is currently disabled; use a temporary Hostinger cron command and remove that job after its result is verified.
+- Automatic backups run at **05:00 IST daily** (`30 23 * * *` on the UTC hosting server). Manual backup: `bash /home/u447231494/domains/artificiaai.com/artificia-wp/bin/wordpress-backup.sh`. Archives stay private in `backups/wordpress-daily/`; storage/retention needs periodic review.
+- Immediate routing rollback: `bash /home/u447231494/domains/artificiaai.com/rollback-wordpress.sh`. Keep the old PHP files/database for at least 30 days. WordPress leads remain in its separate database after rollback; reconcile newer records before re-importing.
+- [Editing guide](docs/wordpress-editor-guide.md) and [deployment/import/rollback runbook](docs/wordpress-migration.md).
+
+The owner's private login is saved on this laptop in `D:\artificia-wp-local\HOSTINGER-LOGIN.txt`; credentials never belong in Git.
+
 ## Layout
 
 `public/` is the only web-served folder. `app/` is the code, `db/migrations/` the schema,
 `bin/` the dev scripts, `tests/` the tests. Migrations run on boot.
 
-## Local development
+## Local PHP development (rollback source)
 
 1. `brew install php mariadb && brew services start mariadb`, then create the `artificia` and `artificia_test`
    databases and a user that can use both (the test runner drops and recreates `artificia_test`).
