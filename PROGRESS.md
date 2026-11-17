@@ -5,6 +5,7 @@ One entry per day, newest first. Each has Done / Current lead / Next / Blocked. 
 ## 2026-11-17
 
 **Done**
+- Backup portability now specifies utf8mb4 and matching SQL modes, and checks every compressed write/finalization; the file archive includes root routing .htaccess. Final restore passes: 15 tables/721 rows and hashes exactly match source, including timestamps; test database removed. Staging careers multipart PDF upload returns 200 and invalid HTTP input returns 422. All 269 imported blocks and 15-rule redirect admin verified.
 - Isolated restore exposed strict-mode rejection of WordPress zero-date defaults; backup preamble now sets NO_AUTO_VALUE_ON_ZERO and UTC. PHP lint passes; fresh restore validation underway.
 - Backup timestamp safety: database connection and SQL restore preamble explicitly use UTC. PHP lint/whitespace pass; isolated local restore check underway.
 - Added private WordPress backup scripts (consistent database snapshot + core/uploads/shared code/private r?sum?s/config, gzip integrity check). PHP and Bash syntax pass; production execution and daily scheduling pending. Staging administrator login, page editor and 22 registered blocks verified; all 5 form types save with no forwarding.
