@@ -1181,9 +1181,19 @@
       }
       bx.globalAlpha = fx.globalAlpha = 1;
     };
-    var on = false, raf = 0, t0 = performance.now(), lastF = 0;
-    var frame = function (now) {
-      raf = requestAnimationFrame(frame);
+    var on = false, raf = 0, t0 = performance.now(), lastF = 0, failed = false, painted = false;
+    // Keep the photograph available if the GPU is reset or cannot finish its first frame.
+    // The WebGL resources belong to this context; after a loss, stay on the static fallback until reload.
+    var fallback = function () {
+      failed = true;
+      on = false;
+      cancelAnimationFrame(raf);
+      stage.classList.remove('is-gl', 'is-flow');
+      anims.forEach(function (a) { a.cancel(); });
+      [bx, fx].forEach(function (x) { if (x) x.clearRect(0, 0, x.canvas.width, x.canvas.height); });
+    };
+    cv.addEventListener('webglcontextlost', fallback);
+    var paint = function (now) {
       // The page enters mid-way into the first cycle, its inputs already on the wires, so the loop is busy from the first moment.
       if (flowT0 === 1e12 && root.classList.contains('is-in')) { flowT0 = now - CYCLE * .12; anims.forEach(function (a) { a.startTime = flowT0; }); }
       var W = Math.round(cv.clientWidth * dpr), H = Math.round(cv.clientHeight * dpr);
@@ -1244,10 +1254,21 @@
       var th = IN.map(function (n, k) { var s = (cyc - n[1]) / (OUT[k][0] - n[1]); return s >= 0 && s <= 1 ? s * s * (3 - 2 * s) : -1; });
       g.uniform3f(U.uThink, th[0], th[1], th[2]);
       g.drawArrays(g.TRIANGLES, 0, 3);
+      if (!painted) {
+        if (g.isContextLost() || g.getError() !== g.NO_ERROR) { fallback(); return; }
+        painted = true;
+        stage.classList.add('is-gl');
+      }
       drawRig(now, t, ir, cr);
       updateRun(cyc);
     };
+    var frame = function (now) {
+      if (failed || g.isContextLost()) { fallback(); return; }
+      try { paint(now); } catch (e) { fallback(); return; }
+      if (!failed) raf = requestAnimationFrame(frame);
+    };
     var run = function (yes) {
+      if (failed) return;
       if (yes === on) return;
       on = yes;
       if (on) raf = requestAnimationFrame(frame); else cancelAnimationFrame(raf);
@@ -1290,6 +1311,7 @@
     };
     var curve = function (a, b) { var dx = (b.x - a.x) * .5; return 'M' + a.x + ' ' + a.y + 'C' + (a.x + dx) + ' ' + a.y + ' ' + (b.x - dx) + ' ' + b.y + ' ' + b.x + ' ' + b.y; };
     var layoutFlows = function () {
+      if (failed) return;
       anims.forEach(function (a) { a.cancel(); });
       anims = [];
       if (!flows || !Element.prototype.animate) return;
@@ -1332,8 +1354,8 @@
       [pl, pr].forEach(function (p) { svgEl('circle', { class: 'port', cx: p.x, cy: p.y, r: 2.5 }); });
     };
     var start = function () {
-      texture(0, img);
-      stage.classList.add('is-gl');
+      if (failed) return;
+      try { texture(0, img); } catch (e) { fallback(); return; }
       layoutFlows();
       var lt;
       addEventListener('resize', function () { clearTimeout(lt); lt = setTimeout(layoutFlows, 200); });

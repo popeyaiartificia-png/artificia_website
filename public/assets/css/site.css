@@ -1031,7 +1031,7 @@ html:not(.js) .privacy-terrain { background: url('../img/showcase/contours.svg')
 .gloss span { display: block; font-size: .9rem; line-height: 1.5; color: var(--ink); }
 
 /* ---------- Stage hero (layout "stage"): the robot on black, the neon reveal, the shrink into a card ---------- */
-.hero--stage { padding: 0; }
+.hero--stage { padding: 0; background: #0A0B07; }
 @media (min-width: 1024px) { .hero.hero--stage { display: block; min-height: 0; } }
 .stage {
   --stage-bg: #0A0B07;  /* the robot photograph's own black backdrop, so its edges disappear */
